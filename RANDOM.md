@@ -1,2 +1,2 @@
 <h1 align="center">
-  <a href="https://git.io/typ
+  <a href="https://git.io/typi
