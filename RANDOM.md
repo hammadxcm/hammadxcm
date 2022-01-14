@@ -1,2 +1,2 @@
 <h1 align="center">
-  <a href="https://git.io/typing-sv
+  <a href="https://git.io/typing-svg
