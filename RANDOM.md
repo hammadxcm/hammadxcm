@@ -8,4 +8,4 @@
 </div>
 
 <p align="left">
-  <img src="https://komarev.co
+  <img src="https://komarev.com
