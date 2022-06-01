@@ -8,4 +8,4 @@
 </div>
 
 <p align="left">
-  <img src="https://komarev.com/ghpvc/?username=hammadxcm&label=Profile%20views&col
+  <img src="https://komarev.com/ghpvc/?username=hammadxcm&label=Profile%20views&colo
