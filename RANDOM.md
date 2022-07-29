@@ -13,4 +13,4 @@
 
 <p align="left">
   <a href="https://twitter.com/hammadkhanxcm" target="blank">
-    <img src="https://img.shields.io/twitter/follow/hammadkhanxcm?logo=twit
+    <img src="https://img.shields.io/twitter/follow/hammadkhanxcm?logo=twitt
