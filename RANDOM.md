@@ -1,3 +1,3 @@
 <h1 align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.co
+    <img src="https://readme-typing-svg.herokuapp.com
