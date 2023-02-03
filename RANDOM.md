@@ -1,1 +1,1 @@
-<h1 align="cent
+<h1 align="cente
