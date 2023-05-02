@@ -30,4 +30,4 @@
   </a>
 </p>
 
-# 🏆 GitHub T
+# 🏆 GitHub Tr
