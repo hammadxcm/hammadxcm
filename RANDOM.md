@@ -30,4 +30,4 @@
   </a>
 </p>
 
-# 🏆 GitHub Troph
+# 🏆 GitHub Trophi
