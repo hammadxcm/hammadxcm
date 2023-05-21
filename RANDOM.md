@@ -31,4 +31,4 @@
 </p>
 
 # 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=ham
+![](https://github-profile-trophy.vercel.app/?username=hamm
