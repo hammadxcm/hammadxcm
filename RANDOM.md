@@ -8,4 +8,4 @@
 </div>
 
 <p align="left">
-  <im
+  <img
