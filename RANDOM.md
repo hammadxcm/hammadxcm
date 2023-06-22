@@ -36,4 +36,4 @@
 
 
 # 🔝 Top Contributed Repo
-![](https://github-contributor-sta
+![](https://github-contributor-stat
