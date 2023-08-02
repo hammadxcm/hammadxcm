@@ -12,4 +12,4 @@
 </p>
 
 <p align="left">
-  <a href="https://twitter.c
+  <a href="https://twitter.co
