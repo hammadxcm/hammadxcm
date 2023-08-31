@@ -42,4 +42,4 @@
 <img src="https://raw.githubusercontent.com/hammadxcm/hammadxcm/output/snake.svg" alt="Snake animation" />
 
 <p align="center"> 
-  Visitor Count
+  Visitor Count<
