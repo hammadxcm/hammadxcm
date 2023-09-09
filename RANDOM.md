@@ -17,4 +17,4 @@
   </a>
 </p>
 
-<h3 align="left">Connec
+<h3 align="left">Connect
