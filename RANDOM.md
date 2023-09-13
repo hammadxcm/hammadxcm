@@ -17,4 +17,4 @@
   </a>
 </p>
 
-<h3 align="left">Connect with me:</h
+<h3 align="left">Connect with me:</h3
