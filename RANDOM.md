@@ -1,1 +1,1 @@
-# 🏆 GitHu
+# 🏆 GitHub
