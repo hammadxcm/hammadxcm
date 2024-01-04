@@ -1,1 +1,1 @@
-# 🏆 GitHub Trop
+# 🏆 GitHub Troph
