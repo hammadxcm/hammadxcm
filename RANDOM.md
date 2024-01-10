@@ -1,2 +1,2 @@
 # 🏆 GitHub Trophies
-![](https:/
+![](https://
