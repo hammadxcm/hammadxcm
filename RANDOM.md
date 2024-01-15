@@ -1,2 +1,2 @@
 # 🏆 GitHub Trophies
-![](https://github-profile-tro
+![](https://github-profile-trop
