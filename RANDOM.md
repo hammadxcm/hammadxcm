@@ -1,2 +1,2 @@
 # 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?usern
+![](https://github-profile-trophy.vercel.app/?userna
