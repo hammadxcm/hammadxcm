@@ -1,2 +1,2 @@
 # 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=hammad
+![](https://github-profile-trophy.vercel.app/?username=hammadx
