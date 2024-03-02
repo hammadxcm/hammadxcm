@@ -4,4 +4,4 @@
 
 
 # 🔝 Top Contributed Repo
-![](https://github-contributor-stats.vercel.ap
+![](https://github-contributor-stats.vercel.app
