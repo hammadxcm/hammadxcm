@@ -15,7 +15,7 @@
 <p align="left">
 <a href="https://twitter.com/hammadkhanxcm" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="hammadxcm" height="30" width="40" /></a>
 <a href="https://linkedin.com/in/hammadxcm" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="hammadxcm" height="30" width="40" /></a>
-  <a href="https://steamcommunity.com/id/__hk__" target="blank"><img align="center" src="https://camo.githubusercontent.com/8f3f8e12a8ab9620b87997aa946c7c5d876396a81295ea1854305920bb002b50/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f537465616d2d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d737465616d266c6f676f436f6c6f723d7768697465" alt="hammadxcm" height="30" width="40" /></a>
+  <a href="https://steamcommunity.com/id/__hk__" target="blank"><img align="center" src="https://raw.githubusercontent.com/github/explore/84354664714c333c785c6f2cb9b77d2514014ef8/topics/steam/steam.png" alt="hammadxcm" height="30" width="40" /></a>
 
 </p>
 
