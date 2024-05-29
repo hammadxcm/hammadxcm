@@ -31,4 +31,4 @@
 </p>
 
 # 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=hammadxcm&theme=darkhub&no-fr
+![](https://github-profile-trophy.vercel.app/?username=hammadxcm&theme=darkhub&no-fra
