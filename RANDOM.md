@@ -31,4 +31,4 @@
 </p>
 
 # 🏆 GitHub Trophies
-![](https:/
+![](https://
