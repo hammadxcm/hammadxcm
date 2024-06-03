@@ -11,4 +11,4 @@
 
 <p align="center"> 
   Visitor Count<br>
-  <img src="https://profile-counter.glitch.me/hammadxcm/coun
+  <img src="https://profile-counter.glitch.me/hammadxcm/count
