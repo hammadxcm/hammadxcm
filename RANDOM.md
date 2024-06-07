@@ -31,4 +31,4 @@
 </p>
 
 # 🏆 GitHub Trophies
-![](https://github-profile
+![](https://github-profile-
