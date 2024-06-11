@@ -15,4 +15,4 @@
 </p>
 
 <hr>
-<p align="lef
+<p align="left
