@@ -18,4 +18,4 @@
 <p align="left">
 
 
-Regar
+Regard
