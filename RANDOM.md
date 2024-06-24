@@ -18,4 +18,4 @@
 <p align="left">
 
 
-Regarding any issues, feel free to 
+Regarding any issues, feel free to d
