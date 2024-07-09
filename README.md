@@ -3,15 +3,12 @@
     <img src="https://readme-typing-svg.herokuapp.com/?lines=Hello,+There!+👋;This+is+HK.;Software+Engineer;Nice+to+meet+you!&center=true&size=30">
   </a>
 </h1>
+<div class = "header" align = "center">
+  <img src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExczVqcTF0ZHRqcnlvMWtsanh5OGJ1dTkxeDBhdzR6YzQ2aDNobjFrZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bGgsc5mWoryfgKBx1u/giphy.gif" width = 200>
+</div>
 
 <p align="left">
   <img src="https://komarev.com/ghpvc/?username=hammadxcm&label=Profile%20views&color=0e75b6&style=flat" alt="hammadxcm" />
-</p>
-
-<p align="left">
-  <a href="https://github.com/ryo-ma/github-profile-trophy">
-    <img src="https://github-profile-trophy.vercel.app/?username=hammadxcm" alt="hammadxcm" />
-  </a>
 </p>
 
 <p align="left">
@@ -146,6 +143,14 @@
 <img src="https://stats.quine.sh/hammadxcm/github?theme=dark" width="400">
 <img src="https://stats.quine.sh/hammadxcm/dependencies?theme=dark" width="400"><br>
 <img src="https://stats.quira.sh/hammadxcm/stack-overflow?theme=dark" width="400">
+
+# 🏆 GitHub Trophies
+![](https://github-profile-trophy.vercel.app/?username=hammadxcm&theme=darkhub&no-frame=false&no-bg=false&margin-w=4)
+
+
+
+# 🔝 Top Contributed Repo
+![](https://github-contributor-stats.vercel.app/api?username=hammadxcm&limit=5&theme=dark&combine_all_yearly_contributions=true)
 <br/><br/><br/>
 
 <p align="center"> 
@@ -155,6 +160,7 @@
 
 <hr>
 <p align="left">
+<img src="https://raw.githubusercontent.com/hammadxcm/hammadxcm/output/snake.svg" alt="Snake animation" />
 
 Regarding any issues, feel free to drop a mail at — <a href="mailto:hammadkhanxcm@gmail.com"><b>hammadkhanxcm@gmail.com</b></a>
 </p>
