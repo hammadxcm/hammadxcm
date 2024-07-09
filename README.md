@@ -153,7 +153,7 @@
 ![](https://github-contributor-stats.vercel.app/api?username=hammadxcm&limit=5&theme=dark&combine_all_yearly_contributions=true)
 <br/><br/><br/>
 
-![Snake animation](https://github.com/hammadxcm/hammadxcm/blob/output/github-contribution-grid-snake.svg)
+<img src="https://raw.githubusercontent.com/Aanyaa26/Aanyaa26/output/snake.svg" alt="Snake animation" />
 
 <p align="center"> 
   Visitor Count<br>
