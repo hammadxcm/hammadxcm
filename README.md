@@ -154,3 +154,7 @@
 </p>
 
 <hr>
+<p align="left">
+
+Regarding any issues, feel free to drop a mail at — <a href="mailto:hammadkhanxcm@gmail.com"><b>hammadkhanxcm@gmail.com</b></a>
+</p>
