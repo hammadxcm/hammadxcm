@@ -39,4 +39,4 @@
 ![](https://github-contributor-stats.vercel.app/api?username=hammadxcm&limit=5&theme=dark&combine_all_yearly_contributions=true)
 <br/><br/><br/>
 
-  <img src="https://raw.githubusercontent.com/hammadxcm/hammadxcm/output/sna
+  <img src="https://raw.githubusercontent.com/hammadxcm/hammadxcm/output/snak
