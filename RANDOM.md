@@ -43,4 +43,4 @@
   
   <p align="center"> 
     Visitor Count<br>
-    <img src="https://profile-counter.gli
+    <img src="https://profile-counter.glit
