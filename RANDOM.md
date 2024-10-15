@@ -50,4 +50,4 @@
 <p align="left">
 
 
-Regarding any issues, fee
+Regarding any issues, feel
