@@ -50,4 +50,4 @@
 <p align="left">
 
 
-Regarding any issues, feel free to drop a mail at — <a href="mail
+Regarding any issues, feel free to drop a mail at — <a href="mailt
