@@ -47,4 +47,4 @@
   </p>
   
   <hr>
-  <p alig
+  <p align
