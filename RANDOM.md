@@ -50,4 +50,4 @@
   <p align="left">
   
   
-  Regarding any iss
+  Regarding any issu
