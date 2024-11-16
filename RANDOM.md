@@ -50,4 +50,4 @@
   <p align="left">
   
   
-  Regarding any issues, feel free 
+  Regarding any issues, feel free t
