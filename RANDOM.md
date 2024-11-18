@@ -50,4 +50,4 @@
   <p align="left">
   
   
-  Regarding any issues, feel free to dro
+  Regarding any issues, feel free to drop
