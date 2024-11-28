@@ -50,4 +50,4 @@
   <p align="left">
   
   
-  Regarding any issues, feel free to drop a mail at — <a href="mailto:hamm
+  Regarding any issues, feel free to drop a mail at — <a href="mailto:hamma
