@@ -1,3 +1,3 @@
 <h1 align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typ
+    <img src="https://readme-typi
