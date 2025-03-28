@@ -4,4 +4,4 @@
   </a>
 </h1>
 <div class = "header" align = "center">
-  <img src = "https://media.giphy.com/media
+  <img src = "https://media.giphy.com/media/
