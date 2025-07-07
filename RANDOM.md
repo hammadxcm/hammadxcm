@@ -12,4 +12,4 @@
 </p>
 
 <p align="left">
-  <a href="https://twitter.com/ha
+  <a href="https://twitter.com/ham
