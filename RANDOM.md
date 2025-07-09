@@ -12,4 +12,4 @@
 </p>
 
 <p align="left">
-  <a href="https://twitter.com/hammadkhan
+  <a href="https://twitter.com/hammadkhanx
