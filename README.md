@@ -51,9 +51,6 @@
   <a href="https://redux.js.org" target="_blank" rel="noreferrer">
     <img src="https://github.com/devicons/devicon/blob/master/icons/redux/redux-original.svg" title="Redux-Toolkit" alt="Redux " width="40" height="40"/>
   </a>
-  <a href="https://reactrouter.com/en/main" target="_blank" rel="noreferrer">
-    <img src="https://reactrouter.com/_brand/react-router-mark-color-inverted.svg" title="React-Router" alt="react-router-dom" width="40" height="40"/>
-  </a>
   <img style="border-radius : 10px" src="https://mui.com/static/logo.png" title="Material UI" alt="Material UI" width="40" height="40"/>
   <img style="border-radius : 10px" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" title="Tailwindcss" alt="Tailwindcss" width="40" height="40"/>
   <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer">
