@@ -12,4 +12,43 @@
 </p>
 
 <p align="left">
-  <a href="https://twitter.com/hammadkhanxcm" 
+  <a href="https://twitter.com/hammadkhanxcm" target="blank">
+    <img src="https://img.shields.io/twitter/follow/hammadkhanxcm?logo=twitter&style=for-the-badge" alt="hammadkhanxcm" />
+  </a>
+</p>
+
+<h3 align="left">Connect with me:</h3>
+<p align="left">
+  <a href="https://twitter.com/hammadkhanxcm" target="blank">
+    <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="hammadkhanxcm" height="30" width="40" />
+  </a>
+  <a href="https://linkedin.com/in/hammadxcm" target="blank">
+    <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="hammadxcm" height="30" width="40" />
+  </a>
+  <a href="https://steamcommunity.com/id/__hk__" target="blank">
+    <img align="center" src="https://raw.githubusercontent.com/github/explore/84354664714c333c785c6f2cb9b77d2514014ef8/topics/steam/steam.png" alt="hammadxcm" height="30" width="40" />
+  </a>
+</p>
+
+# 🏆 GitHub Trophies
+![](https://github-profile-trophy.vercel.app/?username=hammadxcm&theme=darkhub&no-frame=false&no-bg=false&margin-w=4)
+
+
+
+# 🔝 Top Contributed Repo
+![](https://github-contributor-stats.vercel.app/api?username=hammadxcm&limit=5&theme=dark&combine_all_yearly_contributions=true)
+<br/><br/><br/>
+
+<img src="https://raw.githubusercontent.com/hammadxcm/hammadxcm/output/snake.svg" alt="Snake animation" />
+
+<p align="center"> 
+  Visitor Count<br>
+  <img src="https://profile-counter.glitch.me/hammadxcm/count.svg" />
+</p>
+
+<hr>
+  <p align="left">
+  
+  
+  Regarding any issues, feel free to drop a mail at — <a href="mailto:hammadkhanxcm@gmail.com"><b>hammadkhanxcm@gmail.com</b></a>
+  </p>
