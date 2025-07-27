@@ -2,10 +2,7 @@
 
 ![Header](./src/header_.png)
 
-# 💫 Hey there! I'm Hammad Khan
-### 🚀 Full-Stack Software Engineer | Problem Solver | Tech Enthusiast
-
-<img src="https://readme-typing-svg.herokuapp.com/?font=Fira+Code&size=32&duration=2800&pause=2000&color=A9FEF7&center=true&vCenter=true&width=940&lines=Welcome+to+my+GitHub+Profile!+👋;Full-Stack+Software+Engineer+💻;Ruby+%7C+JavaScript+%7C+TypeScript+Expert+🎯;Building+Scalable+Web+Applications+🚀;Always+Learning+Something+New+📚" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com/?font=Fira+Code&size=32&duration=2800&pause=2000&color=A9FEF7&center=true&vCenter=true&width=940&lines=Hey+there!+I'm+Hammad+Khan;Full-Stack+Software+Engineer;Problem+Solver+and+Tech+Enthusiast;Welcome+to+my+GitHub+Profile!;Ruby+and+JavaScript+and+TypeScript+Expert;Building+Scalable+Web+Applications;Always+Learning+Something+New" alt="Typing SVG" />
 
 <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExczVqcTF0ZHRqcnlvMWtsanh5OGJ1dTkxeDBhdzR6YzQ2aDNobjFrZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bGgsc5mWoryfgKBx1u/giphy.gif" width="300"/>
 
@@ -60,59 +57,82 @@ const hammadKhan = {
 <div align="center">
 
 ### 🎯 Core Expertise
+<div align="center">
 <table>
 <tr>
 <td align="center" width="100">
+<a href="https://www.ruby-lang.org/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=ruby" width="65"/>
 <br><strong>Ruby</strong>
 <br><sub>⭐⭐⭐⭐⭐</sub>
+</a>
 </td>
 <td align="center" width="100">
+<a href="https://rubyonrails.org/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=rails" width="65"/>
 <br><strong>Rails</strong>
 <br><sub>⭐⭐⭐⭐⭐</sub>
+</a>
 </td>
 <td align="center" width="100">
+<a href="https://reactjs.org/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=react" width="65"/>
 <br><strong>ReactJS</strong>
 <br><sub>⭐⭐⭐⭐⭐</sub>
+</a>
 </td>
 <td align="center" width="100">
+<a href="https://vuejs.org/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=vue" width="65"/>
 <br><strong>VueJS</strong>
 <br><sub>⭐⭐⭐⭐⭐</sub>
+</a>
 </td>
 <td align="center" width="100">
+<a href="https://graphql.org/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=graphql" width="65"/>
 <br><strong>GraphQL</strong>
 <br><sub>⭐⭐⭐⭐⭐</sub>
+</a>
 </td>
 <td align="center" width="100">
+<a href="https://nextjs.org/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=nextjs" width="65"/>
 <br><strong>NextJS</strong>
 <br><sub>⭐⭐⭐⭐</sub>
+</a>
 </td>
 </tr>
 </table>
+</div>
 
 ### 🚀 Frontend Development
+<div align="center">
 <table>
 <tr>
 <td align="center" width="80">
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=js" width="50"/>
 <br><sub>JavaScript/ES6</sub>
+</a>
 </td>
 <td align="center" width="80">
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=html" width="50"/>
 <br><sub>HTML5</sub>
+</a>
 </td>
 <td align="center" width="80">
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=css" width="50"/>
 <br><sub>CSS3</sub>
+</a>
 </td>
 <td align="center" width="80">
+<a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=tailwind" width="50"/>
 <br><sub>Tailwind</sub>
+</a>
 </td>
 <td align="center" width="80">
 <img src="https://skillicons.dev/icons?i=sass" width="50"/>
@@ -128,73 +148,105 @@ const hammadKhan = {
 </td>
 </tr>
 </table>
+</div>
 
 ### ⚙️ Backend & APIs
+<div align="center">
 <table>
 <tr>
 <td align="center" width="80">
+<a href="https://nodejs.org/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=nodejs" width="50"/>
 <br><sub>NodeJS</sub>
+</a>
 </td>
 <td align="center" width="80">
+<a href="https://graphql-ruby.org/" target="_blank" rel="noreferrer">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/graphql/graphql-plain.svg" width="50"/>
 <br><sub>GraphQL Ruby</sub>
+</a>
 </td>
 <td align="center" width="80">
+<a href="https://developer.salesforce.com/" target="_blank" rel="noreferrer">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/salesforce/salesforce-original.svg" width="50"/>
 <br><sub>Salesforce</sub>
+</a>
 </td>
 <td align="center" width="80">
+<a href="https://developers.hubspot.com/" target="_blank" rel="noreferrer">
 <img src="https://www.vectorlogo.zone/logos/hubspot/hubspot-icon.svg" width="50"/>
 <br><sub>HubSpot</sub>
+</a>
 </td>
 <td align="center" width="80">
+<a href="https://stripe.com/docs/api" target="_blank" rel="noreferrer">
 <img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" width="50"/>
 <br><sub>Stripe API</sub>
+</a>
 </td>
 <td align="center" width="80">
-<img src="https://img.icons8.com/color/48/marketo.png" width="50"/>
+<a href="https://marketodevdocs.adobe.com/" target="_blank" rel="noreferrer">
+<img src="https://www.vectorlogo.zone/logos/adobe_marketo/adobe_marketo-icon.svg" width="50"/>
 <br><sub>Marketo</sub>
+</a>
 </td>
 </tr>
 </table>
+</div>
 
 ### 🗄️ Databases & Storage
+<div align="center">
 <table>
 <tr>
 <td align="center" width="100">
+<a href="https://www.postgresql.org/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=postgresql" width="50"/>
 <br><sub>PostgreSQL</sub>
+</a>
 </td>
 <td align="center" width="100">
+<a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=mongodb" width="50"/>
 <br><sub>MongoDB</sub>
+</a>
 </td>
 <td align="center" width="100">
+<a href="https://www.mysql.com/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=mysql" width="50"/>
 <br><sub>MySQL</sub>
+</a>
 </td>
 <td align="center" width="100">
+<a href="https://redis.io/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=redis" width="50"/>
 <br><sub>Redis</sub>
+</a>
 </td>
 <td align="center" width="100">
+<a href="https://www.sqlite.org/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=sqlite" width="50"/>
 <br><sub>SQLite</sub>
+</a>
 </td>
 </tr>
 </table>
+</div>
 
 ### ☁️ Cloud & DevOps
+<div align="center">
 <table>
 <tr>
 <td align="center" width="80">
+<a href="https://aws.amazon.com/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=aws" width="50"/>
 <br><sub>AWS Suite</sub>
+</a>
 </td>
 <td align="center" width="80">
+<a href="https://azure.microsoft.com/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=azure" width="50"/>
 <br><sub>Azure</sub>
+</a>
 </td>
 <td align="center" width="80">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg" width="50"/>
@@ -214,8 +266,10 @@ const hammadKhan = {
 </td>
 </tr>
 </table>
+</div>
 
 ### 🧪 Testing & Quality
+<div align="center">
 <table>
 <tr>
 <td align="center" width="100">
@@ -236,8 +290,10 @@ const hammadKhan = {
 </td>
 </tr>
 </table>
+</div>
 
 ### 🤖 AI & Modern Tools
+<div align="center">
 <table>
 <tr>
 <td align="center" width="100">
@@ -258,6 +314,7 @@ const hammadKhan = {
 </td>
 </tr>
 </table>
+</div>
 
 </div>
 
@@ -476,6 +533,65 @@ Handling TB-scale data</sub>
 ### 🐍 Contribution Snake
 <img src="https://raw.githubusercontent.com/hammadxcm/hammadxcm/output/snake.svg" alt="Snake Animation" />
 
+### 📊 Quick Stats Summary
+<div align="center">
+<table>
+<tr>
+<td align="center">
+<img src="https://img.shields.io/badge/Experience-6%2B%20Years-brightgreen?style=for-the-badge&logo=calendar&logoColor=white"/>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/Specialization-Ruby%20on%20Rails-CC0000?style=for-the-badge&logo=ruby&logoColor=white"/>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/Location-Lahore%2C%20Pakistan-green?style=for-the-badge&logo=location&logoColor=white"/>
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="https://img.shields.io/badge/Focus-Full%20Stack%20Development-blue?style=for-the-badge&logo=code&logoColor=white"/>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/APIs-10%2B%20Integrations-orange?style=for-the-badge&logo=api&logoColor=white"/>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/Available-For%20Opportunities-success?style=for-the-badge&logo=handshake&logoColor=white"/>
+</td>
+</tr>
+</table>
+</div>
+
+</div>
+
+---
+
+## 🏆 Certifications & Learning
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="250">
+<a href="#" target="_blank" rel="noreferrer">
+<img src="https://img.shields.io/badge/Hotwire-Reactive%20Rails%20Apps-FF6B6B?style=for-the-badge&logo=ruby&logoColor=white"/>
+<br/><sub><b>June 2024</b></sub>
+</a>
+</td>
+<td align="center" width="250">
+<a href="#" target="_blank" rel="noreferrer">
+<img src="https://img.shields.io/badge/Ruby-Testing%20with%20RSpec-701516?style=for-the-badge&logo=ruby&logoColor=white"/>
+<br/><sub><b>August 2024</b></sub>
+</a>
+</td>
+<td align="center" width="250">
+<a href="#" target="_blank" rel="noreferrer">
+<img src="https://img.shields.io/badge/MySQL-Basic%20Certification-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
+<br/><sub><b>March 2024</b></sub>
+</a>
+</td>
+</tr>
+</table>
+
 </div>
 
 ---
@@ -519,9 +635,26 @@ Handling TB-scale data</sub>
 ```
 
 ### 📬 Get In Touch
-**Email:** [hammadkhanxcm@gmail.com](mailto:hammadkhanxcm@gmail.com)
 
-**Response Time:** Usually within 24 hours ⚡
+<div align="center">
+<table>
+<tr>
+<td align="center">
+<img src="https://img.shields.io/badge/Email-hammadkhanxcm%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/>
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="https://img.shields.io/badge/Response%20Time-Within%2024%20Hours-success?style=for-the-badge&logo=clock&logoColor=white"/>
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="https://img.shields.io/badge/Phone-%2B92%20320%201609999-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/>
+</td>
+</tr>
+</table>
+</div>
 
 </div>
 
@@ -529,22 +662,22 @@ Handling TB-scale data</sub>
 
 <div align="center">
 
-### 🎵 Currently Vibing To
-<div align="center">
-  <img src="https://spotify-recently-played-readme.vercel.app/api?user=hammadxcm&count=1&unique=true" alt="Currently Playing" />
-</div>
+### 🎵 Music & Inspiration
 
-<details>
-<summary>🎧 <b>Setup Your Own Spotify Widget</b></summary>
-<br>
-<p>To connect your Spotify and show what you're currently listening to:</p>
-<ol>
-  <li>Go to <a href="https://spotify-github-profile.vercel.app/">Spotify GitHub Profile</a></li>
-  <li>Connect your Spotify account</li>
-  <li>Copy the generated markdown code</li>
-  <li>Replace the widget above with your personalized version</li>
-</ol>
-</details>
+<div align="center">
+<table>
+<tr>
+<td align="center">
+<img src="https://img.shields.io/badge/Coding%20Music-Lo--Fi%20%26%20Instrumental-1DB954?style=for-the-badge&logo=spotify&logoColor=white"/>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/Productivity-Focus%20Playlists-FF1744?style=for-the-badge&logo=youtube&logoColor=white"/>
+</td>
+</tr>
+</table>
+
+<sub>🎧 <i>Great code comes with great music!</i></sub>
+</div>
 
 ### 💡 Random Dev Quote
 ![Dev Quote](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight)
