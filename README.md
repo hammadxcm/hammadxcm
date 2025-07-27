@@ -1,3 +1,5 @@
+![](./src/header_.png)
+
 <h1 align="center">
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.herokuapp.com/?lines=Hello,+There!+👋;This+is+HK.;Software+Engineer;Nice+to+meet+you!&center=true&size=30">
@@ -125,6 +127,25 @@
 <hr>
 
 <h2 align="center">⚡ Profile Stats ⚡</h2>
+<br>
+
+<div align="center">
+ <table>
+   <tr>
+     <td rowspan="2"> <img src="./metrics.classic.svg" alt="classic" /> </td>
+     <td> <img src="./metrics.plugin.isocalendar.fullyear.svg" alt="fullyear" /> </td>
+   </tr>
+   <tr>
+     <td><img src="./metrics.plugin.languages.svg" alt="languages" /></td> 
+   </tr>
+   <tr>
+     <td><img src="./metrics.plugin.stars.svg" alt="stars" /></td> 
+     <td><img src="./metrics.plugin.leetcode.svg" alt="leetcode" /></td> 
+   </tr>
+ </table>
+</div>
+<hr/>
+
 <br>
 
 <a href="https://github.com/hammadxcm">
