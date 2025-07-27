@@ -1,3 +1,5 @@
+![](./src/header_.png)
+
 <h1 align="center">
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.herokuapp.com/?lines=Hello,+There!+👋;This+is+HK.;Software+Engineer;Nice+to+meet+you!&center=true&size=30">
@@ -126,6 +128,48 @@
 
 <h2 align="center">⚡ Profile Stats ⚡</h2>
 <br>
+
+<div align="center">
+ <table>
+   <tr>
+     <td rowspan=2> <img src="./metrics.classic.svg" alt="classic" /> </td>
+     <td> 
+	     <img src="./metrics.plugin.isocalendar.fullyear.svg" alt="fullyear" /> 
+     </td>
+   </tr>
+   <tr>
+	   <td><img src="./metrics.plugin.languages.svg" alt="languages" /></td> 
+   </tr>
+   <tr>
+	   <td rowspan="2"><img src="./metrics.plugin.stars.svg" alt="stars" /></td> 
+   </tr>
+   <tr>
+	   <td><img src="./metrics.plugin.leetcode.svg" alt="stars" /></td> 
+   </tr>
+ </table>
+</div>
+<hr/>
+
+
+<!-- <p> <img alt="Stats" src="https://github-readme-stats.vercel.app/api?username=hammadxcm&count_private=true&show_icons=true&show_icons=true&theme=dracula" /> </p> 
+<p> <img alt="Stats2" src="https://github-readme-streak-stats.herokuapp.com/?user=hammadxcm&theme=dracula" /> </p>
+<p> <img alt="Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=hammadxcm&layout=compact&langs_count=10&show_icons=true&theme=dracula" /> </p> -->
+
+<!--
+**hammadxcm/hammadxcm** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+
+Here are some ideas to get you started:
+
+- 🔭 I’m currently working on ...
+- 🌱 I’m currently learning ...
+- 👯 I’m looking to collaborate on ...
+- 🤔 I’m looking for help with ...
+- 💬 Ask me about ...
+- 📫 How to reach me: ...
+- 😄 Pronouns: ...
+- ⚡ Fun fact: ...
+-->
+
 
 <a href="https://github.com/hammadxcm">
   <img height="155em" src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=hammadxcm&theme=algolia"/>
