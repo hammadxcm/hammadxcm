@@ -2,8 +2,8 @@ name: Metrics and Snake Animation
 
 on:
   schedule:
-    - cron: "0 * * * *"  # Run hourly for metrics
-    - cron: "* */12 * * *"  # Run every 12 hours for snake
+    - cron: "0 */6 * * *"  # Run every 6 hours for metrics
+    - cron: "0 */12 * * *"  # Run every 12 hours for snake
 
   workflow_dispatch:
 
@@ -26,7 +26,7 @@ jobs:
           user: hammadxcm
           template: classic
           base: header, activity, community, repositories, metadata
-          config_timezone: America/New_York
+          config_timezone: UTC
           repositories_skipped: hammadxcm.github.io, hammadxcm
 
           plugin_traffic: yes
