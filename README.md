@@ -297,7 +297,7 @@ const hammadKhan = {
 <table>
 <tr>
 <td align="center" width="100">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/openai/openai-original.svg" width="50"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg" width="50"/>
 <br><sub>ChatGPT</sub>
 </td>
 <td align="center" width="100">
