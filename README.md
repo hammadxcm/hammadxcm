@@ -186,7 +186,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="80">
 <a href="https://marketodevdocs.adobe.com/" target="_blank" rel="noreferrer">
-<img src="https://www.vectorlogo.zone/logos/adobe_marketo/adobe_marketo-icon.svg" width="50"/>
+<img src="https://cdn.worldvectorlogo.com/logos/marketo-1.svg" width="50"/>
 <br><sub>Marketo</sub>
 </a>
 </td>
