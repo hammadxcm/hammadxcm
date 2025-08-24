@@ -1,3 +1,5 @@
+<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=00bfbf&height=120&section=header"/>
+
 <div align="center">
 
 ![Header](./src/header_.png)
@@ -625,15 +627,6 @@ Handling TB-scale data</sub>
   </tr>
 </table>
 
-### 💼 Open for Opportunities
-```
-🔸 Full-Stack Development Projects
-🔸 Open Source Collaborations  
-🔸 Technical Consulting
-🔸 Code Reviews & Mentoring
-🔸 Speaking Opportunities
-```
-
 ### 📬 Get In Touch
 
 <div align="center">
@@ -662,23 +655,6 @@ Handling TB-scale data</sub>
 
 <div align="center">
 
-### 🎵 Music & Inspiration
-
-<div align="center">
-<table>
-<tr>
-<td align="center">
-<img src="https://img.shields.io/badge/Coding%20Music-Lo--Fi%20%26%20Instrumental-1DB954?style=for-the-badge&logo=spotify&logoColor=white"/>
-</td>
-<td align="center">
-<img src="https://img.shields.io/badge/Productivity-Focus%20Playlists-FF1744?style=for-the-badge&logo=youtube&logoColor=white"/>
-</td>
-</tr>
-</table>
-
-<sub>🎧 <i>Great code comes with great music!</i></sub>
-</div>
-
 ### 💡 Random Dev Quote
 ![Dev Quote](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight)
 
@@ -689,3 +665,4 @@ Handling TB-scale data</sub>
 **⭐ Star my repositories if you find them interesting!**
 
 </div>
+<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=00bfbf&height=120&section=footer"/>
