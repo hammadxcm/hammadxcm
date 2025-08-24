@@ -357,7 +357,7 @@ const hammadKhan = {
 <br><sub><b>RubyMine</b></sub>
 </td>
 <td align="center" width="90">
-<img src="https://skillicons.dev/icons?i=pycharm" width="55"/>
+<img src="https://private-user-images.githubusercontent.com/74038190/238200437-de038172-e903-4951-926c-755878deb0b4.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTYwMjEzOTEsIm5iZiI6MTc1NjAyMTA5MSwicGF0aCI6Ii83NDAzODE5MC8yMzgyMDA0MzctZGUwMzgxNzItZTkwMy00OTUxLTkyNmMtNzU1ODc4ZGViMGI0LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODI0VDA3MzgxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM5Zjk0MTI2Y2E3N2I5OGY5NGU4MTBlZDBhMTgyMzA3ZjQ5YTVjOGM2MmE0NjAyZjIxNjJhYzg3OWEyMmY0YzgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.7GzWdKq7vjFFK_LLnSNftBKhCY7kQUUpQlz9V3nz0pw" width="55"/>
 <br><sub><b>PyCharm</b></sub>
 </td>
 <td align="center" width="90">
