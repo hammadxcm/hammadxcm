@@ -80,14 +80,14 @@ const hammadKhan = {
 <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=react" width="65"/>
 <br><strong>ReactJS</strong>
-<br><sub>⭐⭐⭐⭐⭐</sub>
+<br><sub>⭐⭐⭐⭐</sub>
 </a>
 </td>
 <td align="center" width="100">
 <a href="https://vuejs.org/" target="_blank" rel="noreferrer">
 <img src="https://skillicons.dev/icons?i=vue" width="55"/>
 <br><strong>VueJS</strong>
-<br><sub>⭐⭐⭐⭐⭐</sub>
+<br><sub>⭐⭐⭐⭐</sub>
 </a>
 </td>
 <td align="center" width="100">
@@ -104,6 +104,13 @@ const hammadKhan = {
 <br><sub>⭐⭐⭐⭐</sub>
 </a>
 </td>
+<td align="center" width="100">
+<a href="https://www.python.org/" target="_blank" rel="noreferrer">
+<img src="https://user-images.githubusercontent.com/74038190/212257472-08e52665-c503-4bd9-aa20-f5a4dae769b5.gif
+" width="65"/>
+<br><strong>Python</strong>
+<br><sub>⭐⭐⭐</sub>
+</a>
 </tr>
 </table>
 </div>
