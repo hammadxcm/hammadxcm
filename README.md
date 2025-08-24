@@ -384,34 +384,235 @@ const hammadKhan = {
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/Senior%20Software%20Engineer-TechXMation-blue?style=for-the-badge&logo=code&logoColor=white" alt="Current Role"/>
+<img src="https://img.shields.io/badge/Staff%20Software%20Engineer-TechXMation-blue?style=for-the-badge&logo=code&logoColor=white" alt="Current Role"/>
 <br/>
 <sub><b>Since December 2023 • Freelancer • Lahore, Pakistan</b></sub>
 </td>
 </tr>
 </table>
 
-### 🏢 Career Timeline
+### 🏢 Professional Experience & System Architecture
+
+<div align="center">
+
+---
+
 <table>
 <tr>
-<td align="center" width="200">
-<img src="https://img.shields.io/badge/2023-TechXMation-FF6B6B?style=for-the-badge&logo=rocket&logoColor=white"/>
-<br/><sub><b>Senior Software Engineer</b></sub>
+<td width="150">
+<img src="https://img.shields.io/badge/2023-Present-FF6B6B?style=for-the-badge&labelColor=2F3349&color=FF6B6B"/>
 </td>
-<td align="center" width="200">
-<img src="https://img.shields.io/badge/2023-Machine%20Tools-4ECDC4?style=for-the-badge&logo=tools&logoColor=white"/>
-<br/><sub><b>Application Developer</b></sub>
-</td>
-<td align="center" width="200">
-<img src="https://img.shields.io/badge/2022--23-Freelance-45B7D1?style=for-the-badge&logo=freelancer&logoColor=white"/>
-<br/><sub><b>Senior Software Engineer</b></sub>
-</td>
-<td align="center" width="200">
-<img src="https://img.shields.io/badge/2018--22-Sendoso-9B59B6?style=for-the-badge&logo=sendgrid&logoColor=white"/>
-<br/><sub><b>Software Engineer</b></sub>
+<td width="600">
+<h3>🚀 Staff Software Engineer @ TechXMation</h3>
+<p><em>Freelance • Lahore, Pakistan</em></p>
+
+**System Design & Architecture Leadership:**
+
+🏗️ **Distributed Data Processing Architecture**
+- **Challenge**: Time-consuming manual data exports causing operational bottlenecks
+- **Solution**: Designed and implemented event-driven export system with real-time progress tracking
+- **Architecture**: Built pub/sub mechanism using Redis streams with job queuing system
+- **Impact**: Reduced export wait times from 30+ minutes to under 5 minutes for large datasets
+
+⚡ **Progressive Loading System Design**
+- **Challenge**: Database queries causing 10+ second page load times
+- **Solution**: Architected progressive data loading with ReactJS and asynchronous rendering
+- **Technical Approach**: Implemented lazy loading with pagination, caching layer using Redis
+- **Impact**: Reduced initial page load from 12s to 2.3s, improved user engagement by 70%
+
+🔄 **Multi-Level Job Processing Architecture**
+- **Challenge**: Sidekiq job failures, memory overflow, and deployment interruptions
+- **Solution**: Designed complex multi-level batch processing with callback mechanisms
+- **Technical Implementation**: Created job monitoring system with retry logic and error handling
+- **Impact**: Improved job success rate from 60% to 95%, reduced memory usage by 40%
+
+🌉 **Microservices Integration & Data Flow**
+- **Challenge**: Poor communication between Pretzel and Fawkes systems causing data inconsistency
+- **Solution**: Designed service mesh architecture with message queuing and event sourcing
+- **Implementation**: Built central data mapping service for YouTube/TikTok data with comprehensive API documentation
+- **Result**: Eliminated 90% of data duplicates, improved system reliability
+
+**Technologies**: `Ruby on Rails` `ReactJS` `Redis` `Sidekiq` `AWS S3` `PostgreSQL` `Microservices` `Event-Driven Architecture`
+
 </td>
 </tr>
 </table>
+
+---
+
+<table>
+<tr>
+<td width="150">
+<img src="https://img.shields.io/badge/Feb-Nov 2023-4ECDC4?style=for-the-badge&labelColor=2F3349&color=4ECDC4"/>
+</td>
+<td width="600">
+<h3>🔧 Application Developer @ Machine Tools</h3>
+<p><em>Full-time • Lahore, Pakistan</em></p>
+
+**Database Architecture & Performance Engineering:**
+
+🔍 **Search Engine Optimization**
+- **Challenge**: Slow database queries affecting user experience
+- **Solution**: Implemented Sphinx Search with optimized indexing strategy
+- **Technical Approach**: Designed full-text search with Arel SQL for complex query optimization
+- **Impact**: Improved search response time by 300%, enhanced data retrieval efficiency
+
+📊 **Advanced Data Filtering System**
+- **Technical Implementation**: Built sophisticated filtering mechanism with role-based access control
+- **Architecture**: Designed permission system with hierarchical user roles and content visibility
+- **Performance**: Optimized SQL queries resulting in 85% faster data filtering
+
+🎛️ **Email Delivery System Enhancement**
+- **System Design**: Architected scalable email delivery system with formatting improvements
+- **Technical Features**: Implemented template system with user engagement tracking
+- **Result**: Improved email delivery rate by 25% and user engagement metrics
+
+**Technologies**: `Ruby on Rails` `Sphinx Search` `Arel SQL` `PostgreSQL` `Role-Based Access Control`
+
+</td>
+</tr>
+</table>
+
+---
+
+<table>
+<tr>
+<td width="150">
+<img src="https://img.shields.io/badge/Jun 22-Jan 23-45B7D1?style=for-the-badge&labelColor=2F3349&color=45B7D1"/>
+</td>
+<td width="600">
+<h3>💻 Senior Software Engineer @ Freelance</h3>
+<p><em>Remote • Lahore, Pakistan</em></p>
+
+**Security Architecture & API Design:**
+
+🔐 **API Security Framework**
+- **Challenge**: Ensure integrity and authenticity of API communications
+- **Solution**: Designed robust API signature verification system
+- **Implementation**: Built HMAC-based authentication with JWT tokens and rate limiting
+- **Security Features**: Implemented request signing, timestamp validation, and replay attack prevention
+
+🏗️ **Component-Based Architecture**
+- **Technical Approach**: Designed reusable ReactJS components with maintainable architecture
+- **System Design**: Created modular component library with proper state management
+- **Impact**: Reduced development time by 40% through component reusability
+
+🔄 **Multi-Platform API Integration**
+- **Architecture**: Built unified API integration layer supporting multiple third-party services
+- **Technologies**: Designed adapter pattern for seamless API switching and error handling
+- **Result**: Streamlined integration process across different platforms
+
+**Technologies**: `Ruby on Rails` `ReactJS` `GraphQL` `API Security` `Chrome Extensions` `JWT Authentication`
+
+</td>
+</tr>
+</table>
+
+---
+
+<table>
+<tr>
+<td width="150">
+<img src="https://img.shields.io/badge/2018-2022-9B59B6?style=for-the-badge&labelColor=2F3349&color=9B59B6"/>
+</td>
+<td width="600">
+<h3>🚀 Software Engineer @ Sendoso</h3>
+<p><em>Full-time • Lahore, Pakistan • 4 Years</em></p>
+
+**Enterprise-Scale System Architecture & Platform Engineering:**
+
+🏛️ **Multi-API Integration Platform**
+- **System Design**: Architected unified integration platform supporting 10+ APIs (Kolide, Microsoft Azure, Kandji, Render, Secure Frame)
+- **Technical Challenge**: Designed fault-tolerant API gateway with circuit breakers and retry mechanisms
+- **Architecture Pattern**: Implemented adapter pattern for seamless API integration with centralized error handling
+- **Impact**: Reduced integration time from weeks to days for new APIs
+
+💳 **Payment System Migration Architecture**
+- **Challenge**: Migrate from Stripe API v2 to v3 without downtime
+- **Solution**: Designed blue-green deployment strategy with feature flags
+- **Technical Implementation**: Built backward-compatible payment layer with gradual rollout
+- **Result**: Zero-downtime migration with 99.9% uptime during transition
+
+📊 **Real-Time Monitoring & Analytics Platform**
+- **System Design**: Architected comprehensive API logging dashboard with real-time metrics
+- **Technical Stack**: Built with Prometheus Ruby client, integrated with New Relic for advanced monitoring
+- **Data Pipeline**: Designed log aggregation system handling 1M+ requests/day
+- **Migration**: Successfully migrated to New Relic with improved monitoring capabilities
+
+🔄 **CRM Integration & Automation Platform**
+- **Architecture**: Designed event-driven automation system for Salesforce-Sendoso synchronization
+- **Technical Implementation**: Built pub/sub messaging system with dead letter queues
+- **Integration Scope**: Connected HubSpot, Salesloft, Marketo, and Engagio platforms
+- **Performance**: Achieved 60% increase in operational efficiency through automation
+
+🎛️ **Admin Platform & Role Management System**
+- **System Design**: Architected role-based access control with granular permissions
+- **Technical Features**: Built hierarchical permission system with audit logging
+- **Security**: Implemented secure admin panel with multi-factor authentication
+- **User Management**: Designed scalable user role system supporting enterprise clients
+
+🌐 **Browser Extension Architecture**
+- **Technical Challenge**: Build performant Chrome extension for CRM integration
+- **Solution**: Designed lightweight extension with background script architecture
+- **Performance**: Optimized for minimal memory footprint and fast loading
+- **Integration**: Seamless data sync between HubSpot, Salesloft, and Sendoso platforms
+
+📈 **Customer Analytics & Retention Platform**
+- **Integration**: Implemented ChurnZero for customer behavior analysis
+- **Data Pipeline**: Built real-time analytics pipeline for customer insights
+- **Actionable Intelligence**: Designed alerting system for customer retention teams
+- **Impact**: Improved customer retention through data-driven insights
+
+🏗️ **Microservices Architecture & Documentation**
+- **System Design**: Contributed to notification microservice using Domain-Driven Design principles
+- **Architecture**: Designed event-sourced notification system with message queuing
+- **Documentation**: Created comprehensive API documentation and integration guides
+- **Scalability**: Built for high-throughput notification delivery
+
+🌍 **Internationalization & Global Scale**
+- **Challenge**: Enable global expansion with multi-language support
+- **Solution**: Designed i18n system for email templates with 20+ languages
+- **Architecture**: Built localization pipeline with translation management
+- **Impact**: Enabled Sendoso's expansion to international markets
+
+**Technologies**: `Ruby on Rails` `ReactJS` `Redux` `GraphQL` `Chrome Extensions` `Salesforce API` `HubSpot API` `Marketo API` `Stripe API` `New Relic` `Prometheus` `ChurnZero` `Domain-Driven Design` `Event-Driven Architecture` `Microservices`
+
+</td>
+</tr>
+</table>
+
+---
+
+<table>
+<tr>
+<td width="150">
+<img src="https://img.shields.io/badge/2017-2018-28A745?style=for-the-badge&labelColor=2F3349&color=28A745"/>
+</td>
+<td width="600">
+<h3>⚡ Software Engineer @ Engin Technologies</h3>
+<p><em>Full-time • Lahore, Pakistan</em></p>
+
+**Full-Stack Development & E-commerce Architecture:**
+
+🛒 **E-commerce Platform Architecture**
+- **Technical Implementation**: Built scalable e-commerce solutions using Spree Commerce framework
+- **System Design**: Designed product catalog and order management system
+- **Integration**: Connected payment gateways and inventory management systems
+- **Performance**: Optimized for high-traffic e-commerce operations
+
+🎯 **Frontend Architecture with State Management**
+- **Technical Approach**: Implemented ReactJS with Redux for complex state management
+- **Architecture**: Designed component-based frontend with efficient data flow
+- **Integration**: Built seamless frontend-backend communication with Rails & GraphQL
+- **User Experience**: Created responsive and interactive user interfaces
+
+**Technologies**: `Ruby on Rails` `ReactJS` `ReduxJS` `GraphQL` `AngularJS` `Spree Commerce` `E-commerce Architecture`
+
+</td>
+</tr>
+</table>
+
+</div>
 
 ### 🚀 Recent Achievements
 
