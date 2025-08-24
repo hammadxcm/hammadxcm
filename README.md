@@ -78,14 +78,14 @@ const hammadKhan = {
 </td>
 <td align="center" width="100">
 <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
-<img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="65"/>
+<img src="https://skillicons.dev/icons?i=react" width="65"/>
 <br><strong>ReactJS</strong>
 <br><sub>⭐⭐⭐⭐⭐</sub>
 </a>
 </td>
 <td align="center" width="100">
 <a href="https://vuejs.org/" target="_blank" rel="noreferrer">
-<img src="https://user-images.githubusercontent.com/74038190/212257463-4d082cb4-7483-4eaf-bc25-6dde2628aabd.gif" width="55"/>
+<img src="https://skillicons.dev/icons?i=vue" width="55"/>
 <br><strong>VueJS</strong>
 <br><sub>⭐⭐⭐⭐⭐</sub>
 </a>
@@ -99,7 +99,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="100">
 <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
-<img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/29fd6286-4e7b-4d6c-818f-c4765d5e39a9" width="65"/>
+<img src="https://skillicons.dev/icons?i=nextjs" width="65"/>
 <br><strong>NextJS</strong>
 <br><sub>⭐⭐⭐⭐</sub>
 </a>
@@ -114,7 +114,7 @@ const hammadKhan = {
 <tr>
 <td align="center" width="90">
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
-<img src="https://user-images.githubusercontent.com/74038190/212257454-16e3712e-945a-4ca2-b238-408ad0bf87e6.gif" width="55"/>
+<img src="https://skillicons.dev/icons?i=js" width="55"/>
 <br><sub><b>JavaScript</b></sub>
 </a>
 </td>
@@ -214,7 +214,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="100">
 <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
-<img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/398b19b1-9aae-4c1f-8bc0-d172a2c08d68" width="50"/>
+<img src="https://skillicons.dev/icons?i=mongodb" width="50"/>
 <br><sub>MongoDB</sub>
 </a>
 </td>
@@ -258,7 +258,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="90">
 <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
-<img src="https://user-images.githubusercontent.com/74038190/212281780-0afd9616-8310-46e9-a898-c4f5269f1387.gif" width="55"/>
+<img src="https://skillicons.dev/icons?i=git" width="55"/>
 <br><sub><b>Git</b></sub>
 </a>
 </td>
@@ -305,7 +305,7 @@ const hammadKhan = {
 <br><sub><b>Shoulda</b></sub>
 </td>
 <td align="center" width="100">
-<img src="https://user-images.githubusercontent.com/74038190/212257463-4d082cb4-7483-4eaf-bc25-6dde2628aabd.gif" width="55"/>
+<img src="https://skillicons.dev/icons?i=vue" width="55"/>
 <br><sub><b>Vue Test Utils</b></sub>
 </td>
 </tr>
@@ -357,7 +357,7 @@ const hammadKhan = {
 <br><sub><b>RubyMine</b></sub>
 </td>
 <td align="center" width="90">
-<img src="https://private-user-images.githubusercontent.com/74038190/238200437-de038172-e903-4951-926c-755878deb0b4.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTYwMjEzOTEsIm5iZiI6MTc1NjAyMTA5MSwicGF0aCI6Ii83NDAzODE5MC8yMzgyMDA0MzctZGUwMzgxNzItZTkwMy00OTUxLTkyNmMtNzU1ODc4ZGViMGI0LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODI0VDA3MzgxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM5Zjk0MTI2Y2E3N2I5OGY5NGU4MTBlZDBhMTgyMzA3ZjQ5YTVjOGM2MmE0NjAyZjIxNjJhYzg3OWEyMmY0YzgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.7GzWdKq7vjFFK_LLnSNftBKhCY7kQUUpQlz9V3nz0pw" width="55"/>
+<img src="https://skillicons.dev/icons?i=pycharm" width="55"/>
 <br><sub><b>PyCharm</b></sub>
 </td>
 <td align="center" width="90">
