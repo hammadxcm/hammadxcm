@@ -60,7 +60,7 @@ const hammadKhan = {
 
 ### 🎯 Core Expertise
 <div align="center">
-<table>
+<table style="border-spacing: 10px;">
 <tr>
 <td align="center" width="100">
 <a href="https://www.ruby-lang.org/" target="_blank" rel="noreferrer">
@@ -78,14 +78,14 @@ const hammadKhan = {
 </td>
 <td align="center" width="100">
 <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=react" width="65"/>
+<img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="65"/>
 <br><strong>ReactJS</strong>
 <br><sub>⭐⭐⭐⭐⭐</sub>
 </a>
 </td>
 <td align="center" width="100">
 <a href="https://vuejs.org/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=vue" width="65"/>
+<img src="https://user-images.githubusercontent.com/74038190/212257463-4d082cb4-7483-4eaf-bc25-6dde2628aabd.gif" width="55"/>
 <br><strong>VueJS</strong>
 <br><sub>⭐⭐⭐⭐⭐</sub>
 </a>
@@ -99,7 +99,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="100">
 <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=nextjs" width="65"/>
+<img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/29fd6286-4e7b-4d6c-818f-c4765d5e39a9" width="65"/>
 <br><strong>NextJS</strong>
 <br><sub>⭐⭐⭐⭐</sub>
 </a>
@@ -110,43 +110,49 @@ const hammadKhan = {
 
 ### 🚀 Frontend Development
 <div align="center">
-<table>
+<table style="border-spacing: 8px;">
 <tr>
-<td align="center" width="80">
+<td align="center" width="90">
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=js" width="50"/>
-<br><sub>JavaScript/ES6</sub>
+<img src="https://user-images.githubusercontent.com/74038190/212257454-16e3712e-945a-4ca2-b238-408ad0bf87e6.gif" width="55"/>
+<br><sub><b>JavaScript</b></sub>
 </a>
 </td>
-<td align="center" width="80">
+<td align="center" width="90">
+<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
+<img src="https://skillicons.dev/icons?i=ts" width="55"/>
+<br><sub><b>TypeScript</b></sub>
+</a>
+</td>
+<td align="center" width="90">
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=html" width="50"/>
-<br><sub>HTML5</sub>
+<img src="https://skillicons.dev/icons?i=html" width="55"/>
+<br><sub><b>HTML5</b></sub>
 </a>
 </td>
-<td align="center" width="80">
+<td align="center" width="90">
 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=css" width="50"/>
-<br><sub>CSS3</sub>
+<img src="https://user-images.githubusercontent.com/74038190/212257463-4d082cb4-7483-4eaf-bc25-6dde2628aabd.gif" width="55"/>
+<br><sub><b>CSS3</b></sub>
 </a>
 </td>
-<td align="center" width="80">
+<td align="center" width="90">
 <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=tailwind" width="50"/>
-<br><sub>Tailwind</sub>
+<img src="https://skillicons.dev/icons?i=tailwind" width="55"/>
+<br><sub><b>Tailwind</b></sub>
 </a>
 </td>
-<td align="center" width="80">
-<img src="https://skillicons.dev/icons?i=sass" width="50"/>
-<br><sub>SASS</sub>
+<td align="center" width="90">
+<img src="https://skillicons.dev/icons?i=sass" width="55"/>
+<br><sub><b>SASS</b></sub>
 </td>
-<td align="center" width="80">
-<img src="https://skillicons.dev/icons?i=redux" width="50"/>
-<br><sub>Redux</sub>
+<td align="center" width="90">
+<img src="https://skillicons.dev/icons?i=redux" width="55"/>
+<br><sub><b>Redux</b></sub>
 </td>
-<td align="center" width="80">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/chrome/chrome-original.svg" width="50"/>
-<br><sub>Extensions</sub>
+<td align="center" width="90">
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/chrome/chrome-original.svg" width="55"/>
+<br><sub><b>Chrome Ext</b></sub>
 </td>
 </tr>
 </table>
@@ -154,42 +160,42 @@ const hammadKhan = {
 
 ### ⚙️ Backend & APIs
 <div align="center">
-<table>
+<table style="border-spacing: 8px;">
 <tr>
-<td align="center" width="80">
+<td align="center" width="90">
 <a href="https://nodejs.org/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=nodejs" width="50"/>
-<br><sub>NodeJS</sub>
+<img src="https://skillicons.dev/icons?i=nodejs" width="55"/>
+<br><sub><b>NodeJS</b></sub>
 </a>
 </td>
-<td align="center" width="80">
+<td align="center" width="90">
 <a href="https://graphql-ruby.org/" target="_blank" rel="noreferrer">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/graphql/graphql-plain.svg" width="50"/>
-<br><sub>GraphQL Ruby</sub>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/graphql/graphql-plain.svg" width="55"/>
+<br><sub><b>GraphQL</b></sub>
 </a>
 </td>
-<td align="center" width="80">
+<td align="center" width="90">
 <a href="https://developer.salesforce.com/" target="_blank" rel="noreferrer">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/salesforce/salesforce-original.svg" width="50"/>
-<br><sub>Salesforce</sub>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/salesforce/salesforce-original.svg" width="55"/>
+<br><sub><b>Salesforce</b></sub>
 </a>
 </td>
-<td align="center" width="80">
+<td align="center" width="90">
 <a href="https://developers.hubspot.com/" target="_blank" rel="noreferrer">
-<img src="https://www.vectorlogo.zone/logos/hubspot/hubspot-icon.svg" width="50"/>
-<br><sub>HubSpot</sub>
+<img src="https://www.vectorlogo.zone/logos/hubspot/hubspot-icon.svg" width="55"/>
+<br><sub><b>HubSpot</b></sub>
 </a>
 </td>
-<td align="center" width="80">
+<td align="center" width="90">
 <a href="https://stripe.com/docs/api" target="_blank" rel="noreferrer">
-<img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" width="50"/>
-<br><sub>Stripe API</sub>
+<img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" width="55"/>
+<br><sub><b>Stripe</b></sub>
 </a>
 </td>
-<td align="center" width="80">
+<td align="center" width="90">
 <a href="https://marketodevdocs.adobe.com/" target="_blank" rel="noreferrer">
-<img src="https://cdn.worldvectorlogo.com/logos/marketo-1.svg" width="50"/>
-<br><sub>Marketo</sub>
+<img src="https://cdn.worldvectorlogo.com/logos/marketo-1.svg" width="55"/>
+<br><sub><b>Marketo</b></sub>
 </a>
 </td>
 </tr>
@@ -198,7 +204,7 @@ const hammadKhan = {
 
 ### 🗄️ Databases & Storage
 <div align="center">
-<table>
+<table style="border-spacing: 8px;">
 <tr>
 <td align="center" width="100">
 <a href="https://www.postgresql.org/" target="_blank" rel="noreferrer">
@@ -208,7 +214,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="100">
 <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=mongodb" width="50"/>
+<img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/398b19b1-9aae-4c1f-8bc0-d172a2c08d68" width="50"/>
 <br><sub>MongoDB</sub>
 </a>
 </td>
@@ -236,35 +242,47 @@ const hammadKhan = {
 
 ### ☁️ Cloud & DevOps
 <div align="center">
-<table>
+<table style="border-spacing: 8px;">
 <tr>
-<td align="center" width="80">
+<td align="center" width="90">
 <a href="https://aws.amazon.com/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=aws" width="50"/>
-<br><sub>AWS Suite</sub>
+<img src="https://skillicons.dev/icons?i=aws" width="55"/>
+<br><sub><b>AWS</b></sub>
 </a>
 </td>
-<td align="center" width="80">
+<td align="center" width="90">
 <a href="https://azure.microsoft.com/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=azure" width="50"/>
-<br><sub>Azure</sub>
+<img src="https://skillicons.dev/icons?i=azure" width="55"/>
+<br><sub><b>Azure</b></sub>
 </a>
 </td>
-<td align="center" width="80">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg" width="50"/>
-<br><sub>S3, EC2, RDS</sub>
+<td align="center" width="90">
+<a href="https://git-scm.com/" target="_blank" rel="noreferrer">
+<img src="https://user-images.githubusercontent.com/74038190/212281780-0afd9616-8310-46e9-a898-c4f5269f1387.gif" width="55"/>
+<br><sub><b>Git</b></sub>
+</a>
 </td>
-<td align="center" width="80">
-<img src="https://avatars.githubusercontent.com/u/2911398?s=200&v=4" width="50"/>
-<br><sub>Sidekiq</sub>
+<td align="center" width="90">
+<a href="https://github.com/" target="_blank" rel="noreferrer">
+<img src="https://skillicons.dev/icons?i=github" width="55"/>
+<br><sub><b>GitHub</b></sub>
+</a>
 </td>
-<td align="center" width="80">
-<img src="https://skillicons.dev/icons?i=docker" width="50"/>
-<br><sub>Docker</sub>
+<td align="center" width="90">
+<img src="https://skillicons.dev/icons?i=aws" width="55"/>
+<br><sub><b>S3/EC2</b></sub>
 </td>
-<td align="center" width="80">
-<img src="https://skillicons.dev/icons?i=heroku" width="50"/>
-<br><sub>Heroku</sub>
+<td align="center" width="90">
+<img src="https://avatars.githubusercontent.com/u/2911398?s=200&v=4" width="55"/>
+<br><sub><b>Sidekiq</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://skillicons.dev/icons?i=docker" width="55"/>
+<br><sub><b>Docker</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://skillicons.dev/icons?i=heroku" width="55"/>
+<br><sub><b>Heroku</b></sub>
 </td>
 </tr>
 </table>
@@ -272,23 +290,23 @@ const hammadKhan = {
 
 ### 🧪 Testing & Quality
 <div align="center">
-<table>
+<table style="border-spacing: 8px;">
 <tr>
 <td align="center" width="100">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rspec/rspec-original.svg" width="50"/>
-<br><sub>RSpec</sub>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rspec/rspec-original.svg" width="55"/>
+<br><sub><b>RSpec</b></sub>
 </td>
 <td align="center" width="100">
-<img src="https://rubygems.org/favicon.ico" width="50"/>
-<br><sub>FactoryBot</sub>
+<img src="https://rubygems.org/favicon.ico" width="55"/>
+<br><sub><b>FactoryBot</b></sub>
 </td>
 <td align="center" width="100">
-<img src="https://rubygems.org/favicon.ico" width="50"/>
-<br><sub>Shoulda</sub>
+<img src="https://rubygems.org/favicon.ico" width="55"/>
+<br><sub><b>Shoulda</b></sub>
 </td>
 <td align="center" width="100">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg" width="50"/>
-<br><sub>Vue Test Utils</sub>
+<img src="https://user-images.githubusercontent.com/74038190/212257463-4d082cb4-7483-4eaf-bc25-6dde2628aabd.gif" width="55"/>
+<br><sub><b>Vue Test Utils</b></sub>
 </td>
 </tr>
 </table>
@@ -296,11 +314,15 @@ const hammadKhan = {
 
 ### 🤖 AI & Modern Tools
 <div align="center">
-<table>
+<table style="border-spacing: 8px;">
 <tr>
 <td align="center" width="100">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg" width="50"/>
-<br><sub>ChatGPT</sub>
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" width="55"/>
+<br><sub><b>ChatGPT</b></sub>
+</td>
+<td align="center" width="100">
+<img src="https://pbs.twimg.com/profile_images/1784216516818763776/QrjqUEi8_400x400.jpg" width="55"/>
+<br><sub><b>Claude AI</b></sub>
 </td>
 <td align="center" width="100">
 <img src="https://skillicons.dev/icons?i=github" width="50"/>
