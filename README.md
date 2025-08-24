@@ -132,7 +132,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="90">
 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noreferrer">
-<img src="https://user-images.githubusercontent.com/74038190/212257463-4d082cb4-7483-4eaf-bc25-6dde2628aabd.gif" width="55"/>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" width="55"/>
 <br><sub><b>CSS3</b></sub>
 </a>
 </td>
@@ -325,16 +325,48 @@ const hammadKhan = {
 <br><sub><b>Claude AI</b></sub>
 </td>
 <td align="center" width="100">
-<img src="https://skillicons.dev/icons?i=github" width="50"/>
-<br><sub>GitHub Copilot</sub>
+<img src="https://skillicons.dev/icons?i=github" width="55"/>
+<br><sub><b>GitHub Copilot</b></sub>
 </td>
 <td align="center" width="100">
-<img src="https://www.vectorlogo.zone/logos/adobe/adobe-icon.svg" width="50"/>
-<br><sub>Midjourney</sub>
+<img src="https://www.vectorlogo.zone/logos/adobe/adobe-icon.svg" width="55"/>
+<br><sub><b>Midjourney</b></sub>
 </td>
-<td align="center" width="100">
-<img src="https://skillicons.dev/icons?i=vscode" width="50"/>
-<br><sub>VS Code</sub>
+</tr>
+</table>
+</div>
+
+### 💻 IDEs & Development Environment
+<div align="center">
+<table style="border-spacing: 8px;">
+<tr>
+<td align="center" width="90">
+<img src="https://skillicons.dev/icons?i=vscode" width="55"/>
+<br><sub><b>VS Code</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://skillicons.dev/icons?i=idea" width="55"/>
+<br><sub><b>IntelliJ</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://skillicons.dev/icons?i=webstorm" width="55"/>
+<br><sub><b>WebStorm</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/RubyMine_icon.svg" width="55"/>
+<br><sub><b>RubyMine</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://private-user-images.githubusercontent.com/74038190/238200437-de038172-e903-4951-926c-755878deb0b4.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTYwMjEzOTEsIm5iZiI6MTc1NjAyMTA5MSwicGF0aCI6Ii83NDAzODE5MC8yMzgyMDA0MzctZGUwMzgxNzItZTkwMy00OTUxLTkyNmMtNzU1ODc4ZGViMGI0LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODI0VDA3MzgxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM5Zjk0MTI2Y2E3N2I5OGY5NGU4MTBlZDBhMTgyMzA3ZjQ5YTVjOGM2MmE0NjAyZjIxNjJhYzg3OWEyMmY0YzgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.7GzWdKq7vjFFK_LLnSNftBKhCY7kQUUpQlz9V3nz0pw" width="55"/>
+<br><sub><b>PyCharm</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://skillicons.dev/icons?i=phpstorm" width="55"/>
+<br><sub><b>PhpStorm</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/RustRover_icon.svg" width="55"/>
+<br><sub><b>RustRover</b></sub>
 </td>
 </tr>
 </table>
