@@ -657,12 +657,5 @@ Handling TB-scale data</sub>
 
 ### 💡 Random Dev Quote
 ![Dev Quote](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight)
-
----
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=150&section=footer&text=Thanks%20for%20visiting!&fontSize=42&fontColor=fff&animation=twinkling"/>
-
-**⭐ Star my repositories if you find them interesting!**
-
 </div>
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=00bfbf&height=120&section=footer"/>
