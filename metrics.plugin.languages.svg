@@ -21,14 +21,14 @@
                         <rect x="0" y="0" width="460" height="8" fill="white" rx="5"/>
                     </mask>
                     <rect mask="url(#languages-bar)" x="0" y="0" width="0" height="8" fill="#d1d5da"/>
-                    <rect mask="url(#languages-bar)" x="0" y="0" width="162.67513941743854" height="8" fill="#f1e05a"/>
-                    <rect mask="url(#languages-bar)" x="162.67513941743854" y="0" width="133.87077858356668" height="8" fill="#701516"/>
-                    <rect mask="url(#languages-bar)" x="296.54591800100525" y="0" width="122.97796845456068" height="8" fill="#3178c6"/>
-                    <rect mask="url(#languages-bar)" x="419.52388645556596" y="0" width="16.02887676216462" height="8" fill="#e34c26"/>
-                    <rect mask="url(#languages-bar)" x="435.55276321773056" y="0" width="11.580921950168737" height="8" fill="#c6538c"/>
-                    <rect mask="url(#languages-bar)" x="447.13368516789933" y="0" width="10.493705272731624" height="8" fill="#89e051"/>
-                    <rect mask="url(#languages-bar)" x="457.6273904406309" y="0" width="1.4519159426533592" height="8" fill="#244776"/>
-                    <rect mask="url(#languages-bar)" x="459.0793063832843" y="0" width="0.920693616715732" height="8" fill="#427819"/>
+                    <rect mask="url(#languages-bar)" x="0" y="0" width="151.5030538094601" height="8" fill="#f1e05a"/>
+                    <rect mask="url(#languages-bar)" x="151.5030538094601" y="0" width="150.974989969239" height="8" fill="#701516"/>
+                    <rect mask="url(#languages-bar)" x="302.47804377869915" y="0" width="114.53217645223128" height="8" fill="#3178c6"/>
+                    <rect mask="url(#languages-bar)" x="417.01022023093043" y="0" width="14.92805715304712" height="8" fill="#e34c26"/>
+                    <rect mask="url(#languages-bar)" x="431.93827738397755" y="0" width="10.785575765681424" height="8" fill="#c6538c"/>
+                    <rect mask="url(#languages-bar)" x="442.72385314965896" y="0" width="9.77302616914092" height="8" fill="#89e051"/>
+                    <rect mask="url(#languages-bar)" x="452.4968793187999" y="0" width="6.150918371896037" height="8" fill="#427819"/>
+                    <rect mask="url(#languages-bar)" x="458.64779769069594" y="0" width="1.3522023093040882" height="8" fill="#244776"/>
                 </svg>
                 <div class="row fill-width">
                     <section>
@@ -41,7 +41,7 @@
                             </div>
                             <small>
                                 <div>118 kB</div>
-                                <div>35.36%</div>
+                                <div>32.94%</div>
                             </small>
                         </div>
                         <div class="field language details">
@@ -53,7 +53,7 @@
                             </div>
                             <small>
                                 <div>89.3 kB</div>
-                                <div>26.73%</div>
+                                <div>24.9%</div>
                             </small>
                         </div>
                         <div class="field language details">
@@ -65,19 +65,19 @@
                             </div>
                             <small>
                                 <div>8.41 kB</div>
-                                <div>2.52%</div>
+                                <div>2.34%</div>
                             </small>
                         </div>
                         <div class="field language details">
                             <div class="field">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                    <path fill="#244776" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
+                                    <path fill="#427819" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
                                 </svg>
-                                CoffeeScript
+                                Makefile
                             </div>
                             <small>
-                                <div>1.05 kB</div>
-                                <div>0.32%</div>
+                                <div>4.80 kB</div>
+                                <div>1.34%</div>
                             </small>
                         </div>
                     </section>
@@ -90,8 +90,8 @@
                                 Ruby
                             </div>
                             <small>
-                                <div>97.2 kB</div>
-                                <div>29.1%</div>
+                                <div>117 kB</div>
+                                <div>32.82%</div>
                             </small>
                         </div>
                         <div class="field language details">
@@ -103,7 +103,7 @@
                             </div>
                             <small>
                                 <div>11.6 kB</div>
-                                <div>3.48%</div>
+                                <div>3.25%</div>
                             </small>
                         </div>
                         <div class="field language details">
@@ -115,19 +115,19 @@
                             </div>
                             <small>
                                 <div>7.63 kB</div>
-                                <div>2.28%</div>
+                                <div>2.12%</div>
                             </small>
                         </div>
                         <div class="field language details">
                             <div class="field">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                    <path fill="#427819" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
+                                    <path fill="#244776" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
                                 </svg>
-                                Makefile
+                                CoffeeScript
                             </div>
                             <small>
-                                <div>669 bytes</div>
-                                <div>0.2%</div>
+                                <div>1.05 kB</div>
+                                <div>0.29%</div>
                             </small>
                         </div>
                     </section>
