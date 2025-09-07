@@ -3,4 +3,4 @@
     "allow": [
       "Bash(git checkout:*)",
       "Bash(git add:*)"
- 
+  
