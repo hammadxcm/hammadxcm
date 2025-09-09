@@ -2,4 +2,4 @@
   "permissions": {
     "allow": [
       "Bash(git checkout:*)",
-      
+      "
