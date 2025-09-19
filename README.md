@@ -22,33 +22,40 @@
 
 ```javascript
 const hammadKhan = {
-    title: "Senior Software Engineer",
-    experience: "6+ years",
+    title: "Staff Software Engineer",
+    experience: "6+ years building systems at scale",
     location: "Lahore, Pakistan 🇵🇰",
-    age: 31,
-    specialization: "Ruby on Rails Expert",
-    currentRole: "Senior Software Engineer @ TechXMation",
-    workStyle: "Freelancer & Full-time",
+    age: 32,
+    specialization: "Distributed Systems & Platform Architecture",
+    currentRole: "Staff Software Engineer @ TechXMation",
+    workStyle: "Technical Leadership & Full-stack Development",
     
     expertise: {
-        backend: ["Ruby on Rails", "GraphQL", "API Development"],
-        frontend: ["ReactJS", "VueJS", "NextJS"],
-        cloud: ["AWS (S3, EC2, RDS)", "Microsoft Azure"],
-        databases: ["PostgreSQL", "MongoDB", "SQL"],
-        integrations: ["Salesforce", "HubSpot", "Marketo", "Stripe"]
+        systemDesign: ["Microservices", "Event-Driven Architecture", "Domain-Driven Design"],
+        backend: ["Ruby on Rails", "NodeJS", "GraphQL", "High-Performance APIs"],
+        frontend: ["ReactJS", "VueJS", "NextJS", "Progressive Web Apps"],
+        infrastructure: ["AWS", "Azure", "Docker", "Redis", "Message Queues"],
+        databases: ["PostgreSQL", "MongoDB", "Query Optimization", "Data Modeling"],
+        integrations: ["Multi-API Platforms", "CRM Systems", "Payment Gateways"]
     },
     
-    achievements: [
-        "Optimized Sidekiq job processing for enterprise applications",
-        "Built Chrome extensions for CRM integrations",
-        "Implemented progressive web apps with ReactJS",
-        "Upgraded payment systems (Stripe API v2 → v3)",
-        "Developed microservices with domain-driven design"
+    technicalLeadership: [
+        "Designed fault-tolerant systems handling millions of requests",
+        "Led migration of monolithic apps to microservices architecture",
+        "Mentored engineering teams on system design and best practices",
+        "Established engineering standards and code review processes"
     ],
     
-    currentFocus: "Scalable Web Applications & Performance Optimization",
-    openTo: ["Senior Engineering Roles", "Technical Consulting", "Mentoring"],
-    funFact: "I've integrated more APIs than I can count! 🚀"
+    systemsBuilt: [
+        "Real-time data processing pipelines with 95% job success rate",
+        "Progressive loading systems reducing page load by 70%",
+        "Multi-tenant SaaS platforms serving enterprise clients",
+        "Zero-downtime deployment strategies for critical systems"
+    ],
+    
+    currentFocus: "Platform Engineering & Technical Strategy",
+    openTo: ["Staff/Principal Engineering Roles", "Architecture Consulting", "Team Leadership"],
+    philosophy: "Building systems that scale, teams that deliver, and solutions that last 🚀"
 };
 ```
 
@@ -314,6 +321,14 @@ const hammadKhan = {
 <td align="center" width="100">
 <img src="https://skillicons.dev/icons?i=vue" width="55"/>
 <br><sub><b>Vue Test Utils</b></sub>
+</td>
+<td align="center" width="100">
+<img src="https://skillicons.dev/icons?i=vitest" width="55"/>
+<br><sub><b>Vitest</b></sub>
+</td>
+<td align="center" width="100">
+<img src="https://skillicons.dev/icons?i=jest" width="55"/>
+<br><sub><b>Jest</b></sub>
 </td>
 </tr>
 </table>
