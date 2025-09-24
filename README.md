@@ -904,32 +904,6 @@ Handling TB-scale data</sub>
   </tr>
 </table>
 
-### 📬 Get In Touch
-
-<div align="center">
-<table>
-<tr>
-<td align="center">
-<img src="https://img.shields.io/badge/Email-hammadkhanxcm%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/>
-</td>
-</tr>
-<tr>
-<td align="center">
-<img src="https://img.shields.io/badge/Response%20Time-Within%2024%20Hours-success?style=for-the-badge&logo=clock&logoColor=white"/>
-</td>
-</tr>
-<tr>
-<td align="center">
-<img src="https://img.shields.io/badge/Phone-%2B92%20320%201609999-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/>
-</td>
-</tr>
-</table>
-</div>
-
-</div>
-
----
-
 <div align="center">
 
 ### 💡 Random Dev Quote
