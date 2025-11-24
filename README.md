@@ -22,12 +22,12 @@
 
 ```javascript
 const hammadKhan = {
-    title: "Staff Software Engineer",
+    title: "Senior Full Stack Engineer",
     experience: "6+ years building systems at scale",
     location: "Lahore, Pakistan 🇵🇰",
     age: 32,
     specialization: "Distributed Systems & Platform Architecture",
-    currentRole: "Staff Software Engineer @ TechXMation",
+    currentRole: "Senior Full Stack Engineer @ NexaQuanta",
     workStyle: "Technical Leadership & Full-stack Development",
     
     expertise: {
@@ -406,9 +406,9 @@ const hammadKhan = {
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/Staff%20Software%20Engineer-TechXMation-blue?style=for-the-badge&logo=code&logoColor=white" alt="Current Role"/>
+<img src="https://img.shields.io/badge/Senior%20Full%20Stack%20Engineer-NexaQuanta-00bfbf?style=for-the-badge&logo=code&logoColor=white" alt="Current Role"/>
 <br/>
-<sub><b>Since December 2023 • Freelancer • Lahore, Pakistan</b></sub>
+<sub><b>Since October 2025 • Remote (London, UK)</b></sub>
 </td>
 </tr>
 </table>
@@ -422,7 +422,55 @@ const hammadKhan = {
 <table>
 <tr>
 <td width="150">
-<img src="https://img.shields.io/badge/2023-Present-FF6B6B?style=for-the-badge&labelColor=2F3349&color=FF6B6B"/>
+<img src="https://img.shields.io/badge/Oct 2025-Present-00bfbf?style=for-the-badge&labelColor=2F3349&color=00bfbf"/>
+<br/><br/>
+<a href="https://nexaquanta.ai/" target="_blank">
+<img src="https://nexaquanta.ai/wp-content/uploads/2024/01/TransParent-h.png" width="120" alt="NexaQuanta"/>
+</a>
+</td>
+<td width="600">
+<h3>🚀 Senior Full Stack Engineer @ <a href="https://nexaquanta.ai/" target="_blank">NexaQuanta</a></h3>
+<p><em>Full-time • Remote (London, UK)</em></p>
+
+**Full-Stack Development & Platform Engineering:**
+
+🐳 **Docker-Based Development Environment**
+- **Challenge**: Slow developer onboarding and environment inconsistency across team
+- **Solution**: Implemented containerized development environment with hot reload for frontend and backend services
+- **Impact**: 80% faster developer onboarding, zero environment inconsistency, streamlined single command setup
+
+📸 **Profile Image Upload with Transaction Safety**
+- **Challenge**: Backend bottleneck for image uploads with no rollback mechanism on failures
+- **Solution**: Architected frontend-based direct S3 upload with transaction-safe operations and automatic rollback
+- **Impact**: 40-50% faster uploads, eliminated orphaned images, improved system reliability
+
+📊 **CRM & Product Reporting System**
+- **Challenge**: Lack of centralized reporting capability for business intelligence
+- **Solution**: Built comprehensive reporting module with email-based delivery supporting CRM and Product analytics
+- **Impact**: Enabled self-service reporting for sales and operations teams, improved business visibility into customer interactions and pipeline metrics
+
+🎬 **Advanced Multi-Select Filter System**
+- **Challenge**: Limited filtering capabilities restricting users from performing complex searches
+- **Solution**: Engineered multi-select filter system with optimized query generation and SQL injection prevention
+- **Impact**: Enhanced search efficiency, reduced time to find relevant content, scalable architecture for future filter additions
+
+🗄️ **Enterprise Database Schema Migration**
+- **Challenge**: Incomplete database schema limiting cross-system data integration
+- **Solution**: Designed and executed complete database schema migration achieving 100% parity with source system
+- **Impact**: Enabled complete dealer hierarchy tracking, unified data management, established foundation for real-time synchronization and business intelligence
+
+**Technologies**: `Microservices` `NestJS` `Node.js` `React.js` `Next.js` `MongoDB` `PostgreSQL` `Prisma ORM` `AWS` `Amazon EC2` `Amazon S3` `API Development` `Jest` `Vitest`
+
+</td>
+</tr>
+</table>
+
+---
+
+<table>
+<tr>
+<td width="150">
+<img src="https://img.shields.io/badge/Dec 2023-Oct 2025-FF6B6B?style=for-the-badge&labelColor=2F3349&color=FF6B6B"/>
 </td>
 <td width="600">
 <h3>🚀 Staff Software Engineer @ TechXMation</h3>
