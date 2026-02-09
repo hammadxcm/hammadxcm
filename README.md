@@ -85,7 +85,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="100">
 <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=react" width="65"/>
+<img src="https://techstack-generator.vercel.app/react-icon.svg" alt="React" width="65" height="65" />
 <br><strong>ReactJS</strong>
 <br><sub>⭐⭐⭐⭐</sub>
 </a>
@@ -99,7 +99,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="100">
 <a href="https://graphql.org/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=graphql" width="65"/>
+<img src="https://techstack-generator.vercel.app/graphql-icon.svg" alt="GraphQL" width="65" height="65" />
 <br><strong>GraphQL</strong>
 <br><sub>⭐⭐⭐⭐⭐</sub>
 </a>
@@ -113,8 +113,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="100">
 <a href="https://www.python.org/" target="_blank" rel="noreferrer">
-<img src="https://user-images.githubusercontent.com/74038190/212257472-08e52665-c503-4bd9-aa20-f5a4dae769b5.gif
-" width="65"/>
+<img src="https://techstack-generator.vercel.app/python-icon.svg" alt="Python" width="65" height="65" />
 <br><strong>Python</strong>
 <br><sub>⭐⭐⭐</sub>
 </a>
@@ -128,13 +127,13 @@ const hammadKhan = {
 <tr>
 <td align="center" width="90">
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=js" width="55"/>
+<img src="https://techstack-generator.vercel.app/js-icon.svg" alt="JavaScript" width="55" height="55" />
 <br><sub><b>JavaScript</b></sub>
 </a>
 </td>
 <td align="center" width="90">
 <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=ts" width="55"/>
+<img src="https://techstack-generator.vercel.app/ts-icon.svg" alt="TypeScript" width="55" height="55" />
 <br><sub><b>TypeScript</b></sub>
 </a>
 </td>
@@ -157,11 +156,11 @@ const hammadKhan = {
 </a>
 </td>
 <td align="center" width="90">
-<img src="https://skillicons.dev/icons?i=sass" width="55"/>
+<img src="https://techstack-generator.vercel.app/sass-icon.svg" alt="SASS" width="55" height="55" />
 <br><sub><b>SASS</b></sub>
 </td>
 <td align="center" width="90">
-<img src="https://skillicons.dev/icons?i=redux" width="55"/>
+<img src="https://techstack-generator.vercel.app/redux-icon.svg" alt="Redux" width="55" height="55" />
 <br><sub><b>Redux</b></sub>
 </td>
 <td align="center" width="90">
@@ -184,7 +183,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="90">
 <a href="https://graphql-ruby.org/" target="_blank" rel="noreferrer">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/graphql/graphql-plain.svg" width="55"/>
+<img src="https://techstack-generator.vercel.app/graphql-icon.svg" alt="GraphQL" width="55" height="55" />
 <br><sub><b>GraphQL</b></sub>
 </a>
 </td>
@@ -234,7 +233,7 @@ const hammadKhan = {
 </td>
 <td align="center" width="100">
 <a href="https://www.mysql.com/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=mysql" width="50"/>
+<img src="https://techstack-generator.vercel.app/mysql-icon.svg" alt="MySQL" width="50" height="50" />
 <br><sub>MySQL</sub>
 </a>
 </td>
@@ -260,7 +259,7 @@ const hammadKhan = {
 <tr>
 <td align="center" width="90">
 <a href="https://aws.amazon.com/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=aws" width="55"/>
+<img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="AWS" width="55" height="55" />
 <br><sub><b>AWS</b></sub>
 </a>
 </td>
@@ -278,12 +277,12 @@ const hammadKhan = {
 </td>
 <td align="center" width="90">
 <a href="https://github.com/" target="_blank" rel="noreferrer">
-<img src="https://skillicons.dev/icons?i=github" width="55"/>
+<img src="https://techstack-generator.vercel.app/github-icon.svg" alt="GitHub" width="55" height="55" />
 <br><sub><b>GitHub</b></sub>
 </a>
 </td>
 <td align="center" width="90">
-<img src="https://skillicons.dev/icons?i=aws" width="55"/>
+<img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="S3/EC2" width="55" height="55" />
 <br><sub><b>S3/EC2</b></sub>
 </td>
 <td align="center" width="90">
@@ -291,7 +290,7 @@ const hammadKhan = {
 <br><sub><b>Sidekiq</b></sub>
 </td>
 <td align="center" width="90">
-<img src="https://skillicons.dev/icons?i=docker" width="55"/>
+<img src="https://techstack-generator.vercel.app/docker-icon.svg" alt="Docker" width="55" height="55" />
 <br><sub><b>Docker</b></sub>
 </td>
 <td align="center" width="90">
@@ -327,7 +326,7 @@ const hammadKhan = {
 <br><sub><b>Vitest</b></sub>
 </td>
 <td align="center" width="100">
-<img src="https://skillicons.dev/icons?i=jest" width="55"/>
+<img src="https://techstack-generator.vercel.app/jest-icon.svg" alt="Jest" width="55" height="55" />
 <br><sub><b>Jest</b></sub>
 </td>
 </tr>
@@ -347,7 +346,7 @@ const hammadKhan = {
 <br><sub><b>Claude AI</b></sub>
 </td>
 <td align="center" width="100">
-<img src="https://skillicons.dev/icons?i=github" width="55"/>
+<img src="https://techstack-generator.vercel.app/github-icon.svg" alt="GitHub Copilot" width="55" height="55" />
 <br><sub><b>GitHub Copilot</b></sub>
 </td>
 <td align="center" width="100">
