@@ -433,6 +433,18 @@ const hammadKhan = {
 <img src="https://techstack-generator.vercel.app/raspberrypi-icon.svg" alt="Raspberry Pi" width="55" height="55" />
 <br><sub><b>Raspberry Pi</b></sub>
 </td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/restapi-icon.svg" alt="REST API" width="55" height="55" />
+<br><sub><b>REST API</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/docker-icon.svg" alt="Docker" width="55" height="55" />
+<br><sub><b>Docker</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/github-icon.svg" alt="GitHub" width="55" height="55" />
+<br><sub><b>GitHub</b></sub>
+</td>
 </tr>
 </table>
 </div>
