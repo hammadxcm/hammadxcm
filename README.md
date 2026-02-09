@@ -168,6 +168,20 @@ const hammadKhan = {
 <br><sub><b>Chrome Ext</b></sub>
 </td>
 </tr>
+<tr>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/webpack-icon.svg" alt="Webpack" width="55" height="55" />
+<br><sub><b>Webpack</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/gatsby-icon.svg" alt="Gatsby" width="55" height="55" />
+<br><sub><b>Gatsby</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/storybook-icon.svg" alt="Storybook" width="55" height="55" />
+<br><sub><b>Storybook</b></sub>
+</td>
+</tr>
 </table>
 </div>
 
@@ -210,6 +224,24 @@ const hammadKhan = {
 <img src="https://cdn.worldvectorlogo.com/logos/marketo-1.svg" width="55"/>
 <br><sub><b>Marketo</b></sub>
 </a>
+</td>
+</tr>
+<tr>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/restapi-icon.svg" alt="REST API" width="55" height="55" />
+<br><sub><b>REST API</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/django-icon.svg" alt="Django" width="55" height="55" />
+<br><sub><b>Django</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/java-icon.svg" alt="Java" width="55" height="55" />
+<br><sub><b>Java</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/nginx-icon.svg" alt="Nginx" width="55" height="55" />
+<br><sub><b>Nginx</b></sub>
 </td>
 </tr>
 </table>
@@ -298,6 +330,12 @@ const hammadKhan = {
 <br><sub><b>Heroku</b></sub>
 </td>
 </tr>
+<tr>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/kubernetes-icon.svg" alt="Kubernetes" width="55" height="55" />
+<br><sub><b>Kubernetes</b></sub>
+</td>
+</tr>
 </table>
 </div>
 
@@ -330,6 +368,20 @@ const hammadKhan = {
 <br><sub><b>Jest</b></sub>
 </td>
 </tr>
+<tr>
+<td align="center" width="100">
+<img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="ESLint" width="55" height="55" />
+<br><sub><b>ESLint</b></sub>
+</td>
+<td align="center" width="100">
+<img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="Prettier" width="55" height="55" />
+<br><sub><b>Prettier</b></sub>
+</td>
+<td align="center" width="100">
+<img src="https://techstack-generator.vercel.app/testinglibrary-icon.svg" alt="Testing Library" width="55" height="55" />
+<br><sub><b>Testing Lib</b></sub>
+</td>
+</tr>
 </table>
 </div>
 
@@ -352,6 +404,34 @@ const hammadKhan = {
 <td align="center" width="100">
 <img src="https://www.vectorlogo.zone/logos/adobe/adobe-icon.svg" width="55"/>
 <br><sub><b>Midjourney</b></sub>
+</td>
+</tr>
+</table>
+</div>
+
+### 🔧 Additional Languages & Tools
+<div align="center">
+<table style="border-spacing: 8px;">
+<tr>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/cpp-icon.svg" alt="C++" width="55" height="55" />
+<br><sub><b>C++</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/csharp-icon.svg" alt="C#" width="55" height="55" />
+<br><sub><b>C#</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/swift-icon.svg" alt="Swift" width="55" height="55" />
+<br><sub><b>Swift</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/rescript-icon.svg" alt="ReScript" width="55" height="55" />
+<br><sub><b>ReScript</b></sub>
+</td>
+<td align="center" width="90">
+<img src="https://techstack-generator.vercel.app/raspberrypi-icon.svg" alt="Raspberry Pi" width="55" height="55" />
+<br><sub><b>Raspberry Pi</b></sub>
 </td>
 </tr>
 </table>
