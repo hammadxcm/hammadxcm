@@ -577,9 +577,13 @@ const hammadKhan = {
 <tr>
 <td width="150">
 <img src="https://img.shields.io/badge/Dec 2023-Oct 2025-FF6B6B?style=for-the-badge&labelColor=2F3349&color=FF6B6B"/>
+<br/><br/>
+<a href="https://www.linkedin.com/company/techxmation/about/" target="_blank">
+<img src="assets/techxmation-logo.jpeg" width="120" alt="TechXMation"/>
+</a>
 </td>
 <td width="600">
-<h3>🚀 Staff Software Engineer @ TechXMation</h3>
+<h3>🚀 Staff Software Engineer @ <a href="https://www.linkedin.com/company/techxmation/about/" target="_blank">TechXMation</a></h3>
 <p><em>Freelance • Lahore, Pakistan</em></p>
 
 **System Design & Architecture Leadership:**
@@ -620,9 +624,13 @@ const hammadKhan = {
 <tr>
 <td width="150">
 <img src="https://img.shields.io/badge/Feb-Nov 2023-4ECDC4?style=for-the-badge&labelColor=2F3349&color=4ECDC4"/>
+<br/><br/>
+<a href="https://www.machinetools.com/en" target="_blank">
+<img src="https://www.machinetools.com/assets/logos/logo-dd8e4ad61a6e30aad68895f37128cc79f635f059bd72d46bd538e4f5bbcbc534.svg" width="120" alt="MachineTools"/>
+</a>
 </td>
 <td width="600">
-<h3>🔧 Application Developer @ Machine Tools</h3>
+<h3>🔧 Application Developer @ <a href="https://www.machinetools.com/en" target="_blank">Machine Tools</a></h3>
 <p><em>Full-time • Lahore, Pakistan</em></p>
 
 **Database Architecture & Performance Engineering:**
@@ -655,9 +663,13 @@ const hammadKhan = {
 <tr>
 <td width="150">
 <img src="https://img.shields.io/badge/Jun 22-Jan 23-45B7D1?style=for-the-badge&labelColor=2F3349&color=45B7D1"/>
+<br/><br/>
+<a href="https://www.linkedin.com/in/hammadxcm/" target="_blank">
+<img src="https://img.shields.io/badge/LinkedIn-hammadxcm-0A66C2?style=flat&logo=linkedin&logoColor=white" width="120" alt="LinkedIn"/>
+</a>
 </td>
 <td width="600">
-<h3>💻 Senior Software Engineer @ Freelance</h3>
+<h3>💻 Senior Software Engineer @ <a href="https://www.linkedin.com/in/hammadxcm/" target="_blank">Freelance</a></h3>
 <p><em>Remote • Lahore, Pakistan</em></p>
 
 **Security Architecture & API Design:**
@@ -690,9 +702,13 @@ const hammadKhan = {
 <tr>
 <td width="150">
 <img src="https://img.shields.io/badge/2018-2022-9B59B6?style=for-the-badge&labelColor=2F3349&color=9B59B6"/>
+<br/><br/>
+<a href="https://www.sendoso.com/" target="_blank">
+<img src="https://cdn.prod.website-files.com/651ad5ceeba626e1de2f2ce8/651c92a16a856b0f0d5656ca_SendosoLogo_RGB.svg" width="120" alt="Sendoso"/>
+</a>
 </td>
 <td width="600">
-<h3>🚀 Software Engineer @ Sendoso</h3>
+<h3>🚀 Software Engineer @ <a href="https://www.sendoso.com/" target="_blank">Sendoso</a></h3>
 <p><em>Full-time • Lahore, Pakistan • 4 Years</em></p>
 
 **Enterprise-Scale System Architecture & Platform Engineering:**
@@ -763,9 +779,13 @@ const hammadKhan = {
 <tr>
 <td width="150">
 <img src="https://img.shields.io/badge/2017-2018-28A745?style=for-the-badge&labelColor=2F3349&color=28A745"/>
+<br/><br/>
+<a href="https://www.engintechnologies.com/" target="_blank">
+<img src="https://www.engintechnologies.com/assets/images/logo/engintechnologies.svg" width="120" alt="Engin Technologies"/>
+</a>
 </td>
 <td width="600">
-<h3>⚡ Software Engineer @ Engin Technologies</h3>
+<h3>⚡ Software Engineer @ <a href="https://www.engintechnologies.com/" target="_blank">Engin Technologies</a></h3>
 <p><em>Full-time • Lahore, Pakistan</em></p>
 
 **Full-Stack Development & E-commerce Architecture:**
@@ -848,6 +868,69 @@ Used by 1000+ sales reps</sub>
 <b>☁️ Scalable Storage</b><br/>
 <sub>Implemented S3 data solutions<br/>
 Handling TB-scale data</sub>
+</div>
+</td>
+</tr>
+</table>
+
+### 🌟 Open Source & Community
+
+<table>
+<tr>
+<td align="center" width="33%">
+<div>
+<img src="https://img.shields.io/badge/Ruby%20on%20Rails-Contributor-CC0000?style=flat-square&logo=rubyonrails&logoColor=white" width="100%"/>
+<br/><br/>
+<b>🛤️ <a href="https://github.com/rails/rails/pull/56867">Rails Core Contribution</a></b><br/>
+<sub>Merged PR to <code>rails/rails</code> — Fixed Ruby 4.0<br/>
+delegator warning in ActiveModel/ActiveRecord</sub>
+</div>
+</td>
+<td align="center" width="33%">
+<div>
+<img src="https://img.shields.io/badge/npm-ramadan--cli--pro-CB3837?style=flat-square&logo=npm&logoColor=white" width="100%"/>
+<br/><br/>
+<b>🌙 <a href="https://www.npmjs.com/package/ramadan-cli-pro">ramadan-cli-pro</a></b><br/>
+<sub>Published npm package — TUI dashboard<br/>
+with prayer times, i18n & notifications</sub>
+</div>
+</td>
+<td align="center" width="33%">
+<div>
+<img src="https://img.shields.io/badge/RubyGems-rubocop--hk-E9573F?style=flat-square&logo=rubygems&logoColor=white" width="100%"/>
+<br/><br/>
+<b>💎 <a href="https://rubygems.org/gems/rubocop-hk">rubocop-hk</a></b><br/>
+<sub>Published RubyGem — 2,800+ downloads<br/>
+Modern RuboCop config for Ruby & Rails</sub>
+</div>
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+<div>
+<img src="https://img.shields.io/badge/npm-image--magnifier-CB3837?style=flat-square&logo=npm&logoColor=white" width="100%"/>
+<br/><br/>
+<b>🔍 <a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier">image-magnifier</a></b><br/>
+<sub>React zoom component — 8 stars, 748+ downloads<br/>
+TypeScript with 7 releases</sub>
+</div>
+</td>
+<td align="center" width="33%">
+<div>
+<img src="https://img.shields.io/badge/npm-electric--border--css-CB3837?style=flat-square&logo=npm&logoColor=white" width="100%"/>
+<br/><br/>
+<b>⚡ <a href="https://www.npmjs.com/package/electric-border-css">electric-border-css</a></b><br/>
+<sub>Animated CSS border effects — React, Vue,<br/>
+Next.js & Svelte with live demo</sub>
+</div>
+</td>
+<td align="center" width="33%">
+<div>
+<img src="https://img.shields.io/badge/MCP-daemon--os-000000?style=flat-square&logo=apple&logoColor=white" width="100%"/>
+<br/><br/>
+<b>🖥️ <a href="https://github.com/hammadxcm/daemon-os">daemon-os</a></b><br/>
+<sub>macOS MCP server for AI agent computer-use<br/>
+— gives AI eyes & hands on your Mac</sub>
 </div>
 </td>
 </tr>
