@@ -1,0 +1,14 @@
+title: Hammad Khan
+description: Senior Full Stack Engineer
+baseurl: /hammadxcm
+url: https://hammadxcm.github.io
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+plugins: []
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
