@@ -1,12 +1,30 @@
 ---
 /**
- * Global overlay elements: custom cursor, scroll progress bar, floating orbs.
- * Separated from Nav for single responsibility.
+ * Global overlay elements: crosshair cursor, cursor trail, scroll progress bar,
+ * floating orbs, CRT scan lines, key flash indicator, toast notifications,
+ * click glitch overlay, konami overlay, terminal status bar.
  */
 ---
 
-<!-- Custom Cursor (desktop only) -->
-<div class="custom-cursor" id="customCursor"></div>
+<!-- Crosshair Cursor (desktop only) -->
+<div class="crosshair-cursor" id="crosshairCursor">
+  <div class="crosshair-h"></div>
+  <div class="crosshair-v"></div>
+  <div class="crosshair-dot"></div>
+  <div class="crosshair-ring"></div>
+</div>
+
+<!-- Cursor Trail Pool -->
+<div class="cursor-trail" id="cursorTrail">
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+</div>
+
+<!-- CRT Scan Lines (desktop only) -->
+<div class="crt-overlay" id="crtOverlay"></div>
+
+<!-- Key Flash Indicator -->
+<div class="key-flash" id="keyFlash"></div>
 
 <!-- Scroll Progress Bar -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -15,3 +33,27 @@
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
+
+<!-- Hacker Toast Container -->
+<div class="hacker-toast-container" id="hackerToastContainer"></div>
+
+<!-- Click Glitch Overlay -->
+<div class="click-glitch-overlay" id="clickGlitchOverlay"></div>
+
+<!-- Konami Code Overlay -->
+<div class="konami-overlay" id="konamiOverlay">
+  <div class="konami-text">SYSTEM COMPROMISED</div>
+</div>
+
+<!-- Terminal Status Bar -->
+<div class="terminal-status-bar" id="terminalStatusBar">
+  <span class="status-secure">&#9673; SECURE CONNECTION</span>
+  <span class="status-sep">|</span>
+  <span>AES-256</span>
+  <span class="status-sep">|</span>
+  <span>&uarr; <span id="statusUpSpeed">2.4</span> KB/s &darr; <span id="statusDownSpeed">8.1</span> KB/s</span>
+  <span class="status-sep">|</span>
+  <span><span id="statusProcesses">23</span> PROCESSES</span>
+  <span class="status-sep">|</span>
+  <span>UPTIME: <span id="statusUptime">00:00:00</span></span>
+</div>
