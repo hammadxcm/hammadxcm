@@ -1191,13 +1191,13 @@
       .hamburger { display: flex; }
 
       /* Sections */
-      .section { padding: 3.5rem 1rem; }
+      .section { padding: 3.5rem 1.25rem; }
       .section-header { margin-bottom: 2.5rem; }
       .section-title { font-size: 1.75rem; }
       .section-label { font-size: 0.7rem; padding: 0.25rem 0.75rem; }
 
       /* Hero */
-      .hero-content { padding: 0 1rem; }
+      .hero-content { padding: 0 1.25rem; }
       .hero-greeting { font-size: 0.95rem; }
       .hero-socials { gap: 0.75rem; }
       .social-btn { width: 44px; height: 44px; }
@@ -1207,9 +1207,9 @@
       .code-body .code-line { white-space: pre-wrap; word-break: break-word; }
 
       /* Grids → single column */
-      .tech-grid { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .certs-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+      .projects-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+      .certs-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
 
       /* Tech cards */
       .tech-card { padding: 1.5rem; }
@@ -1218,6 +1218,7 @@
       .tech-icon img { width: 36px; height: 36px; }
 
       /* Timeline */
+      .timeline { max-width: 500px; margin: 0 auto; }
       .timeline::before { left: 16px; }
       .timeline-item { padding-left: 48px; margin-bottom: 2rem; }
       .timeline-dot { left: 8px; width: 16px; height: 16px; }
@@ -1232,7 +1233,7 @@
       .project-desc { font-size: 0.85rem; }
 
       /* Analytics */
-      .analytics-row { flex-direction: column; align-items: center; }
+      .analytics-row { flex-direction: column; align-items: center; max-width: 500px; margin: 0 auto; }
       .analytics-row img { width: 100%; }
 
       /* Cert cards */
@@ -1241,7 +1242,7 @@
       .cert-name { font-size: 0.95rem; }
 
       /* Footer */
-      footer { padding: 3rem 1rem 1.5rem; }
+      footer { padding: 3rem 1.25rem 1.5rem; }
       .footer-socials { gap: 0.75rem; }
 
       /* New elements — mobile */
@@ -1253,8 +1254,8 @@
       .hero-grid-layer { opacity: 0.015; }
       .glow-border:hover { transform: translateY(-3px) !important; }
       .section-separator.visible .sep-line { width: 60%; }
-      .github-cta-row { flex-direction: column; align-items: center; }
-      .skyline-card { flex-direction: column; text-align: center; gap: 1rem; max-width: 100%; }
+      .github-cta-row { flex-direction: column; align-items: center; max-width: 500px; margin: 0 auto; }
+      .skyline-card { flex-direction: column; text-align: center; gap: 1rem; max-width: 100%; width: 100%; }
       .skyline-arrow { margin-left: 0; }
     }
 
@@ -1288,7 +1289,7 @@
     @media (max-width: 480px) {
       .hero-name { font-size: 2.5rem; }
       .hero-typewriter { font-size: 0.9rem; height: 1.8em; }
-      .section { padding: 3rem 0.75rem; }
+      .section { padding: 3rem 1rem; }
       .section-title { font-size: 1.5rem; }
       .code-body { font-size: 0.65rem; padding: 0.75rem; overflow-x: auto; }
       .timeline-item { padding-left: 42px; }
