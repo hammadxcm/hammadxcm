@@ -100,6 +100,18 @@
       50% { transform: translate(-50%, -50%) scale(1.3); }
     }
 
+    /* ── Scroll Progress Bar ── */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-blue), var(--accent-mint));
+      z-index: 1001;
+      transition: width 0.1s linear;
+    }
+
     /* ── Navigation ── */
     nav {
       position: fixed;
@@ -196,15 +208,106 @@
       background-clip: text;
     }
 
-    /* ── Scroll Reveal ── */
+    /* ── Scroll Reveal System ── */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(40px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Direction variants */
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-left.visible, .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Scale-up variant */
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.85);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Blur-in variant */
+    .reveal-blur {
+      opacity: 0;
+      filter: blur(10px);
+      transform: translateY(20px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, filter, transform;
+    }
+    .reveal-blur.visible {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+
+    /* Stagger delays for children */
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .stagger > *.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .stagger > *:nth-child(1) { transition-delay: 0s; }
+    .stagger > *:nth-child(2) { transition-delay: 0.08s; }
+    .stagger > *:nth-child(3) { transition-delay: 0.1s; }
+    .stagger > *:nth-child(4) { transition-delay: 0.18s; }
+    .stagger > *:nth-child(5) { transition-delay: 0.24s; }
+    .stagger > *:nth-child(6) { transition-delay: 0.30s; }
+    .stagger > *:nth-child(7) { transition-delay: 0.36s; }
+    .stagger > *:nth-child(8) { transition-delay: 0.42s; }
+    .stagger > *:nth-child(9) { transition-delay: 0.48s; }
+    .stagger > *:nth-child(10) { transition-delay: 0.54s; }
+    .stagger > *:nth-child(11) { transition-delay: 0.60s; }
+    .stagger > *:nth-child(12) { transition-delay: 0.66s; }
+
+    /* Hero parallax */
+    .hero-content {
+      transition: transform 0.1s linear, opacity 0.1s linear;
+    }
+
+    /* Section divider line */
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      margin: 1rem auto 0;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-blue));
+      opacity: 0;
+      transform: scaleX(0);
+      transition: opacity 0.8s 0.3s, transform 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible .section-divider,
+    .reveal-blur.visible .section-divider {
+      opacity: 1;
+      transform: scaleX(1);
     }
 
     /* ── Glassmorphism Card ── */
@@ -919,6 +1022,25 @@
       .footer-socials { gap: 0.75rem; }
     }
 
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .stagger > * {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+    }
+
+    /* Active nav link */
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
     /* ── Small phones ── */
     @media (max-width: 480px) {
       .hero-name { font-size: 2.5rem; }
@@ -936,6 +1058,9 @@
   </style>
 </head>
 <body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- Floating Gradient Orbs -->
   <div class="orb orb-1"></div>
@@ -990,11 +1115,12 @@
 
   <!-- ══════ ABOUT ══════ -->
   <section id="about" class="section">
-    <div class="section-header reveal">
+    <div class="section-header reveal-blur">
       <span class="section-label">// Who am I</span>
       <h2 class="section-title">About Me</h2>
+      <div class="section-divider"></div>
     </div>
-    <div class="about-card glass reveal">
+    <div class="about-card glass reveal-scale">
       <div class="code-header">
         <span class="code-dot red"></span>
         <span class="code-dot yellow"></span>
@@ -1040,11 +1166,12 @@
 
   <!-- ══════ TECH ARSENAL ══════ -->
   <section id="tech" class="section">
-    <div class="section-header reveal">
+    <div class="section-header reveal-blur">
       <span class="section-label">// What I use</span>
       <h2 class="section-title">Tech Arsenal</h2>
+      <div class="section-divider"></div>
     </div>
-    <div class="tech-grid">
+    <div class="tech-grid stagger">
       <!-- Frontend -->
       <div class="tech-card glass reveal" data-tilt>
         <div class="tech-card-title"><span class="emoji">&#127912;</span> Frontend</div>
@@ -1126,13 +1253,14 @@
 
   <!-- ══════ PROFESSIONAL JOURNEY ══════ -->
   <section id="journey" class="section">
-    <div class="section-header reveal">
+    <div class="section-header reveal-blur">
       <span class="section-label">// Where I've been</span>
       <h2 class="section-title">Professional Journey</h2>
+      <div class="section-divider"></div>
     </div>
     <div class="timeline">
       <!-- NexaQuanta -->
-      <div class="timeline-item reveal">
+      <div class="timeline-item reveal-left">
         <div class="timeline-dot"></div>
         <div class="timeline-card glass">
           <div class="timeline-date">Oct 2025 &mdash; Present</div>
@@ -1154,7 +1282,7 @@
         </div>
       </div>
       <!-- TechXMation -->
-      <div class="timeline-item reveal">
+      <div class="timeline-item reveal-right">
         <div class="timeline-dot"></div>
         <div class="timeline-card glass">
           <div class="timeline-date">Dec 2023 &mdash; Oct 2025</div>
@@ -1172,7 +1300,7 @@
         </div>
       </div>
       <!-- Machine Tools -->
-      <div class="timeline-item reveal">
+      <div class="timeline-item reveal-left">
         <div class="timeline-dot"></div>
         <div class="timeline-card glass">
           <div class="timeline-date">Feb &mdash; Nov 2023</div>
@@ -1189,7 +1317,7 @@
         </div>
       </div>
       <!-- Freelance -->
-      <div class="timeline-item reveal">
+      <div class="timeline-item reveal-right">
         <div class="timeline-dot"></div>
         <div class="timeline-card glass">
           <div class="timeline-date">Jun 2022 &mdash; Jan 2023</div>
@@ -1206,7 +1334,7 @@
         </div>
       </div>
       <!-- Sendoso -->
-      <div class="timeline-item reveal">
+      <div class="timeline-item reveal-left">
         <div class="timeline-dot"></div>
         <div class="timeline-card glass">
           <div class="timeline-date">2018 &mdash; 2022</div>
@@ -1226,7 +1354,7 @@
         </div>
       </div>
       <!-- Engin Technologies -->
-      <div class="timeline-item reveal">
+      <div class="timeline-item reveal-right">
         <div class="timeline-dot"></div>
         <div class="timeline-card glass">
           <div class="timeline-date">2017 &mdash; 2018</div>
@@ -1247,11 +1375,12 @@
 
   <!-- ══════ OPEN SOURCE ══════ -->
   <section id="projects" class="section">
-    <div class="section-header reveal">
+    <div class="section-header reveal-blur">
       <span class="section-label">// What I've built</span>
       <h2 class="section-title">Open Source & Community</h2>
+      <div class="section-divider"></div>
     </div>
-    <div class="projects-grid">
+    <div class="projects-grid stagger">
       <!-- Rails Core -->
       <div class="project-card glass reveal" data-tilt>
         <div class="project-icon">&#128740;</div>
@@ -1329,9 +1458,10 @@
 
   <!-- ══════ GITHUB ANALYTICS ══════ -->
   <section id="analytics" class="section">
-    <div class="section-header reveal">
+    <div class="section-header reveal-blur">
       <span class="section-label">// The numbers</span>
       <h2 class="section-title">GitHub Analytics</h2>
+      <div class="section-divider"></div>
     </div>
     <div class="analytics-grid">
       <div class="analytics-row reveal">
@@ -1369,11 +1499,12 @@
 
   <!-- ══════ CERTIFICATIONS ══════ -->
   <section id="certs" class="section">
-    <div class="section-header reveal">
+    <div class="section-header reveal-blur">
       <span class="section-label">// Credentials</span>
       <h2 class="section-title">Certifications</h2>
+      <div class="section-divider"></div>
     </div>
-    <div class="certs-grid">
+    <div class="certs-grid stagger">
       <!-- Security & Compliance -->
       <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/1526fe3f-31e1-4cab-85a5-16669ad20b8b-hammad-khan-a4dafb82-c00d-4efd-965b-1194fb66f7e9-certificate.pdf" target="_blank" rel="noopener" class="cert-card glass reveal">
         <div class="cert-badge"><img src="https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/owasp.svg" width="44" alt="OWASP"></div>
@@ -1612,18 +1743,92 @@
     })();
 
     /* ══════════════════════════════
-       SCROLL REVEAL
+       SCROLL REVEAL (Enhanced)
     ══════════════════════════════ */
     (function() {
-      const reveals = document.querySelectorAll('.reveal');
-      const observer = new IntersectionObserver(function(entries) {
+      var revealSelectors = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur';
+      var reveals = document.querySelectorAll(revealSelectors);
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // For stagger containers, also add visible to children
+            if (entry.target.classList.contains('stagger')) {
+              var children = entry.target.children;
+              for (var i = 0; i < children.length; i++) {
+                children[i].classList.add('visible');
+              }
+            }
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+      reveals.forEach(function(el) { observer.observe(el); });
+
+      // Also observe stagger containers
+      var staggers = document.querySelectorAll('.stagger');
+      var staggerObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
           }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-      reveals.forEach(function(el) { observer.observe(el); });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      staggers.forEach(function(el) { staggerObserver.observe(el); });
+    })();
+
+    /* ══════════════════════════════
+       HERO PARALLAX & ORB SCROLL
+    ══════════════════════════════ */
+    (function() {
+      var heroContent = document.querySelector('.hero-content');
+      var scrollIndicator = document.querySelector('.scroll-indicator');
+      var orbs = document.querySelectorAll('.orb');
+      var nav = document.querySelector('nav');
+      var progressBar = document.getElementById('scrollProgress');
+      var ticking = false;
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            var scrollY = window.scrollY;
+            var vh = window.innerHeight;
+
+            // Hero content: scale down & fade out as you scroll
+            if (scrollY < vh) {
+              var progress = scrollY / vh;
+              var scale = 1 - progress * 0.15;
+              var opacity = 1 - progress * 1.2;
+              heroContent.style.transform = 'scale(' + Math.max(scale, 0.85) + ') translateY(' + (scrollY * 0.3) + 'px)';
+              heroContent.style.opacity = Math.max(opacity, 0);
+              // Fade scroll indicator faster
+              if (scrollIndicator) {
+                scrollIndicator.style.opacity = Math.max(1 - progress * 3, 0);
+              }
+            }
+
+            // Subtle orb opacity shift on scroll
+            var orbOpacity = Math.max(0.05, 0.12 - (scrollY / docHeight) * 0.06);
+            for (var i = 0; i < orbs.length; i++) {
+              orbs[i].style.opacity = orbOpacity;
+            }
+
+            // Nav background on scroll
+            if (scrollY > 50) {
+              nav.style.background = 'rgba(13, 17, 23, 0.95)';
+            } else {
+              nav.style.background = 'rgba(13, 17, 23, 0.8)';
+            }
+
+            // Scroll progress bar
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var scrollPercent = (scrollY / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
     })();
 
     /* ══════════════════════════════
@@ -1649,21 +1854,35 @@
     })();
 
     /* ══════════════════════════════
-       MOBILE NAV
+       MOBILE NAV + ACTIVE LINK
     ══════════════════════════════ */
     (function() {
       var hamburger = document.getElementById('hamburger');
       var navLinks = document.getElementById('navLinks');
+      var navAnchors = navLinks.querySelectorAll('a');
       hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('open');
       });
-      navLinks.querySelectorAll('a').forEach(function(link) {
+      navAnchors.forEach(function(link) {
         link.addEventListener('click', function() {
           hamburger.classList.remove('active');
           navLinks.classList.remove('open');
         });
       });
+
+      // Highlight active nav link on scroll
+      var sections = document.querySelectorAll('section[id]');
+      var activeObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            navAnchors.forEach(function(a) { a.classList.remove('active'); });
+            var activeLink = navLinks.querySelector('a[href="#' + entry.target.id + '"]');
+            if (activeLink) activeLink.classList.add('active');
+          }
+        });
+      }, { threshold: 0.3, rootMargin: '-64px 0px -50% 0px' });
+      sections.forEach(function(s) { activeObserver.observe(s); });
     })();
 
     /* ══════════════════════════════
