@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hammad Khan | Senior Full Stack Engineer</title>
+  <meta name="description" content="Hammad Khan — Senior Full Stack Engineer with 6+ years building distributed systems at scale. Ruby on Rails, React, Node.js, and cloud architecture.">
+  <meta property="og:title" content="Hammad Khan | Senior Full Stack Engineer">
+  <meta property="og:description" content="6+ years building distributed systems at scale. Ruby on Rails, React, Node.js, AWS.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hammadxcm.github.io/hammadxcm/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0D1117;
+      --bg-card: rgba(22, 27, 34, 0.7);
+      --bg-card-solid: #161B22;
+      --accent: #00bfbf;
+      --accent-blue: #5BCDEC;
+      --accent-mint: #A9FEF7;
+      --text: #E6EDF3;
+      --text-dim: #8B949E;
+      --border: rgba(91, 205, 236, 0.15);
+      --border-glow: rgba(0, 191, 191, 0.3);
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+      --glass-bg: rgba(22, 27, 34, 0.6);
+      --glass-border: rgba(91, 205, 236, 0.12);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover { color: var(--accent-mint); }
+
+    /* ── Floating Gradient Orbs ── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 {
+      width: 600px; height: 600px;
+      background: var(--accent);
+      top: -200px; left: -200px;
+      animation: orbFloat1 20s ease-in-out infinite;
+    }
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: var(--accent-blue);
+      bottom: -150px; right: -150px;
+      animation: orbFloat2 25s ease-in-out infinite;
+    }
+    .orb-3 {
+      width: 400px; height: 400px;
+      background: #9B59B6;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: orbFloat3 30s ease-in-out infinite;
+    }
+
+    @keyframes orbFloat1 {
+      0%, 100% { transform: translate(0, 0); }
+      33% { transform: translate(100px, 80px); }
+      66% { transform: translate(-50px, 120px); }
+    }
+    @keyframes orbFloat2 {
+      0%, 100% { transform: translate(0, 0); }
+      33% { transform: translate(-80px, -60px); }
+      66% { transform: translate(60px, -100px); }
+    }
+    @keyframes orbFloat3 {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.3); }
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 2rem;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(13, 17, 23, 0.8);
+      border-bottom: 1px solid var(--glass-border);
+      transition: transform 0.3s;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .nav-logo span { color: var(--text-dim); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-dim);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ── Section Layout ── */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      padding: 0.3rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(0, 191, 191, 0.05);
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Glassmorphism Card ── */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+    }
+    .glass:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 0 30px rgba(0, 191, 191, 0.08);
+    }
+
+    /* ══════════════════════════════
+       HERO SECTION
+    ══════════════════════════════ */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #particle-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 2rem;
+    }
+    .hero-greeting {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s 0.3s forwards;
+    }
+    .hero-name {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, var(--accent-blue) 40%, var(--accent-mint) 60%, var(--accent) 80%, #ffffff 100%);
+      background-size: 200% 200%;
+      background-position: 0% 50%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0;
+      animation: fadeInUp 0.8s 0.5s forwards;
+      transition: background-position 0.6s ease;
+      cursor: default;
+    }
+    .hero-name:hover {
+      animation: nameGradient 3s ease infinite, fadeInUp 0.8s 0.5s forwards;
+      background-position: 100% 50%;
+    }
+    @keyframes nameGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .hero-typewriter {
+      font-family: var(--font-mono);
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--text-dim);
+      height: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s 0.7s forwards;
+    }
+    .typewriter-text { color: var(--accent-mint); }
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.3em;
+      background: var(--accent);
+      margin-left: 2px;
+      animation: cursorBlink 1s step-end infinite;
+    }
+
+    .hero-socials {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s 0.9s forwards;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--glass-bg);
+      color: var(--text-dim);
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+    .social-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 191, 191, 0.2);
+    }
+    .social-btn svg {
+      width: 22px; height: 22px;
+      fill: currentColor;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      opacity: 0;
+      animation: fadeInUp 0.8s 1.2s forwards;
+    }
+    .scroll-mouse {
+      width: 24px; height: 38px;
+      border: 2px solid var(--text-dim);
+      border-radius: 12px;
+      position: relative;
+    }
+    .scroll-mouse::after {
+      content: '';
+      position: absolute;
+      top: 6px; left: 50%;
+      transform: translateX(-50%);
+      width: 3px; height: 8px;
+      background: var(--accent);
+      border-radius: 3px;
+      animation: scrollWheel 2s ease-in-out infinite;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    @keyframes scrollWheel {
+      0% { top: 6px; opacity: 1; }
+      100% { top: 20px; opacity: 0; }
+    }
+
+    /* ══════════════════════════════
+       ABOUT SECTION
+    ══════════════════════════════ */
+    .about-card {
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .code-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 1rem 1.5rem;
+      background: rgba(13, 17, 23, 0.8);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .code-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .code-dot.red { background: #ff5f57; }
+    .code-dot.yellow { background: #febc2e; }
+    .code-dot.green { background: #28c840; }
+    .code-filename {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    .code-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-left: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .code-copy:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0, 191, 191, 0.06);
+    }
+    .code-copy.copied {
+      border-color: #28c840;
+      color: #28c840;
+    }
+    .code-copy svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .code-body {
+      padding: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+    .code-body .keyword { color: #ff7b72; }
+    .code-body .const { color: #79c0ff; }
+    .code-body .string { color: #a5d6ff; }
+    .code-body .property { color: var(--accent-mint); }
+    .code-body .comment { color: var(--text-dim); font-style: italic; }
+    .code-body .bracket { color: #e6edf3; }
+    .code-body .number { color: #ffa657; }
+    .code-line {
+      display: block;
+      padding-left: 2rem;
+    }
+    .code-line-num {
+      display: inline-block;
+      width: 2rem;
+      margin-left: -2rem;
+      color: #484f58;
+      text-align: right;
+      padding-right: 1rem;
+      user-select: none;
+    }
+
+    /* ══════════════════════════════
+       TECH ARSENAL
+    ══════════════════════════════ */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    .tech-card {
+      padding: 2rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tech-card:hover {
+      transform: translateY(-4px);
+    }
+    .tech-card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tech-card-title .emoji {
+      font-size: 1.3rem;
+    }
+    .tech-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    .tech-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem;
+      border-radius: 10px;
+      transition: all 0.3s;
+      min-width: 64px;
+    }
+    .tech-icon:hover {
+      background: rgba(0, 191, 191, 0.08);
+      transform: translateY(-2px);
+    }
+    .tech-icon img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+    .tech-icon span {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    /* ══════════════════════════════
+       TIMELINE / PROFESSIONAL JOURNEY
+    ══════════════════════════════ */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-blue), #9B59B6, #28A745);
+      box-shadow: 0 0 12px rgba(0, 191, 191, 0.3);
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 72px;
+      margin-bottom: 3rem;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 20px;
+      top: 8px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      background: var(--bg);
+      z-index: 2;
+      box-shadow: 0 0 12px rgba(0, 191, 191, 0.4);
+      animation: dotPulse 3s ease-in-out infinite;
+    }
+    .timeline-item:nth-child(2) .timeline-dot { border-color: #FF6B6B; box-shadow: 0 0 12px rgba(255, 107, 107, 0.4); }
+    .timeline-item:nth-child(3) .timeline-dot { border-color: #4ECDC4; box-shadow: 0 0 12px rgba(78, 205, 196, 0.4); }
+    .timeline-item:nth-child(4) .timeline-dot { border-color: #45B7D1; box-shadow: 0 0 12px rgba(69, 183, 209, 0.4); }
+    .timeline-item:nth-child(5) .timeline-dot { border-color: #9B59B6; box-shadow: 0 0 12px rgba(155, 89, 182, 0.4); }
+    .timeline-item:nth-child(6) .timeline-dot { border-color: #28A745; box-shadow: 0 0 12px rgba(40, 167, 69, 0.4); }
+
+    @keyframes dotPulse {
+      0%, 100% { box-shadow: 0 0 8px rgba(0, 191, 191, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(0, 191, 191, 0.6); }
+    }
+
+    .timeline-card {
+      padding: 1.75rem;
+      transition: all 0.4s;
+    }
+    .timeline-card:hover {
+      border-color: var(--border-glow);
+      transform: translateX(4px);
+    }
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-role {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-company {
+      color: var(--accent-blue);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a.timeline-company:hover {
+      color: var(--accent-mint);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .timeline-meta {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+    .timeline-achievements {
+      list-style: none;
+    }
+    .timeline-achievements li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .timeline-achievements li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .timeline-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+    .timeline-tech span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      background: rgba(0, 191, 191, 0.08);
+      color: var(--accent);
+      border: 1px solid rgba(0, 191, 191, 0.15);
+    }
+
+    /* ══════════════════════════════
+       OPEN SOURCE PROJECTS
+    ══════════════════════════════ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      padding: 2rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    .project-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 20px 40px rgba(0, 191, 191, 0.1);
+    }
+    .project-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .project-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .project-name a {
+      color: var(--text);
+      transition: color 0.3s;
+    }
+    .project-name a:hover { color: var(--accent); }
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .project-tags span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      background: rgba(91, 205, 236, 0.08);
+      color: var(--accent-blue);
+      border: 1px solid rgba(91, 205, 236, 0.15);
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+    .project-link:hover { color: var(--accent-mint); }
+    .project-link svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ══════════════════════════════
+       GITHUB ANALYTICS
+    ══════════════════════════════ */
+    .analytics-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+    .analytics-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+    .analytics-row img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    .analytics-full img {
+      max-width: 100%;
+      border-radius: 12px;
+    }
+
+    /* ══════════════════════════════
+       CERTIFICATIONS
+    ══════════════════════════════ */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .cert-category {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .cert-issuer {
+      font-size: 0.8rem;
+      color: var(--accent-blue);
+      margin-top: 0.35rem;
+    }
+    a.cert-card .cert-ext {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 0.75rem;
+      transition: color 0.3s;
+    }
+    a.cert-card:hover .cert-ext { color: var(--accent); }
+    a.cert-card .cert-ext svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    a.cert-card {
+      display: block;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.4s;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a.cert-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+      box-shadow: 0 12px 30px rgba(0, 191, 191, 0.12);
+      color: inherit;
+    }
+    .cert-badge {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .cert-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .cert-date {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid var(--glass-border);
+    }
+    .footer-wave {
+      position: absolute;
+      top: -2px; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-blue), #9B59B6, var(--accent));
+      background-size: 300% 100%;
+      animation: waveGradient 6s linear infinite;
+    }
+    @keyframes waveGradient {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .footer-copy {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+    .footer-copy .heart { color: #ff5f57; }
+
+    /* ══════════════════════════════
+       MEDIA QUERIES
+    ══════════════════════════════ */
+    /* ── Tablet ── */
+    @media (max-width: 1024px) {
+      .tech-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 64px;
+        left: 0; right: 0;
+        background: rgba(13, 17, 23, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 1.5rem 2rem 2rem;
+        gap: 0.25rem;
+        border-bottom: 1px solid var(--glass-border);
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s;
+      }
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nav-links li { padding: 0.5rem 0; }
+      .nav-links a { font-size: 1rem; }
+      .hamburger { display: flex; }
+
+      /* Sections */
+      .section { padding: 3.5rem 1rem; }
+      .section-header { margin-bottom: 2.5rem; }
+      .section-title { font-size: 1.75rem; }
+      .section-label { font-size: 0.7rem; padding: 0.25rem 0.75rem; }
+
+      /* Hero */
+      .hero-content { padding: 0 1rem; }
+      .hero-greeting { font-size: 0.95rem; }
+      .hero-socials { gap: 0.75rem; }
+      .social-btn { width: 44px; height: 44px; }
+
+      /* About code card */
+      .code-body { font-size: 0.7rem; line-height: 1.6; padding: 1rem; }
+      .code-body .code-line { white-space: pre-wrap; word-break: break-word; }
+
+      /* Grids → single column */
+      .tech-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: 1fr; }
+
+      /* Tech cards */
+      .tech-card { padding: 1.5rem; }
+      .tech-icons { gap: 0.5rem; justify-content: center; }
+      .tech-icon { min-width: 56px; }
+      .tech-icon img { width: 36px; height: 36px; }
+
+      /* Timeline */
+      .timeline::before { left: 16px; }
+      .timeline-item { padding-left: 48px; margin-bottom: 2rem; }
+      .timeline-dot { left: 8px; width: 16px; height: 16px; }
+      .timeline-card { padding: 1.25rem; }
+      .timeline-role { font-size: 1.05rem; }
+      .timeline-achievements li { font-size: 0.85rem; }
+      .timeline-tech { gap: 0.3rem; }
+      .timeline-tech span { font-size: 0.65rem; padding: 0.15rem 0.5rem; }
+
+      /* Project cards */
+      .project-card { padding: 1.5rem; }
+      .project-desc { font-size: 0.85rem; }
+
+      /* Analytics */
+      .analytics-row { flex-direction: column; align-items: center; }
+      .analytics-row img { width: 100%; }
+
+      /* Cert cards */
+      a.cert-card { padding: 1.5rem; }
+      .cert-badge img { width: 40px; height: 40px; }
+      .cert-name { font-size: 0.95rem; }
+
+      /* Footer */
+      footer { padding: 3rem 1rem 1.5rem; }
+      .footer-socials { gap: 0.75rem; }
+    }
+
+    /* ── Small phones ── */
+    @media (max-width: 480px) {
+      .hero-name { font-size: 2.5rem; }
+      .hero-typewriter { font-size: 0.9rem; height: 1.8em; }
+      .section { padding: 3rem 0.75rem; }
+      .section-title { font-size: 1.5rem; }
+      .code-body { font-size: 0.65rem; padding: 0.75rem; overflow-x: auto; }
+      .timeline-item { padding-left: 42px; }
+      .timeline-role { font-size: 0.95rem; }
+      .timeline-card { padding: 1rem; }
+      .tech-icon img { width: 32px; height: 32px; }
+      .tech-icon span { font-size: 0.6rem; }
+      .project-tags span { font-size: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Gradient Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">hammad<span>.dev</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#tech">Skills</a></li>
+        <li><a href="#journey">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#certs">Certifications</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════ HERO ══════ -->
+  <section id="hero">
+    <canvas id="particle-canvas"></canvas>
+    <div class="hero-content">
+      <p class="hero-greeting">// Hello, World!</p>
+      <h1 class="hero-name">Hammad Khan</h1>
+      <div class="hero-typewriter">
+        <span class="typewriter-text" id="typewriter"></span>
+        <span class="typewriter-cursor"></span>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/hammadxcm" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="https://twitter.com/hammadkhanxcm" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/hammadxcm" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-mouse"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ══════ ABOUT ══════ -->
+  <section id="about" class="section">
+    <div class="section-header reveal">
+      <span class="section-label">// Who am I</span>
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="about-card glass reveal">
+      <div class="code-header">
+        <span class="code-dot red"></span>
+        <span class="code-dot yellow"></span>
+        <span class="code-dot green"></span>
+        <span class="code-filename">hammadKhan.js</span>
+        <button class="code-copy" id="copyBtn" aria-label="Copy code">
+          <svg id="copyIcon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span id="copyLabel">Copy</span>
+        </button>
+      </div>
+      <div class="code-body">
+<span class="code-line"><span class="code-line-num">1</span><span class="keyword">const</span> <span class="const">hammadKhan</span> = <span class="bracket">{</span></span>
+<span class="code-line"><span class="code-line-num">2</span>  <span class="property">title</span>: <span class="string">"Senior Full Stack Engineer"</span>,</span>
+<span class="code-line"><span class="code-line-num">3</span>  <span class="property">experience</span>: <span class="string">"8+ years building systems at scale"</span>,</span>
+<span class="code-line"><span class="code-line-num">4</span>  <span class="property">location</span>: <span class="string">"Lahore, Pakistan"</span>,</span>
+<span class="code-line"><span class="code-line-num">5</span>  <span class="property">specialization</span>: <span class="string">"Distributed Systems &amp; Platform Architecture"</span>,</span>
+<span class="code-line"><span class="code-line-num">6</span>  <span class="property">currentRole</span>: <span class="string">"Senior Full Stack Engineer @ NexaQuanta"</span>,</span>
+<span class="code-line"><span class="code-line-num">7</span></span>
+<span class="code-line"><span class="code-line-num">8</span>  <span class="property">expertise</span>: <span class="bracket">{</span></span>
+<span class="code-line"><span class="code-line-num">9</span>    <span class="property">systemDesign</span>: [<span class="string">"Microservices"</span>, <span class="string">"Event-Driven"</span>, <span class="string">"DDD"</span>],</span>
+<span class="code-line"><span class="code-line-num">10</span>    <span class="property">backend</span>: [<span class="string">"Rails"</span>, <span class="string">"NestJS"</span>, <span class="string">"Node"</span>, <span class="string">"GraphQL"</span>],</span>
+<span class="code-line"><span class="code-line-num">11</span>    <span class="property">frontend</span>: [<span class="string">"React"</span>, <span class="string">"Vue"</span>, <span class="string">"Next.js"</span>, <span class="string">"PWA"</span>],</span>
+<span class="code-line"><span class="code-line-num">12</span>    <span class="property">infra</span>: [<span class="string">"AWS"</span>, <span class="string">"Docker"</span>, <span class="string">"Redis"</span>, <span class="string">"BullMQ"</span>, <span class="string">"K8s"</span>],</span>
+<span class="code-line"><span class="code-line-num">13</span>    <span class="property">databases</span>: [<span class="string">"PostgreSQL"</span>, <span class="string">"MongoDB"</span>, <span class="string">"MySQL"</span>, <span class="string">"Prisma"</span>],</span>
+<span class="code-line"><span class="code-line-num">14</span>    <span class="property">security</span>: [<span class="string">"OWASP Top 10"</span>, <span class="string">"Audit Systems"</span>, <span class="string">"HIPAA"</span>],</span>
+<span class="code-line"><span class="code-line-num">15</span>  <span class="bracket">}</span>,</span>
+<span class="code-line"><span class="code-line-num">16</span></span>
+<span class="code-line"><span class="code-line-num">17</span>  <span class="property">highlights</span>: [</span>
+<span class="code-line"><span class="code-line-num">18</span>    <span class="string">"115+ MRs delivered in 5 months @ NexaQuanta"</span>,</span>
+<span class="code-line"><span class="code-line-num">19</span>    <span class="string">"Rails Core Contributor — merged PR to rails/rails"</span>,</span>
+<span class="code-line"><span class="code-line-num">20</span>    <span class="string">"Zero-downtime Stripe migration with 99.9% uptime"</span>,</span>
+<span class="code-line"><span class="code-line-num">21</span>    <span class="string">"Progressive loading: page load 12s → 2.3s"</span>,</span>
+<span class="code-line"><span class="code-line-num">22</span>  ],</span>
+<span class="code-line"><span class="code-line-num">23</span></span>
+<span class="code-line"><span class="code-line-num">24</span>  <span class="property">openSource</span>: [<span class="string">"daemon-os"</span>, <span class="string">"rubocop-hk"</span>, <span class="string">"ramadan-cli-pro"</span>],</span>
+<span class="code-line"><span class="code-line-num">25</span>  <span class="property">currentFocus</span>: <span class="string">"Platform Engineering &amp; Technical Strategy"</span>,</span>
+<span class="code-line"><span class="code-line-num">26</span>  <span class="property">philosophy</span>: <span class="string">"Building systems that scale, teams that deliver,</span></span>
+<span class="code-line"><span class="code-line-num">27</span>               <span class="string"> and solutions that last."</span></span>
+<span class="code-line"><span class="code-line-num">28</span><span class="bracket">}</span>;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ TECH ARSENAL ══════ -->
+  <section id="tech" class="section">
+    <div class="section-header reveal">
+      <span class="section-label">// What I use</span>
+      <h2 class="section-title">Tech Arsenal</h2>
+    </div>
+    <div class="tech-grid">
+      <!-- Frontend -->
+      <div class="tech-card glass reveal" data-tilt>
+        <div class="tech-card-title"><span class="emoji">&#127912;</span> Frontend</div>
+        <div class="tech-icons">
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/react-icon.svg" alt="React"><span>React</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=vue" alt="Vue"><span>Vue</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=nextjs" alt="Next.js"><span>Next.js</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/ts-icon.svg" alt="TypeScript"><span>TypeScript</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/js-icon.svg" alt="JavaScript"><span>JavaScript</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind"><span>Tailwind</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/sass-icon.svg" alt="Sass"><span>Sass</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/redux-icon.svg" alt="Redux"><span>Redux</span></div>
+        </div>
+      </div>
+      <!-- Backend -->
+      <div class="tech-card glass reveal" data-tilt>
+        <div class="tech-card-title"><span class="emoji">&#9881;&#65039;</span> Backend</div>
+        <div class="tech-icons">
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=ruby" alt="Ruby"><span>Ruby</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=rails" alt="Rails"><span>Rails</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js"><span>Node.js</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/graphql-icon.svg" alt="GraphQL"><span>GraphQL</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/python-icon.svg" alt="Python"><span>Python</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=nestjs" alt="NestJS"><span>NestJS</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/django-icon.svg" alt="Django"><span>Django</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/nginx-icon.svg" alt="Nginx"><span>Nginx</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/restapi-icon.svg" alt="REST API"><span>REST API</span></div>
+        </div>
+      </div>
+      <!-- Databases -->
+      <div class="tech-card glass reveal" data-tilt>
+        <div class="tech-card-title"><span class="emoji">&#128451;&#65039;</span> Databases</div>
+        <div class="tech-icons">
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=postgresql" alt="PostgreSQL"><span>PostgreSQL</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=mongodb" alt="MongoDB"><span>MongoDB</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/mysql-icon.svg" alt="MySQL"><span>MySQL</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=redis" alt="Redis"><span>Redis</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=sqlite" alt="SQLite"><span>SQLite</span></div>
+        </div>
+      </div>
+      <!-- Cloud & DevOps -->
+      <div class="tech-card glass reveal" data-tilt>
+        <div class="tech-card-title"><span class="emoji">&#9729;&#65039;</span> Cloud & DevOps</div>
+        <div class="tech-icons">
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="AWS"><span>AWS</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=azure" alt="Azure"><span>Azure</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/docker-icon.svg" alt="Docker"><span>Docker</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/kubernetes-icon.svg" alt="K8s"><span>K8s</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=git" alt="Git"><span>Git</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/github-icon.svg" alt="GitHub"><span>GitHub</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=heroku" alt="Heroku"><span>Heroku</span></div>
+        </div>
+      </div>
+      <!-- Testing -->
+      <div class="tech-card glass reveal" data-tilt>
+        <div class="tech-card-title"><span class="emoji">&#129514;</span> Testing</div>
+        <div class="tech-icons">
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/jest-icon.svg" alt="Jest"><span>Jest</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=vitest" alt="Vitest"><span>Vitest</span></div>
+          <div class="tech-icon"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rspec/rspec-original.svg" alt="RSpec"><span>RSpec</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/testinglibrary-icon.svg" alt="Testing Library"><span>Testing Lib</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="ESLint"><span>ESLint</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="Prettier"><span>Prettier</span></div>
+        </div>
+      </div>
+      <!-- AI & Tools -->
+      <div class="tech-card glass reveal" data-tilt>
+        <div class="tech-card-title"><span class="emoji">&#129302;</span> AI & Tools</div>
+        <div class="tech-icons">
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=vscode" alt="VS Code"><span>VS Code</span></div>
+          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=webstorm" alt="WebStorm"><span>WebStorm</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/github-icon.svg" alt="GitHub"><span>GitHub</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/webpack-icon.svg" alt="Webpack"><span>Webpack</span></div>
+          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/storybook-icon.svg" alt="Storybook"><span>Storybook</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ PROFESSIONAL JOURNEY ══════ -->
+  <section id="journey" class="section">
+    <div class="section-header reveal">
+      <span class="section-label">// Where I've been</span>
+      <h2 class="section-title">Professional Journey</h2>
+    </div>
+    <div class="timeline">
+      <!-- NexaQuanta -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <div class="timeline-date">Oct 2025 &mdash; Present</div>
+          <h3 class="timeline-role">Senior Full Stack Engineer @ <a href="https://nexaquanta.ai/" target="_blank" rel="noopener" class="timeline-company">NexaQuanta</a></h3>
+          <p class="timeline-meta">Full-time &middot; Remote (London, UK)</p>
+          <ul class="timeline-achievements">
+            <li>Built CRM & product reporting module with email-based delivery for business intelligence</li>
+            <li>Designed & executed enterprise database schema migration achieving 100% parity</li>
+            <li>Built complete aftersales appointment lifecycle module — 60+ merged MRs</li>
+            <li>Integrated CitNOW video library eliminating cross-system context-switching</li>
+            <li>Architected CSV data import pipeline with batch optimization & duplicate detection</li>
+            <li>Implemented multi-dealer org scoping with dual-database architecture</li>
+            <li>Patched critical injection vulnerability; built generic audit module</li>
+            <li>Fixed Redis Cluster CROSSSLOT errors for stable BullMQ job processing</li>
+          </ul>
+          <div class="timeline-tech">
+            <span>NestJS</span><span>React</span><span>Next.js</span><span>MongoDB</span><span>PostgreSQL</span><span>AWS</span><span>Redis</span><span>BullMQ</span>
+          </div>
+        </div>
+      </div>
+      <!-- TechXMation -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <div class="timeline-date">Dec 2023 &mdash; Oct 2025</div>
+          <h3 class="timeline-role">Staff Software Engineer @ <a href="https://www.linkedin.com/company/techxmation/about/" target="_blank" rel="noopener" class="timeline-company">TechXMation</a></h3>
+          <p class="timeline-meta">Freelance &middot; Lahore, Pakistan</p>
+          <ul class="timeline-achievements">
+            <li>Designed event-driven export system reducing wait times from 30+ min to under 5 min</li>
+            <li>Architected progressive loading cutting page load from 12s to 2.3s (70% improvement)</li>
+            <li>Built multi-level batch processing improving job success rate from 60% to 95%</li>
+            <li>Designed service mesh architecture eliminating 90% of data duplicates</li>
+          </ul>
+          <div class="timeline-tech">
+            <span>Rails</span><span>React</span><span>Redis</span><span>Sidekiq</span><span>AWS S3</span><span>PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+      <!-- Machine Tools -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <div class="timeline-date">Feb &mdash; Nov 2023</div>
+          <h3 class="timeline-role">Application Developer @ <a href="https://www.machinetools.com/en" target="_blank" rel="noopener" class="timeline-company">Machine Tools</a></h3>
+          <p class="timeline-meta">Full-time &middot; Lahore, Pakistan</p>
+          <ul class="timeline-achievements">
+            <li>Implemented Sphinx Search improving response time by 300%</li>
+            <li>Built advanced filtering with role-based access &mdash; 85% faster data filtering</li>
+            <li>Architected scalable email delivery system improving delivery rate by 25%</li>
+          </ul>
+          <div class="timeline-tech">
+            <span>Rails</span><span>Sphinx Search</span><span>Arel SQL</span><span>PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+      <!-- Freelance -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <div class="timeline-date">Jun 2022 &mdash; Jan 2023</div>
+          <h3 class="timeline-role">Senior Software Engineer @ <a href="https://www.linkedin.com/in/hammadxcm/" target="_blank" rel="noopener" class="timeline-company">Freelance</a></h3>
+          <p class="timeline-meta">Remote &middot; Lahore, Pakistan</p>
+          <ul class="timeline-achievements">
+            <li>Designed HMAC-based API signature verification with JWT & rate limiting</li>
+            <li>Built reusable React component library reducing dev time by 40%</li>
+            <li>Architected unified multi-platform API integration layer</li>
+          </ul>
+          <div class="timeline-tech">
+            <span>Rails</span><span>React</span><span>GraphQL</span><span>JWT</span><span>Chrome Extensions</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sendoso -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <div class="timeline-date">2018 &mdash; 2022</div>
+          <h3 class="timeline-role">Software Engineer @ <a href="https://www.sendoso.com/" target="_blank" rel="noopener" class="timeline-company">Sendoso</a></h3>
+          <p class="timeline-meta">Full-time &middot; Lahore, Pakistan &middot; 4 Years</p>
+          <ul class="timeline-achievements">
+            <li>Architected multi-API integration platform supporting 10+ APIs (Azure, Kolide, Kandji)</li>
+            <li>Led zero-downtime Stripe v2 &rarr; v3 migration with 99.9% uptime</li>
+            <li>Built real-time monitoring dashboard handling 1M+ requests/day</li>
+            <li>Designed event-driven CRM automation for Salesforce, HubSpot, Marketo</li>
+            <li>Built Chrome extension for CRM integration used by 1000+ sales reps</li>
+            <li>Implemented i18n system for email templates supporting 20+ languages</li>
+          </ul>
+          <div class="timeline-tech">
+            <span>Rails</span><span>React</span><span>Redux</span><span>GraphQL</span><span>Stripe</span><span>Salesforce</span><span>New Relic</span><span>DDD</span>
+          </div>
+        </div>
+      </div>
+      <!-- Engin Technologies -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <div class="timeline-date">2017 &mdash; 2018</div>
+          <h3 class="timeline-role">Software Engineer @ <a href="https://www.engintechnologies.com/" target="_blank" rel="noopener" class="timeline-company">Engin Technologies</a></h3>
+          <p class="timeline-meta">Full-time &middot; Lahore, Pakistan</p>
+          <ul class="timeline-achievements">
+            <li>Built scalable e-commerce solutions using Spree Commerce framework</li>
+            <li>Implemented React + Redux frontend with GraphQL data flow</li>
+            <li>Created responsive, interactive user interfaces</li>
+          </ul>
+          <div class="timeline-tech">
+            <span>Rails</span><span>React</span><span>Redux</span><span>GraphQL</span><span>Spree Commerce</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ OPEN SOURCE ══════ -->
+  <section id="projects" class="section">
+    <div class="section-header reveal">
+      <span class="section-label">// What I've built</span>
+      <h2 class="section-title">Open Source & Community</h2>
+    </div>
+    <div class="projects-grid">
+      <!-- Rails Core -->
+      <div class="project-card glass reveal" data-tilt>
+        <div class="project-icon">&#128740;</div>
+        <h3 class="project-name"><a href="https://github.com/rails/rails/pull/56867" target="_blank" rel="noopener">Rails Core Contribution</a></h3>
+        <p class="project-desc">Merged PR to <strong>rails/rails</strong> &mdash; Fixed Ruby 4.0 delegator warning in ActiveModel/ActiveRecord.</p>
+        <div class="project-tags">
+          <span>Ruby on Rails</span><span>Open Source</span><span>Core</span>
+        </div>
+        <a href="https://github.com/rails/rails/pull/56867" target="_blank" rel="noopener" class="project-link">
+          View PR <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </div>
+      <!-- ramadan-cli-pro -->
+      <div class="project-card glass reveal" data-tilt>
+        <div class="project-icon">&#127769;</div>
+        <h3 class="project-name"><a href="https://www.npmjs.com/package/ramadan-cli-pro" target="_blank" rel="noopener">ramadan-cli-pro</a></h3>
+        <p class="project-desc">Published npm package &mdash; TUI dashboard with prayer times, i18n & notifications.</p>
+        <div class="project-tags">
+          <span>npm</span><span>Node.js</span><span>CLI</span><span>i18n</span>
+        </div>
+        <a href="https://www.npmjs.com/package/ramadan-cli-pro" target="_blank" rel="noopener" class="project-link">
+          View Package <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </div>
+      <!-- rubocop-hk -->
+      <div class="project-card glass reveal" data-tilt>
+        <div class="project-icon">&#128142;</div>
+        <h3 class="project-name"><a href="https://rubygems.org/gems/rubocop-hk" target="_blank" rel="noopener">rubocop-hk</a></h3>
+        <p class="project-desc">Published RubyGem &mdash; 2,800+ downloads. Modern RuboCop config for Ruby & Rails projects.</p>
+        <div class="project-tags">
+          <span>RubyGems</span><span>RuboCop</span><span>Linting</span>
+        </div>
+        <a href="https://rubygems.org/gems/rubocop-hk" target="_blank" rel="noopener" class="project-link">
+          View Gem <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </div>
+      <!-- image-magnifier -->
+      <div class="project-card glass reveal" data-tilt>
+        <div class="project-icon">&#128269;</div>
+        <h3 class="project-name"><a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier" target="_blank" rel="noopener">image-magnifier</a></h3>
+        <p class="project-desc">React zoom component &mdash; 8 stars, 748+ downloads. TypeScript with 7 releases.</p>
+        <div class="project-tags">
+          <span>React</span><span>TypeScript</span><span>npm</span>
+        </div>
+        <a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier" target="_blank" rel="noopener" class="project-link">
+          View Package <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </div>
+      <!-- electric-border-css -->
+      <div class="project-card glass reveal" data-tilt>
+        <div class="project-icon">&#9889;</div>
+        <h3 class="project-name"><a href="https://www.npmjs.com/package/electric-border-css" target="_blank" rel="noopener">electric-border-css</a></h3>
+        <p class="project-desc">Animated CSS border effects &mdash; React, Vue, Next.js & Svelte with live demo.</p>
+        <div class="project-tags">
+          <span>CSS</span><span>React</span><span>Vue</span><span>Svelte</span>
+        </div>
+        <a href="https://www.npmjs.com/package/electric-border-css" target="_blank" rel="noopener" class="project-link">
+          View Package <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </div>
+      <!-- daemon-os -->
+      <div class="project-card glass reveal" data-tilt>
+        <div class="project-icon">&#128421;</div>
+        <h3 class="project-name"><a href="https://github.com/hammadxcm/daemon-os" target="_blank" rel="noopener">daemon-os</a></h3>
+        <p class="project-desc">macOS MCP server for AI agent computer-use &mdash; gives AI eyes & hands on your Mac.</p>
+        <div class="project-tags">
+          <span>MCP</span><span>macOS</span><span>AI</span><span>Swift</span>
+        </div>
+        <a href="https://github.com/hammadxcm/daemon-os" target="_blank" rel="noopener" class="project-link">
+          View Repo <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ GITHUB ANALYTICS ══════ -->
+  <section id="analytics" class="section">
+    <div class="section-header reveal">
+      <span class="section-label">// The numbers</span>
+      <h2 class="section-title">GitHub Analytics</h2>
+    </div>
+    <div class="analytics-grid">
+      <div class="analytics-row reveal">
+        <img src="https://github-readme-streak-stats.herokuapp.com?user=hammadxcm&theme=tokyonight&hide_border=true&stroke=0000&background=0D1117&ring=5BCDEC&fire=5BCDEC&currStreakNum=5BCDEC" alt="GitHub Streak" loading="lazy">
+        <img src="https://github-readme-stats.vercel.app/api?username=hammadxcm&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=5BCDEC&icon_color=5BCDEC&text_color=FFFFFF" alt="GitHub Stats" loading="lazy">
+      </div>
+      <div class="analytics-full reveal">
+        <img src="https://github-readme-activity-graph.vercel.app/graph?username=hammadxcm&theme=tokyo-night&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&area=true&hide_border=true" alt="Activity Graph" loading="lazy" style="width: 100%;">
+      </div>
+      <div class="analytics-full reveal">
+        <img src="https://github-profile-trophy.vercel.app/?username=hammadxcm&theme=tokyonight&no-frame=true&no-bg=false&margin-w=4&column=7" alt="GitHub Trophies" loading="lazy" style="width: 100%;">
+      </div>
+      <div class="analytics-row reveal">
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=hammadxcm&theme=tokyonight" alt="Repos Per Language" loading="lazy">
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=hammadxcm&theme=tokyonight" alt="Most Commit Language" loading="lazy">
+      </div>
+      <div class="analytics-row reveal">
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=hammadxcm&theme=tokyonight" alt="Stats" loading="lazy">
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=hammadxcm&theme=tokyonight&utcOffset=5" alt="Productive Time" loading="lazy">
+      </div>
+      <div class="analytics-full reveal">
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=hammadxcm&theme=tokyonight" alt="Profile Details" loading="lazy" style="width: 100%;">
+      </div>
+      <div class="analytics-full reveal">
+        <img src="https://raw.githubusercontent.com/hammadxcm/hammadxcm/output/snake.svg" alt="Contribution Snake" loading="lazy" style="width: 100%;">
+      </div>
+      <div class="analytics-row reveal" style="justify-content: center;">
+        <img src="https://komarev.com/ghpvc/?username=hammadxcm&label=Profile%20Views&color=0e75b6&style=for-the-badge" alt="Profile Views" loading="lazy">
+      </div>
+      <div class="analytics-full reveal">
+        <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Dev Quote" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ CERTIFICATIONS ══════ -->
+  <section id="certs" class="section">
+    <div class="section-header reveal">
+      <span class="section-label">// Credentials</span>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+    <div class="certs-grid">
+      <!-- Security & Compliance -->
+      <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/1526fe3f-31e1-4cab-85a5-16669ad20b8b-hammad-khan-a4dafb82-c00d-4efd-965b-1194fb66f7e9-certificate.pdf" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/owasp.svg" width="44" alt="OWASP"></div>
+        <p class="cert-category">Security</p>
+        <h3 class="cert-name">OWASP Top 10 Security Threats</h3>
+        <p class="cert-issuer">The Linux Foundation</p>
+        <p class="cert-date">December 2025</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+      <a href="https://www.linkedin.com/learning/certificates/d57c36b7fe8db2dbb80431f9fbdfb3a48253ce9cb59576d9d5e8720851029878" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://cdn.simpleicons.org/kalilinux/557C94" width="44" alt="Ethical Hacking"></div>
+        <p class="cert-category">Security</p>
+        <h3 class="cert-name">Ethical Hacking: Introduction</h3>
+        <p class="cert-issuer">LinkedIn Learning</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+      <a href="https://www.linkedin.com/learning/certificates/2dcfc22edd19dfca6f8a8d057a4ae887d0b915268a3887680a9d0a9234e25a62" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://cdn.simpleicons.org/gnuprivacyguard/0093DD" width="44" alt="HIPAA"></div>
+        <p class="cert-category">Compliance</p>
+        <h3 class="cert-name">Building a HIPAA Compliance Program</h3>
+        <p class="cert-issuer">LinkedIn Learning</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+      <!-- Networking -->
+      <a href="https://www.linkedin.com/learning/certificates/f6fad5371eae0d8acfee3b3a2c8edca7cbe33a63730f0cd560bb993df5438309" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://cdn.simpleicons.org/cisco/1BA0D7" width="44" alt="Networking"></div>
+        <p class="cert-category">Networking</p>
+        <h3 class="cert-name">Networking Foundations: Basics</h3>
+        <p class="cert-issuer">LinkedIn Learning</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+      <!-- Web Frameworks -->
+      <a href="https://www.linkedin.com/learning/certificates/b36c2bda03eda9a68e4dec50def0daad8dcb9b6c67492627c9b8bd377fb67f4c" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://skillicons.dev/icons?i=rails" width="44" alt="Hotwire"></div>
+        <p class="cert-category">Web Frameworks</p>
+        <h3 class="cert-name">Hotwire: Reactive Rails Apps</h3>
+        <p class="cert-issuer">LinkedIn Learning</p>
+        <p class="cert-date">June 2024</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+      <a href="https://www.linkedin.com/learning/certificates/d335c38204c29a4f8ce7e07c0ecaa5077067865b9792595e481905b3fd06586d" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rspec/rspec-original.svg" width="44" alt="RSpec"></div>
+        <p class="cert-category">Testing</p>
+        <h3 class="cert-name">Ruby Testing with RSpec</h3>
+        <p class="cert-issuer">LinkedIn Learning</p>
+        <p class="cert-date">August 2024</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+      <!-- Languages & Tools -->
+      <a href="https://www.linkedin.com/learning/certificates/e30b66061cc2080040e0df0c0e173d00a2203112628954ed1355fab6fcc85956" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://techstack-generator.vercel.app/ts-icon.svg" width="50" alt="TypeScript"></div>
+        <p class="cert-category">Languages</p>
+        <h3 class="cert-name">TypeScript Essential Training</h3>
+        <p class="cert-issuer">LinkedIn Learning</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+      <a href="https://www.linkedin.com/learning/certificates/0bf6f582259007a4e436be7004b0f7ed3e8bf9972b6a7dbac68ea2867493aacf" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://techstack-generator.vercel.app/mysql-icon.svg" width="50" alt="MySQL"></div>
+        <p class="cert-category">Databases</p>
+        <h3 class="cert-name">MySQL Installation &amp; Configuration</h3>
+        <p class="cert-issuer">LinkedIn Learning</p>
+        <p class="cert-date">March 2024</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+      <a href="https://www.linkedin.com/learning/certificates/3b36f2ca76a1876379837a9403195e104dd354781a13989cbfcc452188e85a8e" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://techstack-generator.vercel.app/github-icon.svg" width="50" alt="Git & GitHub"></div>
+        <p class="cert-category">Tools</p>
+        <h3 class="cert-name">Learning Git and GitHub</h3>
+        <p class="cert-issuer">LinkedIn Learning</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+      <!-- Python & Data -->
+      <a href="https://www.coursera.org/account/accomplishments/verify/BLQ2MA03WL9N" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://techstack-generator.vercel.app/python-icon.svg" width="50" alt="Python"></div>
+        <p class="cert-category">Python</p>
+        <h3 class="cert-name">Programming for Everybody (Python)</h3>
+        <p class="cert-issuer">Coursera &middot; University of Michigan</p>
+        <p class="cert-date">December 2024</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+      <a href="https://www.coursera.org/account/accomplishments/verify/J79EC6EVAUDM" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://techstack-generator.vercel.app/python-icon.svg" width="50" alt="Python"></div>
+        <p class="cert-category">Python</p>
+        <h3 class="cert-name">Python Data Structures</h3>
+        <p class="cert-issuer">Coursera &middot; University of Michigan</p>
+        <p class="cert-date">May 2025</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+      <!-- AI & Automation -->
+      <a href="https://www.linkedin.com/learning/certificates/9e3c21550dc5afe1ada5f58b16174065b0bf2318149047b316d954b800a731b4" target="_blank" rel="noopener" class="cert-card glass reveal">
+        <div class="cert-badge"><img src="https://cdn.simpleicons.org/n8n/EA4B71" width="44" alt="n8n"></div>
+        <p class="cert-category">AI &amp; Automation</p>
+        <h3 class="cert-name">Build AI Agents with n8n</h3>
+        <p class="cert-issuer">LinkedIn Learning</p>
+        <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════ FOOTER ══════ -->
+  <footer>
+    <div class="footer-wave"></div>
+    <div class="footer-socials">
+      <a href="https://github.com/hammadxcm" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <a href="https://twitter.com/hammadkhanxcm" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/hammadxcm" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Hammad Khan. Built with <span class="heart">&hearts;</span> and vanilla JS.</p>
+  </footer>
+
+  <script>
+    /* ══════════════════════════════
+       PARTICLE CANVAS
+    ══════════════════════════════ */
+    (function() {
+      const canvas = document.getElementById('particle-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, particles, mouse = { x: null, y: null, radius: 150 };
+
+      function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      canvas.addEventListener('mousemove', function(e) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      canvas.addEventListener('mouseleave', function() {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      function Particle() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 2 + 0.5;
+        this.opacity = Math.random() * 0.5 + 0.2;
+      }
+
+      function init() {
+        const count = Math.min(80, Math.floor((w * h) / 12000));
+        particles = [];
+        for (let i = 0; i < count; i++) particles.push(new Particle());
+      }
+      init();
+      window.addEventListener('resize', init);
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          // Mouse repulsion
+          if (mouse.x !== null) {
+            const dx = p.x - mouse.x;
+            const dy = p.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              const force = (mouse.radius - dist) / mouse.radius;
+              p.x += dx / dist * force * 2;
+              p.y += dy / dist * force * 2;
+            }
+          }
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(91, 205, 236, ' + p.opacity + ')';
+          ctx.fill();
+
+          // Lines between nearby particles
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 160) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = 'rgba(91, 205, 236, ' + (0.15 * (1 - dist / 160)) + ')';
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    /* ══════════════════════════════
+       TYPEWRITER
+    ══════════════════════════════ */
+    (function() {
+      const el = document.getElementById('typewriter');
+      const titles = [
+        'Senior Full Stack Engineer',
+        'Ruby & JavaScript Expert',
+        'Distributed Systems Architect',
+        'Open Source Contributor',
+        'Building Scalable Web Applications',
+        'Problem Solver & Tech Enthusiast'
+      ];
+      let titleIdx = 0, charIdx = 0, deleting = false, pause = 0;
+
+      function tick() {
+        const current = titles[titleIdx];
+        if (pause > 0) { pause--; requestAnimationFrame(tick); return; }
+        if (!deleting) {
+          el.textContent = current.substring(0, charIdx + 1);
+          charIdx++;
+          if (charIdx === current.length) { deleting = true; pause = 90; }
+        } else {
+          el.textContent = current.substring(0, charIdx - 1);
+          charIdx--;
+          if (charIdx === 0) { deleting = false; titleIdx = (titleIdx + 1) % titles.length; pause = 20; }
+        }
+        setTimeout(function() { requestAnimationFrame(tick); }, deleting ? 30 : 60);
+      }
+      tick();
+    })();
+
+    /* ══════════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════════ */
+    (function() {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      reveals.forEach(function(el) { observer.observe(el); });
+    })();
+
+    /* ══════════════════════════════
+       3D CARD TILT
+    ══════════════════════════════ */
+    (function() {
+      var cards = document.querySelectorAll('[data-tilt]');
+      cards.forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+          var rect = card.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var y = e.clientY - rect.top;
+          var cx = rect.width / 2;
+          var cy = rect.height / 2;
+          var rotateX = (y - cy) / cy * -5;
+          var rotateY = (x - cx) / cx * 5;
+          card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-4px)';
+        });
+        card.addEventListener('mouseleave', function() {
+          card.style.transform = '';
+        });
+      });
+    })();
+
+    /* ══════════════════════════════
+       MOBILE NAV
+    ══════════════════════════════ */
+    (function() {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open');
+      });
+      navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('open');
+        });
+      });
+    })();
+
+    /* ══════════════════════════════
+       COPY CODE
+    ══════════════════════════════ */
+    (function() {
+      var btn = document.getElementById('copyBtn');
+      var label = document.getElementById('copyLabel');
+      var icon = document.getElementById('copyIcon');
+      var code = 'const hammadKhan = {\n  title: "Senior Full Stack Engineer",\n  experience: "8+ years building systems at scale",\n  location: "Lahore, Pakistan",\n  specialization: "Distributed Systems & Platform Architecture",\n  currentRole: "Senior Full Stack Engineer @ NexaQuanta",\n\n  expertise: {\n    systemDesign: ["Microservices", "Event-Driven", "DDD"],\n    backend: ["Rails", "NestJS", "Node", "GraphQL"],\n    frontend: ["React", "Vue", "Next.js", "PWA"],\n    infra: ["AWS", "Docker", "Redis", "BullMQ", "K8s"],\n    databases: ["PostgreSQL", "MongoDB", "MySQL", "Prisma"],\n    security: ["OWASP Top 10", "Audit Systems", "HIPAA"],\n  },\n\n  highlights: [\n    "115+ MRs delivered in 5 months @ NexaQuanta",\n    "Rails Core Contributor — merged PR to rails/rails",\n    "Zero-downtime Stripe migration with 99.9% uptime",\n    "Progressive loading: page load 12s → 2.3s",\n  ],\n\n  openSource: ["daemon-os", "rubocop-hk", "ramadan-cli-pro"],\n  currentFocus: "Platform Engineering & Technical Strategy",\n  philosophy: "Building systems that scale, teams that deliver,\\n               and solutions that last."\n};';
+
+      btn.addEventListener('click', function() {
+        navigator.clipboard.writeText(code).then(function() {
+          label.textContent = 'Copied!';
+          icon.innerHTML = '<polyline points="20 6 9 17 4 12"/>';
+          btn.classList.add('copied');
+          setTimeout(function() {
+            label.textContent = 'Copy';
+            icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>';
+            btn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
