@@ -197,128 +197,104 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
 ══════════════════════════════ */
 (function() {
   if (prefersReducedMotion) return;
-  var nameEl = document.getElementById('heroName');
   var innerEl = document.getElementById('heroNameInner');
-  if (!nameEl || !innerEl) return;
+  if (!innerEl) return;
 
   var finalText = 'Hammad Khan';
-  var scrambleChars = '$@#K!x%&*?><{}[]~^₿Ξ∆ΩΣ░▒▓█◊∞≈';
-  var chars = finalText.split('');
-  var state = new Array(chars.length); // true = resolved, false = scrambled
-  for (var s = 0; s < state.length; s++) state[s] = false;
-  var flickerTimer = null;
-  var busy = false;
+  var glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$@#!%&*?';
+  var len = finalText.length;
 
-  function randChar() {
-    return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-  }
+  function randG() { return glyphs[Math.floor(Math.random() * glyphs.length)]; }
 
-  // Render current state — resolved chars show real letter, others show random
-  function render() {
-    var text = '';
-    for (var i = 0; i < chars.length; i++) {
-      if (chars[i] === ' ') { text += ' '; }
-      else if (state[i]) { text += chars[i]; }
-      else { text += randChar(); }
+  // Build display string: resolved positions show real char, rest show random
+  function buildText(resolved) {
+    var out = '';
+    for (var i = 0; i < len; i++) {
+      if (finalText[i] === ' ') { out += ' '; }
+      else if (resolved[i]) { out += finalText[i]; }
+      else { out += randG(); }
     }
-    innerEl.textContent = text;
+    return out;
   }
 
-  // Flicker: re-render scrambled chars at 50ms to make them dance
-  function startFlicker() {
-    if (flickerTimer) return;
-    flickerTimer = setInterval(render, 50);
-  }
-  function stopFlicker() {
-    clearInterval(flickerTimer);
-    flickerTimer = null;
-  }
-
-  // Get non-space indices in shuffled order
-  function shuffledIndices(filterResolved) {
-    var indices = [];
-    for (var i = 0; i < chars.length; i++) {
-      if (chars[i] === ' ') continue;
-      if (filterResolved === true && !state[i]) continue;
-      if (filterResolved === false && state[i]) continue;
-      indices.push(i);
+  // Phase: decrypt (scrambled → real, one char at a time)
+  function decrypt(resolved, onDone) {
+    // Collect unresolved non-space indices, shuffle them
+    var pool = [];
+    for (var i = 0; i < len; i++) {
+      if (finalText[i] !== ' ' && !resolved[i]) pool.push(i);
     }
-    // Fisher-Yates shuffle
-    for (var j = indices.length - 1; j > 0; j--) {
-      var k = Math.floor(Math.random() * (j + 1));
-      var tmp = indices[j]; indices[j] = indices[k]; indices[k] = tmp;
-    }
-    return indices;
-  }
+    shuffle(pool);
 
-  // Decrypt: resolve chars one by one (scrambled → real)
-  function decrypt(callback) {
-    busy = true;
-    startFlicker();
-    var indices = shuffledIndices(false); // get currently-scrambled chars
-    var idx = 0;
-    var timer = setInterval(function() {
-      if (idx < indices.length) {
-        state[indices[idx]] = true;
-        render();
-        idx++;
+    // Flicker scrambled chars while decrypting
+    var flicker = setInterval(function() { innerEl.textContent = buildText(resolved); }, 60);
+
+    var step = 0;
+    var resolver = setInterval(function() {
+      if (step < pool.length) {
+        resolved[pool[step]] = true;
+        step++;
       } else {
-        clearInterval(timer);
-        stopFlicker();
+        clearInterval(resolver);
+        clearInterval(flicker);
         innerEl.textContent = finalText;
-        busy = false;
-        if (callback) callback();
+        onDone();
       }
-    }, 100);
+    }, 110);
   }
 
-  // Encrypt: corrupt chars one by one (real → scrambled)
-  function encrypt(callback) {
-    busy = true;
-    var indices = shuffledIndices(true); // get currently-resolved chars
-    var idx = 0;
-    var timer = setInterval(function() {
-      if (idx < indices.length) {
-        state[indices[idx]] = false;
-        render();
-        idx++;
+  // Phase: encrypt (real → scrambled, one char at a time)
+  function encrypt(resolved, onDone) {
+    var pool = [];
+    for (var i = 0; i < len; i++) {
+      if (finalText[i] !== ' ' && resolved[i]) pool.push(i);
+    }
+    shuffle(pool);
+
+    var step = 0;
+    var corruptor = setInterval(function() {
+      if (step < pool.length) {
+        resolved[pool[step]] = false;
+        innerEl.textContent = buildText(resolved);
+        step++;
       } else {
-        clearInterval(timer);
-        startFlicker();
-        busy = false;
-        if (callback) callback();
+        clearInterval(corruptor);
+        // Start dancing flicker while fully scrambled
+        var flicker = setInterval(function() { innerEl.textContent = buildText(resolved); }, 60);
+        setTimeout(function() {
+          clearInterval(flicker);
+          onDone();
+        }, 800 + Math.random() * 700);
       }
-    }, 80);
+    }, 90);
   }
 
-  // ── Continuous loop: decrypt → hold → encrypt → hold → repeat ──
+  function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+  }
+
+  // Main loop
   function cycle() {
-    // Decrypt
-    decrypt(function() {
-      // Hold readable for 3-5s
+    var resolved = [];
+    for (var i = 0; i < len; i++) resolved[i] = false;
+
+    decrypt(resolved, function() {
+      // Hold "Hammad Khan" readable for 3-5s
       setTimeout(function() {
-        // Encrypt
-        encrypt(function() {
-          // Hold scrambled for 0.8-1.5s while chars dance
-          setTimeout(function() {
-            cycle();
-          }, 800 + Math.random() * 700);
+        encrypt(resolved, function() {
+          cycle();
         });
       }, 3000 + Math.random() * 2000);
     });
   }
 
-  // ── Boot: wait for boot sequence then start ──
-  var bootDelay = 3000;
+  // Wait for boot sequence then start
   setTimeout(function() {
-    // Start fully scrambled
-    for (var i = 0; i < state.length; i++) state[i] = false;
-    startFlicker();
-    // Begin first decrypt after brief scramble display
-    setTimeout(function() {
-      cycle();
-    }, 600);
-  }, bootDelay);
+    cycle();
+  }, 3200);
 })();
 
 /* ══════════════════════════════

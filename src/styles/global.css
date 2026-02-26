@@ -1231,23 +1231,6 @@ footer {
 .hero-name {
   position: relative;
 }
-/* Scanlines on hero name (subtle) */
-.hero-name .hero-name-inner {
-  position: relative;
-}
-.hero-name .hero-name-inner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 191, 191, 0.02) 2px,
-    rgba(0, 191, 191, 0.02) 4px
-  );
-  pointer-events: none;
-}
 
 /* ══════════════════════════════
    MATRIX RAIN CANVAS
@@ -1663,7 +1646,6 @@ body.env-glitch {
   .terminal-status-bar { display: none !important; }
   .hacker-toast-container { display: none !important; }
   body.env-glitch { animation: none !important; filter: none !important; transform: none !important; }
-  .hero-name .hero-name-inner::after { display: none !important; }
   .section-title { animation: none !important; }
   body.has-custom-cursor { cursor: auto; }
   .timeline::before { height: 100% !important; }
