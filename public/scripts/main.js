@@ -3,6 +3,59 @@ var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
 /* ══════════════════════════════
+   BOOT SEQUENCE
+══════════════════════════════ */
+(function() {
+  if (prefersReducedMotion) {
+    var boot = document.getElementById('bootScreen');
+    if (boot) { boot.classList.add('hidden'); }
+    return;
+  }
+  var bootScreen = document.getElementById('bootScreen');
+  var bootLines = document.getElementById('bootLines');
+  if (!bootScreen || !bootLines) return;
+
+  var lines = [
+    { text: '$ uname -a', cls: 'boot-cmd' },
+    { text: 'Linux mainframe 6.1.0-kali9 #1 SMP x86_64 GNU/Linux', cls: 'boot-output' },
+    { text: '$ sudo systemctl start portfolio.service', cls: 'boot-cmd' },
+    { text: '[  OK  ] Started portfolio.service — Hammad Khan Runtime', cls: 'boot-ok' },
+    { text: '$ nmap -sS 10.0.0.0/24 --top-ports 5', cls: 'boot-cmd' },
+    { text: 'Starting Nmap 7.94 ( https://nmap.org )', cls: 'boot-output' },
+    { text: 'PORT    STATE SERVICE', cls: 'boot-output' },
+    { text: '22/tcp  open  ssh', cls: 'boot-output' },
+    { text: '80/tcp  open  http', cls: 'boot-output' },
+    { text: '443/tcp open  https', cls: 'boot-output' },
+    { text: '$ ssh -i ~/.ssh/id_rsa root@portfolio', cls: 'boot-cmd' },
+    { text: 'Authenticating with public key...', cls: 'boot-output' },
+    { text: 'Last login: Thu Feb 27 03:14:15 2026 from 10.0.0.1', cls: 'boot-output' },
+    { text: 'root@portfolio:~# cat /etc/motd', cls: 'boot-cmd' },
+    { text: '', cls: '' },
+    { text: '>>> WELCOME, HAMMAD <<<', cls: 'boot-access' }
+  ];
+
+  lines.forEach(function(l) {
+    var span = document.createElement('span');
+    span.textContent = l.text;
+    if (l.cls) span.classList.add(l.cls);
+    bootLines.appendChild(span);
+  });
+
+  var spans = bootLines.querySelectorAll('span');
+  var delay = 200;
+  spans.forEach(function(span, i) {
+    setTimeout(function() { span.classList.add('show'); }, delay + i * 250);
+  });
+
+  // Fade out after all lines shown
+  var totalTime = delay + spans.length * 250 + 400;
+  setTimeout(function() {
+    bootScreen.classList.add('fade-out');
+    setTimeout(function() { bootScreen.classList.add('hidden'); }, 500);
+  }, totalTime);
+})();
+
+/* ══════════════════════════════
    PARTICLE CANVAS
 ══════════════════════════════ */
 (function() {
@@ -48,7 +101,6 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
     ctx.clearRect(0, 0, w, h);
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
-      // Mouse repulsion
       if (mouse.x !== null) {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
@@ -69,7 +121,6 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
       ctx.fillStyle = 'rgba(91, 205, 236, ' + p.opacity + ')';
       ctx.fill();
 
-      // Lines between nearby particles
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j];
         const dx = p.x - p2.x;
@@ -91,17 +142,184 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
 })();
 
 /* ══════════════════════════════
+   MATRIX RAIN CANVAS
+══════════════════════════════ */
+(function() {
+  if (prefersReducedMotion || isTouchDevice) return;
+  var canvas = document.getElementById('matrix-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var w, h, columns, drops;
+  var chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF';
+  var fontSize = 14;
+  var frameCount = 0;
+
+  function resize() {
+    w = canvas.width = canvas.offsetWidth;
+    h = canvas.height = canvas.offsetHeight;
+    columns = Math.floor(w / fontSize);
+    drops = [];
+    for (var i = 0; i < columns; i++) {
+      drops[i] = Math.random() * -100;
+    }
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function draw() {
+    frameCount++;
+    // Run at ~20fps (skip 2 of every 3 frames at 60fps) — slower, moodier rain
+    if (frameCount % 3 !== 0) { requestAnimationFrame(draw); return; }
+
+    ctx.fillStyle = 'rgba(10, 14, 20, 0.06)';
+    ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = 'rgba(0, 191, 191, 0.6)';
+    ctx.font = fontSize + 'px monospace';
+
+    for (var i = 0; i < drops.length; i++) {
+      // Only advance ~70% of columns per frame for staggered feel
+      if (Math.random() > 0.3) {
+        var char = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > h && Math.random() > 0.98) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ══════════════════════════════
+   HERO NAME — CONTINUOUS ENCRYPT / DECRYPT
+══════════════════════════════ */
+(function() {
+  if (prefersReducedMotion) return;
+  var innerEl = document.getElementById('heroNameInner');
+  if (!innerEl) return;
+
+  var finalText = 'Hammad Khan';
+  var glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$@#!%&*?';
+  var len = finalText.length;
+
+  function randG() { return glyphs[Math.floor(Math.random() * glyphs.length)]; }
+
+  // Build display string: resolved positions show real char, rest show random
+  function buildText(resolved) {
+    var out = '';
+    for (var i = 0; i < len; i++) {
+      if (finalText[i] === ' ') { out += ' '; }
+      else if (resolved[i]) { out += finalText[i]; }
+      else { out += randG(); }
+    }
+    return out;
+  }
+
+  // Phase: decrypt (scrambled → real, one char at a time)
+  function decrypt(resolved, onDone) {
+    // Collect unresolved non-space indices, shuffle them
+    var pool = [];
+    for (var i = 0; i < len; i++) {
+      if (finalText[i] !== ' ' && !resolved[i]) pool.push(i);
+    }
+    shuffle(pool);
+
+    // Flicker scrambled chars while decrypting
+    var flicker = setInterval(function() { innerEl.textContent = buildText(resolved); }, 60);
+
+    var step = 0;
+    var resolver = setInterval(function() {
+      if (step < pool.length) {
+        resolved[pool[step]] = true;
+        step++;
+      } else {
+        clearInterval(resolver);
+        clearInterval(flicker);
+        innerEl.textContent = finalText;
+        onDone();
+      }
+    }, 110);
+  }
+
+  // Phase: encrypt (real → scrambled, one char at a time)
+  function encrypt(resolved, onDone) {
+    var pool = [];
+    for (var i = 0; i < len; i++) {
+      if (finalText[i] !== ' ' && resolved[i]) pool.push(i);
+    }
+    shuffle(pool);
+
+    var step = 0;
+    var corruptor = setInterval(function() {
+      if (step < pool.length) {
+        resolved[pool[step]] = false;
+        innerEl.textContent = buildText(resolved);
+        step++;
+      } else {
+        clearInterval(corruptor);
+        // Start dancing flicker while fully scrambled
+        var flicker = setInterval(function() { innerEl.textContent = buildText(resolved); }, 60);
+        setTimeout(function() {
+          clearInterval(flicker);
+          onDone();
+        }, 800 + Math.random() * 700);
+      }
+    }, 90);
+  }
+
+  function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+  }
+
+  // Main loop
+  function cycle() {
+    var resolved = [];
+    for (var i = 0; i < len; i++) resolved[i] = false;
+
+    decrypt(resolved, function() {
+      // Hold "Hammad Khan" readable for 3-5s
+      setTimeout(function() {
+        encrypt(resolved, function() {
+          cycle();
+        });
+      }, 3000 + Math.random() * 2000);
+    });
+  }
+
+  // Wait for boot sequence then start
+  setTimeout(function() {
+    cycle();
+  }, 3200);
+})();
+
+/* ══════════════════════════════
    TYPEWRITER
 ══════════════════════════════ */
 (function() {
   const el = document.getElementById('typewriter');
   const titles = [
-    'Senior Full Stack Engineer',
-    'Ruby & JavaScript Expert',
-    'Distributed Systems Architect',
-    'Open Source Contributor',
-    'Building Scalable Web Applications',
-    'Problem Solver & Tech Enthusiast'
+    '> Senior Software Engineer',
+    '> Ruby on Rails Virtuoso',
+    '> Initializing neural interface...',
+    '> Node.js Systems Architect',
+    '> Bypassing firewall protocols...',
+    '> React & Vue Evangelist',
+    '> Decrypting classified payloads...',
+    '> AWS Infrastructure Strategist',
+    '> Establishing encrypted tunnel...',
+    '> PostgreSQL Performance Alchemist',
+    '> Compiling exploit modules...',
+    '> Docker & Kubernetes Orchestrator',
+    '> GraphQL Schema Architect',
+    '> TypeScript Perfectionist',
+    '> Redis & Distributed Queue Specialist',
+    '> Open Source Advocate & Contributor',
+    '> Root access granted. Welcome back.'
   ];
   let titleIdx = 0, charIdx = 0, deleting = false, pause = 0;
 
@@ -120,6 +338,160 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
     setTimeout(function() { requestAnimationFrame(tick); }, deleting ? 30 : 60);
   }
   tick();
+})();
+
+/* ══════════════════════════════
+   BACKGROUND HACKER LOG
+══════════════════════════════ */
+(function() {
+  if (prefersReducedMotion || isTouchDevice) return;
+  var container = document.getElementById('hackerLog');
+  if (!container) return;
+  var maxNodes = 20;
+  var nodeCount = 0;
+
+  var templates = [
+    function() { return '[SCAN] ' + randIP() + ' — port ' + randPort() + ' open'; },
+    function() { return '[AUTH] Token refresh: SHA256:' + randHex(7); },
+    function() { return '[REDIS] PING → PONG (' + rand(1,9) + 'ms)'; },
+    function() { return '[K8S] pod/api-deployment-' + randHex(6) + ' ready'; },
+    function() { return '[NET] TLS handshake ' + randIP() + ':' + randPort(); },
+    function() { return '[SYS] CPU: ' + rand(12,78) + '% | MEM: ' + rand(40,88) + '%'; },
+    function() { return '[LOG] PID ' + rand(1000,9999) + ' — request completed 200 OK'; },
+    function() { return '[DB] Query executed in ' + rand(1,45) + 'ms — ' + rand(1,500) + ' rows'; },
+    function() { return '[SSH] Session ' + randHex(8) + ' authenticated'; },
+    function() { return '[GIT] push origin main — ' + randHex(7); },
+    function() { return '[DNS] Resolved ' + randDomain() + ' → ' + randIP(); },
+    function() { return '[CRON] Job #' + rand(100,999) + ' completed successfully'; },
+    function() { return '[SSL] Certificate valid — expires in ' + rand(30,365) + 'd'; },
+    function() { return '[API] POST /v2/deploy — 201 Created (' + rand(80,400) + 'ms)'; },
+    function() { return '[DOCKER] Container ' + randHex(12) + ' healthy'; },
+    function() { return '[PROXY] 301 redirect → /api/v' + rand(1,3); },
+    function() { return '[FS] /var/log/syslog rotated — ' + rand(1,50) + 'MB freed'; },
+    function() { return '[CACHE] HIT ratio: ' + rand(85,99) + '.' + rand(0,9) + '%'; },
+    function() { return '[QUEUE] ' + rand(0,15) + ' jobs pending — ' + rand(100,999) + ' processed'; },
+    function() { return '[MONITOR] Uptime: ' + rand(1,999) + 'd ' + rand(0,23) + 'h ' + rand(0,59) + 'm'; }
+  ];
+
+  function rand(a,b) { return Math.floor(Math.random()*(b-a+1))+a; }
+  function randHex(n) { var s=''; for(var i=0;i<n;i++) s+='0123456789abcdef'[Math.floor(Math.random()*16)]; return s; }
+  function randIP() { return rand(10,192)+'.'+rand(0,255)+'.'+rand(0,255)+'.'+rand(1,254); }
+  function randPort() { return [22,80,443,3000,5432,6379,8080,8443,9090][Math.floor(Math.random()*9)]; }
+  function randDomain() { return ['api','cdn','db','cache','auth'][Math.floor(Math.random()*5)] + '.internal'; }
+
+  function spawnLine() {
+    if (nodeCount >= maxNodes) return;
+    var line = document.createElement('div');
+    line.className = 'hacker-log-line';
+    line.textContent = templates[Math.floor(Math.random() * templates.length)]();
+    line.style.left = rand(5, 85) + '%';
+    line.style.top = rand(20, 90) + '%';
+    container.appendChild(line);
+    nodeCount++;
+    line.addEventListener('animationend', function() {
+      line.remove();
+      nodeCount--;
+    });
+  }
+
+  setInterval(spawnLine, 800);
+})();
+
+/* ══════════════════════════════
+   CLICK SCREEN GLITCH + HACKER TOASTS
+══════════════════════════════ */
+(function() {
+  if (prefersReducedMotion) return;
+  var toastContainer = document.getElementById('hackerToastContainer');
+  var glitchOverlay = document.getElementById('clickGlitchOverlay');
+  if (!toastContainer) return;
+
+  var clickMessages = [
+    '# Firewall bypassed on port 443',
+    '> Packet intercepted: 192.168.x.x',
+    '$ Buffer overflow in sector 7',
+    '# Encryption key rotated: SHA256:a3f82c',
+    '> SSH tunnel to darknet established',
+    '$ Payload delivered — 0 traces',
+    '# Root shell spawned (PID 31337)',
+    '> Memory dump: 0xDEADBEEF',
+    '$ Brute force: 12,847 combos/sec',
+    '# Certificate pinning bypassed'
+  ];
+
+  var maxToasts = 3;
+
+  function spawnToast(message, isAmbient) {
+    var toast = document.createElement('div');
+    toast.className = 'hacker-toast' + (isAmbient ? ' ambient' : '');
+    toast.textContent = message;
+    toastContainer.appendChild(toast);
+
+    // Cap at max toasts
+    var toasts = toastContainer.querySelectorAll('.hacker-toast');
+    while (toasts.length > maxToasts) {
+      toasts[0].remove();
+      toasts = toastContainer.querySelectorAll('.hacker-toast');
+    }
+
+    // Auto-dismiss after 2.5s
+    setTimeout(function() {
+      toast.classList.add('dismiss');
+      toast.addEventListener('animationend', function() { toast.remove(); });
+    }, 2500);
+  }
+
+  function triggerGlitch() {
+    if (!glitchOverlay) return;
+    glitchOverlay.classList.add('active');
+    setTimeout(function() {
+      glitchOverlay.classList.remove('active');
+    }, 150);
+  }
+
+  document.addEventListener('click', function() {
+    triggerGlitch();
+    var msg = clickMessages[Math.floor(Math.random() * clickMessages.length)];
+    spawnToast(msg, false);
+  });
+
+  // ── Ambient Auto-Toasts (Change 8) ──
+  var ambientMessages = [
+    '[CRON] Scheduled recon scan completed',
+    '[ALERT] New device detected on network',
+    '[SYNC] Encrypted backup: 100% complete',
+    '[MONITOR] Intrusion detection: all clear',
+    '[DAEMON] Process health check: nominal'
+  ];
+
+  function scheduleAmbient() {
+    var delay = 12000 + Math.random() * 6000; // 12-18s
+    setTimeout(function() {
+      var msg = ambientMessages[Math.floor(Math.random() * ambientMessages.length)];
+      spawnToast(msg, true);
+      scheduleAmbient();
+    }, delay);
+  }
+  if (!isTouchDevice) scheduleAmbient();
+
+  // ── Periodic Global Environment Glitch ──
+  function triggerGlobalGlitch() {
+    triggerGlitch(); // overlay flash
+    // Also glitch the entire page body
+    document.body.classList.add('env-glitch');
+    setTimeout(function() {
+      document.body.classList.remove('env-glitch');
+    }, 200);
+  }
+
+  function scheduleEnvGlitch() {
+    var delay = 6000 + Math.random() * 6000; // 6-12s
+    setTimeout(function() {
+      triggerGlobalGlitch();
+      scheduleEnvGlitch();
+    }, delay);
+  }
+  if (!isTouchDevice) scheduleEnvGlitch();
 })();
 
 /* ══════════════════════════════
@@ -172,7 +544,6 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
         var vh = window.innerHeight;
         var docHeight = document.documentElement.scrollHeight - vh;
 
-        // Hero content: scale down & fade out as you scroll
         if (scrollY < vh) {
           var progress = scrollY / vh;
           var scale = 1 - progress * 0.15;
@@ -182,29 +553,24 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
           if (scrollIndicator) {
             scrollIndicator.style.opacity = Math.max(1 - progress * 3, 0);
           }
-          // Hero layer parallax
           if (heroGridLayer) heroGridLayer.style.transform = 'translateY(' + (scrollY * 0.15) + 'px)';
           if (heroShapesLayer) heroShapesLayer.style.transform = 'translateY(' + (scrollY * 0.4) + 'px)';
         }
 
-        // Subtle orb opacity shift on scroll
         var orbOpacity = Math.max(0.05, 0.12 - (scrollY / docHeight) * 0.06);
         for (var i = 0; i < orbs.length; i++) {
           orbs[i].style.opacity = orbOpacity;
         }
 
-        // Nav background on scroll
         if (scrollY > 50) {
           nav.style.background = 'rgba(13, 17, 23, 0.95)';
         } else {
           nav.style.background = 'rgba(13, 17, 23, 0.8)';
         }
 
-        // Scroll progress bar
         var scrollPercent = (scrollY / docHeight) * 100;
         progressBar.style.width = scrollPercent + '%';
 
-        // Self-drawing timeline line
         if (timeline && !prefersReducedMotion) {
           var rect = timeline.getBoundingClientRect();
           var timelineTop = rect.top + scrollY;
@@ -216,7 +582,6 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
           }
         }
 
-        // Section title gradient scroll
         for (var t = 0; t < sectionTitles.length; t++) {
           var titleRect = sectionTitles[t].getBoundingClientRect();
           var titleProgress = 1 - (titleRect.top / vh);
@@ -271,7 +636,6 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
     });
   });
 
-  // Highlight active nav link on scroll
   var sections = document.querySelectorAll('section[id]');
   var activeObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
@@ -292,7 +656,7 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
   var btn = document.getElementById('copyBtn');
   var label = document.getElementById('copyLabel');
   var icon = document.getElementById('copyIcon');
-  var code = 'const hammadKhan = {\n  title: "Senior Full Stack Engineer",\n  experience: "8+ years building systems at scale",\n  location: "Lahore, Pakistan",\n  specialization: "Distributed Systems & Platform Architecture",\n  currentRole: "Senior Full Stack Engineer @ NexaQuanta",\n\n  expertise: {\n    systemDesign: ["Microservices", "Event-Driven", "DDD"],\n    backend: ["Rails", "NestJS", "Node", "GraphQL"],\n    frontend: ["React", "Vue", "Next.js", "PWA"],\n    infra: ["AWS", "Docker", "Redis", "BullMQ", "K8s"],\n    databases: ["PostgreSQL", "MongoDB", "MySQL", "Prisma"],\n    security: ["OWASP Top 10", "Audit Systems", "HIPAA"],\n  },\n\n  highlights: [\n    "115+ MRs delivered in 5 months @ NexaQuanta",\n    "Rails Core Contributor — merged PR to rails/rails",\n    "Zero-downtime Stripe migration with 99.9% uptime",\n    "Progressive loading: page load 12s → 2.3s",\n  ],\n\n  openSource: ["daemon-os", "rubocop-hk", "ramadan-cli-pro"],\n  currentFocus: "Platform Engineering & Technical Strategy",\n  philosophy: "Building systems that scale, teams that deliver,\\n               and solutions that last."\n};';
+  var code = '#!/bin/bash\n# ═══════════════════════════════════════\n# CLASSIFIED — SECURITY CLEARANCE: ROOT\n# ═══════════════════════════════════════\n\nCODENAME="hammad_khan"\nTITLE="Senior Full Stack Engineer"\nEXPERIENCE="8+ years building systems at scale"\nLOCATION="Lahore, Pakistan"\nCLEARANCE="Level 5 — Platform Architecture"\nCURRENT_OP="Senior Full Stack Engineer @ NexaQuanta"\n\ndeclare -A ARSENAL=(\n  [system_design]="Microservices | Event-Driven | DDD"\n  [backend]="Rails | NestJS | Node | GraphQL"\n  [frontend]="React | Vue | Next.js | PWA"\n  [infrastructure]="AWS | Docker | Redis | BullMQ | K8s"\n  [databases]="PostgreSQL | MongoDB | MySQL | Prisma"\n  [security]="OWASP Top 10 | Audit Systems | HIPAA"\n)\n\nMISSION_LOG=(\n  "115+ MRs delivered in 5 months @ NexaQuanta"\n  "Rails Core Contributor — merged PR to rails/rails"\n  "Zero-downtime Stripe migration — 99.9% uptime"\n  "Progressive loading: page load 12s → 2.3s"\n)\n\nKNOWN_ALIASES=("daemon-os" "rubocop-hk" "ramadan-cli-pro")\nCURRENT_FOCUS="Platform Engineering & Technical Strategy"\nPHILOSOPHY="Building systems that scale, teams that deliver,\n            and solutions that last."\n\necho "[STATUS] Dossier loaded. Target identified."';
 
   btn.addEventListener('click', function() {
     navigator.clipboard.writeText(code).then(function() {
@@ -308,18 +672,25 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
   });
 })();
 
-/* (Hero name uses CSS-only heroReveal animation — no JS char split needed) */
-
 /* ══════════════════════════════
-   CUSTOM CURSOR (desktop only)
+   CROSSHAIR CURSOR + TRAIL (desktop only)
 ══════════════════════════════ */
 (function() {
   if (isTouchDevice || prefersReducedMotion) return;
-  var cursor = document.getElementById('customCursor');
+  var cursor = document.getElementById('crosshairCursor');
+  var trailContainer = document.getElementById('cursorTrail');
   if (!cursor) return;
   document.body.classList.add('has-custom-cursor');
+
   var mx = 0, my = 0, cx = 0, cy = 0;
   var lerp = 0.15;
+
+  // Trail pool
+  var trailDots = trailContainer ? trailContainer.querySelectorAll('span') : [];
+  var trailPositions = [];
+  for (var i = 0; i < trailDots.length; i++) {
+    trailPositions.push({ x: 0, y: 0 });
+  }
 
   document.addEventListener('mousemove', function(e) {
     mx = e.clientX;
@@ -329,9 +700,11 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
 
   document.addEventListener('mouseleave', function() {
     cursor.classList.remove('visible');
+    for (var i = 0; i < trailDots.length; i++) {
+      trailDots[i].style.opacity = '0';
+    }
   });
 
-  // Detect hover on interactive elements
   var interactiveEls = 'a, button, [data-tilt], .social-btn, .project-link, .cert-card, .skyline-card, input, textarea';
   document.addEventListener('mouseover', function(e) {
     if (e.target.closest(interactiveEls)) cursor.classList.add('hover');
@@ -345,9 +718,48 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
     cy += (my - cy) * lerp;
     cursor.style.left = cx + 'px';
     cursor.style.top = cy + 'px';
+
+    // Update trail positions with staggered delay
+    for (var i = trailDots.length - 1; i > 0; i--) {
+      trailPositions[i].x = trailPositions[i - 1].x;
+      trailPositions[i].y = trailPositions[i - 1].y;
+    }
+    if (trailPositions.length > 0) {
+      trailPositions[0].x = cx;
+      trailPositions[0].y = cy;
+    }
+
+    for (var j = 0; j < trailDots.length; j++) {
+      trailDots[j].style.left = trailPositions[j].x + 'px';
+      trailDots[j].style.top = trailPositions[j].y + 'px';
+      trailDots[j].style.opacity = cursor.classList.contains('visible') ? (1 - j / trailDots.length) * 0.4 : 0;
+    }
+
     requestAnimationFrame(animate);
   }
   animate();
+})();
+
+/* ══════════════════════════════
+   KEYBOARD VISUAL FEEDBACK
+══════════════════════════════ */
+(function() {
+  if (prefersReducedMotion) return;
+  var flash = document.getElementById('keyFlash');
+  if (!flash) return;
+  var timeout;
+
+  document.addEventListener('keydown', function(e) {
+    var key = e.key;
+    if (key === ' ') key = 'Space';
+    if (key.length > 10) return; // skip weird keys
+    flash.textContent = '> ' + key;
+    flash.classList.add('show');
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      flash.classList.remove('show');
+    }, 600);
+  });
 })();
 
 /* ══════════════════════════════
@@ -376,7 +788,6 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
       });
     }
   });
-  // Also apply blur-up to all analytics images
   var analyticsImgs = document.querySelectorAll('.analytics-grid img');
   analyticsImgs.forEach(function(img) {
     if (!img.classList.contains('blur-up')) {
@@ -398,7 +809,6 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
 ══════════════════════════════ */
 (function() {
   if (prefersReducedMotion) return;
-  // Override CSS smooth scroll — we handle it in JS
   document.documentElement.style.scrollBehavior = 'auto';
 
   var navAnchors = document.querySelectorAll('a[href^="#"]');
@@ -411,10 +821,9 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
       e.preventDefault();
 
       var startY = window.scrollY;
-      var targetY = target.getBoundingClientRect().top + startY - 64; // offset for nav
+      var targetY = target.getBoundingClientRect().top + startY - 64;
       var distance = targetY - startY;
       var absDist = Math.abs(distance);
-      // Adaptive duration: 800ms – 1500ms based on distance
       var duration = Math.min(1500, Math.max(800, absDist * 0.4));
       var startTime = performance.now();
 
@@ -442,7 +851,6 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
   var projectCards = document.querySelectorAll('.project-card');
   projectCards.forEach(function(card) {
     card.addEventListener('click', function(e) {
-      // Don't override if user clicked directly on a link
       if (e.target.closest('a')) return;
       var link = card.querySelector('.project-name a') || card.querySelector('a');
       if (link) {
@@ -450,4 +858,82 @@ var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
       }
     });
   });
+})();
+
+/* ══════════════════════════════
+   KONAMI CODE EASTER EGG
+══════════════════════════════ */
+(function() {
+  if (prefersReducedMotion) return;
+  var konamiOverlay = document.getElementById('konamiOverlay');
+  var toastContainer = document.getElementById('hackerToastContainer');
+  if (!konamiOverlay) return;
+
+  var sequence = [
+    'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+    'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+    'b', 'a'
+  ];
+  var position = 0;
+
+  document.addEventListener('keydown', function(e) {
+    var expected = sequence[position];
+    if (e.key === expected || e.key.toLowerCase() === expected) {
+      position++;
+      if (position === sequence.length) {
+        position = 0;
+        // Trigger konami overlay
+        konamiOverlay.classList.add('active');
+        setTimeout(function() {
+          konamiOverlay.classList.remove('active');
+          // Spawn follow-up toast
+          if (toastContainer) {
+            var toast = document.createElement('div');
+            toast.className = 'hacker-toast';
+            toast.textContent = '# Security breach contained';
+            toastContainer.appendChild(toast);
+            setTimeout(function() {
+              toast.classList.add('dismiss');
+              toast.addEventListener('animationend', function() { toast.remove(); });
+            }, 2500);
+          }
+        }, 1500);
+      }
+    } else {
+      position = 0;
+    }
+  });
+})();
+
+/* ══════════════════════════════
+   TERMINAL STATUS BAR
+══════════════════════════════ */
+(function() {
+  if (prefersReducedMotion) return;
+  var uptimeEl = document.getElementById('statusUptime');
+  var upSpeedEl = document.getElementById('statusUpSpeed');
+  var downSpeedEl = document.getElementById('statusDownSpeed');
+  var processesEl = document.getElementById('statusProcesses');
+  if (!uptimeEl) return;
+
+  var startTime = Date.now();
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function update() {
+    // Uptime
+    var elapsed = Math.floor((Date.now() - startTime) / 1000);
+    var hours = Math.floor(elapsed / 3600);
+    var minutes = Math.floor((elapsed % 3600) / 60);
+    var seconds = elapsed % 60;
+    uptimeEl.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+
+    // Fluctuating stats
+    upSpeedEl.textContent = (Math.random() * 4 + 0.5).toFixed(1);
+    downSpeedEl.textContent = (Math.random() * 12 + 2).toFixed(1);
+    processesEl.textContent = Math.floor(Math.random() * 10 + 18);
+  }
+
+  update();
+  setInterval(update, 2000);
 })();

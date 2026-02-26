@@ -1,5 +1,6 @@
 ---
 import SectionHeader from './SectionHeader.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <!-- ══════ TECH ARSENAL ══════ -->
@@ -86,7 +87,7 @@ import SectionHeader from './SectionHeader.astro';
         <a href="https://storybook.js.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/storybook-icon.svg" alt="Storybook"><span>Storybook</span></a>
         <a href="https://www.swift.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/swift-icon.svg" alt="Swift"><span>Swift</span></a>
         <a href="https://stripe.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=stripe" alt="Stripe"><span>Stripe</span></a>
-        <a href="https://github.com/hammadxcm/daemon-os" target="_blank" rel="noopener" class="tech-icon"><img src="/daemon-icon.svg" alt="Daemon OS"><span>Daemon OS</span></a>
+        <a href="https://github.com/hammadxcm/daemon-os" target="_blank" rel="noopener" class="tech-icon"><img src={`${base}daemon-icon.svg`} alt="Daemon OS"><span>Daemon OS</span></a>
       </div>
     </div>
   </div>

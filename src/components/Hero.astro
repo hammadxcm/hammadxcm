@@ -5,6 +5,8 @@ import SocialLinks from './SocialLinks.astro';
 <!-- ══════ HERO ══════ -->
 <section id="hero">
   <canvas id="particle-canvas"></canvas>
+  <canvas id="matrix-canvas"></canvas>
+  <div class="hacker-log" id="hackerLog"></div>
   <div class="hero-grid-layer"></div>
   <div class="hero-shapes-layer">
     <div class="geo-shape geo-shape--circle"></div>
@@ -14,8 +16,10 @@ import SocialLinks from './SocialLinks.astro';
     <div class="geo-shape geo-shape--triangle"></div>
   </div>
   <div class="hero-content">
-    <p class="hero-greeting">// Hello, World!</p>
-    <h1 class="hero-name">Hammad Khan</h1>
+    <p class="hero-greeting">root@kali:~# whoami</p>
+    <h1 class="hero-name" id="heroName" data-text="Hammad Khan">
+      <span class="hero-name-inner" id="heroNameInner">Hammad Khan</span>
+    </h1>
     <div class="hero-typewriter">
       <span class="typewriter-text" id="typewriter"></span>
       <span class="typewriter-cursor"></span>

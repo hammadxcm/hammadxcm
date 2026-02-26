@@ -1,6 +1,8 @@
 ---
 import SectionHeader from './SectionHeader.astro';
 import ArrowIcon from './ArrowIcon.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <!-- ══════ OPEN SOURCE ══════ -->
@@ -9,7 +11,7 @@ import ArrowIcon from './ArrowIcon.astro';
   <div class="projects-grid stagger">
     <!-- Rails Core -->
     <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon">&#128740;</div>
+      <div class="project-icon"><img src="https://skillicons.dev/icons?i=rails" alt="Rails" /></div>
       <h3 class="project-name"><a href="https://github.com/rails/rails/pull/56867" target="_blank" rel="noopener">Rails Core Contribution</a></h3>
       <p class="project-desc">Merged PR to <strong>rails/rails</strong> &mdash; Fixed Ruby 4.0 delegator warning in ActiveModel/ActiveRecord.</p>
       <div class="project-tags">
@@ -21,7 +23,7 @@ import ArrowIcon from './ArrowIcon.astro';
     </div>
     <!-- ramadan-cli-pro -->
     <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon">&#127769;</div>
+      <div class="project-icon"><img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js" /></div>
       <h3 class="project-name"><a href="https://www.npmjs.com/package/ramadan-cli-pro" target="_blank" rel="noopener">ramadan-cli-pro</a></h3>
       <p class="project-desc">Published npm package &mdash; TUI dashboard with prayer times, i18n & notifications.</p>
       <div class="project-tags">
@@ -33,7 +35,7 @@ import ArrowIcon from './ArrowIcon.astro';
     </div>
     <!-- rubocop-hk -->
     <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon">&#128142;</div>
+      <div class="project-icon"><img src="https://skillicons.dev/icons?i=ruby" alt="Ruby" /></div>
       <h3 class="project-name"><a href="https://rubygems.org/gems/rubocop-hk" target="_blank" rel="noopener">rubocop-hk</a></h3>
       <p class="project-desc">Published RubyGem &mdash; 2,800+ downloads. Modern RuboCop config for Ruby & Rails projects.</p>
       <div class="project-tags">
@@ -45,7 +47,7 @@ import ArrowIcon from './ArrowIcon.astro';
     </div>
     <!-- image-magnifier -->
     <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon">&#128269;</div>
+      <div class="project-icon"><img src="https://techstack-generator.vercel.app/react-icon.svg" alt="React" /></div>
       <h3 class="project-name"><a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier" target="_blank" rel="noopener">image-magnifier</a></h3>
       <p class="project-desc">React zoom component &mdash; 8 stars, 748+ downloads. TypeScript with 7 releases.</p>
       <div class="project-tags">
@@ -57,7 +59,7 @@ import ArrowIcon from './ArrowIcon.astro';
     </div>
     <!-- electric-border-css -->
     <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon">&#9889;</div>
+      <div class="project-icon"><img src="https://skillicons.dev/icons?i=css" alt="CSS" /></div>
       <h3 class="project-name"><a href="https://www.npmjs.com/package/electric-border-css" target="_blank" rel="noopener">electric-border-css</a></h3>
       <p class="project-desc">Animated CSS border effects &mdash; React, Vue, Next.js & Svelte with live demo.</p>
       <div class="project-tags">
@@ -69,7 +71,7 @@ import ArrowIcon from './ArrowIcon.astro';
     </div>
     <!-- daemon-os -->
     <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon">&#128421;</div>
+      <div class="project-icon"><img src={`${base}daemon-icon.svg`} alt="daemon-os" /></div>
       <h3 class="project-name"><a href="https://github.com/hammadxcm/daemon-os" target="_blank" rel="noopener">daemon-os</a></h3>
       <p class="project-desc">macOS MCP server for AI agent computer-use &mdash; gives AI eyes & hands on your Mac.</p>
       <div class="project-tags">
