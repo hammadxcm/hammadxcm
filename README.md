@@ -525,32 +525,47 @@ const hammadKhan = {
 
 **Full-Stack Development & Platform Engineering:**
 
-🐳 **Docker-Based Development Environment**
-- **Challenge**: Slow developer onboarding and environment inconsistency across team
-- **Solution**: Implemented containerized development environment with hot reload for frontend and backend services
-- **Impact**: 80% faster developer onboarding, zero environment inconsistency, streamlined single command setup
-
-📸 **Profile Image Upload with Transaction Safety**
-- **Challenge**: Backend bottleneck for image uploads with no rollback mechanism on failures
-- **Solution**: Architected frontend-based direct S3 upload with transaction-safe operations and automatic rollback
-- **Impact**: 40-50% faster uploads, eliminated orphaned images, improved system reliability
-
 📊 **CRM & Product Reporting System**
 - **Challenge**: Lack of centralized reporting capability for business intelligence
 - **Solution**: Built comprehensive reporting module with email-based delivery supporting CRM and Product analytics
 - **Impact**: Enabled self-service reporting for sales and operations teams, improved business visibility into customer interactions and pipeline metrics
-
-🎬 **Advanced Multi-Select Filter System**
-- **Challenge**: Limited filtering capabilities restricting users from performing complex searches
-- **Solution**: Engineered multi-select filter system with optimized query generation and SQL injection prevention
-- **Impact**: Enhanced search efficiency, reduced time to find relevant content, scalable architecture for future filter additions
 
 🗄️ **Enterprise Database Schema Migration**
 - **Challenge**: Incomplete database schema limiting cross-system data integration
 - **Solution**: Designed and executed complete database schema migration achieving 100% parity with source system
 - **Impact**: Enabled complete dealer hierarchy tracking, unified data management, established foundation for real-time synchronization and business intelligence
 
-**Technologies**: `Microservices` `NestJS` `Node.js` `React.js` `Next.js` `MongoDB` `PostgreSQL` `Prisma ORM` `AWS` `Amazon EC2` `Amazon S3` `API Development` `Jest` `Vitest`
+🗓️ **Aftersales Appointments Management System**
+- **Challenge**: No centralized appointment management for aftersales workflows — advisors had no way to create, track, or link appointments across HCI, Payment, and Triage modules
+- **Solution**: Built a complete appointment lifecycle module with multi-step creation forms, fly-out detail panels, status tags, advanced filtering/sorting, cross-module linking, and re-assignable "Assigned To" fields backed by SSO user lookup
+- **Impact**: Enabled full aftersales workflow management for dealer groups, appointment linking across HCI/Payment/Triage, real-time status tracking, and 60+ merged MRs delivering the feature end-to-end
+
+📹 **CitNOW Video Library & Status Integration**
+- **Challenge**: No visibility into video status (Sales & Workshop) within the dealer portal — advisors had to switch between systems to track video progress
+- **Solution**: Built a dedicated video library page with filtering/sorting by status, CitNOW Sales and Workshop integration, NGD URL generation for direct video access, isolated filter state between Aftersales and Sales pages, and mobile-responsive design matching Figma specs
+- **Impact**: Unified video management across Sales and Aftersales in a single portal, eliminated context-switching between systems, real-time video status visibility for all advisors
+
+📥 **Enterprise Data Import Pipeline (IC5 → IC4)**
+- **Challenge**: No mechanism to migrate legacy IC5 customer and appointment data into the new portal — manual entry was infeasible at scale
+- **Solution**: Built a full CSV-based data import pipeline with upload UI, server-side validation, duplicate detection (email uniqueness enforcement), appointment status mapping, import summary with invalid/valid record breakdown, and performance-optimized batch processing
+- **Impact**: Enabled seamless migration of enterprise customer and appointment datasets, prevented duplicate records with global uniqueness enforcement, reduced import processing time significantly with batch optimization
+
+🏢 **Multi-Dealer Org Scoping & Dual-Database Architecture**
+- **Challenge**: Portal lacked proper dealer/org scoping — queries returned data across all organizations without isolation, creating data leakage risk in multi-dealer environments
+- **Solution**: Integrated `orgId` throughout the portal with comprehensive dealer scoping for all IC4/IC5 lookup queries, dual-database querying strategy for cross-system appointment resolution, and dealer hierarchy tracking
+- **Impact**: Proper data isolation per dealer organization, eliminated cross-org data leakage, established foundation for scalable multi-tenant dealer group management
+
+🔒 **Security Hardening & Generic Audit Module**
+- **Challenge**: Critical query injection vulnerability identified by Aikido security scan in the presenter service; no audit trail for user actions across the platform
+- **Solution**: Patched the injection vulnerability in the presenter microservice; architected and implemented a generic audit module with activity tracking refactor, reusable across all platform entities
+- **Impact**: Eliminated critical security vulnerability (CVE-level), established comprehensive audit trail for compliance and forensic traceability across all user actions
+
+⚙️ **Redis Cluster & Infrastructure Hardening**
+- **Challenge**: Redis Cluster CROSSSLOT errors crashing BullMQ job queues; optional auth not handled
+- **Solution**: Fixed CROSSSLOT key violations for BullMQ sso-import queue, added graceful Redis authentication handling
+- **Impact**: Stable job processing in clustered Redis environments, zero queue failures from infrastructure misconfig
+
+**Technologies**: `Microservices` `NestJS` `Node.js` `React.js` `Next.js` `MongoDB` `PostgreSQL` `Prisma ORM` `AWS` `Amazon EC2` `Amazon S3` `Redis` `BullMQ` `API Development` `Jest` `Vitest`
 
 </td>
 </tr>
@@ -844,7 +859,7 @@ Handling TB-scale data</sub>
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/6+-Years%20Experience-brightgreen?style=for-the-badge&logo=calendar&logoColor=white"/>
+<img src="https://img.shields.io/badge/7+-Years%20Experience-brightgreen?style=for-the-badge&logo=calendar&logoColor=white"/>
 </td>
 <td align="center">
 <img src="https://img.shields.io/badge/10+-API%20Integrations-blue?style=for-the-badge&logo=api&logoColor=white"/>
@@ -854,6 +869,9 @@ Handling TB-scale data</sub>
 </td>
 <td align="center">
 <img src="https://img.shields.io/badge/Zero-Downtime%20Deployments-orange?style=for-the-badge&logo=rocket&logoColor=white"/>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/115+-Merged%20MRs%20in%205%20Months-00bfbf?style=for-the-badge&logo=gitlab&logoColor=white"/>
 </td>
 </tr>
 </table>
