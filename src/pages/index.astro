@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import TechArsenal from '../components/TechArsenal.astro';
+import Journey from '../components/Journey.astro';
+import Projects from '../components/Projects.astro';
+import Analytics from '../components/Analytics.astro';
+import Certifications from '../components/Certifications.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Hammad Khan | Senior Full Stack Engineer"
+  description="Hammad Khan — Senior Full Stack Engineer with 6+ years building distributed systems at scale. Ruby on Rails, React, Node.js, and cloud architecture."
+>
+  <Nav />
+  <Hero />
+
+  <About />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <TechArsenal />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <Journey />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <Projects />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <Analytics />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <Certifications />
+
+  <Footer />
+</Layout>

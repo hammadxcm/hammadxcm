@@ -11,6 +11,12 @@ on:
     branches: ["master", "main"]
     paths-ignore:
       - "metrics.*.svg"
+      - "src/**"
+      - "public/**"
+      - "package.json"
+      - "package-lock.json"
+      - "astro.config.mjs"
+      - "tsconfig.json"
 
 jobs:
   github-metrics:

@@ -1,3 +1,5 @@
 .idea/
 .claude/
 .commandcode/
+node_modules/
+dist/
