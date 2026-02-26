@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -36,3 +36,27 @@ jobs:
           path: dist
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  release:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get version from package.json
+        id: version
+        run: echo "version=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      - name: Check if tag exists
+        id: tag_check
+        run: |
+          if git ls-remote --tags origin ${{ steps.version.outputs.version }} | grep -q .; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Create tag and release
+        if: steps.tag_check.outputs.exists == 'false'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          name: ${{ steps.version.outputs.version }}
+          generate_release_notes: true
