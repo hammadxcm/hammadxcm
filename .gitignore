@@ -3,3 +3,4 @@
 .commandcode/
 node_modules/
 dist/
+.astro/
