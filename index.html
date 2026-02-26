@@ -653,14 +653,22 @@
       width: 80%;
     }
 
-    /* ── GitHub Skyline Card ── */
+    /* ── GitHub CTA Cards ── */
+    .github-cta-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
     .skyline-card {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
-      padding: 2rem;
-      max-width: 500px;
-      margin: 0 auto;
+      gap: 1.25rem;
+      padding: 1.5rem 2rem;
+      flex: 1;
+      min-width: 280px;
+      max-width: 480px;
       text-decoration: none;
       color: var(--text);
       transition: all 0.4s var(--ease-out-expo);
@@ -672,13 +680,13 @@
       color: var(--text);
     }
     .skyline-icon {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       flex-shrink: 0;
     }
     .skyline-info h3 {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 600;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
     .skyline-info p {
       font-size: 0.85rem;
@@ -1245,7 +1253,8 @@
       .hero-grid-layer { opacity: 0.015; }
       .glow-border:hover { transform: translateY(-3px) !important; }
       .section-separator.visible .sep-line { width: 60%; }
-      .skyline-card { flex-direction: column; text-align: center; gap: 1rem; }
+      .github-cta-row { flex-direction: column; align-items: center; }
+      .skyline-card { flex-direction: column; text-align: center; gap: 1rem; max-width: 100%; }
       .skyline-arrow { margin-left: 0; }
     }
 
@@ -1750,12 +1759,20 @@
       <div class="analytics-row reveal">
         <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=hammadxcm&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117" alt="Top Languages" loading="lazy" class="blur-up">
       </div>
-      <div class="analytics-full reveal">
+      <div class="github-cta-row reveal">
         <a href="https://github.com/hammadxcm" target="_blank" rel="noopener" class="skyline-card glass glow-border">
           <div class="skyline-icon">&#128187;</div>
           <div class="skyline-info">
             <h3>GitHub Profile</h3>
-            <p>Explore my repositories, contribution history, and open-source work on GitHub.</p>
+            <p>Explore my repos, contributions, and open-source work.</p>
+          </div>
+          <span class="skyline-arrow">&#8594;</span>
+        </a>
+        <a href="https://honzaap.github.io/GithubCity/?name=hammadxcm" target="_blank" rel="noopener" class="skyline-card glass glow-border">
+          <div class="skyline-icon">&#127961;</div>
+          <div class="skyline-info">
+            <h3>GitHub Skyline</h3>
+            <p>View my contributions as an interactive 3D city.</p>
           </div>
           <span class="skyline-arrow">&#8594;</span>
         </a>
