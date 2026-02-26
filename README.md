@@ -23,36 +23,47 @@
 ```javascript
 const hammadKhan = {
     title: "Senior Full Stack Engineer",
-    experience: "6+ years building systems at scale",
+    experience: "8+ years building systems at scale",
     location: "Lahore, Pakistan 🇵🇰",
-    age: 32,
     specialization: "Distributed Systems & Platform Architecture",
     currentRole: "Senior Full Stack Engineer @ NexaQuanta",
     workStyle: "Technical Leadership & Full-stack Development",
-    
+
     expertise: {
         systemDesign: ["Microservices", "Event-Driven Architecture", "Domain-Driven Design"],
-        backend: ["Ruby on Rails", "NodeJS", "GraphQL", "High-Performance APIs"],
+        backend: ["Ruby on Rails", "NestJS", "NodeJS", "GraphQL", "High-Performance APIs"],
         frontend: ["ReactJS", "VueJS", "NextJS", "Progressive Web Apps"],
-        infrastructure: ["AWS", "Azure", "Docker", "Redis", "Message Queues"],
-        databases: ["PostgreSQL", "MongoDB", "Query Optimization", "Data Modeling"],
-        integrations: ["Multi-API Platforms", "CRM Systems", "Payment Gateways"]
+        infrastructure: ["AWS", "Azure", "Docker", "Redis", "BullMQ", "Kubernetes"],
+        databases: ["PostgreSQL", "MongoDB", "MySQL", "Prisma ORM", "Data Modeling"],
+        integrations: ["Multi-API Platforms", "CRM Systems", "Payment Gateways", "CitNOW"],
+        security: ["OWASP Top 10", "Audit Systems", "Injection Prevention", "HIPAA"]
     },
-    
+
     technicalLeadership: [
+        "Delivered 115+ MRs in 5 months at NexaQuanta",
         "Designed fault-tolerant systems handling millions of requests",
         "Led migration of monolithic apps to microservices architecture",
         "Mentored engineering teams on system design and best practices",
         "Established engineering standards and code review processes"
     ],
-    
+
     systemsBuilt: [
+        "Enterprise appointment lifecycle with cross-module linking (60+ MRs)",
+        "Multi-dealer org scoping with dual-database architecture",
+        "CSV data import pipelines with batch optimization & duplicate detection",
+        "Generic audit module for compliance and forensic traceability",
         "Real-time data processing pipelines with 95% job success rate",
         "Progressive loading systems reducing page load by 70%",
-        "Multi-tenant SaaS platforms serving enterprise clients",
-        "Zero-downtime deployment strategies for critical systems"
+        "Zero-downtime Stripe API migration with 99.9% uptime"
     ],
-    
+
+    openSource: [
+        "Rails Core Contributor — merged PR to rails/rails",
+        "daemon-os — macOS MCP server for AI agent computer-use",
+        "rubocop-hk — 2,800+ downloads on RubyGems",
+        "ramadan-cli-pro — TUI dashboard with prayer times & i18n"
+    ],
+
     currentFocus: "Platform Engineering & Technical Strategy",
     openTo: ["Staff/Principal Engineering Roles", "Architecture Consulting", "Team Leadership"],
     philosophy: "Building systems that scale, teams that deliver, and solutions that last 🚀"
@@ -942,7 +953,7 @@ Next.js & Svelte with live demo</sub>
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/7+-Years%20Experience-brightgreen?style=for-the-badge&logo=calendar&logoColor=white"/>
+<img src="https://img.shields.io/badge/8+-Years%20Experience-brightgreen?style=for-the-badge&logo=calendar&logoColor=white"/>
 </td>
 <td align="center">
 <img src="https://img.shields.io/badge/10+-API%20Integrations-blue?style=for-the-badge&logo=api&logoColor=white"/>
@@ -1057,7 +1068,7 @@ Next.js & Svelte with live demo</sub>
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/Experience-6%2B%20Years-brightgreen?style=for-the-badge&logo=calendar&logoColor=white"/>
+<img src="https://img.shields.io/badge/Experience-8%2B%20Years-brightgreen?style=for-the-badge&logo=calendar&logoColor=white"/>
 </td>
 <td align="center">
 <img src="https://img.shields.io/badge/Specialization-Ruby%20on%20Rails-CC0000?style=for-the-badge&logo=ruby&logoColor=white"/>
@@ -1088,24 +1099,119 @@ Next.js & Svelte with live demo</sub>
 
 <div align="center">
 
+### 🔒 Security & Compliance
 <table>
 <tr>
 <td align="center" width="250">
-<a href="#" target="_blank" rel="noreferrer">
+<a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/1526fe3f-31e1-4cab-85a5-16669ad20b8b-hammad-khan-a4dafb82-c00d-4efd-965b-1194fb66f7e9-certificate.pdf" target="_blank" rel="noreferrer">
+<img src="https://img.shields.io/badge/OWASP-Top%2010%20Security%20Threats-000000?style=for-the-badge&logo=owasp&logoColor=white"/>
+<br/><sub><b>December 2025 • The Linux Foundation</b></sub>
+</a>
+</td>
+<td align="center" width="250">
+<a href="https://www.linkedin.com/learning/certificates/d57c36b7fe8db2dbb80431f9fbdfb3a48253ce9cb59576d9d5e8720851029878" target="_blank" rel="noreferrer">
+<img src="https://img.shields.io/badge/Ethical%20Hacking-Introduction-557C94?style=for-the-badge&logo=kalilinux&logoColor=white"/>
+<br/><sub><b>LinkedIn Learning</b></sub>
+</a>
+</td>
+<td align="center" width="250">
+<a href="https://www.linkedin.com/learning/certificates/2dcfc22edd19dfca6f8a8d057a4ae887d0b915268a3887680a9d0a9234e25a62" target="_blank" rel="noreferrer">
+<img src="https://img.shields.io/badge/HIPAA-Compliance%20Program-0093DD?style=for-the-badge&logo=gnuprivacyguard&logoColor=white"/>
+<br/><sub><b>LinkedIn Learning</b></sub>
+</a>
+</td>
+</tr>
+</table>
+
+### 🌐 Networking & Infrastructure
+<table>
+<tr>
+<td align="center" width="250">
+<a href="https://www.linkedin.com/learning/certificates/f6fad5371eae0d8acfee3b3a2c8edca7cbe33a63730f0cd560bb993df5438309" target="_blank" rel="noreferrer">
+<img src="https://img.shields.io/badge/Networking-Foundations%20%26%20Basics-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white"/>
+<br/><sub><b>LinkedIn Learning</b></sub>
+</a>
+</td>
+</tr>
+</table>
+
+### 🛤️ Web Frameworks & Testing
+<table>
+<tr>
+<td align="center" width="250">
+<a href="https://www.linkedin.com/learning/certificates/b36c2bda03eda9a68e4dec50def0daad8dcb9b6c67492627c9b8bd377fb67f4c" target="_blank" rel="noreferrer">
 <img src="https://img.shields.io/badge/Hotwire-Reactive%20Rails%20Apps-FF6B6B?style=for-the-badge&logo=ruby&logoColor=white"/>
-<br/><sub><b>June 2024</b></sub>
+<br/><sub><b>June 2024 • LinkedIn Learning</b></sub>
 </a>
 </td>
 <td align="center" width="250">
-<a href="#" target="_blank" rel="noreferrer">
+<a href="https://www.linkedin.com/learning/certificates/d335c38204c29a4f8ce7e07c0ecaa5077067865b9792595e481905b3fd06586d" target="_blank" rel="noreferrer">
 <img src="https://img.shields.io/badge/Ruby-Testing%20with%20RSpec-701516?style=for-the-badge&logo=ruby&logoColor=white"/>
-<br/><sub><b>August 2024</b></sub>
+<br/><sub><b>August 2024 • LinkedIn Learning</b></sub>
+</a>
+</td>
+</tr>
+</table>
+
+### 💻 Languages & Tools
+<table>
+<tr>
+<td align="center" width="250">
+<a href="https://www.linkedin.com/learning/certificates/e30b66061cc2080040e0df0c0e173d00a2203112628954ed1355fab6fcc85956" target="_blank" rel="noreferrer">
+<img src="https://techstack-generator.vercel.app/ts-icon.svg" alt="TypeScript" width="55" height="55" />
+<br/>
+<img src="https://img.shields.io/badge/TypeScript-Essential%20Training-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
+<br/><sub><b>LinkedIn Learning</b></sub>
 </a>
 </td>
 <td align="center" width="250">
-<a href="#" target="_blank" rel="noreferrer">
-<img src="https://img.shields.io/badge/MySQL-Basic%20Certification-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
-<br/><sub><b>March 2024</b></sub>
+<a href="https://www.linkedin.com/learning/certificates/0bf6f582259007a4e436be7004b0f7ed3e8bf9972b6a7dbac68ea2867493aacf" target="_blank" rel="noreferrer">
+<img src="https://techstack-generator.vercel.app/mysql-icon.svg" alt="MySQL" width="55" height="55" />
+<br/>
+<img src="https://img.shields.io/badge/MySQL-Installation%20%26%20Config-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
+<br/><sub><b>March 2024 • LinkedIn Learning</b></sub>
+</a>
+</td>
+<td align="center" width="250">
+<a href="https://www.linkedin.com/learning/certificates/3b36f2ca76a1876379837a9403195e104dd354781a13989cbfcc452188e85a8e" target="_blank" rel="noreferrer">
+<img src="https://techstack-generator.vercel.app/github-icon.svg" alt="GitHub" width="55" height="55" />
+<br/>
+<img src="https://img.shields.io/badge/Git-Learning%20Git%20%26%20GitHub-F05032?style=for-the-badge&logo=git&logoColor=white"/>
+<br/><sub><b>LinkedIn Learning</b></sub>
+</a>
+</td>
+</tr>
+</table>
+
+### 🐍 Python & Data Science
+<table>
+<tr>
+<td align="center" width="250">
+<a href="https://www.coursera.org/account/accomplishments/verify/BLQ2MA03WL9N" target="_blank" rel="noreferrer">
+<img src="https://techstack-generator.vercel.app/python-icon.svg" alt="Python" width="55" height="55" />
+<br/>
+<img src="https://img.shields.io/badge/Python-Programming%20for%20Everybody-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<br/><sub><b>December 2024 • Coursera / University of Michigan</b></sub>
+</a>
+</td>
+<td align="center" width="250">
+<a href="https://www.coursera.org/account/accomplishments/verify/J79EC6EVAUDM" target="_blank" rel="noreferrer">
+<img src="https://techstack-generator.vercel.app/python-icon.svg" alt="Python" width="55" height="55" />
+<br/>
+<img src="https://img.shields.io/badge/Python-Data%20Structures-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<br/><sub><b>May 2025 • Coursera / University of Michigan</b></sub>
+</a>
+</td>
+</tr>
+</table>
+
+### 🤖 AI & Automation
+<table>
+<tr>
+<td align="center" width="250">
+<a href="https://www.linkedin.com/learning/certificates/9e3c21550dc5afe1ada5f58b16174065b0bf2318149047b316d954b800a731b4" target="_blank" rel="noreferrer">
+<img src="https://img.shields.io/badge/n8n-Build%20AI%20Agents%20%26%20Workflows-EA4B71?style=for-the-badge&logo=n8n&logoColor=white"/>
+<br/><sub><b>LinkedIn Learning</b></sub>
 </a>
 </td>
 </tr>
