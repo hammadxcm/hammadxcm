@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1a0a1a"/>
+    </linearGradient>
+    <linearGradient id="hellfire" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ff1a1a"/>
+      <stop offset="50%" stop-color="#ff6600"/>
+      <stop offset="100%" stop-color="#ffcc00"/>
+    </linearGradient>
+    <linearGradient id="horn" x1="0" y1="1" x2="0.3" y2="0">
+      <stop offset="0%" stop-color="#4a0000"/>
+      <stop offset="100%" stop-color="#8b0000"/>
+    </linearGradient>
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff0000"/>
+      <stop offset="60%" stop-color="#cc0000"/>
+      <stop offset="100%" stop-color="#660000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="pentaGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="200" rx="12" fill="url(#bg)" stroke="#2d0a0a" stroke-width="1.5"/>
+
+  <!-- Subtle smoke particles -->
+  <g opacity="0.15">
+    <circle cx="120" cy="150" r="2" fill="#ff4444">
+      <animate attributeName="cy" values="150;40;150" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0;0.3" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="200" cy="160" r="1.5" fill="#ff6644">
+      <animate attributeName="cy" values="160;30;160" dur="6s" repeatCount="indefinite" begin="1s"/>
+      <animate attributeName="opacity" values="0.4;0;0.4" dur="6s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+    <circle cx="680" cy="140" r="2" fill="#ff4444">
+      <animate attributeName="cy" values="140;20;140" dur="7s" repeatCount="indefinite" begin="2s"/>
+      <animate attributeName="opacity" values="0.3;0;0.3" dur="7s" repeatCount="indefinite" begin="2s"/>
+    </circle>
+    <circle cx="720" cy="155" r="1.5" fill="#ff6644">
+      <animate attributeName="cy" values="155;35;155" dur="9s" repeatCount="indefinite" begin="0.5s"/>
+      <animate attributeName="opacity" values="0.4;0;0.4" dur="9s" repeatCount="indefinite" begin="0.5s"/>
+    </circle>
+  </g>
+
+  <!-- === Left demon face === -->
+  <g transform="translate(100, 100)">
+    <!-- Left horn -->
+    <path d="M-20,-25 Q-35,-65 -25,-80 Q-18,-65 -12,-30" fill="url(#horn)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.7;0.9" dur="4s" repeatCount="indefinite"/>
+    </path>
+    <!-- Right horn -->
+    <path d="M20,-25 Q35,-65 25,-80 Q18,-65 12,-30" fill="url(#horn)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.7;0.9" dur="4s" repeatCount="indefinite" begin="0.5s"/>
+    </path>
+
+    <!-- Head -->
+    <ellipse cx="0" cy="0" rx="28" ry="32" fill="#1a0a0a" stroke="#3d0a0a" stroke-width="1"/>
+
+    <!-- Left eye glow -->
+    <ellipse cx="-10" cy="-5" rx="12" ry="10" fill="url(#eyeGlow)" opacity="0.4" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Left eye -->
+    <ellipse cx="-10" cy="-5" rx="6" ry="4" fill="#ff0000" filter="url(#glow)">
+      <animate attributeName="ry" values="4;1;4" dur="5s" repeatCount="indefinite" begin="2s"/>
+    </ellipse>
+    <!-- Left pupil -->
+    <ellipse cx="-10" cy="-5" rx="2.5" ry="3.5" fill="#440000">
+      <animate attributeName="ry" values="3.5;0.8;3.5" dur="5s" repeatCount="indefinite" begin="2s"/>
+    </ellipse>
+
+    <!-- Right eye glow -->
+    <ellipse cx="10" cy="-5" rx="12" ry="10" fill="url(#eyeGlow)" opacity="0.4" filter="url(#softGlow)">
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Right eye -->
+    <ellipse cx="10" cy="-5" rx="6" ry="4" fill="#ff0000" filter="url(#glow)">
+      <animate attributeName="ry" values="4;1;4" dur="5s" repeatCount="indefinite" begin="2s"/>
+    </ellipse>
+    <!-- Right pupil -->
+    <ellipse cx="10" cy="-5" rx="2.5" ry="3.5" fill="#440000">
+      <animate attributeName="ry" values="3.5;0.8;3.5" dur="5s" repeatCount="indefinite" begin="2s"/>
+    </ellipse>
+
+    <!-- Fanged mouth -->
+    <path d="M-12,12 Q-6,20 0,16 Q6,20 12,12" fill="none" stroke="#5a0000" stroke-width="1.2"/>
+    <path d="M-8,13 L-6,19" fill="none" stroke="#8b0000" stroke-width="1"/>
+    <path d="M8,13 L6,19" fill="none" stroke="#8b0000" stroke-width="1"/>
+  </g>
+
+  <!-- === Pentagram === -->
+  <g transform="translate(100, 100)" filter="url(#pentaGlow)">
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#3d0000" stroke-width="0.5" opacity="0.4">
+      <animate attributeName="r" values="50;53;50" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.2;0.4" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Pentagram star -->
+    <polygon
+      points="0,-50 11.76,-16.18 47.55,-15.45 19.02,6.18 29.39,40.45 0,20 -29.39,40.45 -19.02,6.18 -47.55,-15.45 -11.76,-16.18"
+      fill="none" stroke="#660000" stroke-width="0.6" opacity="0.25"
+      transform="scale(0.85)">
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="60s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+
+  <!-- === Center text area === -->
+  <g transform="translate(400, 60)">
+    <!-- Title -->
+    <text x="0" y="0" text-anchor="middle" font-family="'SF Mono', 'Fira Code', 'Cascadia Code', monospace" font-size="32" font-weight="700" fill="#ff2222" filter="url(#glow)" letter-spacing="6">
+      daemon-os
+      <animate attributeName="opacity" values="1;0.8;1" dur="4s" repeatCount="indefinite"/>
+    </text>
+
+    <!-- Tagline -->
+    <text x="0" y="30" text-anchor="middle" font-family="'SF Mono', 'Fira Code', monospace" font-size="12" fill="#aa4444" letter-spacing="3" opacity="0.8">
+      EYES &amp; HANDS FOR AI ON macOS
+    </text>
+
+    <!-- Separator line -->
+    <line x1="-120" y1="45" x2="120" y2="45" stroke="#3d0000" stroke-width="0.8" opacity="0.5">
+      <animate attributeName="x1" values="-120;-130;-120" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="120;130;120" dur="5s" repeatCount="indefinite"/>
+    </line>
+
+    <!-- Tech badges -->
+    <g transform="translate(0, 70)">
+      <!-- MCP badge -->
+      <rect x="-145" y="-10" width="60" height="20" rx="4" fill="#1a0a0a" stroke="#660000" stroke-width="0.8"/>
+      <text x="-115" y="5" text-anchor="middle" font-family="'SF Mono', monospace" font-size="10" fill="#cc3333">MCP</text>
+
+      <!-- Swift badge -->
+      <rect x="-70" y="-10" width="60" height="20" rx="4" fill="#1a0a0a" stroke="#660000" stroke-width="0.8"/>
+      <text x="-40" y="5" text-anchor="middle" font-family="'SF Mono', monospace" font-size="10" fill="#cc3333">Swift</text>
+
+      <!-- macOS badge -->
+      <rect x="5" y="-10" width="60" height="20" rx="4" fill="#1a0a0a" stroke="#660000" stroke-width="0.8"/>
+      <text x="35" y="5" text-anchor="middle" font-family="'SF Mono', monospace" font-size="10" fill="#cc3333">macOS</text>
+
+      <!-- AI badge -->
+      <rect x="80" y="-10" width="60" height="20" rx="4" fill="#1a0a0a" stroke="#660000" stroke-width="0.8"/>
+      <text x="110" y="5" text-anchor="middle" font-family="'SF Mono', monospace" font-size="10" fill="#cc3333">AI</text>
+    </g>
+  </g>
+
+  <!-- === Right side — terminal/code block === -->
+  <g transform="translate(640, 45)">
+    <!-- Terminal window -->
+    <rect x="-90" y="-20" width="180" height="130" rx="6" fill="#0d0d0d" stroke="#2d0a0a" stroke-width="1"/>
+    <!-- Terminal dots -->
+    <circle cx="-75" cy="-10" r="3" fill="#ff3b30" opacity="0.8"/>
+    <circle cx="-63" cy="-10" r="3" fill="#ff9500" opacity="0.8"/>
+    <circle cx="-51" cy="-10" r="3" fill="#28cd41" opacity="0.8"/>
+
+    <!-- Terminal text -->
+    <text x="-80" y="12" font-family="'SF Mono', 'Fira Code', monospace" font-size="9" fill="#555">$</text>
+    <text x="-68" y="12" font-family="'SF Mono', 'Fira Code', monospace" font-size="9" fill="#cc3333">npx daemon-os</text>
+
+    <text x="-80" y="30" font-family="'SF Mono', 'Fira Code', monospace" font-size="8" fill="#444">
+      <tspan fill="#666">&#8250;</tspan> MCP server started
+    </text>
+    <text x="-80" y="45" font-family="'SF Mono', 'Fira Code', monospace" font-size="8" fill="#444">
+      <tspan fill="#666">&#8250;</tspan> Accessibility: <tspan fill="#28cd41">granted</tspan>
+    </text>
+    <text x="-80" y="60" font-family="'SF Mono', 'Fira Code', monospace" font-size="8" fill="#444">
+      <tspan fill="#666">&#8250;</tspan> Screen capture: <tspan fill="#28cd41">granted</tspan>
+    </text>
+    <text x="-80" y="75" font-family="'SF Mono', 'Fira Code', monospace" font-size="8" fill="#444">
+      <tspan fill="#666">&#8250;</tspan> AI agent: <tspan fill="#ff4444">connected</tspan>
+    </text>
+
+    <!-- Blinking cursor -->
+    <rect x="-80" y="85" width="6" height="10" fill="#ff2222">
+      <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Subtle fire at bottom -->
+  <g opacity="0.12">
+    <path d="M0,200 Q100,175 200,200 Q250,170 300,200 Q350,180 400,200 Q450,170 500,200 Q550,180 600,200 Q650,175 700,200 Q750,180 800,200 Z" fill="url(#hellfire)">
+      <animate attributeName="d" values="M0,200 Q100,175 200,200 Q250,170 300,200 Q350,180 400,200 Q450,170 500,200 Q550,180 600,200 Q650,175 700,200 Q750,180 800,200 Z;M0,200 Q100,180 200,200 Q250,175 300,200 Q350,170 400,200 Q450,180 500,200 Q550,170 600,200 Q650,180 700,200 Q750,170 800,200 Z;M0,200 Q100,175 200,200 Q250,170 300,200 Q350,180 400,200 Q450,170 500,200 Q550,180 600,200 Q650,175 700,200 Q750,180 800,200 Z" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>
