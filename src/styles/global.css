@@ -1011,22 +1011,6 @@ a.timeline-company:hover {
 }
 .project-link:hover { color: var(--accent-mint); }
 .project-link svg { width: 16px; height: 16px; }
-.daemon-os-featured {
-  grid-column: 1 / -1;
-}
-.daemon-os-banner {
-  display: block;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  overflow: hidden;
-  line-height: 0;
-}
-.daemon-os-banner img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
 /* ══════════════════════════════
    GITHUB ANALYTICS
 ══════════════════════════════ */

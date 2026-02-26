@@ -937,7 +937,7 @@ Next.js & Svelte with live demo</sub>
 </td>
 <td align="center" width="33%">
 <div>
-<a href="https://github.com/hammadxcm/daemon-os"><img src="public/daemon-os.svg" alt="daemon-os" width="100%"/></a>
+<a href="https://github.com/hammadxcm/daemon-os"><img src="https://raw.githubusercontent.com/hammadxcm/hammadxcm/main/public/daemon-os.svg" alt="daemon-os" width="100%"/></a>
 <br/>
 <b>🖥️ <a href="https://github.com/hammadxcm/daemon-os">daemon-os</a></b><br/>
 <sub>macOS MCP server for AI agent computer-use<br/>

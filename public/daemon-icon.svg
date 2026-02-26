@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="skull" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0f0f1a"/>
+    </linearGradient>
+    <linearGradient id="hornG" x1="0" y1="1" x2="0.3" y2="0">
+      <stop offset="0%" stop-color="#8b0000"/>
+      <stop offset="100%" stop-color="#cc2200"/>
+    </linearGradient>
+    <linearGradient id="gear" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#444"/>
+      <stop offset="100%" stop-color="#222"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mechanical gear ring behind head -->
+  <g transform="translate(24,26)">
+    <g>
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="20s" repeatCount="indefinite"/>
+      <circle cx="0" cy="0" r="18" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+      <!-- Gear teeth -->
+      <rect x="-2" y="-19.5" width="4" height="4" rx="0.5" fill="url(#gear)" opacity="0.6"/>
+      <rect x="-2" y="15.5" width="4" height="4" rx="0.5" fill="url(#gear)" opacity="0.6"/>
+      <rect x="15.5" y="-2" width="4" height="4" rx="0.5" fill="url(#gear)" opacity="0.6"/>
+      <rect x="-19.5" y="-2" width="4" height="4" rx="0.5" fill="url(#gear)" opacity="0.6"/>
+      <rect x="11" y="-14" width="3.5" height="3.5" rx="0.5" fill="url(#gear)" opacity="0.5" transform="rotate(45 12.75 -12.25)"/>
+      <rect x="-14.5" y="-14" width="3.5" height="3.5" rx="0.5" fill="url(#gear)" opacity="0.5" transform="rotate(45 -12.75 -12.25)"/>
+      <rect x="11" y="10.5" width="3.5" height="3.5" rx="0.5" fill="url(#gear)" opacity="0.5" transform="rotate(45 12.75 12.25)"/>
+      <rect x="-14.5" y="10.5" width="3.5" height="3.5" rx="0.5" fill="url(#gear)" opacity="0.5" transform="rotate(45 -12.75 12.25)"/>
+    </g>
+  </g>
+
+  <!-- Left horn -->
+  <path d="M14,16 Q8,6 11,1 Q14,8 16,14" fill="url(#hornG)">
+    <animate attributeName="d" values="M14,16 Q8,6 11,1 Q14,8 16,14;M14,16 Q7,5 10,0 Q14,7 16,14;M14,16 Q8,6 11,1 Q14,8 16,14" dur="3s" repeatCount="indefinite"/>
+  </path>
+  <!-- Right horn -->
+  <path d="M34,16 Q40,6 37,1 Q34,8 32,14" fill="url(#hornG)">
+    <animate attributeName="d" values="M34,16 Q40,6 37,1 Q34,8 32,14;M34,16 Q41,5 38,0 Q34,7 32,14;M34,16 Q40,6 37,1 Q34,8 32,14" dur="3s" repeatCount="indefinite" begin="0.2s"/>
+  </path>
+
+  <!-- Head / skull shape -->
+  <path d="M14,18 Q14,10 24,10 Q34,10 34,18 L34,30 Q34,38 28,38 L26,34 L22,34 L20,38 Q14,38 14,30 Z" fill="url(#skull)" stroke="#2a0a0a" stroke-width="0.8"/>
+
+  <!-- Mechanical jaw line -->
+  <path d="M18,32 L20,34 L22,34 L24,32 L26,34 L28,34 L30,32" fill="none" stroke="#660000" stroke-width="0.8" stroke-linecap="round"/>
+  <!-- Fangs -->
+  <line x1="20" y1="32" x2="20.5" y2="35.5" stroke="#888" stroke-width="1" stroke-linecap="round"/>
+  <line x1="28" y1="32" x2="27.5" y2="35.5" stroke="#888" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Left eye socket -->
+  <path d="M17,20 L21,17 L25,20 L21,23 Z" fill="#0a0a0a" stroke="#330000" stroke-width="0.5"/>
+  <!-- Left eye glow -->
+  <ellipse cx="21" cy="20" rx="2.5" ry="2" fill="#ff0000" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="2;0.5;2" dur="5s" repeatCount="indefinite" begin="3s"/>
+  </ellipse>
+  <ellipse cx="21" cy="20" rx="1" ry="1.5" fill="#ff4444">
+    <animate attributeName="opacity" values="1;0.5;1" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="1.5;0.3;1.5" dur="5s" repeatCount="indefinite" begin="3s"/>
+  </ellipse>
+
+  <!-- Right eye socket -->
+  <path d="M23,20 L27,17 L31,20 L27,23 Z" fill="#0a0a0a" stroke="#330000" stroke-width="0.5"/>
+  <!-- Right eye glow -->
+  <ellipse cx="27" cy="20" rx="2.5" ry="2" fill="#ff0000" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="2;0.5;2" dur="5s" repeatCount="indefinite" begin="3s"/>
+  </ellipse>
+  <ellipse cx="27" cy="20" rx="1" ry="1.5" fill="#ff4444">
+    <animate attributeName="opacity" values="1;0.5;1" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="1.5;0.3;1.5" dur="5s" repeatCount="indefinite" begin="3s"/>
+  </ellipse>
+
+  <!-- Nose slit -->
+  <path d="M23,25 L24,23 L25,25" fill="none" stroke="#440000" stroke-width="0.6"/>
+
+  <!-- Small bolts / rivets on skull -->
+  <circle cx="16" cy="24" r="1" fill="#333" stroke="#555" stroke-width="0.3"/>
+  <circle cx="32" cy="24" r="1" fill="#333" stroke="#555" stroke-width="0.3"/>
+  <circle cx="24" cy="28" r="0.8" fill="#333" stroke="#555" stroke-width="0.3"/>
+
+  <!-- Circuit traces on forehead -->
+  <path d="M19,14 L22,14 L22,12 M26,14 L29,14 L29,12" fill="none" stroke="#440000" stroke-width="0.5" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4s" repeatCount="indefinite"/>
+  </path>
+</svg>
