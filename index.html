@@ -28,6 +28,8 @@
       --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, monospace;
       --glass-bg: rgba(22, 27, 34, 0.6);
       --glass-border: rgba(91, 205, 236, 0.12);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     *, *::before, *::after {
@@ -202,10 +204,6 @@
       font-size: 2.5rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--text) 0%, var(--accent-blue) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
 
     /* ── Scroll Reveal System ── */
@@ -293,23 +291,6 @@
       transition: transform 0.1s linear, opacity 0.1s linear;
     }
 
-    /* Section divider line */
-    .section-divider {
-      width: 60px;
-      height: 3px;
-      margin: 1rem auto 0;
-      border-radius: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-blue));
-      opacity: 0;
-      transform: scaleX(0);
-      transition: opacity 0.8s 0.3s, transform 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.visible .section-divider,
-    .reveal-blur.visible .section-divider {
-      opacity: 1;
-      transform: scaleX(1);
-    }
-
     /* ── Glassmorphism Card ── */
     .glass {
       background: var(--glass-bg);
@@ -368,12 +349,12 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       opacity: 0;
-      animation: fadeInUp 0.8s 0.5s forwards;
+      animation: heroReveal 1s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       transition: background-position 0.6s ease;
       cursor: default;
     }
     .hero-name:hover {
-      animation: nameGradient 3s ease infinite, fadeInUp 0.8s 0.5s forwards;
+      animation: nameGradient 3s ease infinite, heroReveal 1s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       background-position: 100% 50%;
     }
     @keyframes nameGradient {
@@ -479,6 +460,239 @@
     @keyframes scrollWheel {
       0% { top: 6px; opacity: 1; }
       100% { top: 20px; opacity: 0; }
+    }
+
+    /* ── Hero Name Cinematic Reveal ── */
+    @keyframes heroReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        filter: blur(8px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    /* ── Hero Parallax Layers ── */
+    .hero-grid-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.03;
+      background-image:
+        linear-gradient(rgba(91,205,236,0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91,205,236,0.5) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-shapes-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .geo-shape {
+      position: absolute;
+      opacity: 0.12;
+      animation: geoFloat 8s ease-in-out infinite;
+    }
+    .geo-shape--circle {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-blue);
+    }
+    .geo-shape--triangle {
+      width: 0; height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 14px solid var(--accent-mint);
+    }
+    .geo-shape--diamond {
+      width: 10px; height: 10px;
+      border: 2px solid var(--accent);
+      transform: rotate(45deg);
+    }
+    .geo-shape:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+    .geo-shape:nth-child(2) { top: 70%; left: 85%; animation-delay: -1.5s; }
+    .geo-shape:nth-child(3) { top: 25%; right: 15%; animation-delay: -3s; }
+    .geo-shape:nth-child(4) { bottom: 20%; left: 25%; animation-delay: -4.5s; }
+    .geo-shape:nth-child(5) { top: 50%; right: 8%; animation-delay: -6s; }
+    @keyframes geoFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+    .geo-shape--diamond { animation-name: geoFloat; }
+
+    /* ── Custom Cursor ── */
+    .custom-cursor {
+      position: fixed;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent);
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      transition: width 0.3s var(--ease-out-expo), height 0.3s var(--ease-out-expo), border-color 0.3s;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+    .custom-cursor.visible { opacity: 1; }
+    .custom-cursor.hover {
+      width: 48px; height: 48px;
+      border-color: var(--accent-mint);
+      background: rgba(0, 191, 191, 0.06);
+    }
+    @media (hover: none) {
+      .custom-cursor { display: none !important; }
+    }
+    body.has-custom-cursor { cursor: none; }
+    body.has-custom-cursor a,
+    body.has-custom-cursor button,
+    body.has-custom-cursor [data-tilt] { cursor: none; }
+
+    /* ── Floating Tech Icons ── */
+    @keyframes techFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* ── Clip-Path Section Reveal ── */
+    .reveal-clip {
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path 1.2s var(--ease-out-expo);
+    }
+    .reveal-clip.visible {
+      clip-path: inset(0);
+    }
+
+    /* ── Section Title Gradient Scroll ── */
+    .section-title {
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent-blue) 33%, var(--accent-mint) 66%, var(--accent) 100%);
+      background-size: 300% 300%;
+      background-position: 0% 50%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: background-position 0.1s linear;
+    }
+
+    /* ── Enhanced Section Dividers ── */
+    .section-divider {
+      width: 0;
+      height: 3px;
+      margin: 1rem auto 0;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-blue));
+      opacity: 0;
+      transition: opacity 0.8s 0.3s, width 0.8s 0.3s var(--ease-out-expo);
+      box-shadow: 0 0 0 rgba(0, 191, 191, 0);
+    }
+    .reveal.visible .section-divider,
+    .reveal-blur.visible .section-divider {
+      opacity: 1;
+      width: 80px;
+      box-shadow: 0 0 12px rgba(0, 191, 191, 0.3);
+    }
+
+    /* ── Enhanced Glow Hover for Cards ── */
+    .glow-border {
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glow-border:hover {
+      border-color: var(--accent) !important;
+      box-shadow:
+        0 0 20px rgba(0, 191, 191, 0.15),
+        0 0 40px rgba(91, 205, 236, 0.08),
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(169, 254, 247, 0.1);
+      transform: translateY(-6px) !important;
+    }
+    .glow-border:hover .project-name a,
+    .glow-border:hover .cert-name {
+      color: var(--accent-mint);
+    }
+    .glow-border:hover .project-icon,
+    .glow-border:hover .cert-badge {
+      transform: scale(1.1);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glow-border:hover .project-link,
+    .glow-border:hover .cert-ext {
+      color: var(--accent-mint);
+    }
+
+    /* ── Blur-Up Image Loading ── */
+    .blur-up {
+      filter: blur(8px);
+      transition: filter 0.6s var(--ease-out-quart);
+    }
+    .blur-up.loaded {
+      filter: blur(0);
+    }
+
+    /* ── Section Separators ── */
+    .section-separator {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .section-separator .sep-line {
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent-blue), var(--accent), transparent);
+      transition: width 1.2s var(--ease-out-expo);
+    }
+    .section-separator.visible .sep-line {
+      width: 80%;
+    }
+
+    /* ── GitHub Skyline Card ── */
+    .skyline-card {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 500px;
+      margin: 0 auto;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.4s var(--ease-out-expo);
+    }
+    .skyline-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+      box-shadow: 0 12px 30px rgba(0, 191, 191, 0.12);
+      color: var(--text);
+    }
+    .skyline-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+    .skyline-info h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .skyline-info p {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .skyline-arrow {
+      margin-left: auto;
+      font-size: 1.2rem;
+      color: var(--accent);
+      transition: transform 0.3s;
+    }
+    .skyline-card:hover .skyline-arrow {
+      transform: translateX(4px);
     }
 
     /* ══════════════════════════════
@@ -617,6 +831,10 @@
       background: rgba(0, 191, 191, 0.08);
       transform: translateY(-2px);
     }
+    a.tech-icon {
+      text-decoration: none;
+      color: inherit;
+    }
     .tech-icon img {
       width: 40px;
       height: 40px;
@@ -635,15 +853,18 @@
       position: relative;
       max-width: 900px;
       margin: 0 auto;
+      --timeline-progress: 0;
     }
     .timeline::before {
       content: '';
       position: absolute;
       left: 28px;
-      top: 0; bottom: 0;
+      top: 0;
       width: 2px;
+      height: calc(var(--timeline-progress) * 100%);
       background: linear-gradient(to bottom, var(--accent), var(--accent-blue), #9B59B6, #28A745);
       box-shadow: 0 0 12px rgba(0, 191, 191, 0.3);
+      transition: height 0.05s linear;
     }
     .timeline-item {
       position: relative;
@@ -757,10 +978,7 @@
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       transform-style: preserve-3d;
       perspective: 1000px;
-    }
-    .project-card:hover {
-      border-color: var(--border-glow);
-      box-shadow: 0 20px 40px rgba(0, 191, 191, 0.1);
+      cursor: pointer;
     }
     .project-icon {
       font-size: 2rem;
@@ -878,9 +1096,6 @@
       cursor: pointer;
     }
     a.cert-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-glow);
-      box-shadow: 0 12px 30px rgba(0, 191, 191, 0.12);
       color: inherit;
     }
     .cert-badge {
@@ -1020,6 +1235,18 @@
       /* Footer */
       footer { padding: 3rem 1rem 1.5rem; }
       .footer-socials { gap: 0.75rem; }
+
+      /* New elements — mobile */
+      .custom-cursor { display: none !important; }
+      body.has-custom-cursor { cursor: auto; }
+      body.has-custom-cursor a,
+      body.has-custom-cursor button { cursor: pointer; }
+      .hero-shapes-layer { display: none; }
+      .hero-grid-layer { opacity: 0.015; }
+      .glow-border:hover { transform: translateY(-3px) !important; }
+      .section-separator.visible .sep-line { width: 60%; }
+      .skyline-card { flex-direction: column; text-align: center; gap: 1rem; }
+      .skyline-arrow { margin-left: 0; }
     }
 
     /* ── Reduced motion ── */
@@ -1029,11 +1256,18 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .stagger > * {
+      .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-clip, .stagger > * {
         opacity: 1 !important;
         transform: none !important;
         filter: none !important;
+        clip-path: none !important;
       }
+      .custom-cursor { display: none !important; }
+      body.has-custom-cursor { cursor: auto; }
+      .timeline::before { height: 100% !important; }
+      .section-separator .sep-line { width: 80% !important; }
+      .section-divider { width: 80px !important; opacity: 1 !important; }
+      .blur-up { filter: none !important; }
     }
 
     /* Active nav link */
@@ -1059,6 +1293,9 @@
 </head>
 <body>
 
+  <!-- Custom Cursor (desktop only) -->
+  <div class="custom-cursor" id="customCursor"></div>
+
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -1070,7 +1307,7 @@
   <!-- Navigation -->
   <nav>
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">hammad<span>.dev</span></a>
+      <a href="#hero" class="nav-logo">hammadkhan<span>.dev</span></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#tech">Skills</a></li>
@@ -1088,6 +1325,14 @@
   <!-- ══════ HERO ══════ -->
   <section id="hero">
     <canvas id="particle-canvas"></canvas>
+    <div class="hero-grid-layer"></div>
+    <div class="hero-shapes-layer">
+      <div class="geo-shape geo-shape--circle"></div>
+      <div class="geo-shape geo-shape--triangle"></div>
+      <div class="geo-shape geo-shape--diamond"></div>
+      <div class="geo-shape geo-shape--circle"></div>
+      <div class="geo-shape geo-shape--triangle"></div>
+    </div>
     <div class="hero-content">
       <p class="hero-greeting">// Hello, World!</p>
       <h1 class="hero-name">Hammad Khan</h1>
@@ -1164,6 +1409,8 @@
     </div>
   </section>
 
+  <div class="section-separator"><div class="sep-line"></div></div>
+
   <!-- ══════ TECH ARSENAL ══════ -->
   <section id="tech" class="section">
     <div class="section-header reveal-blur">
@@ -1176,80 +1423,82 @@
       <div class="tech-card glass reveal" data-tilt>
         <div class="tech-card-title"><span class="emoji">&#127912;</span> Frontend</div>
         <div class="tech-icons">
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/react-icon.svg" alt="React"><span>React</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=vue" alt="Vue"><span>Vue</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=nextjs" alt="Next.js"><span>Next.js</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/ts-icon.svg" alt="TypeScript"><span>TypeScript</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/js-icon.svg" alt="JavaScript"><span>JavaScript</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind"><span>Tailwind</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/sass-icon.svg" alt="Sass"><span>Sass</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/redux-icon.svg" alt="Redux"><span>Redux</span></div>
+          <a href="https://react.dev" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/react-icon.svg" alt="React"><span>React</span></a>
+          <a href="https://vuejs.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=vue" alt="Vue"><span>Vue</span></a>
+          <a href="https://nextjs.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=nextjs" alt="Next.js"><span>Next.js</span></a>
+          <a href="https://www.typescriptlang.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/ts-icon.svg" alt="TypeScript"><span>TypeScript</span></a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/js-icon.svg" alt="JavaScript"><span>JavaScript</span></a>
+          <a href="https://tailwindcss.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind"><span>Tailwind</span></a>
+          <a href="https://sass-lang.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/sass-icon.svg" alt="Sass"><span>Sass</span></a>
+          <a href="https://redux.js.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/redux-icon.svg" alt="Redux"><span>Redux</span></a>
         </div>
       </div>
       <!-- Backend -->
       <div class="tech-card glass reveal" data-tilt>
         <div class="tech-card-title"><span class="emoji">&#9881;&#65039;</span> Backend</div>
         <div class="tech-icons">
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=ruby" alt="Ruby"><span>Ruby</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=rails" alt="Rails"><span>Rails</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js"><span>Node.js</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/graphql-icon.svg" alt="GraphQL"><span>GraphQL</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/python-icon.svg" alt="Python"><span>Python</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=nestjs" alt="NestJS"><span>NestJS</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/django-icon.svg" alt="Django"><span>Django</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/nginx-icon.svg" alt="Nginx"><span>Nginx</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/restapi-icon.svg" alt="REST API"><span>REST API</span></div>
+          <a href="https://www.ruby-lang.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=ruby" alt="Ruby"><span>Ruby</span></a>
+          <a href="https://rubyonrails.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=rails" alt="Rails"><span>Rails</span></a>
+          <a href="https://nodejs.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js"><span>Node.js</span></a>
+          <a href="https://graphql.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/graphql-icon.svg" alt="GraphQL"><span>GraphQL</span></a>
+          <a href="https://www.python.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/python-icon.svg" alt="Python"><span>Python</span></a>
+          <a href="https://nestjs.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=nestjs" alt="NestJS"><span>NestJS</span></a>
+          <a href="https://www.djangoproject.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/django-icon.svg" alt="Django"><span>Django</span></a>
+          <a href="https://nginx.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/nginx-icon.svg" alt="Nginx"><span>Nginx</span></a>
+          <a href="https://restfulapi.net" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/restapi-icon.svg" alt="REST API"><span>REST API</span></a>
         </div>
       </div>
       <!-- Databases -->
       <div class="tech-card glass reveal" data-tilt>
         <div class="tech-card-title"><span class="emoji">&#128451;&#65039;</span> Databases</div>
         <div class="tech-icons">
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=postgresql" alt="PostgreSQL"><span>PostgreSQL</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=mongodb" alt="MongoDB"><span>MongoDB</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/mysql-icon.svg" alt="MySQL"><span>MySQL</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=redis" alt="Redis"><span>Redis</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=sqlite" alt="SQLite"><span>SQLite</span></div>
+          <a href="https://www.postgresql.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=postgresql" alt="PostgreSQL"><span>PostgreSQL</span></a>
+          <a href="https://www.mongodb.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=mongodb" alt="MongoDB"><span>MongoDB</span></a>
+          <a href="https://www.mysql.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=mysql" alt="MySQL"><span>MySQL</span></a>
+          <a href="https://redis.io" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=redis" alt="Redis"><span>Redis</span></a>
+          <a href="https://www.sqlite.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=sqlite" alt="SQLite"><span>SQLite</span></a>
         </div>
       </div>
       <!-- Cloud & DevOps -->
       <div class="tech-card glass reveal" data-tilt>
         <div class="tech-card-title"><span class="emoji">&#9729;&#65039;</span> Cloud & DevOps</div>
         <div class="tech-icons">
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="AWS"><span>AWS</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=azure" alt="Azure"><span>Azure</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/docker-icon.svg" alt="Docker"><span>Docker</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/kubernetes-icon.svg" alt="K8s"><span>K8s</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=git" alt="Git"><span>Git</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/github-icon.svg" alt="GitHub"><span>GitHub</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=heroku" alt="Heroku"><span>Heroku</span></div>
+          <a href="https://aws.amazon.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="AWS"><span>AWS</span></a>
+          <a href="https://azure.microsoft.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=azure" alt="Azure"><span>Azure</span></a>
+          <a href="https://www.docker.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/docker-icon.svg" alt="Docker"><span>Docker</span></a>
+          <a href="https://kubernetes.io" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/kubernetes-icon.svg" alt="K8s"><span>K8s</span></a>
+          <a href="https://git-scm.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=git" alt="Git"><span>Git</span></a>
+          <a href="https://github.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/github-icon.svg" alt="GitHub"><span>GitHub</span></a>
+          <a href="https://www.heroku.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=heroku" alt="Heroku"><span>Heroku</span></a>
         </div>
       </div>
       <!-- Testing -->
       <div class="tech-card glass reveal" data-tilt>
         <div class="tech-card-title"><span class="emoji">&#129514;</span> Testing</div>
         <div class="tech-icons">
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/jest-icon.svg" alt="Jest"><span>Jest</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=vitest" alt="Vitest"><span>Vitest</span></div>
-          <div class="tech-icon"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rspec/rspec-original.svg" alt="RSpec"><span>RSpec</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/testinglibrary-icon.svg" alt="Testing Library"><span>Testing Lib</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="ESLint"><span>ESLint</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="Prettier"><span>Prettier</span></div>
+          <a href="https://jestjs.io" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/jest-icon.svg" alt="Jest"><span>Jest</span></a>
+          <a href="https://vitest.dev" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=vitest" alt="Vitest"><span>Vitest</span></a>
+          <a href="https://rspec.info" target="_blank" rel="noopener" class="tech-icon"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rspec/rspec-original.svg" alt="RSpec"><span>RSpec</span></a>
+          <a href="https://testing-library.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/testinglibrary-icon.svg" alt="Testing Library"><span>Testing Lib</span></a>
+          <a href="https://eslint.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="ESLint"><span>ESLint</span></a>
+          <a href="https://prettier.io" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="Prettier"><span>Prettier</span></a>
         </div>
       </div>
       <!-- AI & Tools -->
       <div class="tech-card glass reveal" data-tilt>
         <div class="tech-card-title"><span class="emoji">&#129302;</span> AI & Tools</div>
         <div class="tech-icons">
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=vscode" alt="VS Code"><span>VS Code</span></div>
-          <div class="tech-icon"><img src="https://skillicons.dev/icons?i=webstorm" alt="WebStorm"><span>WebStorm</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/github-icon.svg" alt="GitHub"><span>GitHub</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/webpack-icon.svg" alt="Webpack"><span>Webpack</span></div>
-          <div class="tech-icon"><img src="https://techstack-generator.vercel.app/storybook-icon.svg" alt="Storybook"><span>Storybook</span></div>
+          <a href="https://code.visualstudio.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=vscode" alt="VS Code"><span>VS Code</span></a>
+          <a href="https://www.jetbrains.com/webstorm" target="_blank" rel="noopener" class="tech-icon"><img src="https://skillicons.dev/icons?i=webstorm" alt="WebStorm"><span>WebStorm</span></a>
+          <a href="https://github.com" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/github-icon.svg" alt="GitHub"><span>GitHub</span></a>
+          <a href="https://webpack.js.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/webpack-icon.svg" alt="Webpack"><span>Webpack</span></a>
+          <a href="https://storybook.js.org" target="_blank" rel="noopener" class="tech-icon"><img src="https://techstack-generator.vercel.app/storybook-icon.svg" alt="Storybook"><span>Storybook</span></a>
         </div>
       </div>
     </div>
   </section>
+
+  <div class="section-separator"><div class="sep-line"></div></div>
 
   <!-- ══════ PROFESSIONAL JOURNEY ══════ -->
   <section id="journey" class="section">
@@ -1373,6 +1622,8 @@
     </div>
   </section>
 
+  <div class="section-separator"><div class="sep-line"></div></div>
+
   <!-- ══════ OPEN SOURCE ══════ -->
   <section id="projects" class="section">
     <div class="section-header reveal-blur">
@@ -1382,7 +1633,7 @@
     </div>
     <div class="projects-grid stagger">
       <!-- Rails Core -->
-      <div class="project-card glass reveal" data-tilt>
+      <div class="project-card glass reveal glow-border" data-tilt>
         <div class="project-icon">&#128740;</div>
         <h3 class="project-name"><a href="https://github.com/rails/rails/pull/56867" target="_blank" rel="noopener">Rails Core Contribution</a></h3>
         <p class="project-desc">Merged PR to <strong>rails/rails</strong> &mdash; Fixed Ruby 4.0 delegator warning in ActiveModel/ActiveRecord.</p>
@@ -1394,7 +1645,7 @@
         </a>
       </div>
       <!-- ramadan-cli-pro -->
-      <div class="project-card glass reveal" data-tilt>
+      <div class="project-card glass reveal glow-border" data-tilt>
         <div class="project-icon">&#127769;</div>
         <h3 class="project-name"><a href="https://www.npmjs.com/package/ramadan-cli-pro" target="_blank" rel="noopener">ramadan-cli-pro</a></h3>
         <p class="project-desc">Published npm package &mdash; TUI dashboard with prayer times, i18n & notifications.</p>
@@ -1406,7 +1657,7 @@
         </a>
       </div>
       <!-- rubocop-hk -->
-      <div class="project-card glass reveal" data-tilt>
+      <div class="project-card glass reveal glow-border" data-tilt>
         <div class="project-icon">&#128142;</div>
         <h3 class="project-name"><a href="https://rubygems.org/gems/rubocop-hk" target="_blank" rel="noopener">rubocop-hk</a></h3>
         <p class="project-desc">Published RubyGem &mdash; 2,800+ downloads. Modern RuboCop config for Ruby & Rails projects.</p>
@@ -1418,7 +1669,7 @@
         </a>
       </div>
       <!-- image-magnifier -->
-      <div class="project-card glass reveal" data-tilt>
+      <div class="project-card glass reveal glow-border" data-tilt>
         <div class="project-icon">&#128269;</div>
         <h3 class="project-name"><a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier" target="_blank" rel="noopener">image-magnifier</a></h3>
         <p class="project-desc">React zoom component &mdash; 8 stars, 748+ downloads. TypeScript with 7 releases.</p>
@@ -1430,7 +1681,7 @@
         </a>
       </div>
       <!-- electric-border-css -->
-      <div class="project-card glass reveal" data-tilt>
+      <div class="project-card glass reveal glow-border" data-tilt>
         <div class="project-icon">&#9889;</div>
         <h3 class="project-name"><a href="https://www.npmjs.com/package/electric-border-css" target="_blank" rel="noopener">electric-border-css</a></h3>
         <p class="project-desc">Animated CSS border effects &mdash; React, Vue, Next.js & Svelte with live demo.</p>
@@ -1442,7 +1693,7 @@
         </a>
       </div>
       <!-- daemon-os -->
-      <div class="project-card glass reveal" data-tilt>
+      <div class="project-card glass reveal glow-border" data-tilt>
         <div class="project-icon">&#128421;</div>
         <h3 class="project-name"><a href="https://github.com/hammadxcm/daemon-os" target="_blank" rel="noopener">daemon-os</a></h3>
         <p class="project-desc">macOS MCP server for AI agent computer-use &mdash; gives AI eyes & hands on your Mac.</p>
@@ -1455,6 +1706,8 @@
       </div>
     </div>
   </section>
+
+  <div class="section-separator"><div class="sep-line"></div></div>
 
   <!-- ══════ GITHUB ANALYTICS ══════ -->
   <section id="analytics" class="section">
@@ -1494,8 +1747,23 @@
       <div class="analytics-full reveal">
         <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Dev Quote" loading="lazy">
       </div>
+      <div class="analytics-row reveal">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=hammadxcm&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117" alt="Top Languages" loading="lazy" class="blur-up">
+      </div>
+      <div class="analytics-full reveal">
+        <a href="https://github.com/hammadxcm" target="_blank" rel="noopener" class="skyline-card glass glow-border">
+          <div class="skyline-icon">&#128187;</div>
+          <div class="skyline-info">
+            <h3>GitHub Profile</h3>
+            <p>Explore my repositories, contribution history, and open-source work on GitHub.</p>
+          </div>
+          <span class="skyline-arrow">&#8594;</span>
+        </a>
+      </div>
     </div>
   </section>
+
+  <div class="section-separator"><div class="sep-line"></div></div>
 
   <!-- ══════ CERTIFICATIONS ══════ -->
   <section id="certs" class="section">
@@ -1506,7 +1774,7 @@
     </div>
     <div class="certs-grid stagger">
       <!-- Security & Compliance -->
-      <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/1526fe3f-31e1-4cab-85a5-16669ad20b8b-hammad-khan-a4dafb82-c00d-4efd-965b-1194fb66f7e9-certificate.pdf" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/1526fe3f-31e1-4cab-85a5-16669ad20b8b-hammad-khan-a4dafb82-c00d-4efd-965b-1194fb66f7e9-certificate.pdf" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/owasp.svg" width="44" alt="OWASP"></div>
         <p class="cert-category">Security</p>
         <h3 class="cert-name">OWASP Top 10 Security Threats</h3>
@@ -1514,14 +1782,14 @@
         <p class="cert-date">December 2025</p>
         <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
       </a>
-      <a href="https://www.linkedin.com/learning/certificates/d57c36b7fe8db2dbb80431f9fbdfb3a48253ce9cb59576d9d5e8720851029878" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://www.linkedin.com/learning/certificates/d57c36b7fe8db2dbb80431f9fbdfb3a48253ce9cb59576d9d5e8720851029878" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://cdn.simpleicons.org/kalilinux/557C94" width="44" alt="Ethical Hacking"></div>
         <p class="cert-category">Security</p>
         <h3 class="cert-name">Ethical Hacking: Introduction</h3>
         <p class="cert-issuer">LinkedIn Learning</p>
         <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
       </a>
-      <a href="https://www.linkedin.com/learning/certificates/2dcfc22edd19dfca6f8a8d057a4ae887d0b915268a3887680a9d0a9234e25a62" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://www.linkedin.com/learning/certificates/2dcfc22edd19dfca6f8a8d057a4ae887d0b915268a3887680a9d0a9234e25a62" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://cdn.simpleicons.org/gnuprivacyguard/0093DD" width="44" alt="HIPAA"></div>
         <p class="cert-category">Compliance</p>
         <h3 class="cert-name">Building a HIPAA Compliance Program</h3>
@@ -1529,7 +1797,7 @@
         <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
       </a>
       <!-- Networking -->
-      <a href="https://www.linkedin.com/learning/certificates/f6fad5371eae0d8acfee3b3a2c8edca7cbe33a63730f0cd560bb993df5438309" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://www.linkedin.com/learning/certificates/f6fad5371eae0d8acfee3b3a2c8edca7cbe33a63730f0cd560bb993df5438309" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://cdn.simpleicons.org/cisco/1BA0D7" width="44" alt="Networking"></div>
         <p class="cert-category">Networking</p>
         <h3 class="cert-name">Networking Foundations: Basics</h3>
@@ -1537,7 +1805,7 @@
         <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
       </a>
       <!-- Web Frameworks -->
-      <a href="https://www.linkedin.com/learning/certificates/b36c2bda03eda9a68e4dec50def0daad8dcb9b6c67492627c9b8bd377fb67f4c" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://www.linkedin.com/learning/certificates/b36c2bda03eda9a68e4dec50def0daad8dcb9b6c67492627c9b8bd377fb67f4c" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://skillicons.dev/icons?i=rails" width="44" alt="Hotwire"></div>
         <p class="cert-category">Web Frameworks</p>
         <h3 class="cert-name">Hotwire: Reactive Rails Apps</h3>
@@ -1545,7 +1813,7 @@
         <p class="cert-date">June 2024</p>
         <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
       </a>
-      <a href="https://www.linkedin.com/learning/certificates/d335c38204c29a4f8ce7e07c0ecaa5077067865b9792595e481905b3fd06586d" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://www.linkedin.com/learning/certificates/d335c38204c29a4f8ce7e07c0ecaa5077067865b9792595e481905b3fd06586d" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rspec/rspec-original.svg" width="44" alt="RSpec"></div>
         <p class="cert-category">Testing</p>
         <h3 class="cert-name">Ruby Testing with RSpec</h3>
@@ -1554,14 +1822,14 @@
         <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
       </a>
       <!-- Languages & Tools -->
-      <a href="https://www.linkedin.com/learning/certificates/e30b66061cc2080040e0df0c0e173d00a2203112628954ed1355fab6fcc85956" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://www.linkedin.com/learning/certificates/e30b66061cc2080040e0df0c0e173d00a2203112628954ed1355fab6fcc85956" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://techstack-generator.vercel.app/ts-icon.svg" width="50" alt="TypeScript"></div>
         <p class="cert-category">Languages</p>
         <h3 class="cert-name">TypeScript Essential Training</h3>
         <p class="cert-issuer">LinkedIn Learning</p>
         <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
       </a>
-      <a href="https://www.linkedin.com/learning/certificates/0bf6f582259007a4e436be7004b0f7ed3e8bf9972b6a7dbac68ea2867493aacf" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://www.linkedin.com/learning/certificates/0bf6f582259007a4e436be7004b0f7ed3e8bf9972b6a7dbac68ea2867493aacf" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://techstack-generator.vercel.app/mysql-icon.svg" width="50" alt="MySQL"></div>
         <p class="cert-category">Databases</p>
         <h3 class="cert-name">MySQL Installation &amp; Configuration</h3>
@@ -1569,7 +1837,7 @@
         <p class="cert-date">March 2024</p>
         <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
       </a>
-      <a href="https://www.linkedin.com/learning/certificates/3b36f2ca76a1876379837a9403195e104dd354781a13989cbfcc452188e85a8e" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://www.linkedin.com/learning/certificates/3b36f2ca76a1876379837a9403195e104dd354781a13989cbfcc452188e85a8e" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://techstack-generator.vercel.app/github-icon.svg" width="50" alt="Git & GitHub"></div>
         <p class="cert-category">Tools</p>
         <h3 class="cert-name">Learning Git and GitHub</h3>
@@ -1577,7 +1845,7 @@
         <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
       </a>
       <!-- Python & Data -->
-      <a href="https://www.coursera.org/account/accomplishments/verify/BLQ2MA03WL9N" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://www.coursera.org/account/accomplishments/verify/BLQ2MA03WL9N" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://techstack-generator.vercel.app/python-icon.svg" width="50" alt="Python"></div>
         <p class="cert-category">Python</p>
         <h3 class="cert-name">Programming for Everybody (Python)</h3>
@@ -1585,7 +1853,7 @@
         <p class="cert-date">December 2024</p>
         <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
       </a>
-      <a href="https://www.coursera.org/account/accomplishments/verify/J79EC6EVAUDM" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://www.coursera.org/account/accomplishments/verify/J79EC6EVAUDM" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://techstack-generator.vercel.app/python-icon.svg" width="50" alt="Python"></div>
         <p class="cert-category">Python</p>
         <h3 class="cert-name">Python Data Structures</h3>
@@ -1594,7 +1862,7 @@
         <span class="cert-ext">View Certificate <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>
       </a>
       <!-- AI & Automation -->
-      <a href="https://www.linkedin.com/learning/certificates/9e3c21550dc5afe1ada5f58b16174065b0bf2318149047b316d954b800a731b4" target="_blank" rel="noopener" class="cert-card glass reveal">
+      <a href="https://www.linkedin.com/learning/certificates/9e3c21550dc5afe1ada5f58b16174065b0bf2318149047b316d954b800a731b4" target="_blank" rel="noopener" class="cert-card glass reveal glow-border">
         <div class="cert-badge"><img src="https://cdn.simpleicons.org/n8n/EA4B71" width="44" alt="n8n"></div>
         <p class="cert-category">AI &amp; Automation</p>
         <h3 class="cert-name">Build AI Agents with n8n</h3>
@@ -1622,6 +1890,10 @@
   </footer>
 
   <script>
+    /* ── Global Flags ── */
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
     /* ══════════════════════════════
        PARTICLE CANVAS
     ══════════════════════════════ */
@@ -1746,7 +2018,7 @@
        SCROLL REVEAL (Enhanced)
     ══════════════════════════════ */
     (function() {
-      var revealSelectors = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur';
+      var revealSelectors = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-clip';
       var reveals = document.querySelectorAll(revealSelectors);
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -1777,14 +2049,20 @@
     })();
 
     /* ══════════════════════════════
-       HERO PARALLAX & ORB SCROLL
+       CONSOLIDATED SCROLL HANDLER
+       (Hero Parallax, Orbs, Timeline Draw,
+        Section Title Gradient, Progress Bar)
     ══════════════════════════════ */
     (function() {
       var heroContent = document.querySelector('.hero-content');
       var scrollIndicator = document.querySelector('.scroll-indicator');
+      var heroGridLayer = document.querySelector('.hero-grid-layer');
+      var heroShapesLayer = document.querySelector('.hero-shapes-layer');
       var orbs = document.querySelectorAll('.orb');
       var nav = document.querySelector('nav');
       var progressBar = document.getElementById('scrollProgress');
+      var timeline = document.querySelector('.timeline');
+      var sectionTitles = document.querySelectorAll('.section-title');
       var ticking = false;
 
       window.addEventListener('scroll', function() {
@@ -1792,6 +2070,7 @@
           requestAnimationFrame(function() {
             var scrollY = window.scrollY;
             var vh = window.innerHeight;
+            var docHeight = document.documentElement.scrollHeight - vh;
 
             // Hero content: scale down & fade out as you scroll
             if (scrollY < vh) {
@@ -1800,10 +2079,12 @@
               var opacity = 1 - progress * 1.2;
               heroContent.style.transform = 'scale(' + Math.max(scale, 0.85) + ') translateY(' + (scrollY * 0.3) + 'px)';
               heroContent.style.opacity = Math.max(opacity, 0);
-              // Fade scroll indicator faster
               if (scrollIndicator) {
                 scrollIndicator.style.opacity = Math.max(1 - progress * 3, 0);
               }
+              // Hero layer parallax
+              if (heroGridLayer) heroGridLayer.style.transform = 'translateY(' + (scrollY * 0.15) + 'px)';
+              if (heroShapesLayer) heroShapesLayer.style.transform = 'translateY(' + (scrollY * 0.4) + 'px)';
             }
 
             // Subtle orb opacity shift on scroll
@@ -1820,9 +2101,28 @@
             }
 
             // Scroll progress bar
-            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
             var scrollPercent = (scrollY / docHeight) * 100;
             progressBar.style.width = scrollPercent + '%';
+
+            // Self-drawing timeline line
+            if (timeline && !prefersReducedMotion) {
+              var rect = timeline.getBoundingClientRect();
+              var timelineTop = rect.top + scrollY;
+              var timelineHeight = rect.height;
+              var viewBottom = scrollY + vh;
+              if (viewBottom > timelineTop && scrollY < timelineTop + timelineHeight) {
+                var progress = Math.min(1, Math.max(0, (viewBottom - timelineTop) / (timelineHeight + vh * 0.5)));
+                timeline.style.setProperty('--timeline-progress', progress);
+              }
+            }
+
+            // Section title gradient scroll
+            for (var t = 0; t < sectionTitles.length; t++) {
+              var titleRect = sectionTitles[t].getBoundingClientRect();
+              var titleProgress = 1 - (titleRect.top / vh);
+              titleProgress = Math.min(1, Math.max(0, titleProgress));
+              sectionTitles[t].style.backgroundPosition = (titleProgress * 100) + '% 50%';
+            }
 
             ticking = false;
           });
@@ -1904,6 +2204,210 @@
             icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>';
             btn.classList.remove('copied');
           }, 2000);
+        });
+      });
+    })();
+
+    /* (Hero name uses CSS-only heroReveal animation — no JS char split needed) */
+
+    /* ══════════════════════════════
+       CUSTOM CURSOR (desktop only)
+    ══════════════════════════════ */
+    (function() {
+      if (isTouchDevice || prefersReducedMotion) return;
+      var cursor = document.getElementById('customCursor');
+      if (!cursor) return;
+      document.body.classList.add('has-custom-cursor');
+      var mx = 0, my = 0, cx = 0, cy = 0;
+      var lerp = 0.15;
+
+      document.addEventListener('mousemove', function(e) {
+        mx = e.clientX;
+        my = e.clientY;
+        if (!cursor.classList.contains('visible')) cursor.classList.add('visible');
+      });
+
+      document.addEventListener('mouseleave', function() {
+        cursor.classList.remove('visible');
+      });
+
+      // Detect hover on interactive elements
+      var interactiveEls = 'a, button, [data-tilt], .social-btn, .project-link, .cert-card, .skyline-card, input, textarea';
+      document.addEventListener('mouseover', function(e) {
+        if (e.target.closest(interactiveEls)) cursor.classList.add('hover');
+      });
+      document.addEventListener('mouseout', function(e) {
+        if (e.target.closest(interactiveEls)) cursor.classList.remove('hover');
+      });
+
+      function animate() {
+        cx += (mx - cx) * lerp;
+        cy += (my - cy) * lerp;
+        cursor.style.left = cx + 'px';
+        cursor.style.top = cy + 'px';
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    /* ══════════════════════════════
+       FLOATING TECH ICONS
+    ══════════════════════════════ */
+    (function() {
+      if (prefersReducedMotion) return;
+      var techIcons = document.querySelectorAll('.tech-icon');
+      techIcons.forEach(function(icon) {
+        icon.style.animation = 'techFloat 2s ease-in-out infinite';
+        icon.style.animationDelay = (Math.random() * 2).toFixed(2) + 's';
+      });
+    })();
+
+    /* ══════════════════════════════
+       COUNT-UP ANIMATION
+    ══════════════════════════════ */
+    (function() {
+      var counters = document.querySelectorAll('.count-up');
+      if (!counters.length) return;
+
+      function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+      function animateCounter(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var suffix = el.getAttribute('data-suffix') || '';
+        var duration = 2000;
+        var start = performance.now();
+
+        function step(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var easedProgress = easeOutQuart(progress);
+          var current = Math.floor(easedProgress * target);
+          el.textContent = current + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target + suffix;
+        }
+
+        if (prefersReducedMotion) {
+          el.textContent = target + suffix;
+        } else {
+          requestAnimationFrame(step);
+        }
+      }
+
+      var counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(function(el) { counterObserver.observe(el); });
+    })();
+
+    /* ══════════════════════════════
+       BLUR-UP IMAGE LOADING
+    ══════════════════════════════ */
+    (function() {
+      var blurImages = document.querySelectorAll('.blur-up');
+      blurImages.forEach(function(img) {
+        if (img.complete) {
+          img.classList.add('loaded');
+        } else {
+          img.addEventListener('load', function() {
+            img.classList.add('loaded');
+          });
+        }
+      });
+      // Also apply blur-up to all analytics images
+      var analyticsImgs = document.querySelectorAll('.analytics-grid img');
+      analyticsImgs.forEach(function(img) {
+        if (!img.classList.contains('blur-up')) {
+          img.style.filter = 'blur(8px)';
+          img.style.transition = 'filter 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+          if (img.complete) {
+            img.style.filter = 'blur(0)';
+          } else {
+            img.addEventListener('load', function() {
+              img.style.filter = 'blur(0)';
+            });
+          }
+        }
+      });
+    })();
+
+    /* ══════════════════════════════
+       SECTION SEPARATOR OBSERVER
+    ══════════════════════════════ */
+    (function() {
+      var separators = document.querySelectorAll('.section-separator');
+      if (!separators.length) return;
+      var sepObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.3 });
+      separators.forEach(function(el) { sepObserver.observe(el); });
+    })();
+
+    /* ══════════════════════════════
+       MOMENTUM ANCHOR SCROLLING
+    ══════════════════════════════ */
+    (function() {
+      if (prefersReducedMotion) return;
+      // Override CSS smooth scroll — we handle it in JS
+      document.documentElement.style.scrollBehavior = 'auto';
+
+      var navAnchors = document.querySelectorAll('a[href^="#"]');
+      navAnchors.forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var href = this.getAttribute('href');
+          if (!href || href === '#') return;
+          var target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+
+          var startY = window.scrollY;
+          var targetY = target.getBoundingClientRect().top + startY - 64; // offset for nav
+          var distance = targetY - startY;
+          var absDist = Math.abs(distance);
+          // Adaptive duration: 800ms – 1500ms based on distance
+          var duration = Math.min(1500, Math.max(800, absDist * 0.4));
+          var startTime = performance.now();
+
+          function easeOutExpo(t) {
+            return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+          }
+
+          function step(now) {
+            var elapsed = now - startTime;
+            var progress = Math.min(elapsed / duration, 1);
+            var easedProgress = easeOutExpo(progress);
+            window.scrollTo(0, startY + distance * easedProgress);
+            if (progress < 1) requestAnimationFrame(step);
+          }
+
+          requestAnimationFrame(step);
+        });
+      });
+    })();
+
+    /* ══════════════════════════════
+       PROJECT CARD FULL-CLICK
+    ══════════════════════════════ */
+    (function() {
+      var projectCards = document.querySelectorAll('.project-card');
+      projectCards.forEach(function(card) {
+        card.addEventListener('click', function(e) {
+          // Don't override if user clicked directly on a link
+          if (e.target.closest('a')) return;
+          var link = card.querySelector('.project-name a') || card.querySelector('a');
+          if (link) {
+            window.open(link.href, '_blank', 'noopener');
+          }
         });
       });
     })();
