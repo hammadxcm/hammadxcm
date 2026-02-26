@@ -9,6 +9,8 @@ on:
 
   push:
     branches: ["master", "main"]
+    paths-ignore:
+      - "metrics.*.svg"
 
 jobs:
   github-metrics:
@@ -22,7 +24,9 @@ jobs:
         with:
           filename: metrics.classic.svg
           token: ${{ secrets.METRICS_TOKEN }}
-          
+          committer_branch: main
+          committer_message: "Update ${filename} [skip ci]"
+
           user: hammadxcm
           template: classic
           base: header, activity, community, repositories, metadata
@@ -41,6 +45,8 @@ jobs:
         with:
           filename: metrics.plugin.isocalendar.fullyear.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          committer_branch: main
+          committer_message: "Update ${filename} [skip ci]"
           base: ""
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
@@ -49,6 +55,8 @@ jobs:
         with:
           filename: metrics.plugin.languages.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          committer_branch: main
+          committer_message: "Update ${filename} [skip ci]"
           base: ""
           commits_authoring: hammadxcm, hammadxcm@users.noreply.github.com
           plugin_languages: yes
@@ -69,6 +77,8 @@ jobs:
         with:
           filename: metrics.plugin.stars.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          committer_branch: main
+          committer_message: "Update ${filename} [skip ci]"
           base: ""
           plugin_stars: yes
           plugin_stars_limit: 3
@@ -77,6 +87,8 @@ jobs:
         with:
           filename: metrics.plugin.leetcode.svg
           token: NOT_NEEDED
+          committer_branch: main
+          committer_message: "Update ${filename} [skip ci]"
           base: ""
           plugin_leetcode_user: hammadxcm
           plugin_leetcode: yes
