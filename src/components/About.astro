@@ -1,17 +1,17 @@
+---
+import SectionHeader from './SectionHeader.astro';
+---
+
 <!-- ══════ ABOUT ══════ -->
 <section id="about" class="section">
-  <div class="section-header reveal-blur">
-    <span class="section-label">// Who am I</span>
-    <h2 class="section-title">About Me</h2>
-    <div class="section-divider"></div>
-  </div>
+  <SectionHeader label="// Who am I" title="About Me" />
   <div class="about-card glass reveal-scale">
     <div class="code-header">
       <span class="code-dot red"></span>
       <span class="code-dot yellow"></span>
       <span class="code-dot green"></span>
       <span class="code-filename">hammadKhan.js</span>
-      <button class="code-copy" id="copyBtn" aria-label="Copy code">
+      <button type="button" class="code-copy" id="copyBtn" aria-label="Copy code">
         <svg id="copyIcon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
         <span id="copyLabel">Copy</span>
       </button>

@@ -548,14 +548,6 @@ body.has-custom-cursor [data-tilt] { cursor: none; }
   50% { transform: translateY(-4px); }
 }
 
-/* ── Clip-Path Section Reveal ── */
-.reveal-clip {
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path 1.2s var(--ease-out-expo);
-}
-.reveal-clip.visible {
-  clip-path: inset(0);
-}
 
 /* ── Section Title Gradient Scroll ── */
 .section-title {
@@ -764,9 +756,7 @@ body.has-custom-cursor [data-tilt] { cursor: none; }
 .code-body .const { color: #79c0ff; }
 .code-body .string { color: #a5d6ff; }
 .code-body .property { color: var(--accent-mint); }
-.code-body .comment { color: var(--text-dim); font-style: italic; }
 .code-body .bracket { color: #e6edf3; }
-.code-body .number { color: #ffa657; }
 .code-line {
   display: block;
   padding-left: 2rem;
@@ -1020,7 +1010,7 @@ a.timeline-company:hover {
   color: var(--accent);
 }
 .project-link:hover { color: var(--accent-mint); }
-.project-link svg { width: 16px; height: 16px; fill: currentColor; }
+.project-link svg { width: 16px; height: 16px; }
 
 /* ══════════════════════════════
    GITHUB ANALYTICS
@@ -1254,11 +1244,11 @@ footer {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-clip, .stagger > * {
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .stagger > * {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
-    clip-path: none !important;
+
   }
   .custom-cursor { display: none !important; }
   body.has-custom-cursor { cursor: auto; }
