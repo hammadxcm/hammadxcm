@@ -1,5 +1,19 @@
 ---
+/**
+ * About Section
+ * Terminal-styled code card showing personal/professional details
+ * with copy-to-clipboard and multi-language switching.
+ *
+ * @depends config.about, about-builder
+ * @styles Scoped SCSS — code card, syntax highlighting, lang switcher + responsive
+ */
 import SectionHeader from './SectionHeader.astro';
+import { config } from '@config/index';
+import { buildAboutLines, buildAboutMultiLang } from '@config/about-builder';
+
+const { displayLines, copyLines } = buildAboutLines(config.about);
+const codeString = copyLines.join('\n');
+const multiLangData = buildAboutMultiLang(config.about);
 ---
 
 <!-- ══════ ABOUT ══════ -->
@@ -10,47 +24,180 @@ import SectionHeader from './SectionHeader.astro';
       <span class="code-dot red"></span>
       <span class="code-dot yellow"></span>
       <span class="code-dot green"></span>
-      <span class="code-filename">classified_dossier.sh</span>
-      <button type="button" class="code-copy" id="copyBtn" aria-label="Copy code">
+      <span class="code-filename" id="aboutFilename">classified_dossier.sh</span>
+      <select class="lang-switcher" id="langSwitcher" aria-label="Select language">
+        <option value="bash">Bash</option>
+        <option value="python">Python</option>
+        <option value="ruby">Ruby</option>
+        <option value="javascript">JavaScript</option>
+        <option value="typescript">TypeScript</option>
+        <option value="java">Java</option>
+        <option value="cpp">C++</option>
+        <option value="go">Go</option>
+        <option value="rust">Rust</option>
+        <option value="php">PHP</option>
+        <option value="perl">Perl</option>
+        <option value="csharp">C#</option>
+        <option value="swift">Swift</option>
+        <option value="kotlin">Kotlin</option>
+        <option value="cobol">COBOL</option>
+        <option value="fortran">Fortran</option>
+        <option value="assembly">Assembly</option>
+        <option value="binary">Binary</option>
+      </select>
+      <button type="button" class="code-copy" id="copyBtn" data-code={codeString} aria-label="Copy code">
         <svg id="copyIcon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
         <span id="copyLabel">Copy</span>
       </button>
     </div>
-    <div class="code-body">
-<span class="code-line"><span class="code-line-num">1</span><span class="keyword">#!/bin/bash</span></span>
-<span class="code-line"><span class="code-line-num">2</span><span class="comment"># ═══════════════════════════════════════</span></span>
-<span class="code-line"><span class="code-line-num">3</span><span class="comment"># CLASSIFIED — SECURITY CLEARANCE: ROOT</span></span>
-<span class="code-line"><span class="code-line-num">4</span><span class="comment"># ═══════════════════════════════════════</span></span>
-<span class="code-line"><span class="code-line-num">5</span></span>
-<span class="code-line"><span class="code-line-num">6</span><span class="const">CODENAME</span>=<span class="string">"hammad_khan"</span></span>
-<span class="code-line"><span class="code-line-num">7</span><span class="const">TITLE</span>=<span class="string">"Senior Full Stack Engineer"</span></span>
-<span class="code-line"><span class="code-line-num">8</span><span class="const">EXPERIENCE</span>=<span class="string">"8+ years building systems at scale"</span></span>
-<span class="code-line"><span class="code-line-num">9</span><span class="const">LOCATION</span>=<span class="string">"Lahore, Pakistan"</span></span>
-<span class="code-line"><span class="code-line-num">10</span><span class="const">CLEARANCE</span>=<span class="string">"Level 5 — Platform Architecture"</span></span>
-<span class="code-line"><span class="code-line-num">11</span><span class="const">CURRENT_OP</span>=<span class="string">"Senior Full Stack Engineer @ NexaQuanta"</span></span>
-<span class="code-line"><span class="code-line-num">12</span></span>
-<span class="code-line"><span class="code-line-num">13</span><span class="keyword">declare</span> -A <span class="const">ARSENAL</span>=<span class="bracket">(</span></span>
-<span class="code-line"><span class="code-line-num">14</span>  <span class="bracket">[</span><span class="property">system_design</span><span class="bracket">]</span>=<span class="string">"Microservices | Event-Driven | DDD"</span></span>
-<span class="code-line"><span class="code-line-num">15</span>  <span class="bracket">[</span><span class="property">backend</span><span class="bracket">]</span>=<span class="string">"Rails | NestJS | Node | GraphQL"</span></span>
-<span class="code-line"><span class="code-line-num">16</span>  <span class="bracket">[</span><span class="property">frontend</span><span class="bracket">]</span>=<span class="string">"React | Vue | Next.js | PWA"</span></span>
-<span class="code-line"><span class="code-line-num">17</span>  <span class="bracket">[</span><span class="property">infrastructure</span><span class="bracket">]</span>=<span class="string">"AWS | Docker | Redis | BullMQ | K8s"</span></span>
-<span class="code-line"><span class="code-line-num">18</span>  <span class="bracket">[</span><span class="property">databases</span><span class="bracket">]</span>=<span class="string">"PostgreSQL | MongoDB | MySQL | Prisma"</span></span>
-<span class="code-line"><span class="code-line-num">19</span>  <span class="bracket">[</span><span class="property">security</span><span class="bracket">]</span>=<span class="string">"OWASP Top 10 | Audit Systems | HIPAA"</span></span>
-<span class="code-line"><span class="code-line-num">20</span><span class="bracket">)</span></span>
-<span class="code-line"><span class="code-line-num">21</span></span>
-<span class="code-line"><span class="code-line-num">22</span><span class="const">MISSION_LOG</span>=<span class="bracket">(</span></span>
-<span class="code-line"><span class="code-line-num">23</span>  <span class="string">"115+ MRs delivered in 5 months @ NexaQuanta"</span></span>
-<span class="code-line"><span class="code-line-num">24</span>  <span class="string">"Rails Core Contributor — merged PR to rails/rails"</span></span>
-<span class="code-line"><span class="code-line-num">25</span>  <span class="string">"Zero-downtime Stripe migration — 99.9% uptime"</span></span>
-<span class="code-line"><span class="code-line-num">26</span>  <span class="string">"Progressive loading: page load 12s → 2.3s"</span></span>
-<span class="code-line"><span class="code-line-num">27</span><span class="bracket">)</span></span>
-<span class="code-line"><span class="code-line-num">28</span></span>
-<span class="code-line"><span class="code-line-num">29</span><span class="const">KNOWN_ALIASES</span>=<span class="bracket">(</span><span class="string">"daemon-os"</span> <span class="string">"rubocop-hk"</span> <span class="string">"ramadan-cli-pro"</span><span class="bracket">)</span></span>
-<span class="code-line"><span class="code-line-num">30</span><span class="const">CURRENT_FOCUS</span>=<span class="string">"Platform Engineering &amp; Technical Strategy"</span></span>
-<span class="code-line"><span class="code-line-num">31</span><span class="const">PHILOSOPHY</span>=<span class="string">"Building systems that scale, teams that deliver,</span></span>
-<span class="code-line"><span class="code-line-num">32</span><span class="string">            and solutions that last."</span></span>
-<span class="code-line"><span class="code-line-num">33</span></span>
-<span class="code-line"><span class="code-line-num">34</span><span class="keyword">echo</span> <span class="string">"[STATUS] Dossier loaded. Target identified."</span></span>
+    <div class="code-body" id="aboutCodeBody">
+{displayLines.map((line, i) => (
+<span class="code-line" data-about={i === 2 ? 'comment' : i === displayLines.length - 1 ? 'echo' : undefined}><span class="code-line-num">{i + 1}</span><Fragment set:html={line} /></span>
+))}
     </div>
   </div>
+  <script type="application/json" id="aboutMultiLangData" set:html={JSON.stringify(multiLangData)} />
 </section>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .about-card {
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 1rem 1.5rem;
+    background: var(--glass-bg);
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .code-dot {
+    width: 12px; height: 12px;
+    border-radius: var(--radius-full);
+
+    &.red { background: #ff5f57; }
+    &.yellow { background: #febc2e; }
+    &.green { background: #28c840; }
+  }
+
+  .code-filename {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  .lang-switcher {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all var(--duration-normal);
+    appearance: auto;
+
+    &:hover, &:focus {
+      border-color: var(--accent);
+      color: var(--accent);
+      outline: none;
+    }
+
+    option {
+      background: var(--bg-card-solid);
+      color: var(--text);
+    }
+  }
+
+  .code-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all var(--duration-normal);
+
+    &:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(var(--accent-glow), 0.06);
+    }
+
+    &.copied {
+      border-color: var(--code-success);
+      color: var(--code-success);
+    }
+
+    svg {
+      width: 14px; height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  .code-body {
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.8;
+    overflow-x: auto;
+
+    :global(.keyword) { color: var(--code-keyword); }
+    :global(.const) { color: var(--code-const); }
+    :global(.string) { color: var(--code-string); }
+    :global(.property) { color: var(--accent-mint); }
+    :global(.bracket) { color: var(--code-bracket); }
+    :global(.comment) { color: var(--code-comment); font-style: italic; }
+
+    @include respond-to(mobile) {
+      font-size: 0.7rem;
+      line-height: 1.6;
+      padding: 1rem;
+
+      :global(.code-line) {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    }
+
+    @include respond-to(small) {
+      font-size: 0.65rem;
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+  }
+
+  :global(.code-line) {
+    display: block;
+    padding-left: 2rem;
+    white-space: pre;
+  }
+
+  :global(.code-line-num) {
+    display: inline-block;
+    width: 2rem;
+    margin-left: -2rem;
+    color: var(--code-line-num);
+    text-align: right;
+    padding-right: 1rem;
+    user-select: none;
+  }
+</style>

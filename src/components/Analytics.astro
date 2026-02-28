@@ -1,46 +1,57 @@
 ---
+/**
+ * GitHub Analytics Section
+ * Dashboard of GitHub stats, streaks, trophies, language breakdown,
+ * and CTA cards linking to profile and skyline.
+ *
+ * @depends config.github
+ * @styles Scoped SCSS — analytics grid, images, CTA cards + responsive
+ */
 import SectionHeader from './SectionHeader.astro';
+import { config } from '@config/index';
+
+const { username, utcOffset } = config.github;
 ---
 
 <!-- ══════ GITHUB ANALYTICS ══════ -->
 <section id="analytics" class="section">
   <SectionHeader label="// The numbers" title="GitHub Analytics" />
-  <div class="analytics-grid">
+  <div class="analytics-grid" data-github-user={username} data-utc-offset={utcOffset}>
     <div class="analytics-row reveal">
-      <img src="https://github-readme-streak-stats.herokuapp.com?user=hammadxcm&theme=tokyonight&hide_border=true&stroke=0000&background=0D1117&ring=5BCDEC&fire=5BCDEC&currStreakNum=5BCDEC" alt="GitHub Streak" loading="lazy">
-      <img src="https://github-readme-stats.vercel.app/api?username=hammadxcm&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=5BCDEC&icon_color=5BCDEC&text_color=FFFFFF" alt="GitHub Stats" loading="lazy">
+      <img data-stat="streak" src={`https://github-readme-streak-stats.herokuapp.com?user=${username}&theme=tokyonight&hide_border=true&stroke=0000&background=0D1117&ring=5BCDEC&fire=5BCDEC&currStreakNum=5BCDEC`} alt="GitHub Streak" loading="lazy">
+      <img data-stat="stats" src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=5BCDEC&icon_color=5BCDEC&text_color=FFFFFF`} alt="GitHub Stats" loading="lazy">
     </div>
     <div class="analytics-full reveal">
-      <img src="https://github-readme-activity-graph.vercel.app/graph?username=hammadxcm&theme=tokyo-night&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&area=true&hide_border=true" alt="Activity Graph" loading="lazy" style="width: 100%;">
+      <img data-stat="activity" src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=tokyo-night&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&area=true&hide_border=true`} alt="Activity Graph" loading="lazy" style="width: 100%;">
     </div>
     <div class="analytics-full reveal">
-      <img src="https://github-profile-trophy.vercel.app/?username=hammadxcm&theme=tokyonight&no-frame=true&no-bg=false&margin-w=4&column=7" alt="GitHub Trophies" loading="lazy" style="width: 100%;">
-    </div>
-    <div class="analytics-row reveal">
-      <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=hammadxcm&theme=tokyonight" alt="Repos Per Language" loading="lazy">
-      <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=hammadxcm&theme=tokyonight" alt="Most Commit Language" loading="lazy">
+      <img data-stat="trophy" src={`https://github-profile-trophy.vercel.app/?username=${username}&theme=tokyonight&no-frame=true&no-bg=false&margin-w=4&column=7`} alt="GitHub Trophies" loading="lazy" style="width: 100%;">
     </div>
     <div class="analytics-row reveal">
-      <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=hammadxcm&theme=tokyonight" alt="Stats" loading="lazy">
-      <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=hammadxcm&theme=tokyonight&utcOffset=5" alt="Productive Time" loading="lazy">
+      <img data-stat="repos-lang" src={`https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=${username}&theme=tokyonight`} alt="Repos Per Language" loading="lazy">
+      <img data-stat="commit-lang" src={`https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=${username}&theme=tokyonight`} alt="Most Commit Language" loading="lazy">
+    </div>
+    <div class="analytics-row reveal">
+      <img data-stat="card-stats" src={`https://github-profile-summary-cards.vercel.app/api/cards/stats?username=${username}&theme=tokyonight`} alt="Stats" loading="lazy">
+      <img data-stat="productive" src={`https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=${username}&theme=tokyonight&utcOffset=${utcOffset}`} alt="Productive Time" loading="lazy">
     </div>
     <div class="analytics-full reveal">
-      <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=hammadxcm&theme=tokyonight" alt="Profile Details" loading="lazy" style="width: 100%;">
+      <img data-stat="profile" src={`https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=${username}&theme=tokyonight`} alt="Profile Details" loading="lazy" style="width: 100%;">
     </div>
     <div class="analytics-full reveal">
-      <img src="https://raw.githubusercontent.com/hammadxcm/hammadxcm/output/snake.svg" alt="Contribution Snake" loading="lazy" style="width: 100%;">
+      <img src={`https://raw.githubusercontent.com/${username}/${username}/output/snake.svg`} alt="Contribution Snake" loading="lazy" style="width: 100%;">
     </div>
     <div class="analytics-row reveal" style="justify-content: center;">
-      <img src="https://komarev.com/ghpvc/?username=hammadxcm&label=Profile%20Views&color=0e75b6&style=for-the-badge" alt="Profile Views" loading="lazy">
+      <img src={`https://komarev.com/ghpvc/?username=${username}&label=Profile%20Views&color=0e75b6&style=for-the-badge`} alt="Profile Views" loading="lazy">
     </div>
     <div class="analytics-full reveal">
-      <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Dev Quote" loading="lazy">
+      <img data-stat="quote" src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Dev Quote" loading="lazy">
     </div>
     <div class="analytics-row reveal">
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=hammadxcm&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117" alt="Top Languages" loading="lazy" class="blur-up">
+      <img data-stat="top-langs" src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117`} alt="Top Languages" loading="lazy" class="blur-up">
     </div>
     <div class="github-cta-row reveal">
-      <a href="https://github.com/hammadxcm" target="_blank" rel="noopener" class="skyline-card glass glow-border">
+      <a href={`https://github.com/${username}`} target="_blank" rel="noopener" class="skyline-card glass glow-border">
         <div class="skyline-icon">&#128187;</div>
         <div class="skyline-info">
           <h3>GitHub Profile</h3>
@@ -48,7 +59,7 @@ import SectionHeader from './SectionHeader.astro';
         </div>
         <span class="skyline-arrow">&#8594;</span>
       </a>
-      <a href="https://gitskyline.vercel.app/hammadxcm" target="_blank" rel="noopener" class="skyline-card glass glow-border">
+      <a href={`https://gitskyline.vercel.app/${username}`} target="_blank" rel="noopener" class="skyline-card glass glow-border">
         <div class="skyline-icon">&#127961;</div>
         <div class="skyline-info">
           <h3>GitHub Skyline</h3>
@@ -59,3 +70,118 @@ import SectionHeader from './SectionHeader.astro';
     </div>
   </div>
 </section>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .analytics-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .analytics-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      aspect-ratio: 495 / 195;
+      width: 100%;
+      object-fit: contain;
+      background: var(--bg);
+    }
+
+    @include respond-to(mobile) {
+      flex-direction: column;
+      align-items: center;
+
+      img { width: 100%; }
+    }
+  }
+
+  .analytics-full img {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    aspect-ratio: 800 / 300;
+    width: 100%;
+    object-fit: contain;
+    background: var(--bg);
+  }
+
+  .github-cta-row {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @include respond-to(mobile) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .skyline-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 2rem;
+    flex: 1;
+    min-width: 280px;
+    max-width: min(480px, 100%);
+    text-decoration: none;
+    color: var(--text);
+    transition: all var(--duration-slow) var(--ease-out-expo);
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+      box-shadow: 0 12px 30px rgba(var(--accent-glow), 0.12);
+      color: var(--text);
+
+      .skyline-arrow { transform: translateX(4px); }
+    }
+
+    @include respond-to(mobile) {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  .skyline-icon {
+    font-size: 2.2rem;
+    flex-shrink: 0;
+  }
+
+  .skyline-info {
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    p {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+  }
+
+  .skyline-arrow {
+    margin-left: auto;
+    font-size: 1.2rem;
+    color: var(--accent);
+    transition: transform var(--duration-normal);
+
+    @include respond-to(mobile) { margin-left: 0; }
+  }
+</style>

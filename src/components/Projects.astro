@@ -1,6 +1,15 @@
 ---
+/**
+ * Open Source Projects Section
+ * Card grid of open-source projects with 3D tilt, glow hover,
+ * and full-card click-through.
+ *
+ * @depends config.projects, ArrowIcon
+ * @styles Scoped SCSS — project grid, cards, tags + responsive
+ */
 import SectionHeader from './SectionHeader.astro';
 import ArrowIcon from './ArrowIcon.astro';
+import { config } from '@config/index';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
@@ -9,77 +18,99 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 <section id="projects" class="section">
   <SectionHeader label="// What I've built" title="Open Source & Community" />
   <div class="projects-grid stagger">
-    <!-- Rails Core -->
-    <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon"><img src="https://skillicons.dev/icons?i=rails" alt="Rails" /></div>
-      <h3 class="project-name"><a href="https://github.com/rails/rails/pull/56867" target="_blank" rel="noopener">Rails Core Contribution</a></h3>
-      <p class="project-desc">Merged PR to <strong>rails/rails</strong> &mdash; Fixed Ruby 4.0 delegator warning in ActiveModel/ActiveRecord.</p>
-      <div class="project-tags">
-        <span>Ruby on Rails</span><span>Open Source</span><span>Core</span>
+    {config.projects.map((project) => (
+      <div class="project-card glass reveal glow-border" data-tilt>
+        <div class="project-icon"><img src={project.iconIsLocal ? `${base}${project.icon}` : project.icon} alt={project.name} /></div>
+        <h3 class="project-name"><a href={project.url} target="_blank" rel="noopener">{project.name}</a></h3>
+        <p class="project-desc" set:html={project.description} />
+        <div class="project-tags">
+          {project.tags.map((tag) => (
+            <span>{tag}</span>
+          ))}
+        </div>
+        <a href={project.url} target="_blank" rel="noopener" class="project-link">
+          {project.linkText} <ArrowIcon />
+        </a>
       </div>
-      <a href="https://github.com/rails/rails/pull/56867" target="_blank" rel="noopener" class="project-link">
-        View PR <ArrowIcon />
-      </a>
-    </div>
-    <!-- ramadan-cli-pro -->
-    <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon"><img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js" /></div>
-      <h3 class="project-name"><a href="https://www.npmjs.com/package/ramadan-cli-pro" target="_blank" rel="noopener">ramadan-cli-pro</a></h3>
-      <p class="project-desc">Published npm package &mdash; TUI dashboard with prayer times, i18n & notifications.</p>
-      <div class="project-tags">
-        <span>npm</span><span>Node.js</span><span>CLI</span><span>i18n</span>
-      </div>
-      <a href="https://www.npmjs.com/package/ramadan-cli-pro" target="_blank" rel="noopener" class="project-link">
-        View Package <ArrowIcon />
-      </a>
-    </div>
-    <!-- rubocop-hk -->
-    <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon"><img src="https://skillicons.dev/icons?i=ruby" alt="Ruby" /></div>
-      <h3 class="project-name"><a href="https://rubygems.org/gems/rubocop-hk" target="_blank" rel="noopener">rubocop-hk</a></h3>
-      <p class="project-desc">Published RubyGem &mdash; 2,800+ downloads. Modern RuboCop config for Ruby & Rails projects.</p>
-      <div class="project-tags">
-        <span>RubyGems</span><span>RuboCop</span><span>Linting</span>
-      </div>
-      <a href="https://rubygems.org/gems/rubocop-hk" target="_blank" rel="noopener" class="project-link">
-        View Gem <ArrowIcon />
-      </a>
-    </div>
-    <!-- image-magnifier -->
-    <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon"><img src="https://techstack-generator.vercel.app/react-icon.svg" alt="React" /></div>
-      <h3 class="project-name"><a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier" target="_blank" rel="noopener">image-magnifier</a></h3>
-      <p class="project-desc">React zoom component &mdash; 8 stars, 748+ downloads. TypeScript with 7 releases.</p>
-      <div class="project-tags">
-        <span>React</span><span>TypeScript</span><span>npm</span>
-      </div>
-      <a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier" target="_blank" rel="noopener" class="project-link">
-        View Package <ArrowIcon />
-      </a>
-    </div>
-    <!-- electric-border-css -->
-    <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon"><img src="https://skillicons.dev/icons?i=css" alt="CSS" /></div>
-      <h3 class="project-name"><a href="https://www.npmjs.com/package/electric-border-css" target="_blank" rel="noopener">electric-border-css</a></h3>
-      <p class="project-desc">Animated CSS border effects &mdash; React, Vue, Next.js & Svelte with live demo.</p>
-      <div class="project-tags">
-        <span>CSS</span><span>React</span><span>Vue</span><span>Svelte</span>
-      </div>
-      <a href="https://www.npmjs.com/package/electric-border-css" target="_blank" rel="noopener" class="project-link">
-        View Package <ArrowIcon />
-      </a>
-    </div>
-    <!-- daemon-os -->
-    <div class="project-card glass reveal glow-border" data-tilt>
-      <div class="project-icon"><img src={`${base}daemon-icon.svg`} alt="daemon-os" /></div>
-      <h3 class="project-name"><a href="https://github.com/hammadxcm/daemon-os" target="_blank" rel="noopener">daemon-os</a></h3>
-      <p class="project-desc">macOS MCP server for AI agent computer-use &mdash; gives AI eyes & hands on your Mac.</p>
-      <div class="project-tags">
-        <span>MCP</span><span>macOS</span><span>AI</span><span>Swift</span>
-      </div>
-      <a href="https://github.com/hammadxcm/daemon-os" target="_blank" rel="noopener" class="project-link">
-        View Repo <ArrowIcon />
-      </a>
-    </div>
+    ))}
   </div>
 </section>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .projects-grid {
+    @include responsive-grid;
+  }
+
+  .project-card {
+    @include card-padding;
+    transition: all var(--duration-slow) var(--ease-out-expo);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .project-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+
+    img {
+      width: 44px; height: 44px;
+      object-fit: contain;
+    }
+  }
+
+  .project-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+
+    a {
+      color: var(--text);
+      transition: color var(--duration-normal);
+      &:hover { color: var(--accent); }
+    }
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+
+    @include respond-to(mobile) { font-size: 0.85rem; }
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+
+    span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      background: rgba(var(--accent-blue-glow), 0.08);
+      color: var(--accent-blue);
+      border: 1px solid rgba(var(--accent-blue-glow), 0.15);
+
+      @include respond-to(small) { font-size: 0.6rem; }
+    }
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+
+    &:hover { color: var(--accent-mint); }
+
+    :global(svg) { width: 16px; height: 16px; }
+  }
+</style>
