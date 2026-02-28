@@ -1,0 +1,54 @@
+/**
+ * @file Konami Code Overlay
+ * @description Full-screen glitch overlay triggered by the Konami code
+ *              easter egg (up up down down left right left right B A).
+ */
+
+.konami-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    animation: konamiFlash 1.5s steps(4) forwards;
+  }
+}
+
+.konami-text {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 900;
+  color: var(--accent);
+  text-shadow:
+    3px 0 var(--accent-blue), -3px 0 var(--accent),
+    0 0 40px rgba(var(--accent-glow), 0.6),
+    0 0 80px rgba(var(--accent-glow), 0.3);
+  letter-spacing: 0.15em;
+  animation: konamiTextGlitch 0.15s infinite;
+}
+
+@keyframes konamiFlash {
+  0% { opacity: 1; filter: brightness(3) hue-rotate(0deg); }
+  20% { filter: brightness(1) hue-rotate(90deg); }
+  40% { filter: brightness(2) hue-rotate(-90deg); }
+  60% { filter: brightness(1) hue-rotate(45deg); }
+  80% { opacity: 1; filter: brightness(1.5) hue-rotate(0deg); }
+  100% { opacity: 0; visibility: hidden; filter: none; }
+}
+
+@keyframes konamiTextGlitch {
+  0% { transform: translate(0); }
+  25% { transform: translate(-3px, 2px) skewX(-2deg); }
+  50% { transform: translate(3px, -1px) skewX(2deg); }
+  75% { transform: translate(-1px, -2px); }
+  100% { transform: translate(0); }
+}

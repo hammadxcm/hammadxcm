@@ -1,0 +1,24 @@
+/**
+ * @file Key Flash Indicator
+ * @description Visual keyboard feedback indicator that briefly displays
+ *              pressed key names in the bottom-right corner.
+ */
+
+.key-flash {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: rgba(var(--accent-glow), 0.06);
+  border: 1px solid rgba(var(--accent-glow), 0.15);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.7rem;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity var(--duration-fast);
+
+  &.show { opacity: 1; }
+}
