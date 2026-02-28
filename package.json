@@ -6,9 +6,22 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check src/",
+    "format": "biome check --write src/"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.5.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.4",
+    "@vitest/coverage-v8": "^4.0.18",
+    "happy-dom": "^20.7.0",
+    "sass": "^1.97.3",
+    "terser": "^5.46.0",
+    "vitest": "^4.0.18"
   }
 }
