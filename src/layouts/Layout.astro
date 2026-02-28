@@ -1,4 +1,6 @@
 ---
+import { config } from '@config/index';
+
 interface Props {
   title: string;
   description: string;
@@ -6,29 +8,79 @@ interface Props {
 
 const { title, description } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const theme = config.site.theme || 'hacker';
+const siteUrl = config.site.url.replace(/\/$/, '');
+const themeColorMap: Record<string, string> = {
+  hacker: '#0D1117',
+  dracula: '#282A36',
+  nord: '#2E3440',
+  catppuccin: '#1E1E2E',
+  synthwave: '#1A1028',
+  matrix: '#0A0A0A',
+  bloodmoon: '#0D0208',
+  midnight: '#0F0F1A',
+  arctic: '#F0F9FF',
+  gruvbox: '#282828',
+};
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme={theme}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
+  <link rel="canonical" href={siteUrl}>
+  <meta name="theme-color" content={themeColorMap[theme] || '#0D1117'}>
+
+  <!-- Favicon -->
+  <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml">
+
+  <!-- Open Graph -->
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://hammadxcm.github.io/hammadxcm/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta property="og:url" content={siteUrl}>
+  <meta property="og:image" content={`${siteUrl}/og-image.png`}>
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={`${siteUrl}/og-image.png`}>
+
+  <!-- Fonts (self-hosted, no external requests) -->
+  <link rel="preload" href={`${base}fonts/inter-latin.woff2`} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={`${base}fonts/firacode-latin.woff2`} as="font" type="font/woff2" crossorigin>
+
+  <!-- Blocking theme script — prevents flash of wrong theme -->
+  <script is:inline>
+    (function() {
+      var saved = localStorage.getItem('portfolio-theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+
+  <!-- JSON-LD Person schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": config.site.name,
+    "jobTitle": config.site.title,
+    "url": siteUrl,
+    "sameAs": config.socials.map(s => s.url),
+  })} />
 </head>
 <body>
+  <!-- Skip link for accessibility -->
+  <a href="#about" class="skip-link">Skip to content</a>
   <slot />
-  <script is:inline src={`${base}scripts/main.js`}></script>
+  <!-- All scripts as single bundled module (Vite handles bundling + minification) -->
+  <script src="../scripts/main.ts"></script>
 </body>
 </html>
 
-<style is:global>
-  @import '../styles/global.css';
+<style is:global lang="scss">
+  @use '../styles/global';
 </style>
