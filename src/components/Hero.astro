@@ -1,11 +1,20 @@
 ---
+/**
+ * Hero Section
+ * Full-viewport hero with particle canvas, matrix rain, geometric shapes,
+ * typewriter effect, and scroll indicator.
+ *
+ * @depends config.hero, config.site.name, SocialLinks
+ * @styles Scoped SCSS — hero layout, name reveal, typewriter, shapes + responsive
+ */
 import SocialLinks from './SocialLinks.astro';
+import { config } from '@config/index';
 ---
 
 <!-- ══════ HERO ══════ -->
 <section id="hero">
-  <canvas id="particle-canvas"></canvas>
-  <canvas id="matrix-canvas"></canvas>
+  <canvas id="particle-canvas" aria-hidden="true" role="presentation"></canvas>
+  <canvas id="matrix-canvas" aria-hidden="true" role="presentation"></canvas>
   <div class="hacker-log" id="hackerLog"></div>
   <div class="hero-grid-layer"></div>
   <div class="hero-shapes-layer">
@@ -16,11 +25,11 @@ import SocialLinks from './SocialLinks.astro';
     <div class="geo-shape geo-shape--triangle"></div>
   </div>
   <div class="hero-content">
-    <p class="hero-greeting">root@kali:~# whoami</p>
-    <h1 class="hero-name" id="heroName" data-text="Hammad Khan">
-      <span class="hero-name-inner" id="heroNameInner">Hammad Khan</span>
+    <p class="hero-greeting" id="heroGreeting">{config.hero.greeting}</p>
+    <h1 class="hero-name" id="heroName" data-text={config.site.name}>
+      <span class="hero-name-inner" id="heroNameInner">{config.site.name}</span>
     </h1>
-    <div class="hero-typewriter">
+    <div class="hero-typewriter" data-texts={JSON.stringify(config.hero.typewriterTexts)}>
       <span class="typewriter-text" id="typewriter"></span>
       <span class="typewriter-cursor"></span>
     </div>
@@ -33,3 +42,232 @@ import SocialLinks from './SocialLinks.astro';
     <span>SCROLL</span>
   </div>
 </section>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #particle-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 2rem;
+
+    @include respond-to(mobile) { padding: 0 1.25rem; }
+  }
+
+  .hero-greeting {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s 0.3s forwards;
+
+    @include respond-to(mobile) { font-size: 0.95rem; }
+  }
+
+  .hero-name {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--text) 0%, var(--accent-blue) 40%, var(--accent-mint) 60%, var(--accent) 80%, var(--text) 100%);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards;
+    transition: background-position var(--duration-slower) ease;
+    cursor: default;
+
+    &:hover {
+      animation: nameGradient 3s ease infinite, heroReveal 1s 0.5s var(--ease-out-expo) forwards;
+      background-position: 100% 50%;
+    }
+
+    @include respond-to(small) { font-size: 2.5rem; }
+  }
+
+  @keyframes nameGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .hero-typewriter {
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--text-dim);
+    height: 2em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s 0.7s forwards;
+
+    @include respond-to(small) { font-size: 0.9rem; height: 1.8em; }
+  }
+
+  .typewriter-text { color: var(--accent-mint); }
+
+  .typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.3em;
+    background: var(--accent);
+    margin-left: 2px;
+    animation: cursorBlink 1s step-end infinite;
+  }
+
+  .hero-socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s 0.9s forwards;
+
+    @include respond-to(mobile) { gap: 0.75rem; }
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    animation: fadeInUp 0.8s 1.2s forwards;
+  }
+
+  .scroll-mouse {
+    width: 24px; height: 38px;
+    border: 2px solid var(--text-dim);
+    border-radius: var(--radius-md);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 6px; left: 50%;
+      transform: translateX(-50%);
+      width: 3px; height: 8px;
+      background: var(--accent);
+      border-radius: 3px;
+      animation: scrollWheel 2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes scrollWheel {
+    0% { top: 6px; opacity: 1; }
+    100% { top: 20px; opacity: 0; }
+  }
+  @keyframes heroReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      filter: blur(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  /* Hero Parallax Layers */
+  .hero-grid-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.03;
+    background-image:
+      linear-gradient(rgba(var(--accent-blue-glow), 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--accent-blue-glow), 0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-shapes-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .geo-shape {
+    position: absolute;
+    opacity: 0.12;
+    animation: geoFloat 8s ease-in-out infinite;
+  }
+
+  .geo-shape--circle {
+    width: 12px; height: 12px;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--accent-blue);
+  }
+
+  .geo-shape--triangle {
+    width: 0; height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 14px solid var(--accent-mint);
+  }
+
+  .geo-shape--diamond {
+    width: 10px; height: 10px;
+    border: 2px solid var(--accent);
+    transform: rotate(45deg);
+    animation-name: geoFloat;
+  }
+
+  .geo-shape:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+  .geo-shape:nth-child(2) { top: 70%; left: 85%; animation-delay: -1.5s; }
+  .geo-shape:nth-child(3) { top: 25%; right: 15%; animation-delay: -3s; }
+  .geo-shape:nth-child(4) { bottom: 20%; left: 25%; animation-delay: -4.5s; }
+  .geo-shape:nth-child(5) { top: 50%; right: 8%; animation-delay: -6s; }
+
+  @keyframes geoFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+  }
+</style>
