@@ -1,0 +1,73 @@
+/**
+ * @file Cross-Cutting Responsive Rules
+ * @description Responsive rules that span multiple components or affect
+ *              global layout. Component-specific responsive rules live in
+ *              their respective Astro component <style> blocks.
+ */
+
+@use '../mixins' as *;
+
+/* Section layout — shared across all sections */
+@include respond-to(mobile) {
+  .section { padding: 3.5rem 1.25rem; }
+  .section-header { margin-bottom: 2.5rem; }
+  .section-title { font-size: 1.75rem; }
+  .section-label { font-size: 0.7rem; padding: 0.25rem 0.75rem; }
+}
+
+@include respond-to(small) {
+  .section,
+  footer { padding-inline: 1rem; }
+  .section { padding-block: 3rem; }
+  .section-title { font-size: 1.5rem; }
+}
+
+/* Effect hiding — mobile */
+@include respond-to(mobile) {
+  .crosshair-cursor,
+  .cursor-trail,
+  .crt-overlay,
+  .hacker-log,
+  #matrix-canvas,
+  .terminal-status-bar { display: none !important; }
+  .hacker-toast.ambient { display: none !important; }
+  body.has-custom-cursor { cursor: auto; }
+  body.has-custom-cursor a,
+  body.has-custom-cursor button { cursor: pointer; }
+  .hero-shapes-layer { display: none; }
+  .hero-grid-layer { opacity: 0.015; }
+  .glow-border:hover { transform: translateY(-3px) !important; }
+  .section-separator .sep-line { width: 60%; }
+  .section-separator.visible .sep-line { transform: scaleX(1); }
+}
+
+/* Reduced motion — accessibility */
+@include reduced-motion {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur,
+  .stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .crosshair-cursor, .cursor-trail, .crt-overlay, .hacker-log,
+  #matrix-canvas, .boot-screen, .key-flash, .click-glitch-overlay,
+  .konami-overlay, .terminal-status-bar,
+  .hacker-toast-container { display: none !important; }
+  body.env-glitch { animation: none !important; filter: none !important; transform: none !important; }
+  .section-title { animation: none !important; }
+  body.has-custom-cursor { cursor: auto; }
+  .timeline::before { height: 100% !important; }
+  .section-separator .sep-line { width: 80% !important; transform: scaleX(1) !important; }
+  .section-divider { width: 80px !important; opacity: 1 !important; }
+  .blur-up { filter: none !important; }
+}
+
+/* Active nav link */
+.nav-links a.active {
+  color: var(--accent);
+}

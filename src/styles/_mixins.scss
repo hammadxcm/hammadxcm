@@ -1,0 +1,62 @@
+/**
+ * @file Responsive Breakpoint Mixins
+ * @description DRY responsive system — define breakpoints once, @include everywhere.
+ *              Use `@include respond-to(mobile)` instead of raw @media queries.
+ */
+@use 'sass:map';
+
+/// Breakpoint map — single source of truth for all responsive widths
+/// @type Map
+$breakpoints: (
+  tablet: 1024px,
+  mobile: 768px,
+  small: 480px,
+);
+
+/// Respond-to mixin — generates max-width media query from breakpoint name
+/// @param {String} $breakpoint - Key from $breakpoints map (tablet | mobile | small)
+/// @example
+///   .nav-links {
+///     display: flex;
+///     @include respond-to(mobile) { flex-direction: column; }
+///   }
+@mixin respond-to($breakpoint) {
+  $value: map.get($breakpoints, $breakpoint);
+  @if $value {
+    @media (max-width: $value) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`. Available: #{map.keys($breakpoints)}";
+  }
+}
+
+/// Reduced motion mixin — accessibility helper
+/// @example
+///   .animation { @include reduced-motion { animation: none; } }
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+/// Responsive auto-fit grid — used by Projects, TechArsenal, Certifications
+/// @param {Length} $min-width [340px] - Minimum column width for auto-fit
+/// @param {Boolean} $tablet-2col [true] - Whether to force 2 columns at tablet
+@mixin responsive-grid($min-width: 340px, $tablet-2col: true) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(#{$min-width}, 100%), 1fr));
+  gap: 1.5rem;
+  @if $tablet-2col {
+    @include respond-to(tablet) { grid-template-columns: repeat(2, 1fr); }
+  }
+  @include respond-to(mobile) { grid-template-columns: 1fr; }
+}
+
+/// Responsive card padding
+/// @param {Length} $desktop [2rem] - Desktop padding
+/// @param {Length} $mobile [1.5rem] - Mobile padding
+@mixin card-padding($desktop: 2rem, $mobile: 1.5rem) {
+  padding: $desktop;
+  @include respond-to(mobile) { padding: $mobile; }
+}
