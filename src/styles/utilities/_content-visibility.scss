@@ -1,0 +1,10 @@
+/**
+ * @file Content Visibility
+ * @description CLS optimization using content-visibility: auto
+ *              for off-screen section rendering performance.
+ */
+
+.section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
