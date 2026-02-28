@@ -1,6 +1,35 @@
-.idea/
-.claude/
-.commandcode/
+# Dependencies
 node_modules/
+
+# Build output
 dist/
 .astro/
+.cache/
+
+# Test coverage
+coverage/
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Claude Code / CommandCode
+.claude/
+.commandcode/
