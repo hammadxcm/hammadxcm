@@ -1,0 +1,138 @@
+/**
+ * @file Arctic Light Theme Overrides
+ * @description Light-appropriate background, shadow, and contrast adjustments
+ *              for the Arctic theme. Ensures WCAG AA compliance on light bg.
+ */
+
+[data-theme="arctic"] {
+  /* ── Nav ── */
+  nav {
+    background: rgba(219, 234, 254, 0.85);
+    border-bottom-color: rgba(2, 102, 160, 0.18);
+  }
+
+  /* ── Glass cards — visible boundary on light bg ── */
+  .glass {
+    background: rgba(214, 232, 248, 0.55);
+    border-color: rgba(2, 102, 160, 0.2);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  /* ── Code header ── */
+  .code-header {
+    background: rgba(203, 228, 248, 0.7);
+  }
+
+  /* ── Theme dropdown ── */
+  .theme-dropdown {
+    background: #DBEAFE;
+    border-color: rgba(2, 102, 160, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Increased specificity (0-3-0) for dropdown text readability */
+  .theme-dropdown .theme-option {
+    color: #0F172A;
+  }
+
+  .theme-dropdown .theme-option:hover {
+    background: rgba(186, 220, 248, 0.6);
+    color: #0F172A;
+  }
+
+  .theme-dropdown .theme-option.active {
+    background: rgba(186, 220, 248, 0.6);
+    color: #0369A1;
+  }
+
+  /* ── Language switcher ── */
+  .lang-switcher {
+    color: #475569;
+    border-color: rgba(2, 102, 160, 0.3);
+  }
+
+  /* ── Glow-border cards (projects, certs, timeline) ── */
+  .glow-border {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .glow-border:hover {
+    box-shadow: 0 4px 24px rgba(2, 102, 160, 0.15);
+  }
+
+  /* ── Toast ── */
+  .hacker-toast {
+    background: rgba(219, 234, 254, 0.95);
+    color: #0369A1;
+    border-color: rgba(2, 102, 160, 0.25);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .hacker-toast.ambient {
+    color: #475569;
+  }
+
+  /* ── Status bar (hidden for arctic, but defensive) ── */
+  .terminal-status-bar {
+    background: rgba(219, 234, 254, 0.95);
+    border-top-color: rgba(2, 102, 160, 0.15);
+  }
+
+  /* ── Konami overlay ── */
+  .konami-overlay {
+    background: rgba(240, 249, 255, 0.95);
+  }
+
+  .konami-text {
+    color: #0369A1;
+    text-shadow: none;
+  }
+
+  /* ── Section separators ── */
+  .section-separator .sep-line {
+    background: rgba(2, 102, 160, 0.2);
+  }
+
+  .section-divider {
+    background: rgba(2, 102, 160, 0.25);
+  }
+
+  /* ── Scroll indicator ── */
+  .scroll-mouse {
+    border-color: #475569;
+  }
+
+  /* ── Social buttons ── */
+  .social-btn {
+    border-color: rgba(2, 102, 160, 0.2);
+  }
+
+  .social-btn:hover {
+    border-color: #0369A1;
+  }
+
+  /* ── Timeline ── */
+  .timeline::before {
+    background: rgba(2, 102, 160, 0.15);
+  }
+
+  .timeline-dot {
+    border-color: rgba(2, 102, 160, 0.3);
+  }
+
+  /* ── Tech icon card ── */
+  .tech-icon {
+    background: rgba(214, 232, 248, 0.5);
+    border-color: rgba(2, 102, 160, 0.15);
+  }
+
+  /* ── Orbs — subtle on light bg ── */
+  .orb {
+    opacity: 0.08;
+  }
+
+  /* ── Hero grid layer ── */
+  .hero-grid-layer {
+    opacity: 0.03;
+  }
+}
