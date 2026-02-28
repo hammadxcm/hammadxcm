@@ -2,7 +2,7 @@
 /**
  * Global overlay elements: crosshair cursor, cursor trail, scroll progress bar,
  * floating orbs, CRT scan lines, key flash indicator, toast notifications,
- * click glitch overlay, konami overlay, terminal status bar.
+ * screen effect overlay, konami overlay, terminal status bar.
  */
 ---
 
@@ -37,8 +37,25 @@
 <!-- Hacker Toast Container -->
 <div class="hacker-toast-container" id="hackerToastContainer" aria-live="polite" aria-atomic="false"></div>
 
-<!-- Click Glitch Overlay -->
-<div class="click-glitch-overlay" id="clickGlitchOverlay" aria-hidden="true"></div>
+<!-- Screen Effect Overlay -->
+<div class="screen-effect-overlay" id="screenEffectOverlay" aria-hidden="true">
+  <div class="blood-drip"></div>
+  <div class="blood-drip"></div>
+  <div class="blood-drip"></div>
+  <div class="blood-drip"></div>
+  <div class="blood-drip"></div>
+  <svg class="ice-cracks" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+    <path class="crack-line" d="M960,0 L940,120 L970,250 L935,400 L960,540"/>
+    <path class="crack-line" d="M960,0 L1000,80 L980,200 L1020,350 L990,480"/>
+    <path class="crack-line" d="M960,0 L920,100 L950,220 L910,380 L940,500"/>
+  </svg>
+  <div class="vhs-tracking"></div>
+  <div class="fog-wisp fog-wisp-1"></div>
+  <div class="fog-wisp fog-wisp-2"></div>
+  <div class="aurora-band"></div>
+  <div class="pastel-bloom"></div>
+  <div class="shooting-star"></div>
+</div>
 
 <!-- Konami Code Overlay -->
 <div class="konami-overlay" id="konamiOverlay" aria-hidden="true">

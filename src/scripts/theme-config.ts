@@ -1,6 +1,7 @@
 import type {
   ThemeName,
   ThemeConfig,
+  ScreenEffect,
   BootMessage,
   ThemeToasts,
   AboutTheme,
@@ -273,7 +274,7 @@ const baseTheme: ThemeConfig = {
   canvasEffect: 'particles',
   hasMatrixRain: false,
   hasCRT: false,
-  hasGlitch: false,
+  screenEffect: 'none',
   hasHackerLog: false,
   hasCursor: false,
   hasStatusBar: false,
@@ -289,7 +290,7 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
     ...baseTheme,
     hasMatrixRain: true,
     hasCRT: true,
-    hasGlitch: true,
+    screenEffect: 'glitch',
     hasHackerLog: true,
     hasCursor: 'crosshair',
     hasStatusBar: true,
@@ -303,6 +304,7 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
   dracula: {
     ...baseTheme,
     canvasEffect: 'purpleParticles',
+    screenEffect: 'fogWisps',
     hasCursor: 'dot',
     particleColor: 'rgba(189, 147, 249, ',
     bootBg: '#1e1b2e',
@@ -312,6 +314,7 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
   nord: {
     ...baseTheme,
     canvasEffect: 'snowfall',
+    screenEffect: 'auroraShimmer',
     particleColor: 'rgba(136, 192, 208, ',
     bootBg: '#242933',
     navBg: 'rgba(46, 52, 64, ',
@@ -321,6 +324,7 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
   catppuccin: {
     ...baseTheme,
     canvasEffect: 'bubbles',
+    screenEffect: 'pastelBloom',
     hasCursor: 'dot',
     particleColor: 'rgba(203, 166, 247, ',
     bootBg: '#181825',
@@ -332,7 +336,7 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
     ...baseTheme,
     canvasEffect: 'retroGrid',
     hasCRT: true,
-    hasGlitch: true,
+    screenEffect: 'vhsDistortion',
     hasCursor: 'dot',
     particleColor: 'rgba(255, 46, 151, ',
     bootBg: '#120a1e',
@@ -344,7 +348,7 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
     ...baseTheme,
     hasMatrixRain: true,
     hasCRT: true,
-    hasGlitch: true,
+    screenEffect: 'glitch',
     hasCursor: 'crosshair',
     particleColor: 'rgba(0, 255, 65, ',
     matrixColor: 'rgba(0, 255, 65, 0.8)',
@@ -357,7 +361,7 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
   bloodmoon: {
     ...baseTheme,
     canvasEffect: 'embers',
-    hasGlitch: true,
+    screenEffect: 'bloodDrip',
     hasCursor: 'dot',
     particleColor: 'rgba(255, 0, 64, ',
     bootBg: '#080104',
@@ -368,6 +372,7 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
   midnight: {
     ...baseTheme,
     canvasEffect: 'starfield',
+    screenEffect: 'shootingStar',
     particleColor: 'rgba(123, 115, 255, ',
     bootBg: '#0a0a12',
     navBg: 'rgba(15, 15, 26, ',
@@ -376,6 +381,7 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
   arctic: {
     ...baseTheme,
     canvasEffect: 'lightDust',
+    screenEffect: 'iceCrack',
     particleColor: 'rgba(3, 105, 161, ',
     bootBg: '#e0f2fe',
     navBg: 'rgba(219, 234, 254, ',
@@ -385,6 +391,7 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
   gruvbox: {
     ...baseTheme,
     canvasEffect: 'fireflies',
+    screenEffect: 'tvStatic',
     hasCRT: true,
     hasCursor: 'dot',
     particleColor: 'rgba(250, 189, 47, ',
