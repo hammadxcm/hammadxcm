@@ -1,23 +1,24 @@
 ---
+import { config } from '@config/index';
 import Layout from '../layouts/Layout.astro';
-import GlobalOverlays from '../components/GlobalOverlays.astro';
-import Nav from '../components/Nav.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import TechArsenal from '../components/TechArsenal.astro';
-import Journey from '../components/Journey.astro';
-import Projects from '../components/Projects.astro';
-import Analytics from '../components/Analytics.astro';
-import Certifications from '../components/Certifications.astro';
-import Footer from '../components/Footer.astro';
+import GlobalOverlays from '@components/GlobalOverlays.astro';
+import Nav from '@components/Nav.astro';
+import Hero from '@components/Hero.astro';
+import About from '@components/About.astro';
+import TechArsenal from '@components/TechArsenal.astro';
+import Journey from '@components/Journey.astro';
+import Projects from '@components/Projects.astro';
+import Analytics from '@components/Analytics.astro';
+import Certifications from '@components/Certifications.astro';
+import Footer from '@components/Footer.astro';
 ---
 
 <Layout
-  title="Hammad Khan | Senior Full Stack Engineer"
-  description="Hammad Khan — Senior Full Stack Engineer with 6+ years building distributed systems at scale. Ruby on Rails, React, Node.js, and cloud architecture."
+  title={`${config.site.name} | ${config.site.title}`}
+  description={config.site.description}
 >
   <!-- Boot Sequence Overlay -->
-  <div id="bootScreen" class="boot-screen">
+  <div id="bootScreen" class="boot-screen" data-welcome={config.boot.welcomeName} data-name={config.site.name}>
     <div class="boot-lines" id="bootLines"></div>
   </div>
 
