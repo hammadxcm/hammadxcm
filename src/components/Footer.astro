@@ -1,5 +1,13 @@
 ---
+/**
+ * Footer
+ * Site footer with animated gradient wave, social links, and copyright.
+ *
+ * @depends config.site.name, SocialLinks
+ * @styles Scoped SCSS — footer layout, wave animation + responsive
+ */
 import SocialLinks from './SocialLinks.astro';
+import { config } from '@config/index';
 
 const year = new Date().getFullYear();
 ---
@@ -10,5 +18,49 @@ const year = new Date().getFullYear();
   <div class="footer-socials">
     <SocialLinks />
   </div>
-  <p class="footer-copy">&copy; {year} Hammad Khan. Built with <span class="heart">&hearts;</span> and Astro.</p>
+  <p class="footer-copy">&copy; {year} {config.site.name}. Built with <span class="heart">&hearts;</span> and Astro.</p>
 </footer>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+    border-top: 1px solid var(--glass-border);
+
+    @include respond-to(mobile) { padding: 3rem 1.25rem 1.5rem; }
+  }
+
+  .footer-wave {
+    position: absolute;
+    top: -2px; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-blue), var(--accent-tertiary), var(--accent));
+    background-size: 300% 100%;
+    animation: waveGradient 6s linear infinite;
+  }
+
+  @keyframes waveGradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+
+    @include respond-to(mobile) { gap: 0.75rem; }
+  }
+
+  .footer-copy {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+
+    .heart { color: #ff5f57; }
+  }
+</style>

@@ -7,7 +7,7 @@
 ---
 
 <!-- Crosshair Cursor (desktop only) -->
-<div class="crosshair-cursor" id="crosshairCursor">
+<div class="crosshair-cursor" id="crosshairCursor" aria-hidden="true">
   <div class="crosshair-h"></div>
   <div class="crosshair-v"></div>
   <div class="crosshair-dot"></div>
@@ -15,38 +15,38 @@
 </div>
 
 <!-- Cursor Trail Pool -->
-<div class="cursor-trail" id="cursorTrail">
+<div class="cursor-trail" id="cursorTrail" aria-hidden="true">
   <span></span><span></span><span></span><span></span>
   <span></span><span></span><span></span><span></span>
 </div>
 
 <!-- CRT Scan Lines (desktop only) -->
-<div class="crt-overlay" id="crtOverlay"></div>
+<div class="crt-overlay" id="crtOverlay" aria-hidden="true"></div>
 
 <!-- Key Flash Indicator -->
-<div class="key-flash" id="keyFlash"></div>
+<div class="key-flash" id="keyFlash" aria-hidden="true"></div>
 
 <!-- Scroll Progress Bar -->
-<div class="scroll-progress" id="scrollProgress"></div>
+<div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100"></div>
 
 <!-- Floating Gradient Orbs -->
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
 
 <!-- Hacker Toast Container -->
-<div class="hacker-toast-container" id="hackerToastContainer"></div>
+<div class="hacker-toast-container" id="hackerToastContainer" aria-live="polite" aria-atomic="false"></div>
 
 <!-- Click Glitch Overlay -->
-<div class="click-glitch-overlay" id="clickGlitchOverlay"></div>
+<div class="click-glitch-overlay" id="clickGlitchOverlay" aria-hidden="true"></div>
 
 <!-- Konami Code Overlay -->
-<div class="konami-overlay" id="konamiOverlay">
+<div class="konami-overlay" id="konamiOverlay" aria-hidden="true">
   <div class="konami-text">SYSTEM COMPROMISED</div>
 </div>
 
 <!-- Terminal Status Bar -->
-<div class="terminal-status-bar" id="terminalStatusBar">
+<div class="terminal-status-bar" id="terminalStatusBar" aria-hidden="true">
   <span class="status-secure">&#9673; SECURE CONNECTION</span>
   <span class="status-sep">|</span>
   <span>AES-256</span>
