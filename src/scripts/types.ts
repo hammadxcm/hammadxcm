@@ -30,6 +30,18 @@ export type LangKey =
   | 'assembly'
   | 'binary';
 
+export type ScreenEffect =
+  | 'glitch'
+  | 'bloodDrip'
+  | 'iceCrack'
+  | 'vhsDistortion'
+  | 'fogWisps'
+  | 'auroraShimmer'
+  | 'pastelBloom'
+  | 'shootingStar'
+  | 'tvStatic'
+  | 'none';
+
 export interface HeroTiming {
   flicker: number;
   resolve: number;
@@ -39,7 +51,7 @@ export interface ThemeConfig {
   canvasEffect: string;
   hasMatrixRain: boolean;
   hasCRT: boolean;
-  hasGlitch: boolean;
+  screenEffect: ScreenEffect;
   hasHackerLog: boolean;
   hasCursor: false | 'crosshair' | 'dot';
   hasStatusBar: boolean;

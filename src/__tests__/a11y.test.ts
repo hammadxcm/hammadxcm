@@ -87,7 +87,7 @@ describe('Structural accessibility', () => {
         '.crosshair-cursor',
         '.cursor-trail',
         '.key-flash',
-        '.click-glitch-overlay',
+        '.screen-effect-overlay',
         '.konami-overlay',
       ];
       for (const selector of decorativeSelectors) {

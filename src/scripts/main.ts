@@ -5,7 +5,7 @@ import { initHeroName } from './effects/hero-name';
 import { initTypewriter } from './effects/typewriter';
 import { initHackerLog } from './effects/hacker-log';
 import { initCursor } from './effects/cursor';
-import { initGlitchToast } from './effects/glitch-toast';
+import { initScreenEffects } from './effects/screen-effects';
 import { initObserver } from './interactions/observer';
 import { initScrollHandler } from './interactions/scroll';
 import { initTilt } from './interactions/tilt';
@@ -28,7 +28,7 @@ initMatrixRain();
 initHeroName();
 initTypewriter();
 initHackerLog();
-initGlitchToast();
+initScreenEffects();
 initCursor();
 
 // Interactions (independent, any order)

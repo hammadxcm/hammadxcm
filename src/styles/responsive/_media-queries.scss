@@ -29,7 +29,8 @@
   .crt-overlay,
   .hacker-log,
   #matrix-canvas,
-  .terminal-status-bar { display: none !important; }
+  .terminal-status-bar,
+  .screen-effect-overlay { display: none !important; }
   .hacker-toast.ambient { display: none !important; }
   body.has-custom-cursor { cursor: auto; }
   body.has-custom-cursor a,
@@ -55,10 +56,11 @@
     filter: none !important;
   }
   .crosshair-cursor, .cursor-trail, .crt-overlay, .hacker-log,
-  #matrix-canvas, .boot-screen, .key-flash, .click-glitch-overlay,
+  #matrix-canvas, .boot-screen, .key-flash, .screen-effect-overlay,
   .konami-overlay, .terminal-status-bar,
   .hacker-toast-container { display: none !important; }
-  body.env-glitch { animation: none !important; filter: none !important; transform: none !important; }
+  body.env-glitch,
+  body[class*="env-effect-"] { animation: none !important; filter: none !important; transform: none !important; }
   .section-title { animation: none !important; }
   body.has-custom-cursor { cursor: auto; }
   .timeline::before { height: 100% !important; }

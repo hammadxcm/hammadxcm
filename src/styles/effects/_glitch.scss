@@ -1,7 +1,7 @@
 /**
  * @file Glitch Effects
  * @description Hero name glitch positioning, section title glitch flicker,
- *              global environment glitch, and click glitch overlay.
+ *              and global environment glitch (body hue-rotate).
  */
 
 /* Hero name glitch containment */
@@ -41,44 +41,4 @@ body.env-glitch {
   50%  { filter: hue-rotate(-30deg) brightness(1.1); }
   75%  { filter: hue-rotate(20deg) saturate(1.4); }
   100% { filter: none; }
-}
-
-/* Click glitch overlay */
-.click-glitch-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9995;
-  pointer-events: none;
-  opacity: 0;
-
-  &.active {
-    animation: clickGlitch 150ms steps(3) forwards;
-  }
-}
-
-@keyframes clickGlitch {
-  0% {
-    opacity: 1;
-    background: transparent;
-    clip-path: inset(10% 0 60% 0);
-    filter: hue-rotate(90deg);
-    transform: translate(-2px, 1px);
-  }
-  33% {
-    clip-path: inset(50% 0 10% 0);
-    filter: hue-rotate(-90deg);
-    transform: translate(2px, -1px);
-    background: rgba(var(--accent-glow), 0.03);
-  }
-  66% {
-    clip-path: inset(30% 0 30% 0);
-    filter: hue-rotate(45deg);
-    transform: translate(-1px, 2px);
-    background: rgba(255, 0, 100, 0.02);
-  }
-  100% {
-    opacity: 0;
-    transform: none;
-    filter: none;
-  }
 }

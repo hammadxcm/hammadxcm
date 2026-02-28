@@ -1,0 +1,511 @@
+@use 'sass:math';
+
+/**
+ * @file Screen Effects
+ * @description Theme-specific click and ambient screen effects.
+ *              Each theme has a unique visual effect instead of a shared glitch.
+ */
+
+/* ── Container ─────────────────────────────────────────── */
+.screen-effect-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9995;
+  pointer-events: none;
+
+  > * { display: none; }
+}
+
+/* ── 1. Glitch (Hacker / Matrix) ──────────────────────── */
+.screen-effect-overlay[data-effect="glitch"] {
+  opacity: 0;
+
+  &.active {
+    animation: clickGlitch 150ms steps(3) forwards;
+  }
+}
+
+@keyframes clickGlitch {
+  0% {
+    opacity: 1;
+    background: transparent;
+    clip-path: inset(10% 0 60% 0);
+    filter: hue-rotate(90deg);
+    transform: translate(-2px, 1px);
+  }
+  33% {
+    clip-path: inset(50% 0 10% 0);
+    filter: hue-rotate(-90deg);
+    transform: translate(2px, -1px);
+    background: rgba(var(--accent-glow), 0.03);
+  }
+  66% {
+    clip-path: inset(30% 0 30% 0);
+    filter: hue-rotate(45deg);
+    transform: translate(-1px, 2px);
+    background: rgba(255, 0, 100, 0.02);
+  }
+  100% {
+    opacity: 0;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ── 2. Blood Drip (Blood Moon) ───────────────────────── */
+.screen-effect-overlay[data-effect="bloodDrip"] .blood-drip {
+  display: block;
+  position: absolute;
+  top: -80px;
+  width: 3px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, #ff0040, #8b0000);
+  border-radius: 0 0 50% 50%;
+  opacity: 0;
+
+  &:nth-child(1) { left: 15%; }
+  &:nth-child(2) { left: 35%; }
+  &:nth-child(3) { left: 50%; }
+  &:nth-child(4) { left: 68%; }
+  &:nth-child(5) { left: 82%; }
+}
+
+.screen-effect-overlay[data-effect="bloodDrip"].active .blood-drip {
+  animation: bloodDripFall 600ms ease-in forwards;
+
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * 60}ms;
+      height: #{60 + math.random(40)}px;
+    }
+  }
+}
+
+@keyframes bloodDripFall {
+  0% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+  70% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(calc(100vh + 80px));
+  }
+}
+
+body.env-effect-bloodDrip {
+  animation: envBloodVignette 300ms ease forwards;
+}
+
+@keyframes envBloodVignette {
+  0% {
+    box-shadow: inset 0 0 80px rgba(139, 0, 0, 0);
+  }
+  50% {
+    box-shadow: inset 0 0 80px rgba(139, 0, 0, 0.4);
+  }
+  100% {
+    box-shadow: inset 0 0 80px rgba(139, 0, 0, 0);
+  }
+}
+
+/* ── 3. Ice Crack (Arctic) ────────────────────────────── */
+.screen-effect-overlay[data-effect="iceCrack"] {
+  .ice-cracks {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .crack-line {
+    fill: none;
+    stroke: rgba(186, 230, 253, 0.8);
+    stroke-width: 2;
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    stroke-linecap: round;
+  }
+
+  &.active {
+    .crack-line {
+      animation: crackDraw 400ms ease-out forwards;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(224, 242, 254, 0.15);
+      animation: frostFade 500ms ease-out forwards;
+    }
+  }
+}
+
+@keyframes crackDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes frostFade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+body.env-effect-iceCrack {
+  animation: envIceFlash 300ms ease forwards;
+}
+
+@keyframes envIceFlash {
+  0%   { filter: brightness(1) saturate(1); }
+  50%  { filter: brightness(1.15) saturate(0.6); }
+  100% { filter: brightness(1) saturate(1); }
+}
+
+/* ── 4. VHS Distortion (Synthwave) ────────────────────── */
+.screen-effect-overlay[data-effect="vhsDistortion"] .vhs-tracking {
+  display: block;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.screen-effect-overlay[data-effect="vhsDistortion"].active .vhs-tracking {
+  animation: vhsDistort 200ms steps(4) forwards;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 46, 151, 0.04) 2px,
+      rgba(255, 46, 151, 0.04) 4px
+    );
+    animation: vhsTrackingJitter 200ms steps(3) forwards;
+  }
+}
+
+@keyframes vhsDistort {
+  0% {
+    opacity: 1;
+    filter: saturate(1.8) hue-rotate(10deg);
+    transform: translateX(-3px);
+  }
+  25% {
+    filter: saturate(2.2) hue-rotate(-15deg);
+    transform: translateX(2px);
+  }
+  50% {
+    filter: saturate(1.4) hue-rotate(20deg);
+    transform: translateX(-1px);
+    clip-path: inset(40% 0 20% 0);
+  }
+  75% {
+    filter: saturate(1.8) hue-rotate(-10deg);
+    transform: translateX(3px);
+    clip-path: inset(10% 0 60% 0);
+  }
+  100% {
+    opacity: 0;
+    filter: none;
+    transform: none;
+    clip-path: none;
+  }
+}
+
+@keyframes vhsTrackingJitter {
+  0%   { clip-path: inset(20% 0 50% 0); }
+  33%  { clip-path: inset(60% 0 10% 0); }
+  66%  { clip-path: inset(5% 0 70% 0); }
+  100% { clip-path: inset(0); opacity: 0; }
+}
+
+body.env-effect-vhsDistortion {
+  animation: envVhsFlicker 250ms steps(3) forwards;
+}
+
+@keyframes envVhsFlicker {
+  0%   { filter: hue-rotate(0deg) saturate(1); }
+  33%  { filter: hue-rotate(15deg) saturate(1.5); }
+  66%  { filter: hue-rotate(-10deg) saturate(1.2); }
+  100% { filter: none; }
+}
+
+/* ── 5. Fog Wisps (Dracula) ───────────────────────────── */
+.screen-effect-overlay[data-effect="fogWisps"] .fog-wisp {
+  display: block;
+  position: absolute;
+  width: 300px;
+  height: 120px;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0;
+}
+
+.fog-wisp-1 {
+  top: 20%;
+  left: -300px;
+  background: rgba(189, 147, 249, 0.2);
+}
+
+.fog-wisp-2 {
+  top: 55%;
+  right: -300px;
+  left: auto;
+  background: rgba(139, 107, 209, 0.15);
+}
+
+.screen-effect-overlay[data-effect="fogWisps"].active {
+  .fog-wisp-1 {
+    animation: wispDriftRight 800ms ease-in-out forwards;
+  }
+  .fog-wisp-2 {
+    animation: wispDriftLeft 800ms ease-in-out forwards;
+    animation-delay: 100ms;
+  }
+}
+
+@keyframes wispDriftRight {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  30% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(calc(100vw + 300px));
+  }
+}
+
+@keyframes wispDriftLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  30% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(calc(-100vw - 300px));
+  }
+}
+
+body.env-effect-fogWisps {
+  animation: envFogVignette 400ms ease forwards;
+}
+
+@keyframes envFogVignette {
+  0% {
+    box-shadow: inset 0 0 80px rgba(189, 147, 249, 0);
+  }
+  50% {
+    box-shadow: inset 0 0 80px rgba(189, 147, 249, 0.2);
+  }
+  100% {
+    box-shadow: inset 0 0 80px rgba(189, 147, 249, 0);
+  }
+}
+
+/* ── 6. Aurora Shimmer (Nord) ─────────────────────────── */
+.screen-effect-overlay[data-effect="auroraShimmer"] .aurora-band {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(136, 192, 208, 0.2),
+    rgba(163, 190, 140, 0.25),
+    rgba(180, 142, 173, 0.2),
+    transparent
+  );
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.screen-effect-overlay[data-effect="auroraShimmer"].active .aurora-band {
+  animation: auroraWave 700ms ease-in-out forwards;
+}
+
+@keyframes auroraWave {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(200%);
+  }
+}
+
+body.env-effect-auroraShimmer {
+  animation: envAuroraPulse 400ms ease forwards;
+}
+
+@keyframes envAuroraPulse {
+  0%   { filter: brightness(1) saturate(1); }
+  50%  { filter: brightness(1.08) saturate(1.15); }
+  100% { filter: brightness(1) saturate(1); }
+}
+
+/* ── 7. Pastel Bloom (Catppuccin) ─────────────────────── */
+.screen-effect-overlay[data-effect="pastelBloom"] .pastel-bloom {
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  left: var(--click-x, 50%);
+  top: var(--click-y, 50%);
+  translate: -50% -50%;
+  background: radial-gradient(
+    circle,
+    rgba(203, 166, 247, 0.25),
+    rgba(245, 194, 231, 0.15),
+    transparent 70%
+  );
+  opacity: 0;
+  transform: scale(0);
+}
+
+.screen-effect-overlay[data-effect="pastelBloom"].active .pastel-bloom {
+  animation: bloomRipple 500ms ease-out forwards;
+}
+
+@keyframes bloomRipple {
+  0% {
+    opacity: 0.8;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(5);
+  }
+}
+
+body.env-effect-pastelBloom {
+  animation: envPastelWarm 400ms ease forwards;
+}
+
+@keyframes envPastelWarm {
+  0%   { filter: saturate(1); }
+  50%  { filter: saturate(1.2) brightness(1.05); }
+  100% { filter: saturate(1) brightness(1); }
+}
+
+/* ── 8. Shooting Star (Midnight) ──────────────────────── */
+.screen-effect-overlay[data-effect="shootingStar"] .shooting-star {
+  display: block;
+  position: absolute;
+  top: 10%;
+  left: -5%;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(123, 115, 255, 0.6),
+    rgba(255, 255, 255, 0.9)
+  );
+  border-radius: 1px;
+  opacity: 0;
+  transform: rotate(-35deg);
+  filter: blur(0.5px);
+  box-shadow: 0 0 8px rgba(123, 115, 255, 0.6);
+}
+
+.screen-effect-overlay[data-effect="shootingStar"].active .shooting-star {
+  animation: starStreak 400ms ease-in forwards;
+}
+
+@keyframes starStreak {
+  0% {
+    opacity: 0;
+    transform: rotate(-35deg) translate(0, 0);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-35deg) translate(110vw, 70vh);
+  }
+}
+
+body.env-effect-shootingStar {
+  animation: envStarFlash 250ms ease forwards;
+}
+
+@keyframes envStarFlash {
+  0%   { filter: brightness(1); }
+  50%  { filter: brightness(1.12); }
+  100% { filter: brightness(1); }
+}
+
+/* ── 9. TV Static (Gruvbox) ───────────────────────────── */
+.screen-effect-overlay[data-effect="tvStatic"] {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    background-size: 128px 128px;
+  }
+
+  &.active::after {
+    animation: staticBurst 200ms steps(5) forwards;
+  }
+}
+
+@keyframes staticBurst {
+  0% {
+    opacity: 0.15;
+    background-position: 0 0;
+  }
+  25% {
+    opacity: 0.2;
+    background-position: -30px 20px;
+  }
+  50% {
+    opacity: 0.12;
+    background-position: 15px -10px;
+  }
+  75% {
+    opacity: 0.18;
+    background-position: -20px -30px;
+  }
+  100% {
+    opacity: 0;
+    background-position: 10px 15px;
+  }
+}
+
+body.env-effect-tvStatic {
+  animation: envStaticFlicker 200ms steps(3) forwards;
+}
+
+@keyframes envStaticFlicker {
+  0%   { filter: brightness(1) contrast(1); }
+  33%  { filter: brightness(1.08) contrast(1.1); }
+  66%  { filter: brightness(0.95) contrast(1.05); }
+  100% { filter: brightness(1) contrast(1); }
+}

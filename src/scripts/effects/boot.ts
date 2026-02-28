@@ -42,14 +42,14 @@ export function initBoot(): void {
   }
 
   const spans = bootLines.querySelectorAll('span');
-  const delay = 200;
+  const delay = 80;
   spans.forEach((span, i) => {
-    setTimeout(() => span.classList.add('show'), delay + i * 250);
+    setTimeout(() => span.classList.add('show'), delay + i * 60);
   });
 
-  const totalTime = delay + spans.length * 250 + 400;
+  const totalTime = delay + spans.length * 60 + 150;
   setTimeout(() => {
     bootScreen.classList.add('fade-out');
-    setTimeout(() => bootScreen.classList.add('hidden'), 500);
+    setTimeout(() => bootScreen.classList.add('hidden'), 300);
   }, totalTime);
 }
