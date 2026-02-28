@@ -1,0 +1,26 @@
+/**
+ * @file Design Tokens
+ * @description :root CSS custom properties — fonts, spacing, radius, durations,
+ *              easing curves, and backdrop blur values.
+ */
+
+:root {
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --blur-backdrop: blur(20px);
+  --blur-glass: blur(16px);
+
+  /* Spacing */
+  --space-xs: 0.25rem;  --space-sm: 0.5rem;  --space-md: 1rem;
+  --space-lg: 1.5rem;   --space-xl: 2rem;    --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Radius */
+  --radius-sm: 6px;  --radius-md: 12px;  --radius-lg: 20px;  --radius-full: 50%;
+
+  /* Durations */
+  --duration-fast: 0.15s;  --duration-normal: 0.3s;
+  --duration-slow: 0.4s;   --duration-slower: 0.6s;
+}
