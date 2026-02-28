@@ -1,0 +1,504 @@
+/**
+ * @file Hero Text Effects
+ * @description Theme-specific effects ON the hero name text itself.
+ *              Separate from environment/screen effects (_screen-effects.scss).
+ *
+ * IMPORTANT: .hero-name has background-clip:text + -webkit-text-fill-color:transparent
+ * and animation: heroReveal (scoped, with forwards fill that keeps opacity:1).
+ * Every animation override MUST include heroReveal to preserve visibility.
+ * Pseudo-elements reset -webkit-text-fill-color so their text is visible.
+ */
+
+/* ═══════════════════════════════════════════════════════
+   1. GLITCH — Hacker & Matrix
+   Chromatic aberration via ::before (red) + ::after (cyan)
+   ═══════════════════════════════════════════════════════ */
+
+[data-theme="hacker"],
+[data-theme="matrix"] {
+  .hero-name {
+    &::before,
+    &::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      -webkit-text-fill-color: currentColor;
+      opacity: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    &::before { color: #ff0040; }
+    &::after  { color: #00f0ff; }
+  }
+
+  .hero-name.hero-glitch-active {
+    animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+               heroGlitchJitter 100ms steps(4) infinite;
+
+    &::before {
+      opacity: 0.8;
+      animation: heroGlitchRed 120ms steps(3) infinite;
+      background: repeating-linear-gradient(
+        0deg, transparent 0px, transparent 2px,
+        rgba(0, 0, 0, 0.15) 2px, rgba(0, 0, 0, 0.15) 4px
+      );
+      -webkit-background-clip: unset;
+      background-clip: unset;
+    }
+
+    &::after {
+      opacity: 0.8;
+      animation: heroGlitchCyan 100ms steps(3) infinite;
+    }
+  }
+}
+
+@keyframes heroGlitchJitter {
+  0%   { transform: translate(0); }
+  25%  { transform: translate(-2px, 1px); }
+  50%  { transform: translate(1px, -1px); }
+  75%  { transform: translate(-1px, -1px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes heroGlitchRed {
+  0%   { transform: translate(-3px, 0);  clip-path: inset(8% 0 76% 0); }
+  20%  { transform: translate(3px, -1px); clip-path: inset(25% 0 50% 0); }
+  40%  { transform: translate(-2px, 1px); clip-path: inset(55% 0 15% 0); }
+  60%  { transform: translate(2px, 0);    clip-path: inset(70% 0 5% 0); }
+  80%  { transform: translate(-3px, -1px);clip-path: inset(10% 0 60% 0); }
+  100% { transform: translate(3px, 1px);  clip-path: inset(40% 0 30% 0); }
+}
+
+@keyframes heroGlitchCyan {
+  0%   { transform: translate(3px, 0);    clip-path: inset(65% 0 10% 0); }
+  20%  { transform: translate(-2px, 1px); clip-path: inset(5% 0 80% 0); }
+  40%  { transform: translate(3px, -1px); clip-path: inset(35% 0 40% 0); }
+  60%  { transform: translate(-3px, 0);   clip-path: inset(50% 0 25% 0); }
+  80%  { transform: translate(2px, 1px);  clip-path: inset(15% 0 55% 0); }
+  100% { transform: translate(-2px, -1px);clip-path: inset(75% 0 5% 0); }
+}
+
+/* ═══════════════════════════════════════════════════════
+   2. LIGHTNING STRIKE — Hacker, Matrix, Synthwave
+   Bright flash + electric afterglow on the hero text
+   ═══════════════════════════════════════════════════════ */
+
+[data-theme="hacker"] .hero-name.hero-lightning-active,
+[data-theme="matrix"] .hero-name.hero-lightning-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             heroLightningStrike 500ms ease-out forwards;
+}
+
+[data-theme="synthwave"] .hero-name.hero-lightning-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             heroNeonLightning 600ms ease-out forwards;
+}
+
+// Cyber lightning — white-blue double flash
+@keyframes heroLightningStrike {
+  0% {
+    filter: brightness(4) drop-shadow(0 0 40px rgba(255, 255, 255, 1))
+            drop-shadow(0 0 80px rgba(var(--accent-glow), 0.9));
+    transform: translateY(0) scale(1);
+  }
+  8% {
+    filter: brightness(1.5) drop-shadow(0 0 15px rgba(255, 255, 255, 0.4))
+            drop-shadow(0 0 30px rgba(var(--accent-glow), 0.3));
+  }
+  16% {
+    filter: brightness(3.5) drop-shadow(0 0 35px rgba(255, 255, 255, 0.9))
+            drop-shadow(0 0 70px rgba(var(--accent-glow), 0.7));
+    transform: translateY(0) scale(1.01);
+  }
+  35% {
+    filter: brightness(1.8) drop-shadow(0 0 20px rgba(var(--accent-glow), 0.5));
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    filter: drop-shadow(0 0 6px rgba(var(--accent-glow), 0.2));
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Neon lightning — hot pink/cyan double flash
+@keyframes heroNeonLightning {
+  0% {
+    filter: brightness(3.5) drop-shadow(0 0 40px rgba(255, 46, 151, 1))
+            drop-shadow(0 0 70px rgba(0, 240, 255, 0.8));
+  }
+  10% {
+    filter: brightness(1.3) drop-shadow(0 0 12px rgba(0, 240, 255, 0.4));
+  }
+  20% {
+    filter: brightness(3) drop-shadow(0 0 35px rgba(0, 240, 255, 0.9))
+            drop-shadow(0 0 60px rgba(255, 46, 151, 0.7));
+  }
+  40% {
+    filter: brightness(1.6) drop-shadow(0 0 18px rgba(255, 46, 151, 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(255, 46, 151, 0.15));
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   3. BLOOD SPLATTER — Blood Moon
+   Gunshot-impact on hero text: red flash → drip shadows → radial burst
+   ═══════════════════════════════════════════════════════ */
+
+[data-theme="bloodmoon"] {
+  .hero-name {
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      -webkit-text-fill-color: currentColor;
+      color: #ff0040;
+      opacity: 0;
+      pointer-events: none;
+      text-shadow: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #cc0020;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: none;
+    }
+  }
+
+  .hero-name.hero-blood-active {
+    animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+               heroBloodFlash 800ms ease-out forwards;
+
+    &::before {
+      opacity: 1;
+      animation: heroBloodDrip 800ms ease-out forwards;
+    }
+
+    &::after {
+      opacity: 1;
+      animation: heroBloodBurst 700ms ease-out forwards;
+    }
+  }
+}
+
+// Flash on the gradient text when blood hits
+@keyframes heroBloodFlash {
+  0% {
+    filter: brightness(2) drop-shadow(0 0 30px rgba(255, 0, 64, 0.9))
+            drop-shadow(0 0 60px rgba(139, 0, 0, 0.6));
+  }
+  15% {
+    filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 0, 64, 0.6));
+  }
+  30% {
+    filter: brightness(1.6) drop-shadow(0 0 25px rgba(200, 0, 40, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(255, 0, 64, 0.15));
+  }
+}
+
+// Red text shadow dripping downward from letters
+@keyframes heroBloodDrip {
+  0% {
+    text-shadow:
+      0 0 4px #ff0040,
+      0 0 8px rgba(180, 0, 30, 0.8);
+    opacity: 1;
+  }
+  25% {
+    text-shadow:
+      0 6px 3px #ff0040,
+      0 14px 8px rgba(180, 0, 30, 0.6),
+      2px 22px 6px rgba(130, 0, 20, 0.4),
+      -1px 30px 10px rgba(100, 0, 10, 0.3);
+    opacity: 0.9;
+  }
+  55% {
+    text-shadow:
+      0 10px 5px #cc0030,
+      -1px 24px 10px rgba(160, 0, 25, 0.5),
+      2px 40px 14px rgba(120, 0, 15, 0.3),
+      0 55px 18px rgba(100, 0, 10, 0.2),
+      1px 68px 22px rgba(80, 0, 8, 0.1);
+    opacity: 0.75;
+  }
+  100% {
+    text-shadow:
+      0 16px 8px rgba(180, 0, 30, 0.08),
+      0 32px 14px rgba(140, 0, 20, 0.03);
+    opacity: 0;
+  }
+}
+
+// Radial splatter dots bursting outward from text center
+@keyframes heroBloodBurst {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(255, 0, 64, 0.9),
+      0 0 0 0 rgba(200, 0, 40, 0.7);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  15% {
+    box-shadow:
+      14px -10px 0 -1px rgba(255, 0, 64, 0.8),
+      -12px -14px 0 -1px rgba(200, 0, 40, 0.7),
+      18px 8px 0 -2px rgba(255, 0, 64, 0.6),
+      -16px 12px 0 -1px rgba(180, 0, 30, 0.6),
+      8px 18px 0 -2px rgba(255, 0, 64, 0.5),
+      -10px -8px 0 -1px rgba(220, 0, 50, 0.7),
+      22px -5px 0 -2px rgba(255, 0, 64, 0.4),
+      -20px 6px 0 -2px rgba(160, 0, 25, 0.5),
+      4px -20px 0 -1px rgba(200, 0, 40, 0.6),
+      -6px 22px 0 -2px rgba(180, 0, 30, 0.4);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  50% {
+    box-shadow:
+      28px -20px 0 -2px rgba(255, 0, 64, 0.35),
+      -26px -28px 0 -2px rgba(200, 0, 40, 0.25),
+      36px 16px 0 -3px rgba(255, 0, 64, 0.2),
+      -32px 24px 0 -2px rgba(180, 0, 30, 0.18),
+      16px 36px 0 -3px rgba(255, 0, 64, 0.12),
+      -20px -16px 0 -2px rgba(220, 0, 50, 0.22),
+      44px -10px 0 -3px rgba(255, 0, 64, 0.12),
+      -40px 12px 0 -3px rgba(160, 0, 25, 0.12),
+      8px -40px 0 -2px rgba(200, 0, 40, 0.15),
+      -12px 44px 0 -3px rgba(180, 0, 30, 0.1);
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(2);
+  }
+  100% {
+    box-shadow:
+      36px -26px 0 -3px transparent,
+      -34px -36px 0 -3px transparent,
+      46px 22px 0 -4px transparent,
+      -42px 32px 0 -3px transparent,
+      22px 46px 0 -4px transparent,
+      -28px -22px 0 -3px transparent,
+      56px -14px 0 -4px transparent,
+      -52px 16px 0 -4px transparent,
+      12px -52px 0 -3px transparent,
+      -16px 56px 0 -4px transparent;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.5);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   4. AMBIENT THEME GLOWS
+   Applied on .hero-name via .hero-glow-active class.
+   filter:drop-shadow() works with background-clip:text
+   on the SAME element.
+   ═══════════════════════════════════════════════════════ */
+
+[data-theme="hacker"] .hero-name.hero-glow-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             hackerGlow 4s ease-in-out infinite;
+}
+
+@keyframes hackerGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(0, 191, 191, 0.3))
+            drop-shadow(0 0 16px rgba(91, 205, 236, 0.1));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(0, 191, 191, 0.55))
+            drop-shadow(0 0 30px rgba(91, 205, 236, 0.2));
+  }
+}
+
+[data-theme="dracula"] .hero-name.hero-glow-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             draculaGlow 4s ease-in-out infinite;
+}
+
+@keyframes draculaGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(189, 147, 249, 0.4))
+            drop-shadow(0 0 20px rgba(189, 147, 249, 0.15));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(189, 147, 249, 0.7))
+            drop-shadow(0 0 40px rgba(189, 147, 249, 0.3));
+  }
+}
+
+[data-theme="nord"] .hero-name.hero-glow-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             nordShimmer 5s ease-in-out infinite;
+}
+
+@keyframes nordShimmer {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(136, 192, 208, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(136, 192, 208, 0.6))
+            drop-shadow(0 0 30px rgba(129, 161, 193, 0.2));
+  }
+}
+
+[data-theme="catppuccin"] .hero-name.hero-glow-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             catppuccinGlow 5s ease-in-out infinite;
+}
+
+@keyframes catppuccinGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(203, 166, 247, 0.5))
+            drop-shadow(0 0 24px rgba(203, 166, 247, 0.15));
+  }
+  33% {
+    filter: drop-shadow(0 0 12px rgba(245, 194, 231, 0.5))
+            drop-shadow(0 0 28px rgba(245, 194, 231, 0.2));
+  }
+  66% {
+    filter: drop-shadow(0 0 10px rgba(137, 180, 250, 0.5))
+            drop-shadow(0 0 24px rgba(137, 180, 250, 0.15));
+  }
+}
+
+[data-theme="synthwave"] .hero-name.hero-glow-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             synthwavePulse 3s ease-in-out infinite;
+}
+
+@keyframes synthwavePulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 46, 151, 0.6))
+            drop-shadow(0 0 30px rgba(255, 46, 151, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.6))
+            drop-shadow(0 0 35px rgba(0, 240, 255, 0.25));
+  }
+}
+
+[data-theme="matrix"] .hero-name.hero-glow-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             matrixGlow 4s ease-in-out infinite;
+}
+
+@keyframes matrixGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(0, 255, 65, 0.3))
+            drop-shadow(0 0 16px rgba(0, 255, 65, 0.1));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(0, 255, 65, 0.55))
+            drop-shadow(0 0 32px rgba(57, 255, 20, 0.2));
+  }
+}
+
+[data-theme="bloodmoon"] .hero-name.hero-glow-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             bloodmoonGlow 4s ease-in-out infinite;
+}
+
+@keyframes bloodmoonGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(255, 0, 64, 0.35))
+            drop-shadow(0 0 20px rgba(255, 0, 64, 0.1));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(255, 0, 64, 0.6))
+            drop-shadow(0 0 36px rgba(255, 77, 109, 0.2));
+  }
+}
+
+[data-theme="midnight"] .hero-name.hero-glow-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             midnightSparkle 4s ease-in-out infinite;
+}
+
+@keyframes midnightSparkle {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(123, 115, 255, 0.4))
+            drop-shadow(0 0 20px rgba(167, 139, 250, 0.15));
+  }
+  25% {
+    filter: drop-shadow(0 0 14px rgba(167, 139, 250, 0.65))
+            drop-shadow(0 0 32px rgba(123, 115, 255, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(196, 181, 253, 0.35))
+            drop-shadow(0 0 16px rgba(123, 115, 255, 0.1));
+  }
+  75% {
+    filter: drop-shadow(0 0 12px rgba(123, 115, 255, 0.55))
+            drop-shadow(0 0 28px rgba(167, 139, 250, 0.25));
+  }
+}
+
+[data-theme="arctic"] .hero-name.hero-glow-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             arcticPrism 6s ease-in-out infinite;
+}
+
+@keyframes arcticPrism {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(3, 105, 161, 0.25));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(3, 105, 161, 0.45))
+            drop-shadow(0 0 24px rgba(14, 116, 144, 0.15));
+  }
+}
+
+[data-theme="gruvbox"] .hero-name.hero-glow-active {
+  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+             gruvboxFlicker 6s steps(1) infinite;
+}
+
+@keyframes gruvboxFlicker {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(250, 189, 47, 0.4))
+            drop-shadow(0 0 20px rgba(250, 189, 47, 0.15));
+  }
+  15% {
+    filter: drop-shadow(0 0 12px rgba(250, 189, 47, 0.6))
+            drop-shadow(0 0 28px rgba(250, 189, 47, 0.25));
+  }
+  16% {
+    filter: drop-shadow(0 0 8px rgba(250, 189, 47, 0.4))
+            drop-shadow(0 0 20px rgba(250, 189, 47, 0.15));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(250, 189, 47, 0.5))
+            drop-shadow(0 0 24px rgba(250, 189, 47, 0.2));
+  }
+  83% {
+    filter: drop-shadow(0 0 6px rgba(250, 189, 47, 0.3));
+  }
+  85% {
+    filter: drop-shadow(0 0 8px rgba(250, 189, 47, 0.4))
+            drop-shadow(0 0 20px rgba(250, 189, 47, 0.15));
+  }
+}

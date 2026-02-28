@@ -1,11 +1,14 @@
-import { prefersReducedMotion, isPageVisible } from '../state';
-import { getThemeConfig } from '../theme-config';
+import { prefersReducedMotion, isTouchDevice, isPageVisible } from '../state';
+import { getCurrentTheme, getThemeConfig } from '../theme-config';
 
 let innerEl: HTMLElement | null = null;
+let heroNameEl: HTMLElement | null = null;
 let finalText = 'Hammad Khan';
 let activeIntervals: number[] = [];
 let cycleQueued = false;
 let cycleRunning = false;
+let initialized = false;
+let effectTimer: number | null = null;
 
 function loadThemeConfig() {
   const tc = getThemeConfig();
@@ -142,11 +145,100 @@ function cycle(): void {
   });
 }
 
+/* ── Hero Effect Scheduling ────────────────────────── */
+
+const EFFECT_CLASSES = [
+  'hero-glitch-active',
+  'hero-lightning-active',
+  'hero-blood-active',
+] as const;
+
+function clearEffectTimer(): void {
+  if (effectTimer !== null) {
+    clearTimeout(effectTimer);
+    effectTimer = null;
+  }
+  if (heroNameEl) {
+    for (const cls of EFFECT_CLASSES) heroNameEl.classList.remove(cls);
+  }
+}
+
+function activateEffect(
+  cls: string,
+  duration: number,
+  next: () => void,
+): void {
+  if (!heroNameEl || !isPageVisible()) {
+    next();
+    return;
+  }
+  // Swap glow for effect, then restore glow after
+  heroNameEl.classList.remove('hero-glow-active');
+  heroNameEl.classList.add(cls);
+  setTimeout(() => {
+    heroNameEl?.classList.remove(cls);
+    heroNameEl?.classList.add('hero-glow-active');
+    next();
+  }, duration);
+}
+
+function scheduleHackerEffects(): void {
+  // Randomly alternate between glitch and lightning
+  const delay = 8000 + Math.random() * 7000; // 8–15s
+  effectTimer = window.setTimeout(() => {
+    const useGlitch = Math.random() < 0.5;
+    activateEffect(
+      useGlitch ? 'hero-glitch-active' : 'hero-lightning-active',
+      useGlitch ? 300 : 500,
+      scheduleHackerEffects,
+    );
+  }, delay);
+}
+
+function scheduleLightning(): void {
+  const delay = 12000 + Math.random() * 8000; // 12–20s
+  effectTimer = window.setTimeout(() => {
+    activateEffect('hero-lightning-active', 600, scheduleLightning);
+  }, delay);
+}
+
+function scheduleBloodSplatter(): void {
+  const delay = 10000 + Math.random() * 8000; // 10–18s
+  effectTimer = window.setTimeout(() => {
+    activateEffect('hero-blood-active', 800, scheduleBloodSplatter);
+  }, delay);
+}
+
+function scheduleHeroEffects(): void {
+  clearEffectTimer();
+
+  // Enable ambient glow on .hero-name
+  heroNameEl?.classList.add('hero-glow-active');
+
+  // Skip JS-triggered hit effects on touch devices
+  if (isTouchDevice) return;
+
+  const theme = getCurrentTheme();
+  if (theme === 'hacker' || theme === 'matrix') {
+    scheduleHackerEffects();
+  } else if (theme === 'synthwave') {
+    scheduleLightning();
+  } else if (theme === 'bloodmoon') {
+    scheduleBloodSplatter();
+  }
+}
+
+/* ── Public API ────────────────────────────────────── */
+
 export function restartHeroAnimation(): void {
+  if (!initialized) return;
   clearAllIntervals();
+  clearEffectTimer();
+  heroNameEl?.classList.remove('hero-glow-active');
   cycleRunning = false;
   cycleQueued = false;
   cycle();
+  scheduleHeroEffects();
 }
 
 export function initHeroName(): void {
@@ -155,15 +247,17 @@ export function initHeroName(): void {
   innerEl = document.getElementById('heroNameInner');
   if (!innerEl) return;
 
-  const heroNameEl = document.getElementById('heroName');
+  heroNameEl = document.getElementById('heroName');
   finalText = heroNameEl?.dataset.text || 'Hammad Khan';
 
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       clearAllIntervals();
+      clearEffectTimer();
       cycleRunning = false;
     } else if (cycleQueued || !cycleRunning) {
       cycle();
+      scheduleHeroEffects();
     }
   });
 
@@ -172,6 +266,8 @@ export function initHeroName(): void {
       innerEl.style.display = 'inline-block';
       innerEl.style.minWidth = `${innerEl.offsetWidth}px`;
     }
+    initialized = true;
     cycle();
-  }, 3200);
+    scheduleHeroEffects();
+  }, 1500);
 }
