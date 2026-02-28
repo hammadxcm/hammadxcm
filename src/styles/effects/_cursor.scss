@@ -1,0 +1,103 @@
+/**
+ * @file Crosshair Cursor & Trail
+ * @description Custom crosshair cursor with hover ring expansion,
+ *              trailing dot particles, and dot variant mode.
+ */
+
+.crosshair-cursor {
+  position: fixed;
+  width: 32px; height: 32px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+
+  &.visible { opacity: 1; }
+}
+
+.crosshair-h, .crosshair-v {
+  position: absolute;
+  background: var(--accent);
+}
+.crosshair-h {
+  width: 100%; height: 1px;
+  top: 50%; left: 0;
+}
+.crosshair-v {
+  width: 1px; height: 100%;
+  left: 50%; top: 0;
+}
+
+.crosshair-dot {
+  position: absolute;
+  width: 3px; height: 3px;
+  background: var(--accent-mint);
+  border-radius: var(--radius-full);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.crosshair-ring {
+  position: absolute;
+  width: 20px; height: 20px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-full);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  transition: width var(--duration-normal) var(--ease-out-expo), height var(--duration-normal) var(--ease-out-expo), opacity var(--duration-normal);
+}
+
+.crosshair-cursor.hover .crosshair-ring {
+  width: 44px; height: 44px;
+  opacity: 0.8;
+  border-color: var(--accent-mint);
+}
+
+@media (hover: none) {
+  .crosshair-cursor { display: none !important; }
+}
+
+body.has-custom-cursor { cursor: none; }
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor [data-tilt] { cursor: none; }
+
+/* Cursor Trail */
+.cursor-trail {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+
+  span {
+    position: absolute;
+    width: 4px; height: 4px;
+    border-radius: var(--radius-full);
+    background: var(--accent);
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity var(--duration-slow);
+  }
+}
+
+@media (hover: none) {
+  .cursor-trail { display: none !important; }
+}
+
+/* Cursor Dot Variant */
+.crosshair-cursor.cursor-dot {
+  .crosshair-h,
+  .crosshair-v,
+  .crosshair-ring {
+    display: none;
+  }
+
+  .crosshair-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+}

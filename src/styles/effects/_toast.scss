@@ -1,0 +1,52 @@
+/**
+ * @file Toast Notifications
+ * @description Hacker-themed toast notification system with slide-in/out
+ *              animations and ambient variant styling.
+ */
+
+.hacker-toast-container {
+  position: fixed;
+  bottom: 3.5rem;
+  right: 1.5rem;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.hacker-toast {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-mint);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glow);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  white-space: nowrap;
+  pointer-events: auto;
+  box-shadow: 0 0 20px var(--glass-border), 0 4px 16px rgba(0, 0, 0, 0.4);
+  animation: toastSlideIn 0.4s var(--ease-out-expo) forwards;
+
+  &.dismiss {
+    animation: toastSlideOut 0.3s ease-in forwards;
+  }
+
+  &.ambient {
+    color: var(--text-dim);
+    border-color: var(--border);
+    box-shadow: 0 0 10px var(--glass-border), 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toastSlideOut {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(60px); }
+}
