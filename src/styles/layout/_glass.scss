@@ -1,0 +1,50 @@
+/**
+ * @file Glassmorphism Card
+ * @description Frosted glass card style with backdrop blur and glow hover
+ *              effects for interactive cards.
+ */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+
+  &:hover {
+    border-color: var(--border-glow);
+    box-shadow: 0 0 30px var(--glass-border);
+  }
+}
+
+/* Enhanced glow hover for cards */
+.glow-border {
+  position: relative;
+  transition: all var(--duration-slow) var(--ease-out-expo);
+
+  &:hover {
+    border-color: var(--accent) !important;
+    box-shadow:
+      0 0 20px rgba(var(--accent-glow), 0.15),
+      0 0 40px rgba(var(--accent-blue-glow), 0.08),
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(var(--accent-glow), 0.1);
+    transform: translateY(-6px) !important;
+
+    .project-name a,
+    .cert-name {
+      color: var(--accent-mint);
+    }
+
+    .project-icon,
+    .cert-badge {
+      transform: scale(1.1);
+      transition: transform var(--duration-normal) var(--ease-out-expo);
+    }
+
+    .project-link,
+    .cert-ext {
+      color: var(--accent-mint);
+    }
+  }
+}
