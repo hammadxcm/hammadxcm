@@ -1,0 +1,259 @@
+/**
+ * @file Theme Definitions
+ * @description All 10 color themes as data-theme attribute selectors.
+ *              Each theme defines accent colors, glass/card backgrounds,
+ *              code syntax colors, and boot sequence colors.
+ */
+
+/* ── Theme: Hacker (default) ── */
+:root, [data-theme="hacker"] {
+  --bg: #0D1117;
+  --bg-card: rgba(22, 27, 34, 0.7);
+  --bg-card-solid: #161B22;
+  --accent: #00bfbf;
+  --accent-blue: #5BCDEC;
+  --accent-mint: #A9FEF7;
+  --accent-glow: 0, 191, 191;
+  --accent-blue-glow: 91, 205, 236;
+  --accent-tertiary: #9B59B6;
+  --text: #E6EDF3;
+  --text-dim: #8B949E;
+  --border: rgba(91, 205, 236, 0.15);
+  --border-glow: rgba(0, 191, 191, 0.3);
+  --glass-bg: rgba(22, 27, 34, 0.6);
+  --glass-border: rgba(91, 205, 236, 0.12);
+  --code-keyword: #ff7b72;  --code-const: #79c0ff;  --code-string: #a5d6ff;
+  --code-bracket: #e6edf3;  --code-comment: #8B949E;  --code-line-num: #6E7681;
+  --code-success: #28c840;
+  --boot-bg: #0a0e14;  --boot-ok: #28c840;  --boot-warn: #febc2e;
+  --boot-cmd: rgba(230, 237, 243, 0.5);  --boot-access-shadow: rgba(169, 254, 247, 0.5);
+}
+
+/* ── Theme: Dracula ── */
+[data-theme="dracula"] {
+  --bg: #282A36;
+  --bg-card: rgba(68, 71, 90, 0.7);
+  --bg-card-solid: #44475A;
+  --accent: #BD93F9;
+  --accent-blue: #8BE9FD;
+  --accent-mint: #50FA7B;
+  --accent-glow: 189, 147, 249;
+  --accent-blue-glow: 139, 233, 253;
+  --accent-tertiary: #50FA7B;
+  --text: #F8F8F2;
+  --text-dim: #9BA4D0;
+  --border: rgba(189, 147, 249, 0.15);
+  --border-glow: rgba(189, 147, 249, 0.3);
+  --glass-bg: rgba(40, 42, 54, 0.6);
+  --glass-border: rgba(189, 147, 249, 0.12);
+  --code-keyword: #ff79c6;  --code-const: #8be9fd;  --code-string: #f1fa8c;
+  --code-bracket: #f8f8f2;  --code-comment: #9BA4D0;  --code-line-num: #8886A6;
+  --code-success: #50fa7b;
+  --boot-bg: #1e1b2e;  --boot-ok: #50fa7b;  --boot-warn: #f1fa8c;
+  --boot-cmd: rgba(248, 248, 242, 0.5);  --boot-access-shadow: rgba(80, 250, 123, 0.5);
+}
+
+/* ── Theme: Nord ── */
+[data-theme="nord"] {
+  --bg: #2E3440;
+  --bg-card: rgba(59, 66, 82, 0.7);
+  --bg-card-solid: #3B4252;
+  --accent: #88C0D0;
+  --accent-blue: #81A1C1;
+  --accent-mint: #A3BE8C;
+  --accent-glow: 136, 192, 208;
+  --accent-blue-glow: 129, 161, 193;
+  --accent-tertiary: #A3BE8C;
+  --text: #ECEFF4;
+  --text-dim: #94A3BD;
+  --border: rgba(136, 192, 208, 0.15);
+  --border-glow: rgba(136, 192, 208, 0.3);
+  --glass-bg: rgba(46, 52, 64, 0.6);
+  --glass-border: rgba(136, 192, 208, 0.12);
+  --code-keyword: #bf616a;  --code-const: #81a1c1;  --code-string: #a3be8c;
+  --code-bracket: #eceff4;  --code-comment: #94A3BD;  --code-line-num: #7B8BA4;
+  --code-success: #a3be8c;
+  --boot-bg: #242933;  --boot-ok: #a3be8c;  --boot-warn: #ebcb8b;
+  --boot-cmd: rgba(236, 239, 244, 0.5);  --boot-access-shadow: rgba(163, 190, 140, 0.5);
+}
+
+/* ── Theme: Catppuccin Mocha ── */
+[data-theme="catppuccin"] {
+  --bg: #1E1E2E;
+  --bg-card: rgba(49, 50, 68, 0.7);
+  --bg-card-solid: #313244;
+  --accent: #CBA6F7;
+  --accent-blue: #89B4FA;
+  --accent-mint: #A6E3A1;
+  --accent-glow: 203, 166, 247;
+  --accent-blue-glow: 137, 180, 250;
+  --accent-tertiary: #A6E3A1;
+  --text: #CDD6F4;
+  --text-dim: #888DA5;
+  --border: rgba(203, 166, 247, 0.15);
+  --border-glow: rgba(203, 166, 247, 0.3);
+  --glass-bg: rgba(30, 30, 46, 0.6);
+  --glass-border: rgba(203, 166, 247, 0.12);
+  --code-keyword: #f38ba8;  --code-const: #89b4fa;  --code-string: #a6e3a1;
+  --code-bracket: #cdd6f4;  --code-comment: #9498AE;  --code-line-num: #7B7E94;
+  --code-success: #a6e3a1;
+  --boot-bg: #181825;  --boot-ok: #a6e3a1;  --boot-warn: #f9e2af;
+  --boot-cmd: rgba(205, 214, 244, 0.5);  --boot-access-shadow: rgba(166, 227, 161, 0.5);
+}
+
+/* ── Theme: Synthwave ── */
+[data-theme="synthwave"] {
+  --bg: #1A1028;
+  --bg-card: rgba(42, 26, 64, 0.7);
+  --bg-card-solid: #2A1A40;
+  --accent: #FF2E97;
+  --accent-blue: #F9C80E;
+  --accent-mint: #00F0FF;
+  --accent-glow: 255, 46, 151;
+  --accent-blue-glow: 249, 200, 14;
+  --accent-tertiary: #00F0FF;
+  --text: #F0E6FF;
+  --text-dim: #9B7EC8;
+  --border: rgba(255, 46, 151, 0.15);
+  --border-glow: rgba(255, 46, 151, 0.3);
+  --glass-bg: rgba(26, 16, 40, 0.6);
+  --glass-border: rgba(255, 46, 151, 0.12);
+  --code-keyword: #ff2e97;  --code-const: #f9c80e;  --code-string: #72f1b8;
+  --code-bracket: #f0e6ff;  --code-comment: #9A8DC0;  --code-line-num: #7D6FA4;
+  --code-success: #72f1b8;
+  --boot-bg: #120a1e;  --boot-ok: #72f1b8;  --boot-warn: #f9c80e;
+  --boot-cmd: rgba(240, 230, 255, 0.5);  --boot-access-shadow: rgba(114, 241, 184, 0.5);
+}
+
+/* ── Theme: Matrix ── */
+[data-theme="matrix"] {
+  --bg: #0A0A0A;
+  --bg-card: rgba(10, 20, 10, 0.7);
+  --bg-card-solid: #0A140A;
+  --accent: #00FF41;
+  --accent-blue: #39FF14;
+  --accent-mint: #7CFC00;
+  --accent-glow: 0, 255, 65;
+  --accent-blue-glow: 57, 255, 20;
+  --accent-tertiary: #7CFC00;
+  --text: #00FF41;
+  --text-dim: #00C818;
+  --border: rgba(0, 255, 65, 0.15);
+  --border-glow: rgba(0, 255, 65, 0.3);
+  --glass-bg: rgba(10, 10, 10, 0.6);
+  --glass-border: rgba(0, 255, 65, 0.12);
+  --code-keyword: #39ff14;  --code-const: #00ff41;  --code-string: #7cfc00;
+  --code-bracket: #00ff41;  --code-comment: #00c818;  --code-line-num: #00A814;
+  --code-success: #00ff41;
+  --boot-bg: #050505;  --boot-ok: #00ff41;  --boot-warn: #39ff14;
+  --boot-cmd: rgba(0, 255, 65, 0.5);  --boot-access-shadow: rgba(124, 252, 0, 0.5);
+}
+
+/* ── Theme: Blood Moon ── */
+[data-theme="bloodmoon"] {
+  --bg: #0D0208;
+  --bg-card: rgba(26, 4, 16, 0.7);
+  --bg-card-solid: #1A0410;
+  --accent: #FF0040;
+  --accent-blue: #FF4D6D;
+  --accent-mint: #FF8FA3;
+  --accent-glow: 255, 0, 64;
+  --accent-blue-glow: 255, 77, 109;
+  --accent-tertiary: #FF8FA3;
+  --text: #F0E6E8;
+  --text-dim: #C06B84;
+  --border: rgba(255, 0, 64, 0.15);
+  --border-glow: rgba(255, 0, 64, 0.3);
+  --glass-bg: rgba(13, 2, 8, 0.6);
+  --glass-border: rgba(255, 0, 64, 0.12);
+  --code-keyword: #ff4d6d;  --code-const: #ff8fa3;  --code-string: #ffb3c1;
+  --code-bracket: #f0e6e8;  --code-comment: #C06B84;  --code-line-num: #8B4A5E;
+  --code-success: #ff8fa3;
+  --boot-bg: #080104;  --boot-ok: #ff4d6d;  --boot-warn: #ff8fa3;
+  --boot-cmd: rgba(240, 230, 232, 0.5);  --boot-access-shadow: rgba(255, 143, 163, 0.5);
+}
+
+/* ── Theme: Midnight ── */
+[data-theme="midnight"] {
+  --bg: #0F0F1A;
+  --bg-card: rgba(24, 24, 42, 0.7);
+  --bg-card-solid: #18182A;
+  --accent: #7B73FF;
+  --accent-blue: #A78BFA;
+  --accent-mint: #C4B5FD;
+  --accent-glow: 123, 115, 255;
+  --accent-blue-glow: 167, 139, 250;
+  --accent-tertiary: #C4B5FD;
+  --text: #E8E6F0;
+  --text-dim: #9290A8;
+  --border: rgba(123, 115, 255, 0.15);
+  --border-glow: rgba(123, 115, 255, 0.3);
+  --glass-bg: rgba(15, 15, 26, 0.6);
+  --glass-border: rgba(123, 115, 255, 0.12);
+  --code-keyword: #c4b5fd;  --code-const: #a78bfa;  --code-string: #818cf8;
+  --code-bracket: #e8e6f0;  --code-comment: #9290a8;  --code-line-num: #6E6B88;
+  --code-success: #a78bfa;
+  --boot-bg: #0a0a12;  --boot-ok: #a78bfa;  --boot-warn: #c4b5fd;
+  --boot-cmd: rgba(232, 230, 240, 0.5);  --boot-access-shadow: rgba(167, 139, 250, 0.5);
+}
+
+/* ── Theme: Arctic Light ── */
+[data-theme="arctic"] {
+  --bg: #F0F9FF;
+  --bg-card: rgba(203, 228, 248, 0.55);
+  --bg-card-solid: #DBEAFE;
+  --accent: #0369A1;
+  --accent-blue: #0E7490;
+  --accent-mint: #047857;
+  --accent-glow: 3, 105, 161;
+  --accent-blue-glow: 14, 116, 144;
+  --accent-tertiary: #047857;
+  --text: #0F172A;
+  --text-dim: #475569;
+  --border: rgba(2, 102, 160, 0.45);
+  --border-glow: rgba(2, 102, 160, 0.35);
+  --glass-bg: rgba(214, 232, 248, 0.55);
+  --glass-border: rgba(2, 102, 160, 0.40);
+  --code-keyword: #be185d;  --code-const: #0369a1;  --code-string: #047857;
+  --code-bracket: #0f172a;  --code-comment: #475569;  --code-line-num: #4B5563;
+  --code-success: #047857;
+  --boot-bg: #e0f2fe;  --boot-ok: #047857;  --boot-warn: #B45309;
+  --boot-cmd: rgba(71, 85, 105, 1);  --boot-access-shadow: none;
+}
+
+/* ── Theme: Gruvbox ── */
+[data-theme="gruvbox"] {
+  --bg: #282828;
+  --bg-card: rgba(60, 56, 54, 0.7);
+  --bg-card-solid: #3C3836;
+  --accent: #FABD2F;
+  --accent-blue: #83A598;
+  --accent-mint: #B8BB26;
+  --accent-glow: 250, 189, 47;
+  --accent-blue-glow: 131, 165, 152;
+  --accent-tertiary: #B8BB26;
+  --text: #EBDBB2;
+  --text-dim: #A89984;
+  --border: rgba(250, 189, 47, 0.15);
+  --border-glow: rgba(250, 189, 47, 0.3);
+  --glass-bg: rgba(40, 40, 40, 0.6);
+  --glass-border: rgba(250, 189, 47, 0.12);
+  --code-keyword: #fb4934;  --code-const: #83a598;  --code-string: #b8bb26;
+  --code-bracket: #ebdbb2;  --code-comment: #A89984;  --code-line-num: #8A7E76;
+  --code-success: #b8bb26;
+  --boot-bg: #1d2021;  --boot-ok: #b8bb26;  --boot-warn: #fabd2f;
+  --boot-cmd: rgba(235, 219, 178, 0.5);  --boot-access-shadow: rgba(184, 187, 38, 0.5);
+}
+
+/* ── Theme Transition ── */
+body, nav, .glass, .social-btn, .glow-border, .timeline-card,
+.project-card, a.cert-card, .skyline-card, .tech-icon,
+.timeline-tech span, .project-tags span, .orb {
+  transition: background-color 0.35s ease, color 0.35s ease,
+              border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+}
