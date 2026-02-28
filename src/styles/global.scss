@@ -1,0 +1,40 @@
+/**
+ * @file Global Stylesheet Entry
+ * @description Aggregates all global SCSS partials. Component-specific styles
+ *              live in their respective Astro component <style lang="scss"> blocks.
+ */
+
+// Base
+@use 'base/tokens';
+@use 'base/typography';
+@use 'base/reset';
+
+// Themes
+@use 'themes/themes';
+
+// Layout
+@use 'layout/sections';
+@use 'layout/scroll-reveal';
+@use 'layout/glass';
+
+// Effects
+@use 'effects/cursor';
+@use 'effects/boot-sequence';
+@use 'effects/glitch';
+@use 'effects/overlays';
+@use 'effects/toast';
+@use 'effects/konami';
+@use 'effects/status-bar';
+@use 'effects/key-flash';
+
+// Utilities
+@use 'utilities/skip-link';
+@use 'utilities/image-loading';
+@use 'utilities/separators';
+@use 'utilities/content-visibility';
+
+// Overrides
+@use 'overrides/arctic';
+
+// Responsive (must be last for cascade)
+@use 'responsive/media-queries';
