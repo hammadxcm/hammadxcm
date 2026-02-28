@@ -1,0 +1,62 @@
+/**
+ * @file Section Separators & Dividers
+ * @description Gradient section separators, animated divider bars,
+ *              section title gradient scroll, and floating tech icon animation.
+ */
+
+/* Section Title Gradient Scroll */
+.section-title {
+  background: linear-gradient(135deg, var(--text) 0%, var(--accent-blue) 33%, var(--accent-mint) 66%, var(--accent) 100%);
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: background-position 0.1s linear;
+}
+
+/* Enhanced Section Dividers */
+.section-divider {
+  width: 0;
+  height: 3px;
+  margin: 1rem auto 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-blue));
+  opacity: 0;
+  transition: opacity 0.8s 0.3s, width 0.8s 0.3s var(--ease-out-expo);
+  box-shadow: 0 0 0 rgba(var(--accent-glow), 0);
+}
+
+.reveal.visible .section-divider,
+.reveal-blur.visible .section-divider {
+  opacity: 1;
+  width: 80px;
+  box-shadow: 0 0 12px rgba(var(--accent-glow), 0.3);
+}
+
+/* Section Separators */
+.section-separator {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+
+  .sep-line {
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent-blue), var(--accent), transparent);
+    transform: scaleX(0);
+    transition: transform 1.2s var(--ease-out-expo);
+  }
+
+  &.visible .sep-line {
+    transform: scaleX(1);
+  }
+}
+
+/* Floating Tech Icons */
+@keyframes techFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
