@@ -1,0 +1,32 @@
+/**
+ * @file CSS Reset & Base Styles
+ * @description Universal box-sizing, smooth scroll, body typography,
+ *              link styles, and selection highlight.
+ */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color var(--duration-normal);
+}
+a:hover { color: var(--accent-mint); }
