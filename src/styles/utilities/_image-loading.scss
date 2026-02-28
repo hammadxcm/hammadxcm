@@ -1,0 +1,14 @@
+/**
+ * @file Image Loading
+ * @description Blur-up progressive image loading effect with smooth
+ *              transition from blurred placeholder to loaded image.
+ */
+
+.blur-up {
+  filter: blur(8px);
+  transition: filter var(--duration-slower) var(--ease-out-quart);
+
+  &.loaded {
+    filter: blur(0);
+  }
+}

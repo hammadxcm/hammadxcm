@@ -1,0 +1,26 @@
+/**
+ * @file Skip Link
+ * @description Accessible skip-to-content link that appears on focus,
+ *              allowing keyboard users to bypass navigation.
+ */
+
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s;
+
+  &:focus {
+    top: 0;
+    outline: 2px solid var(--accent-mint);
+    outline-offset: 2px;
+  }
+}
