@@ -1,0 +1,89 @@
+/**
+ * @file Scroll Reveal System
+ * @description Intersection Observer-driven reveal animations with direction
+ *              variants (up, left, right, scale, blur) and stagger delays.
+ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo), filter 0.9s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Direction variants */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal-left.visible, .reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale-up variant */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Blur-in variant */
+.reveal-blur {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(20px);
+  transition: opacity 1s var(--ease-out-expo), filter 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+  will-change: opacity, filter, transform;
+}
+.reveal-blur.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* Stagger delays for children */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.stagger > *.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stagger > *:nth-child(1) { transition-delay: 0s; }
+.stagger > *:nth-child(2) { transition-delay: 0.08s; }
+.stagger > *:nth-child(3) { transition-delay: 0.1s; }
+.stagger > *:nth-child(4) { transition-delay: 0.18s; }
+.stagger > *:nth-child(5) { transition-delay: 0.24s; }
+.stagger > *:nth-child(6) { transition-delay: 0.30s; }
+.stagger > *:nth-child(7) { transition-delay: 0.36s; }
+.stagger > *:nth-child(8) { transition-delay: 0.42s; }
+.stagger > *:nth-child(9) { transition-delay: 0.48s; }
+.stagger > *:nth-child(10) { transition-delay: 0.54s; }
+.stagger > *:nth-child(11) { transition-delay: 0.60s; }
+.stagger > *:nth-child(12) { transition-delay: 0.66s; }
+
+/* Hero parallax */
+.hero-content {
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
