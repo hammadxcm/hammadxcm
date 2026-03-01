@@ -1,4 +1,4 @@
-import { getCurrentTheme } from './state';
+import { getClientIP, getCurrentTheme } from './state';
 import type {
   AboutTheme,
   AnalyticsThemeMap,
@@ -312,11 +312,11 @@ function pick<T>(arr: T[]): T {
 export const themeStatusBars: Record<ThemeName, StatusBarConfig> = {
   hacker: [
     { label: '\u25C9 SECURE CONNECTION', cls: 'status-secure' },
-    { label: 'AES-256' },
+    { label: 'IP: ', value: () => getClientIP() || '...' },
     {
       label: '',
       value: () =>
-        `\u2191 ${(Math.random() * 4 + 0.5).toFixed(1)} KB/s \u2193 ${(Math.random() * 12 + 2).toFixed(1)} KB/s`,
+        `\u2191 ${(Math.random() * 36 + 12).toFixed(1)} MB/s \u2193 ${(Math.random() * 75 + 45).toFixed(1)} MB/s`,
     },
     { label: '', value: () => `${Math.floor(Math.random() * 10 + 18)} PROCESSES` },
     { label: 'UPTIME: ', value: (e) => formatUptime(e) },
@@ -354,7 +354,7 @@ export const themeStatusBars: Record<ThemeName, StatusBarConfig> = {
   ],
   matrix: [
     { label: '\u25C9 SIMULATION ACTIVE', cls: 'status-secure' },
-    { label: 'CONSTRUCT: LOADED' },
+    { label: 'NODE: ', value: () => getClientIP() || '...' },
     { label: 'TICK: ', value: () => `#${Math.floor(Math.random() * 99999)}` },
     { label: '', value: () => `${Math.floor(Math.random() * 8 + 1)} AGENTS DETECTED` },
     { label: 'SIGNAL: ', value: () => `${Math.floor(Math.random() * 40 + 60)}%` },

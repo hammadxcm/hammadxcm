@@ -35,6 +35,17 @@ export function setCurrentTheme(t: ThemeName): void {
   _currentTheme = t;
 }
 
+/* ── Client IP (fetched once on init) ── */
+let _clientIP = '';
+
+export function getClientIP(): string {
+  return _clientIP;
+}
+
+export function setClientIP(ip: string): void {
+  _clientIP = ip;
+}
+
 /* ── Hero visibility ── */
 let _heroVisible = true;
 

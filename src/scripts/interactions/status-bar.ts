@@ -1,8 +1,8 @@
-import { prefersReducedMotion } from '../state';
+import { prefersReducedMotion, setClientIP } from '../state';
 import { getStatusBarConfig } from '../theme-config';
 
 const SLOT_COUNT = 5;
-const STATUS_UPDATE_INTERVAL_MS = 2000;
+const STATUS_UPDATE_INTERVAL_MS = 1000;
 const slots: (HTMLElement | null)[] = [];
 let startTime = 0;
 let intervalId: ReturnType<typeof setInterval> | undefined;
@@ -29,6 +29,16 @@ export function updateStatusBar(): void {
   render();
 }
 
+async function fetchClientIP(): Promise<void> {
+  try {
+    const res = await fetch('https://api.ipify.org?format=json');
+    const data = await res.json();
+    if (data.ip) setClientIP(data.ip);
+  } catch {
+    // Silently fall back — getClientIP() returns '' which the config handles
+  }
+}
+
 export function initStatusBar(): void {
   if (prefersReducedMotion) return;
 
@@ -42,4 +52,6 @@ export function initStatusBar(): void {
 
   if (intervalId) clearInterval(intervalId);
   intervalId = setInterval(render, STATUS_UPDATE_INTERVAL_MS);
+
+  fetchClientIP();
 }

@@ -16,19 +16,6 @@ const effectDurations: Record<ScreenEffect, number> = {
   none: 0,
 };
 
-const envDurations: Record<ScreenEffect, number> = {
-  glitch: 200,
-  bloodDrip: 300,
-  iceCrack: 300,
-  vhsDistortion: 250,
-  fogWisps: 400,
-  auroraShimmer: 400,
-  pastelBloom: 400,
-  shootingStar: 250,
-  tvStatic: 200,
-  none: 0,
-};
-
 const AMBIENT_INTERVAL_BASE_MS = 12000;
 const ENV_INTERVAL_BASE_MS = 6000;
 
@@ -61,17 +48,10 @@ export function initScreenEffects(): void {
     const effect = getThemeConfig().screenEffect;
     if (effect === 'none') return;
 
+    // Use only the overlay-based effect — body-level filter animations
+    // cascade to all children (including the fixed status bar), so we
+    // intentionally skip adding env-effect-* classes to <body>.
     triggerScreenEffect();
-
-    // Keep backward compat for glitch body animation
-    if (effect === 'glitch') {
-      document.body.classList.add('env-glitch');
-      setTimeout(() => document.body.classList.remove('env-glitch'), 200);
-    }
-
-    const envClass = `env-effect-${effect}`;
-    document.body.classList.add(envClass);
-    setTimeout(() => document.body.classList.remove(envClass), envDurations[effect]);
   }
 
   document.addEventListener('click', (e: MouseEvent) => {

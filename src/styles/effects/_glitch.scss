@@ -30,15 +30,9 @@
   }
 }
 
-/* Global environment glitch (body) */
-body.env-glitch {
-  animation: envGlitchBody 200ms steps(4) forwards;
-}
-
-@keyframes envGlitchBody {
-  0%   { filter: hue-rotate(0deg); }
-  25%  { filter: hue-rotate(40deg) saturate(1.8); }
-  50%  { filter: hue-rotate(-30deg) brightness(1.1); }
-  75%  { filter: hue-rotate(20deg) saturate(1.4); }
-  100% { filter: none; }
-}
+/*
+ * Note: body-level env-glitch removed — the CSS filter on <body> cascaded to
+ * all children (including the fixed status bar), causing unintended color
+ * shifts.  The overlay-based clickGlitch animation in _screen-effects.scss
+ * already provides the visual effect without affecting the status bar.
+ */
