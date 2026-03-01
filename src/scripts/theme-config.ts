@@ -1,18 +1,14 @@
 import type {
-  ThemeName,
-  ThemeConfig,
-  ScreenEffect,
-  BootMessage,
-  ThemeToasts,
   AboutTheme,
   AnalyticsThemeMap,
+  BootMessage,
+  ThemeConfig,
+  ThemeName,
+  ThemeToasts,
 } from './types';
 
 export function getCurrentTheme(): ThemeName {
-  return (
-    (document.documentElement.getAttribute('data-theme') as ThemeName) ||
-    'hacker'
-  );
+  return (document.documentElement.getAttribute('data-theme') as ThemeName) || 'hacker';
 }
 
 export function getThemeConfig(theme?: ThemeName): ThemeConfig {
@@ -204,6 +200,8 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     trophy: 'tokyonight',
     streakBg: '0D1117',
     activityTheme: 'tokyo-night',
+    leetcodeTheme: 'dark',
+    stackoverflowTheme: 'dark',
   },
   dracula: {
     stats: 'dracula',
@@ -211,27 +209,35 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     trophy: 'dracula',
     streakBg: '282A36',
     activityTheme: 'dracula',
+    leetcodeTheme: 'dark',
+    stackoverflowTheme: 'dark',
   },
   nord: {
     stats: 'nord',
-    summary: 'nord',
+    summary: 'nord_dark',
     trophy: 'nord',
     streakBg: '2E3440',
     activityTheme: 'nord',
+    leetcodeTheme: 'nord',
+    stackoverflowTheme: 'dark',
   },
   catppuccin: {
     stats: 'catppuccin_mocha',
-    summary: 'catppuccin_mocha',
-    trophy: 'nord',
+    summary: 'dracula',
+    trophy: 'aura',
     streakBg: '1E1E2E',
     activityTheme: 'tokyo-night',
+    leetcodeTheme: 'dark',
+    stackoverflowTheme: 'dark',
   },
   synthwave: {
     stats: 'synthwave',
     summary: 'radical',
     trophy: 'radical',
     streakBg: '1A1028',
-    activityTheme: 'high-contrast',
+    activityTheme: 'synthwave-84',
+    leetcodeTheme: 'unicorn',
+    stackoverflowTheme: 'dark',
   },
   matrix: {
     stats: 'dark',
@@ -239,27 +245,35 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     trophy: 'matrix',
     streakBg: '0A0A0A',
     activityTheme: 'green',
+    leetcodeTheme: 'forest',
+    stackoverflowTheme: 'dark',
   },
   bloodmoon: {
     stats: 'radical',
     summary: 'radical',
     trophy: 'radical',
     streakBg: '0D0208',
-    activityTheme: 'high-contrast',
+    activityTheme: 'coral',
+    leetcodeTheme: 'wtf',
+    stackoverflowTheme: 'dark',
   },
   midnight: {
     stats: 'shades-of-purple',
-    summary: 'vue-dark',
+    summary: '2077',
     trophy: 'onestar',
     streakBg: '0F0F1A',
-    activityTheme: 'tokyo-night',
+    activityTheme: 'material-palenight',
+    leetcodeTheme: 'dark',
+    stackoverflowTheme: 'dark',
   },
   arctic: {
     stats: 'graywhite',
     summary: 'default',
     trophy: 'flat',
     streakBg: 'F0F9FF',
-    activityTheme: 'minimal',
+    activityTheme: 'arctic',
+    leetcodeTheme: 'light',
+    stackoverflowTheme: 'light',
   },
   gruvbox: {
     stats: 'gruvbox',
@@ -267,6 +281,8 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     trophy: 'gruvbox',
     streakBg: '282828',
     activityTheme: 'gruvbox',
+    leetcodeTheme: 'dark',
+    stackoverflowTheme: 'dark',
   },
 };
 
@@ -360,7 +376,7 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
   },
   bloodmoon: {
     ...baseTheme,
-    canvasEffect: 'embers',
+    canvasEffect: 'bloodRain',
     screenEffect: 'bloodDrip',
     hasCursor: 'dot',
     particleColor: 'rgba(255, 0, 64, ',
@@ -612,8 +628,7 @@ export const themeToasts: Record<ThemeName, ThemeToasts> = {
       '> Code is raining',
     ],
     ambient: [
-      '[MATRIX] Simulation tick #' +
-        String(Math.floor(Math.random() * 99999)),
+      `[MATRIX] Simulation tick #${String(Math.floor(Math.random() * 99999))}`,
       '[AGENT] Patrol route updated',
       '[ORACLE] Prediction logged',
     ],
@@ -626,11 +641,7 @@ export const themeToasts: Record<ThemeName, ThemeToasts> = {
       '> Shadow index: rising',
       '> Blood tide: receding',
     ],
-    ambient: [
-      '[ECLIPSE] Next phase in 3h',
-      '[LUNAR] Anomaly stable',
-      '[CRIMSON] Protocol holding',
-    ],
+    ambient: ['[ECLIPSE] Next phase in 3h', '[LUNAR] Anomaly stable', '[CRIMSON] Protocol holding'],
   },
   midnight: {
     click: [
@@ -654,11 +665,7 @@ export const themeToasts: Record<ThemeName, ThemeToasts> = {
       '> Crystal clarity achieved',
       '> Light mode: pristine',
     ],
-    ambient: [
-      '[LIGHT] Display calibrated',
-      '[ICE] Structure: optimal',
-      '[CLEAN] Build successful',
-    ],
+    ambient: ['[LIGHT] Display calibrated', '[ICE] Structure: optimal', '[CLEAN] Build successful'],
   },
   gruvbox: {
     click: [
@@ -716,8 +723,7 @@ export const aboutThemes: Record<ThemeName, AboutTheme> = {
     sectionLabel: '// cat /dev/construct',
     filename: 'construct_profile.sh',
     headerComment: 'THE MATRIX \u2014 OPERATIVE CONSTRUCT',
-    echoMessage:
-      '[SIGNAL] Construct loaded. Follow the white rabbit.',
+    echoMessage: '[SIGNAL] Construct loaded. Follow the white rabbit.',
     defaultLang: 'cpp',
   },
   bloodmoon: {

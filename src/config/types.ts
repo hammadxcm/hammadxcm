@@ -10,7 +10,13 @@ export type ThemeName =
   | 'arctic'
   | 'gruvbox';
 
-export type SocialPlatform = 'github' | 'twitter' | 'linkedin';
+export type SocialPlatform =
+  | 'github'
+  | 'twitter'
+  | 'linkedin'
+  | 'stackoverflow'
+  | 'hackerrank'
+  | 'leetcode';
 
 export type SectionId = string;
 
@@ -106,6 +112,15 @@ export interface PortfolioConfig {
   github: {
     username: string;
     utcOffset: number;
+  };
+  leetcode?: {
+    username: string;
+  };
+  stackoverflow?: {
+    userId: number;
+  };
+  hackerrank?: {
+    username: string;
   };
   socials: SocialLink[];
   sections: Section[];

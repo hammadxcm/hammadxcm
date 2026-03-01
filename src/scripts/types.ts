@@ -99,4 +99,6 @@ export interface AnalyticsThemeMap {
   trophy: string;
   streakBg: string;
   activityTheme: string;
+  leetcodeTheme: string;
+  stackoverflowTheme: string;
 }

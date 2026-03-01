@@ -247,8 +247,9 @@
 
 /* ── Theme Transition ── */
 body, nav, .glass, .social-btn, .glow-border, .timeline-card,
-.project-card, a.cert-card, .skyline-card, .tech-icon,
-.timeline-tech span, .project-tags span, .orb {
+.project-card, a.cert-card, .skyline-card, .analytics-cta, .tech-icon,
+.timeline-tech span, .project-tags span, .orb,
+.analytics-row img, .analytics-full img, .analytics-responsive-card img, .dev-quote img {
   transition: background-color 0.35s ease, color 0.35s ease,
               border-color 0.35s ease, box-shadow 0.35s ease;
 }
