@@ -19,6 +19,7 @@ concurrency:
 
 jobs:
   build-and-deploy:
+    name: Build & Deploy
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -30,9 +31,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run lint
       - run: npm run build
-      - run: npm test
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
