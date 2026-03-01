@@ -1,6 +1,11 @@
 import { prefersReducedMotion } from '../state';
 import { getBootMessages, getCurrentTheme, getThemeConfig } from '../theme-config';
 
+const BOOT_INITIAL_DELAY_MS = 80;
+const BOOT_LINE_DELAY_MS = 60;
+const BOOT_DONE_DELAY_MS = 150;
+const BOOT_FADE_MS = 300;
+
 export function initBoot(): void {
   if (prefersReducedMotion) {
     const boot = document.getElementById('bootScreen');
@@ -39,14 +44,13 @@ export function initBoot(): void {
   }
 
   const spans = bootLines.querySelectorAll('span');
-  const delay = 80;
   spans.forEach((span, i) => {
-    setTimeout(() => span.classList.add('show'), delay + i * 60);
+    setTimeout(() => span.classList.add('show'), BOOT_INITIAL_DELAY_MS + i * BOOT_LINE_DELAY_MS);
   });
 
-  const totalTime = delay + spans.length * 60 + 150;
+  const totalTime = BOOT_INITIAL_DELAY_MS + spans.length * BOOT_LINE_DELAY_MS + BOOT_DONE_DELAY_MS;
   setTimeout(() => {
     bootScreen.classList.add('fade-out');
-    setTimeout(() => bootScreen.classList.add('hidden'), 300);
+    setTimeout(() => bootScreen.classList.add('hidden'), BOOT_FADE_MS);
   }, totalTime);
 }

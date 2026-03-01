@@ -1,4 +1,4 @@
-import { isPageVisible, isTouchDevice, prefersReducedMotion } from '../state';
+import { isPageVisible, isTouchDevice, onVisibilityChange, prefersReducedMotion } from '../state';
 import { getThemeConfig } from '../theme-config';
 
 function rand(a: number, b: number): number {
@@ -48,7 +48,8 @@ export function initHackerLog(): void {
   const container = document.getElementById('hackerLog');
   if (!container) return;
 
-  const maxNodes = 20;
+  const MAX_LOG_NODES = 20;
+  const LOG_SPAWN_INTERVAL_MS = 800;
   let nodeCount = 0;
   let spawnIntervalId: number | null = null;
 
@@ -59,7 +60,7 @@ export function initHackerLog(): void {
       stopSpawning();
       return;
     }
-    if (nodeCount >= maxNodes) return;
+    if (nodeCount >= MAX_LOG_NODES) return;
 
     const line = document.createElement('div');
     line.className = 'hacker-log-line';
@@ -76,7 +77,7 @@ export function initHackerLog(): void {
 
   function startSpawning(): void {
     if (spawnIntervalId !== null) return;
-    spawnIntervalId = window.setInterval(spawnLine, 800);
+    spawnIntervalId = window.setInterval(spawnLine, LOG_SPAWN_INTERVAL_MS);
   }
 
   function stopSpawning(): void {
@@ -86,8 +87,8 @@ export function initHackerLog(): void {
     }
   }
 
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
+  onVisibilityChange((visible) => {
+    if (!visible) {
       stopSpawning();
     } else {
       const tc = getThemeConfig();
