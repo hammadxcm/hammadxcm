@@ -21,5 +21,5 @@ export function initObserver(): void {
     { threshold: 0.08, rootMargin: '0px 0px -60px 0px' },
   );
 
-  elements.forEach((el) => observer.observe(el));
+  for (const el of elements) observer.observe(el);
 }

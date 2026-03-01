@@ -1,4 +1,4 @@
-import { prefersReducedMotion, isTouchDevice } from '../state';
+import { isTouchDevice, prefersReducedMotion } from '../state';
 import { getThemeConfig, getThemeToasts } from '../theme-config';
 import type { ScreenEffect } from '../types';
 
@@ -41,12 +41,12 @@ export function initScreenEffects(): void {
     const toast = document.createElement('div');
     toast.className = isAmbient ? 'hacker-toast ambient' : 'hacker-toast';
     toast.textContent = message;
-    toastContainer!.appendChild(toast);
+    toastContainer?.appendChild(toast);
 
-    let toasts = toastContainer!.querySelectorAll('.hacker-toast');
+    let toasts = toastContainer?.querySelectorAll('.hacker-toast');
     while (toasts.length > maxToasts) {
       toasts[0].remove();
-      toasts = toastContainer!.querySelectorAll('.hacker-toast');
+      toasts = toastContainer?.querySelectorAll('.hacker-toast');
     }
 
     setTimeout(() => {
@@ -89,10 +89,7 @@ export function initScreenEffects(): void {
 
     const envClass = `env-effect-${effect}`;
     document.body.classList.add(envClass);
-    setTimeout(
-      () => document.body.classList.remove(envClass),
-      envDurations[effect],
-    );
+    setTimeout(() => document.body.classList.remove(envClass), envDurations[effect]);
   }
 
   document.addEventListener('click', (e: MouseEvent) => {

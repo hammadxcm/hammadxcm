@@ -1,8 +1,8 @@
-import { getCurrentTheme, getAboutTheme } from '../theme-config';
-import type { ThemeName, LangKey, LangVariant } from '../types';
+import { getAboutTheme, getCurrentTheme } from '../theme-config';
+import type { LangKey, LangVariant, ThemeName } from '../types';
 
 let langData: Record<LangKey, LangVariant> | null = null;
-let currentLang: LangKey = 'bash';
+let _currentLang: LangKey = 'bash';
 
 function loadLangData(): Record<LangKey, LangVariant> | null {
   if (langData) return langData;
@@ -22,7 +22,7 @@ function switchLanguage(lang: LangKey): void {
   const variant = data[lang];
   if (!variant) return;
 
-  currentLang = lang;
+  _currentLang = lang;
 
   // Update filename
   const filenameEl = document.getElementById('aboutFilename');

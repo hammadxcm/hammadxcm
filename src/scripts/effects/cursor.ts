@@ -17,9 +17,7 @@ export function updateCursorVisibility(): void {
     if (trailContainer) trailContainer.style.display = '';
     document.body.classList.add('has-custom-cursor');
     cursor.className =
-      tc.hasCursor === 'crosshair'
-        ? 'crosshair-cursor'
-        : 'crosshair-cursor cursor-dot';
+      tc.hasCursor === 'crosshair' ? 'crosshair-cursor' : 'crosshair-cursor cursor-dot';
   }
 }
 
@@ -36,9 +34,7 @@ export function initCursor(): void {
   let cy = 0;
   const lerp = 0.15;
 
-  const trailDots = trailContainer
-    ? trailContainer.querySelectorAll<HTMLSpanElement>('span')
-    : [];
+  const trailDots = trailContainer ? trailContainer.querySelectorAll<HTMLSpanElement>('span') : [];
   const trailPositions: { x: number; y: number }[] = [];
   for (let i = 0; i < trailDots.length; i++) {
     trailPositions.push({ x: 0, y: 0 });
@@ -50,8 +46,7 @@ export function initCursor(): void {
     mx = e.clientX;
     my = e.clientY;
     const tc = getThemeConfig();
-    if (tc.hasCursor && !cursor.classList.contains('visible'))
-      cursor.classList.add('visible');
+    if (tc.hasCursor && !cursor.classList.contains('visible')) cursor.classList.add('visible');
   });
 
   document.addEventListener('mouseleave', () => {
@@ -64,19 +59,19 @@ export function initCursor(): void {
   const interactiveEls =
     'a, button, [data-tilt], .social-btn, .project-link, .cert-card, .skyline-card, input, textarea, select';
   document.addEventListener('mouseover', (e: MouseEvent) => {
-    if ((e.target as Element).closest(interactiveEls))
-      cursor.classList.add('hover');
+    if ((e.target as Element).closest(interactiveEls)) cursor.classList.add('hover');
   });
   document.addEventListener('mouseout', (e: MouseEvent) => {
-    if ((e.target as Element).closest(interactiveEls))
-      cursor.classList.remove('hover');
+    if ((e.target as Element).closest(interactiveEls)) cursor.classList.remove('hover');
   });
 
   function animate(): void {
     cx += (mx - cx) * lerp;
     cy += (my - cy) * lerp;
-    cursor!.style.left = `${cx}px`;
-    cursor!.style.top = `${cy}px`;
+    if (cursor) {
+      cursor.style.left = `${cx}px`;
+      cursor.style.top = `${cy}px`;
+    }
 
     for (let i = trailDots.length - 1; i > 0; i--) {
       trailPositions[i].x = trailPositions[i - 1].x;
@@ -90,7 +85,7 @@ export function initCursor(): void {
     for (let j = 0; j < trailDots.length; j++) {
       trailDots[j].style.left = `${trailPositions[j].x}px`;
       trailDots[j].style.top = `${trailPositions[j].y}px`;
-      trailDots[j].style.opacity = cursor!.classList.contains('visible')
+      trailDots[j].style.opacity = cursor?.classList.contains('visible')
         ? String((1 - j / trailDots.length) * 0.4)
         : '0';
     }

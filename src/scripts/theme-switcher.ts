@@ -1,11 +1,11 @@
-import { prefersReducedMotion } from './state';
-import { getCurrentTheme, getThemeConfig, themePrompts } from './theme-config';
+import { updateAnalyticsTheme } from './analytics';
 import { switchCanvasEffect } from './effects/canvas';
 import { updateCursorVisibility } from './effects/cursor';
-import { updateTypewriterTexts } from './effects/typewriter';
 import { restartHeroAnimation } from './effects/hero-name';
-import { updateAnalyticsTheme } from './analytics';
+import { updateTypewriterTexts } from './effects/typewriter';
 import { updateAboutTheme } from './interactions/about-lang';
+import { prefersReducedMotion } from './state';
+import { getCurrentTheme, getThemeConfig, themePrompts } from './theme-config';
 import type { ThemeName } from './types';
 
 export function initThemeSwitcher(): void {
@@ -44,8 +44,7 @@ export function initThemeSwitcher(): void {
     if (hackerLog) hackerLog.style.display = tc.hasHackerLog ? '' : 'none';
 
     const matrixCanvas = document.getElementById('matrix-canvas');
-    if (matrixCanvas)
-      matrixCanvas.style.display = tc.hasMatrixRain ? '' : 'none';
+    if (matrixCanvas) matrixCanvas.style.display = tc.hasMatrixRain ? '' : 'none';
 
     const statusBar = document.getElementById('terminalStatusBar');
     if (statusBar) statusBar.style.display = tc.hasStatusBar ? '' : 'none';
@@ -62,8 +61,7 @@ export function initThemeSwitcher(): void {
 
     // Update hero greeting
     const greetingEl = document.getElementById('heroGreeting');
-    if (greetingEl)
-      greetingEl.textContent = themePrompts[theme] || themePrompts.hacker;
+    if (greetingEl) greetingEl.textContent = themePrompts[theme] || themePrompts.hacker;
 
     // Update typewriter texts
     updateTypewriterTexts(theme);

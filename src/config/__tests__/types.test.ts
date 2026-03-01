@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { config } from '../index';
 import type { CertBadge, SocialPlatform } from '../types';
 
@@ -17,7 +17,7 @@ function isValidUrlOrPath(s: string): boolean {
 
 describe('CertBadge discriminated union', () => {
   it('image badges have src, width, and alt — no svg field', () => {
-    const imageCerts = config.certifications.filter(c => c.badge.type === 'image');
+    const imageCerts = config.certifications.filter((c) => c.badge.type === 'image');
     for (const cert of imageCerts) {
       const badge = cert.badge as Extract<CertBadge, { type: 'image' }>;
       expect(typeof badge.src).toBe('string');
@@ -29,7 +29,7 @@ describe('CertBadge discriminated union', () => {
   });
 
   it('svg badges have svg string — no src/width/alt fields', () => {
-    const svgCerts = config.certifications.filter(c => c.badge.type === 'svg');
+    const svgCerts = config.certifications.filter((c) => c.badge.type === 'svg');
     for (const cert of svgCerts) {
       const badge = cert.badge as Extract<CertBadge, { type: 'svg' }>;
       expect(typeof badge.svg).toBe('string');
@@ -42,7 +42,7 @@ describe('CertBadge discriminated union', () => {
 });
 
 describe('SocialPlatform values', () => {
-  const validPlatforms: SocialPlatform[] = ['github', 'twitter', 'linkedin'];
+  const validPlatforms: SocialPlatform[] = ['github', 'twitter', 'linkedin', 'stackoverflow', 'leetcode', 'hackerrank'];
 
   it('all social entries use a valid platform', () => {
     for (const social of config.socials) {

@@ -29,10 +29,8 @@ export function initScrollHandler(): void {
           if (scrollIndicator) {
             scrollIndicator.style.opacity = String(Math.max(1 - progress * 3, 0));
           }
-          if (heroGridLayer)
-            heroGridLayer.style.transform = `translateY(${scrollY * 0.15}px)`;
-          if (heroShapesLayer)
-            heroShapesLayer.style.transform = `translateY(${scrollY * 0.4}px)`;
+          if (heroGridLayer) heroGridLayer.style.transform = `translateY(${scrollY * 0.15}px)`;
+          if (heroShapesLayer) heroShapesLayer.style.transform = `translateY(${scrollY * 0.4}px)`;
         }
 
         const orbOpacity = Math.max(0.05, 0.12 - (scrollY / docHeight) * 0.06);
@@ -61,18 +59,12 @@ export function initScrollHandler(): void {
           const timelineTop = rect.top + scrollY;
           const timelineHeight = rect.height;
           const viewBottom = scrollY + vh;
-          if (
-            viewBottom > timelineTop &&
-            scrollY < timelineTop + timelineHeight
-          ) {
+          if (viewBottom > timelineTop && scrollY < timelineTop + timelineHeight) {
             const progress = Math.min(
               1,
               Math.max(0, (viewBottom - timelineTop) / (timelineHeight + vh * 0.5)),
             );
-            timeline.style.setProperty(
-              '--timeline-progress',
-              String(progress),
-            );
+            timeline.style.setProperty('--timeline-progress', String(progress));
           }
         }
 

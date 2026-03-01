@@ -1,4 +1,4 @@
-import { prefersReducedMotion, isTouchDevice, isPageVisible } from '../state';
+import { isPageVisible, isTouchDevice, prefersReducedMotion } from '../state';
 import { getThemeConfig } from '../theme-config';
 
 function rand(a: number, b: number): number {
@@ -6,23 +6,17 @@ function rand(a: number, b: number): number {
 }
 function randHex(n: number): string {
   let s = '';
-  for (let i = 0; i < n; i++)
-    s += '0123456789abcdef'[Math.floor(Math.random() * 16)];
+  for (let i = 0; i < n; i++) s += '0123456789abcdef'[Math.floor(Math.random() * 16)];
   return s;
 }
 function randIP(): string {
   return `${rand(10, 192)}.${rand(0, 255)}.${rand(0, 255)}.${rand(1, 254)}`;
 }
 function randPort(): number {
-  return [22, 80, 443, 3000, 5432, 6379, 8080, 8443, 9090][
-    Math.floor(Math.random() * 9)
-  ];
+  return [22, 80, 443, 3000, 5432, 6379, 8080, 8443, 9090][Math.floor(Math.random() * 9)];
 }
 function randDomain(): string {
-  return (
-    ['api', 'cdn', 'db', 'cache', 'auth'][Math.floor(Math.random() * 5)] +
-    '.internal'
-  );
+  return ['api', 'cdn', 'db', 'cache', 'auth'][Math.floor(Math.random() * 5)] + '.internal';
 }
 
 const templates: (() => string)[] = [
@@ -69,11 +63,10 @@ export function initHackerLog(): void {
 
     const line = document.createElement('div');
     line.className = 'hacker-log-line';
-    line.textContent =
-      templates[Math.floor(Math.random() * templates.length)]();
+    line.textContent = templates[Math.floor(Math.random() * templates.length)]();
     line.style.left = `${rand(5, 85)}%`;
     line.style.top = `${rand(20, 90)}%`;
-    container!.appendChild(line);
+    container?.appendChild(line);
     nodeCount++;
     line.addEventListener('animationend', () => {
       line.remove();

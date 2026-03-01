@@ -29,12 +29,9 @@ export function initStatusBar(): void {
     const seconds = elapsed % 60;
     uptimeEl!.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 
-    if (upSpeedEl)
-      upSpeedEl.textContent = (Math.random() * 4 + 0.5).toFixed(1);
-    if (downSpeedEl)
-      downSpeedEl.textContent = (Math.random() * 12 + 2).toFixed(1);
-    if (processesEl)
-      processesEl.textContent = String(Math.floor(Math.random() * 10 + 18));
+    if (upSpeedEl) upSpeedEl.textContent = (Math.random() * 4 + 0.5).toFixed(1);
+    if (downSpeedEl) downSpeedEl.textContent = (Math.random() * 12 + 2).toFixed(1);
+    if (processesEl) processesEl.textContent = String(Math.floor(Math.random() * 10 + 18));
   }
 
   update();

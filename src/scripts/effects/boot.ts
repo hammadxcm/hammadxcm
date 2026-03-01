@@ -1,5 +1,5 @@
 import { prefersReducedMotion } from '../state';
-import { getCurrentTheme, getThemeConfig, getBootMessages } from '../theme-config';
+import { getBootMessages, getCurrentTheme, getThemeConfig } from '../theme-config';
 
 export function initBoot(): void {
   if (prefersReducedMotion) {
@@ -22,10 +22,7 @@ export function initBoot(): void {
   const userName = bootScreen.dataset.name || 'User';
   const welcomeName = bootScreen.dataset.welcome || 'USER';
 
-  const lines = [
-    ...messages,
-    { text: `>>> WELCOME, ${welcomeName} <<<`, cls: 'boot-access' },
-  ];
+  const lines = [...messages, { text: `>>> WELCOME, ${welcomeName} <<<`, cls: 'boot-access' }];
 
   if (theme === 'hacker') {
     lines[3] = {
