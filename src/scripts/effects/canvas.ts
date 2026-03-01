@@ -1,4 +1,4 @@
-import { isPageVisible } from '../state';
+import { isHeroVisible, isPageVisible } from '../state';
 import { getCurrentTheme, getThemeConfig } from '../theme-config';
 import type { ThemeName } from '../types';
 
@@ -6,7 +6,9 @@ let canvas: HTMLCanvasElement | null = null;
 let ctx: CanvasRenderingContext2D | null = null;
 let w = 0;
 let h = 0;
-const mouse = { x: null as number | null, y: null as number | null, radius: 150 };
+const MOUSE_RADIUS = 150;
+const PARTICLE_CONNECT_DIST = 160;
+const mouse = { x: null as number | null, y: null as number | null, radius: MOUSE_RADIUS };
 
 function resize(): void {
   if (!canvas) return;
@@ -368,11 +370,11 @@ function drawParticles(color: string): void {
       const ddx = p.x - p2.x;
       const ddy = p.y - p2.y;
       const d = Math.sqrt(ddx * ddx + ddy * ddy);
-      if (d < 160) {
+      if (d < PARTICLE_CONNECT_DIST) {
         ctx.beginPath();
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(p2.x, p2.y);
-        ctx.strokeStyle = `${color}${0.15 * (1 - d / 160)})`;
+        ctx.strokeStyle = `${color}${0.15 * (1 - d / PARTICLE_CONNECT_DIST)})`;
         ctx.lineWidth = 0.5;
         ctx.stroke();
       }
@@ -455,10 +457,40 @@ function drawEffect(effect: string, color: string): void {
   if (effectMap[effect]) effectMap[effect].draw(color);
 }
 
+let mouseListenersAttached = false;
+
+function onMouseMove(e: MouseEvent): void {
+  const rect = canvas?.getBoundingClientRect();
+  if (!rect) return;
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
+}
+
+function onMouseLeave(): void {
+  mouse.x = null;
+  mouse.y = null;
+}
+
+function updateMouseListeners(effect: string): void {
+  const needsMouse = effect === 'particles';
+  if (needsMouse && !mouseListenersAttached && canvas) {
+    canvas.addEventListener('mousemove', onMouseMove);
+    canvas.addEventListener('mouseleave', onMouseLeave);
+    mouseListenersAttached = true;
+  } else if (!needsMouse && mouseListenersAttached && canvas) {
+    canvas.removeEventListener('mousemove', onMouseMove);
+    canvas.removeEventListener('mouseleave', onMouseLeave);
+    mouse.x = null;
+    mouse.y = null;
+    mouseListenersAttached = false;
+  }
+}
+
 export function switchCanvasEffect(theme: ThemeName): void {
   const tc = getThemeConfig(theme);
   currentEffect = tc.canvasEffect;
   if (!inited[currentEffect]) initEffect(currentEffect);
+  updateMouseListeners(currentEffect);
 }
 
 export function initCanvas(): void {
@@ -472,32 +504,10 @@ export function initCanvas(): void {
     if (currentEffect) initEffect(currentEffect);
   });
 
-  canvas.addEventListener('mousemove', (e: MouseEvent) => {
-    const rect = canvas?.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-  canvas.addEventListener('mouseleave', () => {
-    mouse.x = null;
-    mouse.y = null;
-  });
-
   switchCanvasEffect(getCurrentTheme());
 
-  let heroVisible = true;
-  const heroSection = document.getElementById('hero');
-  if (heroSection && window.IntersectionObserver) {
-    const heroObserver = new IntersectionObserver(
-      (entries) => {
-        heroVisible = entries[0].isIntersecting;
-      },
-      { threshold: 0 },
-    );
-    heroObserver.observe(heroSection);
-  }
-
   function draw(): void {
-    if (!isPageVisible() || !heroVisible) {
+    if (!isPageVisible() || !isHeroVisible()) {
       requestAnimationFrame(draw);
       return;
     }
