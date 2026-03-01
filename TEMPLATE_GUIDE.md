@@ -128,14 +128,72 @@ Badges can be images or inline SVG:
 | `username` | Your GitHub username (used in analytics URLs) |
 | `utcOffset` | Your UTC offset for the productive-time chart |
 
+### `leetcode` (optional)
+Remove this key entirely to hide the LeetCode analytics section.
+
+| Field | Description | Example |
+|-------|-------------|---------|
+| `username` | Your LeetCode username | `"janedoe"` |
+
+```ts
+leetcode: { username: 'janedoe' },
+```
+
+### `stackoverflow` (optional)
+Remove this key entirely to hide the StackOverflow analytics section.
+
+| Field | Description | Example |
+|-------|-------------|---------|
+| `userId` | Your numeric StackOverflow user ID (from your profile URL) | `1234567` |
+
+```ts
+stackoverflow: { userId: 1234567 },
+```
+
+### `hackerrank` (optional)
+Used for the social link icon. No public stats badge API exists, so this does not render an analytics section.
+
+| Field | Description | Example |
+|-------|-------------|---------|
+| `username` | Your HackerRank username | `"janedoe"` |
+
+```ts
+hackerrank: { username: 'janedoe' },
+```
+
 ### `socials`
-Array of social links. Supported platforms: `github`, `twitter`, `linkedin`.
+Array of social links. Supported platforms: `github`, `linkedin`, `twitter`, `stackoverflow`, `leetcode`, `hackerrank`.
+
+```ts
+socials: [
+  { platform: 'github', url: 'https://github.com/janedoe', label: 'GitHub' },
+  { platform: 'linkedin', url: 'https://linkedin.com/in/janedoe', label: 'LinkedIn' },
+  { platform: 'twitter', url: 'https://twitter.com/janedoe', label: 'Twitter' },
+  { platform: 'stackoverflow', url: 'https://stackoverflow.com/users/1234567', label: 'Stack Overflow' },
+  { platform: 'leetcode', url: 'https://leetcode.com/u/janedoe', label: 'LeetCode' },
+  { platform: 'hackerrank', url: 'https://www.hackerrank.com/profile/janedoe', label: 'HackerRank' },
+],
+```
+
+Only include platforms you use — icons render automatically for each entry.
 
 ### `sections`
 Ordered array that generates the navigation. Reorder, add, or remove entries to update the nav.
 
 ### `boot.welcomeName`
 The name shown in the boot sequence: `>>> WELCOME, {NAME} <<<`
+
+## Analytics Dashboard
+
+The analytics section is fully config-driven. GitHub stats always render (required), while LeetCode and StackOverflow are optional and conditionally rendered.
+
+**How it works:**
+- **GitHub**: Tabbed panels (Overview, Activity, Trophies, Languages, Summary, Contributions, Stars) with theme-aware stat cards that update automatically on theme switch
+- **LeetCode**: Tabbed card switching between Activity, Heatmap, and Contest views. Remove the `leetcode` key from config to hide entirely
+- **StackOverflow**: Responsive layout that shows full/compact/small variants per breakpoint. Remove the `stackoverflow` key from config to hide entirely
+- **Dev Quote**: A random developer quote displayed at the bottom of the analytics section, themed to match the active theme
+
+All analytics images re-theme automatically when users switch between the 10 available themes.
 
 ## Image Guide
 
