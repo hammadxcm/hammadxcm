@@ -98,16 +98,6 @@
   100% { opacity: 0; }
 }
 
-body.env-effect-bloodDrip {
-  animation: envBloodVignette 300ms ease forwards;
-}
-
-@keyframes envBloodVignette {
-  0%   { box-shadow: inset 0 0 120px rgba(139, 0, 0, 0); }
-  50%  { box-shadow: inset 0 0 120px rgba(139, 0, 0, 0.5); }
-  100% { box-shadow: inset 0 0 120px rgba(139, 0, 0, 0); }
-}
-
 /* ── 3. Ice Crack (Arctic) ────────────────────────────── */
 .screen-effect-overlay[data-effect="iceCrack"] {
   .ice-cracks {
@@ -149,16 +139,6 @@ body.env-effect-bloodDrip {
 @keyframes frostFade {
   0% { opacity: 1; }
   100% { opacity: 0; }
-}
-
-body.env-effect-iceCrack {
-  animation: envIceFlash 300ms ease forwards;
-}
-
-@keyframes envIceFlash {
-  0%   { filter: brightness(1) saturate(1); }
-  50%  { filter: brightness(1.15) saturate(0.6); }
-  100% { filter: brightness(1) saturate(1); }
 }
 
 /* ── 4. VHS Distortion (Synthwave) ────────────────────── */
@@ -220,17 +200,6 @@ body.env-effect-iceCrack {
   33%  { clip-path: inset(60% 0 10% 0); }
   66%  { clip-path: inset(5% 0 70% 0); }
   100% { clip-path: inset(0); opacity: 0; }
-}
-
-body.env-effect-vhsDistortion {
-  animation: envVhsFlicker 250ms steps(3) forwards;
-}
-
-@keyframes envVhsFlicker {
-  0%   { filter: hue-rotate(0deg) saturate(1); }
-  33%  { filter: hue-rotate(15deg) saturate(1.5); }
-  66%  { filter: hue-rotate(-10deg) saturate(1.2); }
-  100% { filter: none; }
 }
 
 /* ── 5. Fog Wisps (Dracula) ───────────────────────────── */
@@ -295,22 +264,6 @@ body.env-effect-vhsDistortion {
   }
 }
 
-body.env-effect-fogWisps {
-  animation: envFogVignette 400ms ease forwards;
-}
-
-@keyframes envFogVignette {
-  0% {
-    box-shadow: inset 0 0 80px rgba(189, 147, 249, 0);
-  }
-  50% {
-    box-shadow: inset 0 0 80px rgba(189, 147, 249, 0.2);
-  }
-  100% {
-    box-shadow: inset 0 0 80px rgba(189, 147, 249, 0);
-  }
-}
-
 /* ── 6. Aurora Shimmer (Nord) ─────────────────────────── */
 .screen-effect-overlay[data-effect="auroraShimmer"] .aurora-band {
   display: block;
@@ -347,16 +300,6 @@ body.env-effect-fogWisps {
     opacity: 0;
     transform: translateX(200%);
   }
-}
-
-body.env-effect-auroraShimmer {
-  animation: envAuroraPulse 400ms ease forwards;
-}
-
-@keyframes envAuroraPulse {
-  0%   { filter: brightness(1) saturate(1); }
-  50%  { filter: brightness(1.08) saturate(1.15); }
-  100% { filter: brightness(1) saturate(1); }
 }
 
 /* ── 7. Pastel Bloom (Catppuccin) ─────────────────────── */
@@ -397,16 +340,6 @@ body.env-effect-auroraShimmer {
   }
 }
 
-body.env-effect-pastelBloom {
-  animation: envPastelWarm 400ms ease forwards;
-}
-
-@keyframes envPastelWarm {
-  0%   { filter: saturate(1); }
-  50%  { filter: saturate(1.2) brightness(1.05); }
-  100% { filter: saturate(1) brightness(1); }
-}
-
 /* ── 8. Shooting Star (Midnight) ──────────────────────── */
 .screen-effect-overlay[data-effect="shootingStar"] .shooting-star {
   display: block;
@@ -444,16 +377,6 @@ body.env-effect-pastelBloom {
     opacity: 0;
     transform: rotate(-35deg) translate(110vw, 70vh);
   }
-}
-
-body.env-effect-shootingStar {
-  animation: envStarFlash 250ms ease forwards;
-}
-
-@keyframes envStarFlash {
-  0%   { filter: brightness(1); }
-  50%  { filter: brightness(1.12); }
-  100% { filter: brightness(1); }
 }
 
 /* ── 9. TV Static (Gruvbox) ───────────────────────────── */
@@ -496,13 +419,9 @@ body.env-effect-shootingStar {
   }
 }
 
-body.env-effect-tvStatic {
-  animation: envStaticFlicker 200ms steps(3) forwards;
-}
-
-@keyframes envStaticFlicker {
-  0%   { filter: brightness(1) contrast(1); }
-  33%  { filter: brightness(1.08) contrast(1.1); }
-  66%  { filter: brightness(0.95) contrast(1.05); }
-  100% { filter: brightness(1) contrast(1); }
-}
+/*
+ * Note: body.env-effect-* rules removed — CSS filter on <body> cascades to
+ * all fixed children (status bar, cursor, toasts) causing unintended visual
+ * distortion.  The overlay-based animations above already provide per-theme
+ * ambient effects without affecting the status bar.
+ */
