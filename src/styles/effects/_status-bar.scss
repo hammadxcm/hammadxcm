@@ -28,6 +28,10 @@
   color: var(--boot-ok);
 }
 
+.status-slot {
+  white-space: nowrap;
+}
+
 .status-sep {
   color: var(--text-dim);
   opacity: 0.3;
