@@ -39,7 +39,7 @@ const config: PortfolioConfig = {
 
   /* ─── About ─── */
   about: {
-    codename: 'jane_doe',
+    codename: 'hk',
     title: 'Full Stack Developer',
     experience: '5+ years building web applications',
     location: 'San Francisco, CA',
@@ -227,22 +227,16 @@ const config: PortfolioConfig = {
   /* ─── HackerRank (optional — remove to hide section) ─── */
   hackerrank: { username: 'janedoe' },
 
-  /* ─── Socials — Add more to show additional icons ─── */
+  /* ─── Socials — URLs auto-generated from github/leetcode/stackoverflow/hackerrank configs.
+       Provide explicit `url` for platforms without auto-generation (linkedin, twitter)
+       or to override the generated URL. ─── */
   socials: [
-    { platform: 'github', url: 'https://github.com/janedoe', label: 'GitHub' },
+    { platform: 'github', label: 'GitHub' },
     { platform: 'linkedin', url: 'https://linkedin.com/in/janedoe', label: 'LinkedIn' },
     { platform: 'twitter', url: 'https://twitter.com/janedoe', label: 'Twitter' },
-    {
-      platform: 'stackoverflow',
-      url: 'https://stackoverflow.com/users/1234567',
-      label: 'Stack Overflow',
-    },
-    { platform: 'leetcode', url: 'https://leetcode.com/u/janedoe', label: 'LeetCode' },
-    {
-      platform: 'hackerrank',
-      url: 'https://www.hackerrank.com/profile/janedoe',
-      label: 'HackerRank',
-    },
+    { platform: 'stackoverflow', label: 'Stack Overflow' },
+    { platform: 'leetcode', label: 'LeetCode' },
+    { platform: 'hackerrank', label: 'HackerRank' },
   ],
 
   /* ─── Sections — Reorder, add, or remove to update nav ─── */

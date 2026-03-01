@@ -7,9 +7,9 @@ const config: PortfolioConfig = {
     title: 'Senior Full Stack Engineer',
     description:
       'Hammad Khan — Senior Full Stack Engineer with 6+ years building distributed systems at scale. Ruby on Rails, React, Node.js, and cloud architecture.',
-    url: 'https://hammadxcm.github.io/hammadxcm/',
-    logoText: 'hammadkhan',
-    logoSuffix: '.dev',
+    url: 'https://hk.fyniti.co.uk',
+    logoText: 'fyniti',
+    logoSuffix: '://hk',
     theme: 'hacker',
   },
 
@@ -649,22 +649,14 @@ const config: PortfolioConfig = {
   /* ─── HackerRank (optional) ─── */
   hackerrank: { username: 'hammadxcm' },
 
-  /* ─── Socials ─── */
+  /* ─── Socials (urls auto-generated from platform configs above; explicit url overrides) ─── */
   socials: [
-    { platform: 'github', url: 'https://github.com/hammadxcm', label: 'GitHub' },
+    { platform: 'github', label: 'GitHub' },
     { platform: 'linkedin', url: 'https://linkedin.com/in/hammadxcm', label: 'LinkedIn' },
     { platform: 'twitter', url: 'https://twitter.com/hammadkhanxcm', label: 'Twitter' },
-    {
-      platform: 'stackoverflow',
-      url: 'https://stackoverflow.com/users/6485663',
-      label: 'Stack Overflow',
-    },
-    { platform: 'leetcode', url: 'https://leetcode.com/u/hammadxcm', label: 'LeetCode' },
-    {
-      platform: 'hackerrank',
-      url: 'https://www.hackerrank.com/profile/hammadxcm',
-      label: 'HackerRank',
-    },
+    { platform: 'stackoverflow', label: 'Stack Overflow' },
+    { platform: 'leetcode', label: 'LeetCode' },
+    { platform: 'hackerrank', label: 'HackerRank' },
   ],
 
   /* ─── Sections (nav order) ─── */
