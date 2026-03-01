@@ -1,6 +1,7 @@
 import { isTouchDevice, prefersReducedMotion } from '../state';
 import { getThemeConfig, getThemeToasts } from '../theme-config';
 import type { ScreenEffect } from '../types';
+import { spawnToast } from './toast';
 
 const effectDurations: Record<ScreenEffect, number> = {
   glitch: 150,
@@ -28,32 +29,13 @@ const envDurations: Record<ScreenEffect, number> = {
   none: 0,
 };
 
+const AMBIENT_INTERVAL_BASE_MS = 12000;
+const ENV_INTERVAL_BASE_MS = 6000;
+
 export function initScreenEffects(): void {
   if (prefersReducedMotion) return;
 
-  const toastContainer = document.getElementById('hackerToastContainer');
   const overlay = document.getElementById('screenEffectOverlay');
-  if (!toastContainer) return;
-
-  const maxToasts = 3;
-
-  function spawnToast(message: string, isAmbient: boolean): void {
-    const toast = document.createElement('div');
-    toast.className = isAmbient ? 'hacker-toast ambient' : 'hacker-toast';
-    toast.textContent = message;
-    toastContainer?.appendChild(toast);
-
-    let toasts = toastContainer?.querySelectorAll('.hacker-toast');
-    while (toasts.length > maxToasts) {
-      toasts[0].remove();
-      toasts = toastContainer?.querySelectorAll('.hacker-toast');
-    }
-
-    setTimeout(() => {
-      toast.classList.add('dismiss');
-      toast.addEventListener('animationend', () => toast.remove());
-    }, 2500);
-  }
 
   function triggerScreenEffect(event?: MouseEvent): void {
     const effect = getThemeConfig().screenEffect;
@@ -96,22 +78,22 @@ export function initScreenEffects(): void {
     triggerScreenEffect(e);
     const msgs = getThemeToasts().click;
     const msg = msgs[Math.floor(Math.random() * msgs.length)];
-    spawnToast(msg, false);
+    spawnToast(msg);
   });
 
   function scheduleAmbient(): void {
-    const delay = 12000 + Math.random() * 6000;
+    const delay = AMBIENT_INTERVAL_BASE_MS + Math.random() * 6000;
     setTimeout(() => {
       const msgs = getThemeToasts().ambient;
       const msg = msgs[Math.floor(Math.random() * msgs.length)];
-      spawnToast(msg, true);
+      spawnToast(msg, { className: 'hacker-toast ambient' });
       scheduleAmbient();
     }, delay);
   }
   if (!isTouchDevice) scheduleAmbient();
 
   function scheduleEnvEffect(): void {
-    const delay = 6000 + Math.random() * 6000;
+    const delay = ENV_INTERVAL_BASE_MS + Math.random() * 6000;
     setTimeout(() => {
       triggerEnvEffect();
       scheduleEnvEffect();

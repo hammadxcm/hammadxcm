@@ -1,9 +1,11 @@
+import { spawnToast } from '../effects/toast';
 import { prefersReducedMotion } from '../state';
+
+const KONAMI_OVERLAY_MS = 1500;
 
 export function initKonami(): void {
   if (prefersReducedMotion) return;
   const konamiOverlay = document.getElementById('konamiOverlay');
-  const toastContainer = document.getElementById('hackerToastContainer');
   if (!konamiOverlay) return;
 
   const sequence = [
@@ -29,17 +31,8 @@ export function initKonami(): void {
         konamiOverlay.classList.add('active');
         setTimeout(() => {
           konamiOverlay.classList.remove('active');
-          if (toastContainer) {
-            const toast = document.createElement('div');
-            toast.className = 'hacker-toast';
-            toast.textContent = '# Security breach contained';
-            toastContainer.appendChild(toast);
-            setTimeout(() => {
-              toast.classList.add('dismiss');
-              toast.addEventListener('animationend', () => toast.remove());
-            }, 2500);
-          }
-        }, 1500);
+          spawnToast('# Security breach contained');
+        }, KONAMI_OVERLAY_MS);
       }
     } else {
       position = 0;
