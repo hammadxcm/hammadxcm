@@ -1,4 +1,7 @@
+import { prefersReducedMotion } from '../state';
+
 export function initTilt(): void {
+  if (prefersReducedMotion) return;
   const cards = document.querySelectorAll<HTMLElement>('[data-tilt]');
   cards.forEach((card) => {
     card.addEventListener('mousemove', (e: MouseEvent) => {
