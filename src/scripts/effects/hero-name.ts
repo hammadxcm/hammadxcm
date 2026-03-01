@@ -1,5 +1,9 @@
-import { isPageVisible, isTouchDevice, prefersReducedMotion } from '../state';
+import { isPageVisible, isTouchDevice, onVisibilityChange, prefersReducedMotion } from '../state';
 import { getCurrentTheme, getThemeConfig } from '../theme-config';
+import { createScrambleReveal, shuffleIndices } from './scramble-text';
+
+const REVEAL_HOLD_MS = 30000;
+const INITIAL_DELAY_MS = 1500;
 
 let innerEl: HTMLElement | null = null;
 let heroNameEl: HTMLElement | null = null;
@@ -30,59 +34,36 @@ function clearAllIntervals(): void {
   activeIntervals = [];
 }
 
-function shuffle(arr: number[]): void {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const t = arr[i];
-    arr[i] = arr[j];
-    arr[j] = t;
-  }
-}
-
-function buildText(resolved: boolean[], glyphs: string): string {
-  const len = finalText.length;
-  let out = '';
-  for (let i = 0; i < len; i++) {
-    if (finalText[i] === ' ') {
-      out += ' ';
-    } else if (resolved[i]) {
-      out += finalText[i];
-    } else {
-      out += glyphs[Math.floor(Math.random() * glyphs.length)];
-    }
-  }
-  return out;
-}
-
 function decrypt(resolved: boolean[], onDone: () => void): void {
   const { glyphs, timing } = loadThemeConfig();
-  const len = finalText.length;
-  const pool: number[] = [];
-  for (let i = 0; i < len; i++) {
-    if (finalText[i] !== ' ' && !resolved[i]) pool.push(i);
+
+  const { flickerTimer, resolverTimer } = createScrambleReveal({
+    text: finalText,
+    glyphs,
+    timing,
+    onFrame: (text) => {
+      if (innerEl) innerEl.textContent = text;
+    },
+    onDone: () => {
+      activeIntervals = activeIntervals.filter((v) => v !== flickerTimer && v !== resolverTimer);
+      onDone();
+    },
+  });
+
+  // Pre-apply already-resolved positions by marking them immediately
+  // (createScrambleReveal starts fresh, so we feed the full text and let it resolve all)
+  trackInterval(flickerTimer);
+  trackInterval(resolverTimer);
+}
+
+function buildScrambledText(resolved: boolean[], glyphs: string): string {
+  let out = '';
+  for (let i = 0; i < finalText.length; i++) {
+    if (finalText[i] === ' ') out += ' ';
+    else if (resolved[i]) out += finalText[i];
+    else out += glyphs[Math.floor(Math.random() * glyphs.length)];
   }
-  shuffle(pool);
-
-  const flicker = trackInterval(
-    window.setInterval(() => {
-      if (innerEl) innerEl.textContent = buildText(resolved, glyphs);
-    }, timing.flicker),
-  );
-
-  let step = 0;
-  const resolver = trackInterval(
-    window.setInterval(() => {
-      if (step < pool.length) {
-        resolved[pool[step]] = true;
-        step++;
-      } else {
-        untrackInterval(resolver);
-        untrackInterval(flicker);
-        if (innerEl) innerEl.textContent = finalText;
-        onDone();
-      }
-    }, timing.resolve),
-  );
+  return out;
 }
 
 function encrypt(resolved: boolean[], onDone: () => void): void {
@@ -92,20 +73,20 @@ function encrypt(resolved: boolean[], onDone: () => void): void {
   for (let i = 0; i < len; i++) {
     if (finalText[i] !== ' ' && resolved[i]) pool.push(i);
   }
-  shuffle(pool);
+  shuffleIndices(pool);
 
   let step = 0;
   const corruptor = trackInterval(
     window.setInterval(() => {
       if (step < pool.length) {
         resolved[pool[step]] = false;
-        if (innerEl) innerEl.textContent = buildText(resolved, glyphs);
+        if (innerEl) innerEl.textContent = buildScrambledText(resolved, glyphs);
         step++;
       } else {
         untrackInterval(corruptor);
         const flicker = trackInterval(
           window.setInterval(() => {
-            if (innerEl) innerEl.textContent = buildText(resolved, glyphs);
+            if (innerEl) innerEl.textContent = buildScrambledText(resolved, glyphs);
           }, timing.flicker),
         );
         setTimeout(
@@ -138,7 +119,7 @@ function cycle(): void {
       encrypt(resolved, () => {
         cycle();
       });
-    }, 30000);
+    }, REVEAL_HOLD_MS);
   });
 }
 
@@ -243,8 +224,8 @@ export function initHeroName(): void {
   heroNameEl = document.getElementById('heroName');
   finalText = heroNameEl?.dataset.text || 'Hammad Khan';
 
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
+  onVisibilityChange((visible) => {
+    if (!visible) {
       clearAllIntervals();
       clearEffectTimer();
       cycleRunning = false;
@@ -262,5 +243,5 @@ export function initHeroName(): void {
     initialized = true;
     cycle();
     scheduleHeroEffects();
-  }, 1500);
+  }, INITIAL_DELAY_MS);
 }
