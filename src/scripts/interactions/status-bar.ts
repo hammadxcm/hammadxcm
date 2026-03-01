@@ -1,39 +1,45 @@
 import { prefersReducedMotion } from '../state';
-import { getThemeConfig } from '../theme-config';
+import { getStatusBarConfig } from '../theme-config';
+
+const SLOT_COUNT = 5;
+const STATUS_UPDATE_INTERVAL_MS = 2000;
+const slots: (HTMLElement | null)[] = [];
+let startTime = 0;
+let intervalId: ReturnType<typeof setInterval> | undefined;
+
+function render(): void {
+  const config = getStatusBarConfig();
+  const elapsed = Math.floor((Date.now() - startTime) / 1000);
+
+  for (let i = 0; i < SLOT_COUNT; i++) {
+    const el = slots[i];
+    if (!el) continue;
+    const seg = config[i];
+    if (!seg) {
+      el.textContent = '';
+      el.className = 'status-slot';
+      continue;
+    }
+    el.textContent = seg.label + (seg.value ? seg.value(elapsed) : '');
+    el.className = seg.cls ? `status-slot ${seg.cls}` : 'status-slot';
+  }
+}
+
+export function updateStatusBar(): void {
+  render();
+}
 
 export function initStatusBar(): void {
   if (prefersReducedMotion) return;
-  const statusBar = document.getElementById('terminalStatusBar');
-  const uptimeEl = document.getElementById('statusUptime');
-  const upSpeedEl = document.getElementById('statusUpSpeed');
-  const downSpeedEl = document.getElementById('statusDownSpeed');
-  const processesEl = document.getElementById('statusProcesses');
-  if (!uptimeEl) return;
 
-  const startTime = Date.now();
-
-  function pad(n: number): string {
-    return n < 10 ? `0${n}` : `${n}`;
+  for (let i = 0; i < SLOT_COUNT; i++) {
+    slots[i] = document.getElementById(`statusSlot${i}`);
   }
+  if (!slots[0]) return;
 
-  function update(): void {
-    const tc = getThemeConfig();
-    if (statusBar) {
-      statusBar.style.display = tc.hasStatusBar ? '' : 'none';
-    }
-    if (!tc.hasStatusBar) return;
+  startTime = Date.now();
+  render();
 
-    const elapsed = Math.floor((Date.now() - startTime) / 1000);
-    const hours = Math.floor(elapsed / 3600);
-    const minutes = Math.floor((elapsed % 3600) / 60);
-    const seconds = elapsed % 60;
-    uptimeEl!.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-
-    if (upSpeedEl) upSpeedEl.textContent = (Math.random() * 4 + 0.5).toFixed(1);
-    if (downSpeedEl) downSpeedEl.textContent = (Math.random() * 12 + 2).toFixed(1);
-    if (processesEl) processesEl.textContent = String(Math.floor(Math.random() * 10 + 18));
-  }
-
-  update();
-  setInterval(update, 2000);
+  if (intervalId) clearInterval(intervalId);
+  intervalId = setInterval(render, STATUS_UPDATE_INTERVAL_MS);
 }

@@ -32,7 +32,7 @@ export function initCursor(): void {
   let my = 0;
   let cx = 0;
   let cy = 0;
-  const lerp = 0.15;
+  const CURSOR_LERP = 0.15;
 
   const trailDots = trailContainer ? trailContainer.querySelectorAll<HTMLSpanElement>('span') : [];
   const trailPositions: { x: number; y: number }[] = [];
@@ -66,8 +66,8 @@ export function initCursor(): void {
   });
 
   function animate(): void {
-    cx += (mx - cx) * lerp;
-    cy += (my - cy) * lerp;
+    cx += (mx - cx) * CURSOR_LERP;
+    cy += (my - cy) * CURSOR_LERP;
     if (cursor) {
       cursor.style.left = `${cx}px`;
       cursor.style.top = `${cy}px`;
