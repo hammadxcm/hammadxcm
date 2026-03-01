@@ -69,7 +69,7 @@ export interface Certification {
 
 export interface SocialLink {
   platform: SocialPlatform;
-  url: string;
+  url?: string;
   label: string;
 }
 
