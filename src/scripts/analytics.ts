@@ -3,9 +3,10 @@ import type { ThemeName } from './types';
 
 const LEETCODE_FONT = 'Source%20Code%20Pro';
 
-function buildLeetcodeUrl(user: string, theme: string, ext: string): string {
+function buildLeetcodeUrl(user: string, theme: string, ext: string, colors?: string): string {
   const width = ext === 'heatmap' ? '&width=750' : '';
-  return `https://leetcard.jacoblin.cool/${user}?theme=${theme}&font=${LEETCODE_FONT}&ext=${ext}${width}`;
+  const colorsParam = colors ? `&colors=${colors}` : '';
+  return `https://leetcard.jacoblin.cool/${user}?theme=${theme}&font=${LEETCODE_FONT}&ext=${ext}${width}${colorsParam}`;
 }
 
 export function updateAnalyticsTheme(theme: ThemeName): void {
@@ -69,7 +70,7 @@ export function updateAnalyticsTheme(theme: ThemeName): void {
       const img = leetcodeGrid.querySelector<HTMLImageElement>('img[data-stat="leetcode-card"]');
       if (img) {
         const ext = img.dataset.currentExt || 'activity';
-        img.src = buildLeetcodeUrl(user, m.leetcodeTheme, ext);
+        img.src = buildLeetcodeUrl(user, m.leetcodeTheme, ext, m.leetcodeColors);
       }
     }
   }
@@ -116,7 +117,7 @@ export function initLeetcodeTabs(): void {
       const theme = (document.documentElement.getAttribute('data-theme') || 'hacker') as ThemeName;
       const m = analyticsThemeMap[theme] || analyticsThemeMap.hacker;
 
-      img.src = buildLeetcodeUrl(user, m.leetcodeTheme, ext);
+      img.src = buildLeetcodeUrl(user, m.leetcodeTheme, ext, m.leetcodeColors);
       img.dataset.currentExt = ext;
     });
   }
