@@ -156,6 +156,26 @@ describe('Config data integrity', () => {
         expect(() => new URL(social.url)).not.toThrow();
       }
     });
+
+    it('auto-generated github URL contains github username', () => {
+      const github = config.socials.find((s) => s.platform === 'github');
+      expect(github?.url).toContain(config.github.username);
+    });
+
+    it('auto-generated URLs match expected patterns', () => {
+      const patterns: Record<string, RegExp> = {
+        github: /^https:\/\/github\.com\/.+/,
+        leetcode: /^https:\/\/leetcode\.com\/u\/.+/,
+        stackoverflow: /^https:\/\/stackoverflow\.com\/users\/.+/,
+        hackerrank: /^https:\/\/www\.hackerrank\.com\/profile\/.+/,
+      };
+      for (const social of config.socials) {
+        const pattern = patterns[social.platform];
+        if (pattern) {
+          expect(social.url).toMatch(pattern);
+        }
+      }
+    });
   });
 
   describe('sections', () => {
