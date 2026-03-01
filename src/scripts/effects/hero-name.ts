@@ -1,4 +1,4 @@
-import { prefersReducedMotion, isTouchDevice, isPageVisible } from '../state';
+import { isPageVisible, isTouchDevice, prefersReducedMotion } from '../state';
 import { getCurrentTheme, getThemeConfig } from '../theme-config';
 
 let innerEl: HTMLElement | null = null;
@@ -54,10 +54,7 @@ function buildText(resolved: boolean[], glyphs: string): string {
   return out;
 }
 
-function decrypt(
-  resolved: boolean[],
-  onDone: () => void,
-): void {
+function decrypt(resolved: boolean[], onDone: () => void): void {
   const { glyphs, timing } = loadThemeConfig();
   const len = finalText.length;
   const pool: number[] = [];
@@ -88,10 +85,7 @@ function decrypt(
   );
 }
 
-function encrypt(
-  resolved: boolean[],
-  onDone: () => void,
-): void {
+function encrypt(resolved: boolean[], onDone: () => void): void {
   const { glyphs, timing } = loadThemeConfig();
   const len = finalText.length;
   const pool: number[] = [];
@@ -114,10 +108,13 @@ function encrypt(
             if (innerEl) innerEl.textContent = buildText(resolved, glyphs);
           }, timing.flicker),
         );
-        setTimeout(() => {
-          untrackInterval(flicker);
-          onDone();
-        }, 800 + Math.random() * 700);
+        setTimeout(
+          () => {
+            untrackInterval(flicker);
+            onDone();
+          },
+          800 + Math.random() * 700,
+        );
       }
     }, timing.resolve),
   );
@@ -163,11 +160,7 @@ function clearEffectTimer(): void {
   }
 }
 
-function activateEffect(
-  cls: string,
-  duration: number,
-  next: () => void,
-): void {
+function activateEffect(cls: string, duration: number, next: () => void): void {
   if (!heroNameEl || !isPageVisible()) {
     next();
     return;

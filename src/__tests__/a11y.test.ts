@@ -1,7 +1,7 @@
-import { describe, it, expect, beforeAll } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Window } from 'happy-dom';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 let document: Document;
 
@@ -19,7 +19,10 @@ describe('Structural accessibility', () => {
       expect(images.length).toBeGreaterThan(0);
       for (const img of images) {
         const alt = img.getAttribute('alt');
-        expect(alt, `<img src="${img.getAttribute('src')?.slice(0, 60)}"> missing alt`).toBeTruthy();
+        expect(
+          alt,
+          `<img src="${img.getAttribute('src')?.slice(0, 60)}"> missing alt`,
+        ).toBeTruthy();
       }
     });
   });
@@ -34,7 +37,7 @@ describe('Structural accessibility', () => {
       const skipLink = document.querySelector('.skip-link');
       const href = skipLink?.getAttribute('href');
       expect(href).toBeTruthy();
-      const targetId = href!.replace('#', '');
+      const targetId = href?.replace('#', '');
       const target = document.getElementById(targetId);
       expect(target, `skip-link target #${targetId} not found`).not.toBeNull();
     });
@@ -45,7 +48,7 @@ describe('Structural accessibility', () => {
       const buttons = document.querySelectorAll('button');
       expect(buttons.length).toBeGreaterThan(0);
       for (const btn of buttons) {
-        const hasText = btn.textContent?.trim().length! > 0;
+        const hasText = (btn.textContent?.trim().length ?? 0) > 0;
         const hasAriaLabel = !!btn.getAttribute('aria-label');
         expect(
           hasText || hasAriaLabel,
@@ -60,7 +63,7 @@ describe('Structural accessibility', () => {
       const links = document.querySelectorAll('a');
       expect(links.length).toBeGreaterThan(0);
       for (const link of links) {
-        const hasText = link.textContent?.trim().length! > 0;
+        const hasText = (link.textContent?.trim().length ?? 0) > 0;
         const hasAriaLabel = !!link.getAttribute('aria-label');
         expect(
           hasText || hasAriaLabel,
@@ -93,10 +96,7 @@ describe('Structural accessibility', () => {
       for (const selector of decorativeSelectors) {
         const el = document.querySelector(selector);
         if (el) {
-          expect(
-            el.getAttribute('aria-hidden'),
-            `${selector} missing aria-hidden`,
-          ).toBe('true');
+          expect(el.getAttribute('aria-hidden'), `${selector} missing aria-hidden`).toBe('true');
         }
       }
     });

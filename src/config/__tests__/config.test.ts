@@ -1,11 +1,20 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { config } from '../index';
 
 describe('Config data integrity', () => {
   it('exports a config object with all required top-level keys', () => {
     const requiredKeys = [
-      'site', 'hero', 'about', 'techStack', 'experience',
-      'projects', 'certifications', 'github', 'socials', 'sections', 'boot',
+      'site',
+      'hero',
+      'about',
+      'techStack',
+      'experience',
+      'projects',
+      'certifications',
+      'github',
+      'socials',
+      'sections',
+      'boot',
     ];
     for (const key of requiredKeys) {
       expect(config).toHaveProperty(key);
@@ -34,7 +43,15 @@ describe('Config data integrity', () => {
 
   describe('about', () => {
     it('has all required string fields', () => {
-      const fields = ['codename', 'title', 'experience', 'location', 'clearance', 'currentOp', 'currentFocus'] as const;
+      const fields = [
+        'codename',
+        'title',
+        'experience',
+        'location',
+        'clearance',
+        'currentOp',
+        'currentFocus',
+      ] as const;
       for (const field of fields) {
         expect(config.about[field]).toBeTruthy();
       }
@@ -99,7 +116,7 @@ describe('Config data integrity', () => {
 
   describe('certifications', () => {
     it('image badges have src, width, and alt', () => {
-      const imageBadges = config.certifications.filter(c => c.badge.type === 'image');
+      const imageBadges = config.certifications.filter((c) => c.badge.type === 'image');
       expect(imageBadges.length).toBeGreaterThan(0);
       for (const cert of imageBadges) {
         const badge = cert.badge as { type: 'image'; src: string; width: number; alt: string };
@@ -110,7 +127,7 @@ describe('Config data integrity', () => {
     });
 
     it('svg badges have svg string', () => {
-      const svgBadges = config.certifications.filter(c => c.badge.type === 'svg');
+      const svgBadges = config.certifications.filter((c) => c.badge.type === 'svg');
       expect(svgBadges.length).toBeGreaterThan(0);
       for (const cert of svgBadges) {
         const badge = cert.badge as { type: 'svg'; svg: string };
@@ -121,7 +138,7 @@ describe('Config data integrity', () => {
 
   describe('socials', () => {
     it('every platform is a valid SocialPlatform', () => {
-      const validPlatforms = ['github', 'twitter', 'linkedin'];
+      const validPlatforms = ['github', 'twitter', 'linkedin', 'stackoverflow', 'leetcode', 'hackerrank'];
       for (const social of config.socials) {
         expect(validPlatforms).toContain(social.platform);
       }
@@ -143,7 +160,7 @@ describe('Config data integrity', () => {
     });
 
     it('has no duplicate section ids', () => {
-      const ids = config.sections.map(s => s.id);
+      const ids = config.sections.map((s) => s.id);
       expect(new Set(ids).size).toBe(ids.length);
     });
   });
@@ -188,12 +205,12 @@ describe('Config data integrity', () => {
 
   describe('duplicate detection', () => {
     it('has no duplicate project names', () => {
-      const names = config.projects.map(p => p.name);
+      const names = config.projects.map((p) => p.name);
       expect(new Set(names).size).toBe(names.length);
     });
 
     it('has no duplicate certification names', () => {
-      const names = config.certifications.map(c => c.name);
+      const names = config.certifications.map((c) => c.name);
       expect(new Set(names).size).toBe(names.length);
     });
   });
@@ -201,8 +218,16 @@ describe('Config data integrity', () => {
   describe('theme validation', () => {
     it('site.theme is a valid ThemeName', () => {
       const validThemes = [
-        'hacker', 'dracula', 'nord', 'catppuccin', 'synthwave',
-        'matrix', 'bloodmoon', 'midnight', 'arctic', 'gruvbox',
+        'hacker',
+        'dracula',
+        'nord',
+        'catppuccin',
+        'synthwave',
+        'matrix',
+        'bloodmoon',
+        'midnight',
+        'arctic',
+        'gruvbox',
       ];
       if (config.site.theme) {
         expect(validThemes).toContain(config.site.theme);

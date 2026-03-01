@@ -473,7 +473,7 @@ export function initCanvas(): void {
   });
 
   canvas.addEventListener('mousemove', (e: MouseEvent) => {
-    const rect = canvas!.getBoundingClientRect();
+    const rect = canvas?.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
   });

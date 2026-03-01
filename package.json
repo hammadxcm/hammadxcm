@@ -1,7 +1,7 @@
 {
   "name": "hammadxcm",
   "type": "module",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -17,7 +17,7 @@
     "astro": "^5.5.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.4",
+    "@biomejs/biome": "^2.4.4",
     "@vitest/coverage-v8": "^4.0.18",
     "happy-dom": "^20.7.0",
     "sass": "^1.97.3",

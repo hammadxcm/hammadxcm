@@ -8,8 +8,7 @@ export function initBlurUp(): void {
     }
   });
 
-  const analyticsImgs =
-    document.querySelectorAll<HTMLImageElement>('.analytics-grid img');
+  const analyticsImgs = document.querySelectorAll<HTMLImageElement>('.analytics-grid img');
   analyticsImgs.forEach((img) => {
     if (!img.classList.contains('blur-up')) {
       img.style.filter = 'blur(8px)';

@@ -21,7 +21,7 @@ export function initSmoothScroll(): void {
       const startTime = performance.now();
 
       function easeOutExpo(t: number): number {
-        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+        return t === 1 ? 1 : 1 - 2 ** (-10 * t);
       }
 
       function step(now: number): void {

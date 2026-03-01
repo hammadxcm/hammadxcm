@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { escapeHtml, buildAboutLines } from '../about-builder';
+import { describe, expect, it } from 'vitest';
+import { buildAboutLines, escapeHtml } from '../about-builder';
 import type { PortfolioConfig } from '../types';
 
 type About = PortfolioConfig['about'];
@@ -63,25 +63,25 @@ describe('buildAboutLines', () => {
     const about: About = { ...baseAbout, philosophy: ['Just ship it.'] };
     const { displayLines, copyLines } = buildAboutLines(about);
 
-    const philDisplayLine = displayLines.find(l => l.includes('PHILOSOPHY'));
+    const philDisplayLine = displayLines.find((l) => l.includes('PHILOSOPHY'));
     expect(philDisplayLine).toContain('"');
     // should have opening and closing quote in the span
     expect(philDisplayLine).toMatch(/PHILOSOPHY.*"Just ship it\."/);
 
-    const philCopyLine = copyLines.find(l => l.includes('PHILOSOPHY'));
+    const philCopyLine = copyLines.find((l) => l.includes('PHILOSOPHY'));
     expect(philCopyLine).toBe('PHILOSOPHY="Just ship it."');
   });
 
   it('multi-element philosophy spans multiple lines with closing quote only on last', () => {
     const { displayLines, copyLines } = buildAboutLines(baseAbout);
 
-    const philStart = displayLines.findIndex(l => l.includes('PHILOSOPHY'));
+    const philStart = displayLines.findIndex((l) => l.includes('PHILOSOPHY'));
     // First philosophy line should NOT have a closing quote after content
     expect(displayLines[philStart]).not.toMatch(/Build well,"<\/span>$/);
     // Second (last) line should end with closing quote
     expect(displayLines[philStart + 1]).toContain('test often."');
 
-    const copyPhilStart = copyLines.findIndex(l => l.includes('PHILOSOPHY'));
+    const copyPhilStart = copyLines.findIndex((l) => l.includes('PHILOSOPHY'));
     expect(copyLines[copyPhilStart]).not.toMatch(/test often/);
     expect(copyLines[copyPhilStart + 1]).toContain('test often."');
   });
@@ -107,7 +107,7 @@ describe('buildAboutLines', () => {
 
   it('arsenal entries render with [key]="value" format', () => {
     const { copyLines } = buildAboutLines(baseAbout);
-    const arsenalLines = copyLines.filter(l => l.trimStart().startsWith('['));
+    const arsenalLines = copyLines.filter((l) => l.trimStart().startsWith('['));
     expect(arsenalLines.length).toBe(2);
     expect(arsenalLines[0]).toBe('  [lang]="TypeScript"');
     expect(arsenalLines[1]).toBe('  [tool]="Vitest"');
@@ -120,10 +120,12 @@ describe('buildAboutLines', () => {
     };
     const { displayLines, copyLines } = buildAboutLines(about);
 
-    const displayArsenal = displayLines.find(l => l.includes('[test]') || l.includes('property">test'));
+    const displayArsenal = displayLines.find(
+      (l) => l.includes('[test]') || l.includes('property">test'),
+    );
     expect(displayArsenal).toContain('a &amp; b &lt; c');
 
-    const copyArsenal = copyLines.find(l => l.includes('[test]'));
+    const copyArsenal = copyLines.find((l) => l.includes('[test]'));
     expect(copyArsenal).toContain('a & b < c');
   });
 });
