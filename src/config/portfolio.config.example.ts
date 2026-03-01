@@ -18,7 +18,8 @@ const config: PortfolioConfig = {
   site: {
     name: 'Jane Doe',
     title: 'Full Stack Developer',
-    description: 'Jane Doe — Full Stack Developer building modern web applications with React, Node.js, and cloud technologies.',
+    description:
+      'Jane Doe — Full Stack Developer building modern web applications with React, Node.js, and cloud technologies.',
     url: 'https://janedoe.github.io/portfolio/',
     logoText: 'janedoe',
     logoSuffix: '.dev',
@@ -69,19 +70,47 @@ const config: PortfolioConfig = {
       title: 'Frontend',
       emoji: '\uD83C\uDFA8',
       items: [
-        { name: 'React', icon: 'https://techstack-generator.vercel.app/react-icon.svg', url: 'https://react.dev' },
-        { name: 'TypeScript', icon: 'https://techstack-generator.vercel.app/ts-icon.svg', url: 'https://www.typescriptlang.org' },
-        { name: 'Next.js', icon: 'https://skillicons.dev/icons?i=nextjs', url: 'https://nextjs.org' },
-        { name: 'Tailwind', icon: 'https://skillicons.dev/icons?i=tailwind', url: 'https://tailwindcss.com' },
+        {
+          name: 'React',
+          icon: 'https://techstack-generator.vercel.app/react-icon.svg',
+          url: 'https://react.dev',
+        },
+        {
+          name: 'TypeScript',
+          icon: 'https://techstack-generator.vercel.app/ts-icon.svg',
+          url: 'https://www.typescriptlang.org',
+        },
+        {
+          name: 'Next.js',
+          icon: 'https://skillicons.dev/icons?i=nextjs',
+          url: 'https://nextjs.org',
+        },
+        {
+          name: 'Tailwind',
+          icon: 'https://skillicons.dev/icons?i=tailwind',
+          url: 'https://tailwindcss.com',
+        },
       ],
     },
     {
       title: 'Backend',
       emoji: '\u2699\uFE0F',
       items: [
-        { name: 'Node.js', icon: 'https://skillicons.dev/icons?i=nodejs', url: 'https://nodejs.org' },
-        { name: 'Python', icon: 'https://techstack-generator.vercel.app/python-icon.svg', url: 'https://www.python.org' },
-        { name: 'PostgreSQL', icon: 'https://skillicons.dev/icons?i=postgresql', url: 'https://www.postgresql.org' },
+        {
+          name: 'Node.js',
+          icon: 'https://skillicons.dev/icons?i=nodejs',
+          url: 'https://nodejs.org',
+        },
+        {
+          name: 'Python',
+          icon: 'https://techstack-generator.vercel.app/python-icon.svg',
+          url: 'https://www.python.org',
+        },
+        {
+          name: 'PostgreSQL',
+          icon: 'https://skillicons.dev/icons?i=postgresql',
+          url: 'https://www.postgresql.org',
+        },
         { name: 'Redis', icon: 'https://skillicons.dev/icons?i=redis', url: 'https://redis.io' },
       ],
     },
@@ -89,8 +118,16 @@ const config: PortfolioConfig = {
       title: 'DevOps',
       emoji: '\u2601\uFE0F',
       items: [
-        { name: 'AWS', icon: 'https://techstack-generator.vercel.app/aws-icon.svg', url: 'https://aws.amazon.com' },
-        { name: 'Docker', icon: 'https://techstack-generator.vercel.app/docker-icon.svg', url: 'https://www.docker.com' },
+        {
+          name: 'AWS',
+          icon: 'https://techstack-generator.vercel.app/aws-icon.svg',
+          url: 'https://aws.amazon.com',
+        },
+        {
+          name: 'Docker',
+          icon: 'https://techstack-generator.vercel.app/docker-icon.svg',
+          url: 'https://www.docker.com',
+        },
         { name: 'Git', icon: 'https://skillicons.dev/icons?i=git', url: 'https://git-scm.com' },
       ],
     },
@@ -131,7 +168,8 @@ const config: PortfolioConfig = {
       icon: 'https://skillicons.dev/icons?i=react',
       name: 'My Awesome App',
       url: 'https://github.com/janedoe/awesome-app',
-      description: 'A full-stack application with real-time features and <strong>50K+ users</strong>.',
+      description:
+        'A full-stack application with real-time features and <strong>50K+ users</strong>.',
       tags: ['React', 'Node.js', 'WebSocket'],
       linkText: 'View Repo',
     },
@@ -150,7 +188,12 @@ const config: PortfolioConfig = {
     {
       href: 'https://example.com/cert1',
       ariaLabel: 'View AWS certification',
-      badge: { type: 'image', src: 'https://techstack-generator.vercel.app/aws-icon.svg', width: 50, alt: 'AWS' },
+      badge: {
+        type: 'image',
+        src: 'https://techstack-generator.vercel.app/aws-icon.svg',
+        width: 50,
+        alt: 'AWS',
+      },
       category: 'Cloud',
       name: 'AWS Solutions Architect',
       issuer: 'Amazon Web Services',
@@ -175,11 +218,31 @@ const config: PortfolioConfig = {
     utcOffset: -8,
   },
 
+  /* ─── LeetCode (optional — remove to hide section) ─── */
+  leetcode: { username: 'janedoe' },
+
+  /* ─── StackOverflow (optional — remove to hide section) ─── */
+  stackoverflow: { userId: 1234567 },
+
+  /* ─── HackerRank (optional — remove to hide section) ─── */
+  hackerrank: { username: 'janedoe' },
+
   /* ─── Socials — Add more to show additional icons ─── */
   socials: [
     { platform: 'github', url: 'https://github.com/janedoe', label: 'GitHub' },
-    { platform: 'twitter', url: 'https://twitter.com/janedoe', label: 'Twitter' },
     { platform: 'linkedin', url: 'https://linkedin.com/in/janedoe', label: 'LinkedIn' },
+    { platform: 'twitter', url: 'https://twitter.com/janedoe', label: 'Twitter' },
+    {
+      platform: 'stackoverflow',
+      url: 'https://stackoverflow.com/users/1234567',
+      label: 'Stack Overflow',
+    },
+    { platform: 'leetcode', url: 'https://leetcode.com/u/janedoe', label: 'LeetCode' },
+    {
+      platform: 'hackerrank',
+      url: 'https://www.hackerrank.com/profile/janedoe',
+      label: 'HackerRank',
+    },
   ],
 
   /* ─── Sections — Reorder, add, or remove to update nav ─── */

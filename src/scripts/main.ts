@@ -1,24 +1,25 @@
+import { initGithubTabs, initLeetcodeTabs } from './analytics';
 import { initBoot } from './effects/boot';
 import { initCanvas } from './effects/canvas';
-import { initMatrixRain } from './effects/matrix-rain';
-import { initHeroName } from './effects/hero-name';
-import { initTypewriter } from './effects/typewriter';
-import { initHackerLog } from './effects/hacker-log';
 import { initCursor } from './effects/cursor';
+import { initHackerLog } from './effects/hacker-log';
+import { initHeroName } from './effects/hero-name';
+import { initMatrixRain } from './effects/matrix-rain';
 import { initScreenEffects } from './effects/screen-effects';
-import { initObserver } from './interactions/observer';
-import { initScrollHandler } from './interactions/scroll';
-import { initTilt } from './interactions/tilt';
-import { initNav } from './interactions/nav';
-import { initCopy } from './interactions/copy';
-import { initKeyboard } from './interactions/keyboard';
-import { initFloatingIcons } from './interactions/floating-icons';
-import { initBlurUp } from './interactions/blur-up';
-import { initSmoothScroll } from './interactions/smooth-scroll';
-import { initProjectCards } from './interactions/project-cards';
-import { initKonami } from './interactions/konami';
-import { initStatusBar } from './interactions/status-bar';
+import { initTypewriter } from './effects/typewriter';
 import { initAboutLang } from './interactions/about-lang';
+import { initBlurUp } from './interactions/blur-up';
+import { initCopy } from './interactions/copy';
+import { initFloatingIcons } from './interactions/floating-icons';
+import { initKeyboard } from './interactions/keyboard';
+import { initKonami } from './interactions/konami';
+import { initNav } from './interactions/nav';
+import { initObserver } from './interactions/observer';
+import { initProjectCards } from './interactions/project-cards';
+import { initScrollHandler } from './interactions/scroll';
+import { initSmoothScroll } from './interactions/smooth-scroll';
+import { initStatusBar } from './interactions/status-bar';
+import { initTilt } from './interactions/tilt';
 import { initThemeSwitcher } from './theme-switcher';
 
 // Effects (order matters: boot first, canvas next)
@@ -48,3 +49,5 @@ initAboutLang();
 
 // Orchestrator (last — depends on all exports above)
 initThemeSwitcher();
+initGithubTabs();
+initLeetcodeTabs();
