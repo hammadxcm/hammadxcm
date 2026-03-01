@@ -42,7 +42,14 @@ describe('CertBadge discriminated union', () => {
 });
 
 describe('SocialPlatform values', () => {
-  const validPlatforms: SocialPlatform[] = ['github', 'twitter', 'linkedin', 'stackoverflow', 'leetcode', 'hackerrank'];
+  const validPlatforms: SocialPlatform[] = [
+    'github',
+    'twitter',
+    'linkedin',
+    'stackoverflow',
+    'leetcode',
+    'hackerrank',
+  ];
 
   it('all social entries use a valid platform', () => {
     for (const social of config.socials) {

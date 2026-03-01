@@ -16,7 +16,7 @@ function randPort(): number {
   return [22, 80, 443, 3000, 5432, 6379, 8080, 8443, 9090][Math.floor(Math.random() * 9)];
 }
 function randDomain(): string {
-  return ['api', 'cdn', 'db', 'cache', 'auth'][Math.floor(Math.random() * 5)] + '.internal';
+  return `${['api', 'cdn', 'db', 'cache', 'auth'][Math.floor(Math.random() * 5)]}.internal`;
 }
 
 const templates: (() => string)[] = [

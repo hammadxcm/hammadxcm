@@ -138,7 +138,14 @@ describe('Config data integrity', () => {
 
   describe('socials', () => {
     it('every platform is a valid SocialPlatform', () => {
-      const validPlatforms = ['github', 'twitter', 'linkedin', 'stackoverflow', 'leetcode', 'hackerrank'];
+      const validPlatforms = [
+        'github',
+        'twitter',
+        'linkedin',
+        'stackoverflow',
+        'leetcode',
+        'hackerrank',
+      ];
       for (const social of config.socials) {
         expect(validPlatforms).toContain(social.platform);
       }
