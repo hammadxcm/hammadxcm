@@ -2,9 +2,11 @@ import { updateAnalyticsTheme } from './analytics';
 import { switchCanvasEffect } from './effects/canvas';
 import { updateCursorVisibility } from './effects/cursor';
 import { restartHeroAnimation } from './effects/hero-name';
+import { updateNavLogo } from './effects/nav-logo';
 import { updateTypewriterTexts } from './effects/typewriter';
 import { updateAboutTheme } from './interactions/about-lang';
-import { prefersReducedMotion } from './state';
+import { updateStatusBar } from './interactions/status-bar';
+import { prefersReducedMotion, setCurrentTheme } from './state';
 import { getCurrentTheme, getThemeConfig, themePrompts } from './theme-config';
 import type { ThemeName } from './types';
 
@@ -31,6 +33,7 @@ export function initThemeSwitcher(): void {
   });
 
   function applyThemeEffects(theme: ThemeName): void {
+    setCurrentTheme(theme);
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('portfolio-theme', theme);
 
@@ -46,8 +49,8 @@ export function initThemeSwitcher(): void {
     const matrixCanvas = document.getElementById('matrix-canvas');
     if (matrixCanvas) matrixCanvas.style.display = tc.hasMatrixRain ? '' : 'none';
 
-    const statusBar = document.getElementById('terminalStatusBar');
-    if (statusBar) statusBar.style.display = tc.hasStatusBar ? '' : 'none';
+    // Update status bar content for new theme
+    updateStatusBar();
 
     // BUG FIX: Clear stale nav inline bg so CSS takes over immediately
     const nav = document.querySelector<HTMLElement>('nav');
@@ -74,6 +77,9 @@ export function initThemeSwitcher(): void {
 
     // Update About section chrome + language
     updateAboutTheme(theme);
+
+    // Update nav logo for theme
+    updateNavLogo(theme);
   }
 
   options.forEach((opt) => {
