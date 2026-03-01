@@ -1,14 +1,4 @@
-export type ThemeName =
-  | 'hacker'
-  | 'dracula'
-  | 'nord'
-  | 'catppuccin'
-  | 'synthwave'
-  | 'matrix'
-  | 'bloodmoon'
-  | 'midnight'
-  | 'arctic'
-  | 'gruvbox';
+export type { ThemeName } from '../config/types';
 
 export type LangKey =
   | 'bash'
@@ -54,8 +44,8 @@ export interface ThemeConfig {
   screenEffect: ScreenEffect;
   hasHackerLog: boolean;
   hasCursor: false | 'crosshair' | 'dot';
-  hasStatusBar: boolean;
   particleColor: string;
+
   matrixColor?: string;
   matrixBg?: string;
   bootBg: string;
@@ -93,6 +83,14 @@ export interface LangVariant {
   printTemplate: { display: string; copy: string };
 }
 
+export interface StatusBarSegment {
+  label: string;
+  cls?: string;
+  value?: (elapsed: number) => string;
+}
+
+export type StatusBarConfig = StatusBarSegment[];
+
 export interface AnalyticsThemeMap {
   stats: string;
   summary: string;
@@ -100,5 +98,6 @@ export interface AnalyticsThemeMap {
   streakBg: string;
   activityTheme: string;
   leetcodeTheme: string;
+  leetcodeColors?: string;
   stackoverflowTheme: string;
 }
