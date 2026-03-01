@@ -975,7 +975,7 @@ Next.js & Svelte with live demo</sub>
 
 ---
 
-## 📊 GitHub Analytics Dashboard
+## 📊 Analytics Dashboard
 
 <div align="center">
 
@@ -998,11 +998,10 @@ Next.js & Svelte with live demo</sub>
 <table>
   <tr>
     <td><img src="./metrics.plugin.languages.svg" alt="Most Used Languages" /></td>
-    <td><img src="./metrics.plugin.isocalendar.fullyear.svg" alt="Contribution Calendar" /></td>
+    <td><img src="./metrics.plugin.stars.svg" alt="Recently Starred" /></td>
   </tr>
   <tr>
-    <td><img src="./metrics.plugin.stars.svg" alt="Recently Starred" /></td>
-    <td><img src="./metrics.plugin.leetcode.svg" alt="LeetCode Progress" /></td>
+    <td colspan="2"><img src="./metrics.plugin.isocalendar.fullyear.svg" alt="Contribution Calendar" /></td>
   </tr>
 </table>
 
@@ -1090,6 +1089,60 @@ Next.js & Svelte with live demo</sub>
 </tr>
 </table>
 </div>
+
+</div>
+
+---
+
+## 🧩 LeetCode Stats
+
+<div align="center">
+
+### 📈 Problem Solving & Contest Rating
+<table>
+  <tr>
+    <td>
+      <img src="https://leetcard.jacoblin.cool/hammadxcm?theme=dark&font=Source%20Code%20Pro&ext=heatmap" alt="LeetCode Stats" />
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>
+      <img src="https://leetcard.jacoblin.cool/hammadxcm?theme=dark&font=Source%20Code%20Pro&ext=activity" alt="LeetCode Activity" />
+    </td>
+    <td>
+      <img src="https://leetcard.jacoblin.cool/hammadxcm?theme=dark&font=Source%20Code%20Pro&ext=contest" alt="LeetCode Contest Rating" />
+    </td>
+  </tr>
+</table>
+
+[![LeetCode Profile](https://img.shields.io/badge/LeetCode-hammadxcm-FFA116?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/u/hammadxcm)
+
+</div>
+
+---
+
+## 📚 Stack Overflow Stats
+
+<div align="center">
+
+<img src="https://github-readme-stackoverflow.vercel.app/?userID=6485663&theme=dark&layout=compact" alt="Stack Overflow Stats" />
+
+<br/><br/>
+
+[![Stack Overflow Profile](https://img.shields.io/badge/Stack%20Overflow-6485663-F58025?style=for-the-badge&logo=stackoverflow&logoColor=white)](https://stackoverflow.com/users/6485663)
+
+</div>
+
+---
+
+## 💻 HackerRank
+
+<div align="center">
+
+[![HackerRank Badge](https://img.shields.io/badge/HackerRank-hammadxcm-brightgreen?style=for-the-badge&logo=hackerrank)](https://www.hackerrank.com/profile/hammadxcm)
 
 </div>
 
