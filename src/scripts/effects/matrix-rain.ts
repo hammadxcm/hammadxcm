@@ -1,4 +1,4 @@
-import { isPageVisible, isTouchDevice, prefersReducedMotion } from '../state';
+import { isHeroVisible, isPageVisible, isTouchDevice, prefersReducedMotion } from '../state';
 import { getCurrentTheme, getThemeConfig } from '../theme-config';
 
 export function initMatrixRain(): void {
@@ -27,20 +27,8 @@ export function initMatrixRain(): void {
   resize();
   window.addEventListener('resize', resize);
 
-  let matrixHeroVisible = true;
-  const matrixHeroSection = document.getElementById('hero');
-  if (matrixHeroSection && window.IntersectionObserver) {
-    const matrixHeroObserver = new IntersectionObserver(
-      (entries) => {
-        matrixHeroVisible = entries[0].isIntersecting;
-      },
-      { threshold: 0 },
-    );
-    matrixHeroObserver.observe(matrixHeroSection);
-  }
-
   function draw(): void {
-    if (!isPageVisible() || !matrixHeroVisible) {
+    if (!isPageVisible() || !isHeroVisible()) {
       requestAnimationFrame(draw);
       return;
     }
