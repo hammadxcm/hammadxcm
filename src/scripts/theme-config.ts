@@ -1,31 +1,32 @@
+import { getCurrentTheme } from './state';
 import type {
   AboutTheme,
   AnalyticsThemeMap,
   BootMessage,
+  StatusBarConfig,
   ThemeConfig,
   ThemeName,
   ThemeToasts,
 } from './types';
 
-export function getCurrentTheme(): ThemeName {
-  return (document.documentElement.getAttribute('data-theme') as ThemeName) || 'hacker';
+export { getCurrentTheme } from './state';
+
+function themeGetter<T>(map: Record<ThemeName, T>): (theme?: ThemeName) => T {
+  return (theme) => map[theme ?? getCurrentTheme()] ?? map.hacker;
 }
 
-export function getThemeConfig(theme?: ThemeName): ThemeConfig {
-  return themeConfig[theme ?? getCurrentTheme()] ?? themeConfig.hacker;
-}
-
-export function getAboutTheme(theme?: ThemeName): AboutTheme {
-  return aboutThemes[theme ?? getCurrentTheme()] ?? aboutThemes.hacker;
-}
-
-export function getThemeToasts(theme?: ThemeName): ThemeToasts {
-  return themeToasts[theme ?? getCurrentTheme()] ?? themeToasts.hacker;
-}
-
-export function getBootMessages(theme?: ThemeName): BootMessage[] {
-  return bootMessages[theme ?? getCurrentTheme()] ?? bootMessages.hacker;
-}
+export const themeLogos: Record<ThemeName, { text: string; suffix: string }> = {
+  hacker: { text: 'fyniti', suffix: '://hk' },
+  dracula: { text: 'fyniti', suffix: '::hk' },
+  nord: { text: 'fyniti', suffix: '.hk' },
+  catppuccin: { text: 'fyniti', suffix: '~/hk' },
+  synthwave: { text: 'fyniti', suffix: '>>hk' },
+  matrix: { text: 'fyniti', suffix: '/hk' },
+  bloodmoon: { text: 'fyniti', suffix: '#hk' },
+  midnight: { text: 'fyniti', suffix: '@hk' },
+  arctic: { text: 'fyniti', suffix: '.hk' },
+  gruvbox: { text: 'fyniti', suffix: '\\hk' },
+};
 
 export const themePrompts: Record<ThemeName, string> = {
   hacker: 'root@kali:~# whoami',
@@ -193,6 +194,7 @@ export const themeTypewriterTexts: Record<ThemeName, string[]> = {
   ],
 };
 
+// LeetCode custom colors format: bg0,bg1,text0,text1,color0,color1,color2,color3 (hex without #)
 export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
   hacker: {
     stats: 'tokyonight',
@@ -201,6 +203,7 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     streakBg: '0D1117',
     activityTheme: 'tokyo-night',
     leetcodeTheme: 'dark',
+    leetcodeColors: '0D1117,161B22,FFFFFF,8B949E,5BCDEC,58A6FF,3FB950,00BFA5',
     stackoverflowTheme: 'dark',
   },
   dracula: {
@@ -210,6 +213,7 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     streakBg: '282A36',
     activityTheme: 'dracula',
     leetcodeTheme: 'dark',
+    leetcodeColors: '282A36,44475A,F8F8F2,6272A4,BD93F9,FF79C6,50FA7B,8BE9FD',
     stackoverflowTheme: 'dark',
   },
   nord: {
@@ -219,6 +223,7 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     streakBg: '2E3440',
     activityTheme: 'nord',
     leetcodeTheme: 'nord',
+    leetcodeColors: '2E3440,3B4252,ECEFF4,D8DEE9,88C0D0,81A1C1,A3BE8C,B48EAD',
     stackoverflowTheme: 'dark',
   },
   catppuccin: {
@@ -228,6 +233,7 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     streakBg: '1E1E2E',
     activityTheme: 'tokyo-night',
     leetcodeTheme: 'dark',
+    leetcodeColors: '1E1E2E,313244,CDD6F4,A6ADC8,CBA6F7,F38BA8,A6E3A1,89DCEB',
     stackoverflowTheme: 'dark',
   },
   synthwave: {
@@ -237,6 +243,7 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     streakBg: '1A1028',
     activityTheme: 'synthwave-84',
     leetcodeTheme: 'unicorn',
+    leetcodeColors: '1A1028,241734,F0E6FF,B894E0,FF2E97,FF6EC7,FCEE09,00F0FF',
     stackoverflowTheme: 'dark',
   },
   matrix: {
@@ -246,6 +253,7 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     streakBg: '0A0A0A',
     activityTheme: 'green',
     leetcodeTheme: 'forest',
+    leetcodeColors: '0A0A0A,111111,00FF41,33CC33,00FF41,00CC33,009926,66FF66',
     stackoverflowTheme: 'dark',
   },
   bloodmoon: {
@@ -254,7 +262,8 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     trophy: 'radical',
     streakBg: '0D0208',
     activityTheme: 'coral',
-    leetcodeTheme: 'wtf',
+    leetcodeTheme: 'dark',
+    leetcodeColors: '0D0208,1A0510,FFFFFF,8B7070,FF0040,FF4D6D,C9184A,FF758F',
     stackoverflowTheme: 'dark',
   },
   midnight: {
@@ -264,6 +273,7 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     streakBg: '0F0F1A',
     activityTheme: 'material-palenight',
     leetcodeTheme: 'dark',
+    leetcodeColors: '0F0F1A,1A1A2E,FFFFFF,8888AA,7B73FF,9B93FF,5C55CC,B0ADFF',
     stackoverflowTheme: 'dark',
   },
   arctic: {
@@ -273,6 +283,7 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     streakBg: 'F0F9FF',
     activityTheme: 'arctic',
     leetcodeTheme: 'light',
+    leetcodeColors: 'F0F9FF,E0F2FE,0C4A6E,475569,0369A1,0284C7,0EA5E9,38BDF8',
     stackoverflowTheme: 'light',
   },
   gruvbox: {
@@ -282,8 +293,103 @@ export const analyticsThemeMap: Record<ThemeName, AnalyticsThemeMap> = {
     streakBg: '282828',
     activityTheme: 'gruvbox',
     leetcodeTheme: 'dark',
+    leetcodeColors: '282828,3C3836,EBDBB2,A89984,FABD2F,FE8019,B8BB26,83A598',
     stackoverflowTheme: 'dark',
   },
+};
+
+function formatUptime(elapsed: number): string {
+  const h = Math.floor(elapsed / 3600);
+  const m = Math.floor((elapsed % 3600) / 60);
+  const s = elapsed % 60;
+  return `${h < 10 ? '0' : ''}${h}:${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+}
+
+function pick<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+export const themeStatusBars: Record<ThemeName, StatusBarConfig> = {
+  hacker: [
+    { label: '\u25C9 SECURE CONNECTION', cls: 'status-secure' },
+    { label: 'AES-256' },
+    {
+      label: '',
+      value: () =>
+        `\u2191 ${(Math.random() * 4 + 0.5).toFixed(1)} KB/s \u2193 ${(Math.random() * 12 + 2).toFixed(1)} KB/s`,
+    },
+    { label: '', value: () => `${Math.floor(Math.random() * 10 + 18)} PROCESSES` },
+    { label: 'UPTIME: ', value: (e) => formatUptime(e) },
+  ],
+  dracula: [
+    { label: '\u25C9 NOCTURNAL MODE', cls: 'status-secure' },
+    { label: 'BLOOD TYPE: #BD93F9' },
+    { label: 'MOON: ', value: () => pick(['FULL', 'WANING', 'NEW', 'CRESCENT', 'BLOOD']) },
+    { label: '', value: () => `${Math.floor(Math.random() * 50 + 10)} COFFINS SEALED` },
+    { label: 'NIGHT CYCLE: ', value: (e) => formatUptime(e) },
+  ],
+  nord: [
+    { label: '\u25C9 POLAR STATION', cls: 'status-secure' },
+    { label: 'REGION: SVALBARD' },
+    { label: 'TEMP: ', value: () => `${(-Math.random() * 30 - 5).toFixed(1)}\u00B0C` },
+    { label: 'AURORA: ', value: () => `${Math.floor(Math.random() * 10 + 1)}/10` },
+    { label: 'WIND: ', value: () => `${(Math.random() * 60 + 5).toFixed(0)} km/h` },
+  ],
+  catppuccin: [
+    { label: '\u25C9 COZY MODE', cls: 'status-secure' },
+    { label: 'BLEND: MOCHA' },
+    { label: 'BREW: ', value: () => pick(['STEEPING', 'READY', 'POURING', 'FRESH', 'PERFECT']) },
+    { label: 'WARMTH: ', value: () => `${Math.floor(Math.random() * 30 + 70)}%` },
+    { label: 'COMFORT: ', value: (e) => formatUptime(e) },
+  ],
+  synthwave: [
+    { label: '\u25C9 NEON GRID ONLINE', cls: 'status-secure' },
+    { label: 'FM 98.7' },
+    { label: 'FREQ: ', value: () => `${(Math.random() * 2000 + 200).toFixed(0)} Hz` },
+    { label: 'SIGNAL: ', value: () => `${Math.floor(Math.random() * 10 + 1)}/10` },
+    {
+      label: 'TAPE: ',
+      value: () => pick(['PLAYING', 'REWINDING', 'SIDE A', 'SIDE B', 'RECORDING']),
+    },
+  ],
+  matrix: [
+    { label: '\u25C9 SIMULATION ACTIVE', cls: 'status-secure' },
+    { label: 'CONSTRUCT: LOADED' },
+    { label: 'TICK: ', value: () => `#${Math.floor(Math.random() * 99999)}` },
+    { label: '', value: () => `${Math.floor(Math.random() * 8 + 1)} AGENTS DETECTED` },
+    { label: 'SIGNAL: ', value: () => `${Math.floor(Math.random() * 40 + 60)}%` },
+  ],
+  bloodmoon: [
+    { label: '\u25C9 CRIMSON PROTOCOL', cls: 'status-secure' },
+    { label: 'COVENANT: ACTIVE' },
+    {
+      label: 'ECLIPSE: ',
+      value: () => pick(['TOTAL', 'PARTIAL', 'PENUMBRAL', 'WAXING', 'PEAK']),
+    },
+    { label: 'CRIMSON: ', value: () => `${(Math.random() * 9 + 1).toFixed(1)}` },
+    { label: 'SHADOWS: ', value: () => `${Math.floor(Math.random() * 100 + 1)} DEEP` },
+  ],
+  midnight: [
+    { label: '\u25C9 DEEP SPACE RELAY', cls: 'status-secure' },
+    { label: 'SECTOR: ANDROMEDA' },
+    { label: '', value: () => `${Math.floor(Math.random() * 9000 + 1000)} STARS MAPPED` },
+    { label: 'NEBULA: ', value: () => `${(Math.random() * 500 + 10).toFixed(1)} ly` },
+    { label: 'ORBIT: ', value: (e) => formatUptime(e) },
+  ],
+  arctic: [
+    { label: '\u25C9 STATION ONLINE', cls: 'status-secure' },
+    { label: 'ENV: CLEAN' },
+    { label: 'TEMP: ', value: () => `${(-Math.random() * 15 - 1).toFixed(1)}\u00B0C` },
+    { label: 'VISIBILITY: ', value: () => `${Math.floor(Math.random() * 30 + 70)}%` },
+    { label: 'ICE: ', value: () => `${Math.floor(Math.random() * 15 + 85)}% INTEGRITY` },
+  ],
+  gruvbox: [
+    { label: '\u25C9 VIM READY', cls: 'status-secure' },
+    { label: 'NORMAL' },
+    { label: '', value: () => `${Math.floor(Math.random() * 12 + 1)} BUF OPEN` },
+    { label: 'TERM: ', value: () => pick(['zsh', 'bash', 'fish', 'tmux', 'screen']) },
+    { label: ':w ', value: (e) => formatUptime(e) },
+  ],
 };
 
 const baseTheme: ThemeConfig = {
@@ -293,7 +399,6 @@ const baseTheme: ThemeConfig = {
   screenEffect: 'none',
   hasHackerLog: false,
   hasCursor: false,
-  hasStatusBar: false,
   particleColor: 'rgba(255, 255, 255, ',
   bootBg: '#0a0e14',
   navBg: 'transparent',
@@ -309,7 +414,6 @@ export const themeConfig: Record<ThemeName, ThemeConfig> = {
     screenEffect: 'glitch',
     hasHackerLog: true,
     hasCursor: 'crosshair',
-    hasStatusBar: true,
     particleColor: 'rgba(91, 205, 236, ',
     matrixColor: 'rgba(0, 191, 191, 0.6)',
     matrixBg: 'rgba(10, 14, 20, 0.06)',
@@ -755,3 +859,11 @@ export const aboutThemes: Record<ThemeName, AboutTheme> = {
     defaultLang: 'bash',
   },
 };
+
+/* ── Theme getters (all use cached getCurrentTheme from state) ── */
+export const getThemeConfig = themeGetter(themeConfig);
+export const getAboutTheme = themeGetter(aboutThemes);
+export const getThemeToasts = themeGetter(themeToasts);
+export const getBootMessages = themeGetter(bootMessages);
+export const getThemeLogo = themeGetter(themeLogos);
+export const getStatusBarConfig = themeGetter(themeStatusBars);
