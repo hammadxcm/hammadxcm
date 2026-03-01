@@ -12,7 +12,7 @@ import { config } from '@config/index';
 <!-- Navigation -->
 <nav>
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo">{config.site.logoText}<span>{config.site.logoSuffix ?? '.dev'}</span></a>
+    <a href="#hero" class="nav-logo" id="navLogo"><span id="navLogoText">{config.site.logoText}</span><span id="navLogoSuffix">{config.site.logoSuffix ?? '://hk'}</span></a>
     <ul class="nav-links" id="navLinks">
       {config.sections.map((section) => (
         <li><a href={`#${section.id}`}>{section.label}</a></li>
@@ -104,8 +104,32 @@ import { config } from '@config/index';
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 13ch;
+    overflow: hidden;
+    transition: filter var(--duration-normal);
+    animation: navLogoGlow 4s ease-in-out infinite;
 
-    span { color: var(--text-dim); }
+    &:hover {
+      filter: drop-shadow(0 0 6px var(--accent)) drop-shadow(0 0 12px var(--accent));
+    }
+
+    #navLogoSuffix {
+      color: var(--text-dim);
+      transition: opacity 150ms ease;
+
+      &.fade-out { opacity: 0; }
+    }
+  }
+
+  @keyframes navLogoGlow {
+    0%, 100% { filter: drop-shadow(0 0 0px transparent); }
+    50% { filter: drop-shadow(0 0 4px var(--accent)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-logo { animation: none; }
   }
 
   .nav-links {
