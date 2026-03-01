@@ -1280,4 +1280,9 @@ Next.js & Svelte with live demo</sub>
 ### 💡 Random Dev Quote
 ![Dev Quote](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight)
 </div>
+
+---
+
+> **Want to use this portfolio as a template?** Check out the **[Template Setup Guide](TEMPLATE_GUIDE.md)** — fork, configure, and deploy in under 5 minutes.
+
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=00bfbf&height=120&section=footer"/>

@@ -60,10 +60,9 @@ safeInit(initAboutLang);
 // Shared hero visibility observer
 const heroSection = document.getElementById('hero');
 if (heroSection && window.IntersectionObserver) {
-  new IntersectionObserver(
-    (entries) => setHeroVisible(entries[0].isIntersecting),
-    { threshold: 0 },
-  ).observe(heroSection);
+  new IntersectionObserver((entries) => setHeroVisible(entries[0].isIntersecting), {
+    threshold: 0,
+  }).observe(heroSection);
 }
 
 // Nav logo (before theme switcher so initial state is set)

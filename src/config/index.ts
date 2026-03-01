@@ -1,7 +1,7 @@
 import raw from './portfolio.config';
+import type { ResolvedSocialLink } from './socials';
 import { resolveSocials } from './socials';
 import type { PortfolioConfig } from './types';
-import type { ResolvedSocialLink } from './socials';
 
 export interface ResolvedPortfolioConfig extends Omit<PortfolioConfig, 'socials'> {
   socials: ResolvedSocialLink[];
