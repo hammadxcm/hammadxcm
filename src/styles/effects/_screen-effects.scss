@@ -52,47 +52,50 @@
   }
 }
 
-/* ── 2. Blood Drip (Blood Moon) ───────────────────────── */
-.screen-effect-overlay[data-effect="bloodDrip"] .blood-drip {
-  display: block;
-  position: absolute;
-  top: -80px;
-  width: 3px;
-  height: 80px;
-  background: linear-gradient(to bottom, transparent, #ff0040, #8b0000);
-  border-radius: 0 0 50% 50%;
-  opacity: 0;
+/* ── 2. Blood Splash (Blood Moon) ───────────────────────── */
+.screen-effect-overlay[data-effect="bloodDrip"] {
+  .blood-drip { display: none !important; }
 
-  &:nth-child(1) { left: 15%; }
-  &:nth-child(2) { left: 35%; }
-  &:nth-child(3) { left: 50%; }
-  &:nth-child(4) { left: 68%; }
-  &:nth-child(5) { left: 82%; }
-}
-
-.screen-effect-overlay[data-effect="bloodDrip"].active .blood-drip {
-  animation: bloodDripFall 600ms ease-in forwards;
-
-  @for $i from 1 through 5 {
-    &:nth-child(#{$i}) {
-      animation-delay: #{($i - 1) * 60}ms;
-      height: #{60 + math.random(40)}px;
-    }
-  }
-}
-
-@keyframes bloodDripFall {
-  0% {
-    opacity: 0.9;
-    transform: translateY(0);
-  }
-  70% {
-    opacity: 0.8;
-  }
-  100% {
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     opacity: 0;
-    transform: translateY(calc(100vh + 80px));
+    background: radial-gradient(
+      ellipse at var(--click-x, 50%) var(--click-y, 50%),
+      rgba(139, 0, 0, 0.25) 0%,
+      rgba(255, 0, 64, 0.12) 30%,
+      rgba(139, 0, 0, 0.06) 60%,
+      transparent 80%
+    );
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    box-shadow:
+      inset 0 0 120px rgba(139, 0, 0, 0.5),
+      inset 0 0 60px rgba(255, 0, 64, 0.2);
+  }
+
+  &.active {
+    &::before { animation: bloodMistBurst 600ms ease-out forwards; }
+    &::after  { animation: bloodVignetteBurst 600ms ease-out forwards; }
+  }
+}
+
+@keyframes bloodMistBurst {
+  0%   { opacity: 0; transform: scale(0.8); }
+  15%  { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+@keyframes bloodVignetteBurst {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 body.env-effect-bloodDrip {
@@ -100,15 +103,9 @@ body.env-effect-bloodDrip {
 }
 
 @keyframes envBloodVignette {
-  0% {
-    box-shadow: inset 0 0 80px rgba(139, 0, 0, 0);
-  }
-  50% {
-    box-shadow: inset 0 0 80px rgba(139, 0, 0, 0.4);
-  }
-  100% {
-    box-shadow: inset 0 0 80px rgba(139, 0, 0, 0);
-  }
+  0%   { box-shadow: inset 0 0 120px rgba(139, 0, 0, 0); }
+  50%  { box-shadow: inset 0 0 120px rgba(139, 0, 0, 0.5); }
+  100% { box-shadow: inset 0 0 120px rgba(139, 0, 0, 0); }
 }
 
 /* ── 3. Ice Crack (Arctic) ────────────────────────────── */
