@@ -10,17 +10,24 @@
 import SectionHeader from './SectionHeader.astro';
 import ArrowIcon from './ArrowIcon.astro';
 import { config } from '@config/index';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
 ---
 
 <!-- ══════ CERTIFICATIONS ══════ -->
 <section id="certs" class="section">
-  <SectionHeader label="// Credentials" title="Certifications" />
+  <SectionHeader label={translations.certs.label} title={translations.certs.title} />
   <div class="certs-grid stagger">
     {config.certifications.map((cert) => (
-      <a href={cert.href} target="_blank" rel="noopener" class="cert-card glass reveal glow-border" aria-label={cert.ariaLabel}>
+      <a href={cert.href} target="_blank" rel="noopener noreferrer" class="cert-card glass reveal glow-border" aria-label={cert.ariaLabel}>
         <div class="cert-badge">
           {cert.badge.type === 'image'
-            ? <img src={cert.badge.src} width={cert.badge.width} alt={cert.badge.alt} />
+            ? <img src={cert.badge.src} width={cert.badge.width} alt={cert.badge.alt} loading="lazy" />
             : <Fragment set:html={cert.badge.svg} />
           }
         </div>
@@ -28,7 +35,7 @@ import { config } from '@config/index';
         <h3 class="cert-name">{cert.name}</h3>
         <p class="cert-issuer" set:html={cert.issuer} />
         {cert.date && <p class="cert-date">{cert.date}</p>}
-        <span class="cert-ext">View Certificate <ArrowIcon /></span>
+        <span class="cert-ext">{translations.certs.viewCertificate} <ArrowIcon /></span>
       </a>
     ))}
   </div>
