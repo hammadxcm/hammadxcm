@@ -1,0 +1,10 @@
+name = "portfolio-stats"
+main = "index.ts"
+compatibility_date = "2024-12-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://hk.fyniti.co.uk"
+
+[[kv_namespaces]]
+binding = "STATS"
+id = "6d4a553b29ab48168561bed0243dd5fb"
