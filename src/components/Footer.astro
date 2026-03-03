@@ -51,6 +51,7 @@ const builtWithText = translations.footer.builtWith.split('{heart}');
     background: linear-gradient(90deg, var(--accent), var(--accent-blue), var(--accent-tertiary), var(--accent));
     background-size: 300% 100%;
     animation: waveGradient 6s linear infinite;
+    will-change: background-position;
   }
 
   @keyframes waveGradient {
