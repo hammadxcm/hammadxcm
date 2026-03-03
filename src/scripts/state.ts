@@ -19,8 +19,12 @@ export function isPageVisible(): boolean {
   return _isPageVisible;
 }
 
-export function onVisibilityChange(fn: VisibilityListener): void {
+export function onVisibilityChange(fn: VisibilityListener): () => void {
   visibilityListeners.push(fn);
+  return () => {
+    const idx = visibilityListeners.indexOf(fn);
+    if (idx > -1) visibilityListeners.splice(idx, 1);
+  };
 }
 
 /* ── Cached theme ── */
