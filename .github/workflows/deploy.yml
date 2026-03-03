@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths-ignore:
       - "metrics.*.svg"
+      - "src/data/contributions.json"
+      - "src/data/projects.json"
+      - "CONTRIBUTIONS_README.md"
 
   workflow_dispatch:
 
