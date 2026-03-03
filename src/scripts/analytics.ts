@@ -1,3 +1,4 @@
+import { trackEvent } from './achievements';
 import { analyticsThemeMap } from './theme-config';
 import type { ThemeName } from './types';
 
@@ -119,6 +120,7 @@ export function initLeetcodeTabs(): void {
 
       img.src = buildLeetcodeUrl(user, m.leetcodeTheme, ext, m.leetcodeColors);
       img.dataset.currentExt = ext;
+      trackEvent('leetcode_tab');
     });
   }
 }
@@ -141,6 +143,7 @@ export function initGithubTabs(): void {
       for (const p of panels) {
         p.classList.toggle('active', p.dataset.panel === panelName);
       }
+      trackEvent('github_tab');
     });
   }
 }
