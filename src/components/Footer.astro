@@ -7,18 +7,27 @@
  * @styles Scoped SCSS — footer layout, wave animation + responsive
  */
 import SocialLinks from './SocialLinks.astro';
+import LighthouseScores from './LighthouseScores.astro';
 import { config } from '@config/index';
+import type { TranslationMap } from '@i18n/types';
 
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
 const year = new Date().getFullYear();
+const builtWithText = translations.footer.builtWith.split('{heart}');
 ---
 
 <!-- ══════ FOOTER ══════ -->
 <footer>
   <div class="footer-wave"></div>
+  <LighthouseScores />
   <div class="footer-socials">
     <SocialLinks />
   </div>
-  <p class="footer-copy">&copy; {year} {config.site.name}. Built with <span class="heart">&hearts;</span> and Astro.</p>
+  <p class="footer-copy">&copy; {year} {config.site.name}. {builtWithText[0]}<span class="heart">&hearts;</span>{builtWithText[1]}</p>
 </footer>
 
 <style lang="scss">
@@ -32,6 +41,7 @@ const year = new Date().getFullYear();
     border-top: 1px solid var(--glass-border);
 
     @include respond-to(mobile) { padding: 3rem 1.25rem 1.5rem; }
+    @include respond-to(small) { padding: 2rem 1rem 1.25rem; }
   }
 
   .footer-wave {
@@ -55,6 +65,7 @@ const year = new Date().getFullYear();
     margin-bottom: 2rem;
 
     @include respond-to(mobile) { gap: 0.75rem; }
+    @include respond-to(small) { margin-bottom: 1.25rem; gap: 0.5rem; }
   }
 
   .footer-copy {
@@ -62,5 +73,7 @@ const year = new Date().getFullYear();
     color: var(--text-dim);
 
     .heart { color: #ff5f57; }
+
+    @include respond-to(small) { font-size: 0.75rem; }
   }
 </style>
