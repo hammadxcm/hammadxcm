@@ -7,6 +7,42 @@
  * @styles Scoped SCSS — nav, hamburger, theme-switcher + responsive
  */
 import { config } from '@config/index';
+import type { TranslationMap } from '@i18n/types';
+import type { Locale } from '@i18n/types';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  translations: TranslationMap;
+  locale: Locale;
+}
+
+const { translations, locale } = Astro.props;
+
+// Resume data for PDF export
+const resumeData = {
+  name: config.site.name,
+  title: config.site.title,
+  location: config.about.location,
+  experience: config.about.experience,
+  arsenal: config.about.arsenal,
+  missionLog: config.about.missionLog,
+  jobs: config.experience.map((e) => ({
+    role: e.role,
+    company: e.company,
+    date: e.date,
+    achievements: e.achievements,
+    tags: e.tags,
+  })),
+  certifications: config.certifications.map((c) => ({
+    name: c.name,
+    issuer: c.issuer,
+  })),
+  socials: config.socials.map((s) => ({
+    platform: s.platform,
+    label: s.label,
+    url: s.url,
+  })),
+};
 ---
 
 <!-- Navigation -->
@@ -15,15 +51,20 @@ import { config } from '@config/index';
     <a href="#hero" class="nav-logo" id="navLogo"><span id="navLogoText">{config.site.logoText}</span><span id="navLogoSuffix">{config.site.logoSuffix ?? '://hk'}</span></a>
     <ul class="nav-links" id="navLinks">
       {config.sections.map((section) => (
-        <li><a href={`#${section.id}`}>{section.label}</a></li>
+        <li><a href={`#${section.id}`}>{translations.nav.sections[section.id] || section.label}</a></li>
       ))}
     </ul>
     <div class="nav-actions">
+      <button type="button" class="resume-btn" id="achievementTrophyBtn" aria-label="Achievements" title="Achievements (Shift+A)">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M4 1a1 1 0 0 0-1 1v1H1.5a.5.5 0 0 0-.5.5v2A2.5 2.5 0 0 0 3.5 8h.3A4.98 4.98 0 0 0 7 10.83V13H5a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H9v-2.17A4.98 4.98 0 0 0 12.2 8h.3A2.5 2.5 0 0 0 15 5.5v-2a.5.5 0 0 0-.5-.5H13V2a1 1 0 0 0-1-1H4ZM2.5 4H3v2.5a3 3 0 0 1-.09-.32A1.5 1.5 0 0 1 2.5 5.5V4Zm11 0v1.5a1.5 1.5 0 0 1-.41.68c-.03.11-.06.21-.09.32V4h.5Z"/>
+        </svg>
+      </button>
       <div class="theme-switcher" id="themeSwitcher">
-        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Switch theme" aria-expanded="false" aria-haspopup="true">
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label={translations.nav.switchTheme} aria-expanded="false" aria-haspopup="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         </button>
-        <div class="theme-dropdown" id="themeDropdown" role="listbox" aria-label="Select theme">
+        <div class="theme-dropdown" id="themeDropdown" role="listbox" aria-label={translations.nav.selectTheme}>
           <button type="button" class="theme-option" data-theme="hacker" role="option">
             <span class="theme-swatch" style="background: #00bfbf;"></span>
             <span class="theme-label">Hacker</span>
@@ -66,12 +107,15 @@ import { config } from '@config/index';
           </button>
         </div>
       </div>
-      <button type="button" class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <LanguageSwitcher locale={locale} translations={translations} />
+      <button type="button" class="hamburger" id="hamburger" aria-label={translations.nav.toggleMenu}>
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </nav>
+
+<script type="application/json" id="resumeData" set:html={JSON.stringify(resumeData)} />
 
 <style lang="scss">
   @use '../styles/mixins' as *;
@@ -87,7 +131,12 @@ import { config } from '@config/index';
     border-bottom: 1px solid var(--glass-border);
     transition: transform var(--duration-normal), background var(--duration-normal);
 
-    @include respond-to(mobile) { padding: 0 1.25rem; }
+    @include respond-to(mobile) {
+      padding: 0 1.25rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      will-change: transform;
+    }
   }
 
   .nav-inner {
@@ -152,8 +201,9 @@ import { config } from '@config/index';
       top: 64px;
       left: 0; right: 0;
       background: var(--bg-card-solid);
-      backdrop-filter: var(--blur-backdrop);
-      -webkit-backdrop-filter: var(--blur-backdrop);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      will-change: transform;
       flex-direction: column;
       padding: 1.5rem 2rem 2rem;
       gap: 0.25rem;
@@ -204,6 +254,32 @@ import { config } from '@config/index';
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+
+  .resume-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all var(--duration-normal);
+
+    &:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    &.loading {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    svg { width: 16px; height: 16px; }
   }
 
   .theme-switcher {
