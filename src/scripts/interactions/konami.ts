@@ -1,3 +1,4 @@
+import { trackEvent } from '../achievements';
 import { spawnToast } from '../effects/toast';
 import { prefersReducedMotion } from '../state';
 
@@ -29,6 +30,7 @@ export function initKonami(): void {
       if (position === sequence.length) {
         position = 0;
         konamiOverlay.classList.add('active');
+        trackEvent('konami');
         setTimeout(() => {
           konamiOverlay.classList.remove('active');
           spawnToast('# Security breach contained');
