@@ -3,6 +3,7 @@
  * @description Hacker-themed toast notification system with slide-in/out
  *              animations and ambient variant styling.
  */
+@use '../mixins' as *;
 
 .hacker-toast-container {
   position: fixed;
@@ -39,6 +40,11 @@
     border-color: var(--border);
     box-shadow: 0 0 10px var(--glass-border), 0 4px 12px rgba(0, 0, 0, 0.3);
   }
+
+  &.achievement-toast {
+    border-left: 3px solid var(--accent);
+    box-shadow: 0 0 20px var(--glass-border), 0 0 8px var(--accent), 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
 }
 
 @keyframes toastSlideIn {
@@ -49,4 +55,26 @@
 @keyframes toastSlideOut {
   from { opacity: 1; transform: translateX(0); }
   to { opacity: 0; transform: translateX(60px); }
+}
+
+@include respond-to(mobile) {
+  .hacker-toast-container {
+    bottom: 1rem;
+    right: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .hacker-toast {
+    white-space: normal;
+  }
+
+  @keyframes toastSlideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes toastSlideOut {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(30px); }
+  }
 }
