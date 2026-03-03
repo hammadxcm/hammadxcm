@@ -1,0 +1,41 @@
+---
+/**
+ * StackOverflow Analytics Panel
+ * Responsive SO stats with desktop/tablet/mobile layouts.
+ */
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  userId: number;
+  translations: TranslationMap;
+}
+
+const { userId, translations } = Astro.props;
+---
+
+<div class="analytics-subsection">
+  <h3 class="analytics-subsection-title">{translations.analytics.stackoverflow}</h3>
+  <div class="analytics-grid" data-stackoverflow-user={userId}>
+    <div class="analytics-responsive-card reveal so-desktop">
+      <img data-stat="stackoverflow-stats" data-so-layout="default" src={`https://github-readme-stackoverflow.vercel.app/?userID=${userId}&theme=dark&layout=default`} alt={translations.analytics.alt.stackoverflowStats} loading="lazy" width="500" height="200">
+    </div>
+    <div class="analytics-responsive-card reveal so-tablet">
+      <img data-stat="stackoverflow-stats" data-so-layout="compact" src={`https://github-readme-stackoverflow.vercel.app/?userID=${userId}&theme=dark&layout=compact`} alt={translations.analytics.alt.stackoverflowStats} loading="lazy" width="500" height="200">
+    </div>
+    <div class="analytics-responsive-card reveal so-mobile">
+      <img data-stat="stackoverflow-stats" data-so-layout="small" src={`https://github-readme-stackoverflow.vercel.app/?userID=${userId}&theme=dark&layout=compact`} alt={translations.analytics.alt.stackoverflowStats} loading="lazy" width="500" height="200">
+    </div>
+    <div class="analytics-cta-row reveal">
+      <a href={`https://stackoverflow.com/users/${userId}`} target="_blank" rel="noopener noreferrer" class="analytics-cta glass glow-border">
+        <div class="analytics-cta__icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154z"/></svg>
+        </div>
+        <div class="analytics-cta__body">
+          <h3>{translations.analytics.cta.stackoverflowProfile}</h3>
+          <p>{translations.analytics.cta.stackoverflowProfileDesc}</p>
+        </div>
+        <span class="analytics-cta__arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</div>
