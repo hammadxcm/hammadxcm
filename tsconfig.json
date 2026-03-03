@@ -2,10 +2,14 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "baseUrl": ".",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
     "paths": {
       "@config/*": ["src/config/*"],
       "@components/*": ["src/components/*"],
-      "@scripts/*": ["src/scripts/*"]
+      "@scripts/*": ["src/scripts/*"],
+      "@i18n/*": ["src/i18n/*"]
     }
   }
 }
