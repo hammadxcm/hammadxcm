@@ -1,3 +1,4 @@
+import { getProgress, trackEvent } from '../achievements';
 import { prefersReducedMotion } from '../state';
 import { getThemeConfig } from '../theme-config';
 
@@ -12,6 +13,10 @@ export function initScrollHandler(): void {
   const timeline = document.querySelector<HTMLElement>('.timeline');
   const sectionTitles = document.querySelectorAll<HTMLElement>('.section-title');
   let ticking = false;
+  let scrolledPastHero = false;
+  let reachedBottom = false;
+  const loadTime = Date.now();
+  let lastScrollY = window.scrollY;
 
   window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -74,6 +79,26 @@ export function initScrollHandler(): void {
           titleProgress = Math.min(1, Math.max(0, titleProgress));
           sectionTitles[t].style.backgroundPosition = `${titleProgress * 100}% 50%`;
         }
+
+        // Achievement tracking
+        if (!scrolledPastHero && scrollY > vh * 0.5) {
+          scrolledPastHero = true;
+          trackEvent('first_scroll');
+        }
+        if (!reachedBottom && scrollY >= docHeight - 10) {
+          reachedBottom = true;
+          if (Date.now() - loadTime < 30_000) trackEvent('speed_reader');
+        }
+        if (reachedBottom && scrollY === 0) trackEvent('full_circle');
+
+        // Cumulative scroll distance tracking
+        const delta = Math.abs(scrollY - lastScrollY);
+        if (delta > 0) {
+          const p = getProgress();
+          p.scrollDistance = (p.scrollDistance || 0) + delta;
+          trackEvent('scroll_distance', 0);
+        }
+        lastScrollY = scrollY;
 
         ticking = false;
       });
