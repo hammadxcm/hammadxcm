@@ -1,0 +1,74 @@
+/**
+ * @file CTF Achievement Overlay
+ * @description Full-screen achievement overlay triggered by solving the CTF puzzle.
+ */
+
+.ctf-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s, visibility 0.4s;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.ctf-achievement {
+  text-align: center;
+  animation: ctfSlideIn 0.5s var(--ease-out-expo);
+}
+
+.ctf-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: ctfBounce 0.6s ease-out;
+}
+
+.ctf-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 30px rgba(var(--accent-glow), 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.ctf-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 1.5rem;
+}
+
+.ctf-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+}
+
+@keyframes ctfSlideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes ctfBounce {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
