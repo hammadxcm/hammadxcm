@@ -9,18 +9,25 @@
  */
 import SectionHeader from './SectionHeader.astro';
 import { config } from '@config/index';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
 ---
 
 <!-- ══════ PROFESSIONAL JOURNEY ══════ -->
 <section id="journey" class="section">
-  <SectionHeader label="// Where I've been" title="Professional Journey" />
+  <SectionHeader label={translations.journey.label} title={translations.journey.title} />
   <div class="timeline">
     {config.experience.map((entry, i) => (
       <div class={`timeline-item ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'}`}>
         <div class="timeline-dot"></div>
         <div class="timeline-card glass">
           <div class="timeline-date" set:html={entry.date} />
-          <h3 class="timeline-role">{entry.role} @ <a href={entry.companyUrl} target="_blank" rel="noopener" class="timeline-company">{entry.company}</a></h3>
+          <h3 class="timeline-role">{entry.role} @ <a href={entry.companyUrl} target="_blank" rel="noopener noreferrer" class="timeline-company">{entry.company}</a></h3>
           <p class="timeline-meta" set:html={entry.meta} />
           <ul class="timeline-achievements">
             {entry.achievements.map((achievement) => (
@@ -40,6 +47,7 @@ import { config } from '@config/index';
 
 <style lang="scss">
   @use '../styles/mixins' as *;
+  @use '../styles/utilities/tag' as *;
 
   .timeline {
     position: relative;
@@ -64,11 +72,11 @@ import { config } from '@config/index';
 
   .timeline-item {
     position: relative;
-    padding-left: 72px;
+    padding-inline-start: 72px;
     margin-bottom: 3rem;
 
-    @include respond-to(mobile) { padding-left: 48px; margin-bottom: 2rem; }
-    @include respond-to(small) { padding-left: 42px; }
+    @include respond-to(mobile) { padding-inline-start: 48px; margin-bottom: 2rem; }
+    @include respond-to(small) { padding-inline-start: 42px; }
   }
 
   .timeline-dot {
@@ -150,7 +158,7 @@ import { config } from '@config/index';
 
     li {
       position: relative;
-      padding-left: 1.25rem;
+      padding-inline-start: 1.25rem;
       margin-bottom: 0.5rem;
       font-size: 0.9rem;
       color: var(--text-dim);
@@ -159,7 +167,7 @@ import { config } from '@config/index';
       &::before {
         content: '';
         position: absolute;
-        left: 0;
+        inset-inline-start: 0;
         top: 0.55em;
         width: 6px; height: 6px;
         border-radius: var(--radius-full);
@@ -177,13 +185,7 @@ import { config } from '@config/index';
     margin-top: 1rem;
 
     span {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: var(--radius-sm);
-      background: rgba(var(--accent-glow), 0.08);
-      color: var(--accent);
-      border: 1px solid rgba(var(--accent-glow), 0.15);
+      @include tag(var(--accent), var(--accent-glow));
     }
 
     @include respond-to(mobile) {
