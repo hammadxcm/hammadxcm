@@ -1,0 +1,167 @@
+---
+/**
+ * Contributions Summary Stats Banner
+ * Displays aggregate stats for OSS contributions.
+ */
+import { langColors } from '@config/lang-colors';
+import { formatStars } from '../utils/format';
+import type { ContributionPR } from '@config/types';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  prs: ContributionPR[];
+  translations: TranslationMap;
+}
+
+const { prs, translations } = Astro.props;
+
+const mergedCount = prs.filter((pr) => pr.state === 'merged').length;
+const openCount = prs.filter((pr) => pr.state === 'open').length;
+const uniqueRepos = new Set(prs.map((pr) => pr.repo.fullName)).size;
+const uniqueOrgs = new Set(prs.map((pr) => pr.repo.fullName.split('/')[0])).size;
+const uniqueLangs = [...new Set(prs.map((pr) => pr.repo.language).filter(Boolean))] as string[];
+const combinedStars = [...new Map(prs.map((pr) => [pr.repo.fullName, pr.repo.stars])).values()].reduce((a, b) => a + b, 0);
+const totalAdditions = prs.reduce((sum, pr) => sum + (pr.additions || 0), 0);
+const totalDeletions = prs.reduce((sum, pr) => sum + (pr.deletions || 0), 0);
+const totalFilesChanged = prs.reduce((sum, pr) => sum + (pr.changedFiles || 0), 0);
+---
+
+<div class="contrib-summary glass reveal">
+  <div class="summary-stat">
+    <span class="summary-value">{mergedCount}</span>
+    <span class="summary-label">{translations.contributions.prsMerged}</span>
+  </div>
+  {openCount > 0 && (
+    <>
+      <div class="summary-divider" />
+      <div class="summary-stat">
+        <span class="summary-value">{openCount}</span>
+        <span class="summary-label">{translations.contributions.prsOpen}</span>
+      </div>
+    </>
+  )}
+  <div class="summary-divider" />
+  <div class="summary-stat">
+    <span class="summary-value">{uniqueOrgs}</span>
+    <span class="summary-label">{translations.contributions.orgs}</span>
+  </div>
+  <div class="summary-divider" />
+  <div class="summary-stat">
+    <span class="summary-value">{uniqueRepos}</span>
+    <span class="summary-label">{translations.contributions.repos}</span>
+  </div>
+  <div class="summary-divider" />
+  <div class="summary-stat">
+    <span class="summary-value">{formatStars(combinedStars)}</span>
+    <span class="summary-label">{translations.contributions.combinedStars}</span>
+  </div>
+  <div class="summary-divider" />
+  <div class="summary-stat">
+    <span class="summary-value">
+      <span class="diff-add">+{totalAdditions.toLocaleString()}</span>
+      {' '}
+      <span class="diff-del">-{totalDeletions.toLocaleString()}</span>
+    </span>
+    <span class="summary-label">{translations.contributions.linesChanged}</span>
+  </div>
+  <div class="summary-divider" />
+  <div class="summary-stat">
+    <span class="summary-value">{totalFilesChanged}</span>
+    <span class="summary-label">{translations.contributions.filesChanged}</span>
+  </div>
+  <div class="summary-divider" />
+  <div class="summary-stat">
+    <span class="summary-value lang-dots">
+      {uniqueLangs.map((lang) => (
+        <span class="summary-lang-dot" style={`background:${langColors[lang] || 'var(--text-dim)'}`} title={lang} />
+      ))}
+    </span>
+    <span class="summary-label">{uniqueLangs.length} {translations.contributions.languages}</span>
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .contrib-summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1.25rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    flex-wrap: wrap;
+
+    @include respond-to(mobile) {
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+    }
+
+    @include respond-to(small) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      justify-items: center;
+    }
+  }
+
+  .summary-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .summary-value {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+
+    @include respond-to(mobile) { font-size: 1.1rem; }
+    @include respond-to(small) { font-size: 1rem; }
+  }
+
+  .summary-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: var(--font-mono);
+    text-align: center;
+  }
+
+  .lang-dots {
+    display: inline-flex;
+    gap: 0.35rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .summary-lang-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .summary-divider {
+    width: 1px;
+    height: 2.5rem;
+    background: var(--glass-border);
+    flex-shrink: 0;
+
+    @include respond-to(mobile) { height: 2rem; }
+    @include respond-to(small) { display: none; }
+  }
+
+  .diff-add { color: #3fb950; font-weight: 600; }
+  .diff-del { color: #f85149; font-weight: 600; }
+</style>
