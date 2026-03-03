@@ -38,7 +38,7 @@ describe('Structural accessibility', () => {
       const href = skipLink?.getAttribute('href');
       expect(href).toBeTruthy();
       const targetId = href?.replace('#', '');
-      const target = document.getElementById(targetId);
+      const target = targetId ? document.getElementById(targetId) : null;
       expect(target, `skip-link target #${targetId} not found`).not.toBeNull();
     });
   });
