@@ -20,7 +20,7 @@ const svgMap: Record<SocialPlatform, string> = {
 ---
 
 {config.socials.map((social) => (
-  <a href={social.url} target="_blank" rel="noopener" class="social-btn" aria-label={social.label}>
+  <a href={social.url} target="_blank" rel="noopener noreferrer" class="social-btn" aria-label={social.label}>
     <Fragment set:html={svgMap[social.platform]} />
   </a>
 ))}
@@ -53,5 +53,15 @@ const svgMap: Record<SocialPlatform, string> = {
     }
 
     @include respond-to(mobile) { width: 44px; height: 44px; }
+
+    @include respond-to(small) {
+      width: 40px;
+      height: 40px;
+
+      :global(svg) {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
 </style>
