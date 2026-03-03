@@ -1,3 +1,5 @@
+import { trackEvent } from '../achievements';
+
 export function initObserver(): void {
   const selectors =
     '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-clip, .stagger, .section-separator';
@@ -22,4 +24,20 @@ export function initObserver(): void {
   );
 
   for (const el of elements) observer.observe(el);
+
+  // Section visibility tracking for achievements
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+  if (sections.length) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.target.id) {
+            trackEvent(`section:${entry.target.id}`);
+          }
+        }
+      },
+      { threshold: 0.2 },
+    );
+    for (const section of sections) sectionObserver.observe(section);
+  }
 }
