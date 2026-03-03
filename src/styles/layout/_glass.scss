@@ -32,18 +32,21 @@
     transform: translateY(-6px) !important;
 
     .project-name a,
-    .cert-name {
+    .cert-name,
+    .contrib-repo-name {
       color: var(--accent-mint);
     }
 
     .project-icon,
-    .cert-badge {
+    .cert-badge,
+    .contrib-avatar {
       transform: scale(1.1);
       transition: transform var(--duration-normal) var(--ease-out-expo);
     }
 
     .project-link,
-    .cert-ext {
+    .cert-ext,
+    .contrib-link {
       color: var(--accent-mint);
     }
   }
