@@ -80,8 +80,8 @@ function buildVariant(syntax: LanguageSyntax, lines: Line[]): LangVariant {
     copyLines,
     extension: syntax.extension,
     langLabel: syntax.label,
-    commentLineIndex: copyLines.indexOf(copyLines.find((l) => l.includes('__COMMENT__'))!),
-    echoLineIndex: copyLines.indexOf(copyLines.find((l) => l.includes('__MSG__'))!),
+    commentLineIndex: copyLines.findIndex((l) => l.includes('__COMMENT__')),
+    echoLineIndex: copyLines.findIndex((l) => l.includes('__MSG__')),
     commentPrefix: syntax.commentPrefix,
     printTemplate: syntax.printTemplate,
   };
