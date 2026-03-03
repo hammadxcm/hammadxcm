@@ -1,0 +1,79 @@
+---
+import { config } from '@config/index';
+import { getTranslations, getDirection, t } from '@i18n/index';
+import type { Locale } from '@i18n/types';
+import Layout from '../layouts/Layout.astro';
+import GlobalOverlays from '@components/GlobalOverlays.astro';
+import Nav from '@components/Nav.astro';
+import Hero from '@components/Hero.astro';
+import About from '@components/About.astro';
+import TechArsenal from '@components/TechArsenal.astro';
+import Journey from '@components/Journey.astro';
+import Projects from '@components/Projects.astro';
+import Contributions from '@components/Contributions.astro';
+import Analytics from '@components/Analytics.astro';
+import Certifications from '@components/Certifications.astro';
+import Testimonials from '@components/Testimonials.astro';
+import CommandPalette from '@components/CommandPalette.astro';
+import AchievementPanel from '@components/AchievementPanel.astro';
+import Guestbook from '@components/Guestbook.astro';
+import Footer from '@components/Footer.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const translations = await getTranslations(locale);
+const dir = getDirection(locale);
+const title = t(translations, 'meta.title', { name: config.site.name, jobTitle: config.site.title });
+const description = translations.meta.description;
+---
+
+<Layout
+  title={title}
+  description={description}
+  locale={locale}
+  dir={dir}
+  translations={translations}
+>
+  <!-- Boot Sequence Overlay -->
+  <div id="bootScreen" class="boot-screen" data-welcome={config.boot.welcomeName} data-name={config.site.name}>
+    <div class="boot-lines" id="bootLines"></div>
+    <div class="boot-progress" id="bootProgress"></div>
+  </div>
+
+  <GlobalOverlays translations={translations} />
+  <CommandPalette translations={translations} />
+  <AchievementPanel />
+  <Nav translations={translations} locale={locale} />
+  <Hero translations={translations} />
+
+  <About translations={translations} />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <TechArsenal translations={translations} />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <Journey translations={translations} />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <Projects translations={translations} />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <Contributions translations={translations} />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <Certifications translations={translations} />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <Testimonials translations={translations} />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <Analytics translations={translations} />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <Guestbook translations={translations} />
+
+  <Footer translations={translations} />
+</Layout>
