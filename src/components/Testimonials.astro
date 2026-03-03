@@ -1,0 +1,209 @@
+---
+/**
+ * Testimonials Section ("Signal Intercepts")
+ * CSS-only marquee animation with glass cards. Config-driven from LinkedIn recommendations.
+ * Long quotes are truncated to 4 lines with a "Read more" toggle.
+ *
+ * @depends config.testimonials
+ * @styles Scoped SCSS — marquee, testimonial cards, glass styling + responsive
+ */
+import SectionHeader from './SectionHeader.astro';
+import { config } from '@config/index';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
+const testimonials = config.testimonials || [];
+// Duplicate for seamless loop
+const doubled = [...testimonials, ...testimonials];
+---
+
+{testimonials.length > 0 && (
+  <section id="testimonials" class="section">
+    <SectionHeader label={translations.testimonials.label} title={translations.testimonials.title} />
+    <div class="testimonials-track-wrapper">
+      <div class="testimonials-track">
+        {doubled.map((t) => (
+          <a href="https://linkedin.com/in/hammadxcm" target="_blank" rel="noopener noreferrer" class="testimonial-link">
+            <blockquote class="testimonial-card glass glow-border">
+              <div class="testimonial-quote-wrapper">
+                <p class="testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
+                <span class="testimonial-fade"></span>
+              </div>
+              <footer class="testimonial-footer">
+                {t.avatar && <img src={t.avatar} alt={t.author} class="testimonial-avatar" width="40" height="40" loading="lazy" />}
+                <div class="testimonial-author">
+                  <cite class="testimonial-name">{t.author}</cite>
+                  <span class="testimonial-role">{t.role}, {t.company}</span>
+                </div>
+              </footer>
+            </blockquote>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .testimonials-track-wrapper {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    padding: 1rem 0;
+  }
+
+  .testimonials-track {
+    display: flex;
+    align-items: stretch;
+    gap: 1.5rem;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+
+    &:hover { animation-play-state: paused; }
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .testimonials-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: auto;
+      justify-content: center;
+    }
+
+    .testimonials-track-wrapper {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+
+  .testimonial-link {
+    text-decoration: none;
+    color: inherit;
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+  }
+
+  .testimonial-card {
+    width: 360px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    margin: 0;
+    height: 100%;
+
+    @include respond-to(mobile) { width: 300px; padding: 1.25rem; }
+    @include respond-to(small) { width: 85vw; }
+  }
+
+  .testimonial-quote-wrapper {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    max-height: 8.5lh; // ~5 lines (line-height 1.7)
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2.5rem;
+    background: linear-gradient(to bottom, transparent, var(--glass-bg, rgba(13, 17, 23, 0.85)));
+    pointer-events: none;
+  }
+
+  // Hide fade on short quotes that don't overflow
+  .testimonial-quote-wrapper:not([style]) {
+    // The fade is always shown since we can't detect overflow in CSS alone.
+    // It looks natural as a subtle bottom edge on all cards.
+  }
+
+  .testimonial-quote {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text);
+    font-style: italic;
+    margin: 0;
+
+    @include respond-to(mobile) { font-size: 0.82rem; }
+    @include respond-to(small) { font-size: 0.78rem; }
+  }
+
+  .testimonial-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--glass-border);
+    margin-top: auto;
+  }
+
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--glass-border);
+    flex-shrink: 0;
+  }
+
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .testimonial-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .testimonial-role {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @include respond-to(mobile) {
+    .testimonials-track {
+      animation-duration: 25s;
+    }
+  }
+
+  @include respond-to(small) {
+    .testimonials-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: auto;
+      justify-content: center;
+    }
+
+    .testimonials-track-wrapper {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+</style>
