@@ -1,0 +1,87 @@
+/**
+ * @file Level-Up Overlay
+ * @description Full-screen overlay for level-up moments. Accent glow, auto-dismiss.
+ */
+@use '../mixins' as *;
+
+.levelup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s, visibility 0.4s;
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+.levelup-content {
+  text-align: center;
+  animation: levelupPulse 0.6s var(--ease-out-expo);
+}
+
+.levelup-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  animation: levelupBounce 0.8s ease;
+}
+
+.levelup-num {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
+  letter-spacing: 0.15em;
+}
+
+.levelup-name {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--text-dim);
+  margin-top: 0.25rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes levelupPulse {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes levelupBounce {
+  0% { transform: translateY(20px); opacity: 0; }
+  40% { transform: translateY(-8px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@include reduced-motion {
+  .levelup-content,
+  .levelup-icon {
+    animation: none;
+  }
+}
+
+@include respond-to(mobile) {
+  .levelup-num {
+    font-size: 1.5rem;
+  }
+
+  .levelup-icon {
+    font-size: 2.5rem;
+  }
+
+  .levelup-name {
+    font-size: 0.85rem;
+  }
+}
