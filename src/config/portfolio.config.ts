@@ -422,15 +422,6 @@ const config: PortfolioConfig = {
   /* ─── Projects ─── */
   projects: [
     {
-      icon: 'https://skillicons.dev/icons?i=rails',
-      name: 'Rails Core Contribution',
-      url: 'https://github.com/rails/rails/pull/56867',
-      description:
-        'Merged PR to <strong>rails/rails</strong> &mdash; Fixed Ruby 4.0 delegator warning in ActiveModel/ActiveRecord.',
-      tags: ['Ruby on Rails', 'Open Source', 'Core'],
-      linkText: 'View PR',
-    },
-    {
       icon: 'https://skillicons.dev/icons?i=nodejs',
       name: 'ramadan-cli-pro',
       url: 'https://www.npmjs.com/package/ramadan-cli-pro',
@@ -438,6 +429,7 @@ const config: PortfolioConfig = {
         'Published npm package &mdash; TUI dashboard with prayer times, i18n &amp; notifications.',
       tags: ['npm', 'Node.js', 'CLI', 'i18n'],
       linkText: 'View Package',
+      npmPackage: 'ramadan-cli-pro',
     },
     {
       icon: 'https://skillicons.dev/icons?i=ruby',
@@ -447,6 +439,7 @@ const config: PortfolioConfig = {
         'Published RubyGem &mdash; 2,800+ downloads. Modern RuboCop config for Ruby &amp; Rails projects.',
       tags: ['RubyGems', 'RuboCop', 'Linting'],
       linkText: 'View Gem',
+      gemName: 'rubocop-hk',
     },
     {
       icon: 'https://techstack-generator.vercel.app/react-icon.svg',
@@ -456,6 +449,7 @@ const config: PortfolioConfig = {
         'React zoom component &mdash; 8 stars, 748+ downloads. TypeScript with 7 releases.',
       tags: ['React', 'TypeScript', 'npm'],
       linkText: 'View Package',
+      npmPackage: '@hammadxcm/image-magnifier',
     },
     {
       icon: 'https://skillicons.dev/icons?i=css',
@@ -465,6 +459,7 @@ const config: PortfolioConfig = {
         'Animated CSS border effects &mdash; React, Vue, Next.js &amp; Svelte with live demo.',
       tags: ['CSS', 'React', 'Vue', 'Svelte'],
       linkText: 'View Package',
+      npmPackage: 'electric-border-css',
     },
     {
       icon: 'daemon-icon.svg',
@@ -649,6 +644,85 @@ const config: PortfolioConfig = {
   /* ─── HackerRank (optional) ─── */
   hackerrank: { username: 'hammadxcm' },
 
+  /* ─── Testimonials (from LinkedIn recommendations) ─── */
+  testimonials: [
+    {
+      quote:
+        "Thanks for helping me with the VAT Legal site. I was very happy with the work Fyniti did. They did everything, from setting up WordPress and making it look like our brand to speeding it up, making it safer, and making it easier for search engines to find. We now have a sleek, modern website that looks great on any screen and really shows what we're all about. They also took care of the technical side of things, like setting up SSL, DNS, and business email. The best things about them were how much they knew, how careful they were, and how much they cared about their customers. I would hire them again.",
+      author: 'Majid Mohammed',
+      role: 'VAT Consultant',
+      company: 'VAT Legal',
+      avatar: '/avatars/majid-mohammed.jpg',
+    },
+    {
+      quote:
+        'Hammad has made a huge impact at Sendoso during his almost 3 years working here. Hammad played a big part in the recent June launch which was an important launch for our customers. Keep up the great work Hammad!',
+      author: 'Kris Rudeegraap',
+      role: 'Co-CEO',
+      company: 'Sendoso',
+      avatar: '/avatars/kris-rudeegraap.jpg',
+    },
+    {
+      quote:
+        'I have worked with Hammad both directly and indirectly for more than a year at this point. He has helped me immensely in solving issues in software development and also serving as a resource to help the team be more successful. There are many things that can be trained, but one thing that cannot be trained is a positive attitude. Hammad has always had a positive attitude and great communications in everything I have worked with him on. I recommend Hammad!',
+      author: 'Cody Farmer',
+      role: 'VP, Product',
+      company: 'Sendoso',
+      avatar: '/avatars/cody-farmer.jpg',
+    },
+    {
+      quote:
+        "Hammad did an amazing work on different projects in the last few months including ChurnZero, HubSpot Chrome Extension and SalesIQ V2. He improved the reliability and performance of the chrome extension by replacing scrapping code with API calls and removed the dependency of data scrapping which can failed anytime by 3rd party changes on their side. We've more accurate data stats on ChurnZero now by removing the duplicate fields. He is self motivated and self organized engineer in the INT team.",
+      author: 'Usman Ali',
+      role: 'Scrum Master | Agile Project Manager',
+      company: 'Sendoso',
+      avatar: '/avatars/usman-ali.jpg',
+    },
+    {
+      quote:
+        'Hammad is an excellent resource. He is one of our talented and energetic graduates. He worked well during his studies and also good professional in programming languages. I rate him high for his problem-solving ability. I wish him the best of luck for his bright future.',
+      author: 'Muhammad Rashid Mukhtar',
+      role: 'Technical Lead, Solution Architect',
+      company: 'COMSATS University',
+      avatar: '/avatars/rashid-mukhtar.jpg',
+    },
+    {
+      quote:
+        'Hammad is an amazing engineer! He played a very important roll in the rollout of a new redesign and helped lead the efforts. Hammad is a great communicator and has helped multiple engineering teams be more successful, especially our integrations team. I strongly recommend Hammad!',
+      author: 'Kris Rudeegraap',
+      role: 'Co-CEO',
+      company: 'Sendoso',
+      avatar: '/avatars/kris-rudeegraap.jpg',
+    },
+    {
+      quote:
+        'Hammad Habib Khan was a great person to work with. Proactive, energetic and totally organized. Brilliant Software Engineer. Loyal, insightful and independent. He had vision to see the benefits and the passion to turn that into measurable results for Engin Technologies.',
+      author: 'Sajid Ali',
+      role: 'Integration Manager & Principal Software Engineer',
+      company: 'Engin Technologies',
+      avatar: '/avatars/sajid-ali.jpg',
+    },
+  ],
+
+  /* ─── Guestbook (Giscus + Stats API) ─── */
+  guestbook: {
+    giscus: {
+      repo: 'hammadxcm/hammadxcm',
+      repoId: 'R_kgDOJH-NdA',
+      category: 'General',
+      categoryId: 'DIC_kwDOJH-NdM4C3jth',
+    },
+    statsApi: 'https://portfolio-stats.hammadkhanxcm.workers.dev',
+  },
+
+  /* ─── Contributions ─── */
+  contributions: {
+    enabled: true,
+    excludeOrgs: [],
+    minStars: 0,
+    maxItems: 20,
+  },
+
   /* ─── Socials (urls auto-generated from platform configs above; explicit url overrides) ─── */
   socials: [
     { platform: 'github', label: 'GitHub' },
@@ -665,8 +739,11 @@ const config: PortfolioConfig = {
     { id: 'tech', label: 'Skills' },
     { id: 'journey', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
+    { id: 'contributions', label: 'Contributions' },
     { id: 'certs', label: 'Certifications' },
+    { id: 'testimonials', label: 'Testimonials' },
     { id: 'analytics', label: 'Analytics' },
+    { id: 'guestbook', label: 'Guestbook' },
   ],
 
   /* ─── Boot Sequence ─── */
