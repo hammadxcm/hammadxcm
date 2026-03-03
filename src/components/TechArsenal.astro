@@ -8,21 +8,27 @@
  */
 import SectionHeader from './SectionHeader.astro';
 import { config } from '@config/index';
+import type { TranslationMap } from '@i18n/types';
 
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <!-- ══════ TECH ARSENAL ══════ -->
 <section id="tech" class="section">
-  <SectionHeader label="// What I use" title="Tech Arsenal" />
+  <SectionHeader label={translations.tech.label} title={translations.tech.title} />
   <div class="tech-grid stagger">
     {config.techStack.map((category) => (
       <div class="tech-card glass reveal" data-tilt>
-        <div class="tech-card-title"><span class="emoji">{category.emoji}</span> {category.title}</div>
+        <div class="tech-card-title"><span class="emoji">{category.emoji}</span> {translations.tech.categories[category.title] || category.title}</div>
         <div class="tech-icons">
           {category.items.map((item) => (
-            <a href={item.url} target="_blank" rel="noopener" class="tech-icon">
-              <img src={item.isLocal ? `${base}${item.icon}` : item.icon} alt={item.name} />
+            <a href={item.url} target="_blank" rel="noopener noreferrer" class="tech-icon">
+              <img src={item.isLocal ? `${base}${item.icon}` : item.icon} alt={item.name} width="40" height="40" loading="lazy" />
               <span>{item.name}</span>
             </a>
           ))}
