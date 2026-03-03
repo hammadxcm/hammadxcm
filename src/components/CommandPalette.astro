@@ -1,0 +1,198 @@
+---
+/**
+ * Command Palette
+ * Full fuzzy-search modal: jump to sections, switch themes/locales, search projects/tech.
+ * Triggered by Cmd+K / Ctrl+K.
+ *
+ * @depends config.sections, themes, locales
+ * @styles Scoped SCSS — modal, input, results list, keyboard navigation + responsive
+ */
+import { config } from '@config/index';
+import { LOCALES } from '@i18n/types';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
+
+// Build data island for client-side fuzzy search
+const paletteData = {
+  sections: config.sections.map((s) => ({
+    id: s.id,
+    label: translations.nav.sections[s.id] || s.label,
+  })),
+  themes: [
+    { id: 'hacker', label: 'Hacker' },
+    { id: 'dracula', label: 'Dracula' },
+    { id: 'nord', label: 'Nord' },
+    { id: 'catppuccin', label: 'Catppuccin' },
+    { id: 'synthwave', label: 'Synthwave' },
+    { id: 'matrix', label: 'Matrix' },
+    { id: 'bloodmoon', label: 'Blood Moon' },
+    { id: 'midnight', label: 'Midnight' },
+    { id: 'arctic', label: 'Arctic Light' },
+    { id: 'gruvbox', label: 'Gruvbox' },
+  ],
+  locales: LOCALES.map((l) => ({ id: l, label: l.toUpperCase() })),
+  projects: config.projects.map((p) => ({ id: p.name, label: p.name, url: p.url })),
+  tech: config.techStack.flatMap((cat) => cat.items.map((t) => ({ id: t.name, label: t.name, url: t.url }))),
+};
+---
+
+<div class="cmd-palette-overlay" id="cmdPaletteOverlay" aria-hidden="true">
+  <div class="cmd-palette" role="dialog" aria-label="Command palette" aria-modal="true">
+    <div class="cmd-palette-input-wrapper">
+      <svg class="cmd-palette-search-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z" />
+      </svg>
+      <input
+        type="text"
+        class="cmd-palette-input"
+        id="cmdPaletteInput"
+        placeholder={translations.commandPalette.placeholder}
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <kbd class="cmd-palette-esc">ESC</kbd>
+    </div>
+    <div class="cmd-palette-results" id="cmdPaletteResults"></div>
+  </div>
+</div>
+
+<script type="application/json" id="cmdPaletteData" set:html={JSON.stringify(paletteData)} />
+
+<script>
+  import { initCommandPalette } from '../scripts/interactions/command-palette';
+  initCommandPalette();
+</script>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .cmd-palette-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 20vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s, visibility 0.15s;
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @include respond-to(mobile) { padding-top: 10vh; }
+  }
+
+  .cmd-palette {
+    width: 560px;
+    max-width: calc(100vw - 2rem);
+    max-height: 420px;
+    background: var(--bg-card-solid);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg, 12px);
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-8px) scale(0.98);
+    transition: transform 0.15s var(--ease-out-expo);
+
+    .open & {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .cmd-palette-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .cmd-palette-search-icon {
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+
+  .cmd-palette-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+
+    &::placeholder { color: var(--text-dim); }
+  }
+
+  .cmd-palette-esc {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+
+  .cmd-palette-results {
+    overflow-y: auto;
+    max-height: 340px;
+    padding: 0.5rem;
+  }
+
+  /* Results styling via global (rendered by JS) */
+  .cmd-palette-results :global(.cmd-group-label) {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    padding: 0.5rem 0.75rem 0.25rem;
+  }
+
+  .cmd-palette-results :global(.cmd-item) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 0.85rem;
+    transition: background 0.1s;
+
+    &:hover,
+    &:global(.active) {
+      background: var(--glass-bg);
+      color: var(--accent);
+    }
+  }
+
+  .cmd-palette-results :global(.cmd-item-hint) {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+  }
+
+  .cmd-palette-results :global(.cmd-no-results) {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+</style>
