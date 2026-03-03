@@ -10,7 +10,13 @@
 import SectionHeader from './SectionHeader.astro';
 import { config } from '@config/index';
 import { buildAboutLines, buildAboutMultiLang } from '@config/about-builder';
+import type { TranslationMap } from '@i18n/types';
 
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
 const { displayLines, copyLines } = buildAboutLines(config.about);
 const codeString = copyLines.join('\n');
 const multiLangData = buildAboutMultiLang(config.about);
@@ -18,14 +24,14 @@ const multiLangData = buildAboutMultiLang(config.about);
 
 <!-- ══════ ABOUT ══════ -->
 <section id="about" class="section">
-  <SectionHeader label="// cat /etc/target" title="About Me" />
+  <SectionHeader label={translations.about.label} title={translations.about.title} />
   <div class="about-card glass reveal-scale">
     <div class="code-header">
       <span class="code-dot red"></span>
       <span class="code-dot yellow"></span>
       <span class="code-dot green"></span>
-      <span class="code-filename" id="aboutFilename">classified_dossier.sh</span>
-      <select class="lang-switcher" id="langSwitcher" aria-label="Select language">
+      <span class="code-filename" id="aboutFilename">{translations.about.filename}</span>
+      <select class="lang-switcher" id="langSwitcher" aria-label={translations.about.selectLanguage}>
         <option value="bash">Bash</option>
         <option value="python">Python</option>
         <option value="ruby">Ruby</option>
@@ -45,9 +51,13 @@ const multiLangData = buildAboutMultiLang(config.about);
         <option value="assembly">Assembly</option>
         <option value="binary">Binary</option>
       </select>
-      <button type="button" class="code-copy" id="copyBtn" data-code={codeString} aria-label="Copy code">
+      <button type="button" class="code-copy" id="copyBtn" data-code={codeString} data-label-copy={translations.about.copy} data-label-copied={translations.about.copied} aria-label={translations.a11y.copyCode}>
         <svg id="copyIcon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        <span id="copyLabel">Copy</span>
+        <span id="copyLabel">{translations.about.copy}</span>
+      </button>
+      <button type="button" class="code-copy" id="resumeExportBtn" aria-label={translations.resume.download} title={translations.resume.download}>
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>{translations.resume.download}</span>
       </button>
     </div>
     <div class="code-body" id="aboutCodeBody">
@@ -75,6 +85,12 @@ const multiLangData = buildAboutMultiLang(config.about);
     padding: 1rem 1.5rem;
     background: var(--glass-bg);
     border-bottom: 1px solid var(--glass-border);
+
+    @include respond-to(mobile) {
+      flex-wrap: wrap;
+      padding: 0.75rem 1rem;
+      gap: 6px;
+    }
   }
 
   .code-dot {
@@ -84,13 +100,20 @@ const multiLangData = buildAboutMultiLang(config.about);
     &.red { background: #ff5f57; }
     &.yellow { background: #febc2e; }
     &.green { background: #28c840; }
+
+    @include respond-to(mobile) { display: none; }
   }
 
   .code-filename {
-    margin-left: auto;
+    margin-inline-start: auto;
     font-family: var(--font-mono);
     font-size: 0.8rem;
     color: var(--text-dim);
+
+    @include respond-to(mobile) {
+      margin-inline-start: 0;
+      font-size: 0.72rem;
+    }
   }
 
   .lang-switcher {
@@ -115,13 +138,18 @@ const multiLangData = buildAboutMultiLang(config.about);
       background: var(--bg-card-solid);
       color: var(--text);
     }
+
+    @include respond-to(small) {
+      font-size: 0.65rem;
+      padding: 0.2rem 0.35rem;
+    }
   }
 
   .code-copy {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    margin-left: 0.75rem;
+    margin-inline-start: 0.75rem;
     padding: 0.3rem 0.7rem;
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
@@ -143,6 +171,11 @@ const multiLangData = buildAboutMultiLang(config.about);
       color: var(--code-success);
     }
 
+    &.loading {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
     svg {
       width: 14px; height: 14px;
       fill: none;
@@ -150,6 +183,17 @@ const multiLangData = buildAboutMultiLang(config.about);
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
+    }
+
+    @include respond-to(mobile) {
+      margin-inline-start: 0.25rem;
+      padding: 0.25rem 0.5rem;
+    }
+
+    @include respond-to(small) {
+      gap: 0;
+
+      span { display: none; }
     }
   }
 
@@ -187,17 +231,17 @@ const multiLangData = buildAboutMultiLang(config.about);
 
   :global(.code-line) {
     display: block;
-    padding-left: 2rem;
+    padding-inline-start: 2rem;
     white-space: pre;
   }
 
   :global(.code-line-num) {
     display: inline-block;
     width: 2rem;
-    margin-left: -2rem;
+    margin-inline-start: -2rem;
     color: var(--code-line-num);
-    text-align: right;
-    padding-right: 1rem;
+    text-align: end;
+    padding-inline-end: 1rem;
     user-select: none;
   }
 </style>
