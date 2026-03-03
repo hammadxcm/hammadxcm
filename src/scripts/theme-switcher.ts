@@ -1,3 +1,4 @@
+import { trackEvent } from './achievements';
 import { updateAnalyticsTheme } from './analytics';
 import { switchCanvasEffect } from './effects/canvas';
 import { updateCursorVisibility } from './effects/cursor';
@@ -9,6 +10,8 @@ import { updateStatusBar } from './interactions/status-bar';
 import { prefersReducedMotion, setCurrentTheme } from './state';
 import { getCurrentTheme, getThemeConfig, themePrompts } from './theme-config';
 import type { ThemeName } from './types';
+
+const themeSwitchTimes: number[] = [];
 
 export function initThemeSwitcher(): void {
   const switcher = document.getElementById('themeSwitcher');
@@ -92,6 +95,18 @@ export function initThemeSwitcher(): void {
       } else {
         applyThemeEffects(theme);
       }
+
+      // Track theme change for achievements (user-initiated only)
+      trackEvent('theme_switch');
+      trackEvent(`theme:${theme}`);
+
+      // Rapid switcher detection — 5 switches in 30 seconds
+      const now = Date.now();
+      themeSwitchTimes.push(now);
+      while (themeSwitchTimes.length > 0 && themeSwitchTimes[0] < now - 30_000) {
+        themeSwitchTimes.shift();
+      }
+      if (themeSwitchTimes.length >= 5) trackEvent('rapid_switcher');
 
       setActiveOption(theme);
       dropdown.classList.remove('open');
