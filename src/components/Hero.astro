@@ -9,6 +9,13 @@
  */
 import SocialLinks from './SocialLinks.astro';
 import { config } from '@config/index';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
 ---
 
 <!-- ══════ HERO ══════ -->
@@ -39,7 +46,7 @@ import { config } from '@config/index';
   </div>
   <div class="scroll-indicator">
     <div class="scroll-mouse"></div>
-    <span>SCROLL</span>
+    <span>{translations.hero.scroll}</span>
   </div>
 </section>
 
