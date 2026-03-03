@@ -1,0 +1,128 @@
+---
+/**
+ * Guestbook Section ("Transmission Log")
+ * Giscus (GitHub Discussions) embed with theme-aware colors. Zero server cost.
+ *
+ * @depends Giscus CDN script
+ * @styles Scoped SCSS — wrapper styling + responsive
+ */
+import { config } from '@config/index';
+import SectionHeader from './SectionHeader.astro';
+import GuestbookStats from './GuestbookStats.astro';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
+const giscus = config.guestbook?.giscus;
+---
+
+<section id="guestbook" class="section">
+  <SectionHeader label={translations.guestbook.label} title={translations.guestbook.title} />
+  <GuestbookStats translations={translations} />
+  <div
+    class="guestbook-wrapper glass glow-border reveal"
+    id="guestbookWrapper"
+    data-repo={giscus?.repo}
+    data-repo-id={giscus?.repoId}
+    data-category={giscus?.category}
+    data-category-id={giscus?.categoryId}
+  >
+    <div class="giscus" id="giscusContainer"></div>
+  </div>
+</section>
+
+<script>
+  function getGiscusTheme(): string {
+    const theme = document.documentElement.getAttribute('data-theme') || 'hacker';
+    // Map portfolio themes to Giscus themes
+    const themeMap: Record<string, string> = {
+      hacker: 'dark',
+      dracula: 'dark',
+      nord: 'dark',
+      catppuccin: 'dark',
+      synthwave: 'dark',
+      matrix: 'dark',
+      bloodmoon: 'dark',
+      midnight: 'dark',
+      arctic: 'light',
+      gruvbox: 'dark',
+    };
+    return themeMap[theme] || 'dark';
+  }
+
+  function loadGiscus(): void {
+    const container = document.getElementById('giscusContainer');
+    if (!container || container.querySelector('iframe')) return;
+
+    const wrapper = document.getElementById('guestbookWrapper');
+    const repo = wrapper?.dataset.repo;
+    const repoId = wrapper?.dataset.repoId;
+    const category = wrapper?.dataset.category;
+    const categoryId = wrapper?.dataset.categoryId;
+    if (!repo || !repoId || !categoryId) return;
+
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', repo);
+    script.setAttribute('data-repo-id', repoId);
+    script.setAttribute('data-category', category || 'General');
+    script.setAttribute('data-category-id', categoryId);
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'top');
+    script.setAttribute('data-theme', getGiscusTheme());
+    script.setAttribute('data-lang', 'en');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+    container.appendChild(script);
+  }
+
+  // Load Giscus when section is in viewport
+  const wrapper = document.getElementById('guestbookWrapper');
+  if (wrapper && window.IntersectionObserver) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          loadGiscus();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' },
+    );
+    observer.observe(wrapper);
+  }
+
+  // Update Giscus theme when portfolio theme changes
+  window.addEventListener('theme-change', () => {
+    const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+    if (iframe) {
+      iframe.contentWindow?.postMessage(
+        { giscus: { setConfig: { theme: getGiscusTheme() } } },
+        'https://giscus.app',
+      );
+    }
+  });
+</script>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .guestbook-wrapper {
+    @include card-padding;
+    min-height: 200px;
+  }
+
+  .giscus {
+    width: 100%;
+
+    :global(iframe) {
+      width: 100% !important;
+      border: none;
+    }
+  }
+</style>
