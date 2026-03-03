@@ -5,7 +5,7 @@ export default getViteConfig({
     globals: true,
     coverage: {
       provider: 'v8',
-      include: ['src/config/**'],
+      include: ['src/config/**', 'src/utils/**'],
       thresholds: {
         statements: 80,
         branches: 80,
