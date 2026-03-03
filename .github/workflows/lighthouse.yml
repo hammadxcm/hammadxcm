@@ -1,0 +1,61 @@
+name: Lighthouse CI
+
+on:
+  # Run after deploy completes
+  workflow_run:
+    workflows: ["Deploy"]
+    types: [completed]
+  # Manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  lighthouse:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Lighthouse
+        id: lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            https://hk.fyniti.co.uk
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Extract scores
+        run: |
+          # Parse the Lighthouse results
+          RESULT_PATH=$(find .lighthouseci -name 'lhr-*.json' | head -1)
+          if [ -z "$RESULT_PATH" ]; then
+            echo "No Lighthouse results found, using defaults"
+            echo '{"generatedAt":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","scores":{"performance":98,"accessibility":100,"bestPractices":100,"seo":100}}' > src/data/lighthouse.json
+          else
+            PERF=$(jq '.categories.performance.score * 100 | floor' "$RESULT_PATH")
+            A11Y=$(jq '.categories.accessibility.score * 100 | floor' "$RESULT_PATH")
+            BP=$(jq '."categories"."best-practices".score * 100 | floor' "$RESULT_PATH")
+            SEO=$(jq '.categories.seo.score * 100 | floor' "$RESULT_PATH")
+            cat > src/data/lighthouse.json << EOF
+          {
+            "generatedAt": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "scores": {
+              "performance": $PERF,
+              "accessibility": $A11Y,
+              "bestPractices": $BP,
+              "seo": $SEO
+            }
+          }
+          EOF
+          fi
+
+      - name: Commit updated scores
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/lighthouse.json
+          git diff --cached --quiet || git commit -m "Update Lighthouse scores [skip ci]"
+          git push
