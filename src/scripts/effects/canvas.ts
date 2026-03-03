@@ -1,4 +1,4 @@
-import { isHeroVisible, isPageVisible } from '../state';
+import { isHeroVisible, isPageVisible, isTouchDevice } from '../state';
 import { getCurrentTheme, getThemeConfig } from '../theme-config';
 import type { ThemeName } from '../types';
 
@@ -24,13 +24,13 @@ interface Mote {
   vx: number;
   vy: number;
   opacity: number;
-  drift?: number;
-  flicker?: number;
-  twinkle?: number;
-  speed?: number;
-  baseOpacity?: number;
-  glow?: number;
-  glowSpeed?: number;
+  drift: number;
+  flicker: number;
+  twinkle: number;
+  speed: number;
+  baseOpacity: number;
+  glow: number;
+  glowSpeed: number;
 }
 
 interface MoteEffectConfig {
@@ -43,7 +43,8 @@ interface MoteEffectConfig {
 let motes: Mote[] = [];
 
 function initMotes(config: MoteEffectConfig): void {
-  const count = config.count(w, h);
+  const baseCount = config.count(w, h);
+  const count = isTouchDevice ? Math.floor(baseCount * 0.4) : baseCount;
   motes = [];
   for (let i = 0; i < count; i++) motes.push(config.spawn(w, h));
 }
@@ -67,6 +68,13 @@ const snowfall: MoteEffectConfig = {
     vy: Math.random() * 1 + 0.3,
     vx: (Math.random() - 0.5) * 0.5,
     opacity: Math.random() * 0.6 + 0.2,
+    drift: 0,
+    flicker: 0,
+    twinkle: 0,
+    speed: 0,
+    baseOpacity: 0,
+    glow: 0,
+    glowSpeed: 0,
   }),
   update: (m, w, h) => {
     m.y += m.vy;
@@ -95,6 +103,13 @@ const bubbles: MoteEffectConfig = {
     vy: -(Math.random() * 0.5 + 0.1),
     vx: (Math.random() - 0.5) * 0.3,
     opacity: Math.random() * 0.15 + 0.05,
+    drift: 0,
+    flicker: 0,
+    twinkle: 0,
+    speed: 0,
+    baseOpacity: 0,
+    glow: 0,
+    glowSpeed: 0,
   }),
   update: (m, w, h) => {
     m.y += m.vy;
@@ -123,18 +138,24 @@ const embers: MoteEffectConfig = {
     vx: (Math.random() - 0.5) * 0.5,
     opacity: Math.random() * 0.5 + 0.2,
     flicker: Math.random() * Math.PI * 2,
+    drift: 0,
+    twinkle: 0,
+    speed: 0,
+    baseOpacity: 0,
+    glow: 0,
+    glowSpeed: 0,
   }),
   update: (m, w, h) => {
     m.y += m.vy;
-    m.x += m.vx + Math.sin(m.flicker!) * 0.2;
-    m.flicker! += 0.02;
+    m.x += m.vx + Math.sin(m.flicker) * 0.2;
+    m.flicker += 0.02;
     if (m.y < -10) {
       m.y = h + 10;
       m.x = Math.random() * w;
     }
   },
   draw: (ctx, m, color) => {
-    const osc = Math.sin(m.flicker!) * 0.15 + 0.85;
+    const osc = Math.sin(m.flicker) * 0.15 + 0.85;
     ctx.beginPath();
     ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
     ctx.fillStyle = `${color}${m.opacity * osc})`;
@@ -154,12 +175,16 @@ const starfield: MoteEffectConfig = {
     twinkle: Math.random() * Math.PI * 2,
     speed: Math.random() * 0.02 + 0.005,
     baseOpacity: Math.random() * 0.5 + 0.3,
+    drift: 0,
+    flicker: 0,
+    glow: 0,
+    glowSpeed: 0,
   }),
   update: (m) => {
-    m.twinkle! += m.speed;
+    m.twinkle += m.speed;
   },
   draw: (ctx, m, color) => {
-    const opacity = m.baseOpacity! + Math.sin(m.twinkle!) * 0.2;
+    const opacity = m.baseOpacity + Math.sin(m.twinkle) * 0.2;
     ctx.beginPath();
     ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
     ctx.fillStyle = `${color}${Math.max(0.1, opacity)})`;
@@ -177,11 +202,17 @@ const lightDust: MoteEffectConfig = {
     vx: Math.random() * 0.3 + 0.1,
     opacity: Math.random() * 0.3 + 0.1,
     drift: Math.random() * Math.PI * 2,
+    flicker: 0,
+    twinkle: 0,
+    speed: 0,
+    baseOpacity: 0,
+    glow: 0,
+    glowSpeed: 0,
   }),
   update: (m, w, h) => {
     m.x += m.vx;
-    m.y += m.vy + Math.sin(m.drift!) * 0.1;
-    m.drift! += 0.01;
+    m.y += m.vy + Math.sin(m.drift) * 0.1;
+    m.drift += 0.01;
     if (m.x > w + 10) {
       m.x = -10;
       m.y = Math.random() * h;
@@ -206,16 +237,21 @@ const fireflies: MoteEffectConfig = {
     opacity: 0,
     glow: Math.random() * Math.PI * 2,
     glowSpeed: Math.random() * 0.03 + 0.01,
+    drift: 0,
+    flicker: 0,
+    twinkle: 0,
+    speed: 0,
+    baseOpacity: 0,
   }),
   update: (m, w, h) => {
     m.x += m.vx;
     m.y += m.vy;
-    m.glow! += m.glowSpeed;
+    m.glow += m.glowSpeed;
     if (m.x < 0 || m.x > w) m.vx *= -1;
     if (m.y < 0 || m.y > h) m.vy *= -1;
   },
   draw: (ctx, m, color) => {
-    const intensity = (Math.sin(m.glow!) + 1) / 2;
+    const intensity = (Math.sin(m.glow) + 1) / 2;
     const opacity = intensity * 0.6 + 0.1;
     const radius = m.r * (0.8 + intensity * 0.4);
     ctx.beginPath();
@@ -242,21 +278,26 @@ const bloodRain: MoteEffectConfig = {
       opacity: 0.15 + depth * 0.45,
       speed: 8 + depth * 25,
       drift: Math.random() * Math.PI * 2,
+      flicker: 0,
+      twinkle: 0,
+      baseOpacity: 0,
+      glow: 0,
+      glowSpeed: 0,
     };
   },
   update: (m, w, h) => {
     m.y += m.vy;
-    m.x += m.vx + Math.sin(m.drift!) * 0.15;
-    m.drift! += 0.01;
-    if (m.y > h + m.speed!) {
-      m.y = -(m.speed! + Math.random() * 40);
+    m.x += m.vx + Math.sin(m.drift) * 0.15;
+    m.drift += 0.01;
+    if (m.y > h + m.speed) {
+      m.y = -(m.speed + Math.random() * 40);
       m.x = Math.random() * w;
     }
     if (m.x > w) m.x = 0;
     if (m.x < 0) m.x = w;
   },
   draw: (ctx, m, color) => {
-    const trailLen = m.speed!;
+    const trailLen = m.speed;
     const grad = ctx.createLinearGradient(m.x, m.y - trailLen, m.x, m.y);
     grad.addColorStop(0, `${color}0)`);
     grad.addColorStop(0.6, `${color}${m.opacity * 0.5})`);
@@ -287,11 +328,17 @@ const purpleParticles: MoteEffectConfig = {
     vy: (Math.random() - 0.5) * 0.3,
     opacity: Math.random() * 0.3 + 0.1,
     drift: Math.random() * Math.PI * 2,
+    flicker: 0,
+    twinkle: 0,
+    speed: 0,
+    baseOpacity: 0,
+    glow: 0,
+    glowSpeed: 0,
   }),
   update: (m, w, h) => {
-    m.x += m.vx + Math.sin(m.drift!) * 0.1;
-    m.y += m.vy + Math.cos(m.drift!) * 0.1;
-    m.drift! += 0.005;
+    m.x += m.vx + Math.sin(m.drift) * 0.1;
+    m.y += m.vy + Math.cos(m.drift) * 0.1;
+    m.drift += 0.005;
     if (m.x < 0 || m.x > w) m.vx *= -1;
     if (m.y < 0 || m.y > h) m.vy *= -1;
   },
@@ -326,7 +373,8 @@ interface Particle {
 
 let particles: Particle[] = [];
 function initParticles(): void {
-  const count = Math.min(80, Math.floor((w * h) / 12000));
+  const baseCount = Math.min(80, Math.floor((w * h) / 12000));
+  const count = isTouchDevice ? Math.floor(baseCount * 0.4) : baseCount;
   particles = [];
   for (let i = 0; i < count; i++) {
     particles.push({
