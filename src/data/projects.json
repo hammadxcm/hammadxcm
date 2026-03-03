@@ -1,0 +1,160 @@
+{
+  "generatedAt": "2026-03-02T13:49:09.476Z",
+  "username": "hammadxcm",
+  "repos": [
+    {
+      "name": "discord-hk",
+      "fullName": "hammadxcm/discord-hk",
+      "url": "https://github.com/hammadxcm/discord-hk",
+      "description": null,
+      "stars": 8,
+      "forks": 0,
+      "language": "JavaScript",
+      "topics": [],
+      "updatedAt": "2026-02-23T18:28:56Z"
+    },
+    {
+      "name": "image-magnifier",
+      "fullName": "hammadxcm/image-magnifier",
+      "url": "https://github.com/hammadxcm/image-magnifier",
+      "description": "A React component for magnifying images with a zoom effect.",
+      "stars": 8,
+      "forks": 2,
+      "language": "TypeScript",
+      "topics": [],
+      "updatedAt": "2026-02-23T18:28:10Z"
+    },
+    {
+      "name": "hammadxcm",
+      "fullName": "hammadxcm/hammadxcm",
+      "url": "https://github.com/hammadxcm/hammadxcm",
+      "description": null,
+      "stars": 8,
+      "forks": 4,
+      "language": "TypeScript",
+      "topics": [],
+      "updatedAt": "2026-03-02T05:05:53Z"
+    },
+    {
+      "name": "acme-basket",
+      "fullName": "hammadxcm/acme-basket",
+      "url": "https://github.com/hammadxcm/acme-basket",
+      "description": null,
+      "stars": 7,
+      "forks": 0,
+      "language": "Ruby",
+      "topics": [],
+      "updatedAt": "2026-02-23T18:28:57Z"
+    },
+    {
+      "name": "Freddit",
+      "fullName": "hammadxcm/Freddit",
+      "url": "https://github.com/hammadxcm/Freddit",
+      "description": null,
+      "stars": 7,
+      "forks": 0,
+      "language": "Ruby",
+      "topics": [],
+      "updatedAt": "2026-02-23T18:29:24Z"
+    },
+    {
+      "name": "podcast-test",
+      "fullName": "hammadxcm/podcast-test",
+      "url": "https://github.com/hammadxcm/podcast-test",
+      "description": null,
+      "stars": 7,
+      "forks": 0,
+      "language": null,
+      "topics": [],
+      "updatedAt": "2026-02-23T18:29:33Z"
+    },
+    {
+      "name": "ramadan-cli-pro",
+      "fullName": "hammadxcm/ramadan-cli-pro",
+      "url": "https://github.com/hammadxcm/ramadan-cli-pro",
+      "description": null,
+      "stars": 5,
+      "forks": 2,
+      "language": "TypeScript",
+      "topics": [],
+      "updatedAt": "2026-02-25T16:41:56Z"
+    },
+    {
+      "name": "rubocop-hk",
+      "fullName": "hammadxcm/rubocop-hk",
+      "url": "https://github.com/hammadxcm/rubocop-hk",
+      "description": "Modern RuboCop configuration for Ruby and Rails applications",
+      "stars": 5,
+      "forks": 0,
+      "language": "Ruby",
+      "topics": [],
+      "updatedAt": "2026-02-26T12:32:15Z"
+    },
+    {
+      "name": "electric-border-css",
+      "fullName": "hammadxcm/electric-border-css",
+      "url": "https://github.com/hammadxcm/electric-border-css",
+      "description": "Stunning animated electric border effects using pure CSS & SVG - Multi-framework support (React, Next.js, Vue, Svelte)",
+      "stars": 4,
+      "forks": 0,
+      "language": "HTML",
+      "topics": [],
+      "updatedAt": "2026-02-23T18:28:42Z"
+    },
+    {
+      "name": "homebrew-daemon-os",
+      "fullName": "hammadxcm/homebrew-daemon-os",
+      "url": "https://github.com/hammadxcm/homebrew-daemon-os",
+      "description": "Homebrew formula for Daemon OS",
+      "stars": 2,
+      "forks": 0,
+      "language": "Ruby",
+      "topics": [],
+      "updatedAt": "2026-02-23T18:28:35Z"
+    },
+    {
+      "name": "daemon-os",
+      "fullName": "hammadxcm/daemon-os",
+      "url": "https://github.com/hammadxcm/daemon-os",
+      "description": "macOS MCP server for AI agent computer-use — gives AI eyes and hands on your Mac",
+      "stars": 2,
+      "forks": 1,
+      "language": "Swift",
+      "topics": [],
+      "updatedAt": "2026-02-23T18:28:34Z"
+    },
+    {
+      "name": "facebook-group-integration-guide",
+      "fullName": "hammadxcm/facebook-group-integration-guide",
+      "url": "https://github.com/hammadxcm/facebook-group-integration-guide",
+      "description": "A comprehensive guide for integrating private Facebook group content into your website - Multiple approaches with cost breakdowns and automation solutions",
+      "stars": 2,
+      "forks": 0,
+      "language": null,
+      "topics": [],
+      "updatedAt": "2026-02-23T18:28:29Z"
+    },
+    {
+      "name": "petstore-api-client",
+      "fullName": "hammadxcm/petstore-api-client",
+      "url": "https://github.com/hammadxcm/petstore-api-client",
+      "description": "Production-ready Ruby client for Swagger Petstore API with OAuth2 support",
+      "stars": 2,
+      "forks": 0,
+      "language": "Ruby",
+      "topics": [],
+      "updatedAt": "2026-02-23T18:28:30Z"
+    },
+    {
+      "name": "github-achievements",
+      "fullName": "hammadxcm/github-achievements",
+      "url": "https://github.com/hammadxcm/github-achievements",
+      "description": null,
+      "stars": 2,
+      "forks": 0,
+      "language": "JavaScript",
+      "topics": [],
+      "updatedAt": "2026-02-23T18:28:40Z"
+    }
+  ]
+}
