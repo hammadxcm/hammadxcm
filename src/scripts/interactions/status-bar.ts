@@ -1,3 +1,4 @@
+import { getLevel, getLevelName, getProgress } from '../achievements';
 import { prefersReducedMotion, setClientIP } from '../state';
 import { getStatusBarConfig } from '../theme-config';
 
@@ -14,6 +15,22 @@ function render(): void {
   for (let i = 0; i < SLOT_COUNT; i++) {
     const el = slots[i];
     if (!el) continue;
+
+    // Override last slot with XP/Level display
+    if (i === SLOT_COUNT - 1) {
+      try {
+        const progress = getProgress();
+        if (progress) {
+          const lvl = getLevel();
+          el.textContent = `LVL ${lvl} ${getLevelName(lvl)} [${progress.totalXP} XP]`;
+          el.className = 'status-slot';
+          continue;
+        }
+      } catch {
+        /* achievements not yet initialized */
+      }
+    }
+
     const seg = config[i];
     if (!seg) {
       el.textContent = '';
