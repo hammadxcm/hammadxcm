@@ -1,0 +1,167 @@
+---
+/**
+ * Achievement Panel — modal overlay showing all achievements, XP bar, and level.
+ * Opened via nav trophy button or keyboard shortcut.
+ */
+---
+
+<div class="achievement-panel-overlay" id="achievementPanelOverlay" role="dialog" aria-label="Achievements" aria-modal="true" aria-hidden="true">
+  <div class="achievement-panel">
+    <div class="achievement-panel-header">
+      <div class="achievement-level-info">
+        <span class="achievement-level-badge" id="apLevelBadge">LVL 1</span>
+        <span class="achievement-level-name" id="apLevelName">Script Kiddie</span>
+      </div>
+      <button type="button" class="achievement-panel-close" id="apCloseBtn" aria-label="Close achievements">&times;</button>
+    </div>
+    <div class="achievement-xp-bar-wrap">
+      <div class="achievement-xp-bar" id="apXpBar" style="width: 0%"></div>
+      <span class="achievement-xp-text" id="apXpText">0 / 50 XP</span>
+    </div>
+    <div class="achievement-grid" id="apGrid"></div>
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .achievement-panel-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    padding: 1.5rem;
+
+    @include respond-to(mobile) {
+      padding: 0.75rem;
+    }
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .achievement-panel {
+    background: var(--bg-card-solid);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    max-width: 640px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--glass-border);
+
+    @include respond-to(mobile) {
+      padding: 1rem;
+      max-height: 85vh;
+    }
+  }
+
+  .achievement-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .achievement-level-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .achievement-level-badge {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+
+    @include respond-to(mobile) { font-size: 0.75rem; }
+  }
+
+  .achievement-level-name {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    @include respond-to(mobile) { font-size: 0.75rem; }
+  }
+
+  .achievement-panel-close {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 1.25rem;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--duration-normal);
+
+    &:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  }
+
+  .achievement-xp-bar-wrap {
+    position: relative;
+    height: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+
+  .achievement-xp-bar {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 10px;
+    transition: width 0.6s var(--ease-out-expo);
+    opacity: 0.8;
+  }
+
+  .achievement-xp-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text);
+    mix-blend-mode: difference;
+    letter-spacing: 0.03em;
+  }
+
+  .achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.75rem;
+
+    @include respond-to(small) {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
