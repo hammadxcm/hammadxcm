@@ -1,0 +1,49 @@
+/**
+ * RTL overrides for elements that can't use logical CSS properties alone.
+ * Applied when html[dir="rtl"] is set.
+ */
+@use '../mixins' as *;
+
+[dir="rtl"] {
+  // Timeline line and dots must flip to right side
+  .timeline::before {
+    left: auto;
+    right: 28px;
+
+    @include respond-to(mobile) {
+      right: 16px;
+    }
+  }
+
+  .timeline-dot {
+    left: auto;
+    right: 20px;
+
+    @include respond-to(mobile) {
+      right: 8px;
+    }
+  }
+
+  // Timeline card hover slides opposite direction
+  .timeline-card:hover {
+    transform: translateX(-4px);
+  }
+
+  // Code body stays LTR (code is always LTR)
+  .code-body,
+  .about-card {
+    direction: ltr;
+    text-align: left;
+  }
+
+  // Theme dropdown and lang dropdown position flip
+  .theme-dropdown {
+    right: auto;
+    left: 0;
+  }
+
+  // RTL font stack fallbacks
+  body {
+    font-family: var(--font-body), 'Noto Sans Arabic', 'Noto Naskh Arabic', sans-serif;
+  }
+}
