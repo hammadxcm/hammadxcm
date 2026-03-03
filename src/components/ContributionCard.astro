@@ -1,0 +1,492 @@
+---
+/**
+ * Single Contribution PR Card
+ * Displays a merged/open PR with repo metadata, diff stats, and labels.
+ */
+import ArrowIcon from './ArrowIcon.astro';
+import StarIcon from './icons/StarIcon.astro';
+import ForkIcon from './icons/ForkIcon.astro';
+import { langColors } from '@config/lang-colors';
+import { formatStars } from '../utils/format';
+import { relativeTime } from '../utils/time';
+import type { ContributionPR } from '@config/types';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  pr: ContributionPR;
+  hidden: boolean;
+  translations: TranslationMap;
+}
+
+const { pr, hidden, translations } = Astro.props;
+
+const repo = pr.repo;
+const dotColor = repo.language ? (langColors[repo.language] || 'var(--text-dim)') : 'var(--text-dim)';
+const topics = (repo.topics || []).slice(0, 5);
+const labels = (pr.labels || []).slice(0, 4);
+const prTotal = (pr.additions || 0) + (pr.deletions || 0);
+const addPct = prTotal > 0 ? ((pr.additions || 0) / prTotal) * 100 : 50;
+const starTier = repo.stars >= 50000 ? 'legendary' : repo.stars >= 10000 ? 'popular' : null;
+---
+
+<a
+  class:list={['contrib-card', 'glass', 'reveal', 'glow-border', { 'contrib-hidden': hidden }]}
+  href={pr.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-tilt
+>
+  {/* State Badge */}
+  {pr.state === 'open' ? (
+    <span class="state-badge open-badge">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" />
+        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z" />
+      </svg>
+      {translations.contributions.open}
+    </span>
+  ) : (
+    <span class="state-badge merged-badge">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path d="M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5.45 10.846a2.25 2.25 0 1 1 0-5.692ZM4.25 8a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5 1.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
+      </svg>
+      {translations.contributions.merged}
+    </span>
+  )}
+
+  {/* Card Header: Avatar + Repo Info + Stars/Forks */}
+  <div class="contrib-header">
+    <div class="avatar-wrapper">
+      <img
+        class="contrib-avatar"
+        src={repo.ownerAvatar}
+        alt={repo.fullName.split('/')[0]}
+        width="36"
+        height="36"
+        loading="lazy"
+      />
+      {starTier === 'legendary' && (
+        <span class="star-tier legendary" title="50k+ stars">
+          <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+        </span>
+      )}
+      {starTier === 'popular' && (
+        <span class="star-tier popular" title="10k+ stars">
+          <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+        </span>
+      )}
+    </div>
+    <div class="contrib-repo-info">
+      <h3 class="contrib-repo-name">{repo.fullName}</h3>
+      <div class="contrib-meta">
+        {repo.language && (
+          <span class="contrib-lang">
+            <span class="lang-dot" style={`background:${dotColor}`} />
+            {repo.language}
+          </span>
+        )}
+        <span class="contrib-stat">
+          <StarIcon />
+          {formatStars(repo.stars)}
+        </span>
+        <span class="contrib-stat">
+          <ForkIcon />
+          {formatStars(repo.forks || 0)}
+        </span>
+        {repo.license && repo.license !== 'NOASSERTION' && (
+          <span class="license-badge">{repo.license}</span>
+        )}
+      </div>
+    </div>
+  </div>
+
+  {/* PR Title */}
+  <h4 class="contrib-pr-title">
+    <span class="pr-number">#{pr.number}</span>{` ${pr.title}`}
+  </h4>
+
+  {/* Repo Description */}
+  {repo.description && (
+    <p class="contrib-desc">{repo.description}</p>
+  )}
+
+  {/* Topics */}
+  {topics.length > 0 && (
+    <div class="contrib-topics">
+      {topics.map((topic) => (
+        <span class="topic-tag">{topic}</span>
+      ))}
+    </div>
+  )}
+
+  {/* PR Labels */}
+  {labels.length > 0 && (
+    <div class="contrib-labels">
+      {labels.map((label) => (
+        <span
+          class="pr-label"
+          style={`--label-color: #${label.color}; --label-bg: #${label.color}20;`}
+        >
+          {label.name}
+        </span>
+      ))}
+    </div>
+  )}
+
+  {/* Spacer to push footer down */}
+  <div class="contrib-spacer" />
+
+  {/* Impact Bar */}
+  {prTotal > 0 && (
+    <div class="impact-bar" title={`+${pr.additions} -${pr.deletions}`}>
+      <div class="impact-add" style={`width:${addPct}%`} />
+      <div class="impact-del" style={`width:${100 - addPct}%`} />
+    </div>
+  )}
+
+  {/* Diff Stats Footer */}
+  <div class="contrib-footer">
+    <div class="contrib-diff">
+      <span class="diff-add">+{(pr.additions || 0).toLocaleString()}</span>
+      <span class="diff-del">-{(pr.deletions || 0).toLocaleString()}</span>
+      <span class="diff-files">{pr.changedFiles || 0} {translations.contributions.files}</span>
+    </div>
+    <span class="contrib-time">
+      {pr.state === 'open'
+        ? translations.contributions.open.toLowerCase()
+        : translations.contributions.merged.toLowerCase()}{' '}
+      {relativeTime(pr.mergedAt, translations)}
+    </span>
+  </div>
+
+  {/* View PR link */}
+  <span class="contrib-link">
+    {translations.contributions.viewPullRequest} <ArrowIcon />
+  </span>
+</a>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+  @use '../styles/utilities/tag' as *;
+
+  .contrib-card {
+    @include card-padding;
+    transition: all var(--duration-slow) var(--ease-out-expo);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-decoration: none;
+    color: var(--text);
+    cursor: pointer;
+    min-width: 0;
+
+    @include respond-to(mobile) { overflow: hidden; }
+  }
+
+  /* ── State Badge (Merged / Open) ── */
+  .state-badge {
+    position: absolute;
+    top: 1rem;
+    inset-inline-end: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    svg { flex-shrink: 0; }
+
+    @include respond-to(mobile) {
+      position: static;
+      align-self: flex-end;
+      margin-bottom: 0.25rem;
+    }
+
+    @include respond-to(small) {
+      font-size: 0.58rem;
+      padding: 0.15rem 0.4rem;
+    }
+  }
+
+  .merged-badge {
+    background: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+  }
+
+  .open-badge {
+    background: rgba(63, 185, 80, 0.15);
+    color: #3fb950;
+    border: 1px solid rgba(63, 185, 80, 0.25);
+  }
+
+  /* ── Card Header ── */
+  .contrib-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding-inline-end: 5.5rem;
+
+    @include respond-to(mobile) { padding-inline-end: 0; }
+  }
+
+  .avatar-wrapper {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .contrib-avatar {
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .star-tier {
+    position: absolute;
+    bottom: -2px;
+    inset-inline-end: -4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid var(--glass-bg);
+
+    svg { flex-shrink: 0; }
+  }
+
+  .star-tier.legendary {
+    background: linear-gradient(135deg, #ff6b35, #ffd700);
+    color: #fff;
+  }
+
+  .star-tier.popular {
+    background: linear-gradient(135deg, #a78bfa, #6366f1);
+    color: #fff;
+  }
+
+  .contrib-repo-info { min-width: 0; }
+
+  .contrib-repo-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text);
+    transition: color var(--duration-normal);
+
+    @include respond-to(mobile) { font-size: 0.85rem; }
+  }
+
+  .contrib-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+
+    @include respond-to(mobile) { flex-wrap: wrap; }
+
+    @include respond-to(small) {
+      gap: 0.35rem;
+      font-size: 0.65rem;
+    }
+  }
+
+  .contrib-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .lang-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .contrib-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    opacity: 0.85;
+
+    :global(svg) { opacity: 0.7; }
+  }
+
+  .license-badge {
+    font-size: 0.6rem;
+    padding: 0.05rem 0.4rem;
+    border-radius: 999px;
+    background: rgba(var(--accent-glow), 0.1);
+    color: var(--text-dim);
+    border: 1px solid var(--glass-border);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  /* ── PR Title ── */
+  .contrib-pr-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--text);
+
+    @include respond-to(mobile) { font-size: 0.9rem; }
+  }
+
+  .pr-number {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  /* ── Description ── */
+  .contrib-desc {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    @include respond-to(mobile) { font-size: 0.78rem; }
+  }
+
+  /* ── Topics ── */
+  .contrib-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .topic-tag {
+    @include topic-tag;
+  }
+
+  /* ── PR Labels ── */
+  .contrib-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .pr-label {
+    font-size: 0.65rem;
+    font-family: var(--font-mono);
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+    background: var(--label-bg);
+    color: var(--label-color);
+    border: 1px solid var(--label-color);
+    white-space: nowrap;
+    opacity: 0.85;
+  }
+
+  .contrib-spacer { flex: 1; }
+
+  /* ── Impact Bar ── */
+  .impact-bar {
+    display: flex;
+    height: 4px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    background: var(--glass-border);
+  }
+
+  .impact-add {
+    background: #3fb950;
+    border-radius: 4px 0 0 4px;
+    min-width: 2px;
+    transition: width 0.4s var(--ease-out-expo);
+  }
+
+  .impact-del {
+    background: #f85149;
+    border-radius: 0 4px 4px 0;
+    min-width: 2px;
+    transition: width 0.4s var(--ease-out-expo);
+  }
+
+  /* ── Footer: Diff Stats + Time ── */
+  .contrib-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--glass-border);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+
+    @include respond-to(small) {
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+  }
+
+  .contrib-diff {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  .diff-add { color: #3fb950; font-weight: 600; }
+  .diff-del { color: #f85149; font-weight: 600; }
+  .diff-files { color: var(--text-dim); }
+
+  .contrib-time {
+    color: var(--text-dim);
+    font-size: 0.68rem;
+    white-space: nowrap;
+
+    @include respond-to(mobile) { white-space: normal; }
+  }
+
+  /* ── View PR Link ── */
+  .contrib-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--accent);
+    transition: color var(--duration-normal);
+
+    :global(svg) { width: 16px; height: 16px; }
+  }
+
+  .contrib-card:hover {
+    .contrib-repo-name { color: var(--accent-mint); }
+    .contrib-link { color: var(--accent-mint); }
+    .contrib-avatar { transform: scale(1.1); transition: transform var(--duration-normal) var(--ease-out-expo); }
+  }
+
+  .contrib-hidden {
+    display: none !important;
+  }
+</style>
