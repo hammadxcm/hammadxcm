@@ -1,3 +1,4 @@
+import { initAchievements, trackEvent } from './achievements';
 import { initGithubTabs, initLeetcodeTabs } from './analytics';
 import { initBoot } from './effects/boot';
 import { initCanvas } from './effects/canvas';
@@ -7,16 +8,23 @@ import { initHeroName } from './effects/hero-name';
 import { initMatrixRain } from './effects/matrix-rain';
 import { initNavLogo } from './effects/nav-logo';
 import { initScreenEffects } from './effects/screen-effects';
+import { spawnToast } from './effects/toast';
 import { initTypewriter } from './effects/typewriter';
 import { initAboutLang } from './interactions/about-lang';
+import { initAchievementPanel } from './interactions/achievement-panel';
+import { initAnnotations } from './interactions/annotations';
 import { initBlurUp } from './interactions/blur-up';
 import { initCopy } from './interactions/copy';
+import { initCTF } from './interactions/ctf';
 import { initFloatingIcons } from './interactions/floating-icons';
+import { initGuestbookStats } from './interactions/guestbook-stats';
 import { initKeyboard } from './interactions/keyboard';
 import { initKonami } from './interactions/konami';
+import { initLangSwitcher } from './interactions/lang-switcher';
 import { initNav } from './interactions/nav';
 import { initObserver } from './interactions/observer';
 import { initProjectCards } from './interactions/project-cards';
+import { initResumeExport } from './interactions/resume-export';
 import { initScrollHandler } from './interactions/scroll';
 import { initSmoothScroll } from './interactions/smooth-scroll';
 import { initStatusBar } from './interactions/status-bar';
@@ -56,6 +64,26 @@ safeInit(initProjectCards);
 safeInit(initKonami);
 safeInit(initStatusBar);
 safeInit(initAboutLang);
+safeInit(initLangSwitcher);
+safeInit(initResumeExport);
+safeInit(initCTF);
+safeInit(initAnnotations);
+
+// Achievement engine (before theme switcher, after interactions)
+safeInit(initAchievements);
+
+safeInit(initGuestbookStats);
+safeInit(initAchievementPanel);
+
+// Bridge toast for achievement notifications
+window.__achievementToast = { spawnToast };
+
+// Social link tracking
+document.querySelectorAll('.social-btn').forEach((el) => {
+  el.addEventListener('click', () => {
+    trackEvent('social_click');
+  });
+});
 
 // Shared hero visibility observer
 const heroSection = document.getElementById('hero');
