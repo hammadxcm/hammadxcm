@@ -1,37 +1,73 @@
 ---
 import { config } from '@config/index';
 import { themeMetaColors } from '@config/theme-colors';
+import { getAlternateLinks, localePath } from '@i18n/index';
+import type { Locale, Direction, TranslationMap } from '@i18n/types';
+import { LOCALES } from '@i18n/types';
 
 interface Props {
   title: string;
   description: string;
+  locale: Locale;
+  dir: Direction;
+  translations: TranslationMap;
 }
 
-const { title, description } = Astro.props;
+const { title, description, locale, dir, translations } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const theme = config.site.theme || 'hacker';
 const siteUrl = config.site.url.replace(/\/$/, '');
+const canonicalUrl = `${siteUrl}${localePath('', locale)}`;
+const alternateLinks = getAlternateLinks('', siteUrl);
+const otherLocales = LOCALES.filter((l) => l !== locale);
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme={theme}>
+<html lang={locale} dir={dir} data-theme={theme} data-stats-api={config.guestbook?.statsApi || ''}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
-  <link rel="canonical" href={siteUrl}>
+  <link rel="canonical" href={canonicalUrl}>
   <meta name="theme-color" content={themeMetaColors[theme] || '#0D1117'}>
+
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Preconnect to external image domains -->
+  <link rel="preconnect" href="https://github-readme-stats-sigma-five.vercel.app">
+  <link rel="preconnect" href="https://streak-stats.demolab.com">
+  <link rel="preconnect" href="https://github-readme-activity-graph.vercel.app">
+  <link rel="preconnect" href="https://github-profile-summary-cards.vercel.app">
+  <link rel="preconnect" href="https://github-trophies.vercel.app">
+  <link rel="dns-prefetch" href="https://leetcard.jacoblin.cool">
+  <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://komarev.com">
 
   <!-- Favicon -->
   <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml">
+
+  <!-- Hreflang -->
+  {alternateLinks.map((link) => (
+    <link rel="alternate" hreflang={link.hreflang} href={link.href} />
+  ))}
+  <link rel="alternate" hreflang="x-default" href={`${siteUrl}/`} />
 
   <!-- Open Graph -->
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:type" content="website">
-  <meta property="og:url" content={siteUrl}>
+  <meta property="og:url" content={canonicalUrl}>
   <meta property="og:image" content={`${siteUrl}/og-image.png`}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content={translations.meta.ogLocale}>
+  {otherLocales.map((l) => (
+    <meta property="og:locale:alternate" content={l} />
+  ))}
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -40,7 +76,7 @@ const siteUrl = config.site.url.replace(/\/$/, '');
   <meta name="twitter:image" content={`${siteUrl}/og-image.png`}>
 
   <!-- Fonts (self-hosted, no external requests) -->
-  <link rel="preload" href={`${base}fonts/inter-latin.woff2`} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={`${base}fonts/inter-latin.woff2`} as="font" type="font/woff2" crossorigin fetchpriority="high">
   <link rel="preload" href={`${base}fonts/firacode-latin.woff2`} as="font" type="font/woff2" crossorigin>
 
   <!-- Blocking theme script — prevents flash of wrong theme -->
@@ -58,12 +94,14 @@ const siteUrl = config.site.url.replace(/\/$/, '');
     "name": config.site.name,
     "jobTitle": config.site.title,
     "url": siteUrl,
+    "inLanguage": locale,
     "sameAs": config.socials.map(s => s.url),
   })} />
 </head>
 <body>
+  <!-- CTF Clue 1/5: The passphrase starts with "HACK" -->
   <!-- Skip link for accessibility -->
-  <a href="#about" class="skip-link">Skip to content</a>
+  <a href="#about" class="skip-link">{translations.a11y.skipToContent}</a>
   <slot />
   <!-- All scripts as single bundled module (Vite handles bundling + minification) -->
   <script src="../scripts/main.ts"></script>
