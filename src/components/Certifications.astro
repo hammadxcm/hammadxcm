@@ -27,7 +27,7 @@ const { translations } = Astro.props;
       <a href={cert.href} target="_blank" rel="noopener noreferrer" class="cert-card glass reveal glow-border" aria-label={cert.ariaLabel}>
         <div class="cert-badge">
           {cert.badge.type === 'image'
-            ? <img src={cert.badge.src} width={cert.badge.width} alt={cert.badge.alt} loading="lazy" />
+            ? <img src={cert.badge.src} width={cert.badge.width} height={cert.badge.height} alt={cert.badge.alt} loading="lazy" />
             : <Fragment set:html={cert.badge.svg} />
           }
         </div>

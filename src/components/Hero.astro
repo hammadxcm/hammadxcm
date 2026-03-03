@@ -206,8 +206,8 @@ const { translations } = Astro.props;
     50% { opacity: 0; }
   }
   @keyframes scrollWheel {
-    0% { top: 6px; opacity: 1; }
-    100% { top: 20px; opacity: 0; }
+    0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    100% { transform: translateX(-50%) translateY(14px); opacity: 0; }
   }
   @keyframes heroReveal {
     0% {

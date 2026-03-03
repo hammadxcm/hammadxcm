@@ -30,7 +30,7 @@ export type SectionId =
   | 'analytics';
 
 export type CertBadge =
-  | { type: 'image'; src: string; width: number; alt: string }
+  | { type: 'image'; src: string; width: number; height: number; alt: string }
   | { type: 'svg'; svg: string };
 
 export interface TechItem {

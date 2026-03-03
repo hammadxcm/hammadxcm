@@ -192,6 +192,7 @@ const config: PortfolioConfig = {
         type: 'image',
         src: 'https://techstack-generator.vercel.app/aws-icon.svg',
         width: 50,
+        height: 50,
         alt: 'AWS',
       },
       category: 'Cloud',
