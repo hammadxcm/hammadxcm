@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths-ignore:
       - "metrics.*.svg"
+      - "src/data/contributions.json"
+      - "CONTRIBUTIONS_README.md"
 
 concurrency:
   group: ci-${{ github.head_ref }}
