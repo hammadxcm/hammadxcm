@@ -7,8 +7,17 @@
  * @styles Scoped SCSS — analytics grid, images, CTA cards + responsive
  */
 import SectionHeader from './SectionHeader.astro';
+import GitHubPanel from './analytics/GitHubPanel.astro';
+import LeetCodePanel from './analytics/LeetCodePanel.astro';
+import StackOverflowPanel from './analytics/StackOverflowPanel.astro';
 import { config } from '@config/index';
+import type { TranslationMap } from '@i18n/types';
 
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
 const { username, utcOffset } = config.github;
 const leetcode = config.leetcode;
 const stackoverflow = config.stackoverflow;
@@ -16,171 +25,36 @@ const stackoverflow = config.stackoverflow;
 
 <!-- ══════ ANALYTICS ══════ -->
 <section id="analytics" class="section">
-  <SectionHeader label="// The numbers" title="Analytics" />
+  <SectionHeader label={translations.analytics.label} title={translations.analytics.title} />
 
-  <!-- GitHub sub-section -->
-  <div class="analytics-subsection">
-    <h3 class="analytics-subsection-title">GitHub</h3>
-    <div class="analytics-grid" data-github-user={username} data-utc-offset={utcOffset}>
-      <div class="analytics-tabs reveal">
-        <button class="analytics-tab active" data-panel="overview">Overview</button>
-        <button class="analytics-tab" data-panel="activity">Activity</button>
-        <button class="analytics-tab" data-panel="trophies">Trophies</button>
-        <button class="analytics-tab" data-panel="languages">Languages</button>
-        <button class="analytics-tab" data-panel="summary">Summary</button>
-        <button class="analytics-tab" data-panel="contributions">Contributions</button>
-        <button class="analytics-tab" data-panel="stars">Stars</button>
-      </div>
-      <div class="github-panel active" data-panel="overview">
-        <div class="analytics-row">
-          <img data-stat="streak" src={`https://streak-stats.demolab.com?user=${username}&theme=tokyonight&hide_border=true&stroke=0000&background=0D1117&ring=5BCDEC&fire=5BCDEC&currStreakNum=5BCDEC`} alt="GitHub Streak" loading="lazy">
-          <img data-stat="stats" src={`https://github-readme-stats-sigma-five.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=5BCDEC&icon_color=5BCDEC&text_color=FFFFFF`} alt="GitHub Stats" loading="lazy">
-        </div>
-      </div>
-      <div class="github-panel" data-panel="activity">
-        <div class="analytics-full">
-          <img data-stat="activity" src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=tokyo-night&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&area=true&hide_border=true`} alt="Activity Graph" loading="lazy">
-        </div>
-      </div>
-      <div class="github-panel" data-panel="trophies">
-        <div class="analytics-full">
-          <img data-stat="trophy" src={`https://github-trophies.vercel.app/?username=${username}&theme=tokyonight&no-frame=true&no-bg=false&margin-w=4&column=7`} alt="GitHub Trophies" loading="lazy">
-        </div>
-      </div>
-      <div class="github-panel" data-panel="languages">
-        <div class="analytics-row">
-          <img data-stat="repos-lang" src={`https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=${username}&theme=tokyonight`} alt="Repos Per Language" loading="lazy">
-          <img data-stat="commit-lang" src={`https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=${username}&theme=tokyonight`} alt="Most Commit Language" loading="lazy">
-        </div>
-        <div class="analytics-row">
-          <img data-stat="top-langs" src={`https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117`} alt="Top Languages" loading="lazy">
-        </div>
-      </div>
-      <div class="github-panel" data-panel="summary">
-        <div class="analytics-row">
-          <img data-stat="card-stats" src={`https://github-profile-summary-cards.vercel.app/api/cards/stats?username=${username}&theme=tokyonight`} alt="Stats" loading="lazy">
-          <img data-stat="productive" src={`https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=${username}&theme=tokyonight&utcOffset=${utcOffset}`} alt="Productive Time" loading="lazy">
-        </div>
-        <div class="analytics-full">
-          <img data-stat="profile" src={`https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=${username}&theme=tokyonight`} alt="Profile Details" loading="lazy">
-        </div>
-      </div>
-      <div class="github-panel" data-panel="contributions">
-        <div class="analytics-full analytics-full--snake">
-          <img src={`https://raw.githubusercontent.com/${username}/${username}/output/snake.svg`} alt="Contribution Snake" loading="lazy">
-        </div>
-        <div class="analytics-full">
-          <img data-stat="isocalendar" src={`https://raw.githubusercontent.com/${username}/${username}/main/metrics.plugin.isocalendar.fullyear.svg`} alt="Contribution Calendar" loading="lazy">
-        </div>
-      </div>
-      <div class="github-panel" data-panel="stars">
-        <div class="analytics-full">
-          <img data-stat="stars" src={`https://raw.githubusercontent.com/${username}/${username}/main/metrics.plugin.stars.svg`} alt="Recently Starred Repos" loading="lazy">
-        </div>
-      </div>
-      <div class="profile-views-row reveal">
-        <img src={`https://komarev.com/ghpvc/?username=${username}&label=Profile%20Views&color=0e75b6&style=flat-square`} alt="Profile Views" loading="lazy">
-      </div>
-      <div class="analytics-cta-row reveal">
-        <a href={`https://github.com/${username}`} target="_blank" rel="noopener" class="analytics-cta glass glow-border">
-          <div class="analytics-cta__icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          </div>
-          <div class="analytics-cta__body">
-            <h3>GitHub Profile</h3>
-            <p>Explore my repos, contributions, and open-source work.</p>
-          </div>
-          <span class="analytics-cta__arrow">&rarr;</span>
-        </a>
-        <a href={`https://gitskyline.vercel.app/${username}`} target="_blank" rel="noopener" class="analytics-cta glass glow-border">
-          <div class="analytics-cta__icon analytics-cta__icon--emoji">&#127961;</div>
-          <div class="analytics-cta__body">
-            <h3>GitHub Skyline</h3>
-            <p>View my contribution story as an interactive 3D skyline.</p>
-          </div>
-          <span class="analytics-cta__arrow">&rarr;</span>
-        </a>
-      </div>
-    </div>
-  </div>
+  <GitHubPanel username={username} utcOffset={utcOffset} translations={translations} />
 
-  <!-- LeetCode sub-section (conditional) -->
   {leetcode && (
-    <div class="analytics-subsection">
-      <h3 class="analytics-subsection-title">LeetCode</h3>
-      <div class="analytics-grid" data-leetcode-user={leetcode.username}>
-        <div class="analytics-tabs reveal">
-          <button class="analytics-tab active" data-ext="activity">Activity</button>
-          <button class="analytics-tab" data-ext="heatmap">Heatmap</button>
-          <button class="analytics-tab" data-ext="contest">Contest</button>
-        </div>
-        <div class="analytics-responsive-card analytics-responsive-card--leetcode reveal">
-          <img data-stat="leetcode-card" data-current-ext="activity"
-            src={`https://leetcard.jacoblin.cool/${leetcode.username}?theme=dark&font=Source%20Code%20Pro&ext=activity&colors=0D1117,161B22,FFFFFF,8B949E,5BCDEC,58A6FF,3FB950,00BFA5`}
-            alt="LeetCode Stats" loading="lazy">
-        </div>
-        <div class="analytics-cta-row reveal">
-          <a href={`https://leetcode.com/u/${leetcode.username}`} target="_blank" rel="noopener" class="analytics-cta glass glow-border">
-            <div class="analytics-cta__icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
-            </div>
-            <div class="analytics-cta__body">
-              <h3>LeetCode Profile</h3>
-              <p>View my problem-solving stats and contest history.</p>
-            </div>
-            <span class="analytics-cta__arrow">&rarr;</span>
-          </a>
-        </div>
-      </div>
-    </div>
+    <LeetCodePanel username={leetcode.username} translations={translations} />
   )}
 
-  <!-- StackOverflow sub-section (conditional) -->
   {stackoverflow && (
-    <div class="analytics-subsection">
-      <h3 class="analytics-subsection-title">Stack Overflow</h3>
-      <div class="analytics-grid" data-stackoverflow-user={stackoverflow.userId}>
-        <div class="analytics-responsive-card reveal so-desktop">
-          <img data-stat="stackoverflow-stats" data-so-layout="default" src={`https://github-readme-stackoverflow.vercel.app/?userID=${stackoverflow.userId}&theme=dark&layout=default`} alt="Stack Overflow Stats" loading="lazy">
-        </div>
-        <div class="analytics-responsive-card reveal so-tablet">
-          <img data-stat="stackoverflow-stats" data-so-layout="compact" src={`https://github-readme-stackoverflow.vercel.app/?userID=${stackoverflow.userId}&theme=dark&layout=compact`} alt="Stack Overflow Stats" loading="lazy">
-        </div>
-        <div class="analytics-responsive-card reveal so-mobile">
-          <img data-stat="stackoverflow-stats" data-so-layout="small" src={`https://github-readme-stackoverflow.vercel.app/?userID=${stackoverflow.userId}&theme=dark&layout=compact`} alt="Stack Overflow Stats" loading="lazy">
-        </div>
-        <div class="analytics-cta-row reveal">
-          <a href={`https://stackoverflow.com/users/${stackoverflow.userId}`} target="_blank" rel="noopener" class="analytics-cta glass glow-border">
-            <div class="analytics-cta__icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154z"/></svg>
-            </div>
-            <div class="analytics-cta__body">
-              <h3>Stack Overflow Profile</h3>
-              <p>Check out my answers, reputation, and community contributions.</p>
-            </div>
-            <span class="analytics-cta__arrow">&rarr;</span>
-          </a>
-        </div>
-      </div>
-    </div>
+    <StackOverflowPanel userId={stackoverflow.userId} translations={translations} />
   )}
 
   <!-- Dev Quote — end of analytics, before footer -->
   <div class="dev-quote reveal">
-    <img data-stat="quote" src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Dev Quote" loading="lazy">
+    <img data-stat="quote" src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt={translations.analytics.alt.devQuote} loading="lazy" width="600" height="150">
   </div>
 </section>
 
 <style lang="scss">
   @use '../styles/mixins' as *;
 
-  .analytics-subsection {
+  :global(.analytics-subsection) {
     width: 100%;
     margin-bottom: 3rem;
     &:last-child { margin-bottom: 0; }
+
+    @include respond-to(mobile) { margin-bottom: 2rem; }
   }
 
-  .analytics-subsection-title {
+  :global(.analytics-subsection-title) {
     font-family: var(--font-mono);
     font-size: 1.1rem;
     font-weight: 600;
@@ -189,6 +63,13 @@ const stackoverflow = config.stackoverflow;
     padding-bottom: 0.75rem;
     border-bottom: 1px solid var(--border);
     letter-spacing: 0.05em;
+
+    @include respond-to(mobile) {
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+    }
+
+    @include respond-to(small) { font-size: 0.95rem; }
   }
 
   // ── Shared analytics image base ──
@@ -202,7 +83,7 @@ const stackoverflow = config.stackoverflow;
     transition: background-color 0.35s ease, border-color 0.35s ease;
   }
 
-  .analytics-grid {
+  :global(.analytics-grid) {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -212,7 +93,7 @@ const stackoverflow = config.stackoverflow;
     @include respond-to(small)  { gap: 1rem; }
   }
 
-  .analytics-row {
+  :global(.analytics-row) {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
@@ -225,15 +106,18 @@ const stackoverflow = config.stackoverflow;
       width: 100%;
     }
 
+    @include respond-to(tablet) { gap: 1rem; }
+
     @include respond-to(mobile) {
       flex-direction: column;
       align-items: center;
+      gap: 1rem;
 
-      img { width: 100%; }
+      img { width: 100%; aspect-ratio: auto; }
     }
   }
 
-  .analytics-full {
+  :global(.analytics-full) {
     width: 100%;
 
     img {
@@ -241,15 +125,30 @@ const stackoverflow = config.stackoverflow;
       aspect-ratio: 800 / 300;
       width: 100%;
     }
+
+    @include respond-to(mobile) {
+      img { aspect-ratio: auto; }
+    }
+
+    @include respond-to(small) {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      @include hide-scrollbar;
+
+      img {
+        min-width: 480px;
+        width: auto;
+      }
+    }
   }
 
   // Snake graph — natural aspect ratio, no forced squeeze
-  .analytics-full--snake img {
+  :global(.analytics-full--snake) img {
     aspect-ratio: auto;
   }
 
   // ── Profile views pill — small, centered ──
-  .profile-views-row {
+  :global(.profile-views-row) {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -267,7 +166,7 @@ const stackoverflow = config.stackoverflow;
   }
 
   // ── Responsive single-card container (LeetCode, SO) ──
-  .analytics-responsive-card {
+  :global(.analytics-responsive-card) {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -279,22 +178,38 @@ const stackoverflow = config.stackoverflow;
   }
 
   // LeetCode sizing — fill available space on desktop
-  .analytics-responsive-card--leetcode img {
+  :global(.analytics-responsive-card--leetcode) img {
     max-width: 750px;
 
     @include respond-to(tablet) { max-width: 100%; }
     @include respond-to(mobile) { max-width: 100%; }
   }
 
+  @include respond-to(small) {
+    :global(.analytics-responsive-card--leetcode) {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      @include hide-scrollbar;
+      justify-content: flex-start;
+
+      img {
+        min-width: 500px;
+        width: auto;
+      }
+    }
+  }
+
   // ── Shared tab buttons (GitHub + LeetCode) ──
-  .analytics-tabs {
+  :global(.analytics-tabs) {
     display: flex;
     gap: 0.5rem;
     justify-content: center;
     flex-wrap: wrap;
+
+    @include respond-to(mobile) { gap: 0.4rem; }
   }
 
-  .analytics-tab {
+  :global(.analytics-tab) {
     font-family: var(--font-mono);
     font-size: 0.8rem;
     padding: 0.4rem 1rem;
@@ -315,10 +230,20 @@ const stackoverflow = config.stackoverflow;
       border-color: var(--accent);
       background: rgba(var(--accent-glow), 0.1);
     }
+
+    @include respond-to(mobile) {
+      padding: 0.35rem 0.8rem;
+      font-size: 0.75rem;
+    }
+
+    @include respond-to(small) {
+      padding: 0.3rem 0.65rem;
+      font-size: 0.7rem;
+    }
   }
 
   // ── GitHub tab panels (show/hide) ──
-  .github-panel {
+  :global(.github-panel) {
     display: none;
     flex-direction: column;
     gap: 1.5rem;
@@ -328,10 +253,13 @@ const stackoverflow = config.stackoverflow;
     &.active {
       display: flex;
     }
+
+    @include respond-to(mobile) { gap: 1rem; }
+    @include respond-to(small) { gap: 0.75rem; }
   }
 
   // StackOverflow sizing
-  [data-stackoverflow-user] .analytics-responsive-card img {
+  :global([data-stackoverflow-user] .analytics-responsive-card) img {
     max-width: 500px;
 
     @include respond-to(tablet) { max-width: 100%; }
@@ -339,23 +267,23 @@ const stackoverflow = config.stackoverflow;
   }
 
   // ── StackOverflow responsive: show one layout per breakpoint ──
-  .so-tablet,
-  .so-mobile { display: none; }
-  .so-desktop { display: flex; }
+  :global(.so-tablet),
+  :global(.so-mobile) { display: none; }
+  :global(.so-desktop) { display: flex; }
 
   @include respond-to(tablet) {
-    .so-desktop { display: none; }
-    .so-tablet { display: flex; }
+    :global(.so-desktop) { display: none; }
+    :global(.so-tablet) { display: flex; }
   }
 
   @include respond-to(mobile) {
-    .so-desktop { display: none; }
-    .so-tablet { display: none; }
-    .so-mobile { display: flex; }
+    :global(.so-desktop) { display: none; }
+    :global(.so-tablet) { display: none; }
+    :global(.so-mobile) { display: flex; }
   }
 
   // ── CTA Row ──
-  .analytics-cta-row {
+  :global(.analytics-cta-row) {
     display: flex;
     gap: 1rem;
     justify-content: center;
@@ -366,10 +294,12 @@ const stackoverflow = config.stackoverflow;
       flex-direction: column;
       align-items: center;
     }
+
+    @include respond-to(small) { gap: 0.75rem; }
   }
 
   // ── CTA Card — compact, never stretches ──
-  .analytics-cta {
+  :global(.analytics-cta) {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
@@ -403,17 +333,29 @@ const stackoverflow = config.stackoverflow;
       color: var(--text);
 
       &::before { opacity: 1; }
-      .analytics-cta__arrow { transform: translateX(3px); opacity: 1; }
-      .analytics-cta__icon { color: var(--accent); }
     }
 
     @include respond-to(mobile) {
       max-width: 100%;
       width: 100%;
     }
+
+    @include respond-to(small) {
+      padding: 0.5rem 0.8rem;
+      gap: 0.5rem;
+    }
   }
 
-  .analytics-cta__icon {
+  :global(.analytics-cta:hover .analytics-cta__arrow) {
+    transform: translateX(3px);
+    opacity: 1;
+  }
+
+  :global(.analytics-cta:hover .analytics-cta__icon) {
+    color: var(--accent);
+  }
+
+  :global(.analytics-cta__icon) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -431,13 +373,23 @@ const stackoverflow = config.stackoverflow;
       fill: currentColor;
     }
 
-    &--emoji {
-      background: transparent;
-      font-size: 1.4rem;
+    @include respond-to(small) {
+      width: 28px;
+      height: 28px;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
     }
   }
 
-  .analytics-cta__body {
+  :global(.analytics-cta__icon--emoji) {
+    background: transparent;
+    font-size: 1.4rem;
+  }
+
+  :global(.analytics-cta__body) {
     flex: 1;
     min-width: 0;
 
@@ -445,16 +397,20 @@ const stackoverflow = config.stackoverflow;
       font-size: 0.85rem;
       font-weight: 600;
       line-height: 1.2;
+
+      @include respond-to(small) { font-size: 0.78rem; }
     }
     p {
       font-size: 0.75rem;
       color: var(--text-dim);
       line-height: 1.3;
+
+      @include respond-to(small) { font-size: 0.68rem; }
     }
   }
 
-  .analytics-cta__arrow {
-    margin-left: auto;
+  :global(.analytics-cta__arrow) {
+    margin-inline-start: auto;
     font-size: 1rem;
     color: var(--accent);
     opacity: 0.4;
