@@ -10,6 +10,14 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 6rem 2rem;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 1rem;
+  }
 }
 
 .section-header {
