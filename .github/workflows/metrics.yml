@@ -77,6 +77,19 @@ jobs:
           plugin_stars: yes
           plugin_stars_limit: 3
 
+      - name: Notable contributions
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.notable.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          committer_branch: main
+          committer_message: "Update ${filename} [skip ci]"
+          base: ""
+          plugin_notable: yes
+          plugin_notable_from: all
+          plugin_notable_types: commit, pull_request
+          plugin_notable_repositories: yes
+
       - name: LeetCode
         uses: lowlighter/metrics@latest
         with:
