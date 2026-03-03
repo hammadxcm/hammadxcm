@@ -1,0 +1,39 @@
+@use '../mixins' as *;
+
+@mixin view-more-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+@mixin view-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass-bg);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+
+  &:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(var(--accent-glow), 0.15);
+    transform: translateY(-2px);
+  }
+}
+
+@mixin view-more-count {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+@mixin view-more-chevron {
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
