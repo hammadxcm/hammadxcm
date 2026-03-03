@@ -33,6 +33,7 @@
     display: block;
     opacity: 0;
     white-space: nowrap;
+    transition: opacity 0.15s ease;
 
     &.show { opacity: 1; }
   }
@@ -49,4 +50,16 @@
     margin-top: 0.5rem;
     text-shadow: 0 0 12px var(--boot-access-shadow);
   }
+}
+
+.boot-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.1s linear;
+  will-change: width;
+  z-index: 1;
 }
