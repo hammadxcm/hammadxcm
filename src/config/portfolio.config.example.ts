@@ -227,6 +227,25 @@ const config: PortfolioConfig = {
   /* ─── HackerRank (optional — remove to hide section) ─── */
   hackerrank: { username: 'janedoe' },
 
+  /* ─── Guestbook (optional — Giscus GitHub Discussions embed + stats API) ─── */
+  guestbook: {
+    giscus: {
+      repo: 'janedoe/janedoe.github.io',
+      repoId: 'R_kgDOxxxxxxx',
+      category: 'General',
+      categoryId: 'DIC_kwDOxxxxxxx',
+    },
+    statsApi: 'https://your-stats-worker.workers.dev',
+  },
+
+  /* ─── Contributions (optional — enables OSS contributions section) ─── */
+  contributions: {
+    enabled: true,
+    excludeOrgs: [],
+    minStars: 0,
+    maxItems: 20,
+  },
+
   /* ─── Socials — URLs auto-generated from github/leetcode/stackoverflow/hackerrank configs.
        Provide explicit `url` for platforms without auto-generation (linkedin, twitter)
        or to override the generated URL. ─── */
@@ -245,6 +264,7 @@ const config: PortfolioConfig = {
     { id: 'tech', label: 'Skills' },
     { id: 'journey', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
+    { id: 'contributions', label: 'Contributions' },
     { id: 'analytics', label: 'Analytics' },
     { id: 'certs', label: 'Certifications' },
   ],
