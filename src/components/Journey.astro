@@ -90,6 +90,7 @@ const { translations } = Astro.props;
     z-index: 2;
     box-shadow: 0 0 12px rgba(var(--accent-glow), 0.4);
     animation: dotPulse 3s ease-in-out infinite;
+    will-change: box-shadow;
 
     @include respond-to(mobile) { left: 8px; width: 16px; height: 16px; }
   }
