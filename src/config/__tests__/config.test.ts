@@ -242,6 +242,27 @@ describe('Config data integrity', () => {
     });
   });
 
+  describe('contributions config', () => {
+    it('contributions config exists and is enabled', () => {
+      expect(config.contributions).toBeDefined();
+      expect(config.contributions?.enabled).toBe(true);
+    });
+
+    it('contributions config has valid optional fields when set', () => {
+      const c = config.contributions;
+      if (c?.maxItems !== undefined) {
+        expect(typeof c.maxItems).toBe('number');
+        expect(c.maxItems).toBeGreaterThan(0);
+      }
+      if (c?.minStars !== undefined) {
+        expect(typeof c.minStars).toBe('number');
+      }
+      if (c?.excludeOrgs !== undefined) {
+        expect(c.excludeOrgs).toBeInstanceOf(Array);
+      }
+    });
+  });
+
   describe('theme validation', () => {
     it('site.theme is a valid ThemeName', () => {
       const validThemes = [
