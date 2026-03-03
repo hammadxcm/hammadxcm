@@ -1,0 +1,25 @@
+@use '../mixins' as *;
+
+@mixin tag($color: var(--accent-blue), $glow: var(--accent-blue-glow)) {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: rgba($glow, 0.08);
+  color: $color;
+  border: 1px solid rgba($glow, 0.15);
+
+  @include respond-to(small) { font-size: 0.6rem; }
+}
+
+@mixin topic-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(var(--accent-blue-glow), 0.12);
+  color: var(--accent-blue);
+  border: 1px solid rgba(var(--accent-blue-glow), 0.2);
+  white-space: nowrap;
+}
