@@ -1,43 +1,207 @@
 ---
 /**
  * Open Source Projects Section
- * Card grid of open-source projects with 3D tilt, glow hover,
- * and full-card click-through.
+ * Shows featured (config) projects first, then dynamically fetched GitHub repos.
+ * Initial 6 visible, "View More" expands to show all.
  *
- * @depends config.projects, ArrowIcon
- * @styles Scoped SCSS — project grid, cards, tags + responsive
+ * @depends config.projects, projects.json, ArrowIcon, SectionHeader
+ * @styles Scoped SCSS — project grid, cards, tags, View More + responsive
  */
 import SectionHeader from './SectionHeader.astro';
 import ArrowIcon from './ArrowIcon.astro';
+import StarIcon from './icons/StarIcon.astro';
+import ForkIcon from './icons/ForkIcon.astro';
+import DownloadIcon from './icons/DownloadIcon.astro';
 import { config } from '@config/index';
+import { langColors } from '@config/lang-colors';
+import { formatStars, formatDownloads } from '../utils/format';
+import type { ProjectsData } from '@config/types';
+import type { TranslationMap } from '@i18n/types';
+import { t } from '@i18n/index';
+import projectsRaw from '../data/projects.json';
 
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
+const projectsData = projectsRaw as ProjectsData;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+// Featured projects from config (custom icons, descriptions, links)
+const featured = config.projects;
+const featuredNames = new Set(featured.map((p) => p.name.toLowerCase()));
+
+// Download counts from fetch-projects build step
+const downloadCounts: Record<string, number> = projectsData.downloads || {};
+
+// Dynamic repos from GitHub (exclude featured, profile readme repo, homebrew taps)
+const dynamicRepos = projectsData.repos.filter((r) => {
+  const lower = r.name.toLowerCase();
+  if (featuredNames.has(lower)) return false;
+  if (lower === config.github.username.toLowerCase()) return false;
+  if (lower.startsWith('homebrew-')) return false;
+  return true;
+});
+
+const INITIAL_SHOW = 6;
+const totalCount = featured.length + dynamicRepos.length;
+const hasMore = totalCount > INITIAL_SHOW;
+
+const langIcons: Record<string, string> = {
+  Ruby: 'https://skillicons.dev/icons?i=ruby',
+  JavaScript: 'https://techstack-generator.vercel.app/js-icon.svg',
+  TypeScript: 'https://techstack-generator.vercel.app/ts-icon.svg',
+  Python: 'https://techstack-generator.vercel.app/python-icon.svg',
+  Go: 'https://skillicons.dev/icons?i=go',
+  Rust: 'https://skillicons.dev/icons?i=rust',
+  Java: 'https://skillicons.dev/icons?i=java',
+  Swift: 'https://techstack-generator.vercel.app/swift-icon.svg',
+  HTML: 'https://skillicons.dev/icons?i=html',
+  CSS: 'https://skillicons.dev/icons?i=css',
+  Shell: 'https://skillicons.dev/icons?i=bash',
+  PHP: 'https://skillicons.dev/icons?i=php',
+  'C++': 'https://skillicons.dev/icons?i=cpp',
+  'C#': 'https://skillicons.dev/icons?i=cs',
+};
+
+const keywordIcons: [string, string][] = [
+  ['discord', 'https://skillicons.dev/icons?i=discord'],
+  ['react', 'https://techstack-generator.vercel.app/react-icon.svg'],
+  ['rails', 'https://skillicons.dev/icons?i=rails'],
+  ['vue', 'https://skillicons.dev/icons?i=vue'],
+  ['docker', 'https://techstack-generator.vercel.app/docker-icon.svg'],
+];
+
+function resolveRepoIcon(repo: { name: string; language: string | null; topics: string[] }): string {
+  const haystack = [...repo.topics, repo.name].map((s) => s.toLowerCase());
+  for (const [keyword, url] of keywordIcons) {
+    if (haystack.some((h) => h.includes(keyword))) return url;
+  }
+  if (repo.language && langIcons[repo.language]) return langIcons[repo.language];
+  return `${base}default-project-icon.svg`;
+}
 ---
 
 <!-- ══════ OPEN SOURCE ══════ -->
 <section id="projects" class="section">
-  <SectionHeader label="// What I've built" title="Open Source & Community" />
-  <div class="projects-grid stagger">
-    {config.projects.map((project) => (
-      <div class="project-card glass reveal glow-border" data-tilt>
-        <div class="project-icon"><img src={project.iconIsLocal ? `${base}${project.icon}` : project.icon} alt={project.name} /></div>
-        <h3 class="project-name"><a href={project.url} target="_blank" rel="noopener">{project.name}</a></h3>
-        <p class="project-desc" set:html={project.description} />
-        <div class="project-tags">
-          {project.tags.map((tag) => (
-            <span>{tag}</span>
-          ))}
+  <SectionHeader label={translations.projects.label} title={translations.projects.title} />
+  <div class="projects-grid stagger" id="projects-grid">
+    {/* Featured projects from config */}
+    {featured.map((project, idx) => {
+      const hidden = hasMore && idx >= INITIAL_SHOW;
+      const pkgKey = project.npmPackage || project.gemName || '';
+      const dlCount = pkgKey ? (downloadCounts[pkgKey] || 0) : 0;
+      return (
+        <div class:list={['project-card', 'glass', 'reveal', 'glow-border', { 'project-hidden': hidden }]} data-tilt>
+          <div class="project-icon">
+            <img
+              src={project.iconIsLocal ? `${base}${project.icon}` : project.icon}
+              alt={project.name}
+              width="44"
+              height="44"
+            />
+          </div>
+          {dlCount > 0 && (
+            <div class="project-header-row">
+              <span class="project-downloads">
+                <DownloadIcon />
+                {formatDownloads(dlCount)}
+              </span>
+            </div>
+          )}
+          <h3 class="project-name">
+            <a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a>
+          </h3>
+          <p class="project-desc" set:html={project.description} />
+          <div class="project-tags">
+            {project.tags.map((tag) => (
+              <span>{tag}</span>
+            ))}
+          </div>
+          <a href={project.url} target="_blank" rel="noopener noreferrer" class="project-link">
+            {project.linkText} <ArrowIcon />
+          </a>
         </div>
-        <a href={project.url} target="_blank" rel="noopener" class="project-link">
-          {project.linkText} <ArrowIcon />
+      );
+    })}
+
+    {/* Dynamic repos from GitHub */}
+    {dynamicRepos.map((repo, idx) => {
+      const globalIdx = featured.length + idx;
+      const hidden = hasMore && globalIdx >= INITIAL_SHOW;
+      const dotColor = repo.language ? (langColors[repo.language] || 'var(--text-dim)') : null;
+      return (
+        <a
+          class:list={['project-card', 'project-card--dynamic', 'glass', 'reveal', 'glow-border', { 'project-hidden': hidden }]}
+          href={repo.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-tilt
+        >
+          <div class="project-icon">
+            <img src={resolveRepoIcon(repo)} alt={repo.name} width="44" height="44" loading="lazy" />
+          </div>
+          <div class="project-header-row">
+            {repo.language && dotColor && (
+              <span class="project-lang">
+                <span class="lang-dot" style={`background:${dotColor}`} />
+                {repo.language}
+              </span>
+            )}
+            <span class="project-stars">
+              <StarIcon />
+              {formatStars(repo.stars)}
+            </span>
+            {repo.forks > 0 && (
+              <span class="project-forks">
+                <ForkIcon />
+                {repo.forks}
+              </span>
+            )}
+          </div>
+          <h3 class="project-name">{repo.name}</h3>
+          {repo.description && (
+            <p class="project-desc">{repo.description}</p>
+          )}
+          {repo.topics.length > 0 && (
+            <div class="project-tags">
+              {repo.topics.slice(0, 5).map((tag) => (
+                <span>{tag}</span>
+              ))}
+            </div>
+          )}
+          <span class="project-link">
+            {translations.projects.viewRepo} <ArrowIcon />
+          </span>
         </a>
-      </div>
-    ))}
+      );
+    })}
   </div>
+
+  {/* View More Button */}
+  {hasMore && (
+    <div class="project-view-more">
+      <button class="view-more-btn glass" id="projects-toggle" data-total={totalCount} data-initial={INITIAL_SHOW} data-label-more={translations.projects.viewMore} data-label-less={translations.projects.showLess}>
+        <span class="view-more-text">{translations.projects.viewMore}</span>
+        <span class="view-more-count">{t(translations, 'projects.moreCount', { count: totalCount - INITIAL_SHOW })}</span>
+        <svg class="view-more-chevron" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M4.427 5.427a.75.75 0 0 1 1.06-.013L8 7.82l2.513-2.406a.75.75 0 1 1 1.037 1.084l-3 2.872a.75.75 0 0 1-1.037 0l-3-2.872a.75.75 0 0 1-.013-1.06z" />
+        </svg>
+      </button>
+    </div>
+  )}
 </section>
+
+<script>
+  import { initViewMore } from '../scripts/interactions/view-more';
+  initViewMore('projects-toggle', '#projects-grid', 'project-hidden');
+</script>
 
 <style lang="scss">
   @use '../styles/mixins' as *;
+  @use '../styles/utilities/view-more' as *;
+  @use '../styles/utilities/tag' as *;
 
   .projects-grid {
     @include responsive-grid;
@@ -49,6 +213,13 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     transform-style: preserve-3d;
     perspective: 1000px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card--dynamic {
+    text-decoration: none;
+    color: var(--text);
   }
 
   .project-icon {
@@ -59,6 +230,41 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       width: 44px; height: 44px;
       object-fit: contain;
     }
+  }
+
+  .project-header-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+  }
+
+  .project-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .lang-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .project-stars,
+  .project-forks,
+  .project-downloads {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    opacity: 0.85;
+
+    :global(svg) { opacity: 0.7; }
   }
 
   .project-name {
@@ -78,6 +284,10 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     color: var(--text-dim);
     line-height: 1.6;
     margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 
     @include respond-to(mobile) { font-size: 0.85rem; }
   }
@@ -88,15 +298,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     gap: 0.4rem;
 
     span {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: var(--radius-sm);
-      background: rgba(var(--accent-blue-glow), 0.08);
-      color: var(--accent-blue);
-      border: 1px solid rgba(var(--accent-blue-glow), 0.15);
-
-      @include respond-to(small) { font-size: 0.6rem; }
+      @include tag;
     }
   }
 
@@ -104,7 +306,8 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    margin-top: 1rem;
+    margin-top: auto;
+    padding-top: 1rem;
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--accent);
@@ -112,5 +315,27 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
     &:hover { color: var(--accent-mint); }
 
     :global(svg) { width: 16px; height: 16px; }
+  }
+
+  /* ── Hidden Cards ── */
+  .project-hidden {
+    display: none !important;
+  }
+
+  /* ── View More Button ── */
+  .project-view-more {
+    @include view-more-wrapper;
+  }
+
+  .view-more-btn {
+    @include view-more-btn;
+  }
+
+  .view-more-count {
+    @include view-more-count;
+  }
+
+  .view-more-chevron {
+    @include view-more-chevron;
   }
 </style>
