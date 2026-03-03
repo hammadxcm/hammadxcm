@@ -34,7 +34,7 @@ function clearAllIntervals(): void {
   activeIntervals = [];
 }
 
-function decrypt(resolved: boolean[], onDone: () => void): void {
+function decrypt(_resolved: boolean[], onDone: () => void): void {
   const { glyphs, timing } = loadThemeConfig();
 
   const { flickerTimer, resolverTimer } = createScrambleReveal({
