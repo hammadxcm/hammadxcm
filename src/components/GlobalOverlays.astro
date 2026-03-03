@@ -4,6 +4,13 @@
  * floating orbs, CRT scan lines, key flash indicator, toast notifications,
  * screen effect overlay, konami overlay, terminal status bar.
  */
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
 ---
 
 <!-- Crosshair Cursor (desktop only) -->
@@ -27,7 +34,7 @@
 <div class="key-flash" id="keyFlash" aria-hidden="true"></div>
 
 <!-- Scroll Progress Bar -->
-<div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label={translations.a11y.scrollProgress} aria-valuemin="0" aria-valuemax="100"></div>
 
 <!-- Floating Gradient Orbs -->
 <div class="orb orb-1" aria-hidden="true"></div>
@@ -62,8 +69,28 @@
   <div class="konami-text">SYSTEM COMPROMISED</div>
 </div>
 
+<!-- CTF Achievement Overlay -->
+<div class="ctf-overlay" id="ctfOverlay" aria-hidden="true">
+  <div class="ctf-achievement">
+    <div class="ctf-icon">&#x1F3C6;</div>
+    <div class="ctf-title">ACCESS GRANTED</div>
+    <div class="ctf-subtitle">You found all 5 clues and cracked the passphrase.</div>
+    <div class="ctf-badge">ELITE HACKER</div>
+  </div>
+</div>
+
+<!-- Level-Up Overlay -->
+<div class="levelup-overlay" id="levelUpOverlay" aria-hidden="true">
+  <div class="levelup-content">
+    <div class="levelup-icon">&#x2B06;</div>
+    <div class="levelup-num" id="levelUpNum">LEVEL 2</div>
+    <div class="levelup-name" id="levelUpName">Packet Sniffer</div>
+  </div>
+</div>
+
 <!-- Terminal Status Bar -->
-<div class="terminal-status-bar" id="terminalStatusBar" aria-hidden="true">
+<!-- CTF Clue 3/5: Third fragment is "SI" -->
+<div class="terminal-status-bar" id="terminalStatusBar" aria-hidden="true" data-ctf-clue="3:SI">
   <span class="status-slot" id="statusSlot0"></span>
   <span class="status-sep">|</span>
   <span class="status-slot" id="statusSlot1"></span>
