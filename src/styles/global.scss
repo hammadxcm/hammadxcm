@@ -26,14 +26,18 @@
 @use 'effects/overlays';
 @use 'effects/toast';
 @use 'effects/konami';
+@use 'effects/ctf';
 @use 'effects/status-bar';
 @use 'effects/key-flash';
+@use 'effects/levelup';
+@use 'effects/achievement-panel';
 
 // Utilities
 @use 'utilities/skip-link';
 @use 'utilities/image-loading';
 @use 'utilities/separators';
 @use 'utilities/content-visibility';
+@use 'utilities/rtl';
 
 // Overrides
 @use 'overrides/arctic';
