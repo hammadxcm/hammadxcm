@@ -18,7 +18,16 @@ export type SocialPlatform =
   | 'hackerrank'
   | 'leetcode';
 
-export type SectionId = string;
+export type SectionId =
+  | 'about'
+  | 'tech'
+  | 'journey'
+  | 'projects'
+  | 'contributions'
+  | 'certs'
+  | 'testimonials'
+  | 'guestbook'
+  | 'analytics';
 
 export type CertBadge =
   | { type: 'image'; src: string; width: number; alt: string }
@@ -55,6 +64,28 @@ export interface Project {
   description: string;
   tags: string[];
   linkText: string;
+  npmPackage?: string;
+  gemName?: string;
+  downloads?: number;
+}
+
+export interface GitHubRepo {
+  name: string;
+  fullName: string;
+  url: string;
+  description: string | null;
+  stars: number;
+  forks: number;
+  language: string | null;
+  topics: string[];
+  updatedAt: string;
+}
+
+export interface ProjectsData {
+  generatedAt: string;
+  username: string;
+  repos: GitHubRepo[];
+  downloads?: Record<string, number>;
 }
 
 export interface Certification {
@@ -65,6 +96,68 @@ export interface Certification {
   name: string;
   issuer: string;
   date?: string;
+}
+
+export interface GuestbookConfig {
+  giscus: {
+    repo: string;
+    repoId: string;
+    category: string;
+    categoryId: string;
+  };
+  statsApi?: string;
+}
+
+export interface ContributionsConfig {
+  enabled: boolean;
+  excludeOrgs?: string[];
+  minStars?: number;
+  maxItems?: number;
+}
+
+export interface ContributionLabel {
+  name: string;
+  color: string;
+}
+
+export interface ContributionRepo {
+  fullName: string;
+  url: string;
+  stars: number;
+  forks: number;
+  language: string | null;
+  description: string | null;
+  ownerAvatar: string;
+  topics: string[];
+  license: string | null;
+}
+
+export interface ContributionPR {
+  title: string;
+  url: string;
+  number: number;
+  state: 'merged' | 'open';
+  mergedAt: string;
+  additions: number;
+  deletions: number;
+  changedFiles: number;
+  labels: ContributionLabel[];
+  repo: ContributionRepo;
+}
+
+export interface ContributionsData {
+  generatedAt: string;
+  username: string;
+  totalCount: number;
+  contributions: ContributionPR[];
+}
+
+export interface Testimonial {
+  quote: string;
+  author: string;
+  role: string;
+  company: string;
+  avatar?: string;
 }
 
 export interface SocialLink {
@@ -122,6 +215,9 @@ export interface PortfolioConfig {
   hackerrank?: {
     username: string;
   };
+  contributions?: ContributionsConfig;
+  guestbook?: GuestbookConfig;
+  testimonials?: Testimonial[];
   socials: SocialLink[];
   sections: Section[];
   boot: {
