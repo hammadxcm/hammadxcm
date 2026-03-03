@@ -115,13 +115,20 @@ describe('Config data integrity', () => {
   });
 
   describe('certifications', () => {
-    it('image badges have src, width, and alt', () => {
+    it('image badges have src, width, height, and alt', () => {
       const imageBadges = config.certifications.filter((c) => c.badge.type === 'image');
       expect(imageBadges.length).toBeGreaterThan(0);
       for (const cert of imageBadges) {
-        const badge = cert.badge as { type: 'image'; src: string; width: number; alt: string };
+        const badge = cert.badge as {
+          type: 'image';
+          src: string;
+          width: number;
+          height: number;
+          alt: string;
+        };
         expect(badge.src).toBeTruthy();
         expect(badge.width).toBeGreaterThan(0);
+        expect(badge.height).toBeGreaterThan(0);
         expect(badge.alt).toBeTruthy();
       }
     });

@@ -21,13 +21,14 @@ function isValidUrlOrPath(s: string): boolean {
 }
 
 describe('CertBadge discriminated union', () => {
-  it('image badges have src, width, and alt — no svg field', () => {
+  it('image badges have src, width, height, and alt — no svg field', () => {
     const imageCerts = config.certifications.filter((c) => c.badge.type === 'image');
     for (const cert of imageCerts) {
       const badge = cert.badge as Extract<CertBadge, { type: 'image' }>;
       expect(typeof badge.src).toBe('string');
       expect(badge.src.length).toBeGreaterThan(0);
       expect(typeof badge.width).toBe('number');
+      expect(typeof badge.height).toBe('number');
       expect(typeof badge.alt).toBe('string');
       expect((badge as unknown as Record<string, unknown>).svg).toBeUndefined();
     }
