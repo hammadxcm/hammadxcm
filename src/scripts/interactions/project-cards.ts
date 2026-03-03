@@ -1,3 +1,5 @@
+import { trackEvent } from '../achievements';
+
 export function initProjectCards(): void {
   const projectCards = document.querySelectorAll<HTMLElement>('.project-card');
   projectCards.forEach((card) => {
@@ -8,6 +10,7 @@ export function initProjectCards(): void {
         card.querySelector<HTMLAnchorElement>('a');
       if (link) {
         window.open(link.href, '_blank', 'noopener');
+        trackEvent('project_click');
       }
     });
   });
