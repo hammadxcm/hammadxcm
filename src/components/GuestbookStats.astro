@@ -1,0 +1,117 @@
+---
+/**
+ * Guestbook Stats Card — personal + global stats above the Giscus embed.
+ * Personal data from localStorage, global data from Worker API.
+ */
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
+const g = translations.guestbook;
+---
+
+<div
+  class="guestbook-stats glass glow-border"
+  id="guestbookStats"
+  data-prompt-beginner={g.prompts.beginner}
+  data-prompt-intermediate={g.prompts.intermediate}
+  data-prompt-advanced={g.prompts.advanced}
+  data-prompt-master={g.prompts.master}
+>
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-value" id="gsGlobalVisitors">—</span>
+      <span class="stat-label">{g.visitors}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value" id="gsVisitNum">—</span>
+      <span class="stat-label">{g.visitNum}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value" id="gsSessionTime">00:00</span>
+      <span class="stat-label">{g.sessionTime}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value" id="gsSections">—</span>
+      <span class="stat-label">{g.explored}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value" id="gsLevel">—</span>
+      <span class="stat-label">{g.hackerLevel}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value" id="gsCtfSolvers">—</span>
+      <span class="stat-label">{g.ctfSolvers}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value" id="gsPopularTheme">—</span>
+      <span class="stat-label">{g.popularTheme}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value" id="gsGlobalAchievements">—</span>
+      <span class="stat-label">{g.globalAchievements}</span>
+    </div>
+  </div>
+  <div class="engagement-prompt" id="gsPrompt"></div>
+</div>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .guestbook-stats {
+    @include card-padding;
+    margin-bottom: 1.5rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    text-align: center;
+
+    @include respond-to(mobile) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(small) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .stat-value {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+
+    @include respond-to(small) { font-size: 0.95rem; }
+  }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .engagement-prompt {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    text-align: center;
+    min-height: 1.2em;
+  }
+</style>
