@@ -39,7 +39,7 @@
   }
 
   .hero-name.hero-glitch-active {
-    animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+    animation: heroReveal 1s var(--ease-out-expo) forwards,
                heroGlitchJitter 100ms steps(4) infinite;
 
     &::before {
@@ -93,12 +93,12 @@
 
 [data-theme="hacker"] .hero-name.hero-lightning-active,
 [data-theme="matrix"] .hero-name.hero-lightning-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+  animation: heroReveal 1s var(--ease-out-expo) forwards,
              heroLightningStrike 500ms ease-out forwards;
 }
 
 [data-theme="synthwave"] .hero-name.hero-lightning-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+  animation: heroReveal 1s var(--ease-out-expo) forwards,
              heroNeonLightning 600ms ease-out forwards;
 }
 
@@ -190,7 +190,7 @@
   }
 
   .hero-name.hero-blood-active {
-    animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+    animation: heroReveal 1s var(--ease-out-expo) forwards,
                heroBloodFlash 800ms ease-out forwards;
 
     &::before {
@@ -318,55 +318,29 @@
    on the SAME element.
    ═══════════════════════════════════════════════════════ */
 
-[data-theme="hacker"] .hero-name.hero-glow-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
-             hackerGlow 4s ease-in-out infinite;
-}
-
-@keyframes hackerGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 6px rgba(0, 191, 191, 0.3))
-            drop-shadow(0 0 16px rgba(91, 205, 236, 0.1));
-  }
-  50% {
-    filter: drop-shadow(0 0 12px rgba(0, 191, 191, 0.55))
-            drop-shadow(0 0 30px rgba(91, 205, 236, 0.2));
-  }
-}
-
-[data-theme="dracula"] .hero-name.hero-glow-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
-             draculaGlow 4s ease-in-out infinite;
-}
-
-@keyframes draculaGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 8px rgba(189, 147, 249, 0.4))
-            drop-shadow(0 0 20px rgba(189, 147, 249, 0.15));
-  }
-  50% {
-    filter: drop-shadow(0 0 16px rgba(189, 147, 249, 0.7))
-            drop-shadow(0 0 40px rgba(189, 147, 249, 0.3));
+// Shared glow keyframe — theme colors via CSS custom properties
+// (--glow-rest / --glow-peak / --glow-duration defined per theme in _themes.scss)
+[data-theme="hacker"],
+[data-theme="dracula"],
+[data-theme="nord"],
+[data-theme="synthwave"],
+[data-theme="matrix"],
+[data-theme="bloodmoon"],
+[data-theme="arctic"] {
+  .hero-name.hero-glow-active {
+    animation: heroReveal 1s var(--ease-out-expo) forwards,
+               themeGlow var(--glow-duration, 4s) ease-in-out infinite;
   }
 }
 
-[data-theme="nord"] .hero-name.hero-glow-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
-             nordShimmer 5s ease-in-out infinite;
+@keyframes themeGlow {
+  0%, 100% { filter: var(--glow-rest); }
+  50% { filter: var(--glow-peak); }
 }
 
-@keyframes nordShimmer {
-  0%, 100% {
-    filter: drop-shadow(0 0 6px rgba(136, 192, 208, 0.3));
-  }
-  50% {
-    filter: drop-shadow(0 0 14px rgba(136, 192, 208, 0.6))
-            drop-shadow(0 0 30px rgba(129, 161, 193, 0.2));
-  }
-}
-
+// Catppuccin — 3 color stops, unique structure
 [data-theme="catppuccin"] .hero-name.hero-glow-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+  animation: heroReveal 1s var(--ease-out-expo) forwards,
              catppuccinGlow 5s ease-in-out infinite;
 }
 
@@ -385,56 +359,9 @@
   }
 }
 
-[data-theme="synthwave"] .hero-name.hero-glow-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
-             synthwavePulse 3s ease-in-out infinite;
-}
-
-@keyframes synthwavePulse {
-  0%, 100% {
-    filter: drop-shadow(0 0 10px rgba(255, 46, 151, 0.6))
-            drop-shadow(0 0 30px rgba(255, 46, 151, 0.2));
-  }
-  50% {
-    filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.6))
-            drop-shadow(0 0 35px rgba(0, 240, 255, 0.25));
-  }
-}
-
-[data-theme="matrix"] .hero-name.hero-glow-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
-             matrixGlow 4s ease-in-out infinite;
-}
-
-@keyframes matrixGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 6px rgba(0, 255, 65, 0.3))
-            drop-shadow(0 0 16px rgba(0, 255, 65, 0.1));
-  }
-  50% {
-    filter: drop-shadow(0 0 14px rgba(0, 255, 65, 0.55))
-            drop-shadow(0 0 32px rgba(57, 255, 20, 0.2));
-  }
-}
-
-[data-theme="bloodmoon"] .hero-name.hero-glow-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
-             bloodmoonGlow 4s ease-in-out infinite;
-}
-
-@keyframes bloodmoonGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 8px rgba(255, 0, 64, 0.35))
-            drop-shadow(0 0 20px rgba(255, 0, 64, 0.1));
-  }
-  50% {
-    filter: drop-shadow(0 0 16px rgba(255, 0, 64, 0.6))
-            drop-shadow(0 0 36px rgba(255, 77, 109, 0.2));
-  }
-}
-
+// Midnight — 4 stops, unique shimmer pattern
 [data-theme="midnight"] .hero-name.hero-glow-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+  animation: heroReveal 1s var(--ease-out-expo) forwards,
              midnightSparkle 4s ease-in-out infinite;
 }
 
@@ -457,23 +384,9 @@
   }
 }
 
-[data-theme="arctic"] .hero-name.hero-glow-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
-             arcticPrism 6s ease-in-out infinite;
-}
-
-@keyframes arcticPrism {
-  0%, 100% {
-    filter: drop-shadow(0 0 6px rgba(3, 105, 161, 0.25));
-  }
-  50% {
-    filter: drop-shadow(0 0 12px rgba(3, 105, 161, 0.45))
-            drop-shadow(0 0 24px rgba(14, 116, 144, 0.15));
-  }
-}
-
+// Gruvbox — steps timing, flicker effect
 [data-theme="gruvbox"] .hero-name.hero-glow-active {
-  animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards,
+  animation: heroReveal 1s var(--ease-out-expo) forwards,
              gruvboxFlicker 6s steps(1) infinite;
 }
 
