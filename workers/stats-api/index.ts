@@ -105,10 +105,10 @@ export default {
     // GET /api/stats
     if (url.pathname === '/api/stats' && request.method === 'GET') {
       const keys = await env.STATS.list();
+      const values = await Promise.all(keys.keys.map((k) => env.STATS.get(k.name)));
       const stats: Record<string, number> = {};
-      for (const key of keys.keys) {
-        const val = await env.STATS.get(key.name);
-        stats[key.name] = parseInt(val || '0', 10);
+      for (let i = 0; i < keys.keys.length; i++) {
+        stats[keys.keys[i].name] = parseInt(values[i] || '0', 10);
       }
       return new Response(JSON.stringify(stats), {
         headers: {
