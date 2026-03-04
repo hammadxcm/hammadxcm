@@ -10,6 +10,7 @@
 import SectionHeader from './SectionHeader.astro';
 import ArrowIcon from './ArrowIcon.astro';
 import { config } from '@config/index';
+import { sanitizeHtml } from '@utils/sanitize';
 import type { TranslationMap } from '@i18n/types';
 
 interface Props {
@@ -31,9 +32,9 @@ const { translations } = Astro.props;
             : <Fragment set:html={cert.badge.svg} />
           }
         </div>
-        <p class="cert-category" set:html={cert.category} />
+        <p class="cert-category" set:html={sanitizeHtml(cert.category)} />
         <h3 class="cert-name">{cert.name}</h3>
-        <p class="cert-issuer" set:html={cert.issuer} />
+        <p class="cert-issuer" set:html={sanitizeHtml(cert.issuer)} />
         {cert.date && <p class="cert-date">{cert.date}</p>}
         <span class="cert-ext">{translations.certs.viewCertificate} <ArrowIcon /></span>
       </a>

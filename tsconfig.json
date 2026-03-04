@@ -9,7 +9,8 @@
       "@config/*": ["src/config/*"],
       "@components/*": ["src/components/*"],
       "@scripts/*": ["src/scripts/*"],
-      "@i18n/*": ["src/i18n/*"]
+      "@i18n/*": ["src/i18n/*"],
+      "@utils/*": ["src/utils/*"]
     }
   }
 }
