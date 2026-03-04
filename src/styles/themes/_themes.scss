@@ -27,6 +27,9 @@
   --code-success: #28c840;
   --boot-bg: #0a0e14;  --boot-ok: #28c840;  --boot-warn: #febc2e;
   --boot-cmd: rgba(230, 237, 243, 0.5);  --boot-access-shadow: rgba(169, 254, 247, 0.5);
+  --glow-rest: drop-shadow(0 0 6px rgba(0, 191, 191, 0.3)) drop-shadow(0 0 16px rgba(91, 205, 236, 0.1));
+  --glow-peak: drop-shadow(0 0 12px rgba(0, 191, 191, 0.55)) drop-shadow(0 0 30px rgba(91, 205, 236, 0.2));
+  --glow-duration: 4s;
 }
 
 /* ── Theme: Dracula ── */
@@ -51,6 +54,9 @@
   --code-success: #50fa7b;
   --boot-bg: #1e1b2e;  --boot-ok: #50fa7b;  --boot-warn: #f1fa8c;
   --boot-cmd: rgba(248, 248, 242, 0.5);  --boot-access-shadow: rgba(80, 250, 123, 0.5);
+  --glow-rest: drop-shadow(0 0 8px rgba(189, 147, 249, 0.4)) drop-shadow(0 0 20px rgba(189, 147, 249, 0.15));
+  --glow-peak: drop-shadow(0 0 16px rgba(189, 147, 249, 0.7)) drop-shadow(0 0 40px rgba(189, 147, 249, 0.3));
+  --glow-duration: 4s;
 }
 
 /* ── Theme: Nord ── */
@@ -75,6 +81,9 @@
   --code-success: #a3be8c;
   --boot-bg: #242933;  --boot-ok: #a3be8c;  --boot-warn: #ebcb8b;
   --boot-cmd: rgba(236, 239, 244, 0.5);  --boot-access-shadow: rgba(163, 190, 140, 0.5);
+  --glow-rest: drop-shadow(0 0 6px rgba(136, 192, 208, 0.3));
+  --glow-peak: drop-shadow(0 0 14px rgba(136, 192, 208, 0.6)) drop-shadow(0 0 30px rgba(129, 161, 193, 0.2));
+  --glow-duration: 5s;
 }
 
 /* ── Theme: Catppuccin Mocha ── */
@@ -123,6 +132,9 @@
   --code-success: #72f1b8;
   --boot-bg: #120a1e;  --boot-ok: #72f1b8;  --boot-warn: #f9c80e;
   --boot-cmd: rgba(240, 230, 255, 0.5);  --boot-access-shadow: rgba(114, 241, 184, 0.5);
+  --glow-rest: drop-shadow(0 0 10px rgba(255, 46, 151, 0.6)) drop-shadow(0 0 30px rgba(255, 46, 151, 0.2));
+  --glow-peak: drop-shadow(0 0 14px rgba(0, 240, 255, 0.6)) drop-shadow(0 0 35px rgba(0, 240, 255, 0.25));
+  --glow-duration: 3s;
 }
 
 /* ── Theme: Matrix ── */
@@ -147,6 +159,9 @@
   --code-success: #00ff41;
   --boot-bg: #050505;  --boot-ok: #00ff41;  --boot-warn: #39ff14;
   --boot-cmd: rgba(0, 255, 65, 0.5);  --boot-access-shadow: rgba(124, 252, 0, 0.5);
+  --glow-rest: drop-shadow(0 0 6px rgba(0, 255, 65, 0.3)) drop-shadow(0 0 16px rgba(0, 255, 65, 0.1));
+  --glow-peak: drop-shadow(0 0 14px rgba(0, 255, 65, 0.55)) drop-shadow(0 0 32px rgba(57, 255, 20, 0.2));
+  --glow-duration: 4s;
 }
 
 /* ── Theme: Blood Moon ── */
@@ -171,6 +186,9 @@
   --code-success: #ff8fa3;
   --boot-bg: #080104;  --boot-ok: #ff4d6d;  --boot-warn: #ff8fa3;
   --boot-cmd: rgba(240, 230, 232, 0.5);  --boot-access-shadow: rgba(255, 143, 163, 0.5);
+  --glow-rest: drop-shadow(0 0 8px rgba(255, 0, 64, 0.35)) drop-shadow(0 0 20px rgba(255, 0, 64, 0.1));
+  --glow-peak: drop-shadow(0 0 16px rgba(255, 0, 64, 0.6)) drop-shadow(0 0 36px rgba(255, 77, 109, 0.2));
+  --glow-duration: 4s;
 }
 
 /* ── Theme: Midnight ── */
@@ -219,6 +237,9 @@
   --code-success: #047857;
   --boot-bg: #e0f2fe;  --boot-ok: #047857;  --boot-warn: #B45309;
   --boot-cmd: rgba(71, 85, 105, 1);  --boot-access-shadow: none;
+  --glow-rest: drop-shadow(0 0 6px rgba(3, 105, 161, 0.25));
+  --glow-peak: drop-shadow(0 0 12px rgba(3, 105, 161, 0.45)) drop-shadow(0 0 24px rgba(14, 116, 144, 0.15));
+  --glow-duration: 6s;
 }
 
 /* ── Theme: Gruvbox ── */
