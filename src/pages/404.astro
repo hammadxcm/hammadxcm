@@ -1,0 +1,132 @@
+---
+import { config } from '@config/index';
+import { getTranslations, getDirection } from '@i18n/index';
+import Layout from '../layouts/Layout.astro';
+
+const locale = 'en';
+const translations = await getTranslations(locale);
+const dir = getDirection(locale);
+---
+
+<Layout
+  title={`404 — ${config.site.name}`}
+  description="Page not found"
+  locale={locale}
+  dir={dir}
+  translations={translations}
+>
+  <main class="not-found">
+    <div class="terminal">
+      <div class="terminal-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="terminal-title">bash — 404</span>
+      </div>
+      <div class="terminal-body">
+        <p class="prompt">$ curl -I {config.site.url}/???</p>
+        <p class="response">HTTP/1.1 <span class="status">404 Not Found</span></p>
+        <p class="response">Content-Type: text/html; charset=utf-8</p>
+        <p class="response">X-Error: <span class="dim">page_not_found</span></p>
+        <br />
+        <p class="prompt">$ echo "Looks like this page doesn't exist."</p>
+        <p class="response">Looks like this page doesn't exist.</p>
+        <br />
+        <p class="prompt">$ cd /home</p>
+        <a href="/" class="home-link">&larr; Return to homepage</a>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style lang="scss">
+  .not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  .terminal {
+    max-width: 640px;
+    width: 100%;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1rem;
+    background: var(--glass-bg);
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    &.red { background: #ff5f57; }
+    &.yellow { background: #febc2e; }
+    &.green { background: #28c840; }
+  }
+
+  .terminal-title {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  .terminal-body {
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .prompt {
+    color: var(--accent);
+
+    &::before {
+      content: '';
+    }
+  }
+
+  .response {
+    color: var(--text);
+  }
+
+  .status {
+    color: #ff5f57;
+    font-weight: 600;
+  }
+
+  .dim {
+    color: var(--text-dim);
+  }
+
+  .home-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all var(--duration-normal);
+
+    &:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+  }
+</style>

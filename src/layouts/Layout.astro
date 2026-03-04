@@ -26,9 +26,11 @@ const otherLocales = LOCALES.filter((l) => l !== locale);
 <html lang={locale} dir={dir} data-theme={theme} data-stats-api={config.guestbook?.statsApi || ''}>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>{title}</title>
   <meta name="description" content={description}>
+  <meta name="robots" content="index, follow">
+  <meta name="author" content={config.site.name}>
   <link rel="canonical" href={canonicalUrl}>
   <meta name="theme-color" content={themeMetaColors[theme] || '#0D1117'}>
 
@@ -48,8 +50,9 @@ const otherLocales = LOCALES.filter((l) => l !== locale);
   <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
   <link rel="dns-prefetch" href="https://komarev.com">
 
-  <!-- Favicon -->
+  <!-- Favicon + PWA -->
   <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml">
+  <link rel="manifest" href={`${base}manifest.json`}>
 
   <!-- Hreflang -->
   {alternateLinks.map((link) => (
@@ -65,6 +68,7 @@ const otherLocales = LOCALES.filter((l) => l !== locale);
   <meta property="og:image" content={`${siteUrl}/og-image.png`}>
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content={config.site.name}>
   <meta property="og:locale" content={translations.meta.ogLocale}>
   {otherLocales.map((l) => (
     <meta property="og:locale:alternate" content={l} />
@@ -78,13 +82,17 @@ const otherLocales = LOCALES.filter((l) => l !== locale);
 
   <!-- Fonts (self-hosted, no external requests) -->
   <link rel="preload" href={`${base}fonts/inter-latin.woff2`} as="font" type="font/woff2" crossorigin fetchpriority="high">
-  <link rel="preload" href={`${base}fonts/firacode-latin.woff2`} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={`${base}fonts/firacode-latin.woff2`} as="font" type="font/woff2" crossorigin fetchpriority="low">
 
   <!-- Blocking theme script — prevents flash of wrong theme -->
   <script is:inline>
     (function() {
       var saved = localStorage.getItem('portfolio-theme');
-      if (saved) document.documentElement.setAttribute('data-theme', saved);
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.setAttribute('data-theme', 'arctic');
+      }
     })();
   </script>
 
@@ -101,6 +109,7 @@ const otherLocales = LOCALES.filter((l) => l !== locale);
 </head>
 <body>
   <!-- CTF Clue 1/5: The passphrase starts with "HACK" -->
+  <noscript><p style="text-align:center;padding:2rem;font-family:monospace;color:#ccc;">This portfolio requires JavaScript for the full experience.</p></noscript>
   <!-- Skip link for accessibility -->
   <a href="#about" class="skip-link">{translations.a11y.skipToContent}</a>
   <slot />
