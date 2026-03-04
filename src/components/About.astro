@@ -10,6 +10,7 @@
 import SectionHeader from './SectionHeader.astro';
 import { config } from '@config/index';
 import { buildAboutLines, buildAboutMultiLang } from '@config/about-builder';
+import { sanitizeHtml } from '@utils/sanitize';
 import type { TranslationMap } from '@i18n/types';
 
 interface Props {
@@ -62,7 +63,7 @@ const multiLangData = buildAboutMultiLang(config.about);
     </div>
     <div class="code-body" id="aboutCodeBody">
 {displayLines.map((line, i) => (
-<span class="code-line" data-about={i === 2 ? 'comment' : i === displayLines.length - 1 ? 'echo' : undefined}><span class="code-line-num">{i + 1}</span><Fragment set:html={line} /></span>
+<span class="code-line" data-about={i === 2 ? 'comment' : i === displayLines.length - 1 ? 'echo' : undefined}><span class="code-line-num">{i + 1}</span><Fragment set:html={sanitizeHtml(line)} /></span>
 ))}
     </div>
   </div>

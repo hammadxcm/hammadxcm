@@ -9,6 +9,7 @@
  */
 import SectionHeader from './SectionHeader.astro';
 import { config } from '@config/index';
+import { sanitizeHtml } from '@utils/sanitize';
 import type { TranslationMap } from '@i18n/types';
 
 interface Props {
@@ -26,12 +27,12 @@ const { translations } = Astro.props;
       <div class={`timeline-item ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'}`}>
         <div class="timeline-dot"></div>
         <div class="timeline-card glass">
-          <div class="timeline-date" set:html={entry.date} />
+          <div class="timeline-date" set:html={sanitizeHtml(entry.date)} />
           <h3 class="timeline-role">{entry.role} @ <a href={entry.companyUrl} target="_blank" rel="noopener noreferrer" class="timeline-company">{entry.company}</a></h3>
-          <p class="timeline-meta" set:html={entry.meta} />
+          <p class="timeline-meta" set:html={sanitizeHtml(entry.meta)} />
           <ul class="timeline-achievements">
             {entry.achievements.map((achievement) => (
-              <li set:html={achievement} />
+              <li set:html={sanitizeHtml(achievement)} />
             ))}
           </ul>
           <div class="timeline-tech">

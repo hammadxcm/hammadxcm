@@ -15,6 +15,7 @@ import DownloadIcon from './icons/DownloadIcon.astro';
 import { config } from '@config/index';
 import { langColors } from '@config/lang-colors';
 import { formatStars, formatDownloads } from '../utils/format';
+import { sanitizeHtml } from '@utils/sanitize';
 import type { ProjectsData } from '@config/types';
 import type { TranslationMap } from '@i18n/types';
 import { t } from '@i18n/index';
@@ -113,7 +114,7 @@ function resolveRepoIcon(repo: { name: string; language: string | null; topics: 
           <h3 class="project-name">
             <a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a>
           </h3>
-          <p class="project-desc" set:html={project.description} />
+          <p class="project-desc" set:html={sanitizeHtml(project.description)} />
           <div class="project-tags">
             {project.tags.map((tag) => (
               <span>{tag}</span>
