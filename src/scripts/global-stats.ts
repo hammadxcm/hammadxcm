@@ -1,6 +1,7 @@
 /**
  * Global Stats Client — queued event reporting + cached stats fetching.
  * Batches events client-side to avoid 429s from the Worker's 10s rate limit.
+ * Persists cooldown across page refreshes via sessionStorage.
  * Graceful fallback: if Worker is down, everything works without it.
  */
 
@@ -9,7 +10,8 @@ function getApiBase(): string {
 }
 
 const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
-const FLUSH_INTERVAL_MS = 10_000; // match Worker rate limit window
+const FLUSH_INTERVAL_MS = 11_000; // slightly over Worker's 10s window
+const STORAGE_KEY = 'hk-stats-last-send';
 
 let cachedStats: Record<string, number> | null = null;
 let cacheTimestamp = 0;
@@ -19,9 +21,33 @@ let cacheTimestamp = 0;
 const eventQueue = new Map<string, number>(); // event → count
 let flushTimer: ReturnType<typeof setTimeout> | null = null;
 
+/** Milliseconds remaining in the cooldown window (survives page refresh). */
+function cooldownRemaining(): number {
+  try {
+    const last = Number(sessionStorage.getItem(STORAGE_KEY) || '0');
+    return Math.max(0, FLUSH_INTERVAL_MS - (Date.now() - last));
+  } catch {
+    return 0;
+  }
+}
+
+function markSent(): void {
+  try {
+    sessionStorage.setItem(STORAGE_KEY, String(Date.now()));
+  } catch {
+    /* private browsing — ignore */
+  }
+}
+
 function flush(): void {
   flushTimer = null;
   if (eventQueue.size === 0) return;
+
+  const remaining = cooldownRemaining();
+  if (remaining > 0) {
+    flushTimer = setTimeout(flush, remaining);
+    return;
+  }
 
   const base = getApiBase();
   if (!base) {
@@ -33,17 +59,16 @@ function flush(): void {
   const batch = Array.from(eventQueue.entries());
   eventQueue.clear();
 
-  // Send first event immediately, re-queue the rest for next window
+  // Send first event, re-queue the rest for next window
   const [first] = batch;
   send(base, first[0]);
+  markSent();
 
-  // Put remaining events back for the next flush
   for (let i = 1; i < batch.length; i++) {
     const [evt, count] = batch[i];
     eventQueue.set(evt, (eventQueue.get(evt) || 0) + count);
   }
 
-  // Schedule next flush if there are remaining events
   if (eventQueue.size > 0) {
     scheduleFlush();
   }
@@ -51,7 +76,8 @@ function flush(): void {
 
 function scheduleFlush(): void {
   if (flushTimer !== null) return;
-  flushTimer = setTimeout(flush, FLUSH_INTERVAL_MS);
+  const delay = Math.max(cooldownRemaining(), FLUSH_INTERVAL_MS);
+  flushTimer = setTimeout(flush, delay);
 }
 
 function send(base: string, event: string): void {
@@ -74,15 +100,18 @@ export function reportEvent(event: string): void {
   const base = getApiBase();
   if (!base) return;
 
-  // If queue is empty, send this event immediately and start the cooldown
-  if (eventQueue.size === 0 && flushTimer === null) {
+  const remaining = cooldownRemaining();
+
+  // If no cooldown active and queue is empty, send immediately
+  if (remaining === 0 && eventQueue.size === 0 && flushTimer === null) {
     send(base, event);
-    // Start cooldown — any events arriving in the next 10s get queued
+    markSent();
+    // Start cooldown timer for any subsequent events
     flushTimer = setTimeout(flush, FLUSH_INTERVAL_MS);
     return;
   }
 
-  // Otherwise queue it
+  // Otherwise queue it for the next window
   eventQueue.set(event, (eventQueue.get(event) || 0) + 1);
   scheduleFlush();
 }
