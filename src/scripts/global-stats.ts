@@ -6,6 +6,7 @@
  */
 
 function getApiBase(): string {
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return '';
   return document.documentElement.dataset.statsApi || '';
 }
 
