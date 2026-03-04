@@ -409,6 +409,9 @@ const ALL_SECTIONS = [
 // ── State ──────────────────────────────────────────────────────────────
 
 let progress: AchievementProgress;
+let initialized = false;
+let deepReaderTimer: ReturnType<typeof setTimeout> | undefined;
+let persistenceTimer: ReturnType<typeof setTimeout> | undefined;
 
 function defaultProgress(): AchievementProgress {
   return {
@@ -663,9 +666,50 @@ export function getVisitCount(): number {
   return progress.visitDays.length;
 }
 
+// ── Cleanup ──────────────────────────────────────────────────────────
+
+function onAchievementUnlocked(e: Event): void {
+  const detail = (e as CustomEvent<Achievement>).detail;
+  const { spawnToast } = window.__achievementToast ?? {};
+  if (spawnToast) {
+    spawnToast(`🏆 ${detail.name} — +${detail.xp} XP`, {
+      className: 'hacker-toast achievement-toast',
+    });
+  }
+}
+
+function onLevelUp(e: Event): void {
+  const detail = (e as CustomEvent<{ level: number; name: string }>).detail;
+  const overlay = document.getElementById('levelUpOverlay');
+  const levelNum = document.getElementById('levelUpNum');
+  const levelName = document.getElementById('levelUpName');
+  if (overlay && levelNum && levelName) {
+    levelNum.textContent = `LEVEL ${detail.level}`;
+    levelName.textContent = detail.name;
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    setTimeout(() => {
+      overlay.classList.remove('active');
+      overlay.setAttribute('aria-hidden', 'true');
+    }, 3000);
+  }
+}
+
+export function destroyAchievements(): void {
+  if (deepReaderTimer) clearTimeout(deepReaderTimer);
+  if (persistenceTimer) clearTimeout(persistenceTimer);
+  window.removeEventListener('achievement-unlocked', onAchievementUnlocked);
+  window.removeEventListener('level-up', onLevelUp);
+  deepReaderTimer = undefined;
+  persistenceTimer = undefined;
+  initialized = false;
+}
+
 // ── Initialization ─────────────────────────────────────────────────────
 
 export function initAchievements(): void {
+  if (initialized) return;
+  initialized = true;
   progress = load();
 
   // Track visit day
@@ -702,7 +746,7 @@ export function initAchievements(): void {
   if (progress.visitDays.length >= 7) unlock('streak_7');
 
   // Deep reader timer — 3 minutes
-  setTimeout(
+  deepReaderTimer = setTimeout(
     () => {
       trackEvent('deep_reader');
     },
@@ -710,7 +754,7 @@ export function initAchievements(): void {
   );
 
   // Persistence pays timer — 10 minutes
-  setTimeout(
+  persistenceTimer = setTimeout(
     () => {
       trackEvent('persistence_pays');
     },
@@ -725,30 +769,8 @@ export function initAchievements(): void {
   reportEvent('visit');
 
   // Listen for achievement + level-up events to show toasts
-  window.addEventListener('achievement-unlocked', ((e: CustomEvent<Achievement>) => {
-    const { spawnToast } = window.__achievementToast ?? {};
-    if (spawnToast) {
-      spawnToast(`🏆 ${e.detail.name} — +${e.detail.xp} XP`, {
-        className: 'hacker-toast achievement-toast',
-      });
-    }
-  }) as EventListener);
-
-  window.addEventListener('level-up', ((e: CustomEvent<{ level: number; name: string }>) => {
-    const overlay = document.getElementById('levelUpOverlay');
-    const levelNum = document.getElementById('levelUpNum');
-    const levelName = document.getElementById('levelUpName');
-    if (overlay && levelNum && levelName) {
-      levelNum.textContent = `LEVEL ${e.detail.level}`;
-      levelName.textContent = e.detail.name;
-      overlay.classList.add('active');
-      overlay.setAttribute('aria-hidden', 'false');
-      setTimeout(() => {
-        overlay.classList.remove('active');
-        overlay.setAttribute('aria-hidden', 'true');
-      }, 3000);
-    }
-  }) as EventListener);
+  window.addEventListener('achievement-unlocked', onAchievementUnlocked);
+  window.addEventListener('level-up', onLevelUp);
 }
 
 // Bridge for toast — avoids circular import

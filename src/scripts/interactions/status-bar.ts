@@ -7,6 +7,7 @@ const STATUS_UPDATE_INTERVAL_MS = 1000;
 const slots: (HTMLElement | null)[] = [];
 let startTime = 0;
 let intervalId: ReturnType<typeof setInterval> | undefined;
+let initialized = false;
 
 function render(): void {
   const config = getStatusBarConfig();
@@ -56,7 +57,16 @@ async function fetchClientIP(): Promise<void> {
   }
 }
 
+export function destroyStatusBar(): void {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = undefined;
+  }
+  initialized = false;
+}
+
 export function initStatusBar(): void {
+  if (initialized) return;
   if (prefersReducedMotion) return;
 
   for (let i = 0; i < SLOT_COUNT; i++) {
@@ -64,6 +74,7 @@ export function initStatusBar(): void {
   }
   if (!slots[0]) return;
 
+  initialized = true;
   startTime = Date.now();
   render();
 

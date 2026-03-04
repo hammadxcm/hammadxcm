@@ -1,6 +1,9 @@
 import { isTouchDevice, prefersReducedMotion } from '../state';
 import { getThemeConfig } from '../theme-config';
 
+let initialized = false;
+let frameId: number | null = null;
+
 export function updateCursorVisibility(): void {
   const cursor = document.getElementById('crosshairCursor');
   const trailContainer = document.getElementById('cursorTrail');
@@ -21,15 +24,57 @@ export function updateCursorVisibility(): void {
   }
 }
 
+let mx = 0;
+let my = 0;
+let cursorEl: HTMLElement | null = null;
+
+const interactiveEls =
+  'a, button, [data-tilt], .social-btn, .project-link, .cert-card, .skyline-card, input, textarea, select';
+
+function onMouseMove(e: MouseEvent): void {
+  mx = e.clientX;
+  my = e.clientY;
+  if (!cursorEl) return;
+  const tc = getThemeConfig();
+  if (tc.hasCursor && !cursorEl.classList.contains('visible')) cursorEl.classList.add('visible');
+}
+
+function onMouseLeave(): void {
+  if (cursorEl) cursorEl.classList.remove('visible');
+}
+
+function onMouseOver(e: MouseEvent): void {
+  if ((e.target as Element).closest(interactiveEls) && cursorEl) cursorEl.classList.add('hover');
+}
+
+function onMouseOut(e: MouseEvent): void {
+  if ((e.target as Element).closest(interactiveEls) && cursorEl) cursorEl.classList.remove('hover');
+}
+
+export function destroyCursor(): void {
+  if (frameId !== null) {
+    cancelAnimationFrame(frameId);
+    frameId = null;
+  }
+  document.removeEventListener('mousemove', onMouseMove);
+  document.removeEventListener('mouseleave', onMouseLeave);
+  document.removeEventListener('mouseover', onMouseOver);
+  document.removeEventListener('mouseout', onMouseOut);
+  cursorEl = null;
+  initialized = false;
+}
+
 export function initCursor(): void {
+  if (initialized) return;
   if (isTouchDevice || prefersReducedMotion) return;
 
   const cursor = document.getElementById('crosshairCursor');
   const trailContainer = document.getElementById('cursorTrail');
   if (!cursor) return;
 
-  let mx = 0;
-  let my = 0;
+  initialized = true;
+  cursorEl = cursor;
+
   let cx = 0;
   let cy = 0;
   const CURSOR_LERP = 0.15;
@@ -42,28 +87,10 @@ export function initCursor(): void {
 
   updateCursorVisibility();
 
-  document.addEventListener('mousemove', (e: MouseEvent) => {
-    mx = e.clientX;
-    my = e.clientY;
-    const tc = getThemeConfig();
-    if (tc.hasCursor && !cursor.classList.contains('visible')) cursor.classList.add('visible');
-  });
-
-  document.addEventListener('mouseleave', () => {
-    cursor.classList.remove('visible');
-    for (let i = 0; i < trailDots.length; i++) {
-      trailDots[i].style.opacity = '0';
-    }
-  });
-
-  const interactiveEls =
-    'a, button, [data-tilt], .social-btn, .project-link, .cert-card, .skyline-card, input, textarea, select';
-  document.addEventListener('mouseover', (e: MouseEvent) => {
-    if ((e.target as Element).closest(interactiveEls)) cursor.classList.add('hover');
-  });
-  document.addEventListener('mouseout', (e: MouseEvent) => {
-    if ((e.target as Element).closest(interactiveEls)) cursor.classList.remove('hover');
-  });
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseleave', onMouseLeave);
+  document.addEventListener('mouseover', onMouseOver);
+  document.addEventListener('mouseout', onMouseOut);
 
   function animate(): void {
     cx += (mx - cx) * CURSOR_LERP;
@@ -90,7 +117,7 @@ export function initCursor(): void {
         : '0';
     }
 
-    requestAnimationFrame(animate);
+    frameId = requestAnimationFrame(animate);
   }
-  animate();
+  frameId = requestAnimationFrame(animate);
 }
