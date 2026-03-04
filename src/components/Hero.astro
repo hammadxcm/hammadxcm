@@ -85,7 +85,7 @@ const { translations } = Astro.props;
     color: var(--accent);
     margin-bottom: 1rem;
     opacity: 0;
-    animation: fadeInUp 0.8s 0.3s forwards;
+    animation: fadeInUp 0.8s forwards;
 
     @include respond-to(mobile) { font-size: 0.95rem; }
   }
@@ -103,12 +103,12 @@ const { translations } = Astro.props;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     opacity: 0;
-    animation: heroReveal 1s 0.5s var(--ease-out-expo) forwards;
+    animation: heroReveal 1s var(--ease-out-expo) forwards;
     transition: background-position var(--duration-slower) ease;
     cursor: default;
 
     &:hover {
-      animation: nameGradient 3s ease infinite, heroReveal 1s 0.5s var(--ease-out-expo) forwards;
+      animation: nameGradient 3s ease infinite, heroReveal 1s var(--ease-out-expo) forwards;
       background-position: 100% 50%;
     }
 
@@ -133,7 +133,7 @@ const { translations } = Astro.props;
     gap: 0;
     margin-bottom: 2.5rem;
     opacity: 0;
-    animation: fadeInUp 0.8s 0.7s forwards;
+    animation: fadeInUp 0.8s forwards;
 
     @include respond-to(small) { font-size: 0.9rem; height: 1.8em; }
   }
@@ -155,7 +155,7 @@ const { translations } = Astro.props;
     justify-content: center;
     margin-bottom: 3rem;
     opacity: 0;
-    animation: fadeInUp 0.8s 0.9s forwards;
+    animation: fadeInUp 0.8s 0.1s forwards;
 
     @include respond-to(mobile) { gap: 0.75rem; }
   }
@@ -176,7 +176,7 @@ const { translations } = Astro.props;
     font-size: 0.75rem;
     letter-spacing: 0.1em;
     opacity: 0;
-    animation: fadeInUp 0.8s 1.2s forwards;
+    animation: fadeInUp 0.8s 0.3s forwards;
   }
 
   .scroll-mouse {
@@ -213,12 +213,10 @@ const { translations } = Astro.props;
     0% {
       opacity: 0;
       transform: translateY(30px) scale(0.95);
-      filter: blur(8px);
     }
     100% {
       opacity: 1;
       transform: translateY(0) scale(1);
-      filter: blur(0);
     }
   }
 
