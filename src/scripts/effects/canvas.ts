@@ -6,8 +6,11 @@ let canvas: HTMLCanvasElement | null = null;
 let ctx: CanvasRenderingContext2D | null = null;
 let w = 0;
 let h = 0;
+let frameId: number | null = null;
+let initialized = false;
 const MOUSE_RADIUS = 150;
 const PARTICLE_CONNECT_DIST = 160;
+const CELL_SIZE = PARTICLE_CONNECT_DIST;
 const mouse = { x: null as number | null, y: null as number | null, radius: MOUSE_RADIUS };
 
 function resize(): void {
@@ -391,6 +394,12 @@ function initParticles(): void {
 function drawParticles(color: string): void {
   if (!ctx) return;
   ctx.clearRect(0, 0, w, h);
+
+  // Build spatial hash grid for O(n) neighbor lookups instead of O(n²)
+  const cols = Math.ceil(w / CELL_SIZE) || 1;
+  const rows = Math.ceil(h / CELL_SIZE) || 1;
+  const grid: number[][] = new Array(cols * rows);
+
   for (let i = 0; i < particles.length; i++) {
     const p = particles[i];
     if (mouse.x !== null && mouse.y !== null) {
@@ -413,18 +422,43 @@ function drawParticles(color: string): void {
     ctx.fillStyle = `${color}${p.opacity})`;
     ctx.fill();
 
-    for (let j = i + 1; j < particles.length; j++) {
-      const p2 = particles[j];
-      const ddx = p.x - p2.x;
-      const ddy = p.y - p2.y;
-      const d = Math.sqrt(ddx * ddx + ddy * ddy);
-      if (d < PARTICLE_CONNECT_DIST) {
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(p2.x, p2.y);
-        ctx.strokeStyle = `${color}${0.15 * (1 - d / PARTICLE_CONNECT_DIST)})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
+    // Insert into spatial grid
+    const cx = Math.min(Math.floor(p.x / CELL_SIZE), cols - 1);
+    const cy = Math.min(Math.floor(p.y / CELL_SIZE), rows - 1);
+    const cellIdx = cy * cols + cx;
+    if (!grid[cellIdx]) grid[cellIdx] = [];
+    grid[cellIdx].push(i);
+  }
+
+  // Draw connections using spatial grid — only check neighboring cells
+  const connected = new Set<string>();
+  ctx.lineWidth = 0.5;
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
+    const cx = Math.min(Math.floor(p.x / CELL_SIZE), cols - 1);
+    const cy = Math.min(Math.floor(p.y / CELL_SIZE), rows - 1);
+
+    for (let ny = Math.max(0, cy - 1); ny <= Math.min(rows - 1, cy + 1); ny++) {
+      for (let nx = Math.max(0, cx - 1); nx <= Math.min(cols - 1, cx + 1); nx++) {
+        const cell = grid[ny * cols + nx];
+        if (!cell) continue;
+        for (const j of cell) {
+          if (j <= i) continue;
+          const key = i < j ? `${i}:${j}` : `${j}:${i}`;
+          if (connected.has(key)) continue;
+          const p2 = particles[j];
+          const ddx = p.x - p2.x;
+          const ddy = p.y - p2.y;
+          const d = Math.sqrt(ddx * ddx + ddy * ddy);
+          if (d < PARTICLE_CONNECT_DIST) {
+            connected.add(key);
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `${color}${0.15 * (1 - d / PARTICLE_CONNECT_DIST)})`;
+            ctx.stroke();
+          }
+        }
       }
     }
   }
@@ -541,29 +575,66 @@ export function switchCanvasEffect(theme: ThemeName): void {
   updateMouseListeners(currentEffect);
 }
 
-export function initCanvas(): void {
-  canvas = document.getElementById('particle-canvas') as HTMLCanvasElement | null;
-  if (!canvas) return;
-  ctx = canvas.getContext('2d');
+function onResize(): void {
   resize();
-  window.addEventListener('resize', () => {
-    resize();
-    inited = {};
-    if (currentEffect) initEffect(currentEffect);
-  });
+  inited = {};
+  if (currentEffect) initEffect(currentEffect);
+}
 
-  switchCanvasEffect(getCurrentTheme());
-
+function startLoop(): void {
+  if (frameId !== null) return;
   function draw(): void {
     if (!isPageVisible() || !isHeroVisible()) {
-      requestAnimationFrame(draw);
+      // Pause RAF when not visible — restart via visibilitychange
+      frameId = null;
       return;
     }
     const theme = getCurrentTheme();
     const tc = getThemeConfig(theme);
     if (tc.canvasEffect !== currentEffect) switchCanvasEffect(theme);
     if (currentEffect) drawEffect(currentEffect, tc.particleColor);
-    requestAnimationFrame(draw);
+    frameId = requestAnimationFrame(draw);
   }
-  draw();
+  frameId = requestAnimationFrame(draw);
+}
+
+function onVisibilityChange(): void {
+  if (document.hidden) {
+    if (frameId !== null) {
+      cancelAnimationFrame(frameId);
+      frameId = null;
+    }
+  } else {
+    startLoop();
+  }
+}
+
+export function destroyCanvas(): void {
+  if (frameId !== null) {
+    cancelAnimationFrame(frameId);
+    frameId = null;
+  }
+  window.removeEventListener('resize', onResize);
+  document.removeEventListener('visibilitychange', onVisibilityChange);
+  if (mouseListenersAttached && canvas) {
+    canvas.removeEventListener('mousemove', onMouseMove);
+    canvas.removeEventListener('mouseleave', onMouseLeave);
+    mouseListenersAttached = false;
+  }
+  initialized = false;
+}
+
+export function initCanvas(): void {
+  if (initialized) return;
+  initialized = true;
+
+  canvas = document.getElementById('particle-canvas') as HTMLCanvasElement | null;
+  if (!canvas) return;
+  ctx = canvas.getContext('2d');
+  resize();
+  window.addEventListener('resize', onResize);
+  document.addEventListener('visibilitychange', onVisibilityChange);
+
+  switchCanvasEffect(getCurrentTheme());
+  startLoop();
 }

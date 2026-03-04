@@ -12,8 +12,23 @@ import { getCurrentTheme, getThemeConfig, themePrompts } from './theme-config';
 import type { ThemeName } from './types';
 
 const themeSwitchTimes: number[] = [];
+let initialized = false;
+
+function onOutsideClick(dropdown: HTMLElement, toggleBtn: HTMLElement): void {
+  dropdown.classList.remove('open');
+  toggleBtn.setAttribute('aria-expanded', 'false');
+}
+
+function onEscapeKey(e: KeyboardEvent, dropdown: HTMLElement, toggleBtn: HTMLElement): void {
+  if (e.key === 'Escape') {
+    dropdown.classList.remove('open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+}
 
 export function initThemeSwitcher(): void {
+  if (initialized) return;
+  initialized = true;
   const switcher = document.getElementById('themeSwitcher');
   const toggleBtn = document.getElementById('themeToggleBtn');
   const dropdown = document.getElementById('themeDropdown');
@@ -115,18 +130,10 @@ export function initThemeSwitcher(): void {
   });
 
   // Close on outside click
-  document.addEventListener('click', () => {
-    dropdown.classList.remove('open');
-    toggleBtn.setAttribute('aria-expanded', 'false');
-  });
+  document.addEventListener('click', () => onOutsideClick(dropdown, toggleBtn));
 
   // Close on Escape
-  document.addEventListener('keydown', (e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      dropdown.classList.remove('open');
-      toggleBtn.setAttribute('aria-expanded', 'false');
-    }
-  });
+  document.addEventListener('keydown', (e: KeyboardEvent) => onEscapeKey(e, dropdown, toggleBtn));
 
   // Apply saved theme on load
   applyThemeEffects(getCurrentTheme());

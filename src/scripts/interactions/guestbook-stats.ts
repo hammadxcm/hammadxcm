@@ -30,10 +30,21 @@ function getPrompt(container: HTMLElement, level: number): string {
 }
 
 let timerInterval: ReturnType<typeof setInterval> | undefined;
+let initialized = false;
+
+export function destroyGuestbookStats(): void {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = undefined;
+  }
+  initialized = false;
+}
 
 export function initGuestbookStats(): void {
+  if (initialized) return;
   const container = document.getElementById('guestbookStats');
   if (!container) return;
+  initialized = true;
 
   // Track guestbook section reached
   trackEvent('guestbook');
@@ -65,6 +76,7 @@ export function initGuestbookStats(): void {
     timeEl.textContent = `${mins}:${secs}`;
   }
   updateTimer();
+  if (timerInterval) clearInterval(timerInterval);
   timerInterval = setInterval(updateTimer, 1000);
 
   // Global stats (async, best-effort)

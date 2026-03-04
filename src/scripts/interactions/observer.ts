@@ -1,12 +1,27 @@
 import { trackEvent } from '../achievements';
 
+let initialized = false;
+let revealObserver: IntersectionObserver | null = null;
+let sectionObserver: IntersectionObserver | null = null;
+
+export function destroyObserver(): void {
+  revealObserver?.disconnect();
+  sectionObserver?.disconnect();
+  revealObserver = null;
+  sectionObserver = null;
+  initialized = false;
+}
+
 export function initObserver(): void {
+  if (initialized) return;
+  initialized = true;
+
   const selectors =
     '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-clip, .stagger, .section-separator';
   const elements = document.querySelectorAll(selectors);
   if (!elements.length) return;
 
-  const observer = new IntersectionObserver(
+  revealObserver = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
@@ -23,12 +38,12 @@ export function initObserver(): void {
     { threshold: 0.08, rootMargin: '0px 0px -60px 0px' },
   );
 
-  for (const el of elements) observer.observe(el);
+  for (const el of elements) revealObserver.observe(el);
 
   // Section visibility tracking for achievements
   const sections = document.querySelectorAll<HTMLElement>('section[id]');
   if (sections.length) {
-    const sectionObserver = new IntersectionObserver(
+    sectionObserver = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting && entry.target.id) {
