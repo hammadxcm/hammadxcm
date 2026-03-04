@@ -82,11 +82,7 @@
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
-        "topics": [
-          "keycloak",
-          "oidc",
-          "saml"
-        ],
+        "topics": ["keycloak", "oidc", "saml"],
         "license": "Apache-2.0"
       }
     },
@@ -117,15 +113,7 @@
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
-        "topics": [
-          "activejob",
-          "activerecord",
-          "framework",
-          "html",
-          "mvc",
-          "rails",
-          "ruby"
-        ],
+        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
         "license": "MIT"
       }
     },
