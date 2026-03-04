@@ -10,6 +10,7 @@ import {
   isUnlocked,
 } from '../achievements';
 import { fetchGlobalStats } from '../global-stats';
+import { trapFocus } from '../utils/focus-trap';
 
 export function initAchievementPanel(): void {
   const overlay = document.getElementById('achievementPanelOverlay');
@@ -21,11 +22,13 @@ export function initAchievementPanel(): void {
 
   const crosshair = document.getElementById('crosshairCursor');
   const cursorTrail = document.getElementById('cursorTrail');
+  let releaseFocusTrap: (() => void) | null = null;
 
   function open(): void {
     render();
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
+    releaseFocusTrap = trapFocus(overlay);
     // Lift cursor above modal
     if (crosshair) crosshair.style.zIndex = '10002';
     if (cursorTrail) cursorTrail.style.zIndex = '10002';
@@ -34,6 +37,10 @@ export function initAchievementPanel(): void {
   function close(): void {
     overlay.classList.remove('open');
     overlay.setAttribute('aria-hidden', 'true');
+    if (releaseFocusTrap) {
+      releaseFocusTrap();
+      releaseFocusTrap = null;
+    }
     // Restore default z-index
     if (crosshair) crosshair.style.zIndex = '';
     if (cursorTrail) cursorTrail.style.zIndex = '';

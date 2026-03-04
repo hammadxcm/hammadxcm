@@ -5,13 +5,15 @@ export function initNav(): void {
 
   const navAnchors = navLinks.querySelectorAll('a');
   hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
+    const isOpen = hamburger.classList.toggle('active');
     navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
   });
   navAnchors.forEach((link) => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('active');
       navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
     });
   });
 
