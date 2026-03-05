@@ -30,7 +30,13 @@ const giscus = config.guestbook?.giscus;
     data-category={giscus?.category}
     data-category-id={giscus?.categoryId}
   >
-    <div class="giscus" id="giscusContainer"></div>
+    <div class="giscus" id="giscusContainer">
+      <div class="giscus-skeleton" id="giscusSkeleton">
+        <div class="skeleton-line skeleton-line--long"></div>
+        <div class="skeleton-line skeleton-line--medium"></div>
+        <div class="skeleton-line skeleton-line--short"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -76,10 +82,30 @@ const giscus = config.guestbook?.giscus;
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', 'top');
     script.setAttribute('data-theme', getGiscusTheme());
-    script.setAttribute('data-lang', 'en');
+    script.setAttribute('data-lang', document.documentElement.lang || 'en');
     script.setAttribute('crossorigin', 'anonymous');
     script.async = true;
     container.appendChild(script);
+
+    // Remove skeleton when Giscus iframe loads
+    const skeleton = document.getElementById('giscusSkeleton');
+    const onMessage = (event: MessageEvent): void => {
+      if (event.origin !== 'https://giscus.app') return;
+      if (skeleton) skeleton.remove();
+      window.removeEventListener('message', onMessage);
+    };
+    window.addEventListener('message', onMessage);
+
+    // Timeout fallback if Giscus never loads
+    setTimeout(() => {
+      if (skeleton && skeleton.parentNode) {
+        skeleton.innerHTML =
+          '<p class="giscus-fallback">Unable to load comments. Please visit <a href="https://github.com/' +
+          repo +
+          '/discussions" target="_blank" rel="noopener">GitHub Discussions</a> directly.</p>';
+        skeleton.classList.remove('giscus-skeleton');
+      }
+    }, 10000);
   }
 
   // Load Giscus when section is in viewport
@@ -123,6 +149,42 @@ const giscus = config.guestbook?.giscus;
     :global(iframe) {
       width: 100% !important;
       border: none;
+    }
+  }
+
+  .giscus-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem 0;
+  }
+
+  .skeleton-line {
+    height: 1rem;
+    border-radius: 4px;
+    background: var(--glass-bg, rgba(255, 255, 255, 0.06));
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+
+    &--long { width: 90%; }
+    &--medium { width: 65%; }
+    &--short { width: 40%; }
+  }
+
+  @keyframes skeleton-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+
+  :global(.giscus-fallback) {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    text-align: center;
+    padding: 1rem 0;
+
+    a {
+      color: var(--accent);
+      text-decoration: underline;
     }
   }
 </style>
