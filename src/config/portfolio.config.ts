@@ -731,7 +731,7 @@ const config: PortfolioConfig = {
       author: 'Sendoso',
       role: 'Company Endorsement',
       company: 'Sendoso',
-      avatar: '/assets/sendoso-logo.svg',
+      avatar: '/assets/sendoso-icon.jpg',
     },
     {
       quote:
@@ -747,7 +747,7 @@ const config: PortfolioConfig = {
       author: 'MachineTools',
       role: 'Company Endorsement',
       company: 'MachineTools',
-      avatar: '/assets/machinetools-logo.svg',
+      avatar: '/assets/machinetools-icon.jpg',
     },
     {
       quote:
@@ -755,7 +755,7 @@ const config: PortfolioConfig = {
       author: 'PikesSoft',
       role: 'Company Endorsement',
       company: 'PikesSoft',
-      avatar: '/assets/pikesoft-logo.svg',
+      avatar: '/assets/pikesoft-icon.jpg',
     },
   ],
 
