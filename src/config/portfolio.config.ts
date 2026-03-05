@@ -655,15 +655,15 @@ const config: PortfolioConfig = {
   testimonials: [
     {
       quote:
-        "Thanks for helping me with the VAT Legal site. I was very happy with the work Fyniti did. They did everything, from setting up WordPress and making it look like our brand to speeding it up, making it safer, and making it easier for search engines to find. We now have a sleek, modern website that looks great on any screen and really shows what we're all about. They also took care of the technical side of things, like setting up SSL, DNS, and business email. The best things about them were how much they knew, how careful they were, and how much they cared about their customers. I would hire them again.",
-      author: 'Majid Mohammed',
-      role: 'VAT Consultant',
-      company: 'VAT Legal',
-      avatar: '/avatars/majid-mohammed.jpg',
+        'Hammad has made a huge impact at Sendoso during his almost 3 years working here. Hammad played a big part in the recent June launch which was an important launch for our customers. Keep up the great work Hammad!',
+      author: 'Kris Rudeegraap',
+      role: 'Co-CEO',
+      company: 'Sendoso',
+      avatar: '/avatars/kris-rudeegraap.jpg',
     },
     {
       quote:
-        'Hammad has made a huge impact at Sendoso during his almost 3 years working here. Hammad played a big part in the recent June launch which was an important launch for our customers. Keep up the great work Hammad!',
+        'Hammad is an amazing engineer! He played a very important roll in the rollout of a new redesign and helped lead the efforts. Hammad is a great communicator and has helped multiple engineering teams be more successful, especially our integrations team. I strongly recommend Hammad!',
       author: 'Kris Rudeegraap',
       role: 'Co-CEO',
       company: 'Sendoso',
@@ -676,6 +676,22 @@ const config: PortfolioConfig = {
       role: 'VP, Product',
       company: 'Sendoso',
       avatar: '/avatars/cody-farmer.jpg',
+    },
+    {
+      quote:
+        'Beyond his technical contributions, Hammad showed qualities that align with future leadership: he took ownership of critical projects, identified areas for improvement proactively, and collaborated effectively across teams. His ability to combine architectural thinking with hands-on execution made him a reliable and impactful member of the team. I recommend him as a Potential Leader in digital technology.',
+      author: 'Qaseem Shaikh',
+      role: 'Former CTO',
+      company: 'Sendoso',
+      avatar: '/avatars/qaseem-shaikh.jpg',
+    },
+    {
+      quote:
+        'Hammad demonstrated his technical breadth, adaptability, and the ability to deliver features that directly impacted business operations and user experience. He worked on several initiatives that strengthened the Sendoso platform, including role-based permissions, API monitoring dashboards, Salesforce automation, and integrations with HubSpot, Salesloft, Marketo, and Engagio. I believe Hammad has the capability and potential to become a leader and make valuable contributions in the technology ecosystem.',
+      author: 'Nawab Iqbal',
+      role: 'Former Engineering Manager',
+      company: 'Sendoso',
+      avatar: '/avatars/nawab-iqbal.jpg',
     },
     {
       quote:
@@ -695,11 +711,11 @@ const config: PortfolioConfig = {
     },
     {
       quote:
-        'Hammad is an amazing engineer! He played a very important roll in the rollout of a new redesign and helped lead the efforts. Hammad is a great communicator and has helped multiple engineering teams be more successful, especially our integrations team. I strongly recommend Hammad!',
-      author: 'Kris Rudeegraap',
-      role: 'Co-CEO',
-      company: 'Sendoso',
-      avatar: '/avatars/kris-rudeegraap.jpg',
+        "Thanks for helping me with the VAT Legal site. I was very happy with the work Fyniti did. They did everything, from setting up WordPress and making it look like our brand to speeding it up, making it safer, and making it easier for search engines to find. We now have a sleek, modern website that looks great on any screen and really shows what we're all about. They also took care of the technical side of things, like setting up SSL, DNS, and business email. The best things about them were how much they knew, how careful they were, and how much they cared about their customers. I would hire them again.",
+      author: 'Majid Mohammed',
+      role: 'VAT Consultant',
+      company: 'VAT Legal',
+      avatar: '/avatars/majid-mohammed.jpg',
     },
     {
       quote:
@@ -711,19 +727,11 @@ const config: PortfolioConfig = {
     },
     {
       quote:
-        'Hammad demonstrated his technical breadth, adaptability, and the ability to deliver features that directly impacted business operations and user experience. He worked on several initiatives that strengthened the Sendoso platform, including role-based permissions, API monitoring dashboards, Salesforce automation, and integrations with HubSpot, Salesloft, Marketo, and Engagio. I believe Hammad has the capability and potential to become a leader and make valuable contributions in the technology ecosystem.',
-      author: 'Nawab Iqbal',
-      role: 'Former Engineering Manager',
-      company: 'Sendoso',
-      avatar: '/avatars/nawab-iqbal.jpg',
-    },
-    {
-      quote:
-        'Beyond his technical contributions, Hammad showed qualities that align with future leadership: he took ownership of critical projects, identified areas for improvement proactively, and collaborated effectively across teams. His ability to combine architectural thinking with hands-on execution made him a reliable and impactful member of the team. I recommend him as a Potential Leader in digital technology.',
-      author: 'Qaseem Shaikh',
-      role: 'Former CTO',
-      company: 'Sendoso',
-      avatar: '/avatars/qaseem-shaikh.jpg',
+        'Mr. Hammad Habib Khan made outstanding contributions to the Machinery Manager project. He demonstrated expertise in database optimization using Sphinx Search and Arel SQL, advanced query development, email functionality enhancements, content access and security, and UI/UX improvements. We recognize Hammad as a potential leader in technology.',
+      author: 'MachineTools',
+      role: 'Company Endorsement',
+      company: 'MachineTools',
+      avatar: '/assets/machinetools-icon.jpg',
     },
     {
       quote:
@@ -740,14 +748,6 @@ const config: PortfolioConfig = {
       role: 'Company Endorsement',
       company: 'TechXmation',
       avatar: '/assets/techxmation-logo.jpeg',
-    },
-    {
-      quote:
-        'Mr. Hammad Habib Khan made outstanding contributions to the Machinery Manager project. He demonstrated expertise in database optimization using Sphinx Search and Arel SQL, advanced query development, email functionality enhancements, content access and security, and UI/UX improvements. We recognize Hammad as a potential leader in technology.',
-      author: 'MachineTools',
-      role: 'Company Endorsement',
-      company: 'MachineTools',
-      avatar: '/assets/machinetools-icon.jpg',
     },
     {
       quote:
