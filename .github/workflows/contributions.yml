@@ -2,7 +2,7 @@ name: Update OSS Contributions
 
 on:
   schedule:
-    - cron: "0 5 * * *"
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 jobs:
@@ -58,5 +58,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/contributions.json src/data/projects.json README.md
-          git diff --cached --quiet || git commit -m "Update OSS contributions & projects [skip ci]"
+          git diff --cached --quiet || git commit -m "Update OSS contributions & projects"
           git push
