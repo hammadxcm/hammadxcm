@@ -1,4 +1,4 @@
-import { initAchievements, trackEvent } from './achievements';
+import { flushPendingToasts, initAchievements, trackEvent } from './achievements';
 import { initGithubTabs, initLeetcodeTabs } from './analytics';
 import { initBoot } from './effects/boot';
 import { initCanvas } from './effects/canvas';
@@ -87,6 +87,9 @@ setTimeout(() => {
 
   // Bridge toast for achievement notifications
   window.__achievementToast = { spawnToast };
+
+  // Show any toasts queued before navigation (e.g. language switch)
+  flushPendingToasts();
 
   // Social link tracking
   document.querySelectorAll('.social-btn').forEach((el) => {

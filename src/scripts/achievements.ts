@@ -668,13 +668,41 @@ export function getVisitCount(): number {
 
 // ── Cleanup ──────────────────────────────────────────────────────────
 
+function queuePendingToast(message: string): void {
+  try {
+    const pending = JSON.parse(sessionStorage.getItem('hk-pending-toasts') || '[]');
+    pending.push(message);
+    sessionStorage.setItem('hk-pending-toasts', JSON.stringify(pending));
+  } catch {
+    /* private browsing */
+  }
+}
+
+export function flushPendingToasts(): void {
+  try {
+    const raw = sessionStorage.getItem('hk-pending-toasts');
+    if (!raw) return;
+    sessionStorage.removeItem('hk-pending-toasts');
+    const pending: string[] = JSON.parse(raw);
+    const { spawnToast } = window.__achievementToast ?? {};
+    if (spawnToast) {
+      for (const msg of pending) {
+        spawnToast(msg, { className: 'hacker-toast achievement-toast' });
+      }
+    }
+  } catch {
+    /* ignore */
+  }
+}
+
 function onAchievementUnlocked(e: Event): void {
   const detail = (e as CustomEvent<Achievement>).detail;
+  const msg = `🏆 ${detail.name} — +${detail.xp} XP`;
+  // Queue for display after navigation (e.g. language switch)
+  queuePendingToast(msg);
   const { spawnToast } = window.__achievementToast ?? {};
   if (spawnToast) {
-    spawnToast(`🏆 ${detail.name} — +${detail.xp} XP`, {
-      className: 'hacker-toast achievement-toast',
-    });
+    spawnToast(msg, { className: 'hacker-toast achievement-toast' });
   }
 }
 
