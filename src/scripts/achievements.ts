@@ -4,6 +4,7 @@
  * Emits 'achievement-unlocked' and 'level-up' custom events.
  */
 
+import { ALL_SECTIONS } from './constants';
 import { reportEvent } from './global-stats';
 
 // ── Types ──────────────────────────────────────────────────────────────
@@ -392,18 +393,6 @@ export const ACHIEVEMENTS: Achievement[] = [
     category: 'discover',
     secret: true,
   },
-];
-
-const ALL_SECTIONS = [
-  'about',
-  'tech',
-  'journey',
-  'projects',
-  'contributions',
-  'certs',
-  'testimonials',
-  'analytics',
-  'guestbook',
 ];
 
 // ── State ──────────────────────────────────────────────────────────────

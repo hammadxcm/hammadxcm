@@ -45,6 +45,14 @@ const starTier = repo.stars >= 50000 ? 'legendary' : repo.stars >= 10000 ? 'popu
       </svg>
       {translations.contributions.open}
     </span>
+  ) : pr.state === 'closed' ? (
+    <span class="state-badge closed-badge">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path d="M11.28 6.78a.75.75 0 0 0-1.06-1.06L7.25 8.69 5.78 7.22a.75.75 0 0 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0l3.5-3.5Z" />
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-1.5 0a6.5 6.5 0 1 0-13 0 6.5 6.5 0 0 0 13 0Z" />
+      </svg>
+      {translations.contributions.closed}
+    </span>
   ) : (
     <span class="state-badge merged-badge">
       <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -154,6 +162,8 @@ const starTier = repo.stars >= 50000 ? 'legendary' : repo.stars >= 10000 ? 'popu
     <span class="contrib-time">
       {pr.state === 'open'
         ? translations.contributions.open.toLowerCase()
+        : pr.state === 'closed'
+        ? translations.contributions.closed.toLowerCase()
         : translations.contributions.merged.toLowerCase()}{' '}
       {relativeTime(pr.mergedAt, translations)}
     </span>
@@ -225,6 +235,12 @@ const starTier = repo.stars >= 50000 ? 'legendary' : repo.stars >= 10000 ? 'popu
     background: rgba(63, 185, 80, 0.15);
     color: #3fb950;
     border: 1px solid rgba(63, 185, 80, 0.25);
+  }
+
+  .closed-badge {
+    background: rgba(139, 148, 158, 0.15);
+    color: #8b949e;
+    border: 1px solid rgba(139, 148, 158, 0.25);
   }
 
   /* ── Card Header ── */

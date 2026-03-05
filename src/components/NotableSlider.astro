@@ -1,0 +1,176 @@
+---
+/**
+ * Notable Contributions Logo Marquee
+ * Auto-scrolling logo strip showing orgs the user has contributed to.
+ * Each logo links to the repo homepage. Smooth infinite CSS animation.
+ */
+import type { ContributionPR } from '@config/types';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  prs: ContributionPR[];
+  translations: TranslationMap;
+}
+
+const { prs, translations } = Astro.props;
+
+// Deduplicate repos by org, keep highest-star repo per org
+const orgMap = new Map<string, { name: string; avatar: string; url: string; stars: number }>();
+for (const pr of prs) {
+  const orgName = pr.repo.fullName.split('/')[0];
+  const existing = orgMap.get(orgName);
+  if (!existing || pr.repo.stars > existing.stars) {
+    orgMap.set(orgName, {
+      name: orgName,
+      avatar: pr.repo.ownerAvatar,
+      url: pr.repo.url,
+      stars: pr.repo.stars,
+    });
+  }
+}
+
+const orgs = [...orgMap.values()].sort((a, b) => b.stars - a.stars);
+const hasOrgs = orgs.length > 0;
+// Duplicate for seamless loop
+const doubled = [...orgs, ...orgs];
+---
+
+{hasOrgs && (
+  <div class="notable-marquee reveal">
+    <p class="notable-label">{translations.contributions.notableTitle}</p>
+    <div class="notable-track-wrapper">
+      <div class="notable-track">
+        {doubled.map((org) => (
+          <a
+            class="notable-org"
+            href={org.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={org.name}
+          >
+            <img
+              src={org.avatar}
+              alt={org.name}
+              width="48"
+              height="48"
+              loading="lazy"
+              class="notable-org-avatar"
+            />
+            <span class="notable-org-name">{org.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .notable-marquee {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .notable-label {
+    text-align: center;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+
+    @include respond-to(mobile) { font-size: 0.68rem; }
+  }
+
+  .notable-track-wrapper {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  .notable-track {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: max-content;
+    animation: notable-scroll 30s linear infinite;
+
+    &:hover { animation-play-state: paused; }
+
+    @include respond-to(mobile) {
+      gap: 2rem;
+      animation-duration: 20s;
+    }
+  }
+
+  @keyframes notable-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .notable-org {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--text-dim);
+    flex-shrink: 0;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--text);
+      background: var(--glass-bg);
+      transform: scale(1.05);
+
+      .notable-org-avatar {
+        border-color: rgba(var(--accent-glow), 0.4);
+        filter: none;
+      }
+
+      .notable-org-name {
+        color: var(--accent);
+      }
+    }
+  }
+
+  .notable-org-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--glass-border);
+    object-fit: cover;
+    filter: grayscale(0.3);
+    transition: all 0.3s ease;
+
+    @include respond-to(mobile) { width: 36px; height: 36px; }
+  }
+
+  .notable-org-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+
+    @include respond-to(mobile) { font-size: 0.75rem; }
+    @include respond-to(small) { display: none; }
+  }
+
+  @include reduced-motion {
+    .notable-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: auto;
+      justify-content: center;
+    }
+
+    .notable-track-wrapper {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+</style>

@@ -3,22 +3,26 @@
  */
 
 import { getLevel, getLevelName, getProgress, getVisitCount, trackEvent } from '../achievements';
+import { ALL_SECTIONS } from '../constants';
 import { fetchGlobalStats } from '../global-stats';
-
-const ALL_SECTIONS = [
-  'about',
-  'tech',
-  'journey',
-  'projects',
-  'contributions',
-  'certs',
-  'testimonials',
-  'analytics',
-  'guestbook',
-];
 
 function formatNumber(n: number): string {
   return n.toLocaleString();
+}
+
+function animateValue(el: HTMLElement, target: number, duration = 800): void {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.textContent = formatNumber(target);
+    return;
+  }
+  const start = performance.now();
+  function tick(now: number): void {
+    const t = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+    el.textContent = formatNumber(Math.round(eased * target));
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 }
 
 function getPrompt(container: HTMLElement, level: number): string {
@@ -85,7 +89,7 @@ export function initGuestbookStats(): void {
       if (!stats) return;
       const visitorsEl = document.getElementById('gsGlobalVisitors');
       if (visitorsEl && stats.visit) {
-        visitorsEl.textContent = formatNumber(stats.visit);
+        animateValue(visitorsEl, stats.visit);
       }
 
       const ctfEl = document.getElementById('gsCtfSolvers');
@@ -108,7 +112,7 @@ export function initGuestbookStats(): void {
       // Global achievements unlocked
       const achievementEl = document.getElementById('gsGlobalAchievements');
       if (achievementEl && stats.achievement_unlocked) {
-        achievementEl.textContent = formatNumber(stats.achievement_unlocked);
+        animateValue(achievementEl, stats.achievement_unlocked);
       }
     })
     .catch(() => {
