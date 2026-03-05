@@ -144,7 +144,14 @@ async function main() {
   const openPRs = await fetchPRsByState('open');
   console.log(`Found ${openPRs.length} open PRs to external repos`);
 
-  const prs = [...mergedPRs, ...openPRs];
+  console.log(`Fetching closed (unmerged) PRs for ${USERNAME}...`);
+  const allClosed = await fetchPRsByState('closed');
+  // Remove merged PRs from closed set (GitHub's is:closed includes merged)
+  const mergedUrls = new Set(mergedPRs.map((pr) => pr.html_url));
+  const closedPRs = allClosed.filter((pr) => !mergedUrls.has(pr.html_url));
+  console.log(`Found ${closedPRs.length} closed (unmerged) PRs to external repos`);
+
+  const prs = [...mergedPRs, ...openPRs, ...closedPRs];
 
   if (prs.length === 0) {
     const emptyData = {
@@ -201,6 +208,8 @@ async function main() {
       state: pr._state,
       mergedAt: pr._state === 'merged'
         ? (pr.pull_request?.merged_at || pr.closed_at || '')
+        : pr._state === 'closed'
+        ? (pr.closed_at || pr.created_at || '')
         : (pr.created_at || ''),
       additions: 0,
       deletions: 0,
@@ -259,7 +268,7 @@ function writeOutput(data) {
     const date = c.mergedAt ? new Date(c.mergedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
     const stars = c.repo.stars >= 1000 ? `${(c.repo.stars / 1000).toFixed(1)}k` : String(c.repo.stars);
     const impact = `+${c.additions} -${c.deletions}`;
-    const status = c.state === 'open' ? '🟢 Open' : '🟣 Merged';
+    const status = c.state === 'open' ? '🟢 Open' : c.state === 'closed' ? '⚪ Closed' : '🟣 Merged';
     lines.push(
       `| [${c.repo.fullName}](${c.repo.url}) | [${c.title}](${c.url}) | ${status} | ${date} | ${stars} | ${impact} |`
     );

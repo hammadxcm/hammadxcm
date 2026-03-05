@@ -17,6 +17,7 @@ const { prs, translations } = Astro.props;
 
 const mergedCount = prs.filter((pr) => pr.state === 'merged').length;
 const openCount = prs.filter((pr) => pr.state === 'open').length;
+const closedCount = prs.filter((pr) => pr.state === 'closed').length;
 const uniqueRepos = new Set(prs.map((pr) => pr.repo.fullName)).size;
 const uniqueOrgs = new Set(prs.map((pr) => pr.repo.fullName.split('/')[0])).size;
 const uniqueLangs = [...new Set(prs.map((pr) => pr.repo.language).filter(Boolean))] as string[];
@@ -37,6 +38,15 @@ const totalFilesChanged = prs.reduce((sum, pr) => sum + (pr.changedFiles || 0), 
       <div class="summary-stat">
         <span class="summary-value">{openCount}</span>
         <span class="summary-label">{translations.contributions.prsOpen}</span>
+      </div>
+    </>
+  )}
+  {closedCount > 0 && (
+    <>
+      <div class="summary-divider" />
+      <div class="summary-stat">
+        <span class="summary-value">{closedCount}</span>
+        <span class="summary-label">{translations.contributions.prsClosed}</span>
       </div>
     </>
   )}

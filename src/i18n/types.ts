@@ -67,6 +67,7 @@ export interface TranslationMap {
     title: string;
     prsMerged: string;
     prsOpen: string;
+    prsClosed: string;
     repos: string;
     combinedStars: string;
     linesChanged: string;
@@ -75,10 +76,13 @@ export interface TranslationMap {
     orgs: string;
     merged: string;
     open: string;
+    closed: string;
     files: string;
     viewPullRequest: string;
     viewMore: string;
     showLess: string;
+    notableTitle: string;
+    notableSubtitle: string;
     relativeTime: {
       today: string;
       dayAgo: string;

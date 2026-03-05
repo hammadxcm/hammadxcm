@@ -1,0 +1,540 @@
+---
+/**
+ * Notable Contributions Slider
+ * Animated, theme-aware horizontal slider showcasing PRs to high-profile repos.
+ * Filters contributions with 10k+ stars and displays them as elegant sliding cards.
+ */
+import { langColors } from '@config/lang-colors';
+import { formatStars } from '../utils/format';
+import StarIcon from './icons/StarIcon.astro';
+import type { ContributionPR } from '@config/types';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  prs: ContributionPR[];
+  translations: TranslationMap;
+}
+
+const { prs, translations } = Astro.props;
+
+const STAR_THRESHOLD = 5000;
+const notable = prs
+  .filter((pr) => pr.repo.stars >= STAR_THRESHOLD && pr.state === 'merged')
+  .sort((a, b) => b.repo.stars - a.repo.stars);
+
+const hasNotable = notable.length > 0;
+---
+
+{hasNotable && (
+  <div class="notable-section reveal">
+    <div class="notable-header">
+      <h3 class="notable-title">{translations.contributions.notableTitle}</h3>
+      <p class="notable-subtitle">{translations.contributions.notableSubtitle}</p>
+    </div>
+
+    <div class="notable-track-wrapper">
+      <button class="notable-nav notable-prev" aria-label="Previous" id="notable-prev">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+
+      <div class="notable-track" id="notable-track">
+        {notable.map((pr) => {
+          const dotColor = pr.repo.language ? (langColors[pr.repo.language] || 'var(--text-dim)') : 'var(--text-dim)';
+          const starTier = pr.repo.stars >= 50000 ? 'legendary' : pr.repo.stars >= 10000 ? 'popular' : 'rising';
+          return (
+            <a
+              class="notable-card glass glow-border"
+              href={pr.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class={`notable-tier-ribbon ${starTier}`}>
+                <StarIcon />
+                <span>{formatStars(pr.repo.stars)}</span>
+              </div>
+
+              <div class="notable-card-header">
+                <img
+                  class="notable-avatar"
+                  src={pr.repo.ownerAvatar}
+                  alt={pr.repo.fullName.split('/')[0]}
+                  width="44"
+                  height="44"
+                  loading="lazy"
+                />
+                <div class="notable-repo-info">
+                  <span class="notable-repo-name">{pr.repo.fullName}</span>
+                  <span class="notable-repo-lang">
+                    <span class="notable-lang-dot" style={`background:${dotColor}`} />
+                    {pr.repo.language || 'Multi'}
+                  </span>
+                </div>
+              </div>
+
+              <h4 class="notable-pr-title">
+                <span class="notable-pr-number">#{pr.number}</span>
+                {` ${pr.title}`}
+              </h4>
+
+              {pr.repo.description && (
+                <p class="notable-desc">{pr.repo.description}</p>
+              )}
+
+              <div class="notable-card-footer">
+                <div class="notable-diff">
+                  <span class="notable-add">+{pr.additions.toLocaleString()}</span>
+                  <span class="notable-del">-{pr.deletions.toLocaleString()}</span>
+                </div>
+                <span class="notable-merged-badge">
+                  <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5.45 10.846a2.25 2.25 0 1 1 0-5.692ZM4.25 8a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5 1.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
+                  </svg>
+                  {translations.contributions.merged}
+                </span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <button class="notable-nav notable-next" aria-label="Next" id="notable-next">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="notable-dots" id="notable-dots">
+      {notable.map((_, i) => (
+        <button
+          class:list={['notable-dot', { active: i === 0 }]}
+          aria-label={`Slide ${i + 1}`}
+          data-index={i}
+        />
+      ))}
+    </div>
+  </div>
+)}
+
+<script>
+  function initNotableSlider() {
+    const track = document.getElementById('notable-track');
+    const prevBtn = document.getElementById('notable-prev');
+    const nextBtn = document.getElementById('notable-next');
+    const dotsContainer = document.getElementById('notable-dots');
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    const cards = track.querySelectorAll<HTMLElement>('.notable-card');
+    if (cards.length === 0) return;
+
+    let current = 0;
+    let startX = 0;
+    let isDragging = false;
+
+    function getVisibleCount(): number {
+      const trackWidth = track!.clientWidth;
+      const cardWidth = cards[0].offsetWidth + 16; // gap
+      return Math.max(1, Math.floor(trackWidth / cardWidth));
+    }
+
+    function getMaxIndex(): number {
+      return Math.max(0, cards.length - getVisibleCount());
+    }
+
+    function scrollToIndex(index: number) {
+      const max = getMaxIndex();
+      current = Math.max(0, Math.min(index, max));
+      const cardWidth = cards[0].offsetWidth + 16;
+      track!.style.transform = `translateX(-${current * cardWidth}px)`;
+      updateDots();
+      updateNavState();
+    }
+
+    function updateDots() {
+      const dots = dotsContainer!.querySelectorAll('.notable-dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === current);
+      });
+    }
+
+    function updateNavState() {
+      const max = getMaxIndex();
+      prevBtn!.classList.toggle('disabled', current === 0);
+      nextBtn!.classList.toggle('disabled', current >= max);
+    }
+
+    prevBtn.addEventListener('click', () => scrollToIndex(current - 1));
+    nextBtn.addEventListener('click', () => scrollToIndex(current + 1));
+
+    dotsContainer.addEventListener('click', (e) => {
+      const dot = (e.target as HTMLElement).closest('.notable-dot');
+      if (dot) scrollToIndex(Number(dot.getAttribute('data-index') || 0));
+    });
+
+    // Touch/drag support
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        scrollToIndex(current + (diff > 0 ? 1 : -1));
+      }
+    });
+
+    // Keyboard navigation
+    track.closest('.notable-section')?.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') scrollToIndex(current - 1);
+      if (e.key === 'ArrowRight') scrollToIndex(current + 1);
+    });
+
+    // Resize handler
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => scrollToIndex(current), 150);
+    });
+
+    updateNavState();
+  }
+
+  initNotableSlider();
+</script>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
+  .notable-section {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .notable-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .notable-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+    font-family: var(--font-mono);
+
+    @include respond-to(mobile) { font-size: 1.15rem; }
+  }
+
+  .notable-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+
+    @include respond-to(mobile) { font-size: 0.75rem; }
+  }
+
+  /* ── Track Wrapper with Nav ── */
+  .notable-track-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    @include respond-to(mobile) { gap: 0.25rem; }
+  }
+
+  .notable-track {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    padding: 0.5rem 0;
+  }
+
+  .notable-nav {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur-glass);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+
+    &:hover:not(.disabled) {
+      background: rgba(var(--accent-glow), 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: scale(1.1);
+    }
+
+    &.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    @include respond-to(mobile) {
+      width: 32px;
+      height: 32px;
+
+      svg { width: 16px; height: 16px; }
+    }
+
+    @include respond-to(small) { display: none; }
+  }
+
+  /* ── Notable Card ── */
+  .notable-card {
+    flex: 0 0 340px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-decoration: none;
+    color: var(--text);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      opacity: 0;
+      background: radial-gradient(
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(var(--accent-glow), 0.08),
+        transparent 40%
+      );
+      transition: opacity 0.4s ease;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: rgba(var(--accent-glow), 0.3);
+
+      &::before { opacity: 1; }
+    }
+
+    @include respond-to(mobile) { flex: 0 0 280px; padding: 1.25rem; }
+    @include respond-to(small) { flex: 0 0 260px; padding: 1rem; }
+  }
+
+  /* ── Tier Ribbon ── */
+  .notable-tier-ribbon {
+    position: absolute;
+    top: 1rem;
+    inset-inline-end: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+
+    :global(svg) { width: 10px; height: 10px; }
+
+    &.legendary {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 215, 0, 0.2));
+      color: #ffd700;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    &.popular {
+      background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(99, 102, 241, 0.2));
+      color: #a78bfa;
+      border: 1px solid rgba(167, 139, 250, 0.3);
+    }
+
+    &.rising {
+      background: rgba(63, 185, 80, 0.15);
+      color: #3fb950;
+      border: 1px solid rgba(63, 185, 80, 0.25);
+    }
+  }
+
+  /* ── Card Header ── */
+  .notable-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-inline-end: 5rem;
+  }
+
+  .notable-avatar {
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid var(--glass-border);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+
+    .notable-card:hover & {
+      transform: scale(1.08);
+      border-color: rgba(var(--accent-glow), 0.4);
+    }
+  }
+
+  .notable-repo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .notable-repo-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.3s ease;
+
+    .notable-card:hover & { color: var(--accent); }
+
+    @include respond-to(mobile) { font-size: 0.82rem; }
+  }
+
+  .notable-repo-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    color: var(--text-dim);
+  }
+
+  .notable-lang-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── PR Title ── */
+  .notable-pr-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--text);
+
+    @include respond-to(mobile) { font-size: 0.85rem; }
+  }
+
+  .notable-pr-number {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  .notable-desc {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    flex: 1;
+
+    @include respond-to(mobile) { font-size: 0.72rem; }
+  }
+
+  /* ── Footer ── */
+  .notable-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--glass-border);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+  }
+
+  .notable-diff {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .notable-add { color: #3fb950; font-weight: 600; }
+  .notable-del { color: #f85149; font-weight: 600; }
+
+  .notable-merged-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #a78bfa;
+    font-weight: 600;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Pagination Dots ── */
+  .notable-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .notable-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(var(--accent-glow), 0.3);
+      border-color: var(--accent);
+    }
+
+    &.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.3);
+    }
+  }
+
+  /* ── Overflow masking ── */
+  .notable-track-wrapper {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+  }
+
+  /* ── Reduced motion ── */
+  @include reduced-motion {
+    .notable-track { transition: none; }
+    .notable-card { transition: none; &::before { display: none; } }
+    .notable-avatar { transition: none; }
+    .notable-dot { transition: none; }
+    .notable-nav { transition: none; }
+  }
+</style>

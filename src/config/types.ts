@@ -136,7 +136,7 @@ export interface ContributionPR {
   title: string;
   url: string;
   number: number;
-  state: 'merged' | 'open';
+  state: 'merged' | 'open' | 'closed';
   mergedAt: string;
   additions: number;
   deletions: number;
