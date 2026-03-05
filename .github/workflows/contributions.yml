@@ -50,6 +50,9 @@ jobs:
           "
           rm -f CONTRIBUTIONS_README.md
 
+      - name: Format generated JSON
+        run: npx biome format --write src/data/contributions.json src/data/projects.json
+
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
