@@ -1,0 +1,49 @@
+---
+/**
+ * Shared "View All" link used by landing page sections to link to listing pages.
+ * Single source of truth for styling — DRY across all 4 sections.
+ */
+interface Props {
+  href: string;
+  label: string;
+  count?: number;
+}
+
+const { href, label, count } = Astro.props;
+---
+
+<div class="view-all-wrapper">
+  <a href={href} class="view-all-link glass">
+    <span class="view-all-text">{label}</span>
+    {count !== undefined && <span class="view-all-count">{count}</span>}
+    <svg class="view-all-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
+  </a>
+</div>
+
+<style lang="scss">
+  @use '../styles/mixins' as *;
+  @use '../styles/utilities/view-more' as *;
+
+  .view-all-wrapper {
+    @include view-more-wrapper;
+  }
+
+  .view-all-link {
+    @include view-more-btn;
+    text-decoration: none;
+  }
+
+  .view-all-count {
+    @include view-more-count;
+  }
+
+  .view-all-arrow {
+    transition: transform var(--duration-normal) var(--ease-out-expo);
+  }
+
+  .view-all-link:hover .view-all-arrow {
+    transform: translateX(4px);
+  }
+</style>

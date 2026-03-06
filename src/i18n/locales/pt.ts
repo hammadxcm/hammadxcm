@@ -90,6 +90,16 @@ const pt: TranslationMap = {
       yearsAgo: '{count} anos atrás',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: 'Distribuicao por Linguagem',
+    orgDistribution: 'Distribuicao por Organizacao',
+    impactMetrics: 'Metricas de Impacto',
+    timeline: 'Linha do Tempo',
+    avgLinesPerPR: 'Media de Linhas / PR',
+    largestPR: 'Maior PR',
+    mostActiveOrg: 'Org Mais Ativa',
+    successRate: 'Taxa de Merge',
+  },
   certs: {
     label: '// Credenciais',
     title: 'Certificações',
@@ -147,6 +157,7 @@ const pt: TranslationMap = {
     label: '// Interceptações de sinal',
     title: 'Depoimentos',
   },
+  listing: { backToHome: 'Voltar ao inicio', viewAll: 'Ver tudo' },
   guestbook: {
     label: '// Registro de transmissão',
     title: 'Livro de Visitas',
@@ -226,6 +237,9 @@ const pt: TranslationMap = {
         name: 'Rapid Switcher',
         description: 'Trocar o tema 5 vezes em 30 segundos',
       },
+      listing_explorer: { name: 'Mergulhador', description: 'Visite qualquer pagina de listagem' },
+      listing_completionist: { name: 'Reconhecimento Completo', description: 'Visite todas as 5 paginas de listagem' },
+      analytics_deep_dive: { name: 'Cientista de Dados', description: 'Visite a pagina de analiticas' },
     },
   },
   commandPalette: {

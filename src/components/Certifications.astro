@@ -8,24 +8,30 @@
  * @styles Scoped SCSS — cert grid, cards, badges + responsive
  */
 import SectionHeader from './SectionHeader.astro';
+import ViewAllLink from './ViewAllLink.astro';
 import ArrowIcon from './ArrowIcon.astro';
 import { config } from '@config/index';
 import { sanitizeHtml } from '@utils/sanitize';
 import type { TranslationMap } from '@i18n/types';
+import { getLocaleFromUrl, localePath } from '@i18n/index';
 
 interface Props {
   translations: TranslationMap;
 }
 
 const { translations } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url);
+const INITIAL_SHOW = 6;
+const allCerts = config.certifications;
+const hasMore = allCerts.length > INITIAL_SHOW;
 ---
 
 <!-- ══════ CERTIFICATIONS ══════ -->
 <section id="certs" class="section">
   <SectionHeader label={translations.certs.label} title={translations.certs.title} />
   <div class="certs-grid stagger">
-    {config.certifications.map((cert) => (
-      <a href={cert.href} target="_blank" rel="noopener noreferrer" class="cert-card glass reveal glow-border" aria-label={cert.ariaLabel}>
+    {allCerts.map((cert, idx) => (
+      <a href={cert.href} target="_blank" rel="noopener noreferrer" class:list={['cert-card', 'glass', 'reveal', 'glow-border', { 'cert-hidden': hasMore && idx >= INITIAL_SHOW }]} aria-label={cert.ariaLabel}>
         <div class="cert-badge">
           {cert.badge.type === 'image'
             ? <img src={cert.badge.src} width={cert.badge.width} height={cert.badge.height} alt={cert.badge.alt} loading="lazy" />
@@ -40,6 +46,9 @@ const { translations } = Astro.props;
       </a>
     ))}
   </div>
+  {hasMore && (
+    <ViewAllLink href={localePath('certifications', locale)} label={translations.listing.viewAll} count={allCerts.length} />
+  )}
 </section>
 
 <style lang="scss">
@@ -120,4 +129,8 @@ const { translations } = Astro.props;
   }
 
   a.cert-card:hover .cert-ext { color: var(--accent); }
+
+  .cert-hidden {
+    display: none !important;
+  }
 </style>

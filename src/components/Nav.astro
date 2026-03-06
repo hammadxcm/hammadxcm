@@ -14,9 +14,10 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
 interface Props {
   translations: TranslationMap;
   locale: Locale;
+  baseUrl?: string;
 }
 
-const { translations, locale } = Astro.props;
+const { translations, locale, baseUrl = '' } = Astro.props;
 
 // Resume data for PDF export
 const resumeData = {
@@ -51,7 +52,7 @@ const resumeData = {
     <a href="#hero" class="nav-logo" id="navLogo"><span id="navLogoText">{config.site.logoText}</span><span id="navLogoSuffix">{config.site.logoSuffix ?? '://hk'}</span></a>
     <ul class="nav-links" id="navLinks">
       {config.sections.map((section) => (
-        <li><a href={`#${section.id}`}>{translations.nav.sections[section.id] || section.label}</a></li>
+        <li><a href={`${baseUrl}#${section.id}`}>{translations.nav.sections[section.id] || section.label}</a></li>
       ))}
     </ul>
     <div class="nav-actions">

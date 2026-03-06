@@ -90,6 +90,16 @@ const zh: TranslationMap = {
       yearsAgo: '{count}年前',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: '语言分布',
+    orgDistribution: '组织分布',
+    impactMetrics: '影响指标',
+    timeline: '时间线',
+    avgLinesPerPR: '平均行数 / PR',
+    largestPR: '最大 PR',
+    mostActiveOrg: '最活跃组织',
+    successRate: '合并率',
+  },
   certs: {
     label: '// 资质认证',
     title: '证书认证',
@@ -146,6 +156,7 @@ const zh: TranslationMap = {
     label: '// 信号截获',
     title: '推荐语',
   },
+  listing: { backToHome: '返回首页', viewAll: '查看全部' },
   guestbook: {
     label: '// 传输日志',
     title: '留言簿',
@@ -219,6 +230,9 @@ const zh: TranslationMap = {
         name: 'Rapid Switcher',
         description: '30秒内切换主题5次',
       },
+      listing_explorer: { name: '深潜者', description: '访问任何列表页面' },
+      listing_completionist: { name: '全面侦察', description: '访问所有5个列表页面' },
+      analytics_deep_dive: { name: '数据科学家', description: '访问分析页面' },
     },
   },
   commandPalette: {

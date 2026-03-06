@@ -8,12 +8,14 @@
  * @styles Scoped SCSS — grid layout, View More + responsive
  */
 import SectionHeader from './SectionHeader.astro';
+import ViewAllLink from './ViewAllLink.astro';
 import ContributionCard from './ContributionCard.astro';
 import ContributionsSummary from './ContributionsSummary.astro';
 import NotableSlider from './NotableSlider.astro';
 import { config } from '@config/index';
 import type { ContributionsData } from '@config/types';
 import type { TranslationMap } from '@i18n/types';
+import { getLocaleFromUrl, localePath } from '@i18n/index';
 import contributionsRaw from '../data/contributions.json';
 
 interface Props {
@@ -21,6 +23,7 @@ interface Props {
 }
 
 const { translations } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url);
 const contributions = contributionsRaw as ContributionsData;
 
 const enabled = config.contributions?.enabled !== false;
@@ -53,47 +56,16 @@ const hasMore = prs.length > INITIAL_SHOW;
       ))}
     </div>
 
-    {/* View More Button */}
     {hasMore && (
-      <div class="contrib-view-more">
-        <button class="view-more-btn glass" id="contrib-toggle" data-total={prs.length} data-initial={INITIAL_SHOW} data-label-more={translations.contributions.viewMore} data-label-less={translations.contributions.showLess}>
-          <span class="view-more-text">{translations.contributions.viewMore}</span>
-          <span class="view-more-count">+{prs.length - INITIAL_SHOW} more</span>
-          <svg class="view-more-chevron" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-            <path d="M4.427 5.427a.75.75 0 0 1 1.06-.013L8 7.82l2.513-2.406a.75.75 0 1 1 1.037 1.084l-3 2.872a.75.75 0 0 1-1.037 0l-3-2.872a.75.75 0 0 1-.013-1.06z" />
-          </svg>
-        </button>
-      </div>
+      <ViewAllLink href={localePath('contributions', locale)} label={translations.listing.viewAll} count={prs.length} />
     )}
   </section>
 )}
 
-<script>
-  import { initViewMore } from '../scripts/interactions/view-more';
-  initViewMore('contrib-toggle', '#contrib-grid', 'contrib-hidden');
-</script>
-
 <style lang="scss">
   @use '../styles/mixins' as *;
-  @use '../styles/utilities/view-more' as *;
 
   .contributions-grid {
     @include responsive-grid;
-  }
-
-  .contrib-view-more {
-    @include view-more-wrapper;
-  }
-
-  .view-more-btn {
-    @include view-more-btn;
-  }
-
-  .view-more-count {
-    @include view-more-count;
-  }
-
-  .view-more-chevron {
-    @include view-more-chevron;
   }
 </style>

@@ -265,10 +265,12 @@ function writeOutput(data) {
   ];
 
   for (const c of data.contributions) {
+    // Skip closed (unmerged) PRs from the README table
+    if (c.state === 'closed') continue;
     const date = c.mergedAt ? new Date(c.mergedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
     const stars = c.repo.stars >= 1000 ? `${(c.repo.stars / 1000).toFixed(1)}k` : String(c.repo.stars);
     const impact = `+${c.additions} -${c.deletions}`;
-    const status = c.state === 'open' ? '🟢 Open' : c.state === 'closed' ? '⚪ Closed' : '🟣 Merged';
+    const status = c.state === 'open' ? '🟢 Open' : '🟣 Merged';
     lines.push(
       `| [${c.repo.fullName}](${c.repo.url}) | [${c.title}](${c.url}) | ${status} | ${date} | ${stars} | ${impact} |`
     );

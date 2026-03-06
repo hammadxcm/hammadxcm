@@ -1,0 +1,107 @@
+---
+/**
+ * Full Testimonials Listing — all testimonials in a responsive grid.
+ * No marquee animation, no truncation.
+ */
+import { config } from '@config/index';
+
+const testimonials = config.testimonials || [];
+---
+
+<div class="testimonials-listing-grid">
+  {testimonials.map((t) => (
+    <a href="https://linkedin.com/in/hammadxcm" target="_blank" rel="noopener noreferrer" class="testimonial-link">
+      <blockquote class="testimonial-card glass glow-border">
+        <p class="testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
+        <footer class="testimonial-footer">
+          {t.avatar && <img src={t.avatar} alt={t.author} class="testimonial-avatar" width="40" height="40" loading="lazy" />}
+          <div class="testimonial-author">
+            <cite class="testimonial-name">{t.author}</cite>
+            <span class="testimonial-role">{t.role}, {t.company}</span>
+          </div>
+        </footer>
+      </blockquote>
+    </a>
+  ))}
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .testimonials-listing-grid {
+    @include responsive-grid(340px);
+  }
+
+  .testimonial-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+  }
+
+  .testimonial-card {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+
+    @include respond-to(mobile) { padding: 1.25rem; }
+  }
+
+  .testimonial-quote {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text);
+    font-style: italic;
+    margin: 0 0 1rem;
+    flex: 1;
+
+    @include respond-to(mobile) { font-size: 0.82rem; }
+  }
+
+  .testimonial-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--glass-border);
+    margin-top: auto;
+  }
+
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--glass-border);
+    flex-shrink: 0;
+  }
+
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .testimonial-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .testimonial-role {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>

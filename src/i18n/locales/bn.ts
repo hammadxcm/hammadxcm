@@ -90,6 +90,16 @@ const bn: TranslationMap = {
       yearsAgo: '{count} বছর আগে',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: 'ভাষা বিশ্লেষণ',
+    orgDistribution: 'সংগঠন বিতরণ',
+    impactMetrics: 'প্রভাব পরিমাপ',
+    timeline: 'সময়রেখা',
+    avgLinesPerPR: 'গড় লাইন / PR',
+    largestPR: 'সবচেয়ে বড় PR',
+    mostActiveOrg: 'সবচেয়ে সক্রিয় সংগঠন',
+    successRate: 'মার্জ হার',
+  },
   certs: {
     label: '// যোগ্যতাপত্র',
     title: 'সনদপত্র',
@@ -146,6 +156,7 @@ const bn: TranslationMap = {
     label: '// সংকেত আটকানো',
     title: 'প্রশংসাপত্র',
   },
+  listing: { backToHome: 'হোমে ফিরে যান', viewAll: 'সব দেখুন' },
   guestbook: {
     label: '// ট্রান্সমিশন লগ',
     title: 'অতিথি বই',
@@ -219,6 +230,9 @@ const bn: TranslationMap = {
         name: 'Rapid Switcher',
         description: '৩০ সেকেন্ডে ৫ বার থিম পরিবর্তন করুন',
       },
+      listing_explorer: { name: 'গভীর ডুবুরি', description: 'যেকোনো তালিকা পৃষ্ঠায় যান' },
+      listing_completionist: { name: 'সম্পূর্ণ অনুসন্ধান', description: 'সব ৫টি তালিকা পৃষ্ঠায় যান' },
+      analytics_deep_dive: { name: 'ডেটা বিজ্ঞানী', description: 'বিশ্লেষণ পৃষ্ঠায় যান' },
     },
   },
   commandPalette: {

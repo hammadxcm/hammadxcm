@@ -90,6 +90,16 @@ const ur: TranslationMap = {
       yearsAgo: '{count} سال پہلے',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: 'زبان کی تقسیم',
+    orgDistribution: 'تنظیم کی تقسیم',
+    impactMetrics: 'اثر کے اعداد و شمار',
+    timeline: 'ٹائم لائن',
+    avgLinesPerPR: 'اوسط لائنیں / PR',
+    largestPR: 'سب سے بڑا PR',
+    mostActiveOrg: 'سب سے فعال تنظیم',
+    successRate: 'ضم کی شرح',
+  },
   certs: {
     label: '// اسناد',
     title: 'سرٹیفیکیشنز',
@@ -146,6 +156,7 @@ const ur: TranslationMap = {
     label: '// روکے گئے سگنل',
     title: 'تعریفات',
   },
+  listing: { backToHome: 'ہوم پر واپس جائیں', viewAll: 'سب دیکھیں' },
   guestbook: {
     label: '// ٹرانسمیشن لاگ',
     title: 'مہمان نامہ',
@@ -216,6 +227,9 @@ const ur: TranslationMap = {
         name: 'Rapid Switcher',
         description: '30 سیکنڈ میں 5 بار تھیم تبدیل کریں',
       },
+      listing_explorer: { name: 'گہرا غوطہ خور', description: 'کسی بھی فہرست کے صفحے پر جائیں' },
+      listing_completionist: { name: 'مکمل جائزہ', description: 'تمام 5 فہرست صفحات پر جائیں' },
+      analytics_deep_dive: { name: 'ڈیٹا سائنسدان', description: 'تجزیات کے صفحے پر جائیں' },
     },
   },
   commandPalette: {

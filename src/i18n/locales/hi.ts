@@ -90,6 +90,16 @@ const hi: TranslationMap = {
       yearsAgo: '{count} साल पहले',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: 'भाषा विश्लेषण',
+    orgDistribution: 'संगठन वितरण',
+    impactMetrics: 'प्रभाव मापदंड',
+    timeline: 'समयरेखा',
+    avgLinesPerPR: 'औसत पंक्तियाँ / PR',
+    largestPR: 'सबसे बड़ा PR',
+    mostActiveOrg: 'सबसे सक्रिय संगठन',
+    successRate: 'मर्ज दर',
+  },
   certs: {
     label: '// प्रमाणपत्र',
     title: 'प्रमाणपत्र',
@@ -146,6 +156,7 @@ const hi: TranslationMap = {
     label: '// संकेत अवरोधन',
     title: 'प्रशंसापत्र',
   },
+  listing: { backToHome: 'होम पर वापस जाएं', viewAll: 'सभी देखें' },
   guestbook: {
     label: '// प्रसारण लॉग',
     title: 'अतिथि पुस्तिका',
@@ -219,6 +230,9 @@ const hi: TranslationMap = {
         name: 'Rapid Switcher',
         description: '30 सेकंड में 5 बार थीम बदलें',
       },
+      listing_explorer: { name: 'गहरा गोताखोर', description: 'किसी भी सूची पृष्ठ पर जाएँ' },
+      listing_completionist: { name: 'पूर्ण टोही', description: 'सभी 5 सूची पृष्ठों पर जाएँ' },
+      analytics_deep_dive: { name: 'डेटा वैज्ञानिक', description: 'विश्लेषिकी पृष्ठ पर जाएँ' },
     },
   },
   commandPalette: {

@@ -42,6 +42,13 @@
     left: 0;
   }
 
+  // Dashboard charts always LTR
+  .dash-heatmap,
+  .timeline-chart,
+  .org-chart {
+    direction: ltr;
+  }
+
   // RTL font stack fallbacks
   body {
     font-family: var(--font-body), 'Noto Sans Arabic', 'Noto Naskh Arabic', sans-serif;

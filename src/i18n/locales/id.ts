@@ -90,6 +90,16 @@ const id: TranslationMap = {
       yearsAgo: '{count} tahun lalu',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: 'Distribusi Bahasa',
+    orgDistribution: 'Distribusi Organisasi',
+    impactMetrics: 'Metrik Dampak',
+    timeline: 'Lini Masa',
+    avgLinesPerPR: 'Rata-rata Baris / PR',
+    largestPR: 'PR Terbesar',
+    mostActiveOrg: 'Org Paling Aktif',
+    successRate: 'Tingkat Merge',
+  },
   certs: {
     label: '// Kredensial',
     title: 'Sertifikasi',
@@ -146,6 +156,7 @@ const id: TranslationMap = {
     label: '// Intersepsi sinyal',
     title: 'Testimoni',
   },
+  listing: { backToHome: 'Kembali ke Beranda', viewAll: 'Lihat Semua' },
   guestbook: {
     label: '// Log transmisi',
     title: 'Buku Tamu',
@@ -219,6 +230,9 @@ const id: TranslationMap = {
         name: 'Rapid Switcher',
         description: 'Ganti tema 5 kali dalam 30 detik',
       },
+      listing_explorer: { name: 'Penyelam Dalam', description: 'Kunjungi halaman daftar mana saja' },
+      listing_completionist: { name: 'Pengintaian Penuh', description: 'Kunjungi semua 5 halaman daftar' },
+      analytics_deep_dive: { name: 'Ilmuwan Data', description: 'Kunjungi halaman analitik' },
     },
   },
   commandPalette: {

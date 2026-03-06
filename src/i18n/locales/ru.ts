@@ -90,6 +90,16 @@ const ru: TranslationMap = {
       yearsAgo: '{count} лет назад',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: 'Распределение языков',
+    orgDistribution: 'Распределение организаций',
+    impactMetrics: 'Показатели влияния',
+    timeline: 'Хронология',
+    avgLinesPerPR: 'Среднее строк / PR',
+    largestPR: 'Крупнейший PR',
+    mostActiveOrg: 'Самая активная орг.',
+    successRate: 'Процент слияний',
+  },
   certs: {
     label: '// Квалификации',
     title: 'Сертификаты',
@@ -146,6 +156,7 @@ const ru: TranslationMap = {
     label: '// Перехват сигналов',
     title: 'Отзывы',
   },
+  listing: { backToHome: 'Вернуться на главную', viewAll: 'Показать все' },
   guestbook: {
     label: '// Журнал передач',
     title: 'Гостевая книга',
@@ -234,6 +245,9 @@ const ru: TranslationMap = {
         name: 'Rapid Switcher',
         description: 'Сменить тему 5 раз за 30 секунд',
       },
+      listing_explorer: { name: 'Глубокий Ныряльщик', description: 'Посетите любую страницу списка' },
+      listing_completionist: { name: 'Полная Разведка', description: 'Посетите все 5 страниц списков' },
+      analytics_deep_dive: { name: 'Учёный Данных', description: 'Посетите страницу аналитики' },
     },
   },
   commandPalette: {

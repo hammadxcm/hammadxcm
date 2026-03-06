@@ -88,6 +88,12 @@ const ICONS = {
   loop: '<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/>',
   languages:
     '<path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/>',
+  compass:
+    '<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>',
+  radar:
+    '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>',
+  microscope:
+    '<path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 100-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 01-2-2V6h6v4a2 2 0 01-2 2H9z"/><path d="M12 6V3a1 1 0 00-1-1H9a1 1 0 00-1 1v3"/>',
 } as const;
 
 // ── Constants ──────────────────────────────────────────────────────────
@@ -393,6 +399,34 @@ export const ACHIEVEMENTS: Achievement[] = [
     category: 'discover',
     secret: true,
   },
+  // Listing page achievements
+  {
+    id: 'listing_explorer',
+    name: 'Deep Diver',
+    icon: ICONS.compass,
+    description: 'Visit any listing page',
+    xp: 15,
+    category: 'explore',
+    secret: false,
+  },
+  {
+    id: 'listing_completionist',
+    name: 'Full Recon',
+    icon: ICONS.radar,
+    description: 'Visit all 5 listing pages',
+    xp: 50,
+    category: 'explore',
+    secret: false,
+  },
+  {
+    id: 'analytics_deep_dive',
+    name: 'Data Scientist',
+    icon: ICONS.microscope,
+    description: 'Visit the analytics page',
+    xp: 20,
+    category: 'explore',
+    secret: false,
+  },
 ];
 
 // ── State ──────────────────────────────────────────────────────────────
@@ -629,6 +663,26 @@ function checkAchievements(triggerKey: string): void {
 
   // rapid_switcher — 5 theme switches in 30 seconds
   if (triggerKey === 'rapid_switcher') unlock('rapid_switcher');
+
+  // listing_explorer — visit any listing page
+  if (triggerKey === 'listing_visit') unlock('listing_explorer');
+
+  // analytics_deep_dive — visit analytics listing page
+  if (triggerKey === 'listing:analytics') unlock('analytics_deep_dive');
+
+  // listing_completionist — visit all 5 listing pages
+  if (triggerKey.startsWith('listing:')) {
+    const listingSections = [
+      'testimonials',
+      'projects',
+      'contributions',
+      'certifications',
+      'analytics',
+    ];
+    if (listingSections.every((s) => (c[`listing:${s}`] || 0) > 0)) {
+      unlock('listing_completionist');
+    }
+  }
 
   // completionist — after any unlock, check if all non-secret achievements are unlocked
   const nonSecret = ACHIEVEMENTS.filter((a) => !a.secret && a.id !== 'completionist');

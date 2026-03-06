@@ -1,0 +1,15 @@
+---
+import { LOCALES, DEFAULT_LOCALE } from '@i18n/types';
+import type { Locale } from '@i18n/types';
+import ListingPage from '../../_ListingPage.astro';
+
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l !== DEFAULT_LOCALE).map((locale) => ({
+    params: { locale },
+    props: { locale },
+  }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+---
+<ListingPage locale={locale} section="certifications" />

@@ -1,0 +1,353 @@
+---
+/**
+ * Full Analytics Listing — dashboard with hero stats, heatmap, language ring,
+ * quick insights, and platform panels.
+ */
+import GitHubPanel from '../analytics/GitHubPanel.astro';
+import LeetCodePanel from '../analytics/LeetCodePanel.astro';
+import StackOverflowPanel from '../analytics/StackOverflowPanel.astro';
+import { config } from '@config/index';
+import { langColors } from '@config/lang-colors';
+import type { ContributionsData, ProjectsData } from '@config/types';
+import type { TranslationMap } from '@i18n/types';
+import contributionsRaw from '../../data/contributions.json';
+import projectsRaw from '../../data/projects.json';
+
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
+const { username, utcOffset } = config.github;
+const leetcode = config.leetcode;
+const stackoverflow = config.stackoverflow;
+
+const contributions = contributionsRaw as ContributionsData;
+const projects = projectsRaw as ProjectsData;
+
+// ── Hero Stats ──
+const totalRepos = projects.repos.length;
+const uniqueStars = new Map<string, number>();
+for (const pr of contributions.contributions) {
+  uniqueStars.set(pr.repo.fullName, pr.repo.stars);
+}
+const dedupedStars = [...uniqueStars.values()].reduce((a, b) => a + b, 0);
+const prsMerged = contributions.contributions.filter((pr) => pr.state === 'merged').length;
+const langSet = new Set<string>();
+for (const pr of contributions.contributions) {
+  if (pr.repo.language) langSet.add(pr.repo.language);
+}
+for (const repo of projects.repos) {
+  if (repo.language) langSet.add(repo.language);
+}
+const languagesUsed = langSet.size;
+
+const stats = [
+  { label: translations.contributions.repos, value: totalRepos },
+  { label: translations.contributions.combinedStars, value: dedupedStars },
+  { label: translations.contributions.prsMerged, value: prsMerged },
+  { label: translations.contributions.languages, value: languagesUsed },
+];
+
+// ── Heatmap: 52-week contribution grid ──
+const heatmapWeeks = 52;
+const today = new Date();
+const dayOfWeek = today.getDay();
+const totalCells = heatmapWeeks * 7 + dayOfWeek + 1;
+const startDate = new Date(today);
+startDate.setDate(startDate.getDate() - totalCells + 1);
+
+const prDateCounts = new Map<string, number>();
+for (const pr of contributions.contributions) {
+  const d = pr.mergedAt.slice(0, 10);
+  prDateCounts.set(d, (prDateCounts.get(d) || 0) + 1);
+}
+
+const heatmapCells: { date: string; level: number }[] = [];
+for (let i = 0; i < totalCells; i++) {
+  const d = new Date(startDate);
+  d.setDate(d.getDate() + i);
+  const dateStr = d.toISOString().slice(0, 10);
+  const count = prDateCounts.get(dateStr) || 0;
+  const level = count === 0 ? 0 : count === 1 ? 1 : count === 2 ? 2 : count <= 4 ? 3 : 4;
+  heatmapCells.push({ date: dateStr, level });
+}
+
+// ── Language Ring ──
+const langCounts = new Map<string, number>();
+for (const pr of contributions.contributions) {
+  const lang = pr.repo.language || 'Other';
+  langCounts.set(lang, (langCounts.get(lang) || 0) + 1);
+}
+const langEntries = [...langCounts.entries()].sort((a, b) => b[1] - a[1]);
+const totalPRs = contributions.contributions.length;
+
+const langLegend: { name: string; color: string; count: number; pct: number }[] = [];
+for (const [lang, count] of langEntries) {
+  const pct = (count / totalPRs) * 100;
+  const color = langColors[lang] || '#8b949e';
+  langLegend.push({ name: lang, color, count, pct: Math.round(pct) });
+}
+
+// ── Quick Insights ──
+const monthCounts = new Map<string, number>();
+for (const pr of contributions.contributions) {
+  const m = pr.mergedAt.slice(0, 7);
+  monthCounts.set(m, (monthCounts.get(m) || 0) + 1);
+}
+const sortedMonths = [...monthCounts.entries()].sort((a, b) => b[1] - a[1]);
+const mostActiveMonth = sortedMonths[0]?.[0] || '-';
+const topLanguage = langEntries[0]?.[0] || '-';
+const activeMonths = monthCounts.size || 1;
+const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
+---
+
+<div class="dashboard-ambient">
+  <!-- Hero Stats -->
+  <div class="dash-hero-stats">
+    {stats.map((stat) => (
+      <div class="dash-hero-stat glass">
+        <span class="dash-hero-value">{stat.value.toLocaleString()}</span>
+        <span class="dash-hero-label">{stat.label}</span>
+      </div>
+    ))}
+  </div>
+
+  <!-- Contribution Heatmap -->
+  <div class="analytics-heatmap-panel glass">
+    <h3 class="dash-panel-title">{translations.contributionAnalytics?.timeline || 'Contribution Activity'}</h3>
+    <div class="dash-heatmap">
+      {heatmapCells.map((cell) => (
+        <div
+          class="dash-heatmap-cell"
+          data-level={cell.level}
+          title={cell.date}
+        />
+      ))}
+    </div>
+    <div class="heatmap-legend">
+      <span class="heatmap-legend-label">{translations.contributions?.less || 'Less'}</span>
+      <div class="dash-heatmap-cell" data-level="0" />
+      <div class="dash-heatmap-cell" data-level="1" />
+      <div class="dash-heatmap-cell" data-level="2" />
+      <div class="dash-heatmap-cell" data-level="3" />
+      <div class="dash-heatmap-cell" data-level="4" />
+      <span class="heatmap-legend-label">{translations.contributions?.more || 'More'}</span>
+    </div>
+  </div>
+
+  <!-- Language Ring + Quick Insights -->
+  <div class="analytics-ring-insights">
+    <div class="analytics-ring-panel glass">
+      <h3 class="dash-panel-title">{translations.contributionAnalytics?.languageBreakdown || 'Languages'}</h3>
+      <div class="ring-layout">
+        <div class="dash-chart-container dash-chart-container--ring">
+          <canvas
+            data-chart-langs={JSON.stringify(langLegend)}
+            role="img"
+            aria-label={`Language distribution: ${langLegend.map((l) => `${l.name} ${l.pct}%`).join(', ')}`}
+          ></canvas>
+        </div>
+        <div class="lang-legend">
+          {langLegend.map((item) => (
+            <div class="lang-legend-row">
+              <span class="lang-dot" style={`--dot-color: ${item.color}`} />
+              <span class="lang-name">{item.name}</span>
+              <span class="lang-count">{item.count} ({item.pct}%)</span>
+              <div class="dash-pct-bar">
+                <div class="dash-pct-fill" style={`width:${item.pct}%; --bar-color:${item.color}`} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="analytics-insights-panel glass">
+      <h3 class="dash-panel-title">{translations.contributionAnalytics?.impactMetrics || 'Quick Insights'}</h3>
+      <div class="dash-insights">
+        <div class="dash-insight">
+          <div class="dash-insight-label">{translations.contributionAnalytics?.mostActiveMonth || 'Most Active Month'}</div>
+          <div class="dash-insight-value">{mostActiveMonth}</div>
+        </div>
+        <div class="dash-insight">
+          <div class="dash-insight-label">{translations.contributionAnalytics?.topLanguage || 'Top Language'}</div>
+          <div class="dash-insight-value">{topLanguage}</div>
+        </div>
+        <div class="dash-insight">
+          <div class="dash-insight-label">{translations.contributionAnalytics?.avgPRsPerMonth || 'Avg PRs/Month'}</div>
+          <div class="dash-insight-value">{avgPRsPerMonth}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Platform Panels -->
+  <div class="analytics-platforms">
+    <GitHubPanel username={username} utcOffset={utcOffset} translations={translations} />
+
+    {leetcode && (
+      <LeetCodePanel username={leetcode.username} translations={translations} />
+    )}
+
+    {stackoverflow && (
+      <StackOverflowPanel userId={stackoverflow.userId} translations={translations} />
+    )}
+  </div>
+
+  <div class="dev-quote reveal">
+    <img data-stat="quote" src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt={translations.analytics.alt.devQuote} loading="lazy" width="600" height="150">
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .analytics-heatmap-panel {
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+
+    @include respond-to(mobile) {
+      padding: 1rem;
+    }
+  }
+
+  .heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+
+    .dash-heatmap-cell {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .heatmap-legend-label {
+    margin-inline: 0.25rem;
+  }
+
+  .analytics-ring-insights {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    @include respond-to(tablet) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .analytics-ring-panel,
+  .analytics-insights-panel {
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+
+    @include respond-to(mobile) {
+      padding: 1rem;
+    }
+  }
+
+  .ring-layout {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+
+    @include respond-to(mobile) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .lang-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .lang-legend-row {
+    display: grid;
+    grid-template-columns: 10px 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0 0.5rem;
+    align-items: center;
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
+  }
+
+  .lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--dot-color);
+    grid-row: 1;
+  }
+
+  .lang-name {
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    grid-row: 1;
+  }
+
+  .lang-count {
+    color: var(--text-dim);
+    flex-shrink: 0;
+    grid-row: 1;
+  }
+
+  .lang-legend-row .dash-pct-bar {
+    grid-column: 2 / -1;
+    grid-row: 2;
+  }
+
+  .analytics-platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .dash-chart-container--ring {
+    max-width: 180px;
+    flex-shrink: 0;
+
+    @include respond-to(mobile) {
+      max-width: 140px;
+    }
+  }
+
+  .dev-quote {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+
+    img {
+      max-width: 600px;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+    }
+
+    @include respond-to(mobile) {
+      img { max-width: 100%; }
+    }
+  }
+</style>
+
+<script>
+  import { initDashboardCharts } from '../../scripts/dashboard-charts';
+  document.addEventListener('DOMContentLoaded', initDashboardCharts);
+</script>

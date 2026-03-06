@@ -90,6 +90,16 @@ const de: TranslationMap = {
       yearsAgo: 'vor {count} Jahren',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: 'Sprachverteilung',
+    orgDistribution: 'Organisationsverteilung',
+    impactMetrics: 'Wirkungsmetriken',
+    timeline: 'Zeitverlauf',
+    avgLinesPerPR: 'Durchschn. Zeilen / PR',
+    largestPR: 'Groesster PR',
+    mostActiveOrg: 'Aktivste Organisation',
+    successRate: 'Merge-Rate',
+  },
   certs: {
     label: '// Qualifikationen',
     title: 'Zertifizierungen',
@@ -146,6 +156,7 @@ const de: TranslationMap = {
     label: '// Signalabfang',
     title: 'Referenzen',
   },
+  listing: { backToHome: 'Zuruck zur Startseite', viewAll: 'Alle anzeigen' },
   guestbook: {
     label: '// Übertragungsprotokoll',
     title: 'Gästebuch',
@@ -229,6 +240,9 @@ const de: TranslationMap = {
         name: 'Rapid Switcher',
         description: '5-mal in 30 Sekunden das Thema wechseln',
       },
+      listing_explorer: { name: 'Tieftaucher', description: 'Besuche eine Listenseite' },
+      listing_completionist: { name: 'Volle Aufklaerung', description: 'Besuche alle 5 Listenseiten' },
+      analytics_deep_dive: { name: 'Datenwissenschaftler', description: 'Besuche die Analytik-Seite' },
     },
   },
   commandPalette: {

@@ -8,14 +8,17 @@
  * @styles Scoped SCSS — marquee, testimonial cards, glass styling + responsive
  */
 import SectionHeader from './SectionHeader.astro';
+import ViewAllLink from './ViewAllLink.astro';
 import { config } from '@config/index';
 import type { TranslationMap } from '@i18n/types';
+import { getLocaleFromUrl, localePath } from '@i18n/index';
 
 interface Props {
   translations: TranslationMap;
 }
 
 const { translations } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url);
 const testimonials = config.testimonials || [];
 // Duplicate for seamless loop
 const doubled = [...testimonials, ...testimonials];
@@ -45,6 +48,7 @@ const doubled = [...testimonials, ...testimonials];
         ))}
       </div>
     </div>
+    <ViewAllLink href={localePath('testimonials', locale)} label={translations.listing.viewAll} count={testimonials.length} />
   </section>
 )}
 
@@ -204,6 +208,10 @@ const doubled = [...testimonials, ...testimonials];
     .testimonials-track-wrapper {
       mask-image: none;
       -webkit-mask-image: none;
+    }
+
+    .testimonial-link:nth-child(n+7) {
+      display: none;
     }
   }
 </style>

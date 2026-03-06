@@ -1,0 +1,46 @@
+---
+/**
+ * Full Contributions Listing — all PRs with summary stats.
+ * Wrapped in dashboard-ambient for ambient orb effects.
+ */
+import ContributionCard from '../ContributionCard.astro';
+import ContributionsSummary from '../ContributionsSummary.astro';
+import ContributionsAnalytics from './ContributionsAnalytics.astro';
+import { config } from '@config/index';
+import type { ContributionsData } from '@config/types';
+import type { TranslationMap } from '@i18n/types';
+import contributionsRaw from '../../data/contributions.json';
+
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
+const contributions = contributionsRaw as ContributionsData;
+const stateOrder = { merged: 0, open: 1, closed: 2 };
+const prs = [...contributions.contributions].sort((a, b) => {
+  const so = (stateOrder[a.state] ?? 9) - (stateOrder[b.state] ?? 9);
+  if (so !== 0) return so;
+  return new Date(b.mergedAt).getTime() - new Date(a.mergedAt).getTime();
+});
+---
+
+<div class="dashboard-ambient">
+  <ContributionsSummary prs={prs} translations={translations} />
+
+  <ContributionsAnalytics prs={prs} translations={translations} />
+
+  <div class="contributions-listing-grid">
+    {prs.map((pr) => (
+      <ContributionCard pr={pr} hidden={false} translations={translations} />
+    ))}
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .contributions-listing-grid {
+    @include responsive-grid;
+  }
+</style>

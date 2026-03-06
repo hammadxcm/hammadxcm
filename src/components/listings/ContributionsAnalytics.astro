@@ -1,0 +1,352 @@
+---
+/**
+ * CSS-only contribution analytics visualizations.
+ * Enhanced dashboard: larger donut, animated bars, rate ring, timeline, heatmap.
+ */
+import { langColors } from '@config/lang-colors';
+import type { ContributionPR } from '@config/types';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  prs: ContributionPR[];
+  translations: TranslationMap;
+}
+
+const { prs, translations } = Astro.props;
+const ca = translations.contributionAnalytics;
+
+// ── A. Language Breakdown ──
+const langCounts = new Map<string, number>();
+for (const pr of prs) {
+  const lang = pr.repo.language || 'Other';
+  langCounts.set(lang, (langCounts.get(lang) || 0) + 1);
+}
+const langEntries = [...langCounts.entries()].sort((a, b) => b[1] - a[1]);
+const totalPRs = prs.length;
+
+const langLegend: { name: string; color: string; count: number; pct: number }[] = [];
+for (const [lang, count] of langEntries) {
+  const pct = (count / totalPRs) * 100;
+  const color = langColors[lang] || '#8b949e';
+  langLegend.push({ name: lang, color, count, pct: Math.round(pct) });
+}
+
+// ── B. Organization Distribution ──
+const orgMap = new Map<string, { count: number; stars: number; avatar: string }>();
+for (const pr of prs) {
+  const org = pr.repo.fullName.split('/')[0];
+  const existing = orgMap.get(org) || { count: 0, stars: 0, avatar: pr.repo.ownerAvatar };
+  existing.count++;
+  existing.stars = Math.max(existing.stars, pr.repo.stars);
+  orgMap.set(org, existing);
+}
+const orgEntries = [...orgMap.entries()].sort((a, b) => b[1].count - a[1].count).slice(0, 8);
+const maxOrgCount = orgEntries[0]?.[1].count || 1;
+
+// ── C. Impact Metrics ──
+const totalAdd = prs.reduce((s, p) => s + p.additions, 0);
+const totalDel = prs.reduce((s, p) => s + p.deletions, 0);
+const avgLines = totalPRs > 0 ? Math.round((totalAdd + totalDel) / totalPRs) : 0;
+const largestPR = prs.reduce((max, p) => (p.additions + p.deletions > max.additions + max.deletions ? p : max), prs[0]);
+const mostActiveOrg = orgEntries[0]?.[0] || '-';
+const mergedCount = prs.filter((p) => p.state === 'merged').length;
+const successRate = totalPRs > 0 ? Math.round((mergedCount / totalPRs) * 100) : 0;
+
+// ── D. Timeline ──
+const monthMap = new Map<string, { merged: number; open: number; closed: number; total: number }>();
+for (const pr of prs) {
+  const month = pr.mergedAt.slice(0, 7);
+  const entry = monthMap.get(month) || { merged: 0, open: 0, closed: 0, total: 0 };
+  entry[pr.state]++;
+  entry.total++;
+  monthMap.set(month, entry);
+}
+const timelineEntries = [...monthMap.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+const maxMonthCount = Math.max(...timelineEntries.map(([, v]) => v.total), 1);
+
+// ── E. Heatmap ──
+const heatmapWeeks = 52;
+const today = new Date();
+const dayOfWeek = today.getDay();
+const totalCells = heatmapWeeks * 7 + dayOfWeek + 1;
+const startDate = new Date(today);
+startDate.setDate(startDate.getDate() - totalCells + 1);
+
+const prDateCounts = new Map<string, number>();
+for (const pr of prs) {
+  const d = pr.mergedAt.slice(0, 10);
+  prDateCounts.set(d, (prDateCounts.get(d) || 0) + 1);
+}
+
+const heatmapCells: { date: string; level: number }[] = [];
+for (let i = 0; i < totalCells; i++) {
+  const d = new Date(startDate);
+  d.setDate(d.getDate() + i);
+  const dateStr = d.toISOString().slice(0, 10);
+  const count = prDateCounts.get(dateStr) || 0;
+  const level = count === 0 ? 0 : count === 1 ? 1 : count === 2 ? 2 : count <= 4 ? 3 : 4;
+  heatmapCells.push({ date: dateStr, level });
+}
+---
+
+<div class="contribution-analytics">
+  <!-- Language Breakdown -->
+  <div class="ca-panel glass">
+    <h3 class="dash-panel-title">{ca.languageBreakdown}</h3>
+    <div class="lang-breakdown">
+      <div class="dash-chart-container dash-chart-container--doughnut">
+        <canvas
+          data-chart-langs={JSON.stringify(langLegend)}
+          role="img"
+          aria-label={`Language distribution: ${langLegend.map((l) => `${l.name} ${l.pct}%`).join(', ')}`}
+        ></canvas>
+      </div>
+      <div class="lang-legend">
+        {langLegend.map((item) => (
+          <div class="lang-legend-item">
+            <span class="lang-dot" style={`--dot-color: ${item.color}`}></span>
+            <span class="lang-name">{item.name}</span>
+            <span class="lang-count">{item.count} ({item.pct}%)</span>
+            <div class="dash-pct-bar">
+              <div class="dash-pct-fill" style={`width:${item.pct}%; --bar-color:${item.color}`} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Organization Distribution -->
+  <div class="ca-panel glass">
+    <h3 class="dash-panel-title">{ca.orgDistribution}</h3>
+    <div class="dash-chart-container dash-chart-container--bars">
+      <canvas
+        data-chart-orgs={JSON.stringify(orgEntries.map(([org, data]) => ({ name: org, count: data.count })))}
+        role="img"
+        aria-label={`Organization distribution: ${orgEntries.map(([org, data]) => `${org} ${data.count} PRs`).join(', ')}`}
+      ></canvas>
+    </div>
+  </div>
+
+  <!-- Impact Metrics -->
+  <div class="ca-panel glass">
+    <h3 class="dash-panel-title">{ca.impactMetrics}</h3>
+    <div class="impact-grid">
+      <div class="impact-stat">
+        <span class="impact-value">{avgLines.toLocaleString()}</span>
+        <span class="impact-label">{ca.avgLinesPerPR}</span>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-value">{(largestPR.additions + largestPR.deletions).toLocaleString()}</span>
+        <span class="impact-label">{ca.largestPR}</span>
+        <span class="impact-sub">{largestPR.repo.fullName.split('/')[1]}</span>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-value">{mostActiveOrg}</span>
+        <span class="impact-label">{ca.mostActiveOrg}</span>
+      </div>
+      <div class="impact-stat impact-stat--rate">
+        <div class="dash-rate-ring" style={`--rate: ${successRate}`}>
+          <span class="dash-rate-value">{successRate}%</span>
+        </div>
+        <span class="impact-label">{ca.successRate}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="ca-panel glass">
+    <h3 class="dash-panel-title">{ca.timeline}</h3>
+    <div class="dash-chart-container dash-chart-container--timeline">
+      <canvas
+        data-chart-timeline={JSON.stringify(timelineEntries.map(([month, data]) => ({ month, merged: data.merged, open: data.open, closed: data.closed })))}
+        role="img"
+        aria-label={`Contribution timeline: ${timelineEntries.map(([month, data]) => `${month} ${data.total} PRs`).join(', ')}`}
+      ></canvas>
+    </div>
+  </div>
+
+  <!-- Contribution Heatmap -->
+  <div class="ca-panel ca-panel--full glass">
+    <h3 class="dash-panel-title">{ca.timeline || 'Activity'}</h3>
+    <div class="dash-heatmap">
+      {heatmapCells.map((cell) => (
+        <div class="dash-heatmap-cell" data-level={cell.level} title={cell.date} />
+      ))}
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .contribution-analytics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+
+    @include respond-to(tablet) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .ca-panel {
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+
+    @include respond-to(mobile) {
+      padding: 1rem;
+    }
+
+    &--full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  // ── Language Breakdown ──
+  .lang-breakdown {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+
+    @include respond-to(mobile) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .lang-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .lang-legend-item {
+    display: grid;
+    grid-template-columns: 10px 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0 0.5rem;
+    align-items: center;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+  }
+
+  .lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--dot-color);
+    flex-shrink: 0;
+    grid-row: 1;
+  }
+
+  .lang-name {
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    grid-row: 1;
+  }
+
+  .lang-count {
+    color: var(--text-dim);
+    flex-shrink: 0;
+    grid-row: 1;
+  }
+
+  .lang-legend-item .dash-pct-bar {
+    grid-column: 2 / -1;
+    grid-row: 2;
+  }
+
+  // ── Chart.js container sizing ──
+  .dash-chart-container--doughnut {
+    max-width: 180px;
+    flex-shrink: 0;
+
+    @include respond-to(mobile) {
+      max-width: 140px;
+    }
+  }
+
+  .dash-chart-container--bars {
+    height: 250px;
+
+    @include respond-to(mobile) {
+      height: 200px;
+    }
+  }
+
+  .dash-chart-container--timeline {
+    height: 220px;
+
+    @include respond-to(mobile) {
+      height: 160px;
+    }
+  }
+
+  // ── Impact Metrics ──
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+
+    @include respond-to(small) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .impact-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0.5rem;
+    border-radius: var(--radius-sm, 4px);
+    background: rgba(var(--accent-glow), 0.03);
+  }
+
+  .impact-value {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+
+    @include respond-to(mobile) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .impact-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    margin-top: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .impact-sub {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    opacity: 0.7;
+    margin-top: 0.15rem;
+  }
+
+  .impact-stat--rate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+</style>
+
+<script>
+  import { initDashboardCharts } from '../../scripts/dashboard-charts';
+  document.addEventListener('DOMContentLoaded', initDashboardCharts);
+</script>

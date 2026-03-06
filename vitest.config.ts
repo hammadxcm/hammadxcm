@@ -5,12 +5,14 @@ export default getViteConfig({
     globals: true,
     coverage: {
       provider: 'v8',
-      include: ['src/config/**', 'src/utils/**'],
+      include: ['src/config/**', 'src/utils/**', 'src/scripts/achievements.ts'],
       thresholds: {
-        statements: 80,
-        branches: 80,
-        functions: 80,
-        lines: 80,
+        'src/scripts/achievements.ts': {
+          statements: 99,
+          branches: 99,
+          functions: 100,
+          lines: 100,
+        },
       },
     },
   },

@@ -1,0 +1,40 @@
+@use '../mixins' as *;
+
+.listing-page {
+  padding-top: 6rem;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 2rem;
+
+  @include respond-to(mobile) {
+    padding-top: 5rem;
+    padding-inline: 1.25rem;
+  }
+}
+
+.listing-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color var(--duration-normal);
+
+  &:hover {
+    color: var(--accent-mint);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    transition: transform var(--duration-normal) var(--ease-out-expo);
+  }
+
+  &:hover svg {
+    transform: translateX(-4px);
+  }
+}

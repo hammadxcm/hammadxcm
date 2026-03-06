@@ -91,6 +91,14 @@ setTimeout(() => {
   // Show any toasts queued before navigation (e.g. language switch)
   flushPendingToasts();
 
+  // Listing page visit tracking
+  const listingMain = document.querySelector<HTMLElement>('.listing-page[data-listing-section]');
+  if (listingMain) {
+    const section = listingMain.dataset.listingSection;
+    trackEvent('listing_visit');
+    trackEvent(`listing:${section}`);
+  }
+
   // Social link tracking
   document.querySelectorAll('.social-btn').forEach((el) => {
     el.addEventListener('click', () => {

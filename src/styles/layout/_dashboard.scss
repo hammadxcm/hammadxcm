@@ -1,0 +1,307 @@
+/**
+ * @file Dashboard Shared Styles
+ * @description Reusable dashboard classes for Analytics & Contributions pages.
+ *              Uses existing mixins — no duplication.
+ */
+@use '../mixins' as *;
+
+// ── Ambient Background Orbs ──
+.dashboard-ambient {
+  position: relative;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.05;
+    background: var(--accent);
+    filter: blur(80px);
+    animation: orbFloat 20s ease-in-out infinite alternate;
+
+    @include reduced-motion {
+      animation: none;
+    }
+  }
+
+  &::before {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    inset-inline-start: -100px;
+  }
+
+  &::after {
+    width: 300px;
+    height: 300px;
+    bottom: -80px;
+    inset-inline-end: -80px;
+    animation-delay: -10s;
+  }
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, 20px) scale(1.15); }
+}
+
+// ── Hero Stat Cards ──
+.dash-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(small) {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+.dash-hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 30px rgba(var(--accent-glow), 0.08);
+  border-top: 2px solid rgba(var(--accent-glow), 0.25);
+
+  @include respond-to(mobile) {
+    padding: 1rem 0.75rem;
+  }
+}
+
+.dash-hero-value {
+  font-family: var(--font-mono);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+
+  @include respond-to(mobile) {
+    font-size: 2rem;
+  }
+
+  @include respond-to(small) {
+    font-size: 1.5rem;
+  }
+}
+
+.dash-hero-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// ── Conic Donut Ring ──
+.dash-ring {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--conic);
+  position: relative;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 12px rgba(var(--accent-glow), 0.2));
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 22%;
+    border-radius: 50%;
+    background: var(--bg-card, var(--bg));
+  }
+
+  @include respond-to(mobile) {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+.dash-ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.dash-ring-count {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.dash-ring-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+// ── Heatmap Grid ──
+.dash-heatmap {
+  display: grid;
+  grid-template-rows: repeat(7, 14px);
+  grid-auto-flow: column;
+  grid-auto-columns: 14px;
+  gap: 3px;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  direction: ltr; // Charts always LTR
+
+  @include hide-scrollbar;
+
+  @include respond-to(mobile) {
+    grid-template-rows: repeat(7, 12px);
+    grid-auto-columns: 12px;
+    gap: 2px;
+  }
+}
+
+.dash-heatmap-cell {
+  border-radius: 2px;
+  background: rgba(var(--accent-glow), var(--intensity, 0.04));
+
+  &[data-level="1"] { --intensity: 0.15; }
+  &[data-level="2"] { --intensity: 0.3; }
+  &[data-level="3"] { --intensity: 0.5; }
+  &[data-level="4"] { --intensity: 0.75; }
+}
+
+// ── Animated Bar Charts ──
+.dash-bar-animated {
+  height: 100%;
+  width: calc(var(--pct) * 1%);
+  background: linear-gradient(90deg, var(--accent), rgba(var(--accent-glow), 0.6));
+  border-radius: var(--radius-sm, 4px);
+  animation: barGrow 0.6s ease-out backwards;
+  animation-delay: calc(var(--i, 0) * 80ms);
+
+  @include reduced-motion {
+    animation: none;
+  }
+}
+
+@keyframes barGrow {
+  from { width: 0; }
+}
+
+// ── Rate Ring (success rate) ──
+.dash-rate-ring {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--accent) calc(var(--rate) * 1%),
+    rgba(var(--accent-glow), 0.1) calc(var(--rate) * 1%)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  filter: drop-shadow(0 0 8px rgba(var(--accent-glow), 0.15));
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: var(--bg-card, var(--bg));
+  }
+
+  @include respond-to(mobile) {
+    width: 72px;
+    height: 72px;
+
+    &::after { inset: 6px; }
+  }
+}
+
+.dash-rate-value {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+// ── Panel Title ──
+.dash-panel-title {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+// ── Quick Insight Mini Cards ──
+.dash-insights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.dash-insight {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm, 4px);
+  background: rgba(var(--accent-glow), 0.03);
+}
+
+.dash-insight-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dash-insight-value {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 0.2rem;
+}
+
+// ── Percentage Bar (legend items) ──
+.dash-pct-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(var(--accent-glow), 0.08);
+  border-radius: 2px;
+  margin-top: 0.25rem;
+  overflow: hidden;
+}
+
+.dash-pct-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--bar-color, var(--accent));
+}
+
+// ── Chart.js Canvas Container ──
+.dash-chart-container {
+  position: relative;
+  width: 100%;
+  max-height: 300px;
+}

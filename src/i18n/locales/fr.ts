@@ -90,6 +90,16 @@ const fr: TranslationMap = {
       yearsAgo: 'il y a {count} ans',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: 'Repartition par Langage',
+    orgDistribution: 'Distribution par Organisation',
+    impactMetrics: "Metriques d'Impact",
+    timeline: 'Chronologie',
+    avgLinesPerPR: 'Lignes Moy. / PR',
+    largestPR: 'Plus Grand PR',
+    mostActiveOrg: 'Org la Plus Active',
+    successRate: 'Taux de Merge',
+  },
   certs: {
     label: '// Qualifications',
     title: 'Certifications',
@@ -149,6 +159,7 @@ const fr: TranslationMap = {
     label: '// Signaux interceptés',
     title: 'Témoignages',
   },
+  listing: { backToHome: "Retour a l'accueil", viewAll: 'Voir tout' },
   guestbook: {
     label: '// Journal de transmissions',
     title: "Livre d'Or",
@@ -231,6 +242,9 @@ const fr: TranslationMap = {
         name: 'Rapid Switcher',
         description: 'Changer de thème 5 fois en 30 secondes',
       },
+      listing_explorer: { name: 'Plongeur', description: 'Visitez une page de listing' },
+      listing_completionist: { name: 'Reconnaissance Complete', description: 'Visitez les 5 pages de listing' },
+      analytics_deep_dive: { name: 'Scientifique des Donnees', description: 'Visitez la page analytique' },
     },
   },
   commandPalette: {

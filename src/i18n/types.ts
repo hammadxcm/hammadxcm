@@ -93,6 +93,16 @@ export interface TranslationMap {
       yearsAgo: string;
     };
   };
+  contributionAnalytics: {
+    languageBreakdown: string;
+    orgDistribution: string;
+    impactMetrics: string;
+    timeline: string;
+    avgLinesPerPR: string;
+    largestPR: string;
+    mostActiveOrg: string;
+    successRate: string;
+  };
   certs: {
     label: string;
     title: string;
@@ -148,6 +158,10 @@ export interface TranslationMap {
   testimonials: {
     label: string;
     title: string;
+  };
+  listing: {
+    backToHome: string;
+    viewAll: string;
   };
   guestbook: {
     label: string;

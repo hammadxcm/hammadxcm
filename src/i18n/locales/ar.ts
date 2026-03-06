@@ -90,6 +90,16 @@ const ar: TranslationMap = {
       yearsAgo: 'منذ {count} سنوات',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: 'توزيع اللغات',
+    orgDistribution: 'توزيع المنظمات',
+    impactMetrics: 'مقاييس التأثير',
+    timeline: 'الجدول الزمني',
+    avgLinesPerPR: 'متوسط الأسطر / PR',
+    largestPR: 'أكبر PR',
+    mostActiveOrg: 'المنظمة الأكثر نشاطاً',
+    successRate: 'معدل الدمج',
+  },
   certs: {
     label: '// المؤهلات',
     title: 'الشهادات',
@@ -146,6 +156,7 @@ const ar: TranslationMap = {
     label: '// إشارات مُعترَضة',
     title: 'التوصيات',
   },
+  listing: { backToHome: 'العودة للرئيسية', viewAll: 'عرض الكل' },
   guestbook: {
     label: '// سجل الإرسال',
     title: 'سجل الزوار',
@@ -213,6 +224,9 @@ const ar: TranslationMap = {
       full_circle: { name: 'Full Circle', description: 'مرر للأسفل ثم عد للأعلى' },
       linguist: { name: 'Linguist', description: 'غيّر اللغة 3+ مرات' },
       rapid_switcher: { name: 'Rapid Switcher', description: 'غيّر السمة 5 مرات في 30 ثانية' },
+      listing_explorer: { name: 'غواص عميق', description: 'قم بزيارة أي صفحة قائمة' },
+      listing_completionist: { name: 'استطلاع كامل', description: 'قم بزيارة جميع صفحات القوائم الخمس' },
+      analytics_deep_dive: { name: 'عالم بيانات', description: 'قم بزيارة صفحة التحليلات' },
     },
   },
   commandPalette: {

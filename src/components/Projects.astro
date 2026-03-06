@@ -8,6 +8,7 @@
  * @styles Scoped SCSS — project grid, cards, tags, View More + responsive
  */
 import SectionHeader from './SectionHeader.astro';
+import ViewAllLink from './ViewAllLink.astro';
 import ArrowIcon from './ArrowIcon.astro';
 import StarIcon from './icons/StarIcon.astro';
 import ForkIcon from './icons/ForkIcon.astro';
@@ -18,7 +19,7 @@ import { formatStars, formatDownloads } from '../utils/format';
 import { sanitizeHtml } from '@utils/sanitize';
 import type { ProjectsData } from '@config/types';
 import type { TranslationMap } from '@i18n/types';
-import { t } from '@i18n/index';
+import { t, getLocaleFromUrl, localePath } from '@i18n/index';
 import projectsRaw from '../data/projects.json';
 
 interface Props {
@@ -26,6 +27,7 @@ interface Props {
 }
 
 const { translations } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url);
 const projectsData = projectsRaw as ProjectsData;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
@@ -180,28 +182,13 @@ function resolveRepoIcon(repo: { name: string; language: string | null; topics: 
     })}
   </div>
 
-  {/* View More Button */}
   {hasMore && (
-    <div class="project-view-more">
-      <button class="view-more-btn glass" id="projects-toggle" data-total={totalCount} data-initial={INITIAL_SHOW} data-label-more={translations.projects.viewMore} data-label-less={translations.projects.showLess}>
-        <span class="view-more-text">{translations.projects.viewMore}</span>
-        <span class="view-more-count">{t(translations, 'projects.moreCount', { count: totalCount - INITIAL_SHOW })}</span>
-        <svg class="view-more-chevron" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-          <path d="M4.427 5.427a.75.75 0 0 1 1.06-.013L8 7.82l2.513-2.406a.75.75 0 1 1 1.037 1.084l-3 2.872a.75.75 0 0 1-1.037 0l-3-2.872a.75.75 0 0 1-.013-1.06z" />
-        </svg>
-      </button>
-    </div>
+    <ViewAllLink href={localePath('projects', locale)} label={translations.listing.viewAll} count={totalCount} />
   )}
 </section>
 
-<script>
-  import { initViewMore } from '../scripts/interactions/view-more';
-  initViewMore('projects-toggle', '#projects-grid', 'project-hidden');
-</script>
-
 <style lang="scss">
   @use '../styles/mixins' as *;
-  @use '../styles/utilities/view-more' as *;
   @use '../styles/utilities/tag' as *;
 
   .projects-grid {
@@ -323,20 +310,4 @@ function resolveRepoIcon(repo: { name: string; language: string | null; topics: 
     display: none !important;
   }
 
-  /* ── View More Button ── */
-  .project-view-more {
-    @include view-more-wrapper;
-  }
-
-  .view-more-btn {
-    @include view-more-btn;
-  }
-
-  .view-more-count {
-    @include view-more-count;
-  }
-
-  .view-more-chevron {
-    @include view-more-chevron;
-  }
 </style>

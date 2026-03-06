@@ -90,6 +90,16 @@ const en: TranslationMap = {
       yearsAgo: '{count} years ago',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: 'Language Breakdown',
+    orgDistribution: 'Organization Distribution',
+    impactMetrics: 'Impact Metrics',
+    timeline: 'Timeline',
+    avgLinesPerPR: 'Avg Lines / PR',
+    largestPR: 'Largest PR',
+    mostActiveOrg: 'Most Active Org',
+    successRate: 'Merge Rate',
+  },
   certs: {
     label: '// Credentials',
     title: 'Certifications',
@@ -145,6 +155,10 @@ const en: TranslationMap = {
   testimonials: {
     label: '// Signal intercepts',
     title: 'Testimonials',
+  },
+  listing: {
+    backToHome: 'Back to Home',
+    viewAll: 'View All',
   },
   guestbook: {
     label: '// Transmission log',
@@ -219,6 +233,9 @@ const en: TranslationMap = {
         name: 'Rapid Switcher',
         description: 'Switch themes 5 times in 30 seconds',
       },
+      listing_explorer: { name: 'Deep Diver', description: 'Visit any listing page' },
+      listing_completionist: { name: 'Full Recon', description: 'Visit all 5 listing pages' },
+      analytics_deep_dive: { name: 'Data Scientist', description: 'Visit the analytics page' },
     },
   },
   commandPalette: {

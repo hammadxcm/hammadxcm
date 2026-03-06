@@ -1,0 +1,377 @@
+/**
+ * @file Shared Analytics Panel Styles
+ * @description Extracted from Analytics.astro :global() blocks so they apply
+ *              on both the home page and the /analytics/ listing page.
+ */
+@use '../mixins' as *;
+
+// ── Shared analytics image base ──
+@mixin analytics-img-base {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  transition: background-color 0.35s ease, border-color 0.35s ease;
+}
+
+.analytics-subsection {
+  width: 100%;
+  margin-bottom: 3rem;
+  &:last-child { margin-bottom: 0; }
+
+  @include respond-to(mobile) { margin-bottom: 2rem; }
+}
+
+.analytics-subsection-title {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.05em;
+
+  @include respond-to(mobile) {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  @include respond-to(small) { font-size: 0.95rem; }
+}
+
+.analytics-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+
+  @include respond-to(mobile) { gap: 1.25rem; }
+  @include respond-to(small)  { gap: 1rem; }
+}
+
+.analytics-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+
+  img {
+    @include analytics-img-base;
+    aspect-ratio: 495 / 195;
+    width: 100%;
+  }
+
+  @include respond-to(tablet) { gap: 1rem; }
+
+  @include respond-to(mobile) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    img { width: 100%; aspect-ratio: auto; }
+  }
+}
+
+.analytics-full {
+  width: 100%;
+
+  img {
+    @include analytics-img-base;
+    aspect-ratio: 800 / 300;
+    width: 100%;
+  }
+
+  @include respond-to(mobile) {
+    img { aspect-ratio: auto; }
+  }
+
+  @include respond-to(small) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    @include hide-scrollbar;
+
+    img {
+      min-width: 480px;
+      width: auto;
+    }
+  }
+}
+
+// Snake graph — natural aspect ratio
+.analytics-full--snake img {
+  aspect-ratio: auto;
+}
+
+// ── Profile views pill ──
+.profile-views-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  img {
+    width: auto;
+    height: auto;
+    max-height: 22px;
+    border-radius: 4px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+
+    &:hover { opacity: 1; }
+  }
+}
+
+// ── Responsive single-card container (LeetCode, SO) ──
+.analytics-responsive-card {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  img {
+    @include analytics-img-base;
+    width: 100%;
+  }
+}
+
+// LeetCode sizing
+.analytics-responsive-card--leetcode img {
+  max-width: 750px;
+
+  @include respond-to(tablet) { max-width: 100%; }
+  @include respond-to(mobile) { max-width: 100%; }
+}
+
+@include respond-to(small) {
+  .analytics-responsive-card--leetcode {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    @include hide-scrollbar;
+    justify-content: flex-start;
+
+    img {
+      min-width: 500px;
+      width: auto;
+    }
+  }
+}
+
+// ── Shared tab buttons (GitHub + LeetCode) ──
+.analytics-tabs {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @include respond-to(mobile) { gap: 0.4rem; }
+}
+
+.analytics-tab {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.4rem 1rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--text);
+    border-color: var(--border-glow);
+  }
+
+  &.active {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(var(--accent-glow), 0.1);
+  }
+
+  @include respond-to(mobile) {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  @include respond-to(small) {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.7rem;
+  }
+}
+
+// ── GitHub tab panels (show/hide) ──
+.github-panel {
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  align-items: center;
+
+  &.active {
+    display: flex;
+  }
+
+  @include respond-to(mobile) { gap: 1rem; }
+  @include respond-to(small) { gap: 0.75rem; }
+}
+
+// ── StackOverflow sizing ──
+[data-stackoverflow-user] .analytics-responsive-card img {
+  max-width: 500px;
+
+  @include respond-to(tablet) { max-width: 100%; }
+  @include respond-to(mobile) { max-width: 100%; }
+}
+
+// ── StackOverflow responsive: show one layout per breakpoint ──
+.so-tablet,
+.so-mobile { display: none; }
+.so-desktop { display: flex; }
+
+@include respond-to(tablet) {
+  .so-desktop { display: none; }
+  .so-tablet { display: flex; }
+}
+
+@include respond-to(mobile) {
+  .so-desktop { display: none; }
+  .so-tablet { display: none; }
+  .so-mobile { display: flex; }
+}
+
+// ── CTA Row ──
+.analytics-cta-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+
+  @include respond-to(mobile) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include respond-to(small) { gap: 0.75rem; }
+}
+
+// ── CTA Card ──
+.analytics-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1.1rem;
+  max-width: 320px;
+  text-decoration: none;
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-out-expo),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-blue, var(--accent)));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-glow);
+    box-shadow: 0 6px 18px rgba(var(--accent-glow), 0.1);
+    color: var(--text);
+
+    &::before { opacity: 1; }
+  }
+
+  @include respond-to(mobile) {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  @include respond-to(small) {
+    padding: 0.5rem 0.8rem;
+    gap: 0.5rem;
+  }
+}
+
+.analytics-cta:hover .analytics-cta__arrow {
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+.analytics-cta:hover .analytics-cta__icon {
+  color: var(--accent);
+}
+
+.analytics-cta__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: rgba(var(--accent-glow), 0.08);
+  color: var(--text-dim);
+  transition: color 0.3s ease;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+
+  @include respond-to(small) {
+    width: 28px;
+    height: 28px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+.analytics-cta__icon--emoji {
+  background: transparent;
+  font-size: 1.4rem;
+}
+
+.analytics-cta__body {
+  flex: 1;
+  min-width: 0;
+
+  h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.2;
+
+    @include respond-to(small) { font-size: 0.78rem; }
+  }
+  p {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    line-height: 1.3;
+
+    @include respond-to(small) { font-size: 0.68rem; }
+  }
+}
+
+.analytics-cta__arrow {
+  margin-inline-start: auto;
+  font-size: 1rem;
+  color: var(--accent);
+  opacity: 0.4;
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-out-expo), opacity 0.3s ease;
+}

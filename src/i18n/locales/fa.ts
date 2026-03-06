@@ -90,6 +90,16 @@ const fa: TranslationMap = {
       yearsAgo: '{count} سال پیش',
     },
   },
+  contributionAnalytics: {
+    languageBreakdown: 'توزیع زبان‌ها',
+    orgDistribution: 'توزیع سازمان‌ها',
+    impactMetrics: 'معیارهای تأثیر',
+    timeline: 'جدول زمانی',
+    avgLinesPerPR: 'میانگین خطوط / PR',
+    largestPR: 'بزرگ‌ترین PR',
+    mostActiveOrg: 'فعال‌ترین سازمان',
+    successRate: 'نرخ ادغام',
+  },
   certs: {
     label: '// مدارک',
     title: 'گواهینامه‌ها',
@@ -146,6 +156,7 @@ const fa: TranslationMap = {
     label: '// سیگنال‌های رهگیری شده',
     title: 'توصیه‌نامه‌ها',
   },
+  listing: { backToHome: 'بازگشت به خانه', viewAll: 'مشاهده همه' },
   guestbook: {
     label: '// گزارش ارسال',
     title: 'دفتر مهمانان',
@@ -216,6 +227,9 @@ const fa: TranslationMap = {
         name: 'Rapid Switcher',
         description: 'در 30 ثانیه 5 بار تم عوض کنید',
       },
+      listing_explorer: { name: 'غواص عمیق', description: 'از هر صفحه فهرست بازدید کنید' },
+      listing_completionist: { name: 'شناسایی کامل', description: 'از هر ۵ صفحه فهرست بازدید کنید' },
+      analytics_deep_dive: { name: 'دانشمند داده', description: 'از صفحه تحلیل‌ها بازدید کنید' },
     },
   },
   commandPalette: {
