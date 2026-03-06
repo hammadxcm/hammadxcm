@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-03-05T18:35:00.051Z",
+  "generatedAt": "2026-03-06T00:19:09.366Z",
   "username": "hammadxcm",
-  "totalCount": 9,
+  "totalCount": 13,
   "contributions": [
     {
       "title": "Fix @TestSetup method ordering with inheritance",
@@ -16,8 +16,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33155,
-        "forks": 8102,
+        "stars": 33156,
+        "forks": 8101,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -42,7 +42,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8355,
+        "stars": 8352,
         "forks": 2577,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -91,6 +91,47 @@
       }
     },
     {
+      "title": "feat(lint): extend useNullishCoalescing to detect ternary nullish checks",
+      "url": "https://github.com/biomejs/biome/pull/9240",
+      "number": 9240,
+      "state": "closed",
+      "mergedAt": "2026-02-25T14:56:31Z",
+      "additions": 1427,
+      "deletions": 82,
+      "changedFiles": 15,
+      "labels": [
+        {
+          "name": "A-Linter",
+          "color": "a4c8fc"
+        },
+        {
+          "name": "L-JavaScript",
+          "color": "ffe2bf"
+        }
+      ],
+      "repo": {
+        "fullName": "biomejs/biome",
+        "url": "https://github.com/biomejs/biome",
+        "stars": 23935,
+        "forks": 888,
+        "language": "Rust",
+        "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
+        "topics": [
+          "css",
+          "formatter",
+          "javascript",
+          "json",
+          "jsx",
+          "linter",
+          "static-code-analysis",
+          "typescript",
+          "web"
+        ],
+        "license": "Apache-2.0"
+      }
+    },
+    {
       "title": "Fix Ruby 4.0 delegator warning for inspect on DelegateClass subclasses",
       "url": "https://github.com/rails/rails/pull/56867",
       "number": 56867,
@@ -112,7 +153,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58341,
+        "stars": 58344,
         "forks": 22171,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -188,6 +229,70 @@
       }
     },
     {
+      "title": "Add scheduled rebuild for docs site to keep copyright year current",
+      "url": "https://github.com/jekyll/jekyll/pull/9942",
+      "number": 9942,
+      "state": "closed",
+      "mergedAt": "2026-02-24T16:34:45Z",
+      "additions": 14,
+      "deletions": 6,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "jekyll/jekyll",
+        "url": "https://github.com/jekyll/jekyll",
+        "stars": 51421,
+        "forks": 10292,
+        "language": "Ruby",
+        "description": ":globe_with_meridians: Jekyll is a blog-aware static site generator in Ruby",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/3083652?v=4",
+        "topics": [
+          "blog-engine",
+          "jekyll",
+          "liquid",
+          "markdown",
+          "ruby",
+          "static-site-generator"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Preserve SQLite3 triggers across alter_table operations",
+      "url": "https://github.com/rails/rails/pull/56866",
+      "number": 56866,
+      "state": "closed",
+      "mergedAt": "2026-02-24T12:51:13Z",
+      "additions": 96,
+      "deletions": 0,
+      "changedFiles": 4,
+      "labels": [
+        {
+          "name": "activerecord",
+          "color": "0b02e1"
+        }
+      ],
+      "repo": {
+        "fullName": "rails/rails",
+        "url": "https://github.com/rails/rails",
+        "stars": 58344,
+        "forks": 22171,
+        "language": "Ruby",
+        "description": "Ruby on Rails",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
+        "topics": [
+          "activejob",
+          "activerecord",
+          "framework",
+          "html",
+          "mvc",
+          "rails",
+          "ruby"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "title": "fix(tests): reduce project count in TestGetActiveOrgs to fix flaky snowflake ID errors",
       "url": "https://github.com/getsentry/sentry/pull/109181",
       "number": 109181,
@@ -200,8 +305,8 @@
       "repo": {
         "fullName": "getsentry/sentry",
         "url": "https://github.com/getsentry/sentry",
-        "stars": 43276,
-        "forks": 4618,
+        "stars": 43277,
+        "forks": 4620,
         "language": "Python",
         "description": "Developer-first error tracking and performance monitoring",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/1396951?v=4",
@@ -283,6 +388,28 @@
           "vscode-theme"
         ],
         "license": "NOASSERTION"
+      }
+    },
+    {
+      "title": "test",
+      "url": "https://github.com/graphiti-api/spraypaint.js/pull/117",
+      "number": 117,
+      "state": "closed",
+      "mergedAt": "2023-02-24T10:18:34Z",
+      "additions": 331,
+      "deletions": 67,
+      "changedFiles": 28,
+      "labels": [],
+      "repo": {
+        "fullName": "graphiti-api/spraypaint.js",
+        "url": "https://github.com/graphiti-api/spraypaint.js",
+        "stars": 109,
+        "forks": 65,
+        "language": "TypeScript",
+        "description": "Graphiti Client / Javascript ORM / JSONAPI",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/42073377?v=4",
+        "topics": [],
+        "license": "MIT"
       }
     }
   ]
