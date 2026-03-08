@@ -23,7 +23,7 @@ const otherLocales = LOCALES.filter((l) => l !== locale);
 ---
 
 <!DOCTYPE html>
-<html lang={locale} dir={dir} data-theme={theme} data-stats-api={config.guestbook?.statsApi || ''}>
+<html lang={locale} dir={dir} data-theme={theme} data-stats-api={config.guestbook?.statsApi || ''} data-chat-api={config.chat?.apiUrl || ''}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">

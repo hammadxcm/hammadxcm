@@ -20,11 +20,11 @@ const { translations } = Astro.props;
 
 <!-- ══════ HERO ══════ -->
 <section id="hero">
-  <canvas id="particle-canvas" aria-hidden="true" role="presentation"></canvas>
-  <canvas id="matrix-canvas" aria-hidden="true" role="presentation"></canvas>
-  <div class="hacker-log" id="hackerLog"></div>
-  <div class="hero-grid-layer"></div>
-  <div class="hero-shapes-layer">
+  <canvas id="particle-canvas" aria-hidden="true" role="presentation" style="pointer-events:none"></canvas>
+  <canvas id="matrix-canvas" aria-hidden="true" role="presentation" style="pointer-events:none"></canvas>
+  <div class="hacker-log" id="hackerLog" style="pointer-events:none"></div>
+  <div class="hero-grid-layer" style="pointer-events:none"></div>
+  <div class="hero-shapes-layer" style="pointer-events:none">
     <div class="geo-shape geo-shape--circle"></div>
     <div class="geo-shape geo-shape--triangle"></div>
     <div class="geo-shape geo-shape--diamond"></div>
@@ -68,11 +68,13 @@ const { translations } = Astro.props;
     top: 0; left: 0;
     width: 100%; height: 100%;
     z-index: 0;
+    pointer-events: none;
   }
 
   .hero-content {
     position: relative;
     z-index: 2;
+    pointer-events: auto;
     text-align: center;
     padding: 0 2rem;
 
@@ -156,6 +158,8 @@ const { translations } = Astro.props;
     margin-bottom: 3rem;
     opacity: 0;
     animation: fadeInUp 0.8s 0.1s forwards;
+    position: relative;
+    z-index: 5;
 
     @include respond-to(mobile) { gap: 0.75rem; }
   }
@@ -168,6 +172,7 @@ const { translations } = Astro.props;
     width: fit-content;
     margin-inline: auto;
     z-index: 2;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -770,6 +770,17 @@ const config: PortfolioConfig = {
     statsApi: 'https://portfolio-stats.hammadkhanxcm.workers.dev',
   },
 
+  /* ─── Chat (Gemini via Cloudflare Worker) ─── */
+  chat: {
+    enabled: true,
+    apiUrl: 'https://portfolio-chat.hammadkhanxcm.workers.dev',
+  },
+
+  /* ─── Spotify ─── */
+  spotify: {
+    enabled: true,
+  },
+
   /* ─── Contributions ─── */
   contributions: {
     enabled: true,

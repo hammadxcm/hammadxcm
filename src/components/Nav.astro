@@ -49,7 +49,7 @@ const resumeData = {
 <!-- Navigation -->
 <nav>
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo" id="navLogo"><span id="navLogoText">{config.site.logoText}</span><span id="navLogoSuffix">{config.site.logoSuffix ?? '://hk'}</span></a>
+    <a href={baseUrl ? baseUrl : '#hero'} class="nav-logo" id="navLogo"><span id="navLogoText">{config.site.logoText}</span><span id="navLogoSuffix">{config.site.logoSuffix ?? '://hk'}</span></a>
     <ul class="nav-links" id="navLinks">
       {config.sections.map((section) => (
         <li><a href={`${baseUrl}#${section.id}`}>{translations.nav.sections[section.id] || section.label}</a></li>
@@ -126,16 +126,14 @@ const resumeData = {
     top: 0; left: 0; right: 0;
     z-index: 1000;
     padding: 0 2rem;
-    backdrop-filter: var(--blur-backdrop);
-    -webkit-backdrop-filter: var(--blur-backdrop);
+    @include backdrop-blur(var(--blur-backdrop));
     background: var(--glass-bg);
     border-bottom: 1px solid var(--glass-border);
     transition: transform var(--duration-normal), background var(--duration-normal);
 
     @include respond-to(mobile) {
       padding: 0 1.25rem;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      @include backdrop-blur(blur(10px));
       will-change: transform;
     }
   }
@@ -203,8 +201,7 @@ const resumeData = {
       top: 64px;
       left: 0; right: 0;
       background: var(--bg-card-solid);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      @include backdrop-blur(blur(10px));
       will-change: transform;
       flex-direction: column;
       padding: 1.5rem 2rem 2rem;

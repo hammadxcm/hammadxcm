@@ -76,8 +76,7 @@ const paletteData = {
     inset: 0;
     z-index: 10000;
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    @include backdrop-blur(blur(4px));
     display: flex;
     align-items: flex-start;
     justify-content: center;

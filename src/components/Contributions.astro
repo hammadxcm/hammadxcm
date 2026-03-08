@@ -16,6 +16,7 @@ import { config } from '@config/index';
 import type { ContributionsData } from '@config/types';
 import type { TranslationMap } from '@i18n/types';
 import { getLocaleFromUrl, localePath } from '@i18n/index';
+import { sortContributions } from '../utils/contribution-sort';
 import contributionsRaw from '../data/contributions.json';
 
 interface Props {
@@ -28,14 +29,7 @@ const contributions = contributionsRaw as ContributionsData;
 
 const enabled = config.contributions?.enabled !== false;
 const hasPRs = contributions.contributions.length > 0;
-const stateOrder = { merged: 0, open: 1, closed: 2 };
-const prs = [...contributions.contributions].sort((a, b) => {
-  // Merged first, then Open, then Closed
-  const so = (stateOrder[a.state] ?? 9) - (stateOrder[b.state] ?? 9);
-  if (so !== 0) return so;
-  // Within same state, latest first
-  return new Date(b.mergedAt).getTime() - new Date(a.mergedAt).getTime();
-});
+const prs = sortContributions(contributions.contributions);
 
 const INITIAL_SHOW = 6;
 const hasMore = prs.length > INITIAL_SHOW;
