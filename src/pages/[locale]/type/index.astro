@@ -1,0 +1,242 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTranslations, getDirection } from '@i18n/index';
+import { LOCALES, DEFAULT_LOCALE } from '@i18n/types';
+import type { Locale } from '@i18n/types';
+
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l !== DEFAULT_LOCALE).map((locale) => ({
+    params: { locale },
+    props: { locale },
+  }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const translations = await getTranslations(locale);
+const dir = getDirection(locale);
+---
+<Layout title="Typing Test | Hammad Khan" description="Hacker typing speed test" locale={locale} dir={dir} translations={translations}>
+  <div class="typing-page" id="typingPage">
+    <div class="typing-header">
+      <a href={`/${locale}/`} class="typing-back">&larr; Back</a>
+      <h1 class="typing-title">// Speed Test</h1>
+    </div>
+    <div class="typing-stats" id="typingStats">
+      <div class="stat"><span class="stat-value" id="wpmValue">0</span><span class="stat-label">WPM</span></div>
+      <div class="stat"><span class="stat-value" id="accuracyValue">100</span><span class="stat-label">Accuracy %</span></div>
+      <div class="stat"><span class="stat-value" id="streakValue">0</span><span class="stat-label">Streak</span></div>
+    </div>
+    <div class="typing-area glass" id="typingArea">
+      <pre id="typingDisplay" class="typing-display"></pre>
+      <input type="text" id="typingInput" class="typing-input" autocomplete="off" spellcheck="false" autofocus placeholder="Start typing..." />
+    </div>
+    <div class="typing-controls">
+      <button class="typing-btn" id="typingRestart">Restart</button>
+      <select class="typing-select" id="typingLang">
+        <option value="javascript">JavaScript</option>
+        <option value="typescript">TypeScript</option>
+        <option value="python">Python</option>
+        <option value="ruby">Ruby</option>
+      </select>
+    </div>
+    <div class="typing-best" id="typingBest"></div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  @use '../../../styles/mixins' as *;
+
+  .typing-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    background: var(--bg);
+    font-family: var(--font-mono);
+    gap: 1.5rem;
+
+    @include respond-to(mobile) {
+      padding: 1rem;
+      gap: 1rem;
+    }
+  }
+
+  .typing-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .typing-back {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  .typing-title {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .typing-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+
+    @include respond-to(mobile) {
+      gap: 1rem;
+    }
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent);
+    line-height: 1;
+
+    @include respond-to(mobile) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .typing-area {
+    width: 100%;
+    max-width: 800px;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+
+    @include respond-to(mobile) {
+      padding: 1rem;
+    }
+  }
+
+  .typing-display {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin: 0 0 1rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+    min-height: 120px;
+
+    @include respond-to(mobile) {
+      font-size: 0.8rem;
+      min-height: 80px;
+    }
+  }
+
+  .typing-input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    padding: 0.75rem;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    outline: none;
+    caret-color: var(--accent);
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: var(--accent);
+    }
+
+    &::placeholder {
+      color: var(--text-dim);
+      opacity: 0.5;
+    }
+  }
+
+  .typing-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .typing-btn {
+    padding: 0.5rem 1.25rem;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  .typing-select {
+    padding: 0.5rem 0.75rem;
+    background: var(--glass-bg);
+    color: var(--text);
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    cursor: pointer;
+    outline: none;
+
+    &:focus {
+      border-color: var(--accent);
+    }
+  }
+
+  .typing-best {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  :global(.char-correct) {
+    color: var(--accent-mint, #27c93f);
+  }
+  :global(.char-wrong) {
+    color: var(--accent-tertiary, #ff6b6b);
+    background: rgba(255, 107, 107, 0.15);
+    border-radius: 2px;
+  }
+  :global(.char-current) {
+    background: var(--accent);
+    color: var(--bg);
+    border-radius: 2px;
+  }
+  :global(.char-pending) {
+    color: var(--text-dim);
+    opacity: 0.5;
+  }
+</style>
+
+<script>
+  import { initTypingTest } from '../../../scripts/pages/typing-test';
+  initTypingTest();
+</script>

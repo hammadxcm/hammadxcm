@@ -1,0 +1,9 @@
+name = "portfolio-chat"
+main = "index.ts"
+compatibility_date = "2024-12-01"
+
+[ai]
+binding = "AI"
+
+[vars]
+ALLOWED_ORIGIN = "https://hk.fyniti.co.uk,https://hammadxcm.github.io"
