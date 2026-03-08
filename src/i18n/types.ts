@@ -102,6 +102,8 @@ export interface TranslationMap {
     largestPR: string;
     mostActiveOrg: string;
     successRate: string;
+    contributionGraph: string;
+    totalContributions: string;
   };
   certs: {
     label: string;
@@ -201,6 +203,34 @@ export interface TranslationMap {
   };
   footer: {
     builtWith: string;
+  };
+  terminal: {
+    title: string;
+    help: string;
+    welcome: string;
+    unknownCommand: string;
+    fileNotFound: string;
+  };
+  typingTest: {
+    title: string;
+    start: string;
+    wpm: string;
+    accuracy: string;
+    streak: string;
+    bestWpm: string;
+    tryAgain: string;
+    complete: string;
+  };
+  chatbot: {
+    placeholder: string;
+    send: string;
+    typing: string;
+    rateLimit: string;
+    title: string;
+  };
+  sound: {
+    enable: string;
+    disable: string;
   };
   a11y: {
     skipToContent: string;
