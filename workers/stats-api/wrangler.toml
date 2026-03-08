@@ -4,9 +4,6 @@ compatibility_date = "2024-12-01"
 
 [vars]
 ALLOWED_ORIGIN = "https://hk.fyniti.co.uk"
-SPOTIFY_CLIENT_ID = ""
-SPOTIFY_CLIENT_SECRET = ""
-SPOTIFY_REFRESH_TOKEN = ""
 
 [[kv_namespaces]]
 binding = "STATS"
