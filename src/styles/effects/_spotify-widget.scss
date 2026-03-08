@@ -1,0 +1,83 @@
+@use '../mixins' as *;
+
+.spotify-widget {
+  position: fixed;
+  bottom: 4rem;
+  left: 1.5rem;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  background: var(--glass-bg);
+  @include backdrop-blur;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  max-width: 280px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  @media (max-width: 768px) {
+    bottom: 1rem;
+    left: 1rem;
+    max-width: 240px;
+  }
+}
+
+.spotify-art {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.spotify-info {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-mono);
+}
+
+.spotify-track {
+  font-size: 0.75rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+
+.spotify-artist {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spotify-progress {
+  margin-top: 4px;
+  height: 2px;
+  background: var(--glass-border);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.spotify-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 1px;
+  transition: width 1s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotify-widget { transition: none; }
+  .spotify-bar { transition: none; }
+}

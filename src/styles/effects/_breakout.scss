@@ -1,0 +1,54 @@
+.breakout-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.breakout-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1;
+
+  &:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+}
+
+.breakout-score {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--accent);
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breakout-overlay {
+    transition: none;
+  }
+}
