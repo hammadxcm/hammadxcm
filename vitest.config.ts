@@ -8,6 +8,8 @@ export default getViteConfig({
       include: [
         'src/config/**',
         'src/utils/**',
+        'src/scripts/constants.ts',
+        'src/scripts/state.ts',
         'src/scripts/achievements.ts',
         'src/scripts/effects/section-scramble.ts',
         'src/scripts/effects/spotlight.ts',
