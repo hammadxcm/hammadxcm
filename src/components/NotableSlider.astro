@@ -53,7 +53,9 @@ const doubled = [...orgs, ...orgs];
               alt={org.name}
               width="48"
               height="48"
-              loading="lazy"
+              loading="eager"
+              decoding="async"
+              data-image-component
               class="notable-org-avatar"
             />
             <span class="notable-org-name">{org.name}</span>

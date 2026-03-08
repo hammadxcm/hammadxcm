@@ -3,11 +3,11 @@
  * @description Frosted glass card style with backdrop blur and glow hover
  *              effects for interactive cards.
  */
+@use '../mixins' as *;
 
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: var(--blur-glass);
-  -webkit-backdrop-filter: var(--blur-glass);
+  @include backdrop-blur;
   border: 1px solid var(--glass-border);
   border-radius: 16px;
 

@@ -11,7 +11,7 @@
 @include respond-to(mobile) {
   .section { padding: 3.5rem 1.25rem; }
   .section-header { margin-bottom: 2.5rem; }
-  .section-title { font-size: 1.75rem; }
+  .section-title { font-size: clamp(1.4rem, 5vw, 1.75rem); }
   .section-label { font-size: 0.7rem; padding: 0.25rem 0.75rem; }
 }
 
@@ -19,7 +19,7 @@
   .section,
   footer { padding-inline: 1rem; }
   .section { padding-block: 3rem; }
-  .section-title { font-size: 1.5rem; }
+  .section-title { font-size: clamp(1.25rem, 4.5vw, 1.5rem); }
 }
 
 /* Effect hiding — mobile */

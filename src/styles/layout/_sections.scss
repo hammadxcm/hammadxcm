@@ -3,6 +3,7 @@
  * @description Shared section container, header, label, and title styles
  *              used across all content sections.
  */
+@use '../mixins' as *;
 
 .section {
   position: relative;
@@ -11,11 +12,11 @@
   margin: 0 auto;
   padding: 6rem 2rem;
 
-  @media (max-width: 768px) {
+  @include respond-to(mobile) {
     padding: 4rem 1.5rem;
   }
 
-  @media (max-width: 480px) {
+  @include respond-to(small) {
     padding: 3rem 1rem;
   }
 }

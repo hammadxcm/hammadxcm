@@ -94,6 +94,25 @@ const ICONS = {
     '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>',
   microscope:
     '<path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 100-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 01-2-2V6h6v4a2 2 0 01-2 2H9z"/><path d="M12 6V3a1 1 0 00-1-1H9a1 1 0 00-1 1v3"/>',
+  // New: Phase 4
+  terminal: '<polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>',
+  zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+  lock: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>',
+  timer:
+    '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3L2 6"/><path d="M22 6l-3-3"/>',
+  target:
+    '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  music: '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+  users:
+    '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>',
+  joystick:
+    '<line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><rect x="2" y="6" width="20" height="12" rx="2"/>',
+  layers:
+    '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
+  speaker:
+    '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14"/>',
+  messageCircle:
+    '<path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>',
 } as const;
 
 // ── Constants ──────────────────────────────────────────────────────────
@@ -425,6 +444,106 @@ export const ACHIEVEMENTS: Achievement[] = [
     description: 'Visit the analytics page',
     xp: 20,
     category: 'explore',
+    secret: false,
+  },
+  // Phase 4 — New features
+  {
+    id: 'terminal_explorer',
+    name: 'Terminal Explorer',
+    icon: ICONS.terminal,
+    description: 'Use the interactive terminal',
+    xp: 15,
+    category: 'explore',
+    secret: false,
+  },
+  {
+    id: 'terminal_hacker',
+    name: 'Shell Master',
+    icon: ICONS.terminal,
+    description: 'Run 15+ terminal commands',
+    xp: 40,
+    category: 'interact',
+    secret: false,
+  },
+  {
+    id: 'terminal_secret',
+    name: 'Hidden File',
+    icon: ICONS.lock,
+    description: 'Find the secret file in the terminal',
+    xp: 30,
+    category: 'discover',
+    secret: true,
+  },
+  {
+    id: 'speed_demon',
+    name: 'Speed Demon',
+    icon: ICONS.timer,
+    description: 'Achieve 60+ WPM in the typing test',
+    xp: 40,
+    category: 'interact',
+    secret: false,
+  },
+  {
+    id: 'perfect_accuracy',
+    name: 'Flawless Execution',
+    icon: ICONS.target,
+    description: '100% accuracy in the typing test',
+    xp: 50,
+    category: 'interact',
+    secret: false,
+  },
+  {
+    id: 'music_lover',
+    name: 'Audiophile',
+    icon: ICONS.music,
+    description: 'Discover the now playing widget',
+    xp: 15,
+    category: 'discover',
+    secret: true,
+  },
+  {
+    id: 'social_butterfly',
+    name: 'Not Alone',
+    icon: ICONS.users,
+    description: '5+ visitors online simultaneously',
+    xp: 25,
+    category: 'social',
+    secret: true,
+  },
+  {
+    id: 'breakout_found',
+    name: 'Arcade Mode',
+    icon: ICONS.joystick,
+    description: 'Discover the breakout game',
+    xp: 30,
+    category: 'discover',
+    secret: true,
+  },
+  {
+    id: 'breakout_winner',
+    name: 'Brick Breaker',
+    icon: ICONS.trophy,
+    description: 'Clear all bricks in breakout',
+    xp: 75,
+    category: 'discover',
+    secret: true,
+  },
+  {
+    id: 'wireframe_mode',
+    name: "Architect's View",
+    icon: ICONS.layers,
+    description: 'Toggle wireframe mode',
+    xp: 25,
+    category: 'discover',
+    secret: true,
+  },
+  {
+    id: 'ai_chat',
+    name: 'Talk to the Machine',
+    icon: ICONS.messageCircle,
+    description: 'Chat with the AI assistant',
+    xp: 25,
+    category: 'interact',
     secret: false,
   },
 ];
@@ -842,6 +961,12 @@ export function initAchievements(): void {
   // Listen for achievement + level-up events to show toasts
   window.addEventListener('achievement-unlocked', onAchievementUnlocked);
   window.addEventListener('level-up', onLevelUp);
+
+  // Listen for achievement triggers from new features (terminal, breakout, etc.)
+  window.addEventListener('achievement-trigger', (e: Event) => {
+    const id = (e as CustomEvent<string>).detail;
+    if (id) unlock(id);
+  });
 }
 
 // Bridge for toast — avoids circular import

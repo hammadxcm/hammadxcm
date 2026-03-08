@@ -18,7 +18,7 @@ function animateValue(el: HTMLElement, target: number, duration = 800): void {
   const start = performance.now();
   function tick(now: number): void {
     const t = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+    const eased = 1 - (1 - t) ** 3; // ease-out cubic
     el.textContent = formatNumber(Math.round(eased * target));
     if (t < 1) requestAnimationFrame(tick);
   }

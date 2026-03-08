@@ -37,7 +37,7 @@ const doubled = [...testimonials, ...testimonials];
                 <span class="testimonial-fade"></span>
               </div>
               <footer class="testimonial-footer">
-                {t.avatar && <img src={t.avatar} alt={t.author} class="testimonial-avatar" width="40" height="40" loading="lazy" />}
+                {t.avatar && <img src={t.avatar} alt={t.author} class="testimonial-avatar" width="40" height="40" loading="eager" decoding="async" data-image-component />}
                 <div class="testimonial-author">
                   <cite class="testimonial-name">{t.author}</cite>
                   <span class="testimonial-role">{t.role}, {t.company}</span>
