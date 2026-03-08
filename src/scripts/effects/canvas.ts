@@ -555,13 +555,13 @@ function onMouseLeave(): void {
 
 function updateMouseListeners(effect: string): void {
   const needsMouse = effect === 'particles';
-  if (needsMouse && !mouseListenersAttached && canvas) {
-    canvas.addEventListener('mousemove', onMouseMove);
-    canvas.addEventListener('mouseleave', onMouseLeave);
+  if (needsMouse && !mouseListenersAttached) {
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseleave', onMouseLeave);
     mouseListenersAttached = true;
-  } else if (!needsMouse && mouseListenersAttached && canvas) {
-    canvas.removeEventListener('mousemove', onMouseMove);
-    canvas.removeEventListener('mouseleave', onMouseLeave);
+  } else if (!needsMouse && mouseListenersAttached) {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseleave', onMouseLeave);
     mouse.x = null;
     mouse.y = null;
     mouseListenersAttached = false;
@@ -616,9 +616,9 @@ export function destroyCanvas(): void {
   }
   window.removeEventListener('resize', onResize);
   document.removeEventListener('visibilitychange', onVisibilityChange);
-  if (mouseListenersAttached && canvas) {
-    canvas.removeEventListener('mousemove', onMouseMove);
-    canvas.removeEventListener('mouseleave', onMouseLeave);
+  if (mouseListenersAttached) {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseleave', onMouseLeave);
     mouseListenersAttached = false;
   }
   initialized = false;

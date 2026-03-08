@@ -54,6 +54,7 @@ const { translations } = Astro.props;
     position: relative;
     max-width: 900px;
     margin: 0 auto;
+    padding-bottom: 0;
     --timeline-progress: 0;
 
     &::before {
@@ -67,7 +68,7 @@ const { translations } = Astro.props;
       box-shadow: 0 0 12px rgba(var(--accent-glow), 0.3);
       transition: height 0.05s linear;
 
-      @include respond-to(mobile) { left: 16px; }
+      @include respond-to(mobile) { left: 14px; }
     }
   }
 
@@ -75,6 +76,8 @@ const { translations } = Astro.props;
     position: relative;
     padding-inline-start: 72px;
     margin-bottom: 3rem;
+
+    &:last-child { margin-bottom: 0; }
 
     @include respond-to(mobile) { padding-inline-start: 48px; margin-bottom: 2rem; }
     @include respond-to(small) { padding-inline-start: 42px; }
@@ -93,7 +96,7 @@ const { translations } = Astro.props;
     animation: dotPulse 3s ease-in-out infinite;
     will-change: box-shadow;
 
-    @include respond-to(mobile) { left: 8px; width: 16px; height: 16px; }
+    @include respond-to(mobile) { left: 6px; width: 16px; height: 16px; }
   }
 
   .timeline-item:nth-child(2) .timeline-dot { border-color: var(--accent-blue); box-shadow: 0 0 12px rgba(var(--accent-blue-glow), 0.4); }
@@ -116,7 +119,12 @@ const { translations } = Astro.props;
       transform: translateX(4px);
     }
 
-    @include respond-to(mobile) { padding: 1.25rem; }
+    @include respond-to(mobile) {
+      padding: 1.25rem;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
     @include respond-to(small) { padding: 1rem; }
   }
 

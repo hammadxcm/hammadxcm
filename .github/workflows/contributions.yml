@@ -32,6 +32,12 @@ jobs:
           GITHUB_USERNAME: hammadxcm
           MAX_REPOS: "30"
 
+      - name: Fetch contribution graph
+        run: node scripts/fetch-contribution-graph.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: hammadxcm
+
       - name: Inject into README
         run: |
           node -e "
@@ -51,12 +57,12 @@ jobs:
           rm -f CONTRIBUTIONS_README.md
 
       - name: Format generated JSON
-        run: npx biome format --write src/data/contributions.json src/data/projects.json
+        run: npx biome format --write src/data/contributions.json src/data/projects.json src/data/contribution-graph.json
 
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/contributions.json src/data/projects.json README.md
+          git add src/data/contributions.json src/data/projects.json src/data/contribution-graph.json README.md
           git diff --cached --quiet || git commit -m "Update OSS contributions & projects"
           git push

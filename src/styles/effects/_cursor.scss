@@ -8,7 +8,7 @@
   position: fixed;
   width: 32px; height: 32px;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 99999;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.2s;
@@ -69,7 +69,7 @@ body.has-custom-cursor [data-tilt] { cursor: none; }
   position: fixed;
   top: 0; left: 0;
   pointer-events: none;
-  z-index: 9998;
+  z-index: 99998;
 
   span {
     position: absolute;

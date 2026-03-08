@@ -3,6 +3,7 @@
  * @description Fixed bottom bar showing simulated terminal metrics
  *              (uptime, network speed, process count).
  */
+@use '../mixins' as *;
 
 .terminal-status-bar {
   position: fixed;
@@ -20,8 +21,7 @@
   color: var(--text-dim);
   background: var(--glass-bg);
   border-top: 1px solid var(--glass-border);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  @include backdrop-blur(blur(8px));
 }
 
 .status-secure {

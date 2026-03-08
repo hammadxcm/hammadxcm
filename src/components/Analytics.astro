@@ -9,8 +9,6 @@
 import SectionHeader from './SectionHeader.astro';
 import ViewAllLink from './ViewAllLink.astro';
 import GitHubPanel from './analytics/GitHubPanel.astro';
-import LeetCodePanel from './analytics/LeetCodePanel.astro';
-import StackOverflowPanel from './analytics/StackOverflowPanel.astro';
 import { config } from '@config/index';
 import { getLocaleFromUrl, localePath } from '@i18n/index';
 import type { TranslationMap } from '@i18n/types';
@@ -22,8 +20,6 @@ interface Props {
 const { translations } = Astro.props;
 const locale = getLocaleFromUrl(Astro.url);
 const { username, utcOffset } = config.github;
-const leetcode = config.leetcode;
-const stackoverflow = config.stackoverflow;
 ---
 
 <!-- ══════ ANALYTICS ══════ -->
@@ -32,45 +28,6 @@ const stackoverflow = config.stackoverflow;
 
   <GitHubPanel username={username} utcOffset={utcOffset} translations={translations} />
 
-  {leetcode && (
-    <LeetCodePanel username={leetcode.username} translations={translations} />
-  )}
-
-  {stackoverflow && (
-    <StackOverflowPanel userId={stackoverflow.userId} translations={translations} />
-  )}
-
-  <!-- Dev Quote — end of analytics, before footer -->
-  <div class="dev-quote reveal">
-    <img data-stat="quote" src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt={translations.analytics.alt.devQuote} loading="lazy" width="600" height="150">
-  </div>
-
   <ViewAllLink href={localePath('analytics', locale)} label={translations.listing.viewAll} />
 </section>
 
-<style lang="scss">
-  @use '../styles/mixins' as *;
-
-  // ── Dev Quote — standalone at section end ──
-  .dev-quote {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 2rem;
-
-    img {
-      max-width: 600px;
-      width: 100%;
-      height: auto;
-      aspect-ratio: auto;
-      border-radius: var(--radius-md);
-      background: var(--bg-card);
-      border: 1px solid var(--glass-border);
-      transition: background-color 0.35s ease, border-color 0.35s ease;
-    }
-
-    @include respond-to(mobile) {
-      img { max-width: 100%; }
-    }
-  }
-</style>

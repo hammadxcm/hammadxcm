@@ -9,6 +9,9 @@
 interface Env {
   STATS: KVNamespace;
   ALLOWED_ORIGIN: string;
+  SPOTIFY_CLIENT_ID: string;
+  SPOTIFY_CLIENT_SECRET: string;
+  SPOTIFY_REFRESH_TOKEN: string;
 }
 
 const VALID_EVENTS = [
@@ -119,6 +122,101 @@ export default {
       });
     }
 
+    // GET /api/spotify
+    if (url.pathname === '/api/spotify' && request.method === 'GET') {
+      return handleSpotify(env, headers);
+    }
+
     return new Response('Not found', { status: 404, headers });
   },
 };
+
+// ── Spotify Now Playing ─────────────────────────────────────────────
+
+const SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token';
+const SPOTIFY_NOW_PLAYING_URL = 'https://api.spotify.com/v1/me/player/currently-playing';
+const SPOTIFY_TOKEN_KV_KEY = 'spotify:access_token';
+const NOT_PLAYING = JSON.stringify({ isPlaying: false });
+
+async function getSpotifyToken(env: Env): Promise<string | null> {
+  // Check KV cache first
+  const cached = await env.STATS.get(SPOTIFY_TOKEN_KV_KEY);
+  if (cached) return cached;
+
+  const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } = env;
+  if (!SPOTIFY_CLIENT_ID || !SPOTIFY_CLIENT_SECRET || !SPOTIFY_REFRESH_TOKEN) return null;
+
+  const basic = btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
+  const res = await fetch(SPOTIFY_TOKEN_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${basic}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({
+      grant_type: 'refresh_token',
+      refresh_token: SPOTIFY_REFRESH_TOKEN,
+    }),
+  });
+
+  if (!res.ok) return null;
+
+  const data: { access_token: string; expires_in: number } = await res.json();
+  // Cache token in KV with TTL (expire 60s early)
+  const ttl = Math.max(data.expires_in - 60, 60);
+  await env.STATS.put(SPOTIFY_TOKEN_KV_KEY, data.access_token, { expirationTtl: ttl });
+  return data.access_token;
+}
+
+async function handleSpotify(env: Env, headers: Record<string, string>): Promise<Response> {
+  const jsonHeaders = { ...headers, 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' };
+
+  const token = await getSpotifyToken(env);
+  if (!token) {
+    return new Response(NOT_PLAYING, { headers: jsonHeaders });
+  }
+
+  try {
+    const res = await fetch(SPOTIFY_NOW_PLAYING_URL, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (res.status === 204 || !res.ok) {
+      return new Response(NOT_PLAYING, { headers: jsonHeaders });
+    }
+
+    const data = await res.json() as {
+      is_playing: boolean;
+      currently_playing_type: string;
+      progress_ms: number;
+      item: {
+        name: string;
+        artists: { name: string }[];
+        album: { name: string; images: { url: string }[] };
+        external_urls: { spotify: string };
+        duration_ms: number;
+      };
+    };
+
+    if (!data.is_playing || data.currently_playing_type !== 'track') {
+      return new Response(NOT_PLAYING, { headers: jsonHeaders });
+    }
+
+    const item = data.item;
+    return new Response(
+      JSON.stringify({
+        isPlaying: true,
+        track: item.name,
+        artist: item.artists.map((a) => a.name).join(', '),
+        album: item.album.name,
+        albumArt: item.album.images[0]?.url,
+        songUrl: item.external_urls.spotify,
+        progress: data.progress_ms,
+        duration: item.duration_ms,
+      }),
+      { headers: jsonHeaders },
+    );
+  } catch {
+    return new Response(NOT_PLAYING, { headers: jsonHeaders });
+  }
+}

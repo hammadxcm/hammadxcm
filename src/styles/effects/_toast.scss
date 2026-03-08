@@ -7,11 +7,11 @@
 
 .hacker-toast-container {
   position: fixed;
-  bottom: 3.5rem;
+  top: 5rem;
   right: 1.5rem;
   z-index: 9000;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   gap: 0.5rem;
   pointer-events: none;
 }
@@ -21,8 +21,7 @@
   font-size: 0.8rem;
   color: var(--accent-mint);
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  @include backdrop-blur(blur(12px));
   border: 1px solid var(--border-glow);
   border-radius: 8px;
   padding: 0.6rem 1rem;
@@ -59,7 +58,7 @@
 
 @include respond-to(mobile) {
   .hacker-toast-container {
-    bottom: 1rem;
+    top: 4.5rem;
     right: 0.75rem;
     left: 0.75rem;
   }

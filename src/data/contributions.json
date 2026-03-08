@@ -21,11 +21,7 @@
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
-        "topics": [
-          "keycloak",
-          "oidc",
-          "saml"
-        ],
+        "topics": ["keycloak", "oidc", "saml"],
         "license": "Apache-2.0"
       }
     },
@@ -158,15 +154,7 @@
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
-        "topics": [
-          "activejob",
-          "activerecord",
-          "framework",
-          "html",
-          "mvc",
-          "rails",
-          "ruby"
-        ],
+        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
         "license": "MIT"
       }
     },
@@ -246,14 +234,7 @@
         "language": "Ruby",
         "description": ":globe_with_meridians: Jekyll is a blog-aware static site generator in Ruby",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/3083652?v=4",
-        "topics": [
-          "blog-engine",
-          "jekyll",
-          "liquid",
-          "markdown",
-          "ruby",
-          "static-site-generator"
-        ],
+        "topics": ["blog-engine", "jekyll", "liquid", "markdown", "ruby", "static-site-generator"],
         "license": "MIT"
       }
     },
@@ -280,15 +261,7 @@
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
-        "topics": [
-          "activejob",
-          "activerecord",
-          "framework",
-          "html",
-          "mvc",
-          "rails",
-          "ruby"
-        ],
+        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
         "license": "MIT"
       }
     },

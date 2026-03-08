@@ -61,6 +61,16 @@ $breakpoints: (
   @include respond-to(mobile) { padding: $mobile; }
 }
 
+/// Backdrop blur — cross-browser (fixes Safari missing -webkit- prefix)
+/// @param {Value} $value [var(--blur-glass)] - The blur filter value
+/// @example
+///   .panel { @include backdrop-blur; }
+///   .custom { @include backdrop-blur(blur(8px)); }
+@mixin backdrop-blur($value: var(--blur-glass)) {
+  backdrop-filter: $value;
+  -webkit-backdrop-filter: $value;
+}
+
 /// Hide scrollbar — cross-browser utility for scroll containers
 /// @example
 ///   .horizontal-scroll { overflow-x: auto; @include hide-scrollbar; }

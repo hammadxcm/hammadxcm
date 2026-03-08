@@ -99,6 +99,8 @@ const en: TranslationMap = {
     largestPR: 'Largest PR',
     mostActiveOrg: 'Most Active Org',
     successRate: 'Merge Rate',
+    contributionGraph: 'Contribution Graph',
+    totalContributions: '{count} contributions in the last year',
   },
   certs: {
     label: '// Credentials',
@@ -236,6 +238,26 @@ const en: TranslationMap = {
       listing_explorer: { name: 'Deep Diver', description: 'Visit any listing page' },
       listing_completionist: { name: 'Full Recon', description: 'Visit all 5 listing pages' },
       analytics_deep_dive: { name: 'Data Scientist', description: 'Visit the analytics page' },
+      terminal_explorer: { name: 'Terminal Explorer', description: 'Use the interactive terminal' },
+      terminal_hacker: { name: 'Shell Master', description: 'Run 15+ terminal commands' },
+      terminal_secret: { name: 'Hidden File', description: 'Find the secret file in the terminal' },
+      speed_demon: { name: 'Speed Demon', description: 'Achieve 60+ WPM in the typing test' },
+      perfect_accuracy: {
+        name: 'Flawless Execution',
+        description: '100% accuracy in the typing test',
+      },
+      music_lover: { name: 'Audiophile', description: 'Discover the now playing widget' },
+      social_butterfly: {
+        name: 'Not Alone',
+        description: '5+ visitors online simultaneously',
+      },
+      breakout_found: { name: 'Arcade Mode', description: 'Discover the breakout game' },
+      breakout_winner: { name: 'Brick Breaker', description: 'Clear all bricks in breakout' },
+      wireframe_mode: {
+        name: "Architect's View",
+        description: 'Toggle wireframe mode',
+      },
+      ai_chat: { name: 'Talk to the Machine', description: 'Chat with the AI assistant' },
     },
   },
   commandPalette: {
@@ -250,6 +272,34 @@ const en: TranslationMap = {
   },
   footer: {
     builtWith: 'Built with {heart} and Astro.',
+  },
+  terminal: {
+    title: 'Terminal',
+    help: 'Type help for available commands',
+    welcome: "Welcome to Hammad's Portfolio Terminal",
+    unknownCommand: 'command not found',
+    fileNotFound: 'No such file or directory',
+  },
+  typingTest: {
+    title: 'Typing Speed Test',
+    start: 'Start typing...',
+    wpm: 'WPM',
+    accuracy: 'Accuracy',
+    streak: 'Streak',
+    bestWpm: 'Best WPM',
+    tryAgain: 'Try Again',
+    complete: 'Complete!',
+  },
+  chatbot: {
+    placeholder: 'Type a message...',
+    send: 'Send',
+    typing: 'Typing...',
+    rateLimit: 'Rate limit reached (10 messages/session)',
+    title: 'Chat',
+  },
+  sound: {
+    enable: 'Enable sounds',
+    disable: 'Disable sounds',
   },
   a11y: {
     skipToContent: 'Skip to content',

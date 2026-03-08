@@ -1,0 +1,141 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getTranslations, getDirection } from '@i18n/index';
+import { LOCALES, DEFAULT_LOCALE } from '@i18n/types';
+import type { Locale } from '@i18n/types';
+
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l !== DEFAULT_LOCALE).map((locale) => ({
+    params: { locale },
+    props: { locale },
+  }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const translations = await getTranslations(locale);
+const dir = getDirection(locale);
+---
+<Layout title="Terminal | Hammad Khan" description="Interactive terminal" locale={locale} dir={dir} translations={translations}>
+  <div class="terminal-page" id="terminalPage">
+    <div class="terminal-header">
+      <div class="terminal-dots">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+      </div>
+      <span class="terminal-title">hammad@portfolio:~</span>
+    </div>
+    <div class="terminal-body" id="terminalBody">
+      <div id="terminalOutput"></div>
+      <div class="terminal-input-line">
+        <span class="terminal-prompt" id="terminalPrompt">visitor@portfolio:~$</span>
+        <input type="text" id="terminalInput" class="terminal-input" autocomplete="off" autofocus spellcheck="false" />
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  @use '../../../styles/mixins' as *;
+
+  .terminal-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    font-family: var(--font-mono);
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--glass-bg);
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .terminal-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .dot-red { background: #ff5f56; }
+  .dot-yellow { background: #ffbd2e; }
+  .dot-green { background: #27c93f; }
+
+  .terminal-title {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  .terminal-body {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text);
+
+    @include respond-to(mobile) {
+      padding: 1rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  .terminal-input-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .terminal-prompt {
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: inherit;
+    caret-color: var(--accent);
+  }
+
+  :global(.term-line) {
+    margin: 0.15rem 0;
+  }
+  :global(.term-cmd) {
+    color: var(--accent);
+  }
+  :global(.term-output) {
+    color: var(--text-dim);
+  }
+  :global(.term-error) {
+    color: var(--accent-tertiary, #ff6b6b);
+  }
+  :global(.term-success) {
+    color: var(--accent-mint);
+  }
+  :global(.term-dir) {
+    color: var(--accent-blue);
+    font-weight: bold;
+  }
+  :global(.term-file) {
+    color: var(--text);
+  }
+</style>
+
+<script>
+  import { initTerminal } from '../../../scripts/pages/terminal';
+  initTerminal();
+</script>

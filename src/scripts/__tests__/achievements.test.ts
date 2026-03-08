@@ -884,6 +884,16 @@ describe('completionist achievement', () => {
     trackEvent('listing:certifications');
     trackEvent('listing:analytics');
 
+    // New achievements unlocked via achievement-trigger events
+    window.dispatchEvent(new CustomEvent('achievement-trigger', { detail: 'terminal_explorer' }));
+    window.dispatchEvent(new CustomEvent('achievement-trigger', { detail: 'terminal_hacker' }));
+    window.dispatchEvent(new CustomEvent('achievement-trigger', { detail: 'speed_demon' }));
+    window.dispatchEvent(new CustomEvent('achievement-trigger', { detail: 'perfect_accuracy' }));
+    window.dispatchEvent(new CustomEvent('achievement-trigger', { detail: 'ai_chat' }));
+
+    // Trigger completionist check
+    trackEvent('completionist_check');
+
     expect(isUnlocked('completionist')).toBe(true);
   });
 });

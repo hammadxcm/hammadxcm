@@ -5,6 +5,7 @@ export default defineConfig({
   site: 'https://hk.fyniti.co.uk',
   base: '/',
   compressHTML: true,
+  devToolbar: { enabled: false },
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es', 'fr', 'ar', 'ur', 'fa', 'zh', 'hi', 'de', 'bn', 'pt', 'ru', 'id'],

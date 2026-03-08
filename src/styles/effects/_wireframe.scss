@@ -1,0 +1,21 @@
+html.wireframe-mode {
+  * {
+    background: transparent !important;
+    outline: 1px solid var(--accent) !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    filter: grayscale(1) !important;
+    opacity: 0.5 !important;
+  }
+
+  // Keep basic readability
+  body {
+    background: var(--bg) !important;
+  }
+}

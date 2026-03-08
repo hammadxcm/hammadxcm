@@ -70,18 +70,11 @@
   opacity: 1;
   transform: translateY(0);
 }
-.stagger > *:nth-child(1) { transition-delay: 0s; }
-.stagger > *:nth-child(2) { transition-delay: 0.08s; }
-.stagger > *:nth-child(3) { transition-delay: 0.1s; }
-.stagger > *:nth-child(4) { transition-delay: 0.18s; }
-.stagger > *:nth-child(5) { transition-delay: 0.24s; }
-.stagger > *:nth-child(6) { transition-delay: 0.30s; }
-.stagger > *:nth-child(7) { transition-delay: 0.36s; }
-.stagger > *:nth-child(8) { transition-delay: 0.42s; }
-.stagger > *:nth-child(9) { transition-delay: 0.48s; }
-.stagger > *:nth-child(10) { transition-delay: 0.54s; }
-.stagger > *:nth-child(11) { transition-delay: 0.60s; }
-.stagger > *:nth-child(12) { transition-delay: 0.66s; }
+@for $i from 1 through 12 {
+  .stagger > *:nth-child(#{$i}) {
+    transition-delay: #{($i - 1) * 0.06}s;
+  }
+}
 
 /* Hero parallax */
 .hero-content {

@@ -98,6 +98,11 @@ export interface Certification {
   date?: string;
 }
 
+export interface ChatConfig {
+  enabled: boolean;
+  apiUrl: string;
+}
+
 export interface GuestbookConfig {
   giscus: {
     repo: string;
@@ -106,6 +111,10 @@ export interface GuestbookConfig {
     categoryId: string;
   };
   statsApi?: string;
+}
+
+export interface SpotifyConfig {
+  enabled: boolean;
 }
 
 export interface ContributionsConfig {
@@ -150,6 +159,30 @@ export interface ContributionsData {
   username: string;
   totalCount: number;
   contributions: ContributionPR[];
+}
+
+export interface ContributionDay {
+  date: string;
+  count: number;
+  level: number;
+}
+
+export interface ContributionWeek {
+  contributionDays: ContributionDay[];
+}
+
+export interface ContributionYear {
+  year: string;
+  totalContributions: number;
+  weeks: ContributionWeek[];
+}
+
+export interface ContributionGraphData {
+  generatedAt: string;
+  username: string;
+  totalContributions: number;
+  years: ContributionYear[];
+  weeks: ContributionWeek[];
 }
 
 export interface Testimonial {
@@ -215,6 +248,8 @@ export interface PortfolioConfig {
   hackerrank?: {
     username: string;
   };
+  chat?: ChatConfig;
+  spotify?: SpotifyConfig;
   contributions?: ContributionsConfig;
   guestbook?: GuestbookConfig;
   testimonials?: Testimonial[];

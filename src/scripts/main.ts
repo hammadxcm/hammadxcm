@@ -3,11 +3,14 @@ import { initGithubTabs, initLeetcodeTabs } from './analytics';
 import { initBoot } from './effects/boot';
 import { initCanvas } from './effects/canvas';
 import { initCursor } from './effects/cursor';
+import { initFavicon } from './effects/favicon';
 import { initHackerLog } from './effects/hacker-log';
 import { initHeroName } from './effects/hero-name';
 import { initMatrixRain } from './effects/matrix-rain';
 import { initNavLogo } from './effects/nav-logo';
 import { initScreenEffects } from './effects/screen-effects';
+import { initSectionScramble } from './effects/section-scramble';
+import { initSpotlight } from './effects/spotlight';
 import { spawnToast } from './effects/toast';
 import { initTypewriter } from './effects/typewriter';
 import { initAboutLang } from './interactions/about-lang';
@@ -62,6 +65,8 @@ requestAnimationFrame(() => {
   safeInit(initObserver);
   safeInit(initScrollHandler);
   safeInit(initNav);
+  safeInit(initSectionScramble);
+  safeInit(initSpotlight);
 });
 
 // ── Tier 3: Deferred — non-visual interactions ──
@@ -78,6 +83,7 @@ setTimeout(() => {
   safeInit(initLangSwitcher);
   safeInit(initAchievements);
   safeInit(initGuestbookStats);
+  safeInit(initFavicon);
 
   // Nav logo before theme switcher so initial state is set
   safeInit(initNavLogo);
@@ -115,7 +121,7 @@ setTimeout(() => {
   }
 }, 0);
 
-// ── Tier 4: Idle — easter eggs & panels (already deferred) ──
+// ── Tier 4: Idle — easter eggs, panels, & lazy features ──
 requestIdleCallback(
   () => {
     safeLazy(() => import('./interactions/konami'), 'initKonami');
@@ -123,6 +129,19 @@ requestIdleCallback(
     safeLazy(() => import('./interactions/annotations'), 'initAnnotations');
     safeLazy(() => import('./interactions/achievement-panel'), 'initAchievementPanel');
     safeLazy(() => import('./interactions/resume-export'), 'initResumeExport');
+    safeLazy(() => import('./effects/magnetic-nav'), 'initMagneticNav');
+    safeLazy(() => import('./effects/timeline-draw'), 'initTimelineDraw');
+    safeLazy(() => import('./effects/scroll-terminal'), 'initScrollTerminal');
+    safeLazy(() => import('./effects/action-log'), 'initActionLog');
+    safeLazy(() => import('./effects/code-editor-hero'), 'initCodeEditorHero');
+    safeLazy(() => import('./effects/contribution-3d'), 'initContribution3d');
+    safeLazy(() => import('./effects/particle-text'), 'initParticleText');
+    safeLazy(() => import('./effects/wireframe'), 'initWireframe');
+    safeLazy(() => import('./effects/sound'), 'initSound');
+    safeLazy(() => import('./games/breakout'), 'initBreakout');
+    safeLazy(() => import('./integrations/spotify'), 'initSpotify');
+    safeLazy(() => import('./integrations/visitor-presence'), 'initVisitorPresence');
+    safeLazy(() => import('./integrations/chatbot'), 'initChatbot');
   },
   { timeout: 3000 },
 );
