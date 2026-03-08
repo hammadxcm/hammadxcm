@@ -12,6 +12,11 @@ interface NowPlaying {
   duration?: number;
 }
 
+function getApiBase(): string {
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return '';
+  return document.documentElement.dataset.statsApi || '';
+}
+
 function createWidget(): HTMLElement {
   const el = document.createElement('div');
   el.className = 'spotify-widget';
@@ -43,7 +48,9 @@ function schedulePoll(): void {
 
 async function poll(): Promise<void> {
   try {
-    const res = await fetch('/api/spotify');
+    const base = getApiBase();
+    if (!base) return;
+    const res = await fetch(`${base}/api/spotify`);
     if (!res.ok) return;
     const data: NowPlaying = await res.json();
 
