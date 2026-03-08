@@ -13,7 +13,7 @@ import ArrowIcon from './ArrowIcon.astro';
 import StarIcon from './icons/StarIcon.astro';
 import ForkIcon from './icons/ForkIcon.astro';
 import DownloadIcon from './icons/DownloadIcon.astro';
-import { langColors } from '@config/lang-colors';
+import { getLangColor } from '@config/lang-colors';
 import { formatStars, formatDownloads } from '../utils/format';
 import { sanitizeHtml } from '@utils/sanitize';
 import type { TranslationMap } from '@i18n/types';
@@ -82,7 +82,7 @@ const hasMore = totalCount > INITIAL_SHOW;
     {dynamicRepos.map((repo, idx) => {
       const globalIdx = featured.length + idx;
       const hidden = hasMore && globalIdx >= INITIAL_SHOW;
-      const dotColor = repo.language ? (langColors[repo.language] || 'var(--text-dim)') : null;
+      const dotColor = repo.language ? getLangColor(repo.language) : null;
       return (
         <a
           class:list={['project-card', 'project-card--dynamic', 'glass', 'reveal', 'glow-border', { 'project-hidden': hidden }]}

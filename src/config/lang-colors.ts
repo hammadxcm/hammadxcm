@@ -18,3 +18,8 @@ export const langColors: Record<string, string> = {
   CSS: '#563d7c',
   SCSS: '#c6538c',
 };
+
+export function getLangColor(language: string | null): string {
+  if (!language) return 'var(--text-dim)';
+  return langColors[language] || 'var(--text-dim)';
+}

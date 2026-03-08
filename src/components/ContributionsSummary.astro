@@ -3,7 +3,7 @@
  * Contributions Summary Stats Banner
  * Dashboard-style grid cards with glow halos.
  */
-import { langColors } from '@config/lang-colors';
+import { getLangColor } from '@config/lang-colors';
 import { formatStars } from '../utils/format';
 import type { ContributionPR } from '@config/types';
 import type { TranslationMap } from '@i18n/types';
@@ -60,7 +60,7 @@ statItems.push(
             {stat.value}
             <span class="lang-dots">
               {uniqueLangs.slice(0, 6).map((lang) => (
-                <span class="summary-lang-dot" style={`background:${langColors[lang] || 'var(--text-dim)'}`} title={lang} />
+                <span class="summary-lang-dot" style={`background:${getLangColor(lang)}`} title={lang} />
               ))}
             </span>
           </>
