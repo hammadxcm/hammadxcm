@@ -113,105 +113,11 @@ const { featured, dynamicRepos, downloadCounts } = getProjectData();
 
 <style lang="scss">
   @use '../../styles/mixins' as *;
-  @use '../../styles/utilities/tag' as *;
+  @use '../../styles/utilities/project-card' as *;
+
+  @include project-card-base;
 
   .projects-listing-grid {
     @include responsive-grid;
-  }
-
-  .project-card {
-    @include card-padding;
-    transition: all var(--duration-slow) var(--ease-out-expo);
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .project-card--dynamic {
-    text-decoration: none;
-    color: var(--text);
-  }
-
-  .project-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    img { width: 44px; height: 44px; object-fit: contain; }
-  }
-
-  .project-header-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--text-dim);
-  }
-
-  .project-lang {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-
-  .lang-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .project-stars,
-  .project-forks,
-  .project-downloads {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.2rem;
-    opacity: 0.85;
-    :global(svg) { opacity: 0.7; }
-  }
-
-  .project-name {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    a {
-      color: var(--text);
-      transition: color var(--duration-normal);
-      &:hover { color: var(--accent); }
-    }
-  }
-
-  .project-desc {
-    font-size: 0.9rem;
-    color: var(--text-dim);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    @include respond-to(mobile) { font-size: 0.85rem; }
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    span { @include tag; }
-  }
-
-  .project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: auto;
-    padding-top: 1rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--accent);
-    &:hover { color: var(--accent-mint); }
-    :global(svg) { width: 16px; height: 16px; }
   }
 </style>
