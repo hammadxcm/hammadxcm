@@ -2,7 +2,7 @@
  * @vitest-environment happy-dom
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { shuffleIndices, createScrambleReveal } from '../effects/scramble-text';
+import { createScrambleReveal, shuffleIndices } from '../effects/scramble-text';
 
 describe('shuffleIndices', () => {
   it('shuffles array in place', () => {

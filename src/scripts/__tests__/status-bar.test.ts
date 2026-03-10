@@ -5,7 +5,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockState = { prefersReducedMotion: false };
 vi.mock('../state', () => ({
-  get prefersReducedMotion() { return mockState.prefersReducedMotion; },
+  get prefersReducedMotion() {
+    return mockState.prefersReducedMotion;
+  },
   setClientIP: vi.fn(),
 }));
 vi.mock('../achievements', () => ({
@@ -16,7 +18,10 @@ vi.mock('../achievements', () => ({
 vi.mock('../theme-config', () => ({
   getStatusBarConfig: () => [
     { label: 'TIME: ', value: () => '0s', cls: '' },
-    null, null, null, null,
+    null,
+    null,
+    null,
+    null,
   ],
 }));
 
@@ -51,13 +56,13 @@ describe('status-bar', () => {
     mockState.prefersReducedMotion = true;
     const { initStatusBar } = await import('../interactions/status-bar');
     initStatusBar();
-    expect(document.getElementById('statusSlot0')!.textContent).toBe('');
+    expect(document.getElementById('statusSlot0')?.textContent).toBe('');
   });
 
   it('renders content into slots', async () => {
     const { initStatusBar, destroyStatusBar } = await import('../interactions/status-bar');
     initStatusBar();
-    expect(document.getElementById('statusSlot0')!.textContent).toContain('TIME');
+    expect(document.getElementById('statusSlot0')?.textContent).toContain('TIME');
     destroyStatusBar();
   });
 

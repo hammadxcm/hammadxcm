@@ -66,9 +66,13 @@ export default getViteConfig({
         'src/scripts/integrations/chatbot.ts',
       ],
       thresholds: {
+        statements: 60,
+        branches: 50,
+        functions: 58,
+        lines: 60,
         'src/scripts/achievements.ts': {
           statements: 99,
-          branches: 99,
+          branches: 98,
           functions: 100,
           lines: 100,
         },

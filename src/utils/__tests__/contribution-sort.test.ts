@@ -1,6 +1,6 @@
+import type { ContributionPR } from '@config/types';
 import { describe, expect, it } from 'vitest';
 import { sortContributions } from '../contribution-sort';
-import type { ContributionPR } from '@config/types';
 
 function makePR(state: string, mergedAt: string): ContributionPR {
   return { state, mergedAt } as unknown as ContributionPR;
@@ -8,7 +8,11 @@ function makePR(state: string, mergedAt: string): ContributionPR {
 
 describe('sortContributions', () => {
   it('sorts merged before open before closed', () => {
-    const prs = [makePR('closed', '2025-01-01'), makePR('open', '2025-01-01'), makePR('merged', '2025-01-01')];
+    const prs = [
+      makePR('closed', '2025-01-01'),
+      makePR('open', '2025-01-01'),
+      makePR('merged', '2025-01-01'),
+    ];
     const sorted = sortContributions(prs);
     expect(sorted.map((p) => p.state)).toEqual(['merged', 'open', 'closed']);
   });

@@ -6,6 +6,8 @@ export default defineConfig({
   base: '/',
   compressHTML: true,
   devToolbar: { enabled: false },
+  prefetch: { prefetchAll: false, defaultStrategy: 'viewport' },
+  build: { inlineStylesheets: 'auto' },
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es', 'fr', 'ar', 'ur', 'fa', 'zh', 'hi', 'de', 'bn', 'pt', 'ru', 'id'],

@@ -2,7 +2,7 @@
  * Shared project data preparation — used by Projects section and ProjectsListing.
  */
 import { config } from '@config/index';
-import type { ProjectsData, GitHubRepo, Project } from '@config/types';
+import type { GitHubRepo, Project, ProjectsData } from '@config/types';
 import projectsRaw from '../data/projects.json';
 
 export function getProjectData(): {

@@ -42,14 +42,14 @@ describe('initCommandPalette', () => {
   it('opens on Ctrl+K', () => {
     initCommandPalette();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
-    expect(document.getElementById('cmdPaletteOverlay')!.classList.contains('open')).toBe(true);
+    expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(true);
   });
 
   it('closes on Escape', () => {
     initCommandPalette();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-    expect(document.getElementById('cmdPaletteOverlay')!.classList.contains('open')).toBe(false);
+    expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(false);
   });
 
   it('renders results on open', () => {
@@ -91,8 +91,8 @@ describe('initCommandPalette', () => {
   it('toggles with Ctrl+K', () => {
     initCommandPalette();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
-    expect(document.getElementById('cmdPaletteOverlay')!.classList.contains('open')).toBe(true);
+    expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(true);
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
-    expect(document.getElementById('cmdPaletteOverlay')!.classList.contains('open')).toBe(false);
+    expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(false);
   });
 });

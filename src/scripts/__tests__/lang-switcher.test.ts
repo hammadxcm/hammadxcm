@@ -28,21 +28,21 @@ describe('initLangSwitcher', () => {
 
   it('toggles dropdown on button click', () => {
     initLangSwitcher();
-    document.getElementById('langToggleBtn')!.click();
-    expect(document.getElementById('langDropdown')!.classList.contains('open')).toBe(true);
+    document.getElementById('langToggleBtn')?.click();
+    expect(document.getElementById('langDropdown')?.classList.contains('open')).toBe(true);
   });
 
   it('closes on Escape', () => {
     initLangSwitcher();
-    document.getElementById('langToggleBtn')!.click();
+    document.getElementById('langToggleBtn')?.click();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-    expect(document.getElementById('langDropdown')!.classList.contains('open')).toBe(false);
+    expect(document.getElementById('langDropdown')?.classList.contains('open')).toBe(false);
   });
 
   it('closes on outside click', () => {
     initLangSwitcher();
-    document.getElementById('langToggleBtn')!.click();
+    document.getElementById('langToggleBtn')?.click();
     document.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    expect(document.getElementById('langDropdown')!.classList.contains('open')).toBe(false);
+    expect(document.getElementById('langDropdown')?.classList.contains('open')).toBe(false);
   });
 });

@@ -40,7 +40,7 @@ describe('initNav', () => {
     initNav();
     const hamburger = document.getElementById('hamburger')!;
     hamburger.click(); // open
-    document.querySelector('a[href="#about"]')!.dispatchEvent(new Event('click'));
+    document.querySelector('a[href="#about"]')?.dispatchEvent(new Event('click'));
     expect(hamburger.classList.contains('active')).toBe(false);
   });
 

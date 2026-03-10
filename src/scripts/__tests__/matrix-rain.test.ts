@@ -5,8 +5,12 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockState = { isTouchDevice: false, prefersReducedMotion: false };
 vi.mock('../state', () => ({
-  get isTouchDevice() { return mockState.isTouchDevice; },
-  get prefersReducedMotion() { return mockState.prefersReducedMotion; },
+  get isTouchDevice() {
+    return mockState.isTouchDevice;
+  },
+  get prefersReducedMotion() {
+    return mockState.prefersReducedMotion;
+  },
   isHeroVisible: () => true,
   isPageVisible: () => true,
 }));

@@ -24,7 +24,7 @@ describe('spawnToast', () => {
     spawnToast('Test message');
     const toast = document.querySelector('.hacker-toast');
     expect(toast).not.toBeNull();
-    expect(toast!.textContent).toBe('Test message');
+    expect(toast?.textContent).toBe('Test message');
   });
 
   it('applies custom className', () => {

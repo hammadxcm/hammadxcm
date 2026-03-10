@@ -38,21 +38,27 @@ describe('guestbook-stats', () => {
   });
 
   it('populates visit number', async () => {
-    const { initGuestbookStats, destroyGuestbookStats } = await import('../interactions/guestbook-stats');
+    const { initGuestbookStats, destroyGuestbookStats } = await import(
+      '../interactions/guestbook-stats'
+    );
     initGuestbookStats();
-    expect(document.getElementById('gsVisitNum')!.textContent).toBe('#5');
+    expect(document.getElementById('gsVisitNum')?.textContent).toBe('#5');
     destroyGuestbookStats();
   });
 
   it('shows sections seen count', async () => {
-    const { initGuestbookStats, destroyGuestbookStats } = await import('../interactions/guestbook-stats');
+    const { initGuestbookStats, destroyGuestbookStats } = await import(
+      '../interactions/guestbook-stats'
+    );
     initGuestbookStats();
-    expect(document.getElementById('gsSections')!.textContent).toBe('2/3');
+    expect(document.getElementById('gsSections')?.textContent).toBe('2/3');
     destroyGuestbookStats();
   });
 
   it('does not double-initialize', async () => {
-    const { initGuestbookStats, destroyGuestbookStats } = await import('../interactions/guestbook-stats');
+    const { initGuestbookStats, destroyGuestbookStats } = await import(
+      '../interactions/guestbook-stats'
+    );
     initGuestbookStats();
     initGuestbookStats(); // no-op
     destroyGuestbookStats();

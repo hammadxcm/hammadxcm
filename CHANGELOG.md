@@ -5,6 +5,66 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-03-10
+
+### Added
+
+#### Code Editor Hero — Multi-Language Support
+- **JavaScript / Ruby / Python tabs**: Replaced `main.ts | config.ts | utils.ts` with `main.js | app.rb | main.py` — each tab shows idiomatic code for its language across all 10 themes (30 total snippets)
+- **Per-language syntax highlighting**: Separate keyword regexes for JavaScript (`JS_KEYWORD_RE`), Ruby (`RUBY_KEYWORD_RE`), and Python (`PYTHON_KEYWORD_RE`) with hash-comment support for Ruby/Python — `highlightLine()` now accepts a `lang` parameter derived from active tab extension
+- **Language-aware terminal runners**: Commands `node main.js`, `ruby app.rb`, `python3 main.py` execute via `TERMINAL_OUTPUT` lookup with per-theme output — `run` command also works for the active tab
+- **Dynamic status bar**: Language display updates per active tab using `TAB_LANG` mapping (JavaScript/Ruby/Python), breadcrumbs reflect active filename, `ls` output uses `TAB_NAMES.join()`
+
+#### Code Editor Hero — Terminal Expansion
+- **8 new terminal commands**: `cat <file>` (shows snippet content), `pwd` (`/home/visitor/project`), `date` (live date string), `uptime` (`up 42 days, 3:14`), `history` (shows last N commands), plus `node`/`ruby`/`python3` file runners
+- **Command history navigation**: ArrowUp/ArrowDown cycles through `commandHistory` array (capped at 20 entries), resets on new prompt
+- **Updated help output**: Organized into Files (`ls`, `cat`, `pwd`), Run (`run`, `node`, `ruby`, `python3`), Utility (`echo`, `date`, `uptime`, `whoami`, `history`), Terminal (`clear`, `help`)
+
+#### Code Editor Hero — Activity Bar Panels
+- **Git panel**: "SOURCE CONTROL" header with `GIT_STATUS` lines showing branch info, modified files (yellow), and untracked files (green)
+- **Extensions panel**: "EXTENSIONS" header listing ESLint v2.4.2, Prettier v10.1.0, GitLens v14.5.0, Ruby LSP v0.14.1 with icon and version
+- **Settings panel**: "SETTINGS" header showing `editor.fontSize: 14`, `editor.tabSize: 2`, `editor.wordWrap: on`, `terminal.fontSize: 13` as key-value rows
+
+#### Code Editor Hero — Window Controls & Terminal Tabs
+- **Yellow dot (minimize)**: Toggles `minimized` class — hides tabs, breadcrumbs, editor body, terminal, and status bar with `max-height: 0` transition, leaving only the titlebar visible
+- **Green dot (maximize)**: Toggles `maximized` class — expands width to `min(900px, 96vw)`, code body to 400px, terminal to 200px max-height
+- **Mutually exclusive states**: Red (collapsed), yellow (minimized), and green (maximized) clear each other on toggle
+- **PROBLEMS tab**: Shows static `✓ 0 problems, 0 warnings` message
+- **OUTPUT tab**: Shows static `[build] compiled successfully in 1.2s` message
+- **Terminal tab switching**: Swaps visibility between terminal/problems/output containers
+
+#### CI/CD Pipeline
+- **Separated CI jobs**: `install` → `lint` / `typecheck` / `test` / `audit` with shared `node_modules` cache via `actions/cache`
+- **Security audit job**: `npm audit --audit-level=high` runs on every push and PR
+- **Coverage reports**: Test job runs `test:coverage` and uploads coverage artifacts with 14-day retention
+- **Node version from `.nvmrc`**: All CI jobs read Node version from `.nvmrc` file (Node 22) instead of hardcoded values
+
+#### Security & PWA
+- **Content Security Policy**: Meta tag with specific whitelists for external image/API sources (github-readme-stats, streak-stats, skillicons, etc.)
+- **X-Frame-Options**: `DENY` header to prevent clickjacking
+- **PWA icons**: Added `icon-192.png` and `icon-512.png` with manifest entries for home screen and splash screen
+- **Manifest enhancements**: Added `orientation: "any"` and `categories: ["portfolio", "developer", "technology"]`
+
+### Changed
+
+#### Build & Tooling
+- **Biome strictness**: `noNonNullAssertion`, `useConst`, `noExplicitAny`, `noUnusedVariables`, `noUnusedImports` upgraded from `warn` to `error` — test files get relaxed overrides
+- **Cognitive complexity**: Added `noExcessiveCognitiveComplexity` as warning-level lint rule
+- **Vitest coverage thresholds**: Global minimums set at 60% statements, 50% branches, 58% functions, 60% lines
+- **Astro prefetch**: Changed to viewport-based lazy prefetch (`prefetchAll: false, defaultStrategy: 'viewport'`)
+- **Astro build**: Added `inlineStylesheets: 'auto'` for automatic stylesheet inlining
+- **New scripts**: `typecheck` (astro check), `lint:fix` (biome --write), `test:coverage` (vitest --coverage)
+
+#### Code Quality
+- **Test null safety**: Systematic replacement of non-null assertions (`!`) with optional chaining (`?.`) across all 33 test files
+- **Import ordering**: Alphabetically sorted imports throughout test suite and utility files
+- **Contributions data**: Compacted multi-line topic arrays to single lines for consistency
+
+### Testing
+- **Code editor hero tests**: Updated all tab references (`main.js`/`app.rb`/`main.py`), status bar assertion (`JavaScript` instead of `TypeScript`), added 12 new tests covering minimize/maximize dots, terminal `cat`/`date`/`history` commands, ArrowUp history navigation, PROBLEMS/OUTPUT tabs, Git/Extensions/Settings panels, language switching on tab click
+- **Project data tests**: Expanded coverage for project data utility functions
+- **All test files**: Defensive refactoring for null safety and import consistency (33 files)
+
 ## [1.3.0] - 2026-03-04
 
 ### Added
@@ -214,6 +274,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - daemon-os UI: reverted full-width card, added animated demon icon
 
+[1.4.0]: https://github.com/hammadxcm/hammadxcm/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/hammadxcm/hammadxcm/compare/v1.2.3...v1.3.0
 [1.2.0]: https://github.com/hammadxcm/hammadxcm/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/hammadxcm/hammadxcm/compare/v1.0.3...v1.1.0

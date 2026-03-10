@@ -36,7 +36,7 @@ describe('initCopy', () => {
 
   it('copies code to clipboard on click', async () => {
     initCopy();
-    document.getElementById('copyBtn')!.click();
+    document.getElementById('copyBtn')?.click();
     await vi.waitFor(() => {
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith("console.log('hi')");
     });
@@ -44,26 +44,26 @@ describe('initCopy', () => {
 
   it('updates label to Copied! on success', async () => {
     initCopy();
-    document.getElementById('copyBtn')!.click();
+    document.getElementById('copyBtn')?.click();
     await vi.waitFor(() => {
-      expect(document.getElementById('copyLabel')!.textContent).toBe('Copied!');
+      expect(document.getElementById('copyLabel')?.textContent).toBe('Copied!');
     });
   });
 
   it('adds copied class on success', async () => {
     initCopy();
-    document.getElementById('copyBtn')!.click();
+    document.getElementById('copyBtn')?.click();
     await vi.waitFor(() => {
-      expect(document.getElementById('copyBtn')!.classList.contains('copied')).toBe(true);
+      expect(document.getElementById('copyBtn')?.classList.contains('copied')).toBe(true);
     });
   });
 
   it('restores label after timeout', async () => {
     vi.useFakeTimers();
     initCopy();
-    document.getElementById('copyBtn')!.click();
+    document.getElementById('copyBtn')?.click();
     await vi.advanceTimersByTimeAsync(2100);
-    expect(document.getElementById('copyLabel')!.textContent).toBe('Copy');
+    expect(document.getElementById('copyLabel')?.textContent).toBe('Copy');
     vi.useRealTimers();
   });
 });

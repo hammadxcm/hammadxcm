@@ -751,6 +751,89 @@
   }
 }
 
+/* ── Minimized state — only titlebar visible ── */
+.code-editor-hero.minimized {
+  .code-editor-tabs,
+  .code-editor-breadcrumbs,
+  .code-editor-main,
+  .code-editor-terminal,
+  .code-editor-statusbar {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    transition: max-height 0.3s ease;
+  }
+}
+
+/* ── Maximized state — wider, taller ── */
+.code-editor-hero.maximized {
+  width: min(900px, 96vw);
+
+  .code-editor-body {
+    max-height: 400px;
+  }
+
+  .code-editor-terminal.open {
+    max-height: 200px;
+  }
+}
+
+/* ── Panel content (git, extensions, settings) ── */
+.code-editor-panel-content {
+  padding: 2px 8px;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  opacity: 0.7;
+}
+
+.code-editor-panel-line {
+  padding: 1px 4px;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &.modified {
+    color: #e5c07b;
+  }
+
+  &.untracked {
+    color: var(--accent-mint, var(--accent));
+  }
+}
+
+.code-editor-extension-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+}
+
+.code-editor-ext-icon {
+  opacity: 0.5;
+  font-size: 0.55rem;
+}
+
+.code-editor-ext-version {
+  opacity: 0.4;
+  font-size: 0.5rem;
+  margin-left: auto;
+}
+
+.code-editor-setting-item {
+  padding: 2px 4px;
+  font-size: 0.58rem;
+}
+
+.code-editor-setting-key {
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+.code-editor-setting-value {
+  color: var(--accent-mint, var(--accent));
+  opacity: 0.8;
+}
+
 @keyframes dotPulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.6); }
@@ -764,4 +847,10 @@
   .code-editor-terminal { transition: none; }
   .code-editor-sidebar { transition: none; }
   .code-editor-terminal-input { caret-color: var(--text); }
+  .code-editor-hero.minimized {
+    .code-editor-tabs, .code-editor-breadcrumbs,
+    .code-editor-main, .code-editor-terminal, .code-editor-statusbar {
+      transition: none;
+    }
+  }
 }
