@@ -25,10 +25,10 @@ vi.mock('../state', () => ({
 
 import {
   AUTOCOMPLETE_ITEMS,
-  SNIPPETS,
-  TERMINAL_OUTPUT,
   destroyCodeEditorHero,
   initCodeEditorHero,
+  SNIPPETS,
+  TERMINAL_OUTPUT,
 } from '../effects/code-editor-hero';
 
 function setupDOM(): void {
@@ -116,7 +116,7 @@ describe('code-editor-hero', () => {
     const tabs = document.querySelectorAll('.code-editor-tab');
     expect(tabs.length).toBe(3);
     expect(tabs[0].classList.contains('active')).toBe(true);
-    expect(tabs[0].textContent).toBe('main.ts');
+    expect(tabs[0].textContent).toBe('main.js');
   });
 
   it('creates activity bar with icons', () => {
@@ -131,7 +131,7 @@ describe('code-editor-hero', () => {
     initCodeEditorHero();
     const breadcrumbs = document.querySelector('.code-editor-breadcrumbs');
     expect(breadcrumbs).toBeTruthy();
-    expect(breadcrumbs?.textContent).toContain('main.ts');
+    expect(breadcrumbs?.textContent).toContain('main.js');
   });
 
   it('creates status bar', () => {
@@ -139,7 +139,7 @@ describe('code-editor-hero', () => {
     const statusbar = document.querySelector('.code-editor-statusbar');
     expect(statusbar).toBeTruthy();
     expect(statusbar?.textContent).toContain('main');
-    expect(statusbar?.textContent).toContain('TypeScript');
+    expect(statusbar?.textContent).toContain('JavaScript');
   });
 
   it('updates status bar during typing', () => {
@@ -212,7 +212,7 @@ describe('code-editor-hero', () => {
     const tabs = document.querySelectorAll<HTMLElement>('.code-editor-tab');
     tabs[1].click();
     const titleText = document.querySelector('.code-editor-titlebar-text');
-    expect(titleText?.textContent).toBe('config.ts');
+    expect(titleText?.textContent).toBe('app.rb');
   });
 
   it('tab click updates breadcrumbs', () => {
@@ -220,7 +220,7 @@ describe('code-editor-hero', () => {
     const tabs = document.querySelectorAll<HTMLElement>('.code-editor-tab');
     tabs[1].click();
     const breadcrumbs = document.querySelector('.code-editor-breadcrumbs');
-    expect(breadcrumbs?.textContent).toBe('src > scripts > config.ts');
+    expect(breadcrumbs?.textContent).toBe('src > scripts > app.rb');
   });
 
   it('tab click switches displayed code content', () => {
@@ -231,11 +231,25 @@ describe('code-editor-hero', () => {
 
     const tabs = document.querySelectorAll<HTMLElement>('.code-editor-tab');
     tabs[1].click();
-    const configContent = content?.textContent || '';
+    const rubyContent = content?.textContent || '';
 
-    // config.ts should have different content than main.ts
-    expect(configContent).not.toBe(mainContent);
-    expect(configContent).toContain('config');
+    // app.rb should have different content than main.js
+    expect(rubyContent).not.toBe(mainContent);
+    expect(rubyContent).toContain('require');
+  });
+
+  it('tab click updates status bar language', () => {
+    mockState.prefersReducedMotion = true;
+    initCodeEditorHero();
+    const statusbar = document.querySelector('.code-editor-statusbar');
+    expect(statusbar?.textContent).toContain('JavaScript');
+
+    const tabs = document.querySelectorAll<HTMLElement>('.code-editor-tab');
+    tabs[1].click();
+    expect(statusbar?.textContent).toContain('Ruby');
+
+    tabs[2].click();
+    expect(statusbar?.textContent).toContain('Python');
   });
 
   it('activity icon click switches active', () => {
@@ -267,23 +281,59 @@ describe('code-editor-hero', () => {
     expect(hero.classList.contains('collapsed')).toBe(false);
   });
 
+  it('yellow dot toggles minimized', () => {
+    initCodeEditorHero();
+    const hero = document.querySelector<HTMLElement>('.code-editor-hero') as HTMLElement;
+    const dots = document.querySelectorAll<HTMLElement>('.code-editor-dot');
+    expect(hero.classList.contains('minimized')).toBe(false);
+    dots[1].click();
+    expect(hero.classList.contains('minimized')).toBe(true);
+    // Should clear other states
+    expect(hero.classList.contains('collapsed')).toBe(false);
+    expect(hero.classList.contains('maximized')).toBe(false);
+    dots[1].click();
+    expect(hero.classList.contains('minimized')).toBe(false);
+  });
+
+  it('green dot toggles maximized', () => {
+    initCodeEditorHero();
+    const hero = document.querySelector<HTMLElement>('.code-editor-hero') as HTMLElement;
+    const dots = document.querySelectorAll<HTMLElement>('.code-editor-dot');
+    expect(hero.classList.contains('maximized')).toBe(false);
+    dots[2].click();
+    expect(hero.classList.contains('maximized')).toBe(true);
+    // Should clear other states
+    expect(hero.classList.contains('collapsed')).toBe(false);
+    expect(hero.classList.contains('minimized')).toBe(false);
+    dots[2].click();
+    expect(hero.classList.contains('maximized')).toBe(false);
+  });
+
   it('all themes have terminal output', () => {
     const themes: string[] = [
-      'hacker', 'dracula', 'nord', 'catppuccin', 'synthwave',
-      'matrix', 'bloodmoon', 'midnight', 'arctic', 'gruvbox',
+      'hacker',
+      'dracula',
+      'nord',
+      'catppuccin',
+      'synthwave',
+      'matrix',
+      'bloodmoon',
+      'midnight',
+      'arctic',
+      'gruvbox',
     ];
     for (const theme of themes) {
       const termData = TERMINAL_OUTPUT[theme as keyof typeof TERMINAL_OUTPUT];
       expect(termData).toBeTruthy();
-      expect(termData['main.ts']).toBeTruthy();
-      expect(termData['config.ts']).toBeTruthy();
-      expect(termData['utils.ts']).toBeTruthy();
+      expect(termData['main.js']).toBeTruthy();
+      expect(termData['app.rb']).toBeTruthy();
+      expect(termData['main.py']).toBeTruthy();
 
       const snippetData = SNIPPETS[theme as keyof typeof SNIPPETS];
       expect(snippetData).toBeTruthy();
-      expect(snippetData['main.ts']).toBeTruthy();
-      expect(snippetData['config.ts']).toBeTruthy();
-      expect(snippetData['utils.ts']).toBeTruthy();
+      expect(snippetData['main.js']).toBeTruthy();
+      expect(snippetData['app.rb']).toBeTruthy();
+      expect(snippetData['main.py']).toBeTruthy();
 
       expect(AUTOCOMPLETE_ITEMS[theme as keyof typeof AUTOCOMPLETE_ITEMS]).toBeTruthy();
     }
@@ -316,7 +366,7 @@ describe('code-editor-hero', () => {
       writable: true,
       configurable: true,
     });
-    copyBtn!.click();
+    copyBtn?.click();
     expect(writeTextMock).toHaveBeenCalled();
   });
 
@@ -324,7 +374,7 @@ describe('code-editor-hero', () => {
     initCodeEditorHero();
     const runBtn = document.querySelector<HTMLElement>('.code-editor-run-btn');
     expect(runBtn).toBeTruthy();
-    runBtn!.click();
+    runBtn?.click();
 
     const terminal = document.querySelector('.code-editor-terminal');
     expect(terminal?.classList.contains('open')).toBe(true);
@@ -337,7 +387,7 @@ describe('code-editor-hero', () => {
 
   it('file explorer opens on Files icon click', () => {
     initCodeEditorHero();
-    const sidebar = document.querySelector('.code-editor-sidebar:not(.code-editor-search-panel)');
+    const sidebar = document.querySelector('.code-editor-sidebar:not(.code-editor-search-panel):not(.code-editor-git-panel):not(.code-editor-extensions-panel):not(.code-editor-settings-panel)');
     expect(sidebar?.classList.contains('open')).toBe(false);
 
     const icons = document.querySelectorAll<HTMLElement>('.code-editor-activity-icon');
@@ -364,6 +414,42 @@ describe('code-editor-hero', () => {
     expect(searchInput).toBeTruthy();
   });
 
+  it('git panel opens on Git icon click', () => {
+    initCodeEditorHero();
+    const gitPanel = document.querySelector('.code-editor-git-panel');
+    expect(gitPanel?.classList.contains('open')).toBe(false);
+
+    const icons = document.querySelectorAll<HTMLElement>('.code-editor-activity-icon');
+    icons[2].click(); // Git is third icon
+    expect(gitPanel?.classList.contains('open')).toBe(true);
+    expect(gitPanel?.textContent).toContain('SOURCE CONTROL');
+    expect(gitPanel?.textContent).toContain('modified: main.js');
+  });
+
+  it('extensions panel opens on Extensions icon click', () => {
+    initCodeEditorHero();
+    const extPanel = document.querySelector('.code-editor-extensions-panel');
+    expect(extPanel?.classList.contains('open')).toBe(false);
+
+    const icons = document.querySelectorAll<HTMLElement>('.code-editor-activity-icon');
+    icons[3].click(); // Extensions is fourth icon
+    expect(extPanel?.classList.contains('open')).toBe(true);
+    expect(extPanel?.textContent).toContain('ESLint');
+    expect(extPanel?.textContent).toContain('Prettier');
+  });
+
+  it('settings panel opens on Settings icon click', () => {
+    initCodeEditorHero();
+    const settingsPanel = document.querySelector('.code-editor-settings-panel');
+    expect(settingsPanel?.classList.contains('open')).toBe(false);
+
+    const icons = document.querySelectorAll<HTMLElement>('.code-editor-activity-icon');
+    icons[4].click(); // Settings is fifth icon
+    expect(settingsPanel?.classList.contains('open')).toBe(true);
+    expect(settingsPanel?.textContent).toContain('editor.fontSize');
+    expect(settingsPanel?.textContent).toContain('14');
+  });
+
   it('terminal accepts typed commands', () => {
     mockState.prefersReducedMotion = true;
     initCodeEditorHero();
@@ -380,8 +466,82 @@ describe('code-editor-hero', () => {
       input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
 
       // Should show help output
-      expect(termContent?.textContent).toContain('Available commands');
+      expect(termContent?.textContent).toContain('Files:');
     }
+  });
+
+  it('terminal cat command shows file content', () => {
+    mockState.prefersReducedMotion = true;
+    initCodeEditorHero();
+
+    vi.advanceTimersByTime(100);
+    const termContent = document.querySelector('.code-editor-terminal-content');
+    const input = termContent?.querySelector<HTMLInputElement>('.code-editor-terminal-input');
+    expect(input).toBeTruthy();
+
+    if (input) {
+      input.value = 'cat app.rb';
+      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      expect(termContent?.textContent).toContain('require');
+    }
+  });
+
+  it('terminal date command shows date', () => {
+    mockState.prefersReducedMotion = true;
+    initCodeEditorHero();
+
+    vi.advanceTimersByTime(100);
+    const termContent = document.querySelector('.code-editor-terminal-content');
+    const input = termContent?.querySelector<HTMLInputElement>('.code-editor-terminal-input');
+
+    if (input) {
+      input.value = 'date';
+      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      // Date output should contain a year
+      expect(termContent?.textContent).toMatch(/\d{4}/);
+    }
+  });
+
+  it('terminal history command shows history', () => {
+    mockState.prefersReducedMotion = true;
+    initCodeEditorHero();
+
+    vi.advanceTimersByTime(100);
+    const termContent = document.querySelector('.code-editor-terminal-content');
+    let input = termContent?.querySelector<HTMLInputElement>('.code-editor-terminal-input');
+
+    if (input) {
+      // Run some commands first
+      input.value = 'whoami';
+      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      input = termContent?.querySelector<HTMLInputElement>('.code-editor-terminal-input');
+      if (input) {
+        input.value = 'history';
+        input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+        expect(termContent?.textContent).toContain('whoami');
+      }
+    }
+  });
+
+  it('terminal PROBLEMS tab shows no problems', () => {
+    initCodeEditorHero();
+    const termTabs = document.querySelectorAll<HTMLElement>('.code-editor-terminal-tab');
+    termTabs[1].click(); // PROBLEMS tab
+
+    const problemsContent = document.querySelector('.code-editor-terminal-problems');
+    expect(problemsContent).toBeTruthy();
+    expect(problemsContent?.textContent).toContain('0 problems');
+  });
+
+  it('terminal OUTPUT tab shows build output', () => {
+    initCodeEditorHero();
+    const termTabs = document.querySelectorAll<HTMLElement>('.code-editor-terminal-tab');
+    termTabs[2].click(); // OUTPUT tab
+
+    const outputContent = document.querySelector('.code-editor-terminal-output');
+    expect(outputContent).toBeTruthy();
+    expect(outputContent?.textContent).toContain('compiled successfully');
   });
 
   it('code area becomes editable on double-click', () => {
@@ -405,19 +565,42 @@ describe('code-editor-hero', () => {
     const icons = document.querySelectorAll<HTMLElement>('.code-editor-activity-icon');
     icons[0].click();
 
-    // Click config.ts in file tree
+    // Click app.rb in file tree
     const fileItems = document.querySelectorAll<HTMLElement>('.code-editor-file-item');
-    const configItem = Array.from(fileItems).find(f => f.textContent === 'config.ts');
-    expect(configItem).toBeTruthy();
-    configItem!.click();
+    const rubyItem = Array.from(fileItems).find((f) => f.textContent === 'app.rb');
+    expect(rubyItem).toBeTruthy();
+    rubyItem?.click();
 
-    // Tab should now show config.ts as active
+    // Tab should now show app.rb as active
     const tabs = document.querySelectorAll('.code-editor-tab');
-    const activeTab = Array.from(tabs).find(t => t.classList.contains('active'));
-    expect(activeTab?.textContent).toBe('config.ts');
+    const activeTab = Array.from(tabs).find((t) => t.classList.contains('active'));
+    expect(activeTab?.textContent).toBe('app.rb');
 
     // Breadcrumbs should update
     const breadcrumbs = document.querySelector('.code-editor-breadcrumbs');
-    expect(breadcrumbs?.textContent).toContain('config.ts');
+    expect(breadcrumbs?.textContent).toContain('app.rb');
+  });
+
+  it('terminal arrow up navigates command history', () => {
+    mockState.prefersReducedMotion = true;
+    initCodeEditorHero();
+
+    vi.advanceTimersByTime(100);
+    const termContent = document.querySelector('.code-editor-terminal-content');
+    let input = termContent?.querySelector<HTMLInputElement>('.code-editor-terminal-input');
+
+    if (input) {
+      // Run a command
+      input.value = 'ls';
+      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+
+      // Get the new prompt input
+      input = termContent?.querySelector<HTMLInputElement>('.code-editor-terminal-input');
+      if (input) {
+        // Press ArrowUp to recall last command
+        input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
+        expect(input.value).toBe('ls');
+      }
+    }
   });
 });

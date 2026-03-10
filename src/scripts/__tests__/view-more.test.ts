@@ -32,7 +32,7 @@ describe('initViewMore', () => {
 
   it('toggles hidden class on click', () => {
     initViewMore('viewMoreBtn', '#grid', 'hidden-card');
-    document.getElementById('viewMoreBtn')!.click();
+    document.getElementById('viewMoreBtn')?.click();
     const cards = document.querySelectorAll('#grid > *');
     expect(cards[2].classList.contains('hidden-card')).toBe(false);
     expect(cards[2].classList.contains('visible')).toBe(true);
@@ -40,8 +40,8 @@ describe('initViewMore', () => {
 
   it('updates text to Show Less on expand', () => {
     initViewMore('viewMoreBtn', '#grid', 'hidden-card');
-    document.getElementById('viewMoreBtn')!.click();
-    expect(document.querySelector('.view-more-text')!.textContent).toBe('Show Less');
+    document.getElementById('viewMoreBtn')?.click();
+    expect(document.querySelector('.view-more-text')?.textContent).toBe('Show Less');
   });
 
   it('collapses on second click', () => {
@@ -49,6 +49,6 @@ describe('initViewMore', () => {
     const btn = document.getElementById('viewMoreBtn')!;
     btn.click(); // expand
     btn.click(); // collapse
-    expect(document.querySelector('.view-more-text')!.textContent).toBe('View More');
+    expect(document.querySelector('.view-more-text')?.textContent).toBe('View More');
   });
 });

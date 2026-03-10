@@ -1,12 +1,18 @@
 import type { ThemeName } from '../types';
 
-export type TabName = 'main.ts' | 'config.ts' | 'utils.ts';
-export const TAB_NAMES: TabName[] = ['main.ts', 'config.ts', 'utils.ts'];
+export type TabName = 'main.js' | 'app.rb' | 'main.py';
+export const TAB_NAMES: TabName[] = ['main.js', 'app.rb', 'main.py'];
+
+export const TAB_LANG: Record<TabName, { lang: string; runner: string }> = {
+  'main.js': { lang: 'JavaScript', runner: 'node' },
+  'app.rb': { lang: 'Ruby', runner: 'ruby' },
+  'main.py': { lang: 'Python', runner: 'python3' },
+};
 
 /* ── Per-theme, per-tab code snippets ── */
 export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
   hacker: {
-    'main.ts': [
+    'main.js': [
       'const exploit = require("zero-day");',
       'const target = "192.168.1.1";',
       '',
@@ -15,27 +21,32 @@ export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
       '  return shell.escalate("root");',
       '}',
     ],
-    'config.ts': [
-      'export const config = {',
-      '  mode: "stealth",',
-      '  encryption: "aes-256",',
-      '  proxy: "tor",',
-      '  timeout: 30000,',
-      '};',
-    ],
-    'utils.ts': [
-      'import crypto from "crypto";',
+    'app.rb': [
+      'require "net/ssh"',
       '',
-      'export function hashPayload(data: string) {',
-      '  return crypto',
-      '    .createHash("sha256")',
-      '    .update(data)',
-      '    .digest("hex");',
-      '}',
+      'class Exploit',
+      '  def initialize(target)',
+      '    @target = target',
+      '  end',
+      '',
+      '  def breach',
+      '    puts "Escalating to root..."',
+      '  end',
+      'end',
+    ],
+    'main.py': [
+      'import subprocess',
+      '',
+      'def breach(host):',
+      '    shell = connect(host)',
+      '    shell.escalate("root")',
+      '    return shell',
+      '',
+      'target = "192.168.1.1"',
     ],
   },
   dracula: {
-    'main.ts': [
+    'main.js': [
       'import { night } from "castle-sdk";',
       '',
       'const coffin = night.awaken({',
@@ -44,26 +55,27 @@ export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
       '  bats: 42,',
       '});',
     ],
-    'config.ts': [
-      'export const config = {',
-      '  theme: "gothic",',
-      '  castle: "transylvania",',
-      '  moonPhase: "full",',
-      '  garlic: false,',
-      '};',
+    'app.rb': [
+      'require "castle_sdk"',
+      '',
+      'coffin = Night.awaken(',
+      '  blood_type: "#BD93F9",',
+      '  immortal: true,',
+      '  bats: 42',
+      ')',
     ],
-    'utils.ts': [
-      'export function summonBats(count: number) {',
-      '  const swarm = [];',
-      '  for (let i = 0; i < count; i++) {',
-      '    swarm.push({ wing: "left" });',
-      '  }',
-      '  return swarm;',
-      '}',
+    'main.py': [
+      'from castle_sdk import Night',
+      '',
+      'coffin = Night.awaken(',
+      '    blood_type="#BD93F9",',
+      '    immortal=True,',
+      '    bats=42,',
+      ')',
     ],
   },
   nord: {
-    'main.ts': [
+    'main.js': [
       'import { glacier } from "fjord-core";',
       '',
       'const expedition = glacier.plan({',
@@ -72,26 +84,27 @@ export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
       '  aurora: true,',
       '});',
     ],
-    'config.ts': [
-      'export const config = {',
-      '  biome: "tundra",',
-      '  latitude: 78.2,',
-      '  iceDepth: "3km",',
-      '  wildlife: ["fox", "bear"],',
-      '};',
-    ],
-    'utils.ts': [
-      'export function celsiusToFahr(c: number) {',
-      '  return (c * 9) / 5 + 32;',
-      '}',
+    'app.rb': [
+      'require "fjord_core"',
       '',
-      'export function windChill(t: number, v: number) {',
-      '  return 13.12 + 0.6215 * t - 11.37 * v;',
-      '}',
+      'expedition = Glacier.plan(',
+      '  region: "svalbard",',
+      '  temp: -15,',
+      '  aurora: true',
+      ')',
+    ],
+    'main.py': [
+      'from fjord_core import Glacier',
+      '',
+      'expedition = Glacier.plan(',
+      '    region="svalbard",',
+      '    temp=-15,',
+      '    aurora=True,',
+      ')',
     ],
   },
   catppuccin: {
-    'main.ts': [
+    'main.js': [
       'import { brew } from "cozy-sdk";',
       '',
       'const latte = brew({',
@@ -100,26 +113,27 @@ export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
       '  foam: true,',
       '});',
     ],
-    'config.ts': [
-      'export const config = {',
-      '  flavor: "macchiato",',
-      '  sugar: 2,',
-      '  milk: "oat",',
-      '  size: "grande",',
-      '};',
+    'app.rb': [
+      'require "cozy_sdk"',
+      '',
+      'latte = Brew.new(',
+      '  blend: "mocha",',
+      '  warmth: 0.9,',
+      '  foam: true',
+      ')',
     ],
-    'utils.ts': [
-      'export function steep(minutes: number) {',
-      '  return new Promise((resolve) => {',
-      '    setTimeout(() => {',
-      '      resolve({ ready: true });',
-      '    }, minutes * 60000);',
-      '  });',
-      '}',
+    'main.py': [
+      'from cozy_sdk import brew',
+      '',
+      'latte = brew(',
+      '    blend="mocha",',
+      '    warmth=0.9,',
+      '    foam=True,',
+      ')',
     ],
   },
   synthwave: {
-    'main.ts': [
+    'main.js': [
       'const neon = require("retro-grid");',
       '',
       'async function ignite() {',
@@ -128,26 +142,26 @@ export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
       '  return grid.engage("turbo");',
       '}',
     ],
-    'config.ts': [
-      'export const config = {',
-      '  decade: "1980s",',
-      '  palette: "neon-pink",',
-      '  synth: "moog",',
-      '  reverb: 0.85,',
-      '};',
+    'app.rb': [
+      'require "retro_grid"',
+      '',
+      'def ignite',
+      '  grid = Neon.boot',
+      '  grid.frequency = 98.7',
+      '  grid.engage("turbo")',
+      'end',
     ],
-    'utils.ts': [
-      'export function generateWaveform(freq: number) {',
-      '  const samples = new Float32Array(1024);',
-      '  for (let i = 0; i < samples.length; i++) {',
-      '    samples[i] = Math.sin(2 * Math.PI * freq * i);',
-      '  }',
-      '  return samples;',
-      '}',
+    'main.py': [
+      'from retro_grid import Neon',
+      '',
+      'async def ignite():',
+      '    grid = await Neon.boot()',
+      '    grid.frequency = 98.7',
+      '    return grid.engage("turbo")',
     ],
   },
   matrix: {
-    'main.ts': [
+    'main.js': [
       'const construct = require("matrix");',
       '',
       '// There is no spoon.',
@@ -156,27 +170,27 @@ export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
       '  if (pill === "red") neo.awaken();',
       '}',
     ],
-    'config.ts': [
-      'export const config = {',
-      '  reality: "simulated",',
-      '  exitNode: "hardline",',
-      '  agent: "Smith",',
-      '  operator: "Tank",',
-      '};',
+    'app.rb': [
+      'require "matrix"',
+      '',
+      '# There is no spoon.',
+      'def unplug(neo)',
+      '  pill = Construct.choose',
+      '  neo.awaken if pill == "red"',
+      'end',
     ],
-    'utils.ts': [
-      'export function decodeSignal(raw: Buffer) {',
-      '  const chars = "ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘ";',
-      '  let decoded = "";',
-      '  for (const byte of raw) {',
-      '    decoded += chars[byte % chars.length];',
-      '  }',
-      '  return decoded;',
-      '}',
+    'main.py': [
+      'from matrix import Construct',
+      '',
+      '# There is no spoon.',
+      'def unplug(neo):',
+      '    pill = Construct.choose()',
+      '    if pill == "red":',
+      '        neo.awaken()',
     ],
   },
   bloodmoon: {
-    'main.ts': [
+    'main.js': [
       'import { eclipse } from "crimson";',
       '',
       'const ritual = eclipse.begin({',
@@ -185,26 +199,27 @@ export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
       '  shadow: true,',
       '});',
     ],
-    'config.ts': [
-      'export const config = {',
-      '  omen: "dire",',
-      '  tideForce: 12.5,',
-      '  color: "#8B0000",',
-      '  cycle: "penumbral",',
-      '};',
+    'app.rb': [
+      'require "crimson"',
+      '',
+      'ritual = Eclipse.begin(',
+      '  phase: "total",',
+      '  intensity: 9.8,',
+      '  shadow: true',
+      ')',
     ],
-    'utils.ts': [
-      'export function lunarPhase(day: number) {',
-      '  const cycle = 29.53;',
-      '  const phase = (day % cycle) / cycle;',
-      '  if (phase < 0.25) return "waxing";',
-      '  if (phase < 0.5) return "full";',
-      '  return "waning";',
-      '}',
+    'main.py': [
+      'from crimson import Eclipse',
+      '',
+      'ritual = Eclipse.begin(',
+      '    phase="total",',
+      '    intensity=9.8,',
+      '    shadow=True,',
+      ')',
     ],
   },
   midnight: {
-    'main.ts': [
+    'main.js': [
       'import { cosmos } from "stellar-sdk";',
       '',
       'const mission = cosmos.launch({',
@@ -213,27 +228,27 @@ export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
       '  shields: true,',
       '});',
     ],
-    'config.ts': [
-      'export const config = {',
-      '  constellation: "orion",',
-      '  magnitude: -1.46,',
-      '  telescope: "hubble",',
-      '  filter: "infrared",',
-      '};',
-    ],
-    'utils.ts': [
-      'export function lightYearsToAU(ly: number) {',
-      '  return ly * 63241.077;',
-      '}',
+    'app.rb': [
+      'require "stellar_sdk"',
       '',
-      'export function redshift(wavelength: number, v: number) {',
-      '  const c = 299792458;',
-      '  return wavelength * Math.sqrt((1 + v / c) / (1 - v / c));',
-      '}',
+      'mission = Cosmos.launch(',
+      '  sector: "andromeda",',
+      '  warp: 9,',
+      '  shields: true',
+      ')',
+    ],
+    'main.py': [
+      'from stellar_sdk import Cosmos',
+      '',
+      'mission = Cosmos.launch(',
+      '    sector="andromeda",',
+      '    warp=9,',
+      '    shields=True,',
+      ')',
     ],
   },
   arctic: {
-    'main.ts': [
+    'main.js': [
       'import { env } from "clean-build";',
       '',
       'const config = env.setup({',
@@ -242,28 +257,27 @@ export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
       '  cache: "redis",',
       '});',
     ],
-    'config.ts': [
-      'export const config = {',
-      '  bundler: "vite",',
-      '  minify: true,',
-      '  sourcemap: false,',
-      '  target: "es2022",',
-      '};',
+    'app.rb': [
+      'require "clean_build"',
+      '',
+      'config = Env.setup(',
+      '  mode: "production",',
+      '  optimize: true,',
+      '  cache: "redis"',
+      ')',
     ],
-    'utils.ts': [
-      'export function formatBytes(bytes: number) {',
-      '  const units = ["B", "KB", "MB", "GB"];',
-      '  let i = 0;',
-      '  while (bytes >= 1024 && i < 3) {',
-      '    bytes /= 1024;',
-      '    i++;',
-      '  }',
-      '  return `${bytes.toFixed(1)} ${units[i]}`;',
-      '}',
+    'main.py': [
+      'from clean_build import Env',
+      '',
+      'config = Env.setup(',
+      '    mode="production",',
+      '    optimize=True,',
+      '    cache="redis",',
+      ')',
     ],
   },
   gruvbox: {
-    'main.ts': [
+    'main.js': [
       'const vim = require("retro-term");',
       '',
       '// :wq',
@@ -272,85 +286,88 @@ export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
       '  return buf.write(mode);',
       '}',
     ],
-    'config.ts': [
-      'export const config = {',
-      '  editor: "vim",',
-      '  colorscheme: "gruvbox",',
-      '  tabWidth: 2,',
-      '  relativenumber: true,',
-      '};',
+    'app.rb': [
+      'require "retro_term"',
+      '',
+      '# :wq',
+      'def edit_config(buf)',
+      '  mode = Vim.normal',
+      '  buf.write(mode)',
+      'end',
     ],
-    'utils.ts': [
-      'export function parseVimRC(lines: string[]) {',
-      '  const settings: Record<string, string> = {};',
-      '  for (const line of lines) {',
-      '    if (line.startsWith("set ")) {',
-      '      const [k, v] = line.slice(4).split("=");',
-      '      settings[k] = v ?? "true";',
-      '    }',
-      '  }',
-      '  return settings;',
-      '}',
+    'main.py': [
+      'from retro_term import Vim',
+      '',
+      '# :wq',
+      'def edit_config(buf):',
+      '    mode = Vim.normal()',
+      '    return buf.write(mode)',
     ],
   },
 };
 
 /* ── Per-theme, per-tab terminal output ── */
-export const TERMINAL_OUTPUT: Record<ThemeName, Record<TabName, { command: string; output: string }>> = {
+export const TERMINAL_OUTPUT: Record<
+  ThemeName,
+  Record<TabName, { command: string; output: string }>
+> = {
   hacker: {
-    'main.ts': { command: '$ ts-node main.ts', output: '✓ Shell escalated to root' },
-    'config.ts': { command: '$ ts-node config.ts', output: '✓ Config loaded: stealth mode' },
-    'utils.ts': { command: '$ ts-node utils.ts', output: '✓ Hash: 9f86d08...' },
+    'main.js': { command: '$ node main.js', output: '✓ Shell escalated to root' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Escalating to root...' },
+    'main.py': { command: '$ python3 main.py', output: '✓ Shell connected' },
   },
   dracula: {
-    'main.ts': { command: '$ ts-node main.ts', output: '✓ The count has awakened' },
-    'config.ts': { command: '$ ts-node config.ts', output: '✓ Castle configured' },
-    'utils.ts': { command: '$ ts-node utils.ts', output: '✓ 42 bats summoned' },
+    'main.js': { command: '$ node main.js', output: '✓ The count has awakened' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Coffin opened' },
+    'main.py': { command: '$ python3 main.py', output: '✓ 42 bats summoned' },
   },
   nord: {
-    'main.ts': { command: '$ ts-node main.ts', output: '✓ Expedition planned' },
-    'config.ts': { command: '$ ts-node config.ts', output: '✓ Tundra biome loaded' },
-    'utils.ts': { command: '$ ts-node utils.ts', output: '✓ -15°C = 5°F' },
+    'main.js': { command: '$ node main.js', output: '✓ Expedition planned' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Aurora visible' },
+    'main.py': { command: '$ python3 main.py', output: '✓ -15°C = 5°F' },
   },
   catppuccin: {
-    'main.ts': { command: '$ ts-node main.ts', output: '✓ Latte brewed perfectly' },
-    'config.ts': { command: '$ ts-node config.ts', output: '✓ Macchiato flavor set' },
-    'utils.ts': { command: '$ ts-node utils.ts', output: '✓ Steeping for 5 minutes...' },
+    'main.js': { command: '$ node main.js', output: '✓ Latte brewed perfectly' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Mocha blend ready' },
+    'main.py': { command: '$ python3 main.py', output: '✓ Steeping for 5 minutes...' },
   },
   synthwave: {
-    'main.ts': { command: '$ ts-node main.ts', output: '✓ Grid engaged at turbo' },
-    'config.ts': { command: '$ ts-node config.ts', output: '✓ Neon palette loaded' },
-    'utils.ts': { command: '$ ts-node utils.ts', output: '✓ Waveform generated: 440Hz' },
+    'main.js': { command: '$ node main.js', output: '✓ Grid engaged at turbo' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Neon frequency locked' },
+    'main.py': { command: '$ python3 main.py', output: '✓ Waveform generated: 440Hz' },
   },
   matrix: {
-    'main.ts': { command: '$ ts-node main.ts', output: '✓ Neo has been unplugged' },
-    'config.ts': { command: '$ ts-node config.ts', output: '✓ Construct initialized' },
-    'utils.ts': { command: '$ ts-node utils.ts', output: '✓ Signal decoded: ﾊﾐﾋｰ...' },
+    'main.js': { command: '$ node main.js', output: '✓ Neo has been unplugged' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Red pill chosen' },
+    'main.py': { command: '$ python3 main.py', output: '✓ Signal decoded: ﾊﾐﾋｰ...' },
   },
   bloodmoon: {
-    'main.ts': { command: '$ ts-node main.ts', output: '✓ Eclipse ritual complete' },
-    'config.ts': { command: '$ ts-node config.ts', output: '✓ Omen configured: dire' },
-    'utils.ts': { command: '$ ts-node utils.ts', output: '✓ Phase: waxing crescent' },
+    'main.js': { command: '$ node main.js', output: '✓ Eclipse ritual complete' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Total phase reached' },
+    'main.py': { command: '$ python3 main.py', output: '✓ Phase: waxing crescent' },
   },
   midnight: {
-    'main.ts': { command: '$ ts-node main.ts', output: '✓ Mission launched' },
-    'config.ts': { command: '$ ts-node config.ts', output: '✓ Telescope: Hubble aligned' },
-    'utils.ts': { command: '$ ts-node utils.ts', output: '✓ 4.37 ly = 276,363 AU' },
+    'main.js': { command: '$ node main.js', output: '✓ Mission launched' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Warp drive engaged' },
+    'main.py': { command: '$ python3 main.py', output: '✓ 4.37 ly = 276,363 AU' },
   },
   arctic: {
-    'main.ts': { command: '$ ts-node main.ts', output: '✓ Build optimized' },
-    'config.ts': { command: '$ ts-node config.ts', output: '✓ Vite config loaded' },
-    'utils.ts': { command: '$ ts-node utils.ts', output: '✓ 2.4 MB formatted' },
+    'main.js': { command: '$ node main.js', output: '✓ Build optimized' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Production mode set' },
+    'main.py': { command: '$ python3 main.py', output: '✓ Cache connected' },
   },
   gruvbox: {
-    'main.ts': { command: '$ ts-node main.ts', output: '✓ Config written' },
-    'config.ts': { command: '$ ts-node config.ts', output: '✓ Colorscheme: gruvbox' },
-    'utils.ts': { command: '$ ts-node utils.ts', output: '✓ 12 settings parsed' },
+    'main.js': { command: '$ node main.js', output: '✓ Config written' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Normal mode active' },
+    'main.py': { command: '$ python3 main.py', output: '✓ Buffer saved' },
   },
 };
 
-/* ── Per-theme autocomplete items ── */
-export const AUTOCOMPLETE_ITEMS: Record<ThemeName, { icon: string; label: string; detail: string }[]> = {
+/* ── Per-theme autocomplete items (JS-flavored for default tab) ── */
+export const AUTOCOMPLETE_ITEMS: Record<
+  ThemeName,
+  { icon: string; label: string; detail: string }[]
+> = {
   hacker: [
     { icon: 'fn', label: 'connect', detail: '(host: string)' },
     { icon: 'fn', label: 'escalate', detail: '(level: string)' },
@@ -402,3 +419,28 @@ export const AUTOCOMPLETE_ITEMS: Record<ThemeName, { icon: string; label: string
     { icon: 'var', label: 'mode', detail: 'Mode' },
   ],
 };
+
+/* ── Sidebar panel data ── */
+export const GIT_STATUS = [
+  'On branch main',
+  '',
+  'Changes not staged:',
+  '  modified: main.js',
+  '',
+  'Untracked:',
+  '  .env.local',
+];
+
+export const EXTENSIONS_LIST: [string, string][] = [
+  ['ESLint', 'v2.4.2'],
+  ['Prettier', 'v10.1.0'],
+  ['GitLens', 'v14.5.0'],
+  ['Ruby LSP', 'v0.14.1'],
+];
+
+export const SETTINGS_PAIRS: [string, string][] = [
+  ['editor.fontSize', '14'],
+  ['editor.tabSize', '2'],
+  ['editor.wordWrap', 'on'],
+  ['terminal.fontSize', '13'],
+];

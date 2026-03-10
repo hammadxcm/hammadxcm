@@ -5,7 +5,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockState = { prefersReducedMotion: false };
 vi.mock('../state', () => ({
-  get prefersReducedMotion() { return mockState.prefersReducedMotion; },
+  get prefersReducedMotion() {
+    return mockState.prefersReducedMotion;
+  },
 }));
 
 import { initTilt } from '../interactions/tilt';
@@ -31,7 +33,15 @@ describe('initTilt', () => {
     initTilt();
     const card = document.querySelector('[data-tilt]') as HTMLElement;
     vi.spyOn(card, 'getBoundingClientRect').mockReturnValue({
-      left: 0, top: 0, width: 200, height: 200, right: 200, bottom: 200, x: 0, y: 0, toJSON: () => {},
+      left: 0,
+      top: 0,
+      width: 200,
+      height: 200,
+      right: 200,
+      bottom: 200,
+      x: 0,
+      y: 0,
+      toJSON: () => {},
     });
     card.dispatchEvent(new MouseEvent('mousemove', { clientX: 100, clientY: 100 }));
     expect(card.style.transform).toContain('perspective');

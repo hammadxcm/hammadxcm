@@ -1,7 +1,7 @@
 /**
  * @vitest-environment happy-dom
  */
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { trapFocus } from '../utils/focus-trap';
 
 describe('trapFocus', () => {
@@ -48,7 +48,9 @@ describe('trapFocus', () => {
     const release = trapFocus(container);
     const first = document.getElementById('first')!;
     first.focus();
-    container.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true, bubbles: true }));
+    container.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true, bubbles: true }),
+    );
     expect(document.activeElement).toBe(document.getElementById('third'));
     release();
   });

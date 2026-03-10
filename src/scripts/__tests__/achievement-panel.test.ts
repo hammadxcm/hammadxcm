@@ -5,7 +5,15 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('../achievements', () => ({
   ACHIEVEMENTS: [
-    { id: 'test1', name: 'Test', description: 'Desc', category: 'explore', xp: 10, icon: '', secret: false },
+    {
+      id: 'test1',
+      name: 'Test',
+      description: 'Desc',
+      category: 'explore',
+      xp: 10,
+      icon: '',
+      secret: false,
+    },
   ],
   getLevel: () => 1,
   getLevelName: () => 'Noob',
@@ -47,27 +55,33 @@ describe('initAchievementPanel', () => {
 
   it('opens on trophy button click', () => {
     initAchievementPanel();
-    document.getElementById('achievementTrophyBtn')!.click();
-    expect(document.getElementById('achievementPanelOverlay')!.classList.contains('open')).toBe(true);
+    document.getElementById('achievementTrophyBtn')?.click();
+    expect(document.getElementById('achievementPanelOverlay')?.classList.contains('open')).toBe(
+      true,
+    );
   });
 
   it('closes on close button click', () => {
     initAchievementPanel();
-    document.getElementById('achievementTrophyBtn')!.click();
-    document.getElementById('apCloseBtn')!.click();
-    expect(document.getElementById('achievementPanelOverlay')!.classList.contains('open')).toBe(false);
+    document.getElementById('achievementTrophyBtn')?.click();
+    document.getElementById('apCloseBtn')?.click();
+    expect(document.getElementById('achievementPanelOverlay')?.classList.contains('open')).toBe(
+      false,
+    );
   });
 
   it('closes on Escape', () => {
     initAchievementPanel();
-    document.getElementById('achievementTrophyBtn')!.click();
+    document.getElementById('achievementTrophyBtn')?.click();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-    expect(document.getElementById('achievementPanelOverlay')!.classList.contains('open')).toBe(false);
+    expect(document.getElementById('achievementPanelOverlay')?.classList.contains('open')).toBe(
+      false,
+    );
   });
 
   it('renders achievement cards on open', () => {
     initAchievementPanel();
-    document.getElementById('achievementTrophyBtn')!.click();
+    document.getElementById('achievementTrophyBtn')?.click();
     const cards = document.querySelectorAll('.achievement-card');
     expect(cards.length).toBeGreaterThan(0);
   });

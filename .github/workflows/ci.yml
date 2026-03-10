@@ -13,39 +13,87 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
-    name: Lint
+  install:
+    name: Install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: '.nvmrc'
           cache: npm
       - run: npm ci
+      - uses: actions/cache/save@v4
+        with:
+          path: node_modules
+          key: nm-${{ hashFiles('package-lock.json') }}
+
+  lint:
+    name: Lint
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+      - uses: actions/cache/restore@v4
+        with:
+          path: node_modules
+          key: nm-${{ hashFiles('package-lock.json') }}
       - run: npm run lint
 
   typecheck:
     name: Type Check
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: '.nvmrc'
           cache: npm
-      - run: npm ci
-      - run: npx astro check
+      - uses: actions/cache/restore@v4
+        with:
+          path: node_modules
+          key: nm-${{ hashFiles('package-lock.json') }}
+      - run: npm run typecheck
 
   test:
     name: Build & Test
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: '.nvmrc'
           cache: npm
-      - run: npm ci
+      - uses: actions/cache/restore@v4
+        with:
+          path: node_modules
+          key: nm-${{ hashFiles('package-lock.json') }}
       - run: npm run build
-      - run: npm test
+      - run: npm run test:coverage
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/
+          retention-days: 14
+
+  audit:
+    name: Security Audit
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+      - uses: actions/cache/restore@v4
+        with:
+          path: node_modules
+          key: nm-${{ hashFiles('package-lock.json') }}
+      - run: npm audit --audit-level=high

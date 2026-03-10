@@ -9,8 +9,11 @@
     "preview": "astro preview",
     "test": "vitest run",
     "test:watch": "vitest",
+    "typecheck": "astro check",
     "lint": "biome check src/",
+    "lint:fix": "biome check --write src/",
     "format": "biome check --write src/",
+    "test:coverage": "vitest run --coverage",
     "fetch:graph": "node scripts/fetch-contribution-graph.mjs",
     "setup": "node scripts/fetch-contribution-graph.mjs"
   },
@@ -21,11 +24,13 @@
     "jspdf": "^4.2.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.6",
     "@biomejs/biome": "^2.4.4",
     "@vitest/coverage-v8": "^4.0.18",
     "happy-dom": "^20.7.0",
     "sass": "^1.97.3",
     "terser": "^5.46.0",
+    "typescript": "^5.9.3",
     "vitest": "^4.0.18"
   }
 }

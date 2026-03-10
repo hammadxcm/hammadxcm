@@ -5,7 +5,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockState = { prefersReducedMotion: false };
 vi.mock('../state', () => ({
-  get prefersReducedMotion() { return mockState.prefersReducedMotion; },
+  get prefersReducedMotion() {
+    return mockState.prefersReducedMotion;
+  },
 }));
 vi.mock('../achievements', () => ({ trackEvent: vi.fn() }));
 vi.mock('../effects/toast', () => ({ spawnToast: vi.fn() }));
@@ -36,10 +38,21 @@ describe('initKonami', () => {
 
   it('activates overlay on full konami code', () => {
     initKonami();
-    const keys = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    const keys = [
+      'ArrowUp',
+      'ArrowUp',
+      'ArrowDown',
+      'ArrowDown',
+      'ArrowLeft',
+      'ArrowRight',
+      'ArrowLeft',
+      'ArrowRight',
+      'b',
+      'a',
+    ];
     for (const key of keys) {
       document.dispatchEvent(new KeyboardEvent('keydown', { key }));
     }
-    expect(document.getElementById('konamiOverlay')!.classList.contains('active')).toBe(true);
+    expect(document.getElementById('konamiOverlay')?.classList.contains('active')).toBe(true);
   });
 });

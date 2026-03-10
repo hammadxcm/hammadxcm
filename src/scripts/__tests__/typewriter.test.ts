@@ -6,7 +6,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 const mockState = { prefersReducedMotion: false };
 
 vi.mock('../state', () => ({
-  get prefersReducedMotion() { return mockState.prefersReducedMotion; },
+  get prefersReducedMotion() {
+    return mockState.prefersReducedMotion;
+  },
 }));
 
 vi.mock('../theme-config', () => ({
@@ -50,7 +52,7 @@ describe('initTypewriter', () => {
     // First rAF + tick should set first character
     vi.advanceTimersByTime(200);
     const el = document.getElementById('typewriter')!;
-    expect(el.textContent!.length).toBeGreaterThan(0);
+    expect(el.textContent?.length).toBeGreaterThan(0);
   });
 });
 

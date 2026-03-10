@@ -38,7 +38,7 @@ describe('ctf', () => {
     const { initCTF } = await import('../interactions/ctf');
     initCTF();
     const wave = document.querySelector('.footer-wave');
-    expect(wave!.getAttribute('title')).toContain('CTF');
+    expect(wave?.getAttribute('title')).toContain('CTF');
   });
 
   it('__ctfSubmit returns true for correct passphrase', async () => {

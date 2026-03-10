@@ -79,7 +79,10 @@ describe('chatbot', () => {
     input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
 
     await vi.waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith('https://test-chat.workers.dev/api/chat', expect.any(Object));
+      expect(mockFetch).toHaveBeenCalledWith(
+        'https://test-chat.workers.dev/api/chat',
+        expect.any(Object),
+      );
     });
   });
 
@@ -210,7 +213,10 @@ describe('chatbot', () => {
     document.getElementById('chatbotSend')?.click();
 
     await vi.waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith('https://test-chat.workers.dev/api/chat', expect.any(Object));
+      expect(mockFetch).toHaveBeenCalledWith(
+        'https://test-chat.workers.dev/api/chat',
+        expect.any(Object),
+      );
     });
   });
 

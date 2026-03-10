@@ -19,7 +19,7 @@ vi.mock('../theme-config', () => ({
   },
 }));
 
-import { updateAnalyticsTheme, initLeetcodeTabs, initGithubTabs } from '../analytics';
+import { initGithubTabs, initLeetcodeTabs, updateAnalyticsTheme } from '../analytics';
 
 describe('updateAnalyticsTheme', () => {
   beforeEach(() => {

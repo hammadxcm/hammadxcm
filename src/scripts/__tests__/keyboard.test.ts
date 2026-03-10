@@ -5,7 +5,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockState = { prefersReducedMotion: false };
 vi.mock('../state', () => ({
-  get prefersReducedMotion() { return mockState.prefersReducedMotion; },
+  get prefersReducedMotion() {
+    return mockState.prefersReducedMotion;
+  },
 }));
 
 describe('keyboard', () => {
@@ -30,7 +32,7 @@ describe('keyboard', () => {
     const { initKeyboard } = await import('../interactions/keyboard');
     initKeyboard();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
-    expect(document.getElementById('keyFlash')!.textContent).toBe('');
+    expect(document.getElementById('keyFlash')?.textContent).toBe('');
   });
 
   it('shows key on keydown', async () => {
@@ -46,7 +48,7 @@ describe('keyboard', () => {
     const { initKeyboard } = await import('../interactions/keyboard');
     initKeyboard();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: ' ' }));
-    expect(document.getElementById('keyFlash')!.textContent).toBe('> Space');
+    expect(document.getElementById('keyFlash')?.textContent).toBe('> Space');
   });
 
   it('does not double-initialize', async () => {

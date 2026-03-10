@@ -6,15 +6,18 @@
     "rules": {
       "recommended": true,
       "style": {
-        "noNonNullAssertion": "warn",
-        "useConst": "warn"
+        "noNonNullAssertion": "error",
+        "useConst": "error"
       },
       "suspicious": {
-        "noExplicitAny": "warn"
+        "noExplicitAny": "error"
       },
       "correctness": {
-        "noUnusedVariables": "warn",
-        "noUnusedImports": "warn"
+        "noUnusedVariables": "error",
+        "noUnusedImports": "error"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "warn"
       }
     }
   },
@@ -39,5 +42,20 @@
       "!**/public/scripts/",
       "!**/*.astro"
     ]
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["**/__tests__/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noNonNullAssertion": "warn"
+          },
+          "suspicious": {
+            "noExplicitAny": "warn"
+          }
+        }
+      }
+    }
+  ]
 }

@@ -6,7 +6,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 const mockState = { prefersReducedMotion: false };
 
 vi.mock('../state', () => ({
-  get prefersReducedMotion() { return mockState.prefersReducedMotion; },
+  get prefersReducedMotion() {
+    return mockState.prefersReducedMotion;
+  },
 }));
 
 vi.mock('../theme-config', () => ({
@@ -47,7 +49,7 @@ describe('initBoot', () => {
     mockState.prefersReducedMotion = true;
     setupDOM();
     initBoot();
-    expect(document.getElementById('bootScreen')!.classList.contains('hidden')).toBe(true);
+    expect(document.getElementById('bootScreen')?.classList.contains('hidden')).toBe(true);
   });
 
   it('does nothing without bootScreen element', () => {

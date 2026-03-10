@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { langIcons, keywordIcons, resolveRepoIcon } from '../project-icons';
+import { keywordIcons, langIcons, resolveRepoIcon } from '../project-icons';
 
 describe('langIcons', () => {
   it('contains expected languages', () => {
@@ -24,17 +24,17 @@ describe('resolveRepoIcon', () => {
 
   it('returns keyword icon when topic matches', () => {
     const repo = { name: 'my-app', language: 'TypeScript', topics: ['react', 'frontend'] };
-    expect(resolveRepoIcon(repo, base)).toBe(keywordIcons.find(([k]) => k === 'react')![1]);
+    expect(resolveRepoIcon(repo, base)).toBe(keywordIcons.find(([k]) => k === 'react')?.[1]);
   });
 
   it('returns keyword icon when name matches', () => {
     const repo = { name: 'discord-bot', language: 'JavaScript', topics: [] };
-    expect(resolveRepoIcon(repo, base)).toBe(keywordIcons.find(([k]) => k === 'discord')![1]);
+    expect(resolveRepoIcon(repo, base)).toBe(keywordIcons.find(([k]) => k === 'discord')?.[1]);
   });
 
   it('matches keywords case-insensitively', () => {
     const repo = { name: 'MY-REACT-APP', language: null, topics: [] };
-    expect(resolveRepoIcon(repo, base)).toBe(keywordIcons.find(([k]) => k === 'react')![1]);
+    expect(resolveRepoIcon(repo, base)).toBe(keywordIcons.find(([k]) => k === 'react')?.[1]);
   });
 
   it('returns language icon when no keyword matches', () => {
@@ -54,7 +54,7 @@ describe('resolveRepoIcon', () => {
 
   it('prefers keyword match over language match', () => {
     const repo = { name: 'vue-app', language: 'TypeScript', topics: [] };
-    expect(resolveRepoIcon(repo, base)).toBe(keywordIcons.find(([k]) => k === 'vue')![1]);
+    expect(resolveRepoIcon(repo, base)).toBe(keywordIcons.find(([k]) => k === 'vue')?.[1]);
   });
 
   it('constructs default icon path correctly with trailing slash base', () => {
