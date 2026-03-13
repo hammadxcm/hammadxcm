@@ -959,7 +959,7 @@ Next.js & Svelte with live demo</sub>
 | [rails/rails](https://github.com/rails/rails) | [Fix Ruby 4.0 delegator warning for inspect on DelegateClass subclasses](https://github.com/rails/rails/pull/56867) | 🟣 Merged | Feb 25, 2026 | 58.4k | +10 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14835] Extend Lint/AmbiguousBlockAssociation for do...end block misassociation](https://github.com/rubocop/rubocop/pull/14949) | 🟢 Open | Feb 25, 2026 | 12.8k | +188 -1 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟢 Open | Feb 24, 2026 | 12.8k | +45 -2 |
-| [getsentry/sentry](https://github.com/getsentry/sentry) | [fix(tests): reduce project count in TestGetActiveOrgs to fix flaky snowflake ID errors](https://github.com/getsentry/sentry/pull/109181) | 🟢 Open | Feb 24, 2026 | 43.3k | +4 -4 |
+| [getsentry/sentry](https://github.com/getsentry/sentry) | [fix(tests): reduce project count in TestGetActiveOrgs to fix flaky snowflake ID errors](https://github.com/getsentry/sentry/pull/109181) | 🟢 Open | Feb 24, 2026 | 43.4k | +4 -4 |
 | [ahmadawais/shades-of-purple-vscode](https://github.com/ahmadawais/shades-of-purple-vscode) | [🐛 FIX: Ruby files theming unclear with semantic highlighting](https://github.com/ahmadawais/shades-of-purple-vscode/pull/163) | 🟢 Open | Feb 20, 2026 | 771 | +86 -4 |
 | [ahmadawais/shades-of-purple-vscode](https://github.com/ahmadawais/shades-of-purple-vscode) | [🐛 FIX: menu dropdown text not visible in extensions](https://github.com/ahmadawais/shades-of-purple-vscode/pull/162) | 🟢 Open | Feb 20, 2026 | 771 | +29 -1 |
 
