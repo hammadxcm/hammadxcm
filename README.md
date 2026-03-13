@@ -952,6 +952,7 @@ Next.js & Svelte with live demo</sub>
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) | [New package: hammadxcm.go-phantom version 0.0.1](https://github.com/microsoft/winget-pkgs/pull/348164) | 🟢 Open | Mar 12, 2026 | 10.3k | +36 -0 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Fix @TestSetup method ordering with inheritance](https://github.com/keycloak/keycloak/pull/46686) | 🟣 Merged | Mar 5, 2026 | 33.3k | +142 -5 |
 | [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Remove CodeClimate badge from README](https://github.com/thoughtbot/factory_bot/pull/1794) | 🟣 Merged | Mar 2, 2026 | 8.4k | +1 -3 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [Add `AllowedParentClasses` option to `Style/EmptyClassDefinition`](https://github.com/rubocop/rubocop/pull/14974) | 🟢 Open | Mar 1, 2026 | 12.8k | +111 -2 |
