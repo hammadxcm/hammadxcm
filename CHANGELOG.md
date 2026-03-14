@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.2] - 2026-03-14
+
+### Fixed
+
+- **Chatbot Workers AI model**: Updated from deprecated `@cf/meta/llama-3.1-8b-instruct` to `@cf/meta/llama-3.3-70b-instruct-fp8-fast` — old model was retired by Cloudflare, causing chat requests to hang indefinitely
+- **AI request timeout**: Added 15-second timeout via `Promise.race()` so the chatbot fails gracefully instead of hanging forever
+- **Content Security Policy**: Added `portfolio-chat` and `portfolio-stats` worker URLs to `connect-src` — browsers were blocking all fetch requests to Cloudflare Workers
+
+### Changed
+
+- **Self-hosted skill icons**: Downloaded all 31 skill icon SVGs from `skillicons.dev` to `public/icons/skills/` — eliminates dependency on external service that was experiencing QUIC protocol timeouts
+- **CSP img-src cleanup**: Removed `skillicons.dev` from `img-src` whitelist since icons are now served locally
+
 ## [1.4.0] - 2026-03-10
 
 ### Added
