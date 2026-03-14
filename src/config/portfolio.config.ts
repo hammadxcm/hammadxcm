@@ -75,10 +75,10 @@ const config: PortfolioConfig = {
           icon: 'https://techstack-generator.vercel.app/react-icon.svg',
           url: 'https://react.dev',
         },
-        { name: 'Vue', icon: 'https://skillicons.dev/icons?i=vue', url: 'https://vuejs.org' },
+        { name: 'Vue', icon: '/icons/skills/vue.svg', url: 'https://vuejs.org' },
         {
           name: 'Next.js',
-          icon: 'https://skillicons.dev/icons?i=nextjs',
+          icon: '/icons/skills/nextjs.svg',
           url: 'https://nextjs.org',
         },
         {
@@ -93,7 +93,7 @@ const config: PortfolioConfig = {
         },
         {
           name: 'Tailwind',
-          icon: 'https://skillicons.dev/icons?i=tailwind',
+          icon: '/icons/skills/tailwind.svg',
           url: 'https://tailwindcss.com',
         },
         {
@@ -108,7 +108,7 @@ const config: PortfolioConfig = {
         },
         {
           name: 'Angular',
-          icon: 'https://skillicons.dev/icons?i=angular',
+          icon: '/icons/skills/angular.svg',
           url: 'https://angular.dev',
         },
       ],
@@ -119,17 +119,17 @@ const config: PortfolioConfig = {
       items: [
         {
           name: 'Ruby',
-          icon: 'https://skillicons.dev/icons?i=ruby',
+          icon: '/icons/skills/ruby.svg',
           url: 'https://www.ruby-lang.org',
         },
         {
           name: 'Rails',
-          icon: 'https://skillicons.dev/icons?i=rails',
+          icon: '/icons/skills/rails.svg',
           url: 'https://rubyonrails.org',
         },
         {
           name: 'Node.js',
-          icon: 'https://skillicons.dev/icons?i=nodejs',
+          icon: '/icons/skills/nodejs.svg',
           url: 'https://nodejs.org',
         },
         {
@@ -144,7 +144,7 @@ const config: PortfolioConfig = {
         },
         {
           name: 'NestJS',
-          icon: 'https://skillicons.dev/icons?i=nestjs',
+          icon: '/icons/skills/nestjs.svg',
           url: 'https://nestjs.com',
         },
         {
@@ -180,12 +180,12 @@ const config: PortfolioConfig = {
       items: [
         {
           name: 'PostgreSQL',
-          icon: 'https://skillicons.dev/icons?i=postgresql',
+          icon: '/icons/skills/postgresql.svg',
           url: 'https://www.postgresql.org',
         },
         {
           name: 'MongoDB',
-          icon: 'https://skillicons.dev/icons?i=mongodb',
+          icon: '/icons/skills/mongodb.svg',
           url: 'https://www.mongodb.com',
         },
         {
@@ -193,15 +193,15 @@ const config: PortfolioConfig = {
           icon: 'https://techstack-generator.vercel.app/mysql-icon.svg',
           url: 'https://www.mysql.com',
         },
-        { name: 'Redis', icon: 'https://skillicons.dev/icons?i=redis', url: 'https://redis.io' },
+        { name: 'Redis', icon: '/icons/skills/redis.svg', url: 'https://redis.io' },
         {
           name: 'SQLite',
-          icon: 'https://skillicons.dev/icons?i=sqlite',
+          icon: '/icons/skills/sqlite.svg',
           url: 'https://www.sqlite.org',
         },
         {
           name: 'Prisma',
-          icon: 'https://skillicons.dev/icons?i=prisma',
+          icon: '/icons/skills/prisma.svg',
           url: 'https://www.prisma.io',
         },
       ],
@@ -217,7 +217,7 @@ const config: PortfolioConfig = {
         },
         {
           name: 'Azure',
-          icon: 'https://skillicons.dev/icons?i=azure',
+          icon: '/icons/skills/azure.svg',
           url: 'https://azure.microsoft.com',
         },
         {
@@ -230,7 +230,7 @@ const config: PortfolioConfig = {
           icon: 'https://techstack-generator.vercel.app/kubernetes-icon.svg',
           url: 'https://kubernetes.io',
         },
-        { name: 'Git', icon: 'https://skillicons.dev/icons?i=git', url: 'https://git-scm.com' },
+        { name: 'Git', icon: '/icons/skills/git.svg', url: 'https://git-scm.com' },
         {
           name: 'GitHub',
           icon: 'https://techstack-generator.vercel.app/github-icon.svg',
@@ -238,7 +238,7 @@ const config: PortfolioConfig = {
         },
         {
           name: 'Heroku',
-          icon: 'https://skillicons.dev/icons?i=heroku',
+          icon: '/icons/skills/heroku.svg',
           url: 'https://www.heroku.com',
         },
       ],
@@ -254,7 +254,7 @@ const config: PortfolioConfig = {
         },
         {
           name: 'Vitest',
-          icon: 'https://skillicons.dev/icons?i=vitest',
+          icon: '/icons/skills/vitest.svg',
           url: 'https://vitest.dev',
         },
         {
@@ -290,12 +290,12 @@ const config: PortfolioConfig = {
       items: [
         {
           name: 'VS Code',
-          icon: 'https://skillicons.dev/icons?i=vscode',
+          icon: '/icons/skills/vscode.svg',
           url: 'https://code.visualstudio.com',
         },
         {
           name: 'WebStorm',
-          icon: 'https://skillicons.dev/icons?i=webstorm',
+          icon: '/icons/skills/webstorm.svg',
           url: 'https://www.jetbrains.com/webstorm',
         },
         {
@@ -315,7 +315,7 @@ const config: PortfolioConfig = {
         },
         {
           name: 'Stripe',
-          icon: 'https://skillicons.dev/icons?i=stripe',
+          icon: '/icons/skills/stripe.svg',
           url: 'https://stripe.com',
         },
         {
@@ -422,7 +422,7 @@ const config: PortfolioConfig = {
   /* ─── Projects ─── */
   projects: [
     {
-      icon: 'https://skillicons.dev/icons?i=nodejs',
+      icon: '/icons/skills/nodejs.svg',
       name: 'ramadan-cli-pro',
       url: 'https://www.npmjs.com/package/ramadan-cli-pro',
       description:
@@ -432,7 +432,7 @@ const config: PortfolioConfig = {
       npmPackage: 'ramadan-cli-pro',
     },
     {
-      icon: 'https://skillicons.dev/icons?i=ruby',
+      icon: '/icons/skills/ruby.svg',
       name: 'rubocop-hk',
       url: 'https://rubygems.org/gems/rubocop-hk',
       description:
@@ -452,7 +452,7 @@ const config: PortfolioConfig = {
       npmPackage: '@hammadxcm/image-magnifier',
     },
     {
-      icon: 'https://skillicons.dev/icons?i=css',
+      icon: '/icons/skills/css.svg',
       name: 'electric-border-css',
       url: 'https://www.npmjs.com/package/electric-border-css',
       description:
@@ -525,7 +525,7 @@ const config: PortfolioConfig = {
       ariaLabel: 'View Hotwire Reactive Rails Apps certificate',
       badge: {
         type: 'image',
-        src: 'https://skillicons.dev/icons?i=rails',
+        src: '/icons/skills/rails.svg',
         width: 44,
         height: 44,
         alt: 'Hotwire',

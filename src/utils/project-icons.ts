@@ -3,27 +3,27 @@
  */
 
 export const langIcons: Record<string, string> = {
-  Ruby: 'https://skillicons.dev/icons?i=ruby',
+  Ruby: '/icons/skills/ruby.svg',
   JavaScript: 'https://techstack-generator.vercel.app/js-icon.svg',
   TypeScript: 'https://techstack-generator.vercel.app/ts-icon.svg',
   Python: 'https://techstack-generator.vercel.app/python-icon.svg',
-  Go: 'https://skillicons.dev/icons?i=go',
-  Rust: 'https://skillicons.dev/icons?i=rust',
-  Java: 'https://skillicons.dev/icons?i=java',
+  Go: '/icons/skills/go.svg',
+  Rust: '/icons/skills/rust.svg',
+  Java: '/icons/skills/java.svg',
   Swift: 'https://techstack-generator.vercel.app/swift-icon.svg',
-  HTML: 'https://skillicons.dev/icons?i=html',
-  CSS: 'https://skillicons.dev/icons?i=css',
-  Shell: 'https://skillicons.dev/icons?i=bash',
-  PHP: 'https://skillicons.dev/icons?i=php',
-  'C++': 'https://skillicons.dev/icons?i=cpp',
-  'C#': 'https://skillicons.dev/icons?i=cs',
+  HTML: '/icons/skills/html.svg',
+  CSS: '/icons/skills/css.svg',
+  Shell: '/icons/skills/bash.svg',
+  PHP: '/icons/skills/php.svg',
+  'C++': '/icons/skills/cpp.svg',
+  'C#': '/icons/skills/cs.svg',
 };
 
 export const keywordIcons: [string, string][] = [
-  ['discord', 'https://skillicons.dev/icons?i=discord'],
+  ['discord', '/icons/skills/discord.svg'],
   ['react', 'https://techstack-generator.vercel.app/react-icon.svg'],
-  ['rails', 'https://skillicons.dev/icons?i=rails'],
-  ['vue', 'https://skillicons.dev/icons?i=vue'],
+  ['rails', '/icons/skills/rails.svg'],
+  ['vue', '/icons/skills/vue.svg'],
   ['docker', 'https://techstack-generator.vercel.app/docker-icon.svg'],
 ];
 
