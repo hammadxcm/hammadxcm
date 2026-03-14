@@ -1,5 +1,5 @@
 /**
- * Portfolio Chat API — Cloudflare Worker + Workers AI
+ * Portfolio Chat API — Cloudflare Worker + Workers AI (Llama 3.3 70B)
  * Uses Cloudflare's built-in AI (no external API key needed).
  *
  * POST /api/chat  { messages: [{role, content}] }  → { reply: string }
@@ -189,11 +189,17 @@ export default {
     ];
 
     try {
-      const result = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
+      const aiPromise = env.AI.run('@cf/meta/llama-3.3-70b-instruct-fp8-fast', {
         messages: aiMessages,
         max_tokens: 300,
         temperature: 0.5,
       });
+
+      const timeout = new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error('AI timeout')), 15_000),
+      );
+
+      const result = await Promise.race([aiPromise, timeout]);
 
       const rawReply = (result as any).response || 'No response generated.';
       const reply = sanitizeResponse(rawReply);
