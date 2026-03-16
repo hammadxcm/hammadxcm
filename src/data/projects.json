@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-16T12:14:33.590Z",
+  "generatedAt": "2026-03-16T18:18:54.313Z",
   "username": "hammadxcm",
   "repos": [
     {
@@ -33,7 +33,7 @@
       "forks": 5,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-03-16T06:29:59Z"
+      "updatedAt": "2026-03-16T12:14:45Z"
     },
     {
       "name": "acme-basket",
@@ -124,6 +124,17 @@
       "updatedAt": "2026-03-13T14:16:55Z"
     },
     {
+      "name": "slay",
+      "fullName": "hammadxcm/slay",
+      "url": "https://github.com/hammadxcm/slay",
+      "description": "Fast, zero-dependency CLI tool to find and kill processes by port on macOS, Linux, and Windows",
+      "stars": 2,
+      "forks": 0,
+      "language": "TypeScript",
+      "topics": [],
+      "updatedAt": "2026-03-16T18:06:43Z"
+    },
+    {
       "name": "homebrew-daemon-os",
       "fullName": "hammadxcm/homebrew-daemon-os",
       "url": "https://github.com/hammadxcm/homebrew-daemon-os",
@@ -179,17 +190,6 @@
       "updatedAt": "2026-02-23T18:28:40Z"
     },
     {
-      "name": "slay",
-      "fullName": "hammadxcm/slay",
-      "url": "https://github.com/hammadxcm/slay",
-      "description": "Fast, zero-dependency CLI tool to find and kill processes by port on macOS, Linux, and Windows",
-      "stars": 1,
-      "forks": 0,
-      "language": "TypeScript",
-      "topics": [],
-      "updatedAt": "2026-03-16T11:47:50Z"
-    },
-    {
       "name": "homebrew-slay",
       "fullName": "hammadxcm/homebrew-slay",
       "url": "https://github.com/hammadxcm/homebrew-slay",
@@ -198,7 +198,7 @@
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-03-16T11:54:43Z"
+      "updatedAt": "2026-03-16T18:18:04Z"
     }
   ],
   "downloads": {
