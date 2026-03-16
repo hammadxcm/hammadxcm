@@ -1,8 +1,82 @@
 {
-  "generatedAt": "2026-03-15T18:07:03.650Z",
+  "generatedAt": "2026-03-16T00:17:02.621Z",
   "username": "hammadxcm",
-  "totalCount": 16,
+  "totalCount": 18,
   "contributions": [
+    {
+      "title": "docs: clarify generateMetadata re-evaluation on navigation",
+      "url": "https://github.com/vercel/next.js/pull/91427",
+      "number": 91427,
+      "state": "open",
+      "mergedAt": "2026-03-15T21:04:48Z",
+      "additions": 7,
+      "deletions": 1,
+      "changedFiles": 2,
+      "labels": [
+        {
+          "name": "Documentation",
+          "color": "C2E0C6"
+        }
+      ],
+      "repo": {
+        "fullName": "vercel/next.js",
+        "url": "https://github.com/vercel/next.js",
+        "stars": 138338,
+        "forks": 30647,
+        "language": "JavaScript",
+        "description": "The React Framework",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
+        "topics": [
+          "blog",
+          "browser",
+          "compiler",
+          "components",
+          "hybrid",
+          "nextjs",
+          "node",
+          "react",
+          "server-rendering",
+          "ssg",
+          "static",
+          "static-site-generator",
+          "universal",
+          "vercel"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add `factory_bot.before_run_factory` instrumentation event",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1795",
+      "number": 1795,
+      "state": "open",
+      "mergedAt": "2026-03-15T20:47:44Z",
+      "additions": 133,
+      "deletions": 0,
+      "changedFiles": 5,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8352,
+        "forks": 2575,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
     {
       "title": "Fix token exchange failing with FGAP V2 enabled",
       "url": "https://github.com/keycloak/keycloak/pull/47169",
@@ -16,8 +90,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33355,
-        "forks": 8147,
+        "stars": 33361,
+        "forks": 8146,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -47,8 +121,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58325,
-        "forks": 22173,
+        "stars": 58336,
+        "forks": 22172,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -91,7 +165,7 @@
         "fullName": "microsoft/winget-pkgs",
         "url": "https://github.com/microsoft/winget-pkgs",
         "stars": 10346,
-        "forks": 6359,
+        "forks": 6362,
         "language": "PowerShell",
         "description": "The Microsoft community Windows Package Manager manifest repository",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6154722?v=4",
@@ -114,8 +188,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33355,
-        "forks": 8147,
+        "stars": 33361,
+        "forks": 8146,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -210,7 +284,7 @@
       "repo": {
         "fullName": "biomejs/biome",
         "url": "https://github.com/biomejs/biome",
-        "stars": 24032,
+        "stars": 24043,
         "forks": 903,
         "language": "Rust",
         "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
@@ -251,8 +325,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58325,
-        "forks": 22173,
+        "stars": 58336,
+        "forks": 22172,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -339,7 +413,7 @@
       "repo": {
         "fullName": "jekyll/jekyll",
         "url": "https://github.com/jekyll/jekyll",
-        "stars": 51452,
+        "stars": 51457,
         "forks": 10297,
         "language": "Ruby",
         "description": ":globe_with_meridians: Jekyll is a blog-aware static site generator in Ruby",
@@ -373,8 +447,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58325,
-        "forks": 22173,
+        "stars": 58336,
+        "forks": 22172,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -403,7 +477,7 @@
       "repo": {
         "fullName": "getsentry/sentry",
         "url": "https://github.com/getsentry/sentry",
-        "stars": 43366,
+        "stars": 43368,
         "forks": 4631,
         "language": "Python",
         "description": "Developer-first error tracking and performance monitoring",

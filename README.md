@@ -952,6 +952,8 @@ Next.js & Svelte with live demo</sub>
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [vercel/next.js](https://github.com/vercel/next.js) | [docs: clarify generateMetadata re-evaluation on navigation](https://github.com/vercel/next.js/pull/91427) | 🟢 Open | Mar 15, 2026 | 138.3k | +7 -1 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add `factory_bot.before_run_factory` instrumentation event](https://github.com/thoughtbot/factory_bot/pull/1795) | 🟢 Open | Mar 15, 2026 | 8.4k | +133 -0 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Fix token exchange failing with FGAP V2 enabled](https://github.com/keycloak/keycloak/pull/47169) | 🟢 Open | Mar 15, 2026 | 33.4k | +0 -17 |
 | [rails/rails](https://github.com/rails/rails) | [Fix insert_all raising "No unique index found for id" without unique_by](https://github.com/rails/rails/pull/56988) | 🟢 Open | Mar 15, 2026 | 58.3k | +87 -16 |
 | [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) | [New package: hammadxcm.go-phantom version 0.0.1](https://github.com/microsoft/winget-pkgs/pull/348164) | 🟢 Open | Mar 12, 2026 | 10.3k | +36 -0 |
