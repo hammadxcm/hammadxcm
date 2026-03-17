@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-16T18:18:54.313Z",
+  "generatedAt": "2026-03-17T00:15:29.437Z",
   "username": "hammadxcm",
   "repos": [
     {
@@ -33,7 +33,7 @@
       "forks": 5,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-03-16T12:14:45Z"
+      "updatedAt": "2026-03-16T18:19:06Z"
     },
     {
       "name": "acme-basket",
@@ -102,6 +102,17 @@
       "updatedAt": "2026-02-23T18:28:42Z"
     },
     {
+      "name": "slay",
+      "fullName": "hammadxcm/slay",
+      "url": "https://github.com/hammadxcm/slay",
+      "description": "Fast, zero-dependency CLI tool to find and kill processes by port on macOS, Linux, and Windows",
+      "stars": 3,
+      "forks": 0,
+      "language": "TypeScript",
+      "topics": [],
+      "updatedAt": "2026-03-16T20:45:41Z"
+    },
+    {
       "name": "scoop-phantom",
       "fullName": "hammadxcm/scoop-phantom",
       "url": "https://github.com/hammadxcm/scoop-phantom",
@@ -122,17 +133,6 @@
       "language": "Python",
       "topics": [],
       "updatedAt": "2026-03-13T14:16:55Z"
-    },
-    {
-      "name": "slay",
-      "fullName": "hammadxcm/slay",
-      "url": "https://github.com/hammadxcm/slay",
-      "description": "Fast, zero-dependency CLI tool to find and kill processes by port on macOS, Linux, and Windows",
-      "stars": 2,
-      "forks": 0,
-      "language": "TypeScript",
-      "topics": [],
-      "updatedAt": "2026-03-16T18:06:43Z"
     },
     {
       "name": "homebrew-daemon-os",
@@ -194,11 +194,11 @@
       "fullName": "hammadxcm/homebrew-slay",
       "url": "https://github.com/hammadxcm/homebrew-slay",
       "description": "Homebrew tap for slay-port",
-      "stars": 0,
+      "stars": 1,
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-03-16T18:18:04Z"
+      "updatedAt": "2026-03-16T20:45:33Z"
     }
   ],
   "downloads": {
