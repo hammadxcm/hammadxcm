@@ -80,6 +80,8 @@ const fa: TranslationMap = {
     showLess: 'نمایش کمتر',
     notableTitle: 'مشارکت‌های برجسته',
     notableSubtitle: 'برجسته‌ترین‌ها از پروژه‌های متن‌باز برتر',
+    less: 'Less',
+    more: 'More',
     relativeTime: {
       today: 'امروز',
       dayAgo: '۱ روز پیش',
@@ -101,6 +103,9 @@ const fa: TranslationMap = {
     successRate: 'نرخ ادغام',
     contributionGraph: 'نمودار مشارکت‌ها',
     totalContributions: '{count} مشارکت در سال گذشته',
+    mostActiveMonth: 'Most Active Month',
+    topLanguage: 'Top Language',
+    avgPRsPerMonth: 'Avg PRs/Month',
   },
   certs: {
     label: '// مدارک',

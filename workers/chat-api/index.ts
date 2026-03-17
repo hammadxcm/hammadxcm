@@ -5,6 +5,11 @@
  * POST /api/chat  { messages: [{role, content}] }  → { reply: string }
  */
 
+/** Cloudflare Workers AI binding */
+type Ai = {
+  run(model: string, input: Record<string, unknown>): Promise<unknown>;
+};
+
 interface Env {
   AI: Ai;
   ALLOWED_ORIGIN: string;

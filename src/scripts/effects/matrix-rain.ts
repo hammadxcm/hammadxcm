@@ -26,10 +26,14 @@ export function initMatrixRain(): void {
   if (initialized) return;
   if (prefersReducedMotion || isTouchDevice) return;
 
-  const canvas = document.getElementById('matrix-canvas') as HTMLCanvasElement | null;
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
+  const canvasEl = document.getElementById('matrix-canvas') as HTMLCanvasElement | null;
+  if (!canvasEl) return;
+  const ctxEl = canvasEl.getContext('2d');
+  if (!ctxEl) return;
+
+  // Local constants for closure safety (biome noNonNullAssertion)
+  const canvas = canvasEl;
+  const ctx = ctxEl;
 
   initialized = true;
 

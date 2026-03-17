@@ -9,6 +9,7 @@ export function initTerminal(): void {
   const prompt = document.getElementById('terminalPrompt');
   if (!input || !output || !prompt) return;
   initialized = true;
+  const _output = output;
 
   const fs = buildFileSystem();
   let cwd = '/home/hammad';
@@ -24,7 +25,7 @@ export function initTerminal(): void {
     const div = document.createElement('div');
     div.className = `term-line ${cls}`;
     div.innerHTML = html;
-    output.appendChild(div);
+    _output.appendChild(div);
   }
 
   function printCmd(cmd: string): void {
@@ -160,7 +161,7 @@ export function initTerminal(): void {
     },
 
     clear: () => {
-      output.innerHTML = '';
+      _output.innerHTML = '';
     },
 
     whoami: () => {
@@ -183,7 +184,7 @@ export function initTerminal(): void {
             entries.forEach(([childName, child], i) => {
               const isLast = i === entries.length - 1;
               const connector = isLast ? '└── ' : '├── ';
-              const _newPrefix = prefix + (isLast ? '    ' : '│   ');
+              // newPrefix not needed — printTree uses connector prefix directly
               printTree(child, prefix + connector, childName);
             });
           }

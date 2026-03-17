@@ -80,6 +80,8 @@ const id: TranslationMap = {
     showLess: 'Tampilkan Kurang',
     notableTitle: 'Kontribusi Penting',
     notableSubtitle: 'Sorotan dari proyek open source teratas',
+    less: 'Less',
+    more: 'More',
     relativeTime: {
       today: 'hari ini',
       dayAgo: '1 hari lalu',
@@ -101,6 +103,9 @@ const id: TranslationMap = {
     successRate: 'Tingkat Merge',
     contributionGraph: 'Grafik Kontribusi',
     totalContributions: '{count} kontribusi dalam setahun terakhir',
+    mostActiveMonth: 'Most Active Month',
+    topLanguage: 'Top Language',
+    avgPRsPerMonth: 'Avg PRs/Month',
   },
   certs: {
     label: '// Kredensial',

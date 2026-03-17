@@ -6,6 +6,13 @@
  * GET  /api/stats                     → return all counters
  */
 
+/** Cloudflare Workers KV namespace binding */
+type KVNamespace = {
+  get(key: string): Promise<string | null>;
+  put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
+  list(): Promise<{ keys: { name: string }[] }>;
+};
+
 interface Env {
   STATS: KVNamespace;
   ALLOWED_ORIGIN: string;
@@ -108,7 +115,7 @@ export default {
     // GET /api/stats
     if (url.pathname === '/api/stats' && request.method === 'GET') {
       const keys = await env.STATS.list();
-      const values = await Promise.all(keys.keys.map((k) => env.STATS.get(k.name)));
+      const values = await Promise.all(keys.keys.map((k: { name: string }) => env.STATS.get(k.name)));
       const stats: Record<string, number> = {};
       for (let i = 0; i < keys.keys.length; i++) {
         stats[keys.keys[i].name] = parseInt(values[i] || '0', 10);

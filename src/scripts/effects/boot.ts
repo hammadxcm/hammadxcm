@@ -98,7 +98,7 @@ export function initBoot(): void {
   const ac = new AbortController();
 
   function finishBoot(): void {
-    if (bootScreen.classList.contains('fade-out')) return;
+    if (!bootScreen || bootScreen.classList.contains('fade-out')) return;
 
     for (const t of timers) clearTimeout(t);
     timers.length = 0;
@@ -109,8 +109,9 @@ export function initBoot(): void {
     ac.abort();
 
     bootScreen.classList.add('fade-out');
+    const screen = bootScreen;
     setTimeout(() => {
-      bootScreen.classList.add('hidden');
+      screen.classList.add('hidden');
       sessionStorage.setItem('boot-done', '1');
     }, fadeMs);
   }

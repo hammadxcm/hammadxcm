@@ -80,6 +80,8 @@ const en: TranslationMap = {
     showLess: 'Show Less',
     notableTitle: 'Notable Contributions',
     notableSubtitle: 'Highlights from top open source projects',
+    less: 'Less',
+    more: 'More',
     relativeTime: {
       today: 'today',
       dayAgo: '1 day ago',
@@ -101,6 +103,9 @@ const en: TranslationMap = {
     successRate: 'Merge Rate',
     contributionGraph: 'Contribution Graph',
     totalContributions: '{count} contributions in the last year',
+    mostActiveMonth: 'Most Active Month',
+    topLanguage: 'Top Language',
+    avgPRsPerMonth: 'Avg PRs/Month',
   },
   certs: {
     label: '// Credentials',

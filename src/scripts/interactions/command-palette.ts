@@ -38,6 +38,10 @@ export function initCommandPalette(): void {
 
   if (!overlay || !input || !results || !dataEl) return;
 
+  const _overlay = overlay;
+  const _input = input;
+  const _results = results;
+
   let data: PaletteData;
   try {
     data = JSON.parse(dataEl.textContent || '{}');
@@ -49,22 +53,22 @@ export function initCommandPalette(): void {
   let flatItems: { group: string; item: PaletteItem; action: () => void }[] = [];
 
   function open(): void {
-    overlay.classList.add('open');
-    overlay.setAttribute('aria-hidden', 'false');
-    input.value = '';
-    input.focus();
+    _overlay.classList.add('open');
+    _overlay.setAttribute('aria-hidden', 'false');
+    _input.value = '';
+    _input.focus();
     trackEvent('command_palette');
     render('');
   }
 
   function close(): void {
-    overlay.classList.remove('open');
-    overlay.setAttribute('aria-hidden', 'true');
-    input.blur();
+    _overlay.classList.remove('open');
+    _overlay.setAttribute('aria-hidden', 'true');
+    _input.blur();
   }
 
   function isOpen(): boolean {
-    return overlay.classList.contains('open');
+    return _overlay.classList.contains('open');
   }
 
   function scrollToSection(id: string): void {
@@ -146,13 +150,13 @@ export function initCommandPalette(): void {
       html = `<div class="cmd-no-results">No results found</div>`;
     }
 
-    results.innerHTML = html;
+    _results.innerHTML = html;
     activeIndex = 0;
     updateActive();
   }
 
   function updateActive(): void {
-    const items = results.querySelectorAll('.cmd-item');
+    const items = _results.querySelectorAll('.cmd-item');
     items.forEach((el, i) => {
       el.classList.toggle('active', i === activeIndex);
       if (i === activeIndex) el.scrollIntoView({ block: 'nearest' });
@@ -188,7 +192,7 @@ export function initCommandPalette(): void {
   });
 
   // Click on result
-  results.addEventListener('click', (e) => {
+  _results.addEventListener('click', (e) => {
     const target = (e.target as HTMLElement).closest('.cmd-item') as HTMLElement | null;
     if (!target) return;
     const idx = parseInt(target.dataset.idx || '0', 10);
@@ -196,12 +200,12 @@ export function initCommandPalette(): void {
   });
 
   // Click on overlay to close
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) close();
+  _overlay.addEventListener('click', (e) => {
+    if (e.target === _overlay) close();
   });
 
   // Typing in input
-  input.addEventListener('input', () => {
-    render(input.value.trim());
+  _input.addEventListener('input', () => {
+    render(_input.value.trim());
   });
 }

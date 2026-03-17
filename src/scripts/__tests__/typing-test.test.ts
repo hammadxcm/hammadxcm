@@ -85,7 +85,7 @@ describe('typing-test', () => {
   it('language select changes snippet', () => {
     initTypingTest();
     const select = document.getElementById('typingLang') as HTMLSelectElement;
-    const _displayBefore = document.getElementById('typingDisplay')?.textContent;
+    document.getElementById('typingDisplay')?.textContent;
     select.value = 'python';
     select.dispatchEvent(new Event('change'));
     const displayAfter = document.getElementById('typingDisplay')?.textContent;

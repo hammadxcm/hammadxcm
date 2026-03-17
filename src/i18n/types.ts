@@ -48,7 +48,7 @@ export interface TranslationMap {
     categories: Record<
       'Frontend' | 'Backend' | 'Databases' | 'Cloud & DevOps' | 'Testing' | 'AI & Tools',
       string
-    >;
+    > & { [key: string]: string };
   };
   journey: {
     label: string;
@@ -83,6 +83,8 @@ export interface TranslationMap {
     showLess: string;
     notableTitle: string;
     notableSubtitle: string;
+    less: string;
+    more: string;
     relativeTime: {
       today: string;
       dayAgo: string;
@@ -104,6 +106,9 @@ export interface TranslationMap {
     successRate: string;
     contributionGraph: string;
     totalContributions: string;
+    mostActiveMonth: string;
+    topLanguage: string;
+    avgPRsPerMonth: string;
   };
   certs: {
     label: string;

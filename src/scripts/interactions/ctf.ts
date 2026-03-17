@@ -61,7 +61,7 @@ export function initCTF(): void {
   }
 
   // Listen for passphrase via custom event or console
-  (window as Record<string, unknown>).__ctfSubmit = (answer: string) => {
+  (window as unknown as Record<string, unknown>).__ctfSubmit = (answer: string) => {
     if (answer.toUpperCase().replace(/\s/g, '') === PASSPHRASE) {
       sessionStorage.setItem(STORAGE_KEY, 'true');
       showAchievement();

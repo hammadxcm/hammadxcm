@@ -112,6 +112,7 @@ function startGame(): void {
   // Mouse/touch tracking
   function onMove(clientX: number): void {
     const rect = canvasEl?.getBoundingClientRect();
+    if (!rect) return;
     const x = clientX - rect.left;
     paddle.x = Math.max(0, Math.min(W - paddle.width, x - paddle.width / 2));
     if (!ball.launched) {

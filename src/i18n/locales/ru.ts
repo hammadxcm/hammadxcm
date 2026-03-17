@@ -80,6 +80,8 @@ const ru: TranslationMap = {
     showLess: 'Свернуть',
     notableTitle: 'Значимые вклады',
     notableSubtitle: 'Лучшие вклады в топовые проекты с открытым кодом',
+    less: 'Less',
+    more: 'More',
     relativeTime: {
       today: 'сегодня',
       dayAgo: '1 день назад',
@@ -101,6 +103,9 @@ const ru: TranslationMap = {
     successRate: 'Процент слияний',
     contributionGraph: 'График вкладов',
     totalContributions: '{count} вкладов за последний год',
+    mostActiveMonth: 'Most Active Month',
+    topLanguage: 'Top Language',
+    avgPRsPerMonth: 'Avg PRs/Month',
   },
   certs: {
     label: '// Квалификации',

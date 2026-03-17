@@ -41,7 +41,6 @@ for (const pr of prs) {
   orgMap.set(org, existing);
 }
 const orgEntries = [...orgMap.entries()].sort((a, b) => b[1].count - a[1].count).slice(0, 8);
-const maxOrgCount = orgEntries[0]?.[1].count || 1;
 
 // ── C. Impact Metrics ──
 const totalAdd = prs.reduce((s, p) => s + p.additions, 0);
@@ -62,7 +61,6 @@ for (const pr of prs) {
   monthMap.set(month, entry);
 }
 const timelineEntries = [...monthMap.entries()].sort((a, b) => a[0].localeCompare(b[0]));
-const maxMonthCount = Math.max(...timelineEntries.map(([, v]) => v.total), 1);
 
 // ── E. Heatmap ──
 const heatmapWeeks = 52;

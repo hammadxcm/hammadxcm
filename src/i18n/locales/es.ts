@@ -80,6 +80,8 @@ const es: TranslationMap = {
     showLess: 'Mostrar Menos',
     notableTitle: 'Contribuciones Destacadas',
     notableSubtitle: 'Destacados de los principales proyectos de código abierto',
+    less: 'Less',
+    more: 'More',
     relativeTime: {
       today: 'hoy',
       dayAgo: 'hace 1 dia',
@@ -101,6 +103,9 @@ const es: TranslationMap = {
     successRate: 'Tasa de Merge',
     contributionGraph: 'Gráfico de Contribuciones',
     totalContributions: '{count} contribuciones en el último año',
+    mostActiveMonth: 'Most Active Month',
+    topLanguage: 'Top Language',
+    avgPRsPerMonth: 'Avg PRs/Month',
   },
   certs: {
     label: '// Credenciales',
