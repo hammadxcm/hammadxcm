@@ -17,13 +17,13 @@ jobs:
     name: Install
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           cache: npm
       - run: npm ci
-      - uses: actions/cache/save@v4
+      - uses: actions/cache/save@v5
         with:
           path: node_modules
           key: nm-${{ hashFiles('package-lock.json') }}
@@ -33,12 +33,12 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           cache: npm
-      - uses: actions/cache/restore@v4
+      - uses: actions/cache/restore@v5
         with:
           path: node_modules
           key: nm-${{ hashFiles('package-lock.json') }}
@@ -49,12 +49,12 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           cache: npm
-      - uses: actions/cache/restore@v4
+      - uses: actions/cache/restore@v5
         with:
           path: node_modules
           key: nm-${{ hashFiles('package-lock.json') }}
@@ -65,18 +65,18 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           cache: npm
-      - uses: actions/cache/restore@v4
+      - uses: actions/cache/restore@v5
         with:
           path: node_modules
           key: nm-${{ hashFiles('package-lock.json') }}
       - run: npm run build
       - run: npm run test:coverage
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: coverage
           path: coverage/
@@ -87,12 +87,12 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           cache: npm
-      - uses: actions/cache/restore@v4
+      - uses: actions/cache/restore@v5
         with:
           path: node_modules
           key: nm-${{ hashFiles('package-lock.json') }}

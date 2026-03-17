@@ -19,7 +19,7 @@ jobs:
           outputs: dist/snake.svg?palette=github-dark
 
       - name: Push snake.svg to output branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
+        uses: crazy-max/ghaction-github-pages@v5
         with:
           target_branch: output
           build_dir: dist
