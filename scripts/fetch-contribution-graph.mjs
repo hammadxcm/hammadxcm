@@ -235,5 +235,5 @@ main().catch((err) => {
   console.error('Error fetching contribution graph:', err.message);
   writeFileSync(OUTPUT_PATH, JSON.stringify(EMPTY_DATA, null, 2) + '\n');
   console.warn('Wrote empty seed file as fallback.');
-  process.exit(1);
+  process.exit(0);
 });

@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/fetch-all-data.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "test": "vitest run",
@@ -15,7 +16,7 @@
     "format": "biome check --write src/",
     "test:coverage": "vitest run --coverage",
     "fetch:graph": "node scripts/fetch-contribution-graph.mjs",
-    "setup": "node scripts/fetch-contribution-graph.mjs"
+    "setup": "node scripts/fetch-all-data.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
