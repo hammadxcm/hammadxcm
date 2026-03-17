@@ -5,8 +5,8 @@ on:
     branches: [main]
     paths-ignore:
       - "metrics.*.svg"
-      - "src/data/contributions.json"
       - "CONTRIBUTIONS_README.md"
+      - "README.md"
 
 concurrency:
   group: ci-${{ github.head_ref }}
@@ -75,6 +75,9 @@ jobs:
           path: node_modules
           key: nm-${{ hashFiles('package-lock.json') }}
       - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: hammadxcm
       - run: npm run test:coverage
       - uses: actions/upload-artifact@v4
         with:
