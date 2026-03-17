@@ -37,7 +37,7 @@ jobs:
         with:
           path: dist
       - id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4
 
   release:
     needs: build-and-deploy
