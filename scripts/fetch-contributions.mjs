@@ -16,7 +16,7 @@
  *   MAX_ITEMS        (optional — default 20)
  */
 
-import { writeFileSync, existsSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -282,10 +282,5 @@ function writeOutput(data) {
 
 main().catch((err) => {
   console.error('Error:', err.message);
-  const fallback = resolve(__dirname, '..', 'src', 'data', 'contributions.json');
-  if (existsSync(fallback)) {
-    console.warn('Using existing contributions.json as fallback.');
-    process.exit(0);
-  }
   process.exit(1);
 });

@@ -13,7 +13,7 @@
  *   MAX_REPOS        (optional — default 30)
  */
 
-import { writeFileSync, existsSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -158,10 +158,5 @@ async function main() {
 
 main().catch((err) => {
   console.error('Error:', err.message);
-  const fallback = resolve(__dirname, '..', 'src', 'data', 'projects.json');
-  if (existsSync(fallback)) {
-    console.warn('Using existing projects.json as fallback.');
-    process.exit(0);
-  }
   process.exit(1);
 });
