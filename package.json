@@ -16,7 +16,8 @@
     "format": "biome check --write src/",
     "test:coverage": "vitest run --coverage",
     "fetch:graph": "node scripts/fetch-contribution-graph.mjs",
-    "setup": "node scripts/fetch-all-data.mjs"
+    "setup": "node scripts/fetch-all-data.mjs",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
@@ -24,11 +25,18 @@
     "chart.js": "^4.5.1",
     "jspdf": "^4.2.0"
   },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx,json}": [
+      "biome check --write --no-errors-on-unmatched"
+    ]
+  },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
     "@biomejs/biome": "^2.4.4",
     "@vitest/coverage-v8": "^4.0.18",
     "happy-dom": "^20.7.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "sass": "^1.97.3",
     "terser": "^5.46.0",
     "typescript": "^5.9.3",

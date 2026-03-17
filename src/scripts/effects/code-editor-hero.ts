@@ -57,9 +57,7 @@ function highlightLine(raw: string, lang: LangKey = 'js'): string {
   const tokens: { start: number; end: number; html: string }[] = [];
 
   const commentRe =
-    lang === 'js'
-      ? new RegExp(JS_COMMENT_RE.source, 'g')
-      : new RegExp(HASH_COMMENT_RE.source, 'g');
+    lang === 'js' ? new RegExp(JS_COMMENT_RE.source, 'g') : new RegExp(HASH_COMMENT_RE.source, 'g');
   for (let m = commentRe.exec(line); m !== null; m = commentRe.exec(line)) {
     tokens.push({
       start: m.index,
@@ -148,7 +146,6 @@ let settingsPanelEl: HTMLElement | null = null;
 let activeSidebarPanel: 'files' | 'search' | 'git' | 'extensions' | 'settings' | null = null;
 
 // Terminal state
-let activeTerminalTab: 'terminal' | 'problems' | 'output' = 'terminal';
 let terminalContentEl: HTMLElement | null = null;
 let problemsContentEl: HTMLElement | null = null;
 let outputContentEl: HTMLElement | null = null;
@@ -860,7 +857,7 @@ function processTerminalCommand(cmd: string): void {
     const line = document.createElement('div');
     line.className = `code-editor-terminal-line${cls ? ` ${cls}` : ''}`;
     line.textContent = text;
-    terminalContentEl!.appendChild(line);
+    terminalContentEl?.appendChild(line);
   };
 
   if (!cmd) {
@@ -931,8 +928,6 @@ function processTerminalCommand(cmd: string): void {
 }
 
 function switchTerminalTab(tabName: string): void {
-  activeTerminalTab = tabName as 'terminal' | 'problems' | 'output';
-
   if (terminalContentEl) terminalContentEl.style.display = tabName === 'terminal' ? '' : 'none';
   if (problemsContentEl) problemsContentEl.style.display = tabName === 'problems' ? '' : 'none';
   if (outputContentEl) outputContentEl.style.display = tabName === 'output' ? '' : 'none';
@@ -983,7 +978,7 @@ function runCurrentTab(): void {
         const outLine = document.createElement('div');
         outLine.className = 'code-editor-terminal-line output';
         outLine.textContent = termData.output;
-        terminalContentEl!.appendChild(outLine);
+        terminalContentEl?.appendChild(outLine);
         addTerminalPrompt();
       }, 500);
     }
@@ -1460,7 +1455,6 @@ export function destroyCodeEditorHero(): void {
   tabContent.clear();
   highlightedLine = null;
   activeSidebarPanel = null;
-  activeTerminalTab = 'terminal';
   commandHistory.length = 0;
   historyIndex = -1;
   initialized = false;
