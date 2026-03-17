@@ -1,8 +1,49 @@
 {
-  "generatedAt": "2026-03-17T18:17:43.428Z",
+  "generatedAt": "2026-03-17T22:32:09.971Z",
   "username": "hammadxcm",
   "totalCount": 18,
   "contributions": [
+    {
+      "title": "New package: hammadxcm.go-phantom version 0.0.2",
+      "url": "https://github.com/microsoft/winget-pkgs/pull/348164",
+      "number": 348164,
+      "state": "merged",
+      "mergedAt": "2026-03-17T20:46:35Z",
+      "additions": 36,
+      "deletions": 0,
+      "changedFiles": 3,
+      "labels": [
+        {
+          "name": "Azure-Pipeline-Passed",
+          "color": "0e8a16"
+        },
+        {
+          "name": "Validation-Completed",
+          "color": "0e8a16"
+        },
+        {
+          "name": "Moderator-Approved",
+          "color": "5319E7"
+        },
+        {
+          "name": "New-Package",
+          "color": "597350"
+        }
+      ],
+      "repo": {
+        "fullName": "microsoft/winget-pkgs",
+        "url": "https://github.com/microsoft/winget-pkgs",
+        "stars": 10361,
+        "forks": 6383,
+        "language": "PowerShell",
+        "description": "The Microsoft community Windows Package Manager manifest repository",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6154722?v=4",
+        "topics": [
+          "hacktoberfest"
+        ],
+        "license": "MIT"
+      }
+    },
     {
       "title": "docs: clarify generateMetadata re-evaluation on navigation",
       "url": "https://github.com/vercel/next.js/pull/91427",
@@ -21,7 +62,7 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 138367,
+        "stars": 138348,
         "forks": 30659,
         "language": "JavaScript",
         "description": "The React Framework",
@@ -59,7 +100,7 @@
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
         "stars": 8353,
-        "forks": 2576,
+        "forks": 2575,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -90,7 +131,7 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33396,
+        "stars": 33400,
         "forks": 8146,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
@@ -121,8 +162,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58343,
-        "forks": 22176,
+        "stars": 58329,
+        "forks": 22177,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -134,43 +175,6 @@
           "mvc",
           "rails",
           "ruby"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
-      "title": "New package: hammadxcm.go-phantom version 0.0.2",
-      "url": "https://github.com/microsoft/winget-pkgs/pull/348164",
-      "number": 348164,
-      "state": "open",
-      "mergedAt": "2026-03-12T21:52:10Z",
-      "additions": 36,
-      "deletions": 0,
-      "changedFiles": 3,
-      "labels": [
-        {
-          "name": "Azure-Pipeline-Passed",
-          "color": "0e8a16"
-        },
-        {
-          "name": "Validation-Completed",
-          "color": "0e8a16"
-        },
-        {
-          "name": "New-Package",
-          "color": "597350"
-        }
-      ],
-      "repo": {
-        "fullName": "microsoft/winget-pkgs",
-        "url": "https://github.com/microsoft/winget-pkgs",
-        "stars": 10358,
-        "forks": 6382,
-        "language": "PowerShell",
-        "description": "The Microsoft community Windows Package Manager manifest repository",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/6154722?v=4",
-        "topics": [
-          "hacktoberfest"
         ],
         "license": "MIT"
       }
@@ -188,7 +192,7 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33396,
+        "stars": 33400,
         "forks": 8146,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
@@ -215,7 +219,7 @@
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
         "stars": 8353,
-        "forks": 2576,
+        "forks": 2575,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -246,7 +250,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12837,
+        "stars": 12838,
         "forks": 3103,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -284,7 +288,7 @@
       "repo": {
         "fullName": "biomejs/biome",
         "url": "https://github.com/biomejs/biome",
-        "stars": 24082,
+        "stars": 24069,
         "forks": 906,
         "language": "Rust",
         "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
@@ -325,8 +329,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58343,
-        "forks": 22176,
+        "stars": 58329,
+        "forks": 22177,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -355,7 +359,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12837,
+        "stars": 12838,
         "forks": 3103,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -384,7 +388,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12837,
+        "stars": 12838,
         "forks": 3103,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -447,8 +451,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58343,
-        "forks": 22176,
+        "stars": 58329,
+        "forks": 22177,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -477,7 +481,7 @@
       "repo": {
         "fullName": "getsentry/sentry",
         "url": "https://github.com/getsentry/sentry",
-        "stars": 43379,
+        "stars": 43380,
         "forks": 4636,
         "language": "Python",
         "description": "Developer-first error tracking and performance monitoring",
