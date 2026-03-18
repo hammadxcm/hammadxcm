@@ -9,17 +9,11 @@
  */
 import SectionHeader from './SectionHeader.astro';
 import ViewAllLink from './ViewAllLink.astro';
-import ArrowIcon from './ArrowIcon.astro';
-import StarIcon from './icons/StarIcon.astro';
-import ForkIcon from './icons/ForkIcon.astro';
-import DownloadIcon from './icons/DownloadIcon.astro';
-import { getLangColor } from '@config/lang-colors';
-import { formatStars, formatDownloads } from '../utils/format';
-import { sanitizeHtml } from '@utils/sanitize';
+import FeaturedProjectCard from './cards/FeaturedProjectCard.astro';
+import DynamicRepoCard from './cards/DynamicRepoCard.astro';
 import type { TranslationMap } from '@i18n/types';
 import { getLocaleFromUrl, localePath } from '@i18n/index';
 import { getProjectData } from '../utils/project-data';
-import { resolveRepoIcon } from '../utils/project-icons';
 
 interface Props {
   translations: TranslationMap;
@@ -37,98 +31,29 @@ const hasMore = totalCount > INITIAL_SHOW;
 
 <!-- ══════ OPEN SOURCE ══════ -->
 <section id="projects" class="section">
-  <SectionHeader label={translations.projects.label} title={translations.projects.title} />
+  <SectionHeader label={translations.projects.label} title={translations.projects.title} transitionId="section-projects" />
   <div class="projects-grid stagger" id="projects-grid">
-    {/* Featured projects from config */}
     {featured.map((project, idx) => {
-      const hidden = hasMore && idx >= INITIAL_SHOW;
       const pkgKey = project.npmPackage || project.gemName || '';
       const dlCount = pkgKey ? (downloadCounts[pkgKey] || 0) : 0;
       return (
-        <div class:list={['project-card', 'glass', 'reveal', 'glow-border', { 'project-hidden': hidden }]} data-tilt>
-          <div class="project-icon">
-            <img
-              src={project.iconIsLocal ? `${base}${project.icon}` : project.icon}
-              alt={project.name}
-              width="44"
-              height="44"
-            />
-          </div>
-          {dlCount > 0 && (
-            <div class="project-header-row">
-              <span class="project-downloads">
-                <DownloadIcon />
-                {formatDownloads(dlCount)}
-              </span>
-            </div>
-          )}
-          <h3 class="project-name">
-            <a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a>
-          </h3>
-          <p class="project-desc" set:html={sanitizeHtml(project.description)} />
-          <div class="project-tags">
-            {project.tags.map((tag) => (
-              <span>{tag}</span>
-            ))}
-          </div>
-          <a href={project.url} target="_blank" rel="noopener noreferrer" class="project-link">
-            {project.linkText} <ArrowIcon />
-          </a>
-        </div>
+        <FeaturedProjectCard
+          project={project}
+          dlCount={dlCount}
+          base={base}
+          hidden={hasMore && idx >= INITIAL_SHOW}
+        />
       );
     })}
 
-    {/* Dynamic repos from GitHub */}
-    {dynamicRepos.map((repo, idx) => {
-      const globalIdx = featured.length + idx;
-      const hidden = hasMore && globalIdx >= INITIAL_SHOW;
-      const dotColor = repo.language ? getLangColor(repo.language) : null;
-      return (
-        <a
-          class:list={['project-card', 'project-card--dynamic', 'glass', 'reveal', 'glow-border', { 'project-hidden': hidden }]}
-          href={repo.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-tilt
-        >
-          <div class="project-icon">
-            <img src={resolveRepoIcon(repo, base)} alt={repo.name} width="44" height="44" loading="lazy" />
-          </div>
-          <div class="project-header-row">
-            {repo.language && dotColor && (
-              <span class="project-lang">
-                <span class="lang-dot" style={`background:${dotColor}`} />
-                {repo.language}
-              </span>
-            )}
-            <span class="project-stars">
-              <StarIcon />
-              {formatStars(repo.stars)}
-            </span>
-            {repo.forks > 0 && (
-              <span class="project-forks">
-                <ForkIcon />
-                {repo.forks}
-              </span>
-            )}
-          </div>
-          <h3 class="project-name">{repo.name}</h3>
-          {repo.description && (
-            <p class="project-desc">{repo.description}</p>
-          )}
-          {repo.topics.length > 0 && (
-            <div class="project-tags">
-              {repo.topics.slice(0, 5).map((tag) => (
-                <span>{tag}</span>
-              ))}
-            </div>
-          )}
-          <span class="project-link">
-            {translations.projects.viewRepo} <ArrowIcon />
-          </span>
-        </a>
-      );
-    })}
+    {dynamicRepos.map((repo, idx) => (
+      <DynamicRepoCard
+        repo={repo}
+        base={base}
+        viewRepoLabel={translations.projects.viewRepo}
+        hidden={hasMore && (featured.length + idx) >= INITIAL_SHOW}
+      />
+    ))}
   </div>
 
   {hasMore && (
@@ -136,24 +61,24 @@ const hasMore = totalCount > INITIAL_SHOW;
   )}
 </section>
 
-<style lang="scss">
+<style lang="scss" is:global>
   @use '../styles/mixins' as *;
   @use '../styles/utilities/project-card' as *;
 
-  @include project-card-base;
+  #projects {
+    @include project-card-base;
 
-  .projects-grid {
-    @include responsive-grid;
+    .projects-grid {
+      @include responsive-grid;
+    }
+
+    .project-card {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .project-hidden {
+      display: none !important;
+    }
   }
-
-  .project-card {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-
-  /* ── Hidden Cards ── */
-  .project-hidden {
-    display: none !important;
-  }
-
 </style>

@@ -3,16 +3,10 @@
  * Full Projects Listing — all projects (featured + dynamic) in a grid.
  * No hidden items, no view-more logic.
  */
-import ArrowIcon from '../ArrowIcon.astro';
-import StarIcon from '../icons/StarIcon.astro';
-import ForkIcon from '../icons/ForkIcon.astro';
-import DownloadIcon from '../icons/DownloadIcon.astro';
-import { getLangColor } from '@config/lang-colors';
-import { formatStars, formatDownloads } from '../../utils/format';
-import { sanitizeHtml } from '@utils/sanitize';
+import FeaturedProjectCard from '../cards/FeaturedProjectCard.astro';
+import DynamicRepoCard from '../cards/DynamicRepoCard.astro';
 import type { TranslationMap } from '@i18n/types';
 import { getProjectData } from '../../utils/project-data';
-import { resolveRepoIcon } from '../../utils/project-icons';
 
 interface Props {
   translations: TranslationMap;
@@ -28,96 +22,25 @@ const { featured, dynamicRepos, downloadCounts } = getProjectData();
     const pkgKey = project.npmPackage || project.gemName || '';
     const dlCount = pkgKey ? (downloadCounts[pkgKey] || 0) : 0;
     return (
-      <div class="project-card glass glow-border" data-tilt>
-        <div class="project-icon">
-          <img
-            src={project.iconIsLocal ? `${base}${project.icon}` : project.icon}
-            alt={project.name}
-            width="44"
-            height="44"
-          />
-        </div>
-        {dlCount > 0 && (
-          <div class="project-header-row">
-            <span class="project-downloads">
-              <DownloadIcon />
-              {formatDownloads(dlCount)}
-            </span>
-          </div>
-        )}
-        <h3 class="project-name">
-          <a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a>
-        </h3>
-        <p class="project-desc" set:html={sanitizeHtml(project.description)} />
-        <div class="project-tags">
-          {project.tags.map((tag) => (
-            <span>{tag}</span>
-          ))}
-        </div>
-        <a href={project.url} target="_blank" rel="noopener noreferrer" class="project-link">
-          {project.linkText} <ArrowIcon />
-        </a>
-      </div>
+      <FeaturedProjectCard project={project} dlCount={dlCount} base={base} />
     );
   })}
 
-  {dynamicRepos.map((repo) => {
-    const dotColor = repo.language ? getLangColor(repo.language) : null;
-    return (
-      <a
-        class="project-card project-card--dynamic glass glow-border"
-        href={repo.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-tilt
-      >
-        <div class="project-icon">
-          <img src={resolveRepoIcon(repo, base)} alt={repo.name} width="44" height="44" loading="lazy" />
-        </div>
-        <div class="project-header-row">
-          {repo.language && dotColor && (
-            <span class="project-lang">
-              <span class="lang-dot" style={`background:${dotColor}`} />
-              {repo.language}
-            </span>
-          )}
-          <span class="project-stars">
-            <StarIcon />
-            {formatStars(repo.stars)}
-          </span>
-          {repo.forks > 0 && (
-            <span class="project-forks">
-              <ForkIcon />
-              {repo.forks}
-            </span>
-          )}
-        </div>
-        <h3 class="project-name">{repo.name}</h3>
-        {repo.description && (
-          <p class="project-desc">{repo.description}</p>
-        )}
-        {repo.topics.length > 0 && (
-          <div class="project-tags">
-            {repo.topics.slice(0, 5).map((tag) => (
-              <span>{tag}</span>
-            ))}
-          </div>
-        )}
-        <span class="project-link">
-          {translations.projects.viewRepo} <ArrowIcon />
-        </span>
-      </a>
-    );
-  })}
+  {dynamicRepos.map((repo) => (
+    <DynamicRepoCard
+      repo={repo}
+      base={base}
+      viewRepoLabel={translations.projects.viewRepo}
+    />
+  ))}
 </div>
 
-<style lang="scss">
+<style lang="scss" is:global>
   @use '../../styles/mixins' as *;
   @use '../../styles/utilities/project-card' as *;
 
-  @include project-card-base;
-
   .projects-listing-grid {
+    @include project-card-base;
     @include responsive-grid;
   }
 </style>

@@ -11,4 +11,11 @@ export const themeMetaColors: Record<ThemeName, string> = {
   midnight: '#0F0F1A',
   arctic: '#F0F9FF',
   gruvbox: '#282828',
+  cyberpunk: '#0A0A12',
+  nebula: '#0B0014',
+  solarized: '#002B36',
+  rosepine: '#191724',
+  monokai: '#272822',
 };
+
+export const THEME_NAMES = Object.keys(themeMetaColors) as ThemeName[];

@@ -13,6 +13,7 @@
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
 
 /* Direction variants */
@@ -31,6 +32,7 @@
 .reveal-left.visible, .reveal-right.visible {
   opacity: 1;
   transform: translateX(0);
+  will-change: auto;
 }
 
 /* Scale-up variant */
@@ -43,6 +45,7 @@
 .reveal-scale.visible {
   opacity: 1;
   transform: scale(1);
+  will-change: auto;
 }
 
 /* Blur-in variant */
@@ -57,6 +60,7 @@
   opacity: 1;
   filter: blur(0);
   transform: translateY(0);
+  will-change: auto;
 }
 
 /* Stagger delays for children */
@@ -69,10 +73,108 @@
 .stagger > *.visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
 @for $i from 1 through 12 {
   .stagger > *:nth-child(#{$i}) {
     transition-delay: #{($i - 1) * 0.06}s;
+  }
+}
+
+/* ── CSS Scroll-Driven Animations (native, GPU-accelerated) ── */
+@supports (animation-timeline: view()) {
+  @keyframes reveal-up {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes reveal-from-left {
+    from { opacity: 0; transform: translateX(-60px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes reveal-from-right {
+    from { opacity: 0; transform: translateX(60px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes reveal-scale-up {
+    from { opacity: 0; transform: scale(0.85); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes reveal-blur-in {
+    from { opacity: 0; filter: blur(10px); transform: translateY(20px); }
+    to   { opacity: 1; filter: blur(0); transform: translateY(0); }
+  }
+
+  @keyframes stagger-child-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+    transition: none;
+    will-change: auto;
+  }
+
+  .reveal-left {
+    animation: reveal-from-left linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+    transition: none;
+    will-change: auto;
+  }
+
+  .reveal-right {
+    animation: reveal-from-right linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+    transition: none;
+    will-change: auto;
+  }
+
+  .reveal-scale {
+    animation: reveal-scale-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+    transition: none;
+    will-change: auto;
+  }
+
+  .reveal-blur {
+    animation: reveal-blur-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+    transition: none;
+    will-change: auto;
+  }
+
+  .stagger > * {
+    animation: stagger-child-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+    transition: none;
+    will-change: auto;
+  }
+
+  @for $i from 1 through 12 {
+    .stagger > *:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * 0.06}s;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur,
+    .stagger > * {
+      animation: none;
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
   }
 }
 

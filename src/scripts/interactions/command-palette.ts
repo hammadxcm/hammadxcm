@@ -4,6 +4,7 @@
  */
 
 import { trackEvent } from '../achievements';
+import { trapFocus } from '../utils/focus-trap';
 
 interface PaletteItem {
   id: string;
@@ -30,7 +31,21 @@ function fuzzyMatch(query: string, text: string): boolean {
   return qi === q.length;
 }
 
+let initialized = false;
+let paletteAC: AbortController | null = null;
+
+export function destroyCommandPalette(): void {
+  paletteAC?.abort();
+  paletteAC = null;
+  initialized = false;
+}
+
 export function initCommandPalette(): void {
+  if (initialized) return;
+  initialized = true;
+  paletteAC = new AbortController();
+  const signal = paletteAC.signal;
+
   const overlay = document.getElementById('cmdPaletteOverlay');
   const input = document.getElementById('cmdPaletteInput') as HTMLInputElement | null;
   const results = document.getElementById('cmdPaletteResults');
@@ -51,6 +66,7 @@ export function initCommandPalette(): void {
 
   let activeIndex = 0;
   let flatItems: { group: string; item: PaletteItem; action: () => void }[] = [];
+  let releaseFocusTrap: (() => void) | null = null;
 
   function open(): void {
     _overlay.classList.add('open');
@@ -59,12 +75,18 @@ export function initCommandPalette(): void {
     _input.focus();
     trackEvent('command_palette');
     render('');
+    releaseFocusTrap = trapFocus(_overlay);
+    // Re-focus input after trap activates (trap focuses first focusable)
+    _input.focus();
   }
 
   function close(): void {
     _overlay.classList.remove('open');
     _overlay.setAttribute('aria-hidden', 'true');
-    _input.blur();
+    if (releaseFocusTrap) {
+      releaseFocusTrap();
+      releaseFocusTrap = null;
+    }
   }
 
   function isOpen(): boolean {
@@ -164,48 +186,64 @@ export function initCommandPalette(): void {
   }
 
   // Keyboard shortcut: Cmd+K / Ctrl+K
-  document.addEventListener('keydown', (e: KeyboardEvent) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-      e.preventDefault();
-      if (isOpen()) close();
-      else open();
-      return;
-    }
+  document.addEventListener(
+    'keydown',
+    (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        if (isOpen()) close();
+        else open();
+        return;
+      }
 
-    if (!isOpen()) return;
+      if (!isOpen()) return;
 
-    if (e.key === 'Escape') {
-      e.preventDefault();
-      close();
-    } else if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      activeIndex = (activeIndex + 1) % Math.max(flatItems.length, 1);
-      updateActive();
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      activeIndex = (activeIndex - 1 + flatItems.length) % Math.max(flatItems.length, 1);
-      updateActive();
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      if (flatItems[activeIndex]) flatItems[activeIndex].action();
-    }
-  });
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        close();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeIndex = (activeIndex + 1) % Math.max(flatItems.length, 1);
+        updateActive();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeIndex = (activeIndex - 1 + flatItems.length) % Math.max(flatItems.length, 1);
+        updateActive();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (flatItems[activeIndex]) flatItems[activeIndex].action();
+      }
+    },
+    { signal },
+  );
 
   // Click on result
-  _results.addEventListener('click', (e) => {
-    const target = (e.target as HTMLElement).closest('.cmd-item') as HTMLElement | null;
-    if (!target) return;
-    const idx = parseInt(target.dataset.idx || '0', 10);
-    if (flatItems[idx]) flatItems[idx].action();
-  });
+  _results.addEventListener(
+    'click',
+    (e) => {
+      const target = (e.target as HTMLElement).closest('.cmd-item') as HTMLElement | null;
+      if (!target) return;
+      const idx = parseInt(target.dataset.idx || '0', 10);
+      if (flatItems[idx]) flatItems[idx].action();
+    },
+    { signal },
+  );
 
   // Click on overlay to close
-  _overlay.addEventListener('click', (e) => {
-    if (e.target === _overlay) close();
-  });
+  _overlay.addEventListener(
+    'click',
+    (e) => {
+      if (e.target === _overlay) close();
+    },
+    { signal },
+  );
 
   // Typing in input
-  _input.addEventListener('input', () => {
-    render(_input.value.trim());
-  });
+  _input.addEventListener(
+    'input',
+    () => {
+      render(_input.value.trim());
+    },
+    { signal },
+  );
 }

@@ -1,32 +1,18 @@
 /**
- * Chart.js initialization for analytics dashboard.
- * Theme-aware, DRY, scroll-triggered, reduced-motion-respecting.
+ * ECharts initialization for analytics dashboard.
+ * Theme-aware, tree-shaken, scroll-triggered, reduced-motion-respecting.
+ *
+ * Color strategy: All colors derived from CSS variables so charts adapt
+ * to all 15 themes (14 dark + 1 light "arctic") automatically.
  */
-import {
-  ArcElement,
-  BarController,
-  BarElement,
-  CategoryScale,
-  Chart,
-  DoughnutController,
-  Filler,
-  Legend,
-  LinearScale,
-  Tooltip,
-} from 'chart.js';
+
+import { BarChart, PieChart } from 'echarts/charts';
+import { GridComponent, LegendComponent, TooltipComponent } from 'echarts/components';
+import * as echarts from 'echarts/core';
+import { SVGRenderer } from 'echarts/renderers';
 import { prefersReducedMotion } from './state';
 
-Chart.register(
-  DoughnutController,
-  ArcElement,
-  BarController,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend,
-  Filler,
-);
+echarts.use([PieChart, BarChart, TooltipComponent, LegendComponent, GridComponent, SVGRenderer]);
 
 // ── Shared constants ──
 const MONO_FONT = 'Fira Code, ui-monospace, monospace';
@@ -36,157 +22,293 @@ const DOUGHNUT_DURATION = prefersReducedMotion ? 0 : 800;
 // ── Theme-aware color extraction ──
 interface ThemeColors {
   accent: string;
+  accentRgb: string;
+  accentBlue: string;
+  accentMint: string;
+  accentTertiary: string;
   text: string;
   textDim: string;
+  bg: string;
   bgCard: string;
   gridLine: string;
   tooltipBg: string;
+  tooltipBorder: string;
+  tooltipText: string;
   merged: string;
   open: string;
   closed: string;
+  isLight: boolean;
 }
 
 function getCSSVar(name: string): string {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 }
 
+let cachedThemeColors: ThemeColors | null = null;
+let cachedThemeKey: string | null = null;
+
 function themeColors(): ThemeColors {
+  const themeKey = document.documentElement.getAttribute('data-theme') || 'hacker';
+  if (cachedThemeColors && cachedThemeKey === themeKey) return cachedThemeColors;
+
+  const isLight = themeKey === 'arctic';
+
   const accent = getCSSVar('--accent') || '#00bfbf';
-  const accentGlow = getCSSVar('--accent-glow') || '0,191,191';
+  const accentRgb = getCSSVar('--accent-glow') || '0,191,191';
+  const accentBlue = getCSSVar('--accent-blue') || '#5BCDEC';
+  const accentMint = getCSSVar('--accent-mint') || '#A9FEF7';
+  const accentTertiary = getCSSVar('--accent-tertiary') || '#9B59B6';
   const text = getCSSVar('--text') || '#e6edf3';
   const textDim = getCSSVar('--text-dim') || '#8b949e';
+  const bg = getCSSVar('--bg') || '#0D1117';
   const bgCard = getCSSVar('--bg-card-solid') || '#161b22';
-  return {
+
+  cachedThemeKey = themeKey;
+  cachedThemeColors = {
     accent,
+    accentRgb,
+    accentBlue,
+    accentMint,
+    accentTertiary,
     text,
     textDim,
+    bg,
     bgCard,
-    gridLine: `rgba(${accentGlow}, 0.08)`,
-    tooltipBg: `rgba(${accentGlow}, 0.9)`,
+    isLight,
+    gridLine: `rgba(${accentRgb}, ${isLight ? '0.12' : '0.1'})`,
+    tooltipBg: bgCard,
+    tooltipBorder: `rgba(${accentRgb}, 0.3)`,
+    tooltipText: text,
     merged: accent,
-    open: getCSSVar('--accent-mint') || '#3fb950',
-    closed: textDim,
+    open: accentMint,
+    closed: accentBlue,
   };
+
+  return cachedThemeColors;
 }
 
-function tooltipConfig(tc: ThemeColors) {
+/** Ensure a color has enough contrast against the chart background.
+ *  For very dark lang colors on dark themes, lighten them. */
+function ensureContrast(hex: string, bgHex: string): string {
+  const lum = hexLuminance(hex);
+  const bgLum = hexLuminance(bgHex);
+  const ratio = (Math.max(lum, bgLum) + 0.05) / (Math.min(lum, bgLum) + 0.05);
+  // If contrast ratio is too low, lighten the color
+  if (ratio < 2.5) {
+    return lightenHex(hex, 0.4);
+  }
+  return hex;
+}
+
+function hexLuminance(hex: string): number {
+  const c = hex.replace('#', '');
+  if (c.length < 6) return 0.5;
+  const r = parseInt(c.slice(0, 2), 16) / 255;
+  const g = parseInt(c.slice(2, 4), 16) / 255;
+  const b = parseInt(c.slice(4, 6), 16) / 255;
+  const toLinear = (v: number) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+  return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+}
+
+function lightenHex(hex: string, amount: number): string {
+  const c = hex.replace('#', '');
+  if (c.length < 6) return hex;
+  const r = Math.min(255, Math.round(parseInt(c.slice(0, 2), 16) + 255 * amount));
+  const g = Math.min(255, Math.round(parseInt(c.slice(2, 4), 16) + 255 * amount));
+  const b = Math.min(255, Math.round(parseInt(c.slice(4, 6), 16) + 255 * amount));
+  return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+}
+
+function adjustAlpha(hex: string, alpha: number): string {
+  const c = hex.replace('#', '');
+  if (c.length < 6) return hex;
+  const r = parseInt(c.slice(0, 2), 16);
+  const g = parseInt(c.slice(2, 4), 16);
+  const b = parseInt(c.slice(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+// ── Shared tooltip config ──
+function tooltipStyle(tc: ThemeColors) {
   return {
     backgroundColor: tc.tooltipBg,
-    titleFont: { family: MONO_FONT, size: 12 },
-    bodyFont: { family: MONO_FONT, size: 11 },
-  };
-}
-
-function tickConfig(tc: ThemeColors, color?: string, size = 10) {
-  return {
-    color: color || tc.textDim,
-    font: { family: MONO_FONT, size },
+    borderColor: tc.tooltipBorder,
+    borderWidth: 1,
+    textStyle: {
+      fontFamily: MONO_FONT,
+      fontSize: 11,
+      color: tc.tooltipText,
+    },
+    extraCssText: `box-shadow: 0 4px 16px rgba(${tc.accentRgb}, 0.15); border-radius: 6px;`,
   };
 }
 
 // ── Language Doughnut ──
-function initLanguageDoughnut(canvas: HTMLCanvasElement): Chart | null {
-  const raw = canvas.dataset.chartLangs;
+function initLanguageDoughnut(container: HTMLElement): echarts.ECharts | null {
+  const raw = container.dataset.chartLangs;
   if (!raw) return null;
 
   const langs: { name: string; color: string; count: number; pct: number }[] = JSON.parse(raw);
   if (!langs.length) return null;
 
   const tc = themeColors();
+  const totalPRs = langs.reduce((s, l) => s + l.count, 0);
+  const chart = echarts.init(container, undefined, { renderer: 'svg' });
 
-  return new Chart(canvas, {
-    type: 'doughnut',
-    data: {
-      labels: langs.map((l) => l.name),
-      datasets: [
-        {
-          data: langs.map((l) => l.count),
-          backgroundColor: langs.map((l) => l.color),
-          borderWidth: 0,
-          hoverBorderWidth: 2,
-          hoverBorderColor: tc.bgCard,
-        },
-      ],
+  chart.setOption({
+    animation: !prefersReducedMotion,
+    animationDuration: DOUGHNUT_DURATION,
+    animationEasing: 'cubicOut',
+    tooltip: {
+      trigger: 'item',
+      ...tooltipStyle(tc),
+      formatter: (p: Record<string, unknown>) => {
+        const lang = langs[p.dataIndex as number];
+        return `<b style="color:${tc.accent}">${lang.name}</b><br/>${lang.count} PRs (${lang.pct}%)`;
+      },
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      cutout: '65%',
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          ...tooltipConfig(tc),
-          callbacks: {
-            label: (ctx) => {
-              const lang = langs[ctx.dataIndex];
-              return ` ${lang.name}: ${lang.count} PRs (${lang.pct}%)`;
-            },
+    series: [
+      {
+        type: 'pie',
+        radius: ['60%', '90%'],
+        center: ['50%', '50%'],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderWidth: 2,
+          borderColor: tc.bgCard,
+          borderRadius: 4,
+        },
+        label: {
+          show: true,
+          position: 'center',
+          formatter: () => `${totalPRs}`,
+          fontSize: 20,
+          fontWeight: 700,
+          fontFamily: MONO_FONT,
+          color: tc.accent,
+        },
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 20,
+            shadowColor: `rgba(${tc.accentRgb}, 0.5)`,
           },
+          scaleSize: 6,
         },
+        data: langs.map((l) => {
+          const safeColor = ensureContrast(l.color, tc.bgCard);
+          return {
+            value: l.count,
+            name: l.name,
+            itemStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 1, 1, [
+                { offset: 0, color: safeColor },
+                { offset: 1, color: adjustAlpha(safeColor, 0.7) },
+              ]),
+            },
+          };
+        }),
+        animationType: 'scale',
+        animationEasing: 'elasticOut',
+        animationDelay: () => (prefersReducedMotion ? 0 : Math.random() * 200),
       },
-      animation: {
-        animateRotate: true,
-        duration: DOUGHNUT_DURATION,
-      },
-    },
+    ],
   });
+
+  return chart;
 }
 
 // ── Organization Horizontal Bar Chart ──
-function initOrgBarChart(canvas: HTMLCanvasElement): Chart | null {
-  const raw = canvas.dataset.chartOrgs;
+function initOrgBarChart(container: HTMLElement): echarts.ECharts | null {
+  const raw = container.dataset.chartOrgs;
   if (!raw) return null;
 
   const orgs: { name: string; count: number }[] = JSON.parse(raw);
   if (!orgs.length) return null;
 
   const tc = themeColors();
+  const chart = echarts.init(container, undefined, { renderer: 'svg' });
 
-  return new Chart(canvas, {
-    type: 'bar',
-    data: {
-      labels: orgs.map((o) => o.name),
-      datasets: [
-        {
-          data: orgs.map((o) => o.count),
-          backgroundColor: tc.accent,
-          borderRadius: 4,
-          barPercentage: 0.7,
-        },
-      ],
+  // Reverse for horizontal bar (bottom-to-top)
+  const reversed = [...orgs].reverse();
+
+  chart.setOption({
+    animation: !prefersReducedMotion,
+    animationDuration: ANIMATION_DURATION,
+    animationEasing: 'cubicOut',
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'shadow' },
+      ...tooltipStyle(tc),
+      formatter: (params: Record<string, unknown>[]) => {
+        const p = params[0];
+        return `<b style="color:${tc.accent}">${(p as Record<string, unknown>).name}</b><br/>${(p as Record<string, unknown>).value} PRs`;
+      },
     },
-    options: {
-      indexAxis: 'y',
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          ...tooltipConfig(tc),
-          callbacks: {
-            label: (ctx) => ` ${ctx.parsed.x} PRs`,
+    grid: {
+      left: 8,
+      right: 24,
+      top: 8,
+      bottom: 8,
+      containLabel: true,
+    },
+    xAxis: {
+      type: 'value',
+      splitLine: { lineStyle: { color: tc.gridLine } },
+      axisLabel: {
+        fontFamily: MONO_FONT,
+        fontSize: 10,
+        color: tc.textDim,
+      },
+      minInterval: 1,
+    },
+    yAxis: {
+      type: 'category',
+      data: reversed.map((o) => o.name),
+      axisLine: { show: false },
+      axisTick: { show: false },
+      axisLabel: {
+        fontFamily: MONO_FONT,
+        fontSize: 11,
+        color: tc.text,
+      },
+    },
+    series: [
+      {
+        type: 'bar',
+        data: reversed.map((o) => ({
+          value: o.count,
+          itemStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+              { offset: 0, color: tc.accent },
+              { offset: 1, color: `rgba(${tc.accentRgb}, 0.4)` },
+            ]),
+            borderRadius: [0, 4, 4, 0],
+            shadowBlur: 6,
+            shadowColor: `rgba(${tc.accentRgb}, 0.12)`,
+          },
+        })),
+        barWidth: '60%',
+        emphasis: {
+          itemStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+              { offset: 0, color: tc.accent },
+              { offset: 1, color: `rgba(${tc.accentRgb}, 0.7)` },
+            ]),
+            shadowBlur: 16,
+            shadowColor: `rgba(${tc.accentRgb}, 0.35)`,
           },
         },
+        animationDelay: (idx: number) => (prefersReducedMotion ? 0 : idx * 80),
       },
-      scales: {
-        x: {
-          beginAtZero: true,
-          ticks: { ...tickConfig(tc), stepSize: 1 },
-          grid: { color: tc.gridLine },
-        },
-        y: {
-          ticks: tickConfig(tc, tc.text, 11),
-          grid: { display: false },
-        },
-      },
-      animation: { duration: ANIMATION_DURATION },
-    },
+    ],
   });
+
+  return chart;
 }
 
 // ── Timeline Stacked Bar Chart ──
-function initTimelineChart(canvas: HTMLCanvasElement): Chart | null {
-  const raw = canvas.dataset.chartTimeline;
+function initTimelineChart(container: HTMLElement): echarts.ECharts | null {
+  const raw = container.dataset.chartTimeline;
   if (!raw) return null;
 
   const entries: { month: string; merged: number; open: number; closed: number }[] =
@@ -194,96 +316,129 @@ function initTimelineChart(canvas: HTMLCanvasElement): Chart | null {
   if (!entries.length) return null;
 
   const tc = themeColors();
+  const chart = echarts.init(container, undefined, { renderer: 'svg' });
 
-  return new Chart(canvas, {
-    type: 'bar',
-    data: {
-      labels: entries.map((e) => e.month.slice(5)),
-      datasets: [
-        {
-          label: 'Merged',
-          data: entries.map((e) => e.merged),
-          backgroundColor: tc.merged,
-          borderRadius: 2,
-        },
-        {
-          label: 'Open',
-          data: entries.map((e) => e.open),
-          backgroundColor: tc.open,
-          borderRadius: 2,
-        },
-        {
-          label: 'Closed',
-          data: entries.map((e) => e.closed),
-          backgroundColor: tc.closed,
-          borderRadius: 2,
-        },
-      ],
+  chart.setOption({
+    animation: !prefersReducedMotion,
+    animationDuration: ANIMATION_DURATION,
+    animationEasing: 'cubicOut',
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'shadow' },
+      ...tooltipStyle(tc),
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          position: 'bottom',
-          labels: {
-            ...tickConfig(tc),
-            boxWidth: 10,
-            padding: 12,
+    legend: {
+      bottom: 0,
+      textStyle: { fontFamily: MONO_FONT, fontSize: 10, color: tc.text },
+      itemWidth: 10,
+      itemHeight: 10,
+      itemGap: 16,
+      inactiveColor: tc.textDim,
+    },
+    grid: {
+      left: 8,
+      right: 8,
+      top: 8,
+      bottom: 36,
+      containLabel: true,
+    },
+    xAxis: {
+      type: 'category',
+      data: entries.map((e) => e.month.slice(5)),
+      axisLine: { show: false },
+      axisTick: { show: false },
+      axisLabel: {
+        fontFamily: MONO_FONT,
+        fontSize: 10,
+        color: tc.textDim,
+      },
+    },
+    yAxis: {
+      type: 'value',
+      splitLine: { lineStyle: { color: tc.gridLine } },
+      axisLabel: {
+        fontFamily: MONO_FONT,
+        fontSize: 10,
+        color: tc.textDim,
+      },
+      minInterval: 1,
+    },
+    series: [
+      {
+        name: 'Merged',
+        type: 'bar',
+        stack: 'total',
+        data: entries.map((e) => e.merged),
+        itemStyle: {
+          color: tc.merged,
+          borderRadius: [0, 0, 0, 0],
+        },
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowColor: `rgba(${tc.accentRgb}, 0.3)`,
           },
         },
-        tooltip: tooltipConfig(tc),
       },
-      scales: {
-        x: {
-          stacked: true,
-          ticks: tickConfig(tc),
-          grid: { display: false },
-        },
-        y: {
-          stacked: true,
-          beginAtZero: true,
-          ticks: { ...tickConfig(tc), stepSize: 1 },
-          grid: { color: tc.gridLine },
+      {
+        name: 'Open',
+        type: 'bar',
+        stack: 'total',
+        data: entries.map((e) => e.open),
+        itemStyle: {
+          color: tc.open,
         },
       },
-      animation: { duration: ANIMATION_DURATION },
-    },
+      {
+        name: 'Closed',
+        type: 'bar',
+        stack: 'total',
+        data: entries.map((e) => e.closed),
+        itemStyle: {
+          color: tc.closed,
+          borderRadius: [2, 2, 0, 0],
+        },
+      },
+    ],
   });
+
+  return chart;
 }
 
 // ── Chart instance management ──
-const chartInstances: Chart[] = [];
+const chartInstances: echarts.ECharts[] = [];
 
 function destroyAll() {
   for (const chart of chartInstances) {
-    chart.destroy();
+    chart.dispose();
   }
   chartInstances.length = 0;
+  cachedThemeColors = null;
+  cachedThemeKey = null;
 }
 
-function createChart(canvas: HTMLCanvasElement): Chart | null {
-  if (canvas.dataset.chartLangs != null) return initLanguageDoughnut(canvas);
-  if (canvas.dataset.chartOrgs != null) return initOrgBarChart(canvas);
-  if (canvas.dataset.chartTimeline != null) return initTimelineChart(canvas);
+function createChart(container: HTMLElement): echarts.ECharts | null {
+  if (container.dataset.chartLangs != null) return initLanguageDoughnut(container);
+  if (container.dataset.chartOrgs != null) return initOrgBarChart(container);
+  if (container.dataset.chartTimeline != null) return initTimelineChart(container);
   return null;
 }
 
 // ── Scroll-triggered initialization via IntersectionObserver ──
 let activeObserver: IntersectionObserver | null = null;
 
-function observeCanvases() {
-  const canvases = document.querySelectorAll<HTMLCanvasElement>(
+function observeContainers() {
+  const containers = document.querySelectorAll<HTMLElement>(
     '[data-chart-langs],[data-chart-orgs],[data-chart-timeline]',
   );
-  if (!canvases.length) return;
+  if (!containers.length) return;
 
   activeObserver = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
           activeObserver?.unobserve(entry.target);
-          const chart = createChart(entry.target as HTMLCanvasElement);
+          const chart = createChart(entry.target as HTMLElement);
           if (chart) chartInstances.push(chart);
         }
       }
@@ -291,14 +446,17 @@ function observeCanvases() {
     { threshold: 0.1 },
   );
 
-  for (const c of canvases) {
+  for (const c of containers) {
     activeObserver.observe(c);
   }
 }
 
 // ── Theme change: destroy + re-observe ──
+let themeObserver: MutationObserver | null = null;
+
 function watchThemeChanges() {
-  const observer = new MutationObserver((mutations) => {
+  themeObserver?.disconnect();
+  themeObserver = new MutationObserver((mutations) => {
     for (const mutation of mutations) {
       if (mutation.attributeName === 'data-theme') {
         destroyAll();
@@ -306,15 +464,41 @@ function watchThemeChanges() {
           activeObserver.disconnect();
           activeObserver = null;
         }
-        observeCanvases();
+        observeContainers();
         break;
       }
     }
   });
-  observer.observe(document.documentElement, { attributes: true });
+  themeObserver.observe(document.documentElement, { attributes: true });
+}
+
+// ── Resize handling ──
+let resizeObserver: ResizeObserver | null = null;
+
+function watchResizes() {
+  resizeObserver?.disconnect();
+  resizeObserver = new ResizeObserver(() => {
+    for (const chart of chartInstances) {
+      chart.resize();
+    }
+  });
+
+  const containers = document.querySelectorAll<HTMLElement>(
+    '[data-chart-langs],[data-chart-orgs],[data-chart-timeline]',
+  );
+  for (const c of containers) {
+    resizeObserver.observe(c);
+  }
 }
 
 export function initDashboardCharts() {
-  observeCanvases();
+  destroyAll();
+  if (activeObserver) {
+    activeObserver.disconnect();
+    activeObserver = null;
+  }
+
+  observeContainers();
   watchThemeChanges();
+  watchResizes();
 }
