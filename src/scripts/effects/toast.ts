@@ -16,6 +16,10 @@ export function spawnToast(message: string, options?: { className?: string }): v
     all = container.querySelectorAll('.hacker-toast');
   }
 
+  // Announce to screen readers via aria-live region
+  const liveRegion = document.getElementById('live-region');
+  if (liveRegion) liveRegion.textContent = message;
+
   setTimeout(() => {
     toast.classList.add('dismiss');
     toast.addEventListener('animationend', () => toast.remove());

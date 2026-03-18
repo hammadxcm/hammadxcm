@@ -160,10 +160,13 @@
   display: flex;
   gap: 3px;
   direction: ltr; // Charts always LTR
+  overflow-x: auto;
 
   @include respond-to(mobile) {
     gap: 2px;
   }
+
+  @include hide-scrollbar;
 }
 
 .heatmap-week {
@@ -185,6 +188,7 @@
 .dash-heatmap-cell {
   width: 14px;
   height: 14px;
+  flex-shrink: 0;
   border-radius: 2px;
   background: rgba(var(--accent-glow), var(--intensity, 0.04));
 
@@ -336,9 +340,9 @@
   background: var(--bar-color, var(--accent));
 }
 
-// ── Chart.js Canvas Container ──
+// ── ECharts Container ──
 .dash-chart-container {
   position: relative;
   width: 100%;
-  max-height: 300px;
+  min-height: 180px;
 }

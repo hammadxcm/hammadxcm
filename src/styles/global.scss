@@ -42,6 +42,7 @@
 @use 'effects/breakout';
 @use 'effects/wireframe';
 @use 'effects/chatbot';
+@use 'effects/page-transitions';
 
 // Utilities
 @use 'utilities/skip-link';
@@ -49,6 +50,7 @@
 @use 'utilities/separators';
 @use 'utilities/content-visibility';
 @use 'utilities/rtl';
+@use 'utilities/counter-animation';
 
 // Overrides
 @use 'overrides/arctic';

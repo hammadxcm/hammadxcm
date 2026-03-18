@@ -12,10 +12,11 @@ vi.mock('../theme-config', () => ({
   getThemeConfig: () => ({ navBg: 'rgba(0,0,0,' }),
 }));
 
-import { initScrollHandler } from '../interactions/scroll';
+import { destroyScrollHandler, initScrollHandler } from '../interactions/scroll';
 
 describe('initScrollHandler', () => {
   beforeEach(() => {
+    destroyScrollHandler();
     document.body.innerHTML = `
       <div class="hero-content"></div>
       <div class="scroll-indicator"></div>
@@ -26,6 +27,7 @@ describe('initScrollHandler', () => {
   });
 
   afterEach(() => {
+    destroyScrollHandler();
     document.body.innerHTML = '';
   });
 
@@ -37,7 +39,11 @@ describe('initScrollHandler', () => {
   it('attaches scroll listener', () => {
     const spy = vi.spyOn(window, 'addEventListener');
     initScrollHandler();
-    expect(spy).toHaveBeenCalledWith('scroll', expect.any(Function));
+    expect(spy).toHaveBeenCalledWith(
+      'scroll',
+      expect.any(Function),
+      expect.objectContaining({ signal: expect.any(AbortSignal) }),
+    );
     spy.mockRestore();
   });
 

@@ -353,6 +353,106 @@ const purpleParticles: MoteEffectConfig = {
   },
 };
 
+const neonSparks: MoteEffectConfig = {
+  count: (w, h) => Math.min(70, Math.floor((w * h) / 14000)),
+  spawn: (w, h) => {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 3 + 3;
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.5 + 0.5,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      opacity: Math.random() * 0.5 + 0.5,
+      drift: 0,
+      flicker: 0,
+      twinkle: 0,
+      speed: 0,
+      baseOpacity: 0,
+      glow: 0,
+      glowSpeed: 0,
+    };
+  },
+  update: (m, w, h) => {
+    m.x += m.vx;
+    m.y += m.vy;
+    m.vx *= 0.96;
+    m.vy *= 0.96;
+    m.opacity -= 0.015;
+    if (m.opacity <= 0) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = Math.random() * 3 + 3;
+      m.x = Math.random() * w;
+      m.y = Math.random() * h;
+      m.vx = Math.cos(angle) * speed;
+      m.vy = Math.sin(angle) * speed;
+      m.opacity = Math.random() * 0.5 + 0.5;
+    }
+  },
+  draw: (ctx, m, color) => {
+    const tailX = m.x - m.vx * 4;
+    const tailY = m.y - m.vy * 4;
+    const grad = ctx.createLinearGradient(tailX, tailY, m.x, m.y);
+    grad.addColorStop(0, `${color}0)`);
+    grad.addColorStop(1, `${color}${m.opacity})`);
+    ctx.beginPath();
+    ctx.moveTo(tailX, tailY);
+    ctx.lineTo(m.x, m.y);
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = m.r;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  },
+};
+
+const cosmicDust: MoteEffectConfig = {
+  count: (w, h) => Math.min(60, Math.floor((w * h) / 16000)),
+  spawn: (w, h) => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: Math.random() * 3 + 1,
+    vx: 0,
+    vy: 0,
+    opacity: 0,
+    drift: Math.random() * Math.PI * 2,
+    flicker: 0,
+    twinkle: 0,
+    speed: Math.random() * 0.003 + 0.001,
+    baseOpacity: Math.random() * 0.3 + 0.2,
+    glow: Math.random() * Math.PI * 2,
+    glowSpeed: Math.random() * 0.02 + 0.01,
+  }),
+  update: (m, w, h) => {
+    m.x += Math.cos(m.drift) * 0.3;
+    m.y += Math.sin(m.drift) * 0.25;
+    m.drift += m.speed;
+    m.glow += m.glowSpeed;
+    // Gentle random perturbation
+    m.x += (Math.random() - 0.5) * 0.1;
+    m.y += (Math.random() - 0.5) * 0.1;
+    // Wrap around
+    if (m.x < -10) m.x = w + 10;
+    if (m.x > w + 10) m.x = -10;
+    if (m.y < -10) m.y = h + 10;
+    if (m.y > h + 10) m.y = -10;
+  },
+  draw: (ctx, m, color) => {
+    const pulse = Math.sin(m.glow) * 0.2;
+    const opacity = m.baseOpacity + pulse;
+    // Outer glow
+    ctx.beginPath();
+    ctx.arc(m.x, m.y, m.r * 3, 0, Math.PI * 2);
+    ctx.fillStyle = `${color}${Math.max(0.02, opacity * 0.12)})`;
+    ctx.fill();
+    // Inner core
+    ctx.beginPath();
+    ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+    ctx.fillStyle = `${color}${Math.max(0.1, opacity * 0.5)})`;
+    ctx.fill();
+  },
+};
+
 const moteEffects: Record<string, MoteEffectConfig> = {
   snowfall,
   bubbles,
@@ -362,6 +462,8 @@ const moteEffects: Record<string, MoteEffectConfig> = {
   fireflies,
   purpleParticles,
   bloodRain,
+  neonSparks,
+  cosmicDust,
 };
 
 /* ── Particles (hacker, matrix) — custom: mouse interaction + connection lines ── */
@@ -570,8 +672,13 @@ function updateMouseListeners(effect: string): void {
 
 export function switchCanvasEffect(theme: ThemeName): void {
   const tc = getThemeConfig(theme);
-  currentEffect = tc.canvasEffect;
-  if (!inited[currentEffect]) initEffect(currentEffect);
+  const newEffect = tc.canvasEffect;
+  // Always re-init when effect changes — mote effects share the motes[] array,
+  // so skipping init would reuse stale motes from the previous effect.
+  if (newEffect !== currentEffect) {
+    currentEffect = newEffect;
+    initEffect(currentEffect);
+  }
   updateMouseListeners(currentEffect);
 }
 

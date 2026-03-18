@@ -1,0 +1,48 @@
+/**
+ * @file Counter Animation
+ * @description CSS @property + @keyframes counter that animates numeric values
+ *              from 0 to target when scrolling into view. Fallback: shows final value.
+ */
+
+@property --counter-val {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes countUp {
+  from { --counter-val: 0; }
+  to   { --counter-val: var(--count-target, 0); }
+}
+
+.count-up {
+  --count-target: 0;
+  counter-reset: num var(--counter-val);
+
+  &::before {
+    content: counter(num);
+  }
+}
+
+/* Animate when supported */
+@supports (animation-timeline: view()) {
+  .count-up {
+    animation: countUp linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .count-up {
+      animation: none;
+      --counter-val: var(--count-target, 0);
+    }
+  }
+}
+
+/* Fallback: JS-triggered .visible class */
+@supports not (animation-timeline: view()) {
+  .count-up {
+    --counter-val: var(--count-target, 0);
+  }
+}

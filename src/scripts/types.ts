@@ -30,6 +30,8 @@ export type ScreenEffect =
   | 'pastelBloom'
   | 'shootingStar'
   | 'tvStatic'
+  | 'hologramFlicker'
+  | 'nebulaPulse'
   | 'none';
 
 export interface HeroTiming {

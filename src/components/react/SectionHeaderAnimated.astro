@@ -1,0 +1,12 @@
+---
+import { SectionHeader } from './SectionHeader.tsx';
+
+interface Props {
+  label: string;
+  title: string;
+}
+
+const { label, title } = Astro.props;
+---
+
+<SectionHeader client:visible label={label} title={title} />

@@ -235,13 +235,12 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
     <div class="analytics-ring-panel glass">
       <h3 class="dash-panel-title">{translations.contributionAnalytics?.languageBreakdown || 'Languages'}</h3>
       <div class="ring-layout">
-        <div class="dash-chart-container dash-chart-container--ring">
-          <canvas
-            data-chart-langs={JSON.stringify(langLegend)}
-            role="img"
-            aria-label={`Language distribution: ${langLegend.map((l) => `${l.name} ${l.pct}%`).join(', ')}`}
-          ></canvas>
-        </div>
+        <div
+          class="dash-chart-container dash-chart-container--ring"
+          data-chart-langs={JSON.stringify(langLegend)}
+          role="img"
+          aria-label={`Language distribution: ${langLegend.map((l) => `${l.name} ${l.pct}%`).join(', ')}`}
+        ></div>
         <div class="lang-legend">
           {langLegend.map((item) => (
             <div class="lang-legend-row">
@@ -290,7 +289,7 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
   </div>
 
   <div class="dev-quote reveal">
-    <img data-stat="quote" src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt={translations.analytics.alt.devQuote} loading="lazy" width="600" height="150">
+    <img data-stat="quote" src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt={translations.analytics.alt.devQuote} loading="lazy" decoding="async" width="600" height="150">
   </div>
 </div>
 
@@ -558,7 +557,7 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
 
 <script>
   import { initDashboardCharts } from '../../scripts/dashboard-charts';
-  document.addEventListener('DOMContentLoaded', initDashboardCharts);
+  document.addEventListener('astro:page-load', initDashboardCharts);
 
   interface YearData {
     year: string;
@@ -566,7 +565,7 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
     weeks: { contributionDays: { date: string; count: number; level: number }[] }[];
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     const grid = document.getElementById('heatmapGrid');
     const monthsEl = document.getElementById('heatmapMonths');
     const totalEl = document.querySelector<HTMLElement>('.heatmap-total');

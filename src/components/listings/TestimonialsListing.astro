@@ -14,7 +14,7 @@ const testimonials = config.testimonials || [];
       <blockquote class="testimonial-card glass glow-border">
         <p class="testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
         <footer class="testimonial-footer">
-          {t.avatar && <img src={t.avatar} alt={t.author} class="testimonial-avatar" width="40" height="40" loading="lazy" />}
+          {t.avatar && <img src={t.avatar} alt={t.author} class="testimonial-avatar" width="40" height="40" loading="lazy" decoding="async" />}
           <div class="testimonial-author">
             <cite class="testimonial-name">{t.author}</cite>
             <span class="testimonial-role">{t.role}, {t.company}</span>

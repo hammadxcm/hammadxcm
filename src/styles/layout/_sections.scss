@@ -45,3 +45,39 @@
   font-weight: 800;
   letter-spacing: -0.02em;
 }
+
+/* ── Scroll-driven section parallax ── */
+@supports (animation-timeline: view()) {
+  @keyframes section-parallax-bg {
+    from { transform: translateY(-30px); }
+    to   { transform: translateY(30px); }
+  }
+
+  .section::before {
+    content: '';
+    position: absolute;
+    inset: -40px -20px;
+    z-index: -1;
+    border-radius: 50%;
+    opacity: 0.04;
+    pointer-events: none;
+    animation: section-parallax-bg linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+
+  .section:nth-child(odd)::before {
+    background: radial-gradient(ellipse at 30% 50%, rgba(var(--accent-glow), 0.5), transparent 70%);
+  }
+
+  .section:nth-child(even)::before {
+    background: radial-gradient(ellipse at 70% 50%, rgba(var(--accent-blue-glow), 0.4), transparent 70%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section::before {
+      animation: none;
+      display: none;
+    }
+  }
+}

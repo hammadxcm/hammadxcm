@@ -37,7 +37,7 @@ const hasMore = prs.length > INITIAL_SHOW;
 
 {enabled && hasPRs && (
   <section id="contributions" class="section">
-    <SectionHeader label={translations.contributions.label} title={translations.contributions.title} />
+    <SectionHeader label={translations.contributions.label} title={translations.contributions.title} transitionId="section-contributions" />
 
     <ContributionsSummary prs={prs} translations={translations} />
 

@@ -40,6 +40,11 @@ const ALL_THEMES: ThemeName[] = [
   'midnight',
   'arctic',
   'gruvbox',
+  'cyberpunk',
+  'nebula',
+  'solarized',
+  'rosepine',
+  'monokai',
 ];
 
 function setupDOM(): void {

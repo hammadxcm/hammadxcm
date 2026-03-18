@@ -54,7 +54,10 @@ statItems.push(
 <div class="contrib-summary dash-hero-stats reveal">
   {statItems.map((stat) => (
     <div class="dash-hero-stat glass">
-      <span class:list={['dash-hero-value', 'summary-val', { 'summary-val--diff': stat.label === translations.contributions.linesChanged }]}>
+      <span
+        class:list={['dash-hero-value', 'summary-val', { 'summary-val--diff': stat.label === translations.contributions.linesChanged }]}
+        data-count-target={/^\d+$/.test(stat.value) ? stat.value : undefined}
+      >
         {stat.label === translations.contributions.languages ? (
           <>
             {stat.value}

@@ -2,12 +2,13 @@
 interface Props {
   label: string;
   title: string;
+  transitionId?: string;
 }
 
-const { label, title } = Astro.props;
+const { label, title, transitionId } = Astro.props;
 ---
 
-<div class="section-header reveal-blur">
+<div class="section-header reveal-blur" transition:name={transitionId}>
   <span class="section-label">{label}</span>
   <h2 class="section-title">{title}</h2>
   <div class="section-divider"></div>

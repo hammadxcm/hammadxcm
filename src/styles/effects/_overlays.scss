@@ -60,6 +60,23 @@
   transition: width 0.1s linear;
 }
 
+/* CSS scroll-driven progress bar — replaces JS width calculation */
+@supports (animation-timeline: scroll()) {
+  @keyframes scroll-progress-fill {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  .scroll-progress {
+    width: 100%;
+    transition: none;
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: scroll-progress-fill linear forwards;
+    animation-timeline: scroll();
+  }
+}
+
 /* Matrix Rain Canvas */
 #matrix-canvas {
   position: absolute;

@@ -1,7 +1,7 @@
 {
   "name": "hammadxcm",
   "type": "module",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -20,10 +20,14 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@astrojs/react": "^5.0.0",
     "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.5.0",
-    "chart.js": "^4.5.1",
-    "jspdf": "^4.2.0"
+    "echarts": "^6.0.0",
+    "framer-motion": "^12.38.0",
+    "jspdf": "^4.2.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx,json}": [
@@ -33,6 +37,8 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
     "@biomejs/biome": "^2.4.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@vitest/coverage-v8": "^4.0.18",
     "happy-dom": "^20.7.0",
     "husky": "^9.1.7",

@@ -1,0 +1,103 @@
+/**
+ * Page Navigation Transitions
+ * Directional slide+scale animations for View All / Back navigation.
+ * Forward: old slides left, new slides in from right
+ * Back: reverse of forward
+ */
+
+/* ── Forward navigation (home → listing) ── */
+html[data-nav-direction="forward"]::view-transition-old(root) {
+  animation: nav-slide-out-left 420ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  z-index: 1;
+}
+
+html[data-nav-direction="forward"]::view-transition-new(root) {
+  animation: nav-slide-in-right 420ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  z-index: 2;
+}
+
+/* ── Back navigation (listing → home) ── */
+html[data-nav-direction="back"]::view-transition-old(root) {
+  animation: nav-slide-out-right 420ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  z-index: 1;
+}
+
+html[data-nav-direction="back"]::view-transition-new(root) {
+  animation: nav-slide-in-left 420ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  z-index: 2;
+}
+
+/* ── No direction — instant (prevents theme-switch from firing) ── */
+html[data-nav-direction="none"]::view-transition-old(root),
+html[data-nav-direction="none"]::view-transition-new(root) {
+  animation: none;
+}
+
+/* ── Slide Keyframes ── */
+@keyframes nav-slide-out-left {
+  from { transform: translateX(0) scale(1); opacity: 1; filter: brightness(1); }
+  to   { transform: translateX(-8%) scale(0.95); opacity: 0; filter: brightness(0.7); }
+}
+
+@keyframes nav-slide-in-right {
+  from { transform: translateX(8%) scale(0.95); opacity: 0; filter: brightness(0.7); }
+  to   { transform: translateX(0) scale(1); opacity: 1; filter: brightness(1); }
+}
+
+@keyframes nav-slide-out-right {
+  from { transform: translateX(0) scale(1); opacity: 1; filter: brightness(1); }
+  to   { transform: translateX(8%) scale(0.95); opacity: 0; filter: brightness(0.7); }
+}
+
+@keyframes nav-slide-in-left {
+  from { transform: translateX(-8%) scale(0.95); opacity: 0; filter: brightness(0.7); }
+  to   { transform: translateX(0) scale(1); opacity: 1; filter: brightness(1); }
+}
+
+/* ── Section header morph ── */
+::view-transition-group(section-projects),
+::view-transition-group(section-certifications),
+::view-transition-group(section-testimonials),
+::view-transition-group(section-contributions),
+::view-transition-group(section-analytics) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Nav morph (stays in place during transition) ── */
+::view-transition-group(main-nav) {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Flash overlay ── */
+.nav-transition-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(var(--accent-glow, 0, 191, 191), 0.15), transparent 70%);
+
+  &.active {
+    animation: nav-flash 500ms ease-out forwards;
+  }
+}
+
+@keyframes nav-flash {
+  0%   { opacity: 0; }
+  30%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ── Reduced Motion Override ── */
+@media (prefers-reduced-motion: reduce) {
+  html[data-nav-direction]::view-transition-old(root),
+  html[data-nav-direction]::view-transition-new(root) {
+    animation: none !important;
+  }
+
+  .nav-transition-flash {
+    display: none;
+  }
+}

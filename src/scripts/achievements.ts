@@ -230,8 +230,17 @@ export const ACHIEVEMENTS: Achievement[] = [
     id: 'all_themes',
     name: 'Chromatic',
     icon: ICONS.gem,
-    description: 'Use all 10 themes',
+    description: 'Use all 15 themes',
     xp: 100,
+    category: 'interact',
+    secret: false,
+  },
+  {
+    id: 'palette_master',
+    name: 'Palette Master',
+    icon: ICONS.rainbow,
+    description: 'Use 12+ different themes',
+    xp: 75,
     category: 'interact',
     secret: false,
   },
@@ -710,7 +719,8 @@ function checkAchievements(triggerKey: string): void {
   if (triggerKey === 'theme_switch') {
     if (c.theme_switch >= 3) unlock('theme_switcher');
     if (progress.themesUsed.length >= 5) unlock('theme_collector');
-    if (progress.themesUsed.length >= 10) unlock('all_themes');
+    if (progress.themesUsed.length >= 12) unlock('palette_master');
+    if (progress.themesUsed.length >= 15) unlock('all_themes');
   }
 
   // project clicks
@@ -866,6 +876,10 @@ function onAchievementUnlocked(e: Event): void {
   if (spawnToast) {
     spawnToast(msg, { className: 'hacker-toast achievement-toast' });
   }
+  // Announce to screen readers via assertive aria-live region
+  const alertRegion = document.getElementById('alert-region');
+  if (alertRegion)
+    alertRegion.textContent = `Achievement unlocked: ${detail.name}. Plus ${detail.xp} XP.`;
 }
 
 function onLevelUp(e: Event): void {
@@ -883,6 +897,10 @@ function onLevelUp(e: Event): void {
       overlay.setAttribute('aria-hidden', 'true');
     }, 3000);
   }
+  // Announce level-up to screen readers
+  const alertRegion = document.getElementById('alert-region');
+  if (alertRegion)
+    alertRegion.textContent = `Level up! You are now level ${detail.level}: ${detail.name}.`;
 }
 
 export function destroyAchievements(): void {

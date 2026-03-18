@@ -28,54 +28,54 @@ const { username, utcOffset, translations } = Astro.props;
     </div>
     <div class="github-panel active" data-panel="overview">
       <div class="analytics-row">
-        <img data-stat="streak" src={`https://streak-stats.demolab.com?user=${username}&theme=tokyonight&hide_border=true&stroke=0000&background=0D1117&ring=5BCDEC&fire=5BCDEC&currStreakNum=5BCDEC`} alt={translations.analytics.alt.streak} loading="lazy" width="495" height="195">
-        <img data-stat="stats" src={`https://github-readme-stats-sigma-five.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=5BCDEC&icon_color=5BCDEC&text_color=FFFFFF`} alt={translations.analytics.alt.stats} loading="lazy" width="495" height="195">
+        <img data-stat="streak" src={`https://streak-stats.demolab.com?user=${username}&theme=tokyonight&hide_border=true&stroke=0000&background=0D1117&ring=5BCDEC&fire=5BCDEC&currStreakNum=5BCDEC`} alt={translations.analytics.alt.streak} loading="lazy" decoding="async" width="495" height="195">
+        <img data-stat="stats" src={`https://github-readme-stats-sigma-five.vercel.app/api?username=${username}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=5BCDEC&icon_color=5BCDEC&text_color=FFFFFF`} alt={translations.analytics.alt.stats} loading="lazy" decoding="async" width="495" height="195">
       </div>
     </div>
     <div class="github-panel" data-panel="activity">
       <div class="analytics-full">
-        <img data-stat="activity" src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=tokyo-night&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&area=true&hide_border=true`} alt={translations.analytics.alt.activityGraph} loading="lazy" width="800" height="300">
+        <img data-stat="activity" src={`https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=tokyo-night&bg_color=0D1117&color=5BCDEC&line=5BCDEC&point=FFFFFF&area=true&hide_border=true`} alt={translations.analytics.alt.activityGraph} loading="lazy" decoding="async" width="800" height="300">
       </div>
     </div>
     <div class="github-panel" data-panel="trophies">
       <div class="analytics-full">
-        <img data-stat="trophy" src={`https://github-trophies.vercel.app/?username=${username}&theme=tokyonight&no-frame=true&no-bg=false&margin-w=4&column=7`} alt={translations.analytics.alt.trophies} loading="lazy" width="800" height="300">
+        <img data-stat="trophy" src={`https://github-trophies.vercel.app/?username=${username}&theme=tokyonight&no-frame=true&no-bg=false&margin-w=4&column=7`} alt={translations.analytics.alt.trophies} loading="lazy" decoding="async" width="800" height="300">
       </div>
     </div>
     <div class="github-panel" data-panel="languages">
       <div class="analytics-row">
-        <img data-stat="repos-lang" src={`https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=${username}&theme=tokyonight`} alt={translations.analytics.alt.reposPerLang} loading="lazy" width="495" height="195">
-        <img data-stat="commit-lang" src={`https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=${username}&theme=tokyonight`} alt={translations.analytics.alt.commitLang} loading="lazy" width="495" height="195">
+        <img data-stat="repos-lang" src={`https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=${username}&theme=tokyonight`} alt={translations.analytics.alt.reposPerLang} loading="lazy" decoding="async" width="495" height="195">
+        <img data-stat="commit-lang" src={`https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=${username}&theme=tokyonight`} alt={translations.analytics.alt.commitLang} loading="lazy" decoding="async" width="495" height="195">
       </div>
       <div class="analytics-row">
-        <img data-stat="top-langs" src={`https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117`} alt={translations.analytics.alt.topLangs} loading="lazy" width="495" height="195">
+        <img data-stat="top-langs" src={`https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117`} alt={translations.analytics.alt.topLangs} loading="lazy" decoding="async" width="495" height="195">
       </div>
     </div>
     <div class="github-panel" data-panel="summary">
       <div class="analytics-row">
-        <img data-stat="card-stats" src={`https://github-profile-summary-cards.vercel.app/api/cards/stats?username=${username}&theme=tokyonight`} alt={translations.analytics.alt.cardStats} loading="lazy" width="495" height="195">
-        <img data-stat="productive" src={`https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=${username}&theme=tokyonight&utcOffset=${utcOffset}`} alt={translations.analytics.alt.productiveTime} loading="lazy" width="495" height="195">
+        <img data-stat="card-stats" src={`https://github-profile-summary-cards.vercel.app/api/cards/stats?username=${username}&theme=tokyonight`} alt={translations.analytics.alt.cardStats} loading="lazy" decoding="async" width="495" height="195">
+        <img data-stat="productive" src={`https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=${username}&theme=tokyonight&utcOffset=${utcOffset}`} alt={translations.analytics.alt.productiveTime} loading="lazy" decoding="async" width="495" height="195">
       </div>
       <div class="analytics-full">
-        <img data-stat="profile" src={`https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=${username}&theme=tokyonight`} alt={translations.analytics.alt.profileDetails} loading="lazy" width="800" height="300">
+        <img data-stat="profile" src={`https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=${username}&theme=tokyonight`} alt={translations.analytics.alt.profileDetails} loading="lazy" decoding="async" width="800" height="300">
       </div>
     </div>
     <div class="github-panel" data-panel="contributions">
       <div id="contribution3d" class="analytics-full"></div>
       <div class="analytics-full analytics-full--snake">
-        <img src={`https://raw.githubusercontent.com/${username}/${username}/output/snake.svg`} alt={translations.analytics.alt.contributionSnake} loading="lazy" width="800" height="200">
+        <img src={`https://raw.githubusercontent.com/${username}/${username}/output/snake.svg`} alt={translations.analytics.alt.contributionSnake} loading="lazy" decoding="async" width="800" height="200">
       </div>
       <div class="analytics-full">
-        <img data-stat="isocalendar" src={`https://raw.githubusercontent.com/${username}/${username}/main/metrics.plugin.isocalendar.fullyear.svg`} alt={translations.analytics.alt.contributionCalendar} loading="lazy" width="800" height="300">
+        <img data-stat="isocalendar" src={`https://raw.githubusercontent.com/${username}/${username}/main/metrics.plugin.isocalendar.fullyear.svg`} alt={translations.analytics.alt.contributionCalendar} loading="lazy" decoding="async" width="800" height="300">
       </div>
     </div>
     <div class="github-panel" data-panel="stars">
       <div class="analytics-full">
-        <img data-stat="stars" src={`https://raw.githubusercontent.com/${username}/${username}/main/metrics.plugin.stars.svg`} alt={translations.analytics.alt.starredRepos} loading="lazy" width="800" height="300">
+        <img data-stat="stars" src={`https://raw.githubusercontent.com/${username}/${username}/main/metrics.plugin.stars.svg`} alt={translations.analytics.alt.starredRepos} loading="lazy" decoding="async" width="800" height="300">
       </div>
     </div>
     <div class="profile-views-row reveal">
-      <img src={`https://komarev.com/ghpvc/?username=${username}&label=Profile%20Views&color=0e75b6&style=flat-square`} alt={translations.analytics.alt.profileViews} loading="lazy" width="200" height="28">
+      <img src={`https://komarev.com/ghpvc/?username=${username}&label=Profile%20Views&color=0e75b6&style=flat-square`} alt={translations.analytics.alt.profileViews} loading="lazy" decoding="async" width="200" height="28">
     </div>
     <div class="analytics-cta-row reveal">
       <a href={`https://github.com/${username}`} target="_blank" rel="noopener noreferrer" class="analytics-cta glass glow-border">

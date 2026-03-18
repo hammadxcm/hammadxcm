@@ -13,14 +13,42 @@ const effectDurations: Record<ScreenEffect, number> = {
   pastelBloom: 500,
   shootingStar: 400,
   tvStatic: 200,
+  hologramFlicker: 250,
+  nebulaPulse: 600,
   none: 0,
 };
 
 const AMBIENT_INTERVAL_BASE_MS = 12000;
 const ENV_INTERVAL_BASE_MS = 6000;
 
+let initialized = false;
+let effectAC: AbortController | null = null;
+let ambientTimer: ReturnType<typeof setTimeout> | null = null;
+let envTimer: ReturnType<typeof setTimeout> | null = null;
+
+function clearRecursiveTimers(): void {
+  if (ambientTimer !== null) {
+    clearTimeout(ambientTimer);
+    ambientTimer = null;
+  }
+  if (envTimer !== null) {
+    clearTimeout(envTimer);
+    envTimer = null;
+  }
+}
+
+export function destroyScreenEffects(): void {
+  effectAC?.abort();
+  effectAC = null;
+  clearRecursiveTimers();
+  initialized = false;
+}
+
 export function initScreenEffects(): void {
-  if (prefersReducedMotion) return;
+  if (initialized || prefersReducedMotion) return;
+  initialized = true;
+
+  effectAC = new AbortController();
 
   const overlay = document.getElementById('screenEffectOverlay');
 
@@ -54,16 +82,21 @@ export function initScreenEffects(): void {
     triggerScreenEffect();
   }
 
-  document.addEventListener('click', (e: MouseEvent) => {
-    triggerScreenEffect(e);
-    const msgs = getThemeToasts().click;
-    const msg = msgs[Math.floor(Math.random() * msgs.length)];
-    spawnToast(msg);
-  });
+  document.addEventListener(
+    'click',
+    (e: MouseEvent) => {
+      triggerScreenEffect(e);
+      const msgs = getThemeToasts().click;
+      const msg = msgs[Math.floor(Math.random() * msgs.length)];
+      spawnToast(msg);
+    },
+    { signal: effectAC?.signal },
+  );
 
   function scheduleAmbient(): void {
     const delay = AMBIENT_INTERVAL_BASE_MS + Math.random() * 6000;
-    setTimeout(() => {
+    ambientTimer = setTimeout(() => {
+      if (effectAC?.signal.aborted) return;
       const msgs = getThemeToasts().ambient;
       const msg = msgs[Math.floor(Math.random() * msgs.length)];
       spawnToast(msg, { className: 'hacker-toast ambient' });
@@ -74,7 +107,8 @@ export function initScreenEffects(): void {
 
   function scheduleEnvEffect(): void {
     const delay = ENV_INTERVAL_BASE_MS + Math.random() * 6000;
-    setTimeout(() => {
+    envTimer = setTimeout(() => {
+      if (effectAC?.signal.aborted) return;
       triggerEnvEffect();
       scheduleEnvEffect();
     }, delay);

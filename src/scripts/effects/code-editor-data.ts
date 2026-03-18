@@ -304,6 +304,132 @@ export const SNIPPETS: Record<ThemeName, Record<TabName, string[]>> = {
       '    return buf.write(mode)',
     ],
   },
+  cyberpunk: {
+    'main.js': [
+      'const ice = require("netrunner");',
+      'const subnet = "arasaka.local";',
+      '',
+      'async function breach(net) {',
+      '  const link = await ice.jack(net);',
+      '  return link.quickhack("daemon");',
+      '}',
+    ],
+    'app.rb': [
+      'require "netrunner"',
+      '',
+      'class Quickhack',
+      '  def initialize(subnet)',
+      '    @subnet = subnet',
+      '  end',
+    ],
+    'main.py': [
+      'from netrunner import ICE',
+      '',
+      'def breach(subnet):',
+      '    link = ICE.jack(subnet)',
+      '    return link.quickhack("daemon")',
+    ],
+  },
+  nebula: {
+    'main.js': [
+      'const hubble = require("deep-space");',
+      '',
+      'async function scan(sector) {',
+      '  const signal = await hubble.relay(sector);',
+      '  return signal.decode();',
+      '}',
+    ],
+    'app.rb': [
+      'require "deep_space"',
+      '',
+      'def scan(sector)',
+      '  signal = Hubble.relay(sector)',
+      '  signal.decode',
+      'end',
+    ],
+    'main.py': [
+      'from deep_space import Hubble',
+      '',
+      'def scan(sector):',
+      '    signal = Hubble.relay(sector)',
+      '    return signal.decode()',
+    ],
+  },
+  solarized: {
+    'main.js': [
+      'const display = require("solarized");',
+      '',
+      'function calibrate(opts) {',
+      '  const gamma = display.adjust(opts);',
+      '  return gamma.apply();',
+      '}',
+    ],
+    'app.rb': [
+      'require "solarized"',
+      '',
+      'def calibrate(opts)',
+      '  gamma = Display.adjust(opts)',
+      '  gamma.apply',
+      'end',
+    ],
+    'main.py': [
+      'from solarized import Display',
+      '',
+      'def calibrate(opts):',
+      '    gamma = Display.adjust(opts)',
+      '    return gamma.apply()',
+    ],
+  },
+  rosepine: {
+    'main.js': [
+      'const garden = require("rose-pine");',
+      '',
+      'function bloom(season) {',
+      '  const petals = garden.grow(season);',
+      '  return petals.unfurl();',
+      '}',
+    ],
+    'app.rb': [
+      'require "rose_pine"',
+      '',
+      'def bloom(season)',
+      '  petals = Garden.grow(season)',
+      '  petals.unfurl',
+      'end',
+    ],
+    'main.py': [
+      'from rose_pine import Garden',
+      '',
+      'def bloom(season):',
+      '    petals = Garden.grow(season)',
+      '    return petals.unfurl()',
+    ],
+  },
+  monokai: {
+    'main.js': [
+      'const editor = require("sublime-sdk");',
+      '',
+      'function highlight(code) {',
+      '  const tokens = editor.tokenize(code);',
+      '  return tokens.colorize("monokai");',
+      '}',
+    ],
+    'app.rb': [
+      'require "sublime_sdk"',
+      '',
+      'def highlight(code)',
+      '  tokens = Editor.tokenize(code)',
+      '  tokens.colorize("monokai")',
+      'end',
+    ],
+    'main.py': [
+      'from sublime_sdk import Editor',
+      '',
+      'def highlight(code):',
+      '    tokens = Editor.tokenize(code)',
+      '    return tokens.colorize("monokai")',
+    ],
+  },
 };
 
 /* ── Per-theme, per-tab terminal output ── */
@@ -361,6 +487,31 @@ export const TERMINAL_OUTPUT: Record<
     'app.rb': { command: '$ ruby app.rb', output: '✓ Normal mode active' },
     'main.py': { command: '$ python3 main.py', output: '✓ Buffer saved' },
   },
+  cyberpunk: {
+    'main.js': { command: '$ node main.js', output: '✓ Daemon uploaded' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Quickhack deployed' },
+    'main.py': { command: '$ python3 main.py', output: '✓ ICE breached' },
+  },
+  nebula: {
+    'main.js': { command: '$ node main.js', output: '✓ Signal decoded' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Relay established' },
+    'main.py': { command: '$ python3 main.py', output: '✓ Spectrum analyzed' },
+  },
+  solarized: {
+    'main.js': { command: '$ node main.js', output: '✓ Display calibrated' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Gamma applied' },
+    'main.py': { command: '$ python3 main.py', output: '✓ Colors balanced' },
+  },
+  rosepine: {
+    'main.js': { command: '$ node main.js', output: '✓ Garden blooming' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Petals unfurled' },
+    'main.py': { command: '$ python3 main.py', output: '✓ Season: spring' },
+  },
+  monokai: {
+    'main.js': { command: '$ node main.js', output: '✓ Syntax highlighted' },
+    'app.rb': { command: '$ ruby app.rb', output: '✓ Tokens colorized' },
+    'main.py': { command: '$ python3 main.py', output: '✓ Build passing' },
+  },
 };
 
 /* ── Per-theme autocomplete items (JS-flavored for default tab) ── */
@@ -417,6 +568,31 @@ export const AUTOCOMPLETE_ITEMS: Record<
     { icon: 'fn', label: 'normal', detail: '()' },
     { icon: 'fn', label: 'write', detail: '(mode: Mode)' },
     { icon: 'var', label: 'mode', detail: 'Mode' },
+  ],
+  cyberpunk: [
+    { icon: 'fn', label: 'jack', detail: '(net: string)' },
+    { icon: 'fn', label: 'quickhack', detail: '(target: string)' },
+    { icon: 'var', label: 'subnet', detail: 'string' },
+  ],
+  nebula: [
+    { icon: 'fn', label: 'relay', detail: '(sector: string)' },
+    { icon: 'fn', label: 'decode', detail: '()' },
+    { icon: 'var', label: 'sector', detail: 'string' },
+  ],
+  solarized: [
+    { icon: 'fn', label: 'adjust', detail: '(opts: Config)' },
+    { icon: 'fn', label: 'apply', detail: '()' },
+    { icon: 'var', label: 'gamma', detail: 'number' },
+  ],
+  rosepine: [
+    { icon: 'fn', label: 'grow', detail: '(season: string)' },
+    { icon: 'fn', label: 'unfurl', detail: '()' },
+    { icon: 'var', label: 'season', detail: 'string' },
+  ],
+  monokai: [
+    { icon: 'fn', label: 'tokenize', detail: '(code: string)' },
+    { icon: 'fn', label: 'colorize', detail: '(scheme: string)' },
+    { icon: 'var', label: 'theme', detail: 'string' },
   ],
 };
 

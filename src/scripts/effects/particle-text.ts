@@ -177,6 +177,14 @@ function drawStatic(): void {
   }
 }
 
+/* ── Update color on theme change ── */
+export function updateParticleTextColor(): void {
+  if (!initialized || particles.length === 0) return;
+  const color = getAccentColor();
+  for (const p of particles) p.color = color;
+  if (prefersReducedMotion) drawStatic();
+}
+
 /* ── Public API ── */
 export function initParticleText(): void {
   if (initialized) return;

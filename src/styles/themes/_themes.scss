@@ -266,6 +266,141 @@
   --boot-cmd: rgba(235, 219, 178, 0.5);  --boot-access-shadow: rgba(184, 187, 38, 0.5);
 }
 
+/* ── Theme: Cyberpunk ── */
+[data-theme="cyberpunk"] {
+  --bg: #0A0A12;
+  --bg-card: rgba(18, 18, 30, 0.7);
+  --bg-card-solid: #12121E;
+  --accent: #FFD700;
+  --accent-blue: #00FFFF;
+  --accent-mint: #FF2E97;
+  --accent-glow: 255, 215, 0;
+  --accent-blue-glow: 0, 255, 255;
+  --accent-tertiary: #FF2E97;
+  --text: #E8E6F0;
+  --text-dim: #8888AA;
+  --border: rgba(255, 215, 0, 0.15);
+  --border-glow: rgba(255, 215, 0, 0.3);
+  --glass-bg: rgba(10, 10, 18, 0.6);
+  --glass-border: rgba(255, 215, 0, 0.12);
+  --code-keyword: #ff2e97;  --code-const: #00ffff;  --code-string: #ffd700;
+  --code-bracket: #e8e6f0;  --code-comment: #8888AA;  --code-line-num: #666688;
+  --code-success: #00ffff;
+  --boot-bg: #08080f;  --boot-ok: #00ffff;  --boot-warn: #ffd700;
+  --boot-cmd: rgba(232, 230, 240, 0.5);  --boot-access-shadow: rgba(255, 215, 0, 0.5);
+  --glow-rest: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.15));
+  --glow-peak: drop-shadow(0 0 16px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.3));
+  --glow-duration: 3s;
+}
+
+/* ── Theme: Nebula ── */
+[data-theme="nebula"] {
+  --bg: #0B0014;
+  --bg-card: rgba(22, 8, 40, 0.7);
+  --bg-card-solid: #160828;
+  --accent: #E040FB;
+  --accent-blue: #7C4DFF;
+  --accent-mint: #B388FF;
+  --accent-glow: 224, 64, 251;
+  --accent-blue-glow: 124, 77, 255;
+  --accent-tertiary: #B388FF;
+  --text: #F0E6FF;
+  --text-dim: #9B7EC8;
+  --border: rgba(224, 64, 251, 0.15);
+  --border-glow: rgba(224, 64, 251, 0.3);
+  --glass-bg: rgba(11, 0, 20, 0.6);
+  --glass-border: rgba(224, 64, 251, 0.12);
+  --code-keyword: #e040fb;  --code-const: #7c4dff;  --code-string: #b388ff;
+  --code-bracket: #f0e6ff;  --code-comment: #9B7EC8;  --code-line-num: #7D60A0;
+  --code-success: #b388ff;
+  --boot-bg: #080010;  --boot-ok: #b388ff;  --boot-warn: #e040fb;
+  --boot-cmd: rgba(240, 230, 255, 0.5);  --boot-access-shadow: rgba(179, 136, 255, 0.5);
+  --glow-rest: drop-shadow(0 0 8px rgba(224, 64, 251, 0.4)) drop-shadow(0 0 20px rgba(124, 77, 255, 0.15));
+  --glow-peak: drop-shadow(0 0 16px rgba(224, 64, 251, 0.7)) drop-shadow(0 0 40px rgba(124, 77, 255, 0.3));
+  --glow-duration: 4s;
+}
+
+/* ── Theme: Solarized Dark ── */
+[data-theme="solarized"] {
+  --bg: #002B36;
+  --bg-card: rgba(7, 54, 66, 0.7);
+  --bg-card-solid: #073642;
+  --accent: #268BD2;
+  --accent-blue: #2AA198;
+  --accent-mint: #859900;
+  --accent-glow: 38, 139, 210;
+  --accent-blue-glow: 42, 161, 152;
+  --accent-tertiary: #859900;
+  --text: #FDF6E3;
+  --text-dim: #839496;
+  --border: rgba(38, 139, 210, 0.15);
+  --border-glow: rgba(38, 139, 210, 0.3);
+  --glass-bg: rgba(0, 43, 54, 0.6);
+  --glass-border: rgba(38, 139, 210, 0.12);
+  --code-keyword: #cb4b16;  --code-const: #268bd2;  --code-string: #2aa198;
+  --code-bracket: #fdf6e3;  --code-comment: #839496;  --code-line-num: #657B83;
+  --code-success: #859900;
+  --boot-bg: #001e26;  --boot-ok: #859900;  --boot-warn: #b58900;
+  --boot-cmd: rgba(253, 246, 227, 0.5);  --boot-access-shadow: rgba(133, 153, 0, 0.5);
+  --glow-rest: drop-shadow(0 0 6px rgba(38, 139, 210, 0.3));
+  --glow-peak: drop-shadow(0 0 12px rgba(38, 139, 210, 0.5)) drop-shadow(0 0 24px rgba(42, 161, 152, 0.2));
+  --glow-duration: 5s;
+}
+
+/* ── Theme: Rosé Pine ── */
+[data-theme="rosepine"] {
+  --bg: #191724;
+  --bg-card: rgba(38, 35, 53, 0.7);
+  --bg-card-solid: #262335;
+  --accent: #EA9A97;
+  --accent-blue: #C4A7E7;
+  --accent-mint: #9CCFD8;
+  --accent-glow: 234, 154, 151;
+  --accent-blue-glow: 196, 167, 231;
+  --accent-tertiary: #9CCFD8;
+  --text: #E0DEF4;
+  --text-dim: #908CAA;
+  --border: rgba(234, 154, 151, 0.15);
+  --border-glow: rgba(234, 154, 151, 0.3);
+  --glass-bg: rgba(25, 23, 36, 0.6);
+  --glass-border: rgba(234, 154, 151, 0.12);
+  --code-keyword: #eb6f92;  --code-const: #c4a7e7;  --code-string: #f6c177;
+  --code-bracket: #e0def4;  --code-comment: #908CAA;  --code-line-num: #6E6A86;
+  --code-success: #9ccfd8;
+  --boot-bg: #131120;  --boot-ok: #9ccfd8;  --boot-warn: #f6c177;
+  --boot-cmd: rgba(224, 222, 244, 0.5);  --boot-access-shadow: rgba(156, 207, 216, 0.5);
+  --glow-rest: drop-shadow(0 0 6px rgba(234, 154, 151, 0.3)) drop-shadow(0 0 16px rgba(196, 167, 231, 0.1));
+  --glow-peak: drop-shadow(0 0 12px rgba(234, 154, 151, 0.55)) drop-shadow(0 0 30px rgba(196, 167, 231, 0.2));
+  --glow-duration: 5s;
+}
+
+/* ── Theme: Monokai ── */
+[data-theme="monokai"] {
+  --bg: #272822;
+  --bg-card: rgba(55, 54, 44, 0.7);
+  --bg-card-solid: #37362C;
+  --accent: #A6E22E;
+  --accent-blue: #66D9EF;
+  --accent-mint: #F92672;
+  --accent-glow: 166, 226, 46;
+  --accent-blue-glow: 102, 217, 239;
+  --accent-tertiary: #F92672;
+  --text: #F8F8F2;
+  --text-dim: #90908A;
+  --border: rgba(166, 226, 46, 0.15);
+  --border-glow: rgba(166, 226, 46, 0.3);
+  --glass-bg: rgba(39, 40, 34, 0.6);
+  --glass-border: rgba(166, 226, 46, 0.12);
+  --code-keyword: #f92672;  --code-const: #66d9ef;  --code-string: #e6db74;
+  --code-bracket: #f8f8f2;  --code-comment: #90908A;  --code-line-num: #75715E;
+  --code-success: #a6e22e;
+  --boot-bg: #1e1f1a;  --boot-ok: #a6e22e;  --boot-warn: #e6db74;
+  --boot-cmd: rgba(248, 248, 242, 0.5);  --boot-access-shadow: rgba(166, 226, 46, 0.5);
+  --glow-rest: drop-shadow(0 0 6px rgba(166, 226, 46, 0.3)) drop-shadow(0 0 16px rgba(102, 217, 239, 0.1));
+  --glow-peak: drop-shadow(0 0 14px rgba(166, 226, 46, 0.55)) drop-shadow(0 0 30px rgba(102, 217, 239, 0.2));
+  --glow-duration: 4s;
+}
+
 /* ── Theme Transition ── */
 body, nav, .glass, .social-btn, .glow-border, .timeline-card,
 .project-card, a.cert-card, a.contrib-card, .skyline-card, .analytics-cta, .tech-icon,
@@ -275,7 +410,30 @@ body, nav, .glass, .social-btn, .glow-border, .timeline-card,
               border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.35s;
+/* ── Smooth theme crossfade ── */
+@keyframes theme-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes theme-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+html:not([data-nav-direction])::view-transition-old(root) {
+  animation: theme-fade-out 0.6s ease both;
+  z-index: 1;
+}
+
+html:not([data-nav-direction])::view-transition-new(root) {
+  animation: theme-fade-in 0.6s ease both;
+  z-index: 2;
+}
+
+/* ── Reduced Motion Override ── */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
 }

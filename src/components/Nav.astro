@@ -47,7 +47,7 @@ const resumeData = {
 ---
 
 <!-- Navigation -->
-<nav>
+<nav transition:name="main-nav">
   <div class="nav-inner">
     <a href={baseUrl ? baseUrl : '#hero'} class="nav-logo" id="navLogo"><span id="navLogoText">{config.site.logoText}</span><span id="navLogoSuffix">{config.site.logoSuffix ?? '://hk'}</span></a>
     <ul class="nav-links" id="navLinks">
@@ -59,6 +59,11 @@ const resumeData = {
       <button type="button" class="resume-btn" id="achievementTrophyBtn" aria-label="Achievements" title="Achievements (Shift+A)">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
           <path d="M4 1a1 1 0 0 0-1 1v1H1.5a.5.5 0 0 0-.5.5v2A2.5 2.5 0 0 0 3.5 8h.3A4.98 4.98 0 0 0 7 10.83V13H5a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H9v-2.17A4.98 4.98 0 0 0 12.2 8h.3A2.5 2.5 0 0 0 15 5.5v-2a.5.5 0 0 0-.5-.5H13V2a1 1 0 0 0-1-1H4ZM2.5 4H3v2.5a3 3 0 0 1-.09-.32A1.5 1.5 0 0 1 2.5 5.5V4Zm11 0v1.5a1.5 1.5 0 0 1-.41.68c-.03.11-.06.21-.09.32V4h.5Z"/>
+        </svg>
+      </button>
+      <button type="button" class="resume-btn" id="themeRandomBtn" aria-label="Random theme" title="Random theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/>
         </svg>
       </button>
       <div class="theme-switcher" id="themeSwitcher">
@@ -105,6 +110,26 @@ const resumeData = {
           <button type="button" class="theme-option" data-theme="gruvbox" role="option">
             <span class="theme-swatch" style="background: #FABD2F;"></span>
             <span class="theme-label">Gruvbox</span>
+          </button>
+          <button type="button" class="theme-option" data-theme="cyberpunk" role="option">
+            <span class="theme-swatch" style="background: #FFD700;"></span>
+            <span class="theme-label">Cyberpunk</span>
+          </button>
+          <button type="button" class="theme-option" data-theme="nebula" role="option">
+            <span class="theme-swatch" style="background: #E040FB;"></span>
+            <span class="theme-label">Nebula</span>
+          </button>
+          <button type="button" class="theme-option" data-theme="solarized" role="option">
+            <span class="theme-swatch" style="background: #268BD2;"></span>
+            <span class="theme-label">Solarized</span>
+          </button>
+          <button type="button" class="theme-option" data-theme="rosepine" role="option">
+            <span class="theme-swatch" style="background: #EA9A97;"></span>
+            <span class="theme-label">Ros&eacute; Pine</span>
+          </button>
+          <button type="button" class="theme-option" data-theme="monokai" role="option">
+            <span class="theme-swatch" style="background: #A6E22E;"></span>
+            <span class="theme-label">Monokai</span>
           </button>
         </div>
       </div>
@@ -230,7 +255,11 @@ const resumeData = {
     cursor: pointer;
     background: none;
     border: none;
-    padding: 4px;
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
 
     span {
       width: 24px;
@@ -279,6 +308,8 @@ const resumeData = {
     }
 
     svg { width: 16px; height: 16px; }
+
+    @include respond-to(mobile) { min-width: 44px; min-height: 44px; }
   }
 
   .theme-switcher {
@@ -304,6 +335,8 @@ const resumeData = {
     }
 
     svg { width: 18px; height: 18px; }
+
+    @include respond-to(mobile) { min-width: 44px; min-height: 44px; }
   }
 
   .theme-dropdown {
@@ -321,6 +354,8 @@ const resumeData = {
     transform: translateY(-8px);
     transition: all 0.2s var(--ease-out-expo);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-height: 400px;
+    overflow-y: auto;
 
     &.open {
       opacity: 1;

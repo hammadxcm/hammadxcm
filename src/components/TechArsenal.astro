@@ -28,7 +28,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         <div class="tech-icons">
           {category.items.map((item) => (
             <a href={item.url} target="_blank" rel="noopener noreferrer" class="tech-icon">
-              <img src={item.isLocal ? `${base}${item.icon}` : item.icon} alt={item.name} width="40" height="40" loading="lazy" />
+              <img src={item.isLocal ? `${base}${item.icon}` : item.icon} alt={item.name} width="40" height="40" loading="lazy" decoding="async" />
               <span>{item.name}</span>
             </a>
           ))}

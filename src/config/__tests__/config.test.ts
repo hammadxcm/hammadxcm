@@ -283,6 +283,11 @@ describe('Config data integrity', () => {
         'midnight',
         'arctic',
         'gruvbox',
+        'cyberpunk',
+        'nebula',
+        'solarized',
+        'rosepine',
+        'monokai',
       ];
       if (config.site.theme) {
         expect(validThemes).toContain(config.site.theme);

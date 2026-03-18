@@ -42,8 +42,20 @@ const templates: (() => string)[] = [
   () => `[MONITOR] Uptime: ${rand(1, 999)}d ${rand(0, 23)}h ${rand(0, 59)}m`,
 ];
 
+let initialized = false;
+let hackerLogIntervalId: number | null = null;
+
+export function destroyHackerLog(): void {
+  if (hackerLogIntervalId !== null) {
+    clearInterval(hackerLogIntervalId);
+    hackerLogIntervalId = null;
+  }
+  initialized = false;
+}
+
 export function initHackerLog(): void {
-  if (prefersReducedMotion || isTouchDevice) return;
+  if (initialized || prefersReducedMotion || isTouchDevice) return;
+  initialized = true;
 
   const container = document.getElementById('hackerLog');
   if (!container) return;
@@ -78,12 +90,14 @@ export function initHackerLog(): void {
   function startSpawning(): void {
     if (spawnIntervalId !== null) return;
     spawnIntervalId = window.setInterval(spawnLine, LOG_SPAWN_INTERVAL_MS);
+    hackerLogIntervalId = spawnIntervalId;
   }
 
   function stopSpawning(): void {
     if (spawnIntervalId !== null) {
       clearInterval(spawnIntervalId);
       spawnIntervalId = null;
+      hackerLogIntervalId = null;
     }
   }
 

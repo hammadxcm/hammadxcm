@@ -20,7 +20,7 @@ describe('dashboard-charts', () => {
     expect(typeof mod.initDashboardCharts).toBe('function');
   });
 
-  it('does not throw without canvas elements', async () => {
+  it('does not throw without chart containers', async () => {
     const { initDashboardCharts } = await import('../dashboard-charts');
     expect(() => initDashboardCharts()).not.toThrow();
   });

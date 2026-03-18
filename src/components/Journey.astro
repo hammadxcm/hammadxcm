@@ -121,9 +121,14 @@ const { translations } = Astro.props;
 
     @include respond-to(mobile) {
       padding: 1.25rem;
-      border-left: none;
-      border-right: none;
       border-radius: 0;
+    }
+
+    &.glass {
+      @include respond-to(mobile) {
+        border-left: none;
+        border-right: none;
+      }
     }
     @include respond-to(small) { padding: 1rem; }
   }

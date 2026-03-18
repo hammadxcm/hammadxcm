@@ -16,6 +16,11 @@ const ALL_THEMES: ThemeName[] = [
   'midnight',
   'arctic',
   'gruvbox',
+  'cyberpunk',
+  'nebula',
+  'solarized',
+  'rosepine',
+  'monokai',
 ];
 
 describe('themeLogos', () => {
@@ -51,6 +56,11 @@ describe('themeLogos', () => {
       midnight: '@hk',
       arctic: '.hk',
       gruvbox: '\\hk',
+      cyberpunk: '>_hk',
+      nebula: '*hk',
+      solarized: '~hk',
+      rosepine: '~>hk',
+      monokai: '$hk',
     };
     for (const theme of ALL_THEMES) {
       expect(themeLogos[theme].suffix).toBe(expected[theme]);

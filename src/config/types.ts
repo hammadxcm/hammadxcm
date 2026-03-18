@@ -8,7 +8,12 @@ export type ThemeName =
   | 'bloodmoon'
   | 'midnight'
   | 'arctic'
-  | 'gruvbox';
+  | 'gruvbox'
+  | 'cyberpunk'
+  | 'nebula'
+  | 'solarized'
+  | 'rosepine'
+  | 'monokai';
 
 export type SocialPlatform =
   | 'github'

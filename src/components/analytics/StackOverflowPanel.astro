@@ -17,13 +17,13 @@ const { userId, translations } = Astro.props;
   <h3 class="analytics-subsection-title">{translations.analytics.stackoverflow}</h3>
   <div class="analytics-grid" data-stackoverflow-user={userId}>
     <div class="analytics-responsive-card reveal so-desktop">
-      <img data-stat="stackoverflow-stats" data-so-layout="default" src={`https://github-readme-stackoverflow.vercel.app/?userID=${userId}&theme=dark&layout=default`} alt={translations.analytics.alt.stackoverflowStats} loading="lazy" width="500" height="200">
+      <img data-stat="stackoverflow-stats" data-so-layout="default" src={`https://github-readme-stackoverflow.vercel.app/?userID=${userId}&theme=dark&layout=default`} alt={translations.analytics.alt.stackoverflowStats} loading="lazy" decoding="async" width="500" height="200">
     </div>
     <div class="analytics-responsive-card reveal so-tablet">
-      <img data-stat="stackoverflow-stats" data-so-layout="compact" src={`https://github-readme-stackoverflow.vercel.app/?userID=${userId}&theme=dark&layout=compact`} alt={translations.analytics.alt.stackoverflowStats} loading="lazy" width="500" height="200">
+      <img data-stat="stackoverflow-stats" data-so-layout="compact" src={`https://github-readme-stackoverflow.vercel.app/?userID=${userId}&theme=dark&layout=compact`} alt={translations.analytics.alt.stackoverflowStats} loading="lazy" decoding="async" width="500" height="200">
     </div>
     <div class="analytics-responsive-card reveal so-mobile">
-      <img data-stat="stackoverflow-stats" data-so-layout="small" src={`https://github-readme-stackoverflow.vercel.app/?userID=${userId}&theme=dark&layout=compact`} alt={translations.analytics.alt.stackoverflowStats} loading="lazy" width="500" height="200">
+      <img data-stat="stackoverflow-stats" data-so-layout="small" src={`https://github-readme-stackoverflow.vercel.app/?userID=${userId}&theme=dark&layout=compact`} alt={translations.analytics.alt.stackoverflowStats} loading="lazy" decoding="async" width="500" height="200">
     </div>
     <div class="analytics-cta-row reveal">
       <a href={`https://stackoverflow.com/users/${userId}`} target="_blank" rel="noopener noreferrer" class="analytics-cta glass glow-border">

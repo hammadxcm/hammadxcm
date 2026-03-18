@@ -7,6 +7,7 @@ import { switchCanvasEffect } from './effects/canvas';
 import { updateCursorVisibility } from './effects/cursor';
 import { restartHeroAnimation } from './effects/hero-name';
 import { updateNavLogo } from './effects/nav-logo';
+import { updateParticleTextColor } from './effects/particle-text';
 import { updateTypewriterTexts } from './effects/typewriter';
 import { updateAboutTheme } from './interactions/about-lang';
 import { updateStatusBar } from './interactions/status-bar';
@@ -14,7 +15,11 @@ import { setCurrentTheme } from './state';
 import { getThemeConfig, themePrompts } from './theme-config';
 import type { ThemeName } from './types';
 
-export function applyThemeEffects(theme: ThemeName): void {
+/**
+ * Light DOM/CSS changes needed for the View Transition snapshot.
+ * Runs synchronously so the browser captures the correct new-state image.
+ */
+function applyThemeVisuals(theme: ThemeName): void {
   setCurrentTheme(theme);
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('portfolio-theme', theme);
@@ -31,35 +36,40 @@ export function applyThemeEffects(theme: ThemeName): void {
   const matrixCanvas = document.getElementById('matrix-canvas');
   if (matrixCanvas) matrixCanvas.style.display = tc.hasMatrixRain ? '' : 'none';
 
-  // Update status bar content for new theme
-  updateStatusBar();
-
   // BUG FIX: Clear stale nav inline bg so CSS takes over immediately
   const nav = document.querySelector<HTMLElement>('nav');
   if (nav) nav.style.background = '';
 
-  // Update cursor
-  updateCursorVisibility();
-
-  // Update canvas effect
-  switchCanvasEffect(theme);
-
-  // Update hero greeting
+  // Update hero greeting (text-only, cheap)
   const greetingEl = document.getElementById('heroGreeting');
   if (greetingEl) greetingEl.textContent = themePrompts[theme] || themePrompts.hacker;
 
-  // Update typewriter texts
-  updateTypewriterTexts(theme);
-
-  // Restart hero name animation with themed glyphs
-  restartHeroAnimation();
-
-  // Update GitHub analytics images
-  updateAnalyticsTheme(theme);
-
-  // Update About section chrome + language
-  updateAboutTheme(theme);
-
-  // Update nav logo for theme
+  // Update nav logo (swaps src, cheap)
   updateNavLogo(theme);
 }
+
+/**
+ * Heavy JS effects deferred until after View Transition finishes
+ * so the morph animation stays smooth.
+ */
+function applyThemeHeavyEffects(theme: ThemeName): void {
+  updateStatusBar();
+  updateCursorVisibility();
+  switchCanvasEffect(theme);
+  updateTypewriterTexts(theme);
+  restartHeroAnimation();
+  updateAnalyticsTheme(theme);
+  updateAboutTheme(theme);
+  updateParticleTextColor();
+}
+
+export function applyThemeEffects(theme: ThemeName, deferred = false): void {
+  applyThemeVisuals(theme);
+  if (deferred) {
+    // Heavy work will be triggered separately after transition
+    return;
+  }
+  applyThemeHeavyEffects(theme);
+}
+
+export { applyThemeHeavyEffects };

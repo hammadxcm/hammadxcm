@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
@@ -16,6 +17,7 @@ export default defineConfig({
     },
   },
   integrations: [
+    react(),
     sitemap({
       i18n: {
         defaultLocale: 'en',

@@ -1,11 +1,12 @@
 ---
 /**
- * CSS-only contribution analytics visualizations.
- * Enhanced dashboard: larger donut, animated bars, rate ring, timeline, heatmap.
+ * Contribution analytics visualizations.
+ * Enhanced dashboard: ECharts charts, impact metrics, GitHub contribution heatmap.
  */
 import { langColors } from '@config/lang-colors';
-import type { ContributionPR } from '@config/types';
+import type { ContributionPR, ContributionGraphData } from '@config/types';
 import type { TranslationMap } from '@i18n/types';
+import graphRaw from '../../data/contribution-graph.json';
 
 interface Props {
   prs: ContributionPR[];
@@ -62,28 +63,70 @@ for (const pr of prs) {
 }
 const timelineEntries = [...monthMap.entries()].sort((a, b) => a[0].localeCompare(b[0]));
 
-// ── E. Heatmap ──
-const heatmapWeeks = 52;
-const today = new Date();
-const dayOfWeek = today.getDay();
-const totalCells = heatmapWeeks * 7 + dayOfWeek + 1;
-const startDate = new Date(today);
-startDate.setDate(startDate.getDate() - totalCells + 1);
+// ── E. Contribution Heatmap (GitHub API) ──
+const graphData = graphRaw as ContributionGraphData;
+const hasGraphData = graphData?.weeks?.length > 0;
+const hasMultiYear = graphData?.years?.length > 1;
 
-const prDateCounts = new Map<string, number>();
-for (const pr of prs) {
-  const d = pr.mergedAt.slice(0, 10);
-  prDateCounts.set(d, (prDateCounts.get(d) || 0) + 1);
+type HeatmapWeek = { weekStart: string; days: { date: string; count: number; level: number }[] };
+let heatmapWeeksData: HeatmapWeek[] = [];
+let heatmapTotal = 0;
+
+if (hasGraphData) {
+  heatmapTotal = graphData.totalContributions;
+  heatmapWeeksData = graphData.weeks.map((week) => ({
+    weekStart: week.contributionDays[0]?.date || '',
+    days: week.contributionDays.map((day) => ({
+      date: day.date,
+      count: day.count,
+      level: day.level,
+    })),
+  }));
+} else {
+  // Fallback: PR-based heatmap
+  const heatmapWeekCount = 52;
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+  const totalCells = heatmapWeekCount * 7 + dayOfWeek + 1;
+  const startDate = new Date(today);
+  startDate.setDate(startDate.getDate() - totalCells + 1);
+
+  const prDateCounts = new Map<string, number>();
+  for (const pr of prs) {
+    const d = pr.mergedAt.slice(0, 10);
+    prDateCounts.set(d, (prDateCounts.get(d) || 0) + 1);
+  }
+
+  let currentWeek: HeatmapWeek = { weekStart: '', days: [] };
+  for (let i = 0; i < totalCells; i++) {
+    const d = new Date(startDate);
+    d.setDate(d.getDate() + i);
+    const dateStr = d.toISOString().slice(0, 10);
+    const count = prDateCounts.get(dateStr) || 0;
+    const level = count === 0 ? 0 : count === 1 ? 1 : count === 2 ? 2 : count <= 4 ? 3 : 4;
+    heatmapTotal += count;
+
+    if (d.getDay() === 0 || i === 0) {
+      currentWeek = { weekStart: dateStr, days: [] };
+      heatmapWeeksData.push(currentWeek);
+    }
+    currentWeek.days.push({ date: dateStr, count, level });
+  }
 }
 
-const heatmapCells: { date: string; level: number }[] = [];
-for (let i = 0; i < totalCells; i++) {
-  const d = new Date(startDate);
-  d.setDate(d.getDate() + i);
-  const dateStr = d.toISOString().slice(0, 10);
-  const count = prDateCounts.get(dateStr) || 0;
-  const level = count === 0 ? 0 : count === 1 ? 1 : count === 2 ? 2 : count <= 4 ? 3 : 4;
-  heatmapCells.push({ date: dateStr, level });
+// Compute month labels from week data
+const monthLabels: { label: string; colIndex: number }[] = [];
+const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+let lastMonth = -1;
+for (let i = 0; i < heatmapWeeksData.length; i++) {
+  const firstDay = heatmapWeeksData[i].days[0];
+  if (firstDay) {
+    const month = new Date(firstDay.date).getMonth();
+    if (month !== lastMonth) {
+      monthLabels.push({ label: monthNames[month], colIndex: i });
+      lastMonth = month;
+    }
+  }
 }
 ---
 
@@ -92,13 +135,12 @@ for (let i = 0; i < totalCells; i++) {
   <div class="ca-panel glass">
     <h3 class="dash-panel-title">{ca.languageBreakdown}</h3>
     <div class="lang-breakdown">
-      <div class="dash-chart-container dash-chart-container--doughnut">
-        <canvas
-          data-chart-langs={JSON.stringify(langLegend)}
-          role="img"
-          aria-label={`Language distribution: ${langLegend.map((l) => `${l.name} ${l.pct}%`).join(', ')}`}
-        ></canvas>
-      </div>
+      <div
+        class="dash-chart-container dash-chart-container--doughnut"
+        data-chart-langs={JSON.stringify(langLegend)}
+        role="img"
+        aria-label={`Language distribution: ${langLegend.map((l) => `${l.name} ${l.pct}%`).join(', ')}`}
+      ></div>
       <div class="lang-legend">
         {langLegend.map((item) => (
           <div class="lang-legend-item">
@@ -117,13 +159,12 @@ for (let i = 0; i < totalCells; i++) {
   <!-- Organization Distribution -->
   <div class="ca-panel glass">
     <h3 class="dash-panel-title">{ca.orgDistribution}</h3>
-    <div class="dash-chart-container dash-chart-container--bars">
-      <canvas
-        data-chart-orgs={JSON.stringify(orgEntries.map(([org, data]) => ({ name: org, count: data.count })))}
-        role="img"
-        aria-label={`Organization distribution: ${orgEntries.map(([org, data]) => `${org} ${data.count} PRs`).join(', ')}`}
-      ></canvas>
-    </div>
+    <div
+      class="dash-chart-container dash-chart-container--bars"
+      data-chart-orgs={JSON.stringify(orgEntries.map(([org, data]) => ({ name: org, count: data.count })))}
+      role="img"
+      aria-label={`Organization distribution: ${orgEntries.map(([org, data]) => `${org} ${data.count} PRs`).join(', ')}`}
+    ></div>
   </div>
 
   <!-- Impact Metrics -->
@@ -152,28 +193,91 @@ for (let i = 0; i < totalCells; i++) {
     </div>
   </div>
 
-  <!-- Timeline -->
+  <!-- Timeline Chart -->
   <div class="ca-panel glass">
     <h3 class="dash-panel-title">{ca.timeline}</h3>
-    <div class="dash-chart-container dash-chart-container--timeline">
-      <canvas
-        data-chart-timeline={JSON.stringify(timelineEntries.map(([month, data]) => ({ month, merged: data.merged, open: data.open, closed: data.closed })))}
-        role="img"
-        aria-label={`Contribution timeline: ${timelineEntries.map(([month, data]) => `${month} ${data.total} PRs`).join(', ')}`}
-      ></canvas>
-    </div>
+    <div
+      class="dash-chart-container dash-chart-container--timeline"
+      data-chart-timeline={JSON.stringify(timelineEntries.map(([month, data]) => ({ month, merged: data.merged, open: data.open, closed: data.closed })))}
+      role="img"
+      aria-label={`Contribution timeline: ${timelineEntries.map(([month, data]) => `${month} ${data.total} PRs`).join(', ')}`}
+    ></div>
   </div>
 
-  <!-- Contribution Heatmap -->
-  <div class="ca-panel ca-panel--full glass">
-    <h3 class="dash-panel-title">{ca.timeline || 'Activity'}</h3>
-    <div class="dash-heatmap">
-      {heatmapCells.map((cell) => (
-        <div class="dash-heatmap-cell" data-level={cell.level} title={cell.date} />
+  <!-- Contribution Heatmap (GitHub API) -->
+  <div class="ca-panel ca-panel--full ca-heatmap-panel glass" id="caContributionGraph">
+    <div class="ca-heatmap-header">
+      <h3 class="dash-panel-title">{ca.contributionGraph || 'Contribution Graph'}</h3>
+      <div class="ca-heatmap-controls">
+        {hasMultiYear && (
+          <div class="ca-year-tabs">
+            {graphData.years.map((y, i) => (
+              <button
+                class={`ca-year-btn ${i === 0 ? 'active' : ''}`}
+                data-ca-year-index={i}
+              >{y.year}</button>
+            ))}
+          </div>
+        )}
+        <div class="ca-range-filters">
+          <button class="ca-range-btn active" data-ca-range="1Y">1Y</button>
+          <button class="ca-range-btn" data-ca-range="6M">6M</button>
+          <button class="ca-range-btn" data-ca-range="3M">3M</button>
+          <button class="ca-range-btn" data-ca-range="1M">1M</button>
+        </div>
+      </div>
+    </div>
+    <div class="ca-heatmap-total" data-ca-total={heatmapTotal}>
+      {(ca.totalContributions || '{count} contributions in the last year').replace('{count}', heatmapTotal.toLocaleString())}
+    </div>
+    <div class="ca-heatmap-months" id="caHeatmapMonths">
+      {monthLabels.map((m) => (
+        <span class="heatmap-month-label" style={`--col: ${m.colIndex}`}>{m.label}</span>
       ))}
+    </div>
+    <div class="ca-heatmap-graph-wrapper">
+      <div class="ca-heatmap-days">
+        <span></span>
+        <span>Mon</span>
+        <span></span>
+        <span>Wed</span>
+        <span></span>
+        <span>Fri</span>
+        <span></span>
+      </div>
+      <div class="dash-heatmap" id="caHeatmapGrid">
+        {heatmapWeeksData.map((week) => (
+          <div class="heatmap-week" data-week-start={week.weekStart}>
+            {week.days.map((day) => (
+              <div
+                class="dash-heatmap-cell"
+                data-level={day.level}
+                data-count={day.count}
+                data-date={day.date}
+                title={`${day.date}: ${day.count} contribution${day.count !== 1 ? 's' : ''}`}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="ca-heatmap-legend">
+      <span class="ca-legend-label">{translations.contributions?.less || 'Less'}</span>
+      <div class="dash-heatmap-cell" data-level="0" />
+      <div class="dash-heatmap-cell" data-level="1" />
+      <div class="dash-heatmap-cell" data-level="2" />
+      <div class="dash-heatmap-cell" data-level="3" />
+      <div class="dash-heatmap-cell" data-level="4" />
+      <span class="ca-legend-label">{translations.contributions?.more || 'More'}</span>
     </div>
   </div>
 </div>
+
+{hasMultiYear && (
+  <script is:inline define:vars={{ caYearsData: graphData.years }}>
+    window.__caContributionYears = caYearsData;
+  </script>
+)}
 
 <style lang="scss">
   @use '../../styles/mixins' as *;
@@ -260,13 +364,15 @@ for (let i = 0; i < totalCells; i++) {
     grid-row: 2;
   }
 
-  // ── Chart.js container sizing ──
+  // ── ECharts container sizing ──
   .dash-chart-container--doughnut {
-    max-width: 180px;
+    width: 180px;
+    height: 180px;
     flex-shrink: 0;
 
     @include respond-to(mobile) {
-      max-width: 140px;
+      width: 140px;
+      height: 140px;
     }
   }
 
@@ -342,9 +448,294 @@ for (let i = 0; i < totalCells; i++) {
     align-items: center;
   }
 
+  // ── Contribution Heatmap ──
+  .ca-heatmap-panel {
+    padding: 1.5rem;
+
+    @include respond-to(mobile) {
+      padding: 1rem;
+    }
+  }
+
+  .ca-heatmap-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .dash-panel-title {
+      margin-bottom: 0;
+    }
+  }
+
+  .ca-heatmap-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .ca-year-tabs {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .ca-year-btn {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    border: 1px solid rgba(var(--accent-glow), 0.12);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: rgba(var(--accent-glow), 0.3);
+      color: var(--text);
+    }
+
+    &.active {
+      background: rgba(var(--accent-glow), 0.1);
+      border-color: rgba(var(--accent-glow), 0.3);
+      color: var(--accent);
+    }
+  }
+
+  .ca-range-filters {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .ca-range-btn {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    border: 1px solid rgba(var(--accent-glow), 0.2);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: rgba(var(--accent-glow), 0.4);
+      color: var(--text);
+    }
+
+    &.active {
+      background: rgba(var(--accent-glow), 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  }
+
+  .ca-heatmap-total {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+  }
+
+  .ca-heatmap-months {
+    display: flex;
+    position: relative;
+    height: 1rem;
+    margin-bottom: 0.25rem;
+    margin-inline-start: 32px;
+    overflow: hidden;
+  }
+
+  .ca-heatmap-graph-wrapper {
+    display: flex;
+    overflow-x: auto;
+    direction: ltr;
+
+    @include hide-scrollbar;
+  }
+
+  .ca-heatmap-days {
+    display: grid;
+    grid-template-rows: repeat(7, 14px);
+    gap: 3px;
+    flex-shrink: 0;
+    margin-inline-end: 4px;
+
+    span {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-inline-end: 2px;
+      line-height: 1;
+    }
+
+    @include respond-to(mobile) {
+      grid-template-rows: repeat(7, 12px);
+      gap: 2px;
+    }
+  }
+
+  .ca-heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+
+    .dash-heatmap-cell {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .ca-legend-label {
+    margin-inline: 0.25rem;
+  }
+
 </style>
 
 <script>
   import { initDashboardCharts } from '../../scripts/dashboard-charts';
-  document.addEventListener('DOMContentLoaded', initDashboardCharts);
+  document.addEventListener('astro:page-load', initDashboardCharts);
+
+  interface YearData {
+    year: string;
+    totalContributions: number;
+    weeks: { contributionDays: { date: string; count: number; level: number }[] }[];
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    const grid = document.getElementById('caHeatmapGrid');
+    const monthsEl = document.getElementById('caHeatmapMonths');
+    const totalEl = document.querySelector<HTMLElement>('.ca-heatmap-total');
+    const filtersEl = document.querySelector<HTMLElement>('.ca-range-filters');
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>('.ca-range-btn');
+    const yearBtns = document.querySelectorAll<HTMLButtonElement>('.ca-year-btn');
+    if (!grid) return;
+
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const yearsData: YearData[] = (window as any).__caContributionYears || [];
+
+    /** Render week columns into the heatmap grid */
+    function renderWeeks(weeks: YearData['weeks']) {
+      grid!.innerHTML = '';
+      for (const week of weeks) {
+        const weekEl = document.createElement('div');
+        weekEl.className = 'heatmap-week';
+        weekEl.dataset.weekStart = week.contributionDays[0]?.date || '';
+        for (const day of week.contributionDays) {
+          const cell = document.createElement('div');
+          cell.className = 'dash-heatmap-cell';
+          cell.dataset.level = String(day.level);
+          cell.dataset.count = String(day.count);
+          cell.dataset.date = day.date;
+          cell.title = `${day.date}: ${day.count} contribution${day.count !== 1 ? 's' : ''}`;
+          weekEl.appendChild(cell);
+        }
+        grid!.appendChild(weekEl);
+      }
+    }
+
+    /** Render month labels from visible weeks */
+    function renderMonths() {
+      if (!monthsEl) return;
+      monthsEl.innerHTML = '';
+      const weekEls = grid!.querySelectorAll<HTMLElement>('.heatmap-week:not(.heatmap-hidden)');
+      let lastMonth = -1;
+      let colIndex = 0;
+      weekEls.forEach((weekEl) => {
+        const firstDate = weekEl.dataset.weekStart || '';
+        if (firstDate) {
+          const month = new Date(firstDate).getMonth();
+          if (month !== lastMonth) {
+            const span = document.createElement('span');
+            span.className = 'heatmap-month-label';
+            span.style.setProperty('--col', String(colIndex));
+            span.textContent = monthNames[month];
+            monthsEl!.appendChild(span);
+            lastMonth = month;
+          }
+        }
+        colIndex++;
+      });
+    }
+
+    /** Apply range filter to currently rendered weeks */
+    function applyRangeFilter(range: string) {
+      const weeks = grid!.querySelectorAll<HTMLElement>('.heatmap-week');
+      if (range === '1Y') {
+        weeks.forEach((w) => w.classList.remove('heatmap-hidden'));
+      } else {
+        const months = range === '6M' ? 6 : range === '3M' ? 3 : 1;
+        const now = new Date();
+        const cutoff = new Date(now.getFullYear(), now.getMonth() - months, now.getDate());
+        const cutoffStr = cutoff.toISOString().slice(0, 10);
+        weeks.forEach((w) => {
+          w.classList.toggle('heatmap-hidden', (w.dataset.weekStart || '') < cutoffStr);
+        });
+      }
+      updateCount();
+      renderMonths();
+    }
+
+    /** Update the total contributions counter */
+    function updateCount() {
+      if (!totalEl) return;
+      let count = 0;
+      grid!.querySelectorAll<HTMLElement>('.heatmap-week:not(.heatmap-hidden) .dash-heatmap-cell').forEach((cell) => {
+        count += parseInt(cell.dataset.count || '0', 10);
+      });
+      totalEl.textContent = (totalEl.textContent || '').replace(/[\d,]+/, count.toLocaleString());
+    }
+
+    /** Switch to a specific year's data */
+    function switchYear(index: number) {
+      const year = yearsData[index];
+      if (!year) return;
+      const isCurrentYear = index === 0;
+
+      renderWeeks(year.weeks);
+
+      // Show range filters only for current year, hide for historical
+      if (filtersEl) {
+        filtersEl.style.display = isCurrentYear ? '' : 'none';
+      }
+
+      // Reset range filter
+      filterBtns.forEach((b) => b.classList.toggle('active', b.dataset.caRange === '1Y'));
+
+      // Update total text
+      if (totalEl) {
+        totalEl.textContent = (totalEl.textContent || '').replace(/[\d,]+/, year.totalContributions.toLocaleString());
+      }
+      renderMonths();
+    }
+
+    // Year tab click handlers
+    yearBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        yearBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        switchYear(parseInt(btn.dataset.caYearIndex || '0', 10));
+      });
+    });
+
+    // Range filter click handlers
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyRangeFilter(btn.dataset.caRange || '1Y');
+      });
+    });
+  });
 </script>

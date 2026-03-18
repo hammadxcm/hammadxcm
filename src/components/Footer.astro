@@ -1,10 +1,7 @@
 ---
 /**
  * Footer
- * Site footer with animated gradient wave, social links, and copyright.
- *
- * @depends config.site.name, SocialLinks
- * @styles Scoped SCSS — footer layout, wave animation + responsive
+ * Site footer with Lighthouse gauges, social links, and copyright.
  */
 import SocialLinks from './SocialLinks.astro';
 import LighthouseScores from './LighthouseScores.astro';
@@ -20,7 +17,6 @@ const year = new Date().getFullYear();
 const builtWithText = translations.footer.builtWith.split('{heart}');
 ---
 
-<!-- ══════ FOOTER ══════ -->
 <footer>
   <div class="footer-wave"></div>
   <LighthouseScores />

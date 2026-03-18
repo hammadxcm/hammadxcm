@@ -26,7 +26,7 @@ const doubled = [...testimonials, ...testimonials];
 
 {testimonials.length > 0 && (
   <section id="testimonials" class="section">
-    <SectionHeader label={translations.testimonials.label} title={translations.testimonials.title} />
+    <SectionHeader label={translations.testimonials.label} title={translations.testimonials.title} transitionId="section-testimonials" />
     <div class="testimonials-track-wrapper">
       <div class="testimonials-track">
         {doubled.map((t) => (
