@@ -1,6 +1,7 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import { config } from '@config/index';
-import { themeMetaColors } from '@config/theme-colors';
+import { themeMetaColors, THEME_NAMES } from '@config/theme-colors';
 import { getAlternateLinks, localePath } from '@i18n/index';
 import type { Locale, Direction, TranslationMap } from '@i18n/types';
 import { LOCALES } from '@i18n/types';
@@ -38,6 +39,8 @@ const otherLocales = LOCALES.filter((l) => l !== locale);
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://github-readme-stats-sigma-five.vercel.app https://streak-stats.demolab.com https://github-readme-activity-graph.vercel.app https://github-profile-summary-cards.vercel.app https://github-trophies.vercel.app https://leetcard.jacoblin.cool https://raw.githubusercontent.com https://komarev.com https://github-readme-stackoverflow.vercel.app https://quotes-github-readme.vercel.app https://avatars.githubusercontent.com https://techstack-generator.vercel.app; font-src 'self'; connect-src 'self' https://api.ipify.org https://portfolio-chat.hammadkhanxcm.workers.dev https://portfolio-stats.hammadkhanxcm.workers.dev; frame-src https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self';">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+  <meta http-equiv="X-Permitted-Cross-Domain-Policies" content="none">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <!-- Preconnect to origins used on initial load -->
@@ -86,15 +89,35 @@ const otherLocales = LOCALES.filter((l) => l !== locale);
   <link rel="preload" href={`${base}fonts/inter-latin.woff2`} as="font" type="font/woff2" crossorigin fetchpriority="high">
   <link rel="preload" href={`${base}fonts/firacode-latin.woff2`} as="font" type="font/woff2" crossorigin fetchpriority="low">
 
+  <ClientRouter />
+
+  <!-- Speculation Rules — hover-based prefetch for instant navigation -->
+  <script type="speculationrules">
+  {"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/api/*"}}]},"eagerness":"moderate"}]}
+  </script>
+
   <!-- Blocking theme script — prevents flash of wrong theme -->
-  <script is:inline>
+  <script is:inline define:vars={{ themeNames: THEME_NAMES }}>
     (function() {
-      var saved = localStorage.getItem('portfolio-theme');
-      if (saved) {
-        document.documentElement.setAttribute('data-theme', saved);
-      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-        document.documentElement.setAttribute('data-theme', 'arctic');
+      var validThemes = themeNames;
+      function applyTheme() {
+        var params = new URLSearchParams(window.location.search);
+        var urlTheme = params.get('theme');
+        if (urlTheme && validThemes.indexOf(urlTheme) !== -1) {
+          document.documentElement.setAttribute('data-theme', urlTheme);
+          localStorage.setItem('portfolio-theme', urlTheme);
+        } else {
+          var saved = localStorage.getItem('portfolio-theme');
+          if (saved) {
+            document.documentElement.setAttribute('data-theme', saved);
+          } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            document.documentElement.setAttribute('data-theme', 'arctic');
+          }
+        }
       }
+      applyTheme();
+      // Re-apply after View Transitions swap so theme persists across navigation
+      document.addEventListener('astro:after-swap', applyTheme);
     })();
   </script>
 
@@ -114,9 +137,31 @@ const otherLocales = LOCALES.filter((l) => l !== locale);
   <noscript><p style="text-align:center;padding:2rem;font-family:monospace;color:#ccc;">This portfolio requires JavaScript for the full experience.</p></noscript>
   <!-- Skip link for accessibility -->
   <a href="#about" class="skip-link">{translations.a11y.skipToContent}</a>
+  <!-- aria-live regions for screen reader announcements -->
+  <div role="status" aria-live="polite" class="sr-only" id="live-region"></div>
+  <div role="alert" aria-live="assertive" class="sr-only" id="alert-region"></div>
   <slot />
   <!-- All scripts as single bundled module (Vite handles bundling + minification) -->
   <script src="../scripts/main.ts"></script>
+  <!-- Service Worker registration -->
+  <script is:inline>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(reg) {
+          reg.addEventListener('updatefound', function() {
+            var newSW = reg.installing;
+            if (newSW) {
+              newSW.addEventListener('statechange', function() {
+                if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+                  newSW.postMessage('skipWaiting');
+                }
+              });
+            }
+          });
+        });
+      });
+    }
+  </script>
 </body>
 </html>
 

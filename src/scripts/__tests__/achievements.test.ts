@@ -244,12 +244,16 @@ describe('initAchievements', () => {
   });
 
   it('listens for achievement-unlocked events', () => {
+    document.body.innerHTML = '<div id="alert-region" aria-live="assertive"></div>';
     initAchievements();
     // Set up toast bridge
     const spawnToast = vi.fn();
     window.__achievementToast = { spawnToast };
     trackEvent('first_scroll');
     expect(spawnToast).toHaveBeenCalled();
+    const alertRegion = document.getElementById('alert-region');
+    expect(alertRegion?.textContent).toContain('Achievement unlocked');
+    document.body.innerHTML = '';
   });
 
   it('listens for level-up events and shows overlay', () => {
@@ -260,6 +264,7 @@ describe('initAchievements', () => {
           <div id="levelUpName">Script Kiddie</div>
         </div>
       </div>
+      <div id="alert-region" aria-live="assertive"></div>
     `;
     initAchievements();
     // Earn enough XP to level up (50 XP needed for level 2)
@@ -269,6 +274,8 @@ describe('initAchievements', () => {
     const overlay = document.getElementById('levelUpOverlay');
     expect(overlay?.classList.contains('active')).toBe(true);
     expect(overlay?.getAttribute('aria-hidden')).toBe('false');
+    const alertRegion = document.getElementById('alert-region');
+    expect(alertRegion?.textContent).toContain('Level up');
     document.body.innerHTML = '';
   });
 
@@ -554,7 +561,7 @@ describe('trackEvent + checkAchievements', () => {
     expect(isUnlocked('theme_collector')).toBe(true);
   });
 
-  it('unlocks all_themes with 10 unique themes', () => {
+  it('unlocks palette_master with 12 unique themes', () => {
     for (const t of [
       'hacker',
       'dracula',
@@ -566,6 +573,32 @@ describe('trackEvent + checkAchievements', () => {
       'midnight',
       'arctic',
       'gruvbox',
+      'cyberpunk',
+      'nebula',
+    ]) {
+      trackEvent(`theme:${t}`);
+    }
+    trackEvent('theme_switch');
+    expect(isUnlocked('palette_master')).toBe(true);
+  });
+
+  it('unlocks all_themes with 15 unique themes', () => {
+    for (const t of [
+      'hacker',
+      'dracula',
+      'nord',
+      'catppuccin',
+      'synthwave',
+      'matrix',
+      'bloodmoon',
+      'midnight',
+      'arctic',
+      'gruvbox',
+      'cyberpunk',
+      'nebula',
+      'solarized',
+      'rosepine',
+      'monokai',
     ]) {
       trackEvent(`theme:${t}`);
     }
@@ -855,6 +888,11 @@ describe('completionist achievement', () => {
       'midnight',
       'arctic',
       'gruvbox',
+      'cyberpunk',
+      'nebula',
+      'solarized',
+      'rosepine',
+      'monokai',
     ]) {
       trackEvent(`theme:${t}`);
     }

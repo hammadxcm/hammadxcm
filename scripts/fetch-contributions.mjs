@@ -19,6 +19,7 @@
 import { writeFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createGitHubHeaders, createFetchWithRetry } from './lib/github.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -36,32 +37,8 @@ if (!USERNAME) {
   process.exit(1);
 }
 
-const headers = {
-  Accept: 'application/vnd.github+json',
-  'User-Agent': 'fetch-contributions',
-};
-if (TOKEN) headers.Authorization = `Bearer ${TOKEN}`;
-
-async function fetchWithRetry(url, attempt = 1) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 30000);
-  const res = await fetch(url, { headers, signal: controller.signal });
-  clearTimeout(timeout);
-
-  if (res.status === 403 && res.headers.get('x-ratelimit-remaining') === '0') {
-    const reset = parseInt(res.headers.get('x-ratelimit-reset') || '0', 10);
-    const waitMs = Math.max((reset - Math.floor(Date.now() / 1000)) * 1000, 1000);
-    if (attempt <= 3) {
-      console.warn(`Rate limited. Waiting ${Math.ceil(waitMs / 1000)}s (attempt ${attempt}/3)...`);
-      await new Promise((r) => setTimeout(r, waitMs));
-      return fetchWithRetry(url, attempt + 1);
-    }
-    throw new Error(`Rate limited after ${attempt} retries`);
-  }
-
-  if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
-  return res.json();
-}
+const headers = createGitHubHeaders(TOKEN, 'fetch-contributions');
+const fetchWithRetry = createFetchWithRetry(headers);
 
 async function fetchPRsByState(state) {
   const query = `author:${USERNAME}+type:pr+is:${state}+-user:${USERNAME}`;

@@ -98,21 +98,41 @@ export function updateAnalyticsTheme(theme: ThemeName): void {
   }
 }
 
-export function initLeetcodeTabs(): void {
-  const leetcodeGrid = document.querySelector<HTMLElement>('.analytics-grid[data-leetcode-user]');
-  if (!leetcodeGrid) return;
+function initTabGroup(
+  containerSelector: string,
+  tabSelector: string,
+  trackName: string,
+  onTabClick: (
+    tab: HTMLButtonElement,
+    tabs: NodeListOf<HTMLButtonElement>,
+    container: HTMLElement,
+  ) => void,
+): void {
+  const container = document.querySelector<HTMLElement>(containerSelector);
+  if (!container) return;
 
-  const tabs = leetcodeGrid.querySelectorAll<HTMLButtonElement>('.analytics-tab');
-  const img = leetcodeGrid.querySelector<HTMLImageElement>('img[data-stat="leetcode-card"]');
-  if (!tabs.length || !img) return;
-
-  const user = leetcodeGrid.dataset.leetcodeUser;
-  if (!user) return;
+  const tabs = container.querySelectorAll<HTMLButtonElement>(tabSelector);
+  if (!tabs.length) return;
 
   for (const tab of tabs) {
     tab.addEventListener('click', () => {
       for (const t of tabs) t.classList.remove('active');
       tab.classList.add('active');
+      onTabClick(tab, tabs, container);
+      trackEvent(trackName);
+    });
+  }
+}
+
+export function initLeetcodeTabs(): void {
+  initTabGroup(
+    '.analytics-grid[data-leetcode-user]',
+    '.analytics-tab',
+    'leetcode_tab',
+    (tab, _tabs, container) => {
+      const img = container.querySelector<HTMLImageElement>('img[data-stat="leetcode-card"]');
+      const user = container.dataset.leetcodeUser;
+      if (!img || !user) return;
 
       const ext = tab.dataset.ext || 'activity';
       const theme = (document.documentElement.getAttribute('data-theme') || 'hacker') as ThemeName;
@@ -120,30 +140,21 @@ export function initLeetcodeTabs(): void {
 
       img.src = buildLeetcodeUrl(user, m.leetcodeTheme, ext, m.leetcodeColors);
       img.dataset.currentExt = ext;
-      trackEvent('leetcode_tab');
-    });
-  }
+    },
+  );
 }
 
 export function initGithubTabs(): void {
-  const grid = document.querySelector<HTMLElement>('.analytics-grid[data-github-user]');
-  if (!grid) return;
-
-  const tabs = grid.querySelectorAll<HTMLButtonElement>('.analytics-tab');
-  const panels = grid.querySelectorAll<HTMLElement>('.github-panel');
-  if (!tabs.length || !panels.length) return;
-
-  for (const tab of tabs) {
-    tab.addEventListener('click', () => {
+  initTabGroup(
+    '.analytics-grid[data-github-user]',
+    '.analytics-tab',
+    'github_tab',
+    (tab, _tabs, container) => {
       const panelName = tab.dataset.panel;
-
-      for (const t of tabs) t.classList.remove('active');
-      tab.classList.add('active');
-
+      const panels = container.querySelectorAll<HTMLElement>('.github-panel');
       for (const p of panels) {
         p.classList.toggle('active', p.dataset.panel === panelName);
       }
-      trackEvent('github_tab');
-    });
-  }
+    },
+  );
 }

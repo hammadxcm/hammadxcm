@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('../achievements', () => ({ trackEvent: vi.fn() }));
 
-import { initCommandPalette } from '../interactions/command-palette';
+import { destroyCommandPalette, initCommandPalette } from '../interactions/command-palette';
 
 const paletteData = JSON.stringify({
   sections: [{ id: 'about', label: 'About' }],
@@ -31,6 +31,7 @@ describe('initCommandPalette', () => {
   });
 
   afterEach(() => {
+    destroyCommandPalette();
     document.body.innerHTML = '';
   });
 
@@ -93,6 +94,80 @@ describe('initCommandPalette', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
     expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(true);
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
+    expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(false);
+  });
+
+  it('destroy prevents duplicate listeners on re-init', () => {
+    initCommandPalette();
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
+    expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(true);
+
+    // Destroy aborts listeners
+    destroyCommandPalette();
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
+    // Listener was aborted, so Ctrl+K no longer toggles
+    expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(true);
+
+    // Re-init works
+    initCommandPalette();
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
+    expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(false);
+  });
+
+  it('skips re-init when already initialized', () => {
+    initCommandPalette();
+    // Second call is a no-op (no duplicate listeners)
+    initCommandPalette();
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
+    expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(true);
+    // Toggle back — only one listener, so single toggle
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
+    expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(false);
+  });
+
+  it('navigates results with arrow keys', () => {
+    initCommandPalette();
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
+    const results = document.getElementById('cmdPaletteResults')!;
+    expect(results.querySelector('.cmd-item.active')).toBeTruthy();
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+    const items = results.querySelectorAll('.cmd-item');
+    if (items.length > 1) {
+      expect(items[1]?.classList.contains('active')).toBe(true);
+    }
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
+    expect(items[0]?.classList.contains('active')).toBe(true);
+  });
+
+  it('selects section result with Enter and scrolls', () => {
+    // Add a target section element
+    const section = document.createElement('div');
+    section.id = 'about';
+    document.body.appendChild(section);
+
+    initCommandPalette();
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
+    // First item should be "About" section
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    // Palette should close after selecting
+    expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(false);
+  });
+
+  it('clicks on result item to activate', () => {
+    // Add target section so scrollToSection can find it and close the palette
+    const section = document.createElement('div');
+    section.id = 'about';
+    document.body.appendChild(section);
+
+    initCommandPalette();
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
+    const results = document.getElementById('cmdPaletteResults')!;
+    const firstItem = results.querySelector('.cmd-item') as HTMLElement;
+    expect(firstItem).toBeTruthy();
+    // Dispatch click on the results container with target as the item
+    firstItem.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     expect(document.getElementById('cmdPaletteOverlay')?.classList.contains('open')).toBe(false);
   });
 });

@@ -1,0 +1,57 @@
+---
+import ArrowIcon from '../ArrowIcon.astro';
+import DownloadIcon from '../icons/DownloadIcon.astro';
+import { formatDownloads } from '../../utils/format';
+import { sanitizeHtml } from '@utils/sanitize';
+
+interface Props {
+  project: {
+    name: string;
+    url: string;
+    icon: string;
+    iconIsLocal?: boolean;
+    description: string;
+    tags: string[];
+    linkText: string;
+    npmPackage?: string;
+    gemName?: string;
+  };
+  dlCount: number;
+  base: string;
+  hidden?: boolean;
+}
+
+const { project, dlCount, base, hidden = false } = Astro.props;
+---
+
+<div class:list={['project-card', 'glass', 'reveal', 'glow-border', { 'project-hidden': hidden }]} data-tilt>
+  <div class="project-icon">
+    <img
+      src={project.iconIsLocal ? `${base}${project.icon}` : project.icon}
+      alt={project.name}
+      width="44"
+      height="44"
+      decoding="async"
+    />
+  </div>
+  {dlCount > 0 && (
+    <div class="project-header-row">
+      <span class="project-downloads">
+        <DownloadIcon />
+        {formatDownloads(dlCount)}
+      </span>
+    </div>
+  )}
+  <h3 class="project-name">
+    <a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}</a>
+  </h3>
+  <p class="project-desc" set:html={sanitizeHtml(project.description)} />
+  <div class="project-tags">
+    {project.tags.map((tag) => (
+      <span>{tag}</span>
+    ))}
+  </div>
+  <a href={project.url} target="_blank" rel="noopener noreferrer" class="project-link">
+    {project.linkText} <ArrowIcon />
+  </a>
+</div>

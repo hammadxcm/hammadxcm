@@ -1,0 +1,47 @@
+---
+import ArrowIcon from '../ArrowIcon.astro';
+import { sanitizeHtml } from '@utils/sanitize';
+
+interface Props {
+  cert: {
+    href: string;
+    ariaLabel: string;
+    badge: {
+      type: 'image' | 'svg';
+      src?: string;
+      width?: number;
+      height?: number;
+      alt?: string;
+      svg?: string;
+    };
+    category: string;
+    name: string;
+    issuer: string;
+    date?: string;
+  };
+  viewCertificateLabel: string;
+  hidden?: boolean;
+}
+
+const { cert, viewCertificateLabel, hidden = false } = Astro.props;
+---
+
+<a
+  href={cert.href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={['cert-card', 'glass', 'glow-border', { 'reveal': !hidden, 'cert-hidden': hidden }]}
+  aria-label={cert.ariaLabel}
+>
+  <div class="cert-badge">
+    {cert.badge.type === 'image'
+      ? <img src={cert.badge.src} width={cert.badge.width} height={cert.badge.height} alt={cert.badge.alt} loading="lazy" decoding="async" />
+      : <Fragment set:html={cert.badge.svg} />
+    }
+  </div>
+  <p class="cert-category" set:html={sanitizeHtml(cert.category)} />
+  <h3 class="cert-name">{cert.name}</h3>
+  <p class="cert-issuer" set:html={sanitizeHtml(cert.issuer)} />
+  {cert.date && <p class="cert-date">{cert.date}</p>}
+  <span class="cert-ext">{viewCertificateLabel} <ArrowIcon /></span>
+</a>

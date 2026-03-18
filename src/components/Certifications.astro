@@ -9,9 +9,8 @@
  */
 import SectionHeader from './SectionHeader.astro';
 import ViewAllLink from './ViewAllLink.astro';
-import ArrowIcon from './ArrowIcon.astro';
+import CertCard from './cards/CertCard.astro';
 import { config } from '@config/index';
-import { sanitizeHtml } from '@utils/sanitize';
 import type { TranslationMap } from '@i18n/types';
 import { getLocaleFromUrl, localePath } from '@i18n/index';
 
@@ -28,22 +27,14 @@ const hasMore = allCerts.length > INITIAL_SHOW;
 
 <!-- ══════ CERTIFICATIONS ══════ -->
 <section id="certs" class="section">
-  <SectionHeader label={translations.certs.label} title={translations.certs.title} />
+  <SectionHeader label={translations.certs.label} title={translations.certs.title} transitionId="section-certifications" />
   <div class="certs-grid stagger">
     {allCerts.map((cert, idx) => (
-      <a href={cert.href} target="_blank" rel="noopener noreferrer" class:list={['cert-card', 'glass', 'reveal', 'glow-border', { 'cert-hidden': hasMore && idx >= INITIAL_SHOW }]} aria-label={cert.ariaLabel}>
-        <div class="cert-badge">
-          {cert.badge.type === 'image'
-            ? <img src={cert.badge.src} width={cert.badge.width} height={cert.badge.height} alt={cert.badge.alt} loading="lazy" />
-            : <Fragment set:html={cert.badge.svg} />
-          }
-        </div>
-        <p class="cert-category" set:html={sanitizeHtml(cert.category)} />
-        <h3 class="cert-name">{cert.name}</h3>
-        <p class="cert-issuer" set:html={sanitizeHtml(cert.issuer)} />
-        {cert.date && <p class="cert-date">{cert.date}</p>}
-        <span class="cert-ext">{translations.certs.viewCertificate} <ArrowIcon /></span>
-      </a>
+      <CertCard
+        cert={cert}
+        viewCertificateLabel={translations.certs.viewCertificate}
+        hidden={hasMore && idx >= INITIAL_SHOW}
+      />
     ))}
   </div>
   {hasMore && (
@@ -51,86 +42,88 @@ const hasMore = allCerts.length > INITIAL_SHOW;
   )}
 </section>
 
-<style lang="scss">
+<style lang="scss" is:global>
   @use '../styles/mixins' as *;
 
-  .certs-grid {
-    @include responsive-grid(280px, false);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  a.cert-card {
-    @include card-padding;
-    display: block;
-    text-align: center;
-    transition: all var(--duration-slow) var(--ease-out-expo);
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
-
-    &:hover { color: inherit; }
-  }
-
-  .cert-badge {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-
-    img {
-      @include respond-to(mobile) { width: 40px; height: 40px; }
+  #certs {
+    .certs-grid {
+      @include responsive-grid(280px, false);
+      max-width: 1100px;
+      margin: 0 auto;
     }
-  }
 
-  .cert-category {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
+    a.cert-card {
+      @include card-padding;
+      display: block;
+      text-align: center;
+      transition: all var(--duration-slow) var(--ease-out-expo);
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
 
-  .cert-name {
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-
-    @include respond-to(mobile) { font-size: 0.95rem; }
-  }
-
-  .cert-issuer {
-    font-size: 0.8rem;
-    color: var(--accent-blue);
-    margin-top: 0.35rem;
-  }
-
-  .cert-date {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-  }
-
-  a.cert-card .cert-ext {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    margin-top: 0.75rem;
-    transition: color var(--duration-normal);
-
-    :global(svg) {
-      width: 14px; height: 14px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      &:hover { color: inherit; }
     }
-  }
 
-  a.cert-card:hover .cert-ext { color: var(--accent); }
+    .cert-badge {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
 
-  .cert-hidden {
-    display: none !important;
+      img {
+        @include respond-to(mobile) { width: 40px; height: 40px; }
+      }
+    }
+
+    .cert-category {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+
+      @include respond-to(mobile) { font-size: 0.95rem; }
+    }
+
+    .cert-issuer {
+      font-size: 0.8rem;
+      color: var(--accent-blue);
+      margin-top: 0.35rem;
+    }
+
+    .cert-date {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    a.cert-card .cert-ext {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 0.75rem;
+      transition: color var(--duration-normal);
+
+      svg {
+        width: 14px; height: 14px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    }
+
+    a.cert-card:hover .cert-ext { color: var(--accent); }
+
+    .cert-hidden {
+      display: none !important;
+    }
   }
 </style>
