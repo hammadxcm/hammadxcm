@@ -1,6 +1,7 @@
 import { getViteConfig } from 'astro/config';
 
-export default getViteConfig({
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default (getViteConfig as any)({
   test: {
     globals: true,
     coverage: {

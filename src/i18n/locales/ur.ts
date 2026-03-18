@@ -80,6 +80,8 @@ const ur: TranslationMap = {
     showLess: 'کم دکھائیں',
     notableTitle: 'قابل ذکر شراکتیں',
     notableSubtitle: 'اعلیٰ اوپن سورس منصوبوں کی جھلکیاں',
+    less: 'Less',
+    more: 'More',
     relativeTime: {
       today: 'آج',
       dayAgo: '1 دن پہلے',
@@ -101,6 +103,9 @@ const ur: TranslationMap = {
     successRate: 'ضم کی شرح',
     contributionGraph: 'شراکت کا گراف',
     totalContributions: 'پچھلے سال میں {count} شراکتیں',
+    mostActiveMonth: 'Most Active Month',
+    topLanguage: 'Top Language',
+    avgPRsPerMonth: 'Avg PRs/Month',
   },
   certs: {
     label: '// اسناد',

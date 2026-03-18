@@ -6,6 +6,10 @@ on:
     paths-ignore:
       - "metrics.*.svg"
       - "CONTRIBUTIONS_README.md"
+      - "README.md"
+
+  schedule:
+    - cron: "0 */6 * * *"
 
   workflow_dispatch:
 
@@ -33,6 +37,13 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: hammadxcm
+          EXCLUDE_ORGS: ""
+          MIN_STARS: "0"
+          MAX_ITEMS: "20"
+          MAX_REPOS: "30"
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
@@ -41,6 +52,7 @@ jobs:
 
   release:
     needs: build-and-deploy
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6

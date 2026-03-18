@@ -80,6 +80,8 @@ const ar: TranslationMap = {
     showLess: 'عرض أقل',
     notableTitle: 'مساهمات بارزة',
     notableSubtitle: 'أبرز المساهمات في مشاريع مفتوحة المصدر',
+    less: 'Less',
+    more: 'More',
     relativeTime: {
       today: 'اليوم',
       dayAgo: 'منذ يوم واحد',
@@ -101,6 +103,9 @@ const ar: TranslationMap = {
     successRate: 'معدل الدمج',
     contributionGraph: 'رسم المساهمات',
     totalContributions: '{count} مساهمة في العام الماضي',
+    mostActiveMonth: 'Most Active Month',
+    topLanguage: 'Top Language',
+    avgPRsPerMonth: 'Avg PRs/Month',
   },
   certs: {
     label: '// المؤهلات',

@@ -39,12 +39,12 @@ function safeInit(fn: () => void): void {
 }
 
 async function safeLazy(
-  loader: () => Promise<{ [k: string]: () => void }>,
+  loader: () => Promise<Record<string, unknown>>,
   fnName: string,
 ): Promise<void> {
   try {
     const mod = await loader();
-    mod[fnName]();
+    (mod[fnName] as () => void)();
   } catch (e) {
     console.error(`[lazy] ${fnName} failed:`, e);
   }

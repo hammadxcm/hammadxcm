@@ -80,6 +80,8 @@ const de: TranslationMap = {
     showLess: 'Weniger anzeigen',
     notableTitle: 'Bemerkenswerte Beiträge',
     notableSubtitle: 'Highlights aus Top Open-Source-Projekten',
+    less: 'Less',
+    more: 'More',
     relativeTime: {
       today: 'heute',
       dayAgo: 'vor 1 Tag',
@@ -101,6 +103,9 @@ const de: TranslationMap = {
     successRate: 'Merge-Rate',
     contributionGraph: 'Beitragsgrafik',
     totalContributions: '{count} Beiträge im letzten Jahr',
+    mostActiveMonth: 'Most Active Month',
+    topLanguage: 'Top Language',
+    avgPRsPerMonth: 'Avg PRs/Month',
   },
   certs: {
     label: '// Qualifikationen',

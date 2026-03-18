@@ -20,23 +20,25 @@ export function initAchievementPanel(): void {
 
   if (!overlay || !grid) return;
 
+  const _overlay = overlay;
+  const _grid = grid;
   const crosshair = document.getElementById('crosshairCursor');
   const cursorTrail = document.getElementById('cursorTrail');
   let releaseFocusTrap: (() => void) | null = null;
 
   function open(): void {
     render();
-    overlay.classList.add('open');
-    overlay.setAttribute('aria-hidden', 'false');
-    releaseFocusTrap = trapFocus(overlay);
+    _overlay.classList.add('open');
+    _overlay.setAttribute('aria-hidden', 'false');
+    releaseFocusTrap = trapFocus(_overlay);
     // Lift cursor above modal
     if (crosshair) crosshair.style.zIndex = '10002';
     if (cursorTrail) cursorTrail.style.zIndex = '10002';
   }
 
   function close(): void {
-    overlay.classList.remove('open');
-    overlay.setAttribute('aria-hidden', 'true');
+    _overlay.classList.remove('open');
+    _overlay.setAttribute('aria-hidden', 'true');
     if (releaseFocusTrap) {
       releaseFocusTrap();
       releaseFocusTrap = null;
@@ -62,7 +64,7 @@ export function initAchievementPanel(): void {
     if (textEl) textEl.textContent = `${xp.current} / ${xp.needed} XP`;
 
     // Build achievement cards
-    grid.innerHTML = '';
+    _grid.innerHTML = '';
     const categories = ['explore', 'interact', 'discover', 'social'] as const;
     for (const cat of categories) {
       const items = ACHIEVEMENTS.filter((a) => a.category === cat);
@@ -91,7 +93,7 @@ export function initAchievementPanel(): void {
             <span class="ac-xp${unlocked ? ' earned' : ''}">+${a.xp} XP</span>
           `;
         }
-        grid.appendChild(card);
+        _grid.appendChild(card);
       }
     }
 
@@ -100,7 +102,7 @@ export function initAchievementPanel(): void {
       .then((stats) => {
         if (!stats || !stats.visit) return;
         for (const a of ACHIEVEMENTS) {
-          const rarityEl = grid.querySelector(`[data-achievement-id="${a.id}"]`);
+          const rarityEl = _grid.querySelector(`[data-achievement-id="${a.id}"]`);
           if (!rarityEl) continue;
           const achCount = stats[`ach:${a.id}`] || 0;
           if (achCount > 0) {
@@ -123,17 +125,17 @@ export function initAchievementPanel(): void {
       const tag = (e.target as HTMLElement)?.tagName;
       if (tag === 'INPUT' || tag === 'TEXTAREA') return;
       e.preventDefault();
-      if (overlay.classList.contains('open')) close();
+      if (_overlay.classList.contains('open')) close();
       else open();
     }
   });
 
   // Close triggers
   if (closeBtn) closeBtn.addEventListener('click', close);
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) close();
+  _overlay.addEventListener('click', (e) => {
+    if (e.target === _overlay) close();
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+    if (e.key === 'Escape' && _overlay.classList.contains('open')) close();
   });
 }

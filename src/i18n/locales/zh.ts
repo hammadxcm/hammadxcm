@@ -80,6 +80,8 @@ const zh: TranslationMap = {
     showLess: '收起',
     notableTitle: '重要贡献',
     notableSubtitle: '顶级开源项目的精选亮点',
+    less: 'Less',
+    more: 'More',
     relativeTime: {
       today: '今天',
       dayAgo: '1天前',
@@ -101,6 +103,9 @@ const zh: TranslationMap = {
     successRate: '合并率',
     contributionGraph: '贡献图表',
     totalContributions: '过去一年 {count} 次贡献',
+    mostActiveMonth: 'Most Active Month',
+    topLanguage: 'Top Language',
+    avgPRsPerMonth: 'Avg PRs/Month',
   },
   certs: {
     label: '// 资质认证',

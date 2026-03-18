@@ -80,6 +80,8 @@ const bn: TranslationMap = {
     showLess: 'কম দেখান',
     notableTitle: 'উল্লেখযোগ্য অবদান',
     notableSubtitle: 'শীর্ষ ওপেন সোর্স প্রকল্পে হাইলাইটস',
+    less: 'Less',
+    more: 'More',
     relativeTime: {
       today: 'আজ',
       dayAgo: '১ দিন আগে',
@@ -101,6 +103,9 @@ const bn: TranslationMap = {
     successRate: 'মার্জ হার',
     contributionGraph: 'অবদান গ্রাফ',
     totalContributions: 'গত বছরে {count} টি অবদান',
+    mostActiveMonth: 'Most Active Month',
+    topLanguage: 'Top Language',
+    avgPRsPerMonth: 'Avg PRs/Month',
   },
   certs: {
     label: '// যোগ্যতাপত্র',

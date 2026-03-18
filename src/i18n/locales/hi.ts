@@ -80,6 +80,8 @@ const hi: TranslationMap = {
     showLess: 'कम दिखाएँ',
     notableTitle: 'उल्लेखनीय योगदान',
     notableSubtitle: 'शीर्ष ओपन सोर्स परियोजनाओं की झलकियाँ',
+    less: 'Less',
+    more: 'More',
     relativeTime: {
       today: 'आज',
       dayAgo: '1 दिन पहले',
@@ -101,6 +103,9 @@ const hi: TranslationMap = {
     successRate: 'मर्ज दर',
     contributionGraph: 'योगदान ग्राफ',
     totalContributions: 'पिछले वर्ष में {count} योगदान',
+    mostActiveMonth: 'Most Active Month',
+    topLanguage: 'Top Language',
+    avgPRsPerMonth: 'Avg PRs/Month',
   },
   certs: {
     label: '// प्रमाणपत्र',

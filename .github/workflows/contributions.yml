@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Fetch contributions
+      - name: Fetch contributions (for README table)
         run: node scripts/fetch-contributions.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -24,19 +24,6 @@ jobs:
           EXCLUDE_ORGS: ""
           MIN_STARS: "0"
           MAX_ITEMS: "20"
-
-      - name: Fetch projects
-        run: node scripts/fetch-projects.mjs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: hammadxcm
-          MAX_REPOS: "30"
-
-      - name: Fetch contribution graph
-        run: node scripts/fetch-contribution-graph.mjs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: hammadxcm
 
       - name: Inject into README
         run: |
@@ -56,13 +43,10 @@ jobs:
           "
           rm -f CONTRIBUTIONS_README.md
 
-      - name: Format generated JSON
-        run: npx biome format --write src/data/contributions.json src/data/projects.json src/data/contribution-graph.json
-
-      - name: Commit changes
+      - name: Commit README changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/contributions.json src/data/projects.json src/data/contribution-graph.json README.md
-          git diff --cached --quiet || git commit -m "Update OSS contributions & projects"
+          git add README.md
+          git diff --cached --quiet || git commit -m "Update README contributions table [skip ci]"
           git push

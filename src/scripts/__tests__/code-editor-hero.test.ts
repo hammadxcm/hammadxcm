@@ -387,7 +387,9 @@ describe('code-editor-hero', () => {
 
   it('file explorer opens on Files icon click', () => {
     initCodeEditorHero();
-    const sidebar = document.querySelector('.code-editor-sidebar:not(.code-editor-search-panel):not(.code-editor-git-panel):not(.code-editor-extensions-panel):not(.code-editor-settings-panel)');
+    const sidebar = document.querySelector(
+      '.code-editor-sidebar:not(.code-editor-search-panel):not(.code-editor-git-panel):not(.code-editor-extensions-panel):not(.code-editor-settings-panel)',
+    );
     expect(sidebar?.classList.contains('open')).toBe(false);
 
     const icons = document.querySelectorAll<HTMLElement>('.code-editor-activity-icon');
