@@ -952,7 +952,7 @@ Next.js & Svelte with live demo</sub>
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
-| [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟢 Open | Mar 20, 2026 | 5.8k | +304 -4 |
+| [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟣 Merged | Mar 20, 2026 | 5.9k | +304 -4 |
 | [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) | [New package: hammadxcm.go-phantom version 0.0.2](https://github.com/microsoft/winget-pkgs/pull/348164) | 🟣 Merged | Mar 17, 2026 | 10.4k | +36 -0 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [docs: clarify generateMetadata re-evaluation on navigation](https://github.com/vercel/next.js/pull/91427) | 🟢 Open | Mar 15, 2026 | 138.4k | +7 -1 |
 | [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add `factory_bot.before_run_factory` instrumentation event](https://github.com/thoughtbot/factory_bot/pull/1795) | 🟢 Open | Mar 15, 2026 | 8.4k | +133 -0 |
