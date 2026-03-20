@@ -39,9 +39,9 @@ describe('keyboard', () => {
     const { initKeyboard } = await import('../interactions/keyboard');
     initKeyboard();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'x' }));
-    const flash = document.getElementById('keyFlash')!;
-    expect(flash.textContent).toBe('> x');
-    expect(flash.classList.contains('show')).toBe(true);
+    const flash = document.getElementById('keyFlash');
+    expect(flash?.textContent).toBe('> x');
+    expect(flash?.classList.contains('show')).toBe(true);
   });
 
   it('shows Space for space key', async () => {

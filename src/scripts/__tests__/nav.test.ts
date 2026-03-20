@@ -28,8 +28,8 @@ describe('initNav', () => {
 
   it('toggles nav on hamburger click', () => {
     initNav();
-    const hamburger = document.getElementById('hamburger')!;
-    const navLinks = document.getElementById('navLinks')!;
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
     hamburger.click();
     expect(hamburger.classList.contains('active')).toBe(true);
     expect(navLinks.classList.contains('open')).toBe(true);
@@ -38,7 +38,7 @@ describe('initNav', () => {
 
   it('closes nav on link click', () => {
     initNav();
-    const hamburger = document.getElementById('hamburger')!;
+    const hamburger = document.getElementById('hamburger');
     hamburger.click(); // open
     document.querySelector('a[href="#about"]')?.dispatchEvent(new Event('click'));
     expect(hamburger.classList.contains('active')).toBe(false);
@@ -46,7 +46,7 @@ describe('initNav', () => {
 
   it('sets aria-expanded to false on close', () => {
     initNav();
-    const hamburger = document.getElementById('hamburger')!;
+    const hamburger = document.getElementById('hamburger');
     hamburger.click(); // open
     hamburger.click(); // close
     expect(hamburger.getAttribute('aria-expanded')).toBe('false');

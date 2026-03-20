@@ -1,3 +1,4 @@
+import type { TranslationMap } from '@i18n/types';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('@i18n/index', () => ({
@@ -21,7 +22,7 @@ const translations = {
       yearsAgo: '{{count}} years ago',
     },
   },
-} as any;
+} as unknown as TranslationMap;
 
 describe('relativeTime', () => {
   beforeEach(() => {
@@ -38,8 +39,8 @@ describe('relativeTime', () => {
   });
 
   it('returns empty string for null-ish input', () => {
-    expect(relativeTime(null as any, translations)).toBe('');
-    expect(relativeTime(undefined as any, translations)).toBe('');
+    expect(relativeTime(null as unknown as string, translations)).toBe('');
+    expect(relativeTime(undefined as unknown as string, translations)).toBe('');
   });
 
   it('returns "today" for same-day dates', () => {
