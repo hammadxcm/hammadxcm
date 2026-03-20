@@ -30,7 +30,7 @@ describe('initResumeExport', () => {
   });
 
   it('attaches click listener to button', () => {
-    const btn = document.getElementById('resumeExportBtn');
+    const btn = document.getElementById('resumeExportBtn') as HTMLElement;
     const spy = vi.spyOn(btn, 'addEventListener');
     initResumeExport();
     expect(spy).toHaveBeenCalledWith('click', expect.any(Function));

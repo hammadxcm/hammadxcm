@@ -245,7 +245,7 @@ function deepSet(obj, dottedKey, value) {
 // ── Dashboard renderer ────────────────────────────────────────────────
 function renderDashboard(config) {
   console.clear();
-  console.log(gradient.cristal.multiline(BANNER));
+  console.log(gradient.pastel.multiline(BANNER));
   console.log();
 
   const maxWidth = Math.min(process.stdout.columns || 80, 80);
@@ -693,7 +693,7 @@ async function editScalarSection(sectionDef, config) {
       options: choices,
     }));
 
-    if (fieldKey === 'back') return;
+    if (fieldKey === 'back') break;
 
     const field = sectionDef.fields.find((f) => f.key === fieldKey);
     if (!field) continue;

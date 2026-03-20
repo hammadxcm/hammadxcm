@@ -42,9 +42,9 @@ describe('initThemeSwitcher', () => {
     initThemeSwitcher();
     const btn = document.getElementById('themeToggleBtn');
     const dropdown = document.getElementById('themeDropdown');
-    btn.click();
-    expect(dropdown.classList.contains('open')).toBe(true);
-    expect(btn.getAttribute('aria-expanded')).toBe('true');
+    btn?.click();
+    expect(dropdown?.classList.contains('open')).toBe(true);
+    expect(btn?.getAttribute('aria-expanded')).toBe('true');
   });
 
   it('closes dropdown on second toggle click', async () => {
@@ -52,9 +52,9 @@ describe('initThemeSwitcher', () => {
     initThemeSwitcher();
     const btn = document.getElementById('themeToggleBtn');
     const dropdown = document.getElementById('themeDropdown');
-    btn.click();
-    btn.click();
-    expect(dropdown.classList.contains('open')).toBe(false);
+    btn?.click();
+    btn?.click();
+    expect(dropdown?.classList.contains('open')).toBe(false);
   });
 
   it('applies theme on option click', async () => {
@@ -71,9 +71,9 @@ describe('initThemeSwitcher', () => {
     initThemeSwitcher();
     const btn = document.getElementById('themeToggleBtn');
     const dropdown = document.getElementById('themeDropdown');
-    btn.click();
+    btn?.click();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-    expect(dropdown.classList.contains('open')).toBe(false);
+    expect(dropdown?.classList.contains('open')).toBe(false);
   });
 
   it('closes dropdown on outside click', async () => {
@@ -81,16 +81,16 @@ describe('initThemeSwitcher', () => {
     initThemeSwitcher();
     const btn = document.getElementById('themeToggleBtn');
     const dropdown = document.getElementById('themeDropdown');
-    btn.click();
+    btn?.click();
     document.dispatchEvent(new Event('click'));
-    expect(dropdown.classList.contains('open')).toBe(false);
+    expect(dropdown?.classList.contains('open')).toBe(false);
   });
 
   it('sets active class on current theme option', async () => {
     const { initThemeSwitcher } = await import('../theme-switcher');
     initThemeSwitcher();
     const hackerOption = document.querySelector('[data-theme="hacker"]');
-    expect(hackerOption.classList.contains('active')).toBe(true);
+    expect(hackerOption?.classList.contains('active')).toBe(true);
   });
 
   it('applies saved theme on init', async () => {

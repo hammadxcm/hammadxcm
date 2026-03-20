@@ -61,8 +61,9 @@ function startGame(): void {
   canvasEl = document.getElementById('breakoutCanvas') as HTMLCanvasElement;
   if (!canvasEl) return;
 
-  const ctx = canvasEl.getContext('2d');
-  if (!ctx) return;
+  const ctxRaw = canvasEl.getContext('2d');
+  if (!ctxRaw) return;
+  const ctx = ctxRaw;
 
   const W = Math.min(window.innerWidth * 0.9, 800);
   const H = Math.min(window.innerHeight * 0.8, 600);

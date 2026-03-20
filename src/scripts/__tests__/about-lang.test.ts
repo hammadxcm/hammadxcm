@@ -41,18 +41,18 @@ describe('initAboutLang', () => {
   it('initializes with default theme language', () => {
     initAboutLang();
     const filename = document.getElementById('aboutFilename');
-    expect(filename.textContent).toContain('.ts');
+    expect(filename?.textContent).toContain('.ts');
   });
 
   it('updateAboutTheme updates section label', () => {
     updateAboutTheme('hacker' as ThemeName);
     const label = document.querySelector('.section-label');
-    expect(label.textContent).toBe('About');
+    expect(label?.textContent).toBe('About');
   });
 
   it('updates code body on init', () => {
     initAboutLang();
     const codeBody = document.getElementById('aboutCodeBody');
-    expect(codeBody.innerHTML).toContain('code-line');
+    expect(codeBody?.innerHTML).toContain('code-line');
   });
 });
