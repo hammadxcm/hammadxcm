@@ -56,6 +56,24 @@ export function initMatrixRain(): void {
   resizeHandler = resize;
   window.addEventListener('resize', resizeHandler);
 
+  function drawColumns(tc: ReturnType<typeof getThemeConfig>): void {
+    ctx.fillStyle = tc.matrixBg || 'rgba(10, 14, 20, 0.06)';
+    ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = tc.matrixColor || 'rgba(0, 191, 191, 0.6)';
+    ctx.font = `${fontSize}px monospace`;
+
+    for (let i = 0; i < drops.length; i++) {
+      if (Math.random() > 0.3) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > h && Math.random() > 0.98) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+  }
+
   function startLoop(): void {
     if (frameId !== null) return;
     function draw(): void {
@@ -79,21 +97,7 @@ export function initMatrixRain(): void {
         return;
       }
 
-      ctx.fillStyle = tc.matrixBg || 'rgba(10, 14, 20, 0.06)';
-      ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = tc.matrixColor || 'rgba(0, 191, 191, 0.6)';
-      ctx.font = `${fontSize}px monospace`;
-
-      for (let i = 0; i < drops.length; i++) {
-        if (Math.random() > 0.3) {
-          const char = chars[Math.floor(Math.random() * chars.length)];
-          ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-          if (drops[i] * fontSize > h && Math.random() > 0.98) {
-            drops[i] = 0;
-          }
-          drops[i]++;
-        }
-      }
+      drawColumns(tc);
       frameId = requestAnimationFrame(draw);
     }
     frameId = requestAnimationFrame(draw);

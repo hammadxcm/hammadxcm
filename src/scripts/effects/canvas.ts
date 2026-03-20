@@ -493,46 +493,71 @@ function initParticles(): void {
   }
 }
 
-function drawParticles(color: string): void {
+function updateAndDrawParticle(p: Particle, color: string): void {
   if (!ctx) return;
-  ctx.clearRect(0, 0, w, h);
+  if (mouse.x !== null && mouse.y !== null) {
+    const dx = p.x - mouse.x;
+    const dy = p.y - mouse.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < mouse.radius) {
+      const force = (mouse.radius - dist) / mouse.radius;
+      p.x += (dx / dist) * force * 2;
+      p.y += (dy / dist) * force * 2;
+    }
+  }
+  p.x += p.vx;
+  p.y += p.vy;
+  if (p.x < 0 || p.x > w) p.vx *= -1;
+  if (p.y < 0 || p.y > h) p.vy *= -1;
 
-  // Build spatial hash grid for O(n) neighbor lookups instead of O(n²)
-  const cols = Math.ceil(w / CELL_SIZE) || 1;
-  const rows = Math.ceil(h / CELL_SIZE) || 1;
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+  ctx.fillStyle = `${color}${p.opacity})`;
+  ctx.fill();
+}
+
+function buildSpatialGrid(cols: number, rows: number): number[][] {
   const grid: number[][] = new Array(cols * rows);
-
   for (let i = 0; i < particles.length; i++) {
     const p = particles[i];
-    if (mouse.x !== null && mouse.y !== null) {
-      const dx = p.x - mouse.x;
-      const dy = p.y - mouse.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < mouse.radius) {
-        const force = (mouse.radius - dist) / mouse.radius;
-        p.x += (dx / dist) * force * 2;
-        p.y += (dy / dist) * force * 2;
-      }
-    }
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.x < 0 || p.x > w) p.vx *= -1;
-    if (p.y < 0 || p.y > h) p.vy *= -1;
-
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `${color}${p.opacity})`;
-    ctx.fill();
-
-    // Insert into spatial grid
     const cx = Math.min(Math.floor(p.x / CELL_SIZE), cols - 1);
     const cy = Math.min(Math.floor(p.y / CELL_SIZE), rows - 1);
     const cellIdx = cy * cols + cx;
     if (!grid[cellIdx]) grid[cellIdx] = [];
     grid[cellIdx].push(i);
   }
+  return grid;
+}
 
-  // Draw connections using spatial grid — only check neighboring cells
+function connectNeighborCell(
+  cell: number[] | undefined,
+  i: number,
+  p: Particle,
+  color: string,
+  connected: Set<string>,
+): void {
+  if (!cell || !ctx) return;
+  for (const j of cell) {
+    if (j <= i) continue;
+    const key = `${i}:${j}`;
+    if (connected.has(key)) continue;
+    const p2 = particles[j];
+    const ddx = p.x - p2.x;
+    const ddy = p.y - p2.y;
+    const d = Math.sqrt(ddx * ddx + ddy * ddy);
+    if (d < PARTICLE_CONNECT_DIST) {
+      connected.add(key);
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.strokeStyle = `${color}${0.15 * (1 - d / PARTICLE_CONNECT_DIST)})`;
+      ctx.stroke();
+    }
+  }
+}
+
+function drawConnectionLines(grid: number[][], cols: number, rows: number, color: string): void {
+  if (!ctx) return;
   const connected = new Set<string>();
   ctx.lineWidth = 0.5;
   for (let i = 0; i < particles.length; i++) {
@@ -542,28 +567,25 @@ function drawParticles(color: string): void {
 
     for (let ny = Math.max(0, cy - 1); ny <= Math.min(rows - 1, cy + 1); ny++) {
       for (let nx = Math.max(0, cx - 1); nx <= Math.min(cols - 1, cx + 1); nx++) {
-        const cell = grid[ny * cols + nx];
-        if (!cell) continue;
-        for (const j of cell) {
-          if (j <= i) continue;
-          const key = i < j ? `${i}:${j}` : `${j}:${i}`;
-          if (connected.has(key)) continue;
-          const p2 = particles[j];
-          const ddx = p.x - p2.x;
-          const ddy = p.y - p2.y;
-          const d = Math.sqrt(ddx * ddx + ddy * ddy);
-          if (d < PARTICLE_CONNECT_DIST) {
-            connected.add(key);
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `${color}${0.15 * (1 - d / PARTICLE_CONNECT_DIST)})`;
-            ctx.stroke();
-          }
-        }
+        connectNeighborCell(grid[ny * cols + nx], i, p, color, connected);
       }
     }
   }
+}
+
+function drawParticles(color: string): void {
+  if (!ctx) return;
+  ctx.clearRect(0, 0, w, h);
+
+  const cols = Math.ceil(w / CELL_SIZE) || 1;
+  const rows = Math.ceil(h / CELL_SIZE) || 1;
+
+  for (const p of particles) {
+    updateAndDrawParticle(p, color);
+  }
+
+  const grid = buildSpatialGrid(cols, rows);
+  drawConnectionLines(grid, cols, rows, color);
 }
 
 /* ── Retro Grid (synthwave) — custom: non-particle rendering ── */

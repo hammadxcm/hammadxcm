@@ -163,13 +163,7 @@ function startGame(): void {
     /* noop */
   }
 
-  function gameLoop(): void {
-    if (!ctx || !canvasEl) return;
-
-    // Clear
-    ctx.clearRect(0, 0, W, H);
-
-    // Draw bricks
+  function drawBricks(): void {
     for (const b of bricks) {
       if (!b.alive) continue;
       ctx.fillStyle = b.color;
@@ -177,81 +171,95 @@ function startGame(): void {
       ctx.roundRect(b.x, b.y, b.w, b.h, 3);
       ctx.fill();
     }
+  }
 
-    // Draw paddle
+  function drawPaddle(): void {
     ctx.fillStyle = colors[0];
     ctx.beginPath();
     ctx.roundRect(paddle.x, paddle.y, paddle.width, paddle.height, 6);
     ctx.fill();
+  }
 
-    // Draw ball
+  function drawBall(): void {
     ctx.fillStyle = '#ffffff';
     ctx.beginPath();
     ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
     ctx.fill();
+  }
 
-    // Ball movement
+  function handleWallCollision(): void {
+    if (ball.x - ball.radius < 0 || ball.x + ball.radius > W) ball.vx = -ball.vx;
+    if (ball.y - ball.radius < 0) ball.vy = -ball.vy;
+  }
+
+  function handleBallReset(): void {
+    ball.launched = false;
+    ball.x = paddle.x + paddle.width / 2;
+    ball.y = paddle.y - ball.radius;
+    ball.vy = -4;
+    ball.vx = 4 * (Math.random() > 0.5 ? 1 : -1);
+  }
+
+  function handlePaddleCollision(): void {
+    if (
+      ball.y + ball.radius > paddle.y &&
+      ball.y - ball.radius < paddle.y + paddle.height &&
+      ball.x > paddle.x &&
+      ball.x < paddle.x + paddle.width
+    ) {
+      ball.vy = -Math.abs(ball.vy);
+      const hitPos = (ball.x - paddle.x) / paddle.width - 0.5;
+      ball.vx = hitPos * 8;
+    }
+  }
+
+  function handleBrickCollision(): void {
+    for (const b of bricks) {
+      if (!b.alive) continue;
+      if (
+        ball.x + ball.radius > b.x &&
+        ball.x - ball.radius < b.x + b.w &&
+        ball.y + ball.radius > b.y &&
+        ball.y - ball.radius < b.y + b.h
+      ) {
+        b.alive = false;
+        ball.vy = -ball.vy;
+        score++;
+        if (scoreEl) scoreEl.textContent = `Score: ${score}`;
+        break;
+      }
+    }
+  }
+
+  function checkWin(): void {
+    if (!achievementSent && bricks.every((b) => !b.alive)) {
+      achievementSent = true;
+      try {
+        window.dispatchEvent(new CustomEvent('achievement-trigger', { detail: 'breakout_winner' }));
+      } catch {
+        /* noop */
+      }
+    }
+  }
+
+  function gameLoop(): void {
+    if (!ctx || !canvasEl) return;
+
+    ctx.clearRect(0, 0, W, H);
+    drawBricks();
+    drawPaddle();
+    drawBall();
+
     if (ball.launched) {
       ball.x += ball.vx;
       ball.y += ball.vy;
-
-      // Wall collision
-      if (ball.x - ball.radius < 0 || ball.x + ball.radius > W) ball.vx = -ball.vx;
-      if (ball.y - ball.radius < 0) ball.vy = -ball.vy;
-
-      // Bottom — reset
-      if (ball.y + ball.radius > H) {
-        ball.launched = false;
-        ball.x = paddle.x + paddle.width / 2;
-        ball.y = paddle.y - ball.radius;
-        ball.vy = -4;
-        ball.vx = 4 * (Math.random() > 0.5 ? 1 : -1);
-      }
-
-      // Paddle collision
-      if (
-        ball.y + ball.radius > paddle.y &&
-        ball.y - ball.radius < paddle.y + paddle.height &&
-        ball.x > paddle.x &&
-        ball.x < paddle.x + paddle.width
-      ) {
-        ball.vy = -Math.abs(ball.vy);
-        // Adjust vx based on hit position
-        const hitPos = (ball.x - paddle.x) / paddle.width - 0.5;
-        ball.vx = hitPos * 8;
-      }
-
-      // Brick collision
-      for (const b of bricks) {
-        if (!b.alive) continue;
-        if (
-          ball.x + ball.radius > b.x &&
-          ball.x - ball.radius < b.x + b.w &&
-          ball.y + ball.radius > b.y &&
-          ball.y - ball.radius < b.y + b.h
-        ) {
-          b.alive = false;
-          ball.vy = -ball.vy;
-          score++;
-          if (scoreEl) scoreEl.textContent = `Score: ${score}`;
-          break;
-        }
-      }
-
-      // Win check
-      if (!achievementSent && bricks.every((b) => !b.alive)) {
-        achievementSent = true;
-        try {
-          window.dispatchEvent(
-            new CustomEvent('achievement-trigger', { detail: 'breakout_winner' }),
-          );
-        } catch {
-          /* noop */
-        }
-      }
+      handleWallCollision();
+      if (ball.y + ball.radius > H) handleBallReset();
+      handlePaddleCollision();
+      handleBrickCollision();
+      checkWin();
     }
 
-    // Score text
     ctx.fillStyle = '#ffffff';
     ctx.font = '12px monospace';
     ctx.fillText('Click to launch \u2022 ESC to exit', W / 2 - 100, H - 8);

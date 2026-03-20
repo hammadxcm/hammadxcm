@@ -12,6 +12,17 @@ export function destroyObserver(): void {
   initialized = false;
 }
 
+function revealEntry(entry: IntersectionObserverEntry): void {
+  if (!entry.isIntersecting) return;
+  entry.target.classList.add('visible');
+  if (entry.target.classList.contains('stagger')) {
+    const children = entry.target.children;
+    for (let i = 0; i < children.length; i++) {
+      children[i].classList.add('visible');
+    }
+  }
+}
+
 export function initObserver(): void {
   if (initialized) return;
   initialized = true;
@@ -28,15 +39,7 @@ export function initObserver(): void {
       revealObserver = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              if (entry.target.classList.contains('stagger')) {
-                const children = entry.target.children;
-                for (let i = 0; i < children.length; i++) {
-                  children[i].classList.add('visible');
-                }
-              }
-            }
+            revealEntry(entry);
           }
         },
         { threshold: 0.08, rootMargin: '0px 0px -60px 0px' },

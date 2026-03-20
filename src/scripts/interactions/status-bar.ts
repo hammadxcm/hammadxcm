@@ -9,6 +9,35 @@ let startTime = 0;
 let intervalId: ReturnType<typeof setInterval> | undefined;
 let initialized = false;
 
+function renderXPSlot(el: HTMLElement): boolean {
+  try {
+    const progress = getProgress();
+    if (progress) {
+      const lvl = getLevel();
+      el.textContent = `LVL ${lvl} ${getLevelName(lvl)} [${progress.totalXP} XP]`;
+      el.className = 'status-slot';
+      return true;
+    }
+  } catch {
+    /* achievements not yet initialized */
+  }
+  return false;
+}
+
+function renderConfigSlot(
+  el: HTMLElement,
+  seg: ReturnType<typeof getStatusBarConfig>[number],
+  elapsed: number,
+): void {
+  if (!seg) {
+    el.textContent = '';
+    el.className = 'status-slot';
+    return;
+  }
+  el.textContent = seg.label + (seg.value ? seg.value(elapsed) : '');
+  el.className = seg.cls ? `status-slot ${seg.cls}` : 'status-slot';
+}
+
 function render(): void {
   const config = getStatusBarConfig();
   const elapsed = Math.floor((Date.now() - startTime) / 1000);
@@ -16,30 +45,8 @@ function render(): void {
   for (let i = 0; i < SLOT_COUNT; i++) {
     const el = slots[i];
     if (!el) continue;
-
-    // Override last slot with XP/Level display
-    if (i === SLOT_COUNT - 1) {
-      try {
-        const progress = getProgress();
-        if (progress) {
-          const lvl = getLevel();
-          el.textContent = `LVL ${lvl} ${getLevelName(lvl)} [${progress.totalXP} XP]`;
-          el.className = 'status-slot';
-          continue;
-        }
-      } catch {
-        /* achievements not yet initialized */
-      }
-    }
-
-    const seg = config[i];
-    if (!seg) {
-      el.textContent = '';
-      el.className = 'status-slot';
-      continue;
-    }
-    el.textContent = seg.label + (seg.value ? seg.value(elapsed) : '');
-    el.className = seg.cls ? `status-slot ${seg.cls}` : 'status-slot';
+    if (i === SLOT_COUNT - 1 && renderXPSlot(el)) continue;
+    renderConfigSlot(el, config[i], elapsed);
   }
 }
 

@@ -1,5 +1,6 @@
 import { prefersReducedMotion } from '../state';
 import { getBootMessages, getCurrentTheme, getThemeConfig } from '../theme-config';
+import type { ThemeName } from '../types';
 
 const BOOT_INITIAL_DELAY_MS = 80;
 const BOOT_LINE_DELAY_MS = 60;
@@ -41,6 +42,35 @@ function updateProgress(bar: HTMLElement | null, current: number, total: number)
   if (bar) bar.style.width = `${Math.round((current / total) * 100)}%`;
 }
 
+function buildBootLines(
+  isReturn: boolean,
+  theme: ThemeName,
+  userName: string,
+  welcomeName: string,
+): { text: string; cls: string }[] {
+  if (isReturn) {
+    return getReturnBootLines(theme, welcomeName);
+  }
+  const messages = getBootMessages(theme);
+  const lines = [...messages, { text: `>>> WELCOME, ${welcomeName} <<<`, cls: 'boot-access' }];
+  if (theme === 'hacker') {
+    lines[3] = {
+      text: `[  OK  ] Started portfolio.service — ${userName} Runtime`,
+      cls: 'boot-ok',
+    };
+  }
+  return lines;
+}
+
+function appendBootSpans(container: HTMLElement, lines: { text: string; cls: string }[]): void {
+  for (const l of lines) {
+    const span = document.createElement('span');
+    span.textContent = l.text;
+    if (l.cls) span.classList.add(l.cls);
+    container.appendChild(span);
+  }
+}
+
 export function initBoot(): void {
   if (prefersReducedMotion) {
     const boot = document.getElementById('bootScreen');
@@ -64,28 +94,8 @@ export function initBoot(): void {
   const userName = bootScreen.dataset.name || 'User';
   const welcomeName = bootScreen.dataset.welcome || 'USER';
 
-  let lines: { text: string; cls: string }[];
-
-  if (isReturn) {
-    lines = getReturnBootLines(theme, welcomeName);
-  } else {
-    const messages = getBootMessages(theme);
-    lines = [...messages, { text: `>>> WELCOME, ${welcomeName} <<<`, cls: 'boot-access' }];
-
-    if (theme === 'hacker') {
-      lines[3] = {
-        text: `[  OK  ] Started portfolio.service — ${userName} Runtime`,
-        cls: 'boot-ok',
-      };
-    }
-  }
-
-  for (const l of lines) {
-    const span = document.createElement('span');
-    span.textContent = l.text;
-    if (l.cls) span.classList.add(l.cls);
-    bootLines.appendChild(span);
-  }
+  const lines = buildBootLines(isReturn, theme, userName, welcomeName);
+  appendBootSpans(bootLines, lines);
 
   const spans = bootLines.querySelectorAll('span');
   const lineDelay = isReturn ? RETURN_LINE_DELAY_MS : getLineDelay(BOOT_LINE_DELAY_MS);

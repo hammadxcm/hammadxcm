@@ -46,6 +46,23 @@ function schedulePoll(): void {
   pollInterval = setInterval(poll, getBackoffInterval());
 }
 
+function updatePlayingDisplay(data: NowPlaying): void {
+  const art = document.getElementById('spotifyArt') as HTMLImageElement | null;
+  const track = document.getElementById('spotifyTrack');
+  const artist = document.getElementById('spotifyArtist');
+  const bar = document.getElementById('spotifyBar');
+
+  if (art && data.albumArt) {
+    art.src = data.albumArt;
+    art.alt = data.track || '';
+  }
+  if (track) track.textContent = data.track || '';
+  if (artist) artist.textContent = data.artist || '';
+  if (bar && data.duration && data.progress) {
+    bar.style.width = `${(data.progress / data.duration) * 100}%`;
+  }
+}
+
 async function poll(): Promise<void> {
   try {
     const base = getApiBase();
@@ -60,22 +77,8 @@ async function poll(): Promise<void> {
       consecutiveIdle = 0;
       schedulePoll();
       widgetEl.classList.add('visible');
-      const art = document.getElementById('spotifyArt') as HTMLImageElement | null;
-      const track = document.getElementById('spotifyTrack');
-      const artist = document.getElementById('spotifyArtist');
-      const bar = document.getElementById('spotifyBar');
+      updatePlayingDisplay(data);
 
-      if (art && data.albumArt) {
-        art.src = data.albumArt;
-        art.alt = data.track || '';
-      }
-      if (track) track.textContent = data.track;
-      if (artist) artist.textContent = data.artist || '';
-      if (bar && data.duration && data.progress) {
-        bar.style.width = `${(data.progress / data.duration) * 100}%`;
-      }
-
-      // Achievement
       try {
         window.dispatchEvent(new CustomEvent('achievement-trigger', { detail: 'music_lover' }));
       } catch {}

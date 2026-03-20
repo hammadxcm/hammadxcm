@@ -676,38 +676,79 @@ export function trackEvent(key: string, increment = 1): void {
   checkAchievements(key);
 }
 
-function checkAchievements(triggerKey: string): void {
-  const c = progress.counters;
+/** Achievements unlocked by a single event trigger with no counter check */
+const SIMPLE_UNLOCKS: Record<string, string> = {
+  speed_reader: 'speed_reader',
+  deep_reader: 'deep_reader',
+  command_palette: 'command_palette',
+  resume_export: 'resume_export',
+  annotations: 'annotations',
+  view_more: 'view_expander',
+  weekend_warrior: 'weekend_warrior',
+  early_bird: 'early_bird',
+  persistence_pays: 'persistence_pays',
+  full_circle: 'full_circle',
+  rapid_switcher: 'rapid_switcher',
+  code_copy: 'code_copier',
+};
 
-  // first_scroll
-  if (triggerKey === 'first_scroll' && c.first_scroll >= 1) {
-    unlock('first_scroll');
+/** Achievements with counter thresholds or special reporting */
+const TRIGGER_HANDLERS: Record<string, () => void> = {
+  first_scroll: () => {
+    if (progress.counters.first_scroll >= 1) unlock('first_scroll');
+  },
+  lang_switched: () => {
+    unlock('lang_switcher');
+    if (progress.counters.lang_switched >= 3) unlock('linguist');
+  },
+  konami: () => {
+    unlock('konami');
+    reportEvent('konami');
+  },
+  ctf_solved: () => {
+    unlock('ctf_solved');
+    reportEvent('ctf_solved');
+  },
+  guestbook: () => {
+    unlock('guestbook');
+    reportEvent('guestbook_reached');
+  },
+  project_click: () => {
+    if (progress.counters.project_click >= 3) unlock('project_clicker');
+  },
+  social_click: () => {
+    if (progress.counters.social_click >= 3) unlock('social_networker');
+  },
+  scroll_distance: () => {
+    if (progress.scrollDistance >= 5000) unlock('marathon_scroller');
+  },
+  visit_day: () => {
+    if (progress.visitDays.length >= 3) unlock('streak_3');
+    if (progress.visitDays.length >= 7) unlock('streak_7');
+  },
+  github_tab: () => {
+    if (progress.counters.github_tab >= 1 && progress.counters.leetcode_tab >= 1)
+      unlock('analytics_nerd');
+  },
+  leetcode_tab: () => {
+    if (progress.counters.github_tab >= 1 && progress.counters.leetcode_tab >= 1)
+      unlock('analytics_nerd');
+  },
+};
+
+function checkSectionTracking(triggerKey: string): void {
+  if (!triggerKey.startsWith('section:')) return;
+  const sectionId = triggerKey.replace('section:', '');
+  if (!progress.sectionsSeen.includes(sectionId)) {
+    progress.sectionsSeen.push(sectionId);
+    save();
   }
-
-  // speed_reader — bottom reached with startTime < 30s ago
-  if (triggerKey === 'speed_reader') {
-    unlock('speed_reader');
+  if (ALL_SECTIONS.every((s) => progress.sectionsSeen.includes(s))) {
+    unlock('section_explorer');
   }
+}
 
-  // deep_reader — checked via timer, not counter
-  if (triggerKey === 'deep_reader') {
-    unlock('deep_reader');
-  }
-
-  // section tracking
-  if (triggerKey.startsWith('section:')) {
-    const sectionId = triggerKey.replace('section:', '');
-    if (!progress.sectionsSeen.includes(sectionId)) {
-      progress.sectionsSeen.push(sectionId);
-      save();
-    }
-    // section_explorer — all sections visited
-    if (ALL_SECTIONS.every((s) => progress.sectionsSeen.includes(s))) {
-      unlock('section_explorer');
-    }
-  }
-
-  // theme tracking
+function checkThemeTracking(triggerKey: string): void {
   if (triggerKey.startsWith('theme:')) {
     const themeName = triggerKey.replace('theme:', '');
     if (!progress.themesUsed.includes(themeName)) {
@@ -717,89 +758,17 @@ function checkAchievements(triggerKey: string): void {
     reportEvent(`theme:${themeName}`);
   }
   if (triggerKey === 'theme_switch') {
+    const c = progress.counters;
     if (c.theme_switch >= 3) unlock('theme_switcher');
     if (progress.themesUsed.length >= 5) unlock('theme_collector');
     if (progress.themesUsed.length >= 12) unlock('palette_master');
     if (progress.themesUsed.length >= 15) unlock('all_themes');
   }
+}
 
-  // project clicks
-  if (triggerKey === 'project_click' && c.project_click >= 3) {
-    unlock('project_clicker');
-  }
-
-  // Single-trigger achievements
-  if (triggerKey === 'command_palette') unlock('command_palette');
-  if (triggerKey === 'resume_export') unlock('resume_export');
-  if (triggerKey === 'lang_switched') unlock('lang_switcher');
-  if (triggerKey === 'konami') {
-    unlock('konami');
-    reportEvent('konami');
-  }
-  if (triggerKey === 'ctf_solved') {
-    unlock('ctf_solved');
-    reportEvent('ctf_solved');
-  }
-  if (triggerKey === 'annotations') unlock('annotations');
-  if (triggerKey === 'guestbook') {
-    unlock('guestbook');
-    reportEvent('guestbook_reached');
-  }
-
-  // code_copier
-  if (triggerKey === 'code_copy') unlock('code_copier');
-
-  // social_networker
-  if (triggerKey === 'social_click' && c.social_click >= 3) unlock('social_networker');
-
-  // view_expander
-  if (triggerKey === 'view_more') unlock('view_expander');
-
-  // analytics_nerd — needs both github_tab and leetcode_tab
-  if (
-    (triggerKey === 'github_tab' || triggerKey === 'leetcode_tab') &&
-    c.github_tab >= 1 &&
-    c.leetcode_tab >= 1
-  ) {
-    unlock('analytics_nerd');
-  }
-
-  // marathon_scroller — checked via scrollDistance
-  if (triggerKey === 'scroll_distance' && progress.scrollDistance >= 5000) {
-    unlock('marathon_scroller');
-  }
-
-  // streak_3 / streak_7 — checked via visitDays
-  if (triggerKey === 'visit_day') {
-    if (progress.visitDays.length >= 3) unlock('streak_3');
-    if (progress.visitDays.length >= 7) unlock('streak_7');
-  }
-
-  // weekend_warrior
-  if (triggerKey === 'weekend_warrior') unlock('weekend_warrior');
-
-  // early_bird
-  if (triggerKey === 'early_bird') unlock('early_bird');
-
-  // persistence_pays — checked via timer
-  if (triggerKey === 'persistence_pays') unlock('persistence_pays');
-
-  // full_circle — scroll to bottom then back to top
-  if (triggerKey === 'full_circle') unlock('full_circle');
-
-  // linguist — switch language 3+ times
-  if (triggerKey === 'lang_switched' && c.lang_switched >= 3) unlock('linguist');
-
-  // rapid_switcher — 5 theme switches in 30 seconds
-  if (triggerKey === 'rapid_switcher') unlock('rapid_switcher');
-
-  // listing_explorer — visit any listing page
+function checkListingTracking(triggerKey: string): void {
   if (triggerKey === 'listing_visit') unlock('listing_explorer');
-
-  // analytics_deep_dive — visit analytics listing page
   if (triggerKey === 'listing:analytics') unlock('analytics_deep_dive');
-
-  // listing_completionist — visit all 5 listing pages
   if (triggerKey.startsWith('listing:')) {
     const listingSections = [
       'testimonials',
@@ -808,16 +777,37 @@ function checkAchievements(triggerKey: string): void {
       'certifications',
       'analytics',
     ];
+    const c = progress.counters;
     if (listingSections.every((s) => (c[`listing:${s}`] || 0) > 0)) {
       unlock('listing_completionist');
     }
   }
+}
 
-  // completionist — after any unlock, check if all non-secret achievements are unlocked
+function checkCompletionist(): void {
   const nonSecret = ACHIEVEMENTS.filter((a) => !a.secret && a.id !== 'completionist');
   if (nonSecret.every((a) => progress.unlocked.includes(a.id))) {
     unlock('completionist');
   }
+}
+
+function checkAchievements(triggerKey: string): void {
+  // Simple single-trigger unlocks
+  if (SIMPLE_UNLOCKS[triggerKey]) {
+    unlock(SIMPLE_UNLOCKS[triggerKey]);
+  }
+
+  // Counter-based and special handlers
+  const handler = TRIGGER_HANDLERS[triggerKey];
+  if (handler) handler();
+
+  // Section, theme, and listing tracking
+  checkSectionTracking(triggerKey);
+  checkThemeTracking(triggerKey);
+  checkListingTracking(triggerKey);
+
+  // Completionist check — after any unlock
+  checkCompletionist();
 }
 
 // ── Public Getters ─────────────────────────────────────────────────────
