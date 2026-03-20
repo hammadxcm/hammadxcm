@@ -2,6 +2,7 @@
  * @vitest-environment happy-dom
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { ThemeName } from '../types';
 
 vi.mock('../achievements', () => ({ trackEvent: vi.fn() }));
 vi.mock('../theme-config', () => ({
@@ -44,39 +45,39 @@ describe('updateAnalyticsTheme', () => {
   });
 
   it('updates GitHub stats img srcs', () => {
-    updateAnalyticsTheme('hacker' as any);
+    updateAnalyticsTheme('hacker' as ThemeName);
     const streak = document.querySelector('img[data-stat="streak"]') as HTMLImageElement;
     expect(streak.src).toContain('testuser');
     expect(streak.src).toContain('dark');
   });
 
   it('updates LeetCode card src', () => {
-    updateAnalyticsTheme('hacker' as any);
+    updateAnalyticsTheme('hacker' as ThemeName);
     const lc = document.querySelector('img[data-stat="leetcode-card"]') as HTMLImageElement;
     expect(lc.src).toContain('testlc');
   });
 
   it('updates StackOverflow img src', () => {
-    updateAnalyticsTheme('hacker' as any);
+    updateAnalyticsTheme('hacker' as ThemeName);
     const so = document.querySelector('img[data-stat="stackoverflow-stats"]') as HTMLImageElement;
     expect(so.src).toContain('12345');
   });
 
   it('updates dev quote img src', () => {
-    updateAnalyticsTheme('hacker' as any);
+    updateAnalyticsTheme('hacker' as ThemeName);
     const quote = document.querySelector('img[data-stat="quote"]') as HTMLImageElement;
     expect(quote.src).toContain('horizontal');
   });
 
   it('applies arctic filter to isocalendar', () => {
-    updateAnalyticsTheme('arctic' as any);
+    updateAnalyticsTheme('arctic' as ThemeName);
     const iso = document.querySelector('img[data-stat="isocalendar"]') as HTMLImageElement;
     expect(iso.style.filter).toContain('invert');
   });
 
   it('does nothing without elements', () => {
     document.body.innerHTML = '';
-    expect(() => updateAnalyticsTheme('hacker' as any)).not.toThrow();
+    expect(() => updateAnalyticsTheme('hacker' as ThemeName)).not.toThrow();
   });
 });
 

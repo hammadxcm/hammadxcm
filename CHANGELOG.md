@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-03-20
+
+### Added
+
+#### Setup Wizard — Phase Skip Gates
+- **Skip entire phases in edit mode**: When `portfolio.config.ts` already exists, Phases 2–7 now prompt "Edit Phase N: \<label\>?" (default: No) — skipped phases preserve all existing config values unchanged
+- **Phase 1 always runs**: Identity & Site fields (username, name, title, URL) are never skippable since they contain required values
+- **Phase 8 always runs**: Config generation always executes regardless of skip choices
+- **Edit mode hint**: Wizard now displays "you can skip entire phases" guidance when running in edit mode
+
+#### TUI Config Editor (`npm run setup:edit`)
+- **Menu-driven config editor**: New `scripts/setup-tui.mjs` provides a visual, non-linear interface for browsing and editing `portfolio.config.ts` by section — no need to walk through the linear wizard
+- **Dashboard view**: `console.clear()`-based dashboard shows all config sections with summaries (field values, item counts) — select any section to edit
+- **Scalar field editing**: Text, URL, number, boolean, and select fields with pre-filled current values — press Enter to keep, type to replace
+- **String array editor**: Numbered list with add/edit/delete actions for arrays like typewriter texts, mission log, philosophy, aliases, tags, and achievements
+- **Key-value array editor**: Edit key + value pairs (arsenal entries) with add/edit/delete
+- **Object array editor**: Edit complex arrays (tech stack, experience, projects, certifications, testimonials, socials, sections) — items listed by label, select to edit individual fields, add/delete items
+- **Tech items sub-editor**: Nested editor for tech stack category items (name, icon URL, tech URL) with add/edit/delete
+- **Integrations sub-menu**: Virtual section grouping GitHub, LeetCode, StackOverflow, HackerRank, Chat, Spotify, Contributions, and Guestbook — enable/disable toggles for optional integrations, field editors for each
+- **Dirty change detection**: "Discard unsaved changes?" confirmation when exiting with modifications
+- **Unknown key preservation**: Save logic spreads existing unknown top-level keys so hand-added config survives round-trips
+- **`--tui` flag delegation**: `npm run setup:init -- --tui` delegates to the TUI editor
+- **`setup:edit` npm script**: Direct invocation via `npm run setup:edit`
+
+#### Shared Utilities Module (`scripts/lib/setup-utils.mjs`)
+- **Extracted 27 shared exports**: Constants (`THEMES`, `SKILLICONS_SLUG_MAP`, `TECH_URL_MAP`), serializer (`serializeToTypeScript`, `serializeValue`, `quoteString`, `safeKey`), validators (`validateUsername`, `validateRequired`, `validateUrl`, `validateRequiredUrl`, `validateNumber`), prompt helpers (`handleCancel`, `promptText`, `promptSelect`, `promptConfirm`, `promptKeepArray`, `collectArrayItems`, `summarizeArray`), tech helpers (`resolveTechIcon`, `resolveTechUrl`, `splitCSV`), config loader (`loadExistingConfig`), save helper (`saveConfig`), and `truncate` utility
+- **Shared save logic**: `saveConfig()` centralizes config file writing, `astro.config.mjs` patching, and `lighthouse.yml` URL patching — used by both wizard and TUI editor
+
+### Changed
+
+- **`scripts/setup.mjs`**: Refactored to import all shared utilities from `./lib/setup-utils.mjs` instead of inline definitions — reduces file from ~1185 lines to focused wizard flow with phase-skip gates
+- **Config save**: Wizard now uses shared `saveConfig()` helper instead of inline file-writing code
+
 ## [1.4.2] - 2026-03-14
 
 ### Fixed
@@ -287,6 +320,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - daemon-os UI: reverted full-width card, added animated demon icon
 
+[1.5.0]: https://github.com/hammadxcm/hammadxcm/compare/v1.4.2...v1.5.0
+[1.4.2]: https://github.com/hammadxcm/hammadxcm/compare/v1.4.0...v1.4.2
 [1.4.0]: https://github.com/hammadxcm/hammadxcm/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/hammadxcm/hammadxcm/compare/v1.2.3...v1.3.0
 [1.2.0]: https://github.com/hammadxcm/hammadxcm/compare/v1.1.0...v1.2.0

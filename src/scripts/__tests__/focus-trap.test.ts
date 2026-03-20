@@ -20,23 +20,23 @@ describe('trapFocus', () => {
   });
 
   it('returns a cleanup function', () => {
-    const container = document.getElementById('modal')!;
+    const container = document.getElementById('modal') as HTMLElement;
     const release = trapFocus(container);
     expect(typeof release).toBe('function');
     release();
   });
 
   it('focuses first focusable element on activate', () => {
-    const container = document.getElementById('modal')!;
+    const container = document.getElementById('modal') as HTMLElement;
     const release = trapFocus(container);
     expect(document.activeElement).toBe(document.getElementById('first'));
     release();
   });
 
   it('wraps focus from last to first on Tab', () => {
-    const container = document.getElementById('modal')!;
+    const container = document.getElementById('modal') as HTMLElement;
     const release = trapFocus(container);
-    const last = document.getElementById('third')!;
+    const last = document.getElementById('third') as HTMLElement;
     last.focus();
     container.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true }));
     expect(document.activeElement).toBe(document.getElementById('first'));
@@ -44,9 +44,9 @@ describe('trapFocus', () => {
   });
 
   it('wraps focus from first to last on Shift+Tab', () => {
-    const container = document.getElementById('modal')!;
+    const container = document.getElementById('modal') as HTMLElement;
     const release = trapFocus(container);
-    const first = document.getElementById('first')!;
+    const first = document.getElementById('first') as HTMLElement;
     first.focus();
     container.dispatchEvent(
       new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true, bubbles: true }),
@@ -57,7 +57,7 @@ describe('trapFocus', () => {
 
   it('handles empty container', () => {
     document.body.innerHTML = '<div id="empty"></div>';
-    const container = document.getElementById('empty')!;
+    const container = document.getElementById('empty') as HTMLElement;
     const release = trapFocus(container);
     expect(() => release()).not.toThrow();
   });

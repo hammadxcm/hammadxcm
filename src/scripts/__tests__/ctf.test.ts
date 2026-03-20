@@ -24,7 +24,7 @@ describe('ctf', () => {
     sessionStorage.setItem('ctf-solved', 'true');
     const { initCTF } = await import('../interactions/ctf');
     initCTF();
-    expect((window as any).__ctfSubmit).toBeUndefined();
+    expect((window as unknown as Record<string, unknown>).__ctfSubmit).toBeUndefined();
   });
 
   it('adds ctf clue to certs section', async () => {
@@ -44,6 +44,10 @@ describe('ctf', () => {
   it('__ctfSubmit returns true for correct passphrase', async () => {
     const { initCTF } = await import('../interactions/ctf');
     initCTF();
-    expect((window as any).__ctfSubmit('HACKTHESITE!')).toBe(true);
+    expect(
+      ((window as unknown as Record<string, unknown>).__ctfSubmit as (p: string) => boolean)(
+        'HACKTHESITE!',
+      ),
+    ).toBe(true);
   });
 });

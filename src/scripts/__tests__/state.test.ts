@@ -25,7 +25,7 @@ describe('state module', () => {
 
   it('setCurrentTheme / getCurrentTheme round-trip', async () => {
     const { getCurrentTheme, setCurrentTheme } = await import('../state');
-    setCurrentTheme('cyberpunk' as any);
+    setCurrentTheme('cyberpunk');
     expect(getCurrentTheme()).toBe('cyberpunk');
   });
 

@@ -343,20 +343,8 @@ function renderTabContent(tab: TabName): void {
   updateStatusLang();
 }
 
-/* ── Build editor DOM ── */
-function buildEditor(snippet: string[], theme: ThemeName, container: HTMLElement): void {
-  currentTheme = theme;
-  activeTab = 'main.js';
-  tabTyped.clear();
-  tabContent.clear();
-  tabTyped.set('main.js', false);
-  commandHistory.length = 0;
-  historyIndex = -1;
-
-  editorEl = document.createElement('div');
-  editorEl.className = 'code-editor-hero';
-
-  // Titlebar
+/* ── Build editor DOM — sub-builders ── */
+function buildTitlebar(target: HTMLElement): void {
   const titlebar = document.createElement('div');
   titlebar.className = 'code-editor-titlebar';
   const colors = ['#ff5f57', '#ffbd2e', '#28c840'];
@@ -371,7 +359,6 @@ function buildEditor(snippet: string[], theme: ThemeName, container: HTMLElement
   titleText.textContent = 'main.js';
   titlebar.appendChild(titleText);
 
-  // Run button in titlebar
   const runBtn = document.createElement('button');
   runBtn.className = 'code-editor-run-btn';
   runBtn.title = 'Run';
@@ -379,9 +366,10 @@ function buildEditor(snippet: string[], theme: ThemeName, container: HTMLElement
     '<svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" stroke="none"><path d="M4 2l10 6-10 6V2z"/></svg>';
   titlebar.appendChild(runBtn);
 
-  editorEl.appendChild(titlebar);
+  target.appendChild(titlebar);
+}
 
-  // Tabs
+function buildTabBar(target: HTMLElement): void {
   const tabs = document.createElement('div');
   tabs.className = 'code-editor-tabs';
   for (let i = 0; i < TAB_NAMES.length; i++) {
@@ -390,7 +378,127 @@ function buildEditor(snippet: string[], theme: ThemeName, container: HTMLElement
     tab.textContent = TAB_NAMES[i];
     tabs.appendChild(tab);
   }
-  editorEl.appendChild(tabs);
+  target.appendChild(tabs);
+}
+
+function buildTerminalPanel(): {
+  terminalEl: HTMLElement;
+  terminalContentEl: HTMLElement;
+  problemsContentEl: HTMLElement;
+  outputContentEl: HTMLElement;
+} {
+  const el = document.createElement('div');
+  el.className = 'code-editor-terminal';
+  const termTabs = document.createElement('div');
+  termTabs.className = 'code-editor-terminal-tabs';
+  const termTabNames = ['TERMINAL', 'PROBLEMS', 'OUTPUT'];
+  for (let i = 0; i < termTabNames.length; i++) {
+    const tt = document.createElement('span');
+    tt.className = `code-editor-terminal-tab${i === 0 ? ' active' : ''}`;
+    tt.textContent = termTabNames[i];
+    tt.dataset.termTab = termTabNames[i].toLowerCase();
+    termTabs.appendChild(tt);
+  }
+  el.appendChild(termTabs);
+
+  const tContent = document.createElement('div');
+  tContent.className = 'code-editor-terminal-content';
+  el.appendChild(tContent);
+
+  const pContent = document.createElement('div');
+  pContent.className = 'code-editor-terminal-content code-editor-terminal-problems';
+  pContent.style.display = 'none';
+  const pLine = document.createElement('div');
+  pLine.className = 'code-editor-terminal-line output';
+  pLine.textContent = '✓ 0 problems, 0 warnings';
+  pContent.appendChild(pLine);
+  el.appendChild(pContent);
+
+  const oContent = document.createElement('div');
+  oContent.className = 'code-editor-terminal-content code-editor-terminal-output';
+  oContent.style.display = 'none';
+  const oLine = document.createElement('div');
+  oLine.className = 'code-editor-terminal-line output';
+  oLine.textContent = '[build] compiled successfully in 1.2s';
+  oContent.appendChild(oLine);
+  el.appendChild(oContent);
+
+  return {
+    terminalEl: el,
+    terminalContentEl: tContent,
+    problemsContentEl: pContent,
+    outputContentEl: oContent,
+  };
+}
+
+function buildStatusBar(lang: string): {
+  statusbar: HTMLElement;
+  lnCol: HTMLElement;
+  langEl: HTMLElement;
+} {
+  const statusbar = document.createElement('div');
+  statusbar.className = 'code-editor-statusbar';
+  const statusLeft = document.createElement('div');
+  statusLeft.className = 'code-editor-statusbar-left';
+  statusLeft.innerHTML = `<span class="code-editor-statusbar-branch">${createBranchSvg()} main</span>`;
+  statusbar.appendChild(statusLeft);
+  const statusRight = document.createElement('div');
+  statusRight.className = 'code-editor-statusbar-right';
+  const lnCol = document.createElement('span');
+  lnCol.className = 'code-editor-statusbar-item';
+  lnCol.textContent = 'Ln 1, Col 1';
+  const langEl = document.createElement('span');
+  langEl.className = 'code-editor-statusbar-item';
+  langEl.textContent = lang;
+  const statusEnc = document.createElement('span');
+  statusEnc.className = 'code-editor-statusbar-item code-editor-statusbar-encoding';
+  statusEnc.textContent = 'UTF-8';
+  statusRight.appendChild(lnCol);
+  statusRight.appendChild(langEl);
+  statusRight.appendChild(statusEnc);
+  statusbar.appendChild(statusRight);
+  return { statusbar, lnCol, langEl };
+}
+
+function buildAutocompletePopup(theme: ThemeName): HTMLElement {
+  const el = document.createElement('div');
+  el.className = 'code-editor-autocomplete';
+  const items = AUTOCOMPLETE_ITEMS[theme] || AUTOCOMPLETE_ITEMS.hacker;
+  for (let i = 0; i < items.length; i++) {
+    const item = document.createElement('div');
+    item.className = `code-editor-autocomplete-item${i === 0 ? ' active' : ''}`;
+    const iconSpan = document.createElement('span');
+    iconSpan.className = `code-editor-autocomplete-icon ${items[i].icon === 'fn' ? 'fn' : 'var'}`;
+    iconSpan.textContent = items[i].icon === 'fn' ? 'f' : 'x';
+    const labelSpan = document.createElement('span');
+    labelSpan.className = 'code-editor-autocomplete-label';
+    labelSpan.textContent = items[i].label;
+    const detailSpan = document.createElement('span');
+    detailSpan.className = 'code-editor-autocomplete-detail';
+    detailSpan.textContent = items[i].detail;
+    item.appendChild(iconSpan);
+    item.appendChild(labelSpan);
+    item.appendChild(detailSpan);
+    el.appendChild(item);
+  }
+  return el;
+}
+
+/* ── Build editor DOM ── */
+function buildEditor(snippet: string[], theme: ThemeName, container: HTMLElement): void {
+  currentTheme = theme;
+  activeTab = 'main.js';
+  tabTyped.clear();
+  tabContent.clear();
+  tabTyped.set('main.js', false);
+  commandHistory.length = 0;
+  historyIndex = -1;
+
+  editorEl = document.createElement('div');
+  editorEl.className = 'code-editor-hero';
+
+  buildTitlebar(editorEl);
+  buildTabBar(editorEl);
 
   // Breadcrumbs
   const breadcrumbs = document.createElement('div');
@@ -511,92 +619,21 @@ function buildEditor(snippet: string[], theme: ThemeName, container: HTMLElement
   editorEl.appendChild(main);
 
   // Terminal panel
-  terminalEl = document.createElement('div');
-  terminalEl.className = 'code-editor-terminal';
-  const termTabs = document.createElement('div');
-  termTabs.className = 'code-editor-terminal-tabs';
-  const termTabNames = ['TERMINAL', 'PROBLEMS', 'OUTPUT'];
-  for (let i = 0; i < termTabNames.length; i++) {
-    const tt = document.createElement('span');
-    tt.className = `code-editor-terminal-tab${i === 0 ? ' active' : ''}`;
-    tt.textContent = termTabNames[i];
-    tt.dataset.termTab = termTabNames[i].toLowerCase();
-    termTabs.appendChild(tt);
-  }
-  terminalEl.appendChild(termTabs);
-
-  // Terminal content container
-  terminalContentEl = document.createElement('div');
-  terminalContentEl.className = 'code-editor-terminal-content';
-  terminalEl.appendChild(terminalContentEl);
-
-  // Problems content container (hidden by default)
-  problemsContentEl = document.createElement('div');
-  problemsContentEl.className = 'code-editor-terminal-content code-editor-terminal-problems';
-  problemsContentEl.style.display = 'none';
-  const problemsLine = document.createElement('div');
-  problemsLine.className = 'code-editor-terminal-line output';
-  problemsLine.textContent = '✓ 0 problems, 0 warnings';
-  problemsContentEl.appendChild(problemsLine);
-  terminalEl.appendChild(problemsContentEl);
-
-  // Output content container (hidden by default)
-  outputContentEl = document.createElement('div');
-  outputContentEl.className = 'code-editor-terminal-content code-editor-terminal-output';
-  outputContentEl.style.display = 'none';
-  const outputLine = document.createElement('div');
-  outputLine.className = 'code-editor-terminal-line output';
-  outputLine.textContent = '[build] compiled successfully in 1.2s';
-  outputContentEl.appendChild(outputLine);
-  terminalEl.appendChild(outputContentEl);
-
+  const termPanel = buildTerminalPanel();
+  terminalEl = termPanel.terminalEl;
+  terminalContentEl = termPanel.terminalContentEl;
+  problemsContentEl = termPanel.problemsContentEl;
+  outputContentEl = termPanel.outputContentEl;
   editorEl.appendChild(terminalEl);
 
   // Status bar
-  const statusbar = document.createElement('div');
-  statusbar.className = 'code-editor-statusbar';
-  const statusLeft = document.createElement('div');
-  statusLeft.className = 'code-editor-statusbar-left';
-  statusLeft.innerHTML = `<span class="code-editor-statusbar-branch">${createBranchSvg()} main</span>`;
-  statusbar.appendChild(statusLeft);
-  const statusRight = document.createElement('div');
-  statusRight.className = 'code-editor-statusbar-right';
-  statusLnCol = document.createElement('span');
-  statusLnCol.className = 'code-editor-statusbar-item';
-  statusLnCol.textContent = 'Ln 1, Col 1';
-  statusLangEl = document.createElement('span');
-  statusLangEl.className = 'code-editor-statusbar-item';
-  statusLangEl.textContent = TAB_LANG[activeTab].lang;
-  const statusEnc = document.createElement('span');
-  statusEnc.className = 'code-editor-statusbar-item code-editor-statusbar-encoding';
-  statusEnc.textContent = 'UTF-8';
-  statusRight.appendChild(statusLnCol);
-  statusRight.appendChild(statusLangEl);
-  statusRight.appendChild(statusEnc);
-  statusbar.appendChild(statusRight);
-  editorEl.appendChild(statusbar);
+  const sb = buildStatusBar(TAB_LANG[activeTab].lang);
+  statusLnCol = sb.lnCol;
+  statusLangEl = sb.langEl;
+  editorEl.appendChild(sb.statusbar);
 
   // Autocomplete popup (hidden)
-  autocompleteEl = document.createElement('div');
-  autocompleteEl.className = 'code-editor-autocomplete';
-  const items = AUTOCOMPLETE_ITEMS[theme] || AUTOCOMPLETE_ITEMS.hacker;
-  for (let i = 0; i < items.length; i++) {
-    const item = document.createElement('div');
-    item.className = `code-editor-autocomplete-item${i === 0 ? ' active' : ''}`;
-    const iconSpan = document.createElement('span');
-    iconSpan.className = `code-editor-autocomplete-icon ${items[i].icon === 'fn' ? 'fn' : 'var'}`;
-    iconSpan.textContent = items[i].icon === 'fn' ? 'f' : 'x';
-    const labelSpan = document.createElement('span');
-    labelSpan.className = 'code-editor-autocomplete-label';
-    labelSpan.textContent = items[i].label;
-    const detailSpan = document.createElement('span');
-    detailSpan.className = 'code-editor-autocomplete-detail';
-    detailSpan.textContent = items[i].detail;
-    item.appendChild(iconSpan);
-    item.appendChild(labelSpan);
-    item.appendChild(detailSpan);
-    autocompleteEl.appendChild(item);
-  }
+  autocompleteEl = buildAutocompletePopup(theme);
   body.appendChild(autocompleteEl);
 
   // ── Click handlers ──
@@ -727,27 +764,22 @@ function clearSearchHighlights(): void {
   if (resultsEl) resultsEl.textContent = '';
 }
 
-function performSearch(query: string): void {
-  clearSearchHighlights();
-  if (!query) return;
-
-  const codeDisplay = editorEl?.querySelector<HTMLElement>('.code-editor-code-display');
-  if (!codeDisplay) return;
-
-  let count = 0;
+function findTextMatches(
+  codeDisplay: HTMLElement,
+  query: string,
+): { node: Text; indices: number[] }[] {
   const walker = document.createTreeWalker(codeDisplay, NodeFilter.SHOW_TEXT);
   const nodesToProcess: { node: Text; indices: number[] }[] = [];
+  const lowerQuery = query.toLowerCase();
 
   let node: Text | null = walker.nextNode() as Text | null;
   while (node) {
     const text = node.textContent || '';
     const lowerText = text.toLowerCase();
-    const lowerQuery = query.toLowerCase();
     const indices: number[] = [];
     let idx = lowerText.indexOf(lowerQuery);
     while (idx !== -1) {
       indices.push(idx);
-      count++;
       idx = lowerText.indexOf(lowerQuery, idx + 1);
     }
     if (indices.length > 0) {
@@ -755,8 +787,14 @@ function performSearch(query: string): void {
     }
     node = walker.nextNode() as Text | null;
   }
+  return nodesToProcess;
+}
 
-  // Process in reverse to avoid offset issues
+function insertMatchMarks(
+  nodesToProcess: { node: Text; indices: number[] }[],
+  queryLen: number,
+): number {
+  let count = 0;
   for (let n = nodesToProcess.length - 1; n >= 0; n--) {
     const { node: textNode, indices } = nodesToProcess[n];
     const text = textNode.textContent || '';
@@ -769,13 +807,26 @@ function performSearch(query: string): void {
       if (idx > lastEnd) frag.appendChild(document.createTextNode(text.slice(lastEnd, idx)));
       const mark = document.createElement('mark');
       mark.className = 'code-editor-search-match';
-      mark.textContent = text.slice(idx, idx + query.length);
+      mark.textContent = text.slice(idx, idx + queryLen);
       frag.appendChild(mark);
-      lastEnd = idx + query.length;
+      lastEnd = idx + queryLen;
+      count++;
     }
     if (lastEnd < text.length) frag.appendChild(document.createTextNode(text.slice(lastEnd)));
     parent.replaceChild(frag, textNode);
   }
+  return count;
+}
+
+function performSearch(query: string): void {
+  clearSearchHighlights();
+  if (!query) return;
+
+  const codeDisplay = editorEl?.querySelector<HTMLElement>('.code-editor-code-display');
+  if (!codeDisplay) return;
+
+  const nodesToProcess = findTextMatches(codeDisplay, query);
+  const count = insertMatchMarks(nodesToProcess, query.length);
 
   const resultsEl = searchPanelEl?.querySelector('.code-editor-search-results');
   if (resultsEl)
@@ -783,6 +834,45 @@ function performSearch(query: string): void {
 }
 
 /* ── Terminal commands ── */
+function handleTerminalArrowUp(input: HTMLInputElement): void {
+  if (commandHistory.length === 0) return;
+  if (historyIndex === -1) historyIndex = commandHistory.length;
+  if (historyIndex > 0) {
+    historyIndex--;
+    input.value = commandHistory[historyIndex];
+  }
+}
+
+function handleTerminalArrowDown(input: HTMLInputElement): void {
+  if (historyIndex === -1) return;
+  if (historyIndex < commandHistory.length - 1) {
+    historyIndex++;
+    input.value = commandHistory[historyIndex];
+  } else {
+    historyIndex = -1;
+    input.value = '';
+  }
+}
+
+function handleTerminalEnter(
+  input: HTMLInputElement,
+  promptLine: HTMLElement,
+  handler: EventListener,
+): void {
+  const cmd = input.value.trim();
+  input.removeEventListener('keydown', handler);
+  promptLine.innerHTML = '';
+  promptLine.className = 'code-editor-terminal-line';
+  promptLine.textContent = `$ ${cmd}`;
+
+  if (cmd) {
+    commandHistory.push(cmd);
+    if (commandHistory.length > MAX_HISTORY) commandHistory.shift();
+  }
+
+  processTerminalCommand(cmd);
+}
+
 function addTerminalPrompt(): void {
   if (!terminalContentEl) return;
 
@@ -813,47 +903,96 @@ function addTerminalPrompt(): void {
     const ke = e as KeyboardEvent;
     if (ke.key === 'Enter') {
       e.preventDefault();
-      const cmd = input.value.trim();
-      input.removeEventListener('keydown', handler);
-      promptLine.innerHTML = '';
-      promptLine.className = 'code-editor-terminal-line';
-      promptLine.textContent = `$ ${cmd}`;
-
-      // Add to history
-      if (cmd) {
-        commandHistory.push(cmd);
-        if (commandHistory.length > MAX_HISTORY) commandHistory.shift();
-      }
-
-      processTerminalCommand(cmd);
+      handleTerminalEnter(input, promptLine, handler);
     } else if (ke.key === 'ArrowUp') {
       e.preventDefault();
-      if (commandHistory.length === 0) return;
-      if (historyIndex === -1) historyIndex = commandHistory.length;
-      if (historyIndex > 0) {
-        historyIndex--;
-        input.value = commandHistory[historyIndex];
-      }
+      handleTerminalArrowUp(input);
     } else if (ke.key === 'ArrowDown') {
       e.preventDefault();
-      if (historyIndex === -1) return;
-      if (historyIndex < commandHistory.length - 1) {
-        historyIndex++;
-        input.value = commandHistory[historyIndex];
-      } else {
-        historyIndex = -1;
-        input.value = '';
-      }
+      handleTerminalArrowDown(input);
     }
   };
   input.addEventListener('keydown', handler);
   keyHandlers.push({ el: input, event: 'keydown', handler });
 }
 
+type TerminalOutputFn = (text: string, cls?: string) => void;
+
+const TERMINAL_COMMANDS: Record<string, (cmd: string, addOutput: TerminalOutputFn) => boolean> = {
+  clear: () => {
+    if (terminalContentEl) terminalContentEl.innerHTML = '';
+    addTerminalPrompt();
+    return true;
+  },
+  help: (_cmd, addOutput) => {
+    addOutput('Files:     ls, cat <file>, pwd');
+    addOutput('Run:       run, node <file>, ruby <file>, python3 <file>');
+    addOutput('Utility:   echo <text>, date, uptime, whoami, history');
+    addOutput('Terminal:  clear, help');
+    return false;
+  },
+  whoami: (_cmd, addOutput) => {
+    addOutput('visitor');
+    return false;
+  },
+  ls: (_cmd, addOutput) => {
+    addOutput(TAB_NAMES.join('  '));
+    return false;
+  },
+  pwd: (_cmd, addOutput) => {
+    addOutput('/home/visitor/project');
+    return false;
+  },
+  date: (_cmd, addOutput) => {
+    addOutput(new Date().toString());
+    return false;
+  },
+  uptime: (_cmd, addOutput) => {
+    addOutput('up 42 days, 3:14');
+    return false;
+  },
+  history: (_cmd, addOutput) => {
+    for (let i = 0; i < commandHistory.length; i++) {
+      addOutput(`  ${i + 1}  ${commandHistory[i]}`);
+    }
+    return false;
+  },
+};
+
+function handleRunCommand(cmd: string, addOutput: TerminalOutputFn): void {
+  const parts = cmd.split(' ');
+  if (parts.length === 2) {
+    const file = parts[1] as TabName;
+    if (TAB_NAMES.includes(file)) {
+      const themeTerminal = TERMINAL_OUTPUT[currentTheme] || TERMINAL_OUTPUT.hacker;
+      const termData = themeTerminal[file] || themeTerminal['main.js'];
+      addOutput(termData.output, 'output');
+    } else {
+      addOutput(`Error: file not found: ${parts[1]}`);
+    }
+  } else {
+    const termData = getCurrentTerminalData();
+    addOutput(termData.output, 'output');
+  }
+}
+
+function handleCatCommand(cmd: string, addOutput: TerminalOutputFn): void {
+  const fileName = cmd.slice(4).trim() as TabName;
+  if (TAB_NAMES.includes(fileName)) {
+    const themeSnippets = SNIPPETS[currentTheme] || SNIPPETS.hacker;
+    const snippetLines = themeSnippets[fileName] || themeSnippets['main.js'];
+    for (const line of snippetLines) {
+      addOutput(line || ' ');
+    }
+  } else {
+    addOutput(`cat: ${fileName}: No such file`);
+  }
+}
+
 function processTerminalCommand(cmd: string): void {
   if (!terminalContentEl) return;
 
-  const addOutput = (text: string, cls = '') => {
+  const addOutput: TerminalOutputFn = (text, cls = '') => {
     const line = document.createElement('div');
     line.className = `code-editor-terminal-line${cls ? ` ${cls}` : ''}`;
     line.textContent = text;
@@ -861,64 +1000,20 @@ function processTerminalCommand(cmd: string): void {
   };
 
   if (!cmd) {
-    // Empty command, just add new prompt
-  } else if (cmd === 'clear') {
-    terminalContentEl.innerHTML = '';
-    addTerminalPrompt();
-    return;
-  } else if (cmd === 'help') {
-    addOutput('Files:     ls, cat <file>, pwd');
-    addOutput('Run:       run, node <file>, ruby <file>, python3 <file>');
-    addOutput('Utility:   echo <text>, date, uptime, whoami, history');
-    addOutput('Terminal:  clear, help');
+    // Empty — fall through to add prompt
+  } else if (TERMINAL_COMMANDS[cmd]) {
+    if (TERMINAL_COMMANDS[cmd](cmd, addOutput)) return;
   } else if (
     cmd === 'run' ||
     cmd.startsWith('node ') ||
     cmd.startsWith('ruby ') ||
     cmd.startsWith('python3 ')
   ) {
-    // Check if command matches a specific file runner
-    const parts = cmd.split(' ');
-    if (parts.length === 2) {
-      const file = parts[1] as TabName;
-      if (TAB_NAMES.includes(file)) {
-        const themeTerminal = TERMINAL_OUTPUT[currentTheme] || TERMINAL_OUTPUT.hacker;
-        const termData = themeTerminal[file] || themeTerminal['main.js'];
-        addOutput(termData.output, 'output');
-      } else {
-        addOutput(`Error: file not found: ${parts[1]}`);
-      }
-    } else {
-      const termData = getCurrentTerminalData();
-      addOutput(termData.output, 'output');
-    }
+    handleRunCommand(cmd, addOutput);
   } else if (cmd.startsWith('cat ')) {
-    const fileName = cmd.slice(4).trim() as TabName;
-    if (TAB_NAMES.includes(fileName)) {
-      const themeSnippets = SNIPPETS[currentTheme] || SNIPPETS.hacker;
-      const snippetLines = themeSnippets[fileName] || themeSnippets['main.js'];
-      for (const line of snippetLines) {
-        addOutput(line || ' ');
-      }
-    } else {
-      addOutput(`cat: ${fileName}: No such file`);
-    }
+    handleCatCommand(cmd, addOutput);
   } else if (cmd.startsWith('echo ')) {
     addOutput(cmd.slice(5));
-  } else if (cmd === 'whoami') {
-    addOutput('visitor');
-  } else if (cmd === 'ls') {
-    addOutput(TAB_NAMES.join('  '));
-  } else if (cmd === 'pwd') {
-    addOutput('/home/visitor/project');
-  } else if (cmd === 'date') {
-    addOutput(new Date().toString());
-  } else if (cmd === 'uptime') {
-    addOutput('up 42 days, 3:14');
-  } else if (cmd === 'history') {
-    for (let i = 0; i < commandHistory.length; i++) {
-      addOutput(`  ${i + 1}  ${commandHistory[i]}`);
-    }
   } else {
     addOutput(`command not found: ${cmd}`);
   }
@@ -992,8 +1087,7 @@ function addClickHandler(el: HTMLElement, handler: EventListener): void {
   clickHandlers.push({ el, handler });
 }
 
-function registerClickHandlers(editor: HTMLElement): void {
-  // Tab switching — now renders different code
+function registerTabHandlers(editor: HTMLElement): void {
   const allTabs = editor.querySelectorAll<HTMLElement>('.code-editor-tab');
   for (const tab of allTabs) {
     addClickHandler(tab, () => {
@@ -1003,8 +1097,9 @@ function registerClickHandlers(editor: HTMLElement): void {
       }
     });
   }
+}
 
-  // Activity bar icon switching with sidebar panels
+function registerActivityBarHandlers(editor: HTMLElement): void {
   const allIcons = editor.querySelectorAll<HTMLElement>('.code-editor-activity-icon');
   for (const icon of allIcons) {
     addClickHandler(icon, () => {
@@ -1014,7 +1109,6 @@ function registerClickHandlers(editor: HTMLElement): void {
       for (const ic of allIcons) ic.classList.remove('active');
       icon.classList.add('active');
 
-      // Handle sidebar panels
       const panelMap: Record<string, typeof activeSidebarPanel> = {
         files: 'files',
         search: 'search',
@@ -1035,6 +1129,56 @@ function registerClickHandlers(editor: HTMLElement): void {
       }
     });
   }
+}
+
+function registerDotHandlers(editor: HTMLElement): void {
+  const dots = editor.querySelectorAll<HTMLElement>('.code-editor-dot');
+  if (dots[0]) {
+    addClickHandler(dots[0], () => {
+      editor.classList.remove('minimized', 'maximized');
+      editor.classList.toggle('collapsed');
+    });
+  }
+  if (dots[1]) {
+    addClickHandler(dots[1], () => {
+      dots[1].classList.add('pulse');
+      setTimeout(() => dots[1].classList.remove('pulse'), 400);
+      editor.classList.remove('collapsed', 'maximized');
+      editor.classList.toggle('minimized');
+    });
+  }
+  if (dots[2]) {
+    addClickHandler(dots[2], () => {
+      dots[2].classList.add('pulse');
+      setTimeout(() => dots[2].classList.remove('pulse'), 400);
+      editor.classList.remove('collapsed', 'minimized');
+      editor.classList.toggle('maximized');
+    });
+  }
+}
+
+function highlightCodeLine(editor: HTMLElement, lineNum: number): void {
+  const codeDisplay = editor.querySelector('.code-editor-code-display');
+  if (!codeDisplay) return;
+  const textContent = codeDisplay.innerHTML.split('\n');
+  if (textContent[lineNum - 1] === undefined) return;
+
+  const snippet = getCurrentSnippet();
+  const lang = getLangFromTab(activeTab);
+  const highlighted = snippet
+    .map((l, i) => {
+      const hl = highlightLine(l, lang);
+      return i === lineNum - 1 ? `<span class="code-editor-line-highlight">${hl}</span>` : hl;
+    })
+    .join('\n');
+  const display = editor.querySelector<HTMLElement>('.code-editor-code-display');
+  if (display) display.innerHTML = highlighted;
+}
+
+function registerClickHandlers(editor: HTMLElement): void {
+  registerTabHandlers(editor);
+  registerActivityBarHandlers(editor);
+  registerDotHandlers(editor);
 
   // File explorer clicks
   if (sidebarEl) {
@@ -1078,28 +1222,7 @@ function registerClickHandlers(editor: HTMLElement): void {
       clearHighlightedLines();
       highlightedLine = lineNum;
       target.classList.add('highlighted');
-
-      // Highlight the code line visually
-      const codeDisplay = editor.querySelector('.code-editor-code-display');
-      if (codeDisplay) {
-        const textContent = codeDisplay.innerHTML.split('\n');
-        if (textContent[lineNum - 1] !== undefined) {
-          // Re-render with highlight wrapper
-          const snippet = getCurrentSnippet();
-          const lang = getLangFromTab(activeTab);
-          const highlighted = snippet
-            .map((l, i) => {
-              const hl = highlightLine(l, lang);
-              return i === lineNum - 1
-                ? `<span class="code-editor-line-highlight">${hl}</span>`
-                : hl;
-            })
-            .join('\n');
-          const display = editor.querySelector<HTMLElement>('.code-editor-code-display');
-          if (display) display.innerHTML = highlighted;
-        }
-      }
-
+      highlightCodeLine(editor, lineNum);
       updateStatusLnCol(lineNum, 1);
     });
   }
@@ -1146,34 +1269,6 @@ function registerClickHandlers(editor: HTMLElement): void {
       tt.classList.add('active');
       const tabName = tt.dataset.termTab || 'terminal';
       switchTerminalTab(tabName);
-    });
-  }
-
-  // Titlebar dots
-  const dots = editor.querySelectorAll<HTMLElement>('.code-editor-dot');
-  // Red dot — collapse
-  if (dots[0]) {
-    addClickHandler(dots[0], () => {
-      editor.classList.remove('minimized', 'maximized');
-      editor.classList.toggle('collapsed');
-    });
-  }
-  // Yellow dot — minimize
-  if (dots[1]) {
-    addClickHandler(dots[1], () => {
-      dots[1].classList.add('pulse');
-      setTimeout(() => dots[1].classList.remove('pulse'), 400);
-      editor.classList.remove('collapsed', 'maximized');
-      editor.classList.toggle('minimized');
-    });
-  }
-  // Green dot — maximize
-  if (dots[2]) {
-    addClickHandler(dots[2], () => {
-      dots[2].classList.add('pulse');
-      setTimeout(() => dots[2].classList.remove('pulse'), 400);
-      editor.classList.remove('collapsed', 'minimized');
-      editor.classList.toggle('maximized');
     });
   }
 
@@ -1363,6 +1458,39 @@ function typeSnippet(
   typeNext();
 }
 
+/* ── Reduced-motion initialiser ── */
+function initReducedMotion(snippet: string[], content: HTMLElement): void {
+  if (!cursorEl) return;
+  renderCode(snippet, content, cursorEl);
+  if (textareaEl) textareaEl.value = getRawText(snippet);
+
+  if (statusLnCol) {
+    statusLnCol.textContent = `Ln ${snippet.length}, Col ${snippet[snippet.length - 1].length + 1}`;
+  }
+
+  for (let i = 0; i < lineNumberEls.length; i++) {
+    lineNumberEls[i].classList.toggle('active', i === snippet.length - 1);
+  }
+
+  tabTyped.set('main.js', true);
+
+  if (terminalEl) {
+    terminalEl.classList.add('open');
+    if (terminalContentEl) {
+      const termData = getCurrentTerminalData();
+      const cmdLine = document.createElement('div');
+      cmdLine.className = 'code-editor-terminal-line';
+      cmdLine.textContent = termData.command;
+      terminalContentEl.appendChild(cmdLine);
+      const outLine = document.createElement('div');
+      outLine.className = 'code-editor-terminal-line output';
+      outLine.textContent = termData.output;
+      terminalContentEl.appendChild(outLine);
+      addTerminalPrompt();
+    }
+  }
+}
+
 /* ── Public API ── */
 export function initCodeEditorHero(): void {
   if (initialized) return;
@@ -1384,34 +1512,7 @@ export function initCodeEditorHero(): void {
   if (!content || !cursorEl) return;
 
   if (prefersReducedMotion) {
-    renderCode(snippet, content, cursorEl);
-    if (textareaEl) textareaEl.value = getRawText(snippet);
-
-    if (statusLnCol) {
-      statusLnCol.textContent = `Ln ${snippet.length}, Col ${snippet[snippet.length - 1].length + 1}`;
-    }
-
-    for (let i = 0; i < lineNumberEls.length; i++) {
-      lineNumberEls[i].classList.toggle('active', i === snippet.length - 1);
-    }
-
-    tabTyped.set('main.js', true);
-
-    if (terminalEl) {
-      terminalEl.classList.add('open');
-      if (terminalContentEl) {
-        const termData = getCurrentTerminalData();
-        const cmdLine = document.createElement('div');
-        cmdLine.className = 'code-editor-terminal-line';
-        cmdLine.textContent = termData.command;
-        terminalContentEl.appendChild(cmdLine);
-        const outLine = document.createElement('div');
-        outLine.className = 'code-editor-terminal-line output';
-        outLine.textContent = termData.output;
-        terminalContentEl.appendChild(outLine);
-        addTerminalPrompt();
-      }
-    }
+    initReducedMotion(snippet, content);
     return;
   }
 

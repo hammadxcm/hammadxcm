@@ -78,24 +78,25 @@ function pickSnippet(lang: string): string {
   return snippets[Math.floor(Math.random() * snippets.length)];
 }
 
+function escapeChar(ch: string): string {
+  if (ch === '<') return '&lt;';
+  if (ch === '>') return '&gt;';
+  if (ch === '&') return '&amp;';
+  return ch;
+}
+
+function charClass(i: number, idx: number, inputVal: string, snippet: string): string {
+  if (i < idx) {
+    return (inputVal[i] ?? '') === snippet[i] ? 'char-correct' : 'char-wrong';
+  }
+  if (i === idx) return 'char-current';
+  return 'char-pending';
+}
+
 function renderDisplay(display: HTMLElement, snippet: string, idx: number, inputVal: string): void {
   let html = '';
   for (let i = 0; i < snippet.length; i++) {
-    const ch = snippet[i];
-    const escaped = ch === '<' ? '&lt;' : ch === '>' ? '&gt;' : ch === '&' ? '&amp;' : ch;
-    if (i < idx) {
-      // Already typed
-      const typedChar = inputVal[i] ?? '';
-      if (typedChar === ch) {
-        html += `<span class="char-correct">${escaped}</span>`;
-      } else {
-        html += `<span class="char-wrong">${escaped}</span>`;
-      }
-    } else if (i === idx) {
-      html += `<span class="char-current">${escaped}</span>`;
-    } else {
-      html += `<span class="char-pending">${escaped}</span>`;
-    }
+    html += `<span class="${charClass(i, idx, inputVal, snippet)}">${escapeChar(snippet[i])}</span>`;
   }
   display.innerHTML = html;
 }
@@ -194,38 +195,41 @@ export function initTypingTest(): void {
     }
   }
 
-  input.addEventListener('input', () => {
-    if (finished) return;
-
-    const val = input.value;
-
-    // Start timer on first keystroke
+  function startTimerIfNeeded(val: string): void {
     if (startTime === 0 && val.length > 0) {
       startTime = Date.now();
       timerInterval = setInterval(updateStats, 500);
     }
+  }
 
-    // Process each new character
+  function processNewChars(val: string, newIndex: number): void {
+    for (let i = currentIndex; i < newIndex && i < currentSnippet.length; i++) {
+      totalChars++;
+      if (val[i] === currentSnippet[i]) {
+        correctChars++;
+        currentStreak++;
+        if (currentStreak > bestStreak) bestStreak = currentStreak;
+      } else {
+        currentStreak = 0;
+      }
+    }
+  }
+
+  input.addEventListener('input', () => {
+    if (finished) return;
+
+    const val = input.value;
+    startTimerIfNeeded(val);
+
     const newIndex = val.length;
     if (newIndex > currentIndex) {
-      // Characters were added
-      for (let i = currentIndex; i < newIndex && i < currentSnippet.length; i++) {
-        totalChars++;
-        if (val[i] === currentSnippet[i]) {
-          correctChars++;
-          currentStreak++;
-          if (currentStreak > bestStreak) bestStreak = currentStreak;
-        } else {
-          currentStreak = 0;
-        }
-      }
+      processNewChars(val, newIndex);
     }
     currentIndex = newIndex;
 
     if (display) renderDisplay(display, currentSnippet, currentIndex, val);
     updateStats();
 
-    // Check if finished
     if (currentIndex >= currentSnippet.length) {
       finishTest();
     }

@@ -46,9 +46,9 @@ describe('initViewMore', () => {
 
   it('collapses on second click', () => {
     initViewMore('viewMoreBtn', '#grid', 'hidden-card');
-    const btn = document.getElementById('viewMoreBtn')!;
-    btn.click(); // expand
-    btn.click(); // collapse
+    const btn = document.getElementById('viewMoreBtn');
+    btn?.click(); // expand
+    btn?.click(); // collapse
     expect(document.querySelector('.view-more-text')?.textContent).toBe('View More');
   });
 });

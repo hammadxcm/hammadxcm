@@ -28,7 +28,7 @@ export const keywordIcons: [string, string][] = [
 ];
 
 export function resolveRepoIcon(
-  repo: { name: string; language: string | null; topics: string[] },
+  repo: { name: string; language?: string | null; topics: string[]; [key: string]: unknown },
   base: string,
 ): string {
   const haystack = [...repo.topics, repo.name].map((s) => s.toLowerCase());

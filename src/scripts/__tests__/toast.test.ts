@@ -57,8 +57,8 @@ describe('spawnToast', () => {
   it('removes toast after animationend', () => {
     spawnToast('msg');
     vi.advanceTimersByTime(2500);
-    const toast = document.querySelector('.hacker-toast')!;
-    toast.dispatchEvent(new Event('animationend'));
+    const toast = document.querySelector('.hacker-toast');
+    toast?.dispatchEvent(new Event('animationend'));
     expect(document.querySelectorAll('.hacker-toast').length).toBe(0);
   });
 });

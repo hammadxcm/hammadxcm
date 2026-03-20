@@ -12,8 +12,8 @@ Thanks for your interest in contributing to this project.
 ### Setup
 
 ```bash
-git clone https://github.com/hammadxcm/hammadxcm.git
-cd hammadxcm
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
 npm install
 npm run dev
 ```
@@ -32,27 +32,63 @@ npm run preview   # preview the production build locally
 ```
 src/
 ├── pages/
-│   └── index.astro          # Main page
+│   └── index.astro              # Main page
 ├── layouts/
-│   └── Layout.astro         # HTML wrapper, meta tags, fonts
+│   └── Layout.astro             # HTML wrapper, meta tags, fonts
 ├── components/
-│   ├── Nav.astro            # Navigation
-│   ├── Hero.astro           # Hero section
-│   ├── About.astro          # About/bio with code display
-│   ├── TechArsenal.astro    # Tech stack grid
-│   ├── Projects.astro       # Open source projects
-│   ├── Journey.astro        # Career timeline
-│   ├── Analytics.astro      # GitHub metrics display
-│   ├── Certifications.astro # Certifications
-│   ├── Footer.astro         # Footer
-│   └── ...                  # Shared/utility components
+│   ├── react/                   # React island components
+│   │   ├── hooks/               # useTheme, useReducedMotion, etc.
+│   │   ├── ScrollReveal.tsx     # Scroll-triggered reveal wrapper
+│   │   ├── ProjectCard.tsx      # Animated project cards
+│   │   └── ...
+│   ├── Nav.astro                # Navigation
+│   ├── Hero.astro               # Hero section
+│   ├── About.astro              # About/bio with code display
+│   ├── TechArsenal.astro        # Tech stack grid
+│   ├── Projects.astro           # Open source projects
+│   ├── Journey.astro            # Career timeline
+│   ├── Analytics.astro          # GitHub metrics display
+│   ├── Contributions.astro      # OSS contributions section
+│   ├── Guestbook.astro          # Guestbook with Giscus
+│   ├── Testimonials.astro       # Testimonials section
+│   ├── Certifications.astro     # Certifications
+│   ├── Footer.astro             # Footer
+│   └── ...                      # Shared/utility components
+├── config/
+│   ├── portfolio.config.ts      # Your config file
+│   ├── portfolio.config.example.ts
+│   ├── types.ts                 # TypeScript interfaces
+│   └── ...
+├── data/                        # Build-time fetched data (lighthouse, contributions)
+├── scripts/
+│   ├── effects/                 # Boot, canvas, cursor, matrix, etc.
+│   ├── interactions/            # Nav, scroll, tilt, konami, etc.
+│   └── theme-data/              # Per-theme branding, toasts, etc.
 ├── styles/
-│   └── global.css           # All styles
+│   ├── base/                    # Reset, tokens, typography
+│   ├── effects/                 # Boot, cursor, glitch, overlays
+│   ├── layout/                  # Glass, sections, scroll-reveal
+│   ├── themes/
+│   │   └── _themes.scss         # All 15 theme definitions
+│   ├── responsive/              # Media queries
+│   ├── utilities/               # Skip link, separators, etc.
+│   ├── _mixins.scss             # Shared SCSS mixins
+│   └── global.scss              # Main stylesheet entry
+scripts/
+├── setup.mjs                    # Interactive setup wizard (phase-skip gates)
+├── setup-tui.mjs                # TUI config editor (menu-driven)
+├── lib/
+│   ├── github.mjs               # GitHub API helpers
+│   └── setup-utils.mjs          # Shared setup constants, serializer, validators
+├── fetch-all-data.mjs           # Pre-build data fetcher
+├── fetch-contributions.mjs      # GitHub contributions fetcher
+├── fetch-contribution-graph.mjs # Contribution graph data
+└── fetch-projects.mjs           # GitHub projects fetcher
 public/
-├── daemon-os.svg            # Animated daemon-os banner
-├── daemon-icon.svg          # Animated daemon icon (AI & Tools)
-└── scripts/
-    └── main.js              # Client-side JS
+├── fonts/                       # Fira Code + Inter woff2
+├── favicon.svg
+├── og-image.png
+└── robots.txt
 ```
 
 ## Making Changes
@@ -73,8 +109,8 @@ public/
 ## Guidelines
 
 - **Astro components** — all pages and sections are `.astro` files. Follow existing patterns.
-- **Styles** — all CSS lives in `src/styles/global.css`. Use existing CSS variables (`--accent`, `--text`, `--bg`, etc.).
-- **No frameworks** — this is a vanilla Astro site with zero client-side frameworks. Keep it lightweight.
+- **React islands** — interactive components use React via `@astrojs/react`. Keep islands small and focused.
+- **Styles** — SCSS lives in `src/styles/` using design tokens (`src/styles/base/_tokens.scss`). Use existing CSS variables (`--accent`, `--text`, `--bg`, etc.).
 - **Static assets** — place images and SVGs in `public/`.
 - **Commit messages** — use imperative tense (`Add feature`, not `Added feature`).
 
@@ -87,7 +123,7 @@ Pushes to `main` trigger an automatic build, deploy, and release. See [CICD.md](
 
 ## Reporting Issues
 
-Open an issue on [GitHub Issues](https://github.com/hammadxcm/hammadxcm/issues) with:
+Open an issue on [GitHub Issues](https://github.com/<your-username>/<your-repo>/issues) with:
 
 - What you expected
 - What happened instead

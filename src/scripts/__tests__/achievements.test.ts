@@ -1100,4 +1100,26 @@ describe('save handles localStorage errors', () => {
     expect(() => trackEvent('first_scroll')).not.toThrow();
     spy.mockRestore();
   });
+
+  it('first_scroll handler does not unlock when counter is 0', () => {
+    initAchievements();
+    // Trigger first_scroll without incrementing the counter first
+    trackEvent('first_scroll', 0);
+    expect(isUnlocked('first_scroll')).toBe(false);
+  });
+
+  it('achievement-trigger event with empty detail is ignored', () => {
+    initAchievements();
+    const before = getProgress().unlocked.length;
+    window.dispatchEvent(new CustomEvent('achievement-trigger', { detail: '' }));
+    expect(getProgress().unlocked.length).toBe(before);
+  });
+
+  it('unlock with invalid achievement id is a no-op', () => {
+    initAchievements();
+    const before = getProgress().totalXP;
+    // Dispatch with an ID not in ACHIEVEMENTS — hits the !achievement guard in unlock()
+    window.dispatchEvent(new CustomEvent('achievement-trigger', { detail: '__nonexistent_xyz__' }));
+    expect(getProgress().totalXP).toBe(before);
+  });
 });

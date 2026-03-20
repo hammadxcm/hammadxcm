@@ -56,8 +56,8 @@ describe('initCommandPalette', () => {
   it('renders results on open', () => {
     initCommandPalette();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
-    const results = document.getElementById('cmdPaletteResults')!;
-    expect(results.innerHTML).toContain('About');
+    const results = document.getElementById('cmdPaletteResults');
+    expect(results?.innerHTML).toContain('About');
   });
 
   it('filters results on input', () => {
@@ -66,8 +66,8 @@ describe('initCommandPalette', () => {
     const input = document.getElementById('cmdPaletteInput') as HTMLInputElement;
     input.value = 'proj';
     input.dispatchEvent(new Event('input'));
-    const results = document.getElementById('cmdPaletteResults')!;
-    expect(results.innerHTML).toContain('My Project');
+    const results = document.getElementById('cmdPaletteResults');
+    expect(results?.innerHTML).toContain('My Project');
   });
 
   it('shows no results for non-matching query', () => {
@@ -76,17 +76,17 @@ describe('initCommandPalette', () => {
     const input = document.getElementById('cmdPaletteInput') as HTMLInputElement;
     input.value = 'zzzzzzz';
     input.dispatchEvent(new Event('input'));
-    const results = document.getElementById('cmdPaletteResults')!;
-    expect(results.innerHTML).toContain('No results');
+    const results = document.getElementById('cmdPaletteResults');
+    expect(results?.innerHTML).toContain('No results');
   });
 
   it('closes on overlay click', () => {
     initCommandPalette();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
-    const overlay = document.getElementById('cmdPaletteOverlay')!;
-    overlay.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    const overlay = document.getElementById('cmdPaletteOverlay');
+    overlay?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     // Click target is the overlay itself
-    expect(overlay.classList.contains('open')).toBe(false);
+    expect(overlay?.classList.contains('open')).toBe(false);
   });
 
   it('toggles with Ctrl+K', () => {
@@ -128,11 +128,11 @@ describe('initCommandPalette', () => {
   it('navigates results with arrow keys', () => {
     initCommandPalette();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
-    const results = document.getElementById('cmdPaletteResults')!;
-    expect(results.querySelector('.cmd-item.active')).toBeTruthy();
+    const results = document.getElementById('cmdPaletteResults');
+    expect(results?.querySelector('.cmd-item.active')).toBeTruthy();
 
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
-    const items = results.querySelectorAll('.cmd-item');
+    const items = results?.querySelectorAll('.cmd-item') ?? [];
     if (items.length > 1) {
       expect(items[1]?.classList.contains('active')).toBe(true);
     }
@@ -163,8 +163,8 @@ describe('initCommandPalette', () => {
 
     initCommandPalette();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }));
-    const results = document.getElementById('cmdPaletteResults')!;
-    const firstItem = results.querySelector('.cmd-item') as HTMLElement;
+    const results = document.getElementById('cmdPaletteResults');
+    const firstItem = results?.querySelector('.cmd-item') as HTMLElement;
     expect(firstItem).toBeTruthy();
     // Dispatch click on the results container with target as the item
     firstItem.dispatchEvent(new MouseEvent('click', { bubbles: true }));

@@ -1,21 +1,21 @@
 <div align="center">
 
-# 🖥️ Hacker Portfolio — Template Setup Guide
+# Hacker Portfolio — Template Setup Guide
 
 **A config-driven, hacker-themed developer portfolio built with [Astro](https://astro.build).**
 **Fork it, edit one file, deploy in under 5 minutes.**
 
-[Live Demo](https://hk.fyniti.co.uk) · [Report Bug](https://github.com/hammadxcm/hammadxcm/issues) · [Request Feature](https://github.com/hammadxcm/hammadxcm/issues)
+[Live Demo](https://your-site-url.com) · [Report Bug](https://github.com/<your-username>/<your-repo>/issues) · [Request Feature](https://github.com/<your-username>/<your-repo>/issues)
 
 </div>
 
 ---
 
-## ✨ Features
+## Features
 
-- **Zero-framework frontend** — pure Astro with no client-side React/Vue/Svelte
+- **Minimal client-side JS** — Astro with React islands for interactive components
 - **Single config file** — every section is driven by `src/config/portfolio.config.ts`
-- **10 built-in themes** — hacker, dracula, nord, catppuccin, synthwave, matrix, bloodmoon, midnight, arctic, gruvbox
+- **15 built-in themes** — hacker, dracula, nord, catppuccin, synthwave, matrix, bloodmoon, midnight, arctic, gruvbox, cyberpunk, nebula, solarized, rosepine, monokai
 - **Boot sequence animation** — terminal-style loading screen on first visit
 - **Interactive effects** — matrix rain, CRT overlay, custom cursor, card tilt, konami code easter egg
 - **Analytics dashboard** — GitHub stats, LeetCode, StackOverflow (all optional & theme-aware)
@@ -27,7 +27,7 @@
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 | Tool | Version | Check |
 |------|---------|-------|
@@ -37,7 +37,7 @@
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 # 1. Fork & clone
@@ -47,11 +47,11 @@ cd <your-repo>
 # 2. Install dependencies
 npm install
 
-# 3. Copy the example config
-cp src/config/portfolio.config.example.ts src/config/portfolio.config.ts
+# 3. Run the setup wizard (generates portfolio.config.ts from your answers)
+npm run setup:init
 
-# 4. Edit with your details
-#    Open src/config/portfolio.config.ts in your editor
+# 4. (Optional) Edit config visually with the TUI editor
+npm run setup:edit
 
 # 5. Start the dev server
 npm run dev
@@ -64,11 +64,198 @@ npm run build
 npm run preview
 ```
 
-> **Tip:** The example config (`portfolio.config.example.ts`) contains placeholder data for "Jane Doe". Replace every field with your own information.
+> **Tip:** The setup wizard builds a complete config from your answers. After initial setup, use `npm run setup:edit` for a visual, menu-driven editor. You can also copy the example manually: `cp src/config/portfolio.config.example.ts src/config/portfolio.config.ts`
 
 ---
 
-## 📖 Configuration Reference
+## Setup Wizard
+
+The interactive setup wizard (`npm run setup:init`) walks you through every section of the portfolio config and generates a fully populated `portfolio.config.ts`. No manual file editing required to get started.
+
+### Running the Wizard
+
+```bash
+# Interactive mode — prompts for everything
+npm run setup:init
+
+# Non-interactive mode — generates a minimal valid config from flags
+npm run setup:init -- --username janedoe --name "Jane Doe" --force
+
+# Mix — CLI flags fill in what they can, prompts ask for the rest
+npm run setup:init -- --username janedoe --name "Jane Doe" --theme dracula
+
+# Launch the TUI config editor instead
+npm run setup:init -- --tui
+```
+
+### Wizard Phases
+
+The wizard collects information in 8 phases:
+
+| Phase | What it collects | Config sections produced |
+|-------|------------------|------------------------|
+| **1. Identity & Site** | GitHub username, full name, professional title, site URL, logo suffix, theme, UTC offset | `site`, `github`, `boot` |
+| **2. Hero** | Terminal greeting, typewriter texts | `hero` |
+| **3. About You** | Codename, experience summary, location, clearance label, current role, arsenal (skills), mission log, aliases, focus, philosophy | `about` |
+| **4. Tech Stack** | Categories with emoji and tech names (icons and URLs auto-resolved) | `techStack` |
+| **5. Experience** | Date range, role, company, company URL, meta, achievements, tags | `experience` |
+| **6. Projects** | Name, URL, description, tags, link text (icons auto-generated from first tag) | `projects` |
+| **7. Integrations** | LeetCode, StackOverflow, HackerRank, LinkedIn, Twitter, contributions toggle, guestbook, testimonials | `leetcode?`, `stackoverflow?`, `hackerrank?`, `contributions`, `guestbook?`, `testimonials?`, `socials` |
+| **8. Generate** | Assembles everything, writes config, patches `astro.config.mjs` and `lighthouse.yml` | All files |
+
+### Phase Skipping (Edit Mode)
+
+When `portfolio.config.ts` already exists, the wizard runs in **edit mode**. In edit mode, before Phases 2–7, you're asked "Edit Phase N: \<label\>?" — the default is **No** (skip), so you can press Enter to jump past sections you don't want to touch.
+
+| Phase | Skippable? | On skip, preserved from existing config |
+|-------|-----------|----------------------------------------|
+| **1. Identity & Site** | No (required fields) | N/A |
+| **2. Hero** | Yes | `greeting`, `typewriterTexts` |
+| **3. About You** | Yes | All about fields (codename, experience, arsenal, etc.) |
+| **4. Tech Stack** | Yes | `techStack` array |
+| **5. Experience** | Yes | `experience` array |
+| **6. Projects** | Yes | `projects` array |
+| **7. Integrations** | Yes | All integrations, socials, sections, certifications |
+| **8. Generate** | Always runs | N/A |
+
+This makes edit-mode runs much faster — skip straight to the section you want to change.
+
+### "Add Another?" Loops
+
+Phases 3–6 use an "Add another?" pattern for dynamic-length arrays (arsenal entries, tech categories, experience entries, projects). The wizard enforces minimums — you must add at least one entry for required arrays like tech stack, experience, and projects.
+
+### Auto-Resolved Icons and URLs
+
+When you enter tech names in Phase 4 (Tech Stack) or tags in Phase 6 (Projects), the wizard automatically resolves:
+
+- **Icons** via [skillicons.dev](https://skillicons.dev) — e.g., entering "React" produces `https://skillicons.dev/icons?i=react`
+- **URLs** to official documentation — e.g., entering "TypeScript" produces `https://www.typescriptlang.org`
+
+The wizard recognizes ~80 technologies by name. Unknown technologies get a best-effort skillicons URL and a Google search fallback URL.
+
+### CLI Flags
+
+All flags are optional. In interactive mode, flags pre-fill prompts. In non-interactive mode (`--username` and `--name` are required), flags provide values and everything else gets sensible defaults.
+
+| Flag | Description | Example |
+|------|-------------|---------|
+| `--username` | GitHub username | `--username janedoe` |
+| `--name` | Full name | `--name "Jane Doe"` |
+| `--url` | Site URL | `--url "https://janedoe.dev"` |
+| `--theme` | Default theme | `--theme dracula` |
+| `--title` | Professional title | `--title "Full Stack Developer"` |
+| `--utc-offset` | UTC offset for contribution graph | `--utc-offset -5` |
+| `--greeting` | Hero terminal greeting | `--greeting "user@dev:~$"` |
+| `--codename` | About section codename | `--codename jd` |
+| `--experience` | Experience summary text | `--experience "5+ years"` |
+| `--location` | Your location | `--location "NYC"` |
+| `--current-op` | Current role/company | `--current-op "SDE @ Acme"` |
+| `--focus` | Current focus area | `--focus "Cloud Architecture"` |
+| `--logo-suffix` | Logo suffix | `--logo-suffix ".io"` |
+| `--leetcode` | LeetCode username (enables integration) | `--leetcode janedoe` |
+| `--stackoverflow` | StackOverflow user ID (enables integration) | `--stackoverflow 1234567` |
+| `--hackerrank` | HackerRank username (enables integration) | `--hackerrank janedoe` |
+| `--linkedin` | LinkedIn URL | `--linkedin "https://linkedin.com/in/jd"` |
+| `--twitter` | Twitter/X URL | `--twitter "https://twitter.com/jd"` |
+| `--force` | Overwrite existing config without prompting | `--force` |
+| `--tui` | Launch the TUI config editor instead of the wizard | `--tui` |
+
+### Non-Interactive Mode
+
+When stdin is not a TTY (e.g., in CI or piped input), the wizard runs non-interactively:
+
+- All prompts use their default values
+- Array collectors (tech stack, experience, projects) produce sensible single-entry defaults
+- `--username` and `--name` must be provided via CLI flags or the wizard exits with an error
+- Placeholder certifications (both image and SVG badge types) are always included
+- Contributions are enabled by default
+
+```bash
+# Minimal CI-friendly invocation
+npm run setup:init -- --username janedoe --name "Jane Doe" --force
+```
+
+### What the Wizard Generates
+
+1. **`src/config/portfolio.config.ts`** — Complete, type-safe config with all sections populated
+2. **`astro.config.mjs`** — `site` and `base` fields patched to match your site URL
+3. **`.github/workflows/lighthouse.yml`** — URL updated for Lighthouse CI
+
+### After Running the Wizard
+
+The generated config is fully functional but uses placeholder certifications. Review and customize:
+
+1. Replace placeholder certifications with your real credentials
+2. Run `npm run dev` to preview
+3. Fine-tune any section by editing `src/config/portfolio.config.ts` directly — or use the TUI editor below
+
+---
+
+## TUI Config Editor
+
+The TUI (Text User Interface) config editor (`npm run setup:edit`) provides a **menu-driven**, non-linear interface for editing your config. Instead of walking through the wizard sequentially, you can jump to any section and edit individual fields.
+
+### Running the TUI Editor
+
+```bash
+# Direct invocation
+npm run setup:edit
+
+# Or via the wizard flag
+npm run setup:init -- --tui
+```
+
+> **Requires:** An existing `portfolio.config.ts`. Run `npm run setup:init` first for initial setup.
+
+### How It Works
+
+The editor presents a **dashboard** showing all config sections with summaries. Select a section to edit, make changes, then return to the dashboard. When done, choose "Save & Exit" or "Discard & Exit".
+
+```
+┌─────────────────── Current Configuration ───────────────────┐
+│  Site               name=Hammad Khan, title=Senior Full...  │
+│  Hero               16 items                                │
+│  About              codename=hammad_khan, title=Senior...   │
+│  Tech Stack         6 items                                 │
+│  Experience         6 items                                 │
+│  Projects           5 items                                 │
+│  Certifications     11 items                                │
+│  Integrations       github, leetcode, stackoverflow, ...    │
+│  Testimonials       13 items                                │
+│  Socials            6 items                                 │
+│  Sections           9 items                                 │
+│  Boot               welcomeName=HAMMAD                      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Editing by Field Type
+
+| Field Type | Editor | Interaction |
+|------------|--------|-------------|
+| Text | `text` prompt pre-filled with current value | Type to replace, Enter to keep |
+| URL | `text` prompt with URL validation | Same as text |
+| Number | `text` prompt with number validation | Same as text |
+| Boolean | `confirm` toggle | Y/N |
+| Select | Arrow-key selection (e.g. theme picker) | Arrow keys + Enter |
+| String array | Numbered list with add/edit/delete | Select item or action |
+| Key-value array | Key + value pairs with add/edit/delete | Two prompts per entry |
+| Object array | Items listed by label, select to edit fields | Nested field editor |
+
+### Integrations Sub-Menu
+
+The **Integrations** section groups 8 config keys under one menu: GitHub, LeetCode, StackOverflow, HackerRank, Chat, Spotify, Contributions, and Guestbook. Optional integrations (LeetCode, StackOverflow, etc.) can be enabled or disabled with a toggle. Required integrations (GitHub, Contributions) can only be edited.
+
+### Save Behavior
+
+On "Save & Exit":
+1. Serializes config to TypeScript and writes `portfolio.config.ts`
+2. Patches `astro.config.mjs` (site/base from URL)
+3. Patches `lighthouse.yml` URL
+4. Preserves unknown top-level keys (hand-added config keys survive)
+
+---
+
+## Configuration Reference
 
 All content lives in **`src/config/portfolio.config.ts`**. The file exports a single `PortfolioConfig` object. Every array is extensible — add more objects to grow any section automatically.
 
@@ -347,11 +534,91 @@ boot: {
 
 ---
 
-## 🎨 Theming
+### `guestbook`
+
+Giscus-powered GitHub Discussions embed with optional stats API.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `giscus.repo` | `string` | yes | GitHub repo in `owner/repo` format |
+| `giscus.repoId` | `string` | yes | Repository ID from Giscus setup |
+| `giscus.category` | `string` | yes | Discussion category name |
+| `giscus.categoryId` | `string` | yes | Category ID from Giscus setup |
+| `statsApi` | `string` | no | URL to your stats Cloudflare Worker |
+
+```typescript
+guestbook: {
+  giscus: {
+    repo: 'janedoe/janedoe.github.io',
+    repoId: 'R_kgDOxxxxxxx',
+    category: 'General',
+    categoryId: 'DIC_kwDOxxxxxxx',
+  },
+  statsApi: 'https://your-stats-worker.workers.dev', // optional
+},
+```
+
+**Remove the entire `guestbook` key to disable.**
+
+---
+
+### `contributions`
+
+Enables the OSS contributions section showing your merged PRs to external repos.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `enabled` | `boolean` | yes | Toggle the section |
+| `excludeOrgs` | `string[]` | no | GitHub orgs to exclude |
+| `minStars` | `number` | no | Minimum stars threshold for displayed repos |
+| `maxItems` | `number` | no | Max contributions to show |
+
+```typescript
+contributions: {
+  enabled: true,
+  excludeOrgs: [],
+  minStars: 0,
+  maxItems: 20,
+},
+```
+
+**Remove the entire `contributions` key to disable.**
+
+---
+
+### `testimonials`
+
+Testimonial quotes displayed in a dedicated section.
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `quote` | `string` | yes | The testimonial text |
+| `author` | `string` | yes | Person's name |
+| `role` | `string` | no | Job title |
+| `company` | `string` | no | Company name |
+| `avatar` | `string` | no | URL to avatar image |
+
+```typescript
+testimonials: [
+  {
+    quote: 'An exceptional developer who delivers quality work.',
+    author: 'John Smith',
+    role: 'Engineering Manager',
+    company: 'Acme Corp',
+    avatar: 'https://example.com/avatar.jpg',
+  },
+],
+```
+
+**Remove the entire `testimonials` key to disable.**
+
+---
+
+## Theming
 
 ### Built-in Themes
 
-The portfolio ships with 10 themes. Users can switch at any time via the theme picker in the navigation bar.
+The portfolio ships with 15 themes. Users can switch at any time via the theme picker in the navigation bar.
 
 | Theme | Accent Color | Background | Vibe |
 |-------|-------------|------------|------|
@@ -365,6 +632,11 @@ The portfolio ships with 10 themes. Users can switch at any time via the theme p
 | **Midnight** | `#7B73FF` Purple | Dark | Deep night purple |
 | **Arctic** | `#0369A1` Deep Blue | Light | Clean light mode |
 | **Gruvbox** | `#FABD2F` Gold | Dark | Warm retro coding |
+| **Cyberpunk** | `#FFD700` Electric Gold | Dark | Neon-lit future city |
+| **Nebula** | `#E040FB` Cosmic Purple | Dark | Deep space cosmic |
+| **Solarized** | `#268BD2` Classic Blue | Dark | Precision-engineered colors |
+| **Rosé Pine** | `#EA9A97` Muted Rose | Dark | Soft natural palette |
+| **Monokai** | `#A6E22E` Neon Green | Dark | Classic code editor |
 
 ### Setting the Default Theme
 
@@ -389,15 +661,19 @@ If omitted, the default is `hacker`. Users' theme choices are persisted to `loca
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 .
 ├── .github/workflows/
 │   ├── ci.yml                       # Lint + build + test on PRs
 │   ├── deploy.yml                   # Build → GitHub Pages → auto-release
+│   ├── contributions.yml            # Update OSS contributions table
+│   ├── lighthouse.yml               # Lighthouse CI scores
 │   ├── metrics.yml                  # Daily GitHub stats SVGs
-│   └── snake.yml                    # Daily contribution snake animation
+│   ├── snake.yml                    # Daily contribution snake animation
+│   ├── deploy-worker.yml            # Deploy stats Cloudflare Worker
+│   └── deploy-chat-worker.yml       # Deploy chat Cloudflare Worker
 ├── public/
 │   ├── fonts/
 │   │   ├── firacode-latin.woff2     # Monospace font (code blocks)
@@ -405,19 +681,37 @@ If omitted, the default is `hacker`. Users' theme choices are persisted to `loca
 │   ├── favicon.svg                  # Site favicon
 │   ├── og-image.png                 # Open Graph social image
 │   └── robots.txt                   # SEO robots config
+├── scripts/
+│   ├── setup.mjs                    # Interactive setup wizard (phase-skip gates)
+│   ├── setup-tui.mjs                # TUI config editor (menu-driven)
+│   ├── lib/
+│   │   ├── github.mjs               # GitHub API helpers
+│   │   └── setup-utils.mjs          # Shared constants, serializer, validators
+│   ├── fetch-all-data.mjs           # Pre-build data fetcher
+│   ├── fetch-contributions.mjs      # GitHub contributions fetcher
+│   ├── fetch-contribution-graph.mjs # Contribution graph data
+│   └── fetch-projects.mjs           # GitHub projects fetcher
 ├── src/
 │   ├── __tests__/                   # Accessibility tests
 │   ├── components/
+│   │   ├── react/                   # React island components
+│   │   │   ├── hooks/               # useTheme, useReducedMotion, etc.
+│   │   │   ├── ScrollReveal.tsx     # Scroll-triggered reveal
+│   │   │   ├── ProjectCard.tsx      # Animated project cards
+│   │   │   └── ...
 │   │   ├── About.astro              # Terminal-style bio card
 │   │   ├── Analytics.astro          # GitHub/LeetCode/SO stats
 │   │   ├── Certifications.astro     # Cert badge grid
+│   │   ├── Contributions.astro      # OSS contributions section
 │   │   ├── Footer.astro             # Footer with socials
 │   │   ├── GlobalOverlays.astro     # CRT, matrix rain overlays
+│   │   ├── Guestbook.astro          # Giscus guestbook embed
 │   │   ├── Hero.astro               # Landing section
 │   │   ├── Journey.astro            # Career timeline
 │   │   ├── Nav.astro                # Navigation + theme switcher
 │   │   ├── Projects.astro           # Project card grid
 │   │   ├── SocialLinks.astro        # Social icon links
+│   │   ├── Testimonials.astro       # Testimonials section
 │   │   └── TechArsenal.astro        # Skills grid
 │   ├── config/
 │   │   ├── portfolio.config.ts      # ← YOUR CONFIG FILE
@@ -426,6 +720,7 @@ If omitted, the default is `hacker`. Users' theme choices are persisted to `loca
 │   │   ├── socials.ts               # Social URL auto-generation
 │   │   ├── theme-colors.ts          # Browser meta theme colors
 │   │   └── index.ts                 # Config barrel export
+│   ├── data/                        # Build-time fetched data (lighthouse, contributions)
 │   ├── layouts/
 │   │   └── Layout.astro             # HTML shell, <head>, fonts
 │   ├── pages/
@@ -433,6 +728,7 @@ If omitted, the default is `hacker`. Users' theme choices are persisted to `loca
 │   ├── scripts/
 │   │   ├── effects/                 # Boot, canvas, cursor, matrix, etc.
 │   │   ├── interactions/            # Nav, scroll, tilt, konami, etc.
+│   │   ├── theme-data/              # Per-theme branding, prompts, etc.
 │   │   ├── main.ts                  # Script entry point
 │   │   ├── theme-config.ts          # Per-theme logos, prompts, effects
 │   │   └── theme-switcher.ts        # Theme switching logic
@@ -441,7 +737,7 @@ If omitted, the default is `hacker`. Users' theme choices are persisted to `loca
 │       ├── effects/                 # Boot, cursor, glitch, overlays
 │       ├── layout/                  # Glass, sections, scroll-reveal
 │       ├── themes/
-│       │   └── _themes.scss         # All 10 theme definitions
+│       │   └── _themes.scss         # All 15 theme definitions
 │       ├── responsive/              # Media queries
 │       ├── utilities/               # Skip link, separators, etc.
 │       ├── _mixins.scss             # Shared SCSS mixins
@@ -455,7 +751,7 @@ If omitted, the default is `hacker`. Users' theme choices are persisted to `loca
 
 ---
 
-## 📜 Available Scripts
+## Available Scripts
 
 | Command | Description |
 |---------|-------------|
@@ -464,12 +760,17 @@ If omitted, the default is `hacker`. Users' theme choices are persisted to `loca
 | `npm run preview` | Preview the production build locally |
 | `npm test` | Run tests once with Vitest |
 | `npm run test:watch` | Run tests in watch mode |
+| `npm run test:coverage` | Run tests with coverage report |
 | `npm run lint` | Lint `src/` with Biome |
 | `npm run format` | Auto-fix lint + formatting issues in `src/` |
+| `npm run typecheck` | TypeScript type checking via `astro check` |
+| `npm run setup` | Fetch all build-time data (contributions, projects) |
+| `npm run setup:init` | Interactive setup wizard — generates config from prompts |
+| `npm run setup:edit` | TUI config editor — menu-driven visual config editing |
 
 ---
 
-## ⚙️ CI/CD Pipeline
+## CI/CD Pipeline
 
 Three GitHub Actions workflows handle quality gates, deployment, and metrics.
 
@@ -522,9 +823,32 @@ To set it up:
 2. Generate a token with `repo` scope
 3. In your repo: **Settings → Environments → production → Add secret → `METRICS_TOKEN`**
 
+### Optional Workflows
+
+These workflows enhance the portfolio but can be safely deleted if you don't need them:
+
+| Workflow | File | Purpose | Safe to delete? |
+|----------|------|---------|-----------------|
+| **Metrics** | `metrics.yml` | Daily GitHub stats SVGs | Yes — removes analytics images from README |
+| **Snake** | `snake.yml` | Contribution snake animation | Yes — decorative only |
+| **Contributions** | `contributions.yml` | OSS contributions README table | Yes — only affects README |
+| **Lighthouse** | `lighthouse.yml` | Lighthouse CI scores | Yes — removes automated score tracking |
+| **Deploy Worker** | `deploy-worker.yml` | Stats Cloudflare Worker | Yes — only needed for guestbook stats |
+| **Deploy Chat Worker** | `deploy-chat-worker.yml` | Chat Cloudflare Worker | Yes — only needed for AI chat feature |
+
+### Username Override
+
+All workflows auto-detect your GitHub username via `github.repository_owner` — no YAML editing needed for forks.
+
+To override (e.g., when your GitHub username differs from your display name):
+
+1. Go to **Settings → Secrets and variables → Actions → Variables**
+2. Create a repository variable: `PORTFOLIO_USERNAME` = your desired username
+3. (Optional) Create `LEETCODE_USERNAME` if your LeetCode username differs
+
 ---
 
-## 🌐 Deployment Guide
+## Deployment Guide
 
 ### GitHub Pages (Default)
 
@@ -585,7 +909,7 @@ Or connect the repo in the Netlify dashboard — build command: `npm run build`,
 
 ---
 
-## 🔧 Customization Beyond Config
+## Customization Beyond Config
 
 ### Fonts
 
@@ -642,25 +966,26 @@ import { someUtil } from '@scripts/utils';
 
 ---
 
-## 🧪 Testing
+## Testing
 
 Tests use [Vitest](https://vitest.dev) with [happy-dom](https://github.com/nicedayfor/happy-dom) for DOM simulation.
 
 ```bash
 npm test              # run once
 npm run test:watch    # watch mode
+npm run test:coverage # with coverage report
 ```
 
 ### Coverage
 
-Coverage is collected for `src/config/**` with the following thresholds:
+Coverage is collected with the following thresholds:
 
 | Metric | Threshold |
 |--------|-----------|
-| Statements | 80% |
-| Branches | 80% |
-| Functions | 80% |
-| Lines | 80% |
+| Statements | 60% |
+| Branches | 50% |
+| Functions | 58% |
+| Lines | 60% |
 
 Tests live alongside the code they cover:
 
@@ -676,7 +1001,7 @@ src/__tests__/a11y.test.ts
 
 ---
 
-## ❓ Troubleshooting
+## Troubleshooting
 
 <details>
 <summary><strong>Dev server won't start</strong></summary>
@@ -747,7 +1072,7 @@ Theme selection is stored in `localStorage` under the key `portfolio-theme`. If 
 
 ---
 
-## 📄 License
+## License
 
 This project is open source. See the [LICENSE](LICENSE) file for details.
 
@@ -757,6 +1082,6 @@ This project is open source. See the [LICENSE](LICENSE) file for details.
 
 **Built with [Astro](https://astro.build)**
 
-[Back to top](#-hacker-portfolio--template-setup-guide)
+[Back to top](#hacker-portfolio--template-setup-guide)
 
 </div>

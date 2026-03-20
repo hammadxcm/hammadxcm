@@ -48,7 +48,7 @@ export function initAchievementPanel(): void {
     if (cursorTrail) cursorTrail.style.zIndex = '';
   }
 
-  function render(): void {
+  function updateLevelDisplay(): void {
     const level = getLevel();
     const levelName = getLevelName(level);
     const xp = getXPForNextLevel();
@@ -62,58 +62,71 @@ export function initAchievementPanel(): void {
     if (nameEl) nameEl.textContent = levelName;
     if (barEl) barEl.style.width = `${Math.round(xp.progress * 100)}%`;
     if (textEl) textEl.textContent = `${xp.current} / ${xp.needed} XP`;
+  }
 
-    // Build achievement cards
+  function createAchievementCard(a: (typeof ACHIEVEMENTS)[number], unlocked: boolean): HTMLElement {
+    const card = document.createElement('div');
+    card.className = `achievement-card${unlocked ? ' unlocked' : ' locked'}`;
+
+    if (a.secret && !unlocked) {
+      card.innerHTML = `
+        <span class="ac-icon">???</span>
+        <div class="ac-info">
+          <span class="ac-name">???</span>
+          <span class="ac-desc">Hidden achievement</span>
+        </div>
+        <span class="ac-xp">+${a.xp} XP</span>
+      `;
+    } else {
+      card.innerHTML = `
+        <span class="ac-icon"><svg viewBox="0 0 24 24">${a.icon}</svg></span>
+        <div class="ac-info">
+          <span class="ac-name">${a.name}</span>
+          <span class="ac-desc">${a.description}</span>
+          <span class="ac-rarity" data-achievement-id="${a.id}"></span>
+        </div>
+        <span class="ac-xp${unlocked ? ' earned' : ''}">+${a.xp} XP</span>
+      `;
+    }
+    return card;
+  }
+
+  function applyRarityStats(stats: Record<string, number>): void {
+    if (!stats.visit) return;
+    for (const a of ACHIEVEMENTS) {
+      const rarityEl = _grid.querySelector(`[data-achievement-id="${a.id}"]`);
+      if (!rarityEl) continue;
+      const achCount = stats[`ach:${a.id}`] || 0;
+      if (achCount > 0) {
+        const pct = Math.round((achCount / stats.visit) * 100);
+        rarityEl.textContent = `${Math.max(1, pct)}% of visitors`;
+      }
+    }
+  }
+
+  function updateRarityLabels(): void {
+    fetchGlobalStats()
+      .then((stats) => {
+        if (stats) applyRarityStats(stats);
+      })
+      .catch(() => {
+        /* silent */
+      });
+  }
+
+  function render(): void {
+    updateLevelDisplay();
+
     _grid.innerHTML = '';
     const categories = ['explore', 'interact', 'discover', 'social'] as const;
     for (const cat of categories) {
       const items = ACHIEVEMENTS.filter((a) => a.category === cat);
       for (const a of items) {
-        const unlocked = isUnlocked(a.id);
-        const card = document.createElement('div');
-        card.className = `achievement-card${unlocked ? ' unlocked' : ' locked'}`;
-
-        if (a.secret && !unlocked) {
-          card.innerHTML = `
-            <span class="ac-icon">???</span>
-            <div class="ac-info">
-              <span class="ac-name">???</span>
-              <span class="ac-desc">Hidden achievement</span>
-            </div>
-            <span class="ac-xp">+${a.xp} XP</span>
-          `;
-        } else {
-          card.innerHTML = `
-            <span class="ac-icon"><svg viewBox="0 0 24 24">${a.icon}</svg></span>
-            <div class="ac-info">
-              <span class="ac-name">${a.name}</span>
-              <span class="ac-desc">${a.description}</span>
-              <span class="ac-rarity" data-achievement-id="${a.id}"></span>
-            </div>
-            <span class="ac-xp${unlocked ? ' earned' : ''}">+${a.xp} XP</span>
-          `;
-        }
-        _grid.appendChild(card);
+        _grid.appendChild(createAchievementCard(a, isUnlocked(a.id)));
       }
     }
 
-    // Fetch global rarity (async) — per-achievement stats via ach:{id}
-    fetchGlobalStats()
-      .then((stats) => {
-        if (!stats || !stats.visit) return;
-        for (const a of ACHIEVEMENTS) {
-          const rarityEl = _grid.querySelector(`[data-achievement-id="${a.id}"]`);
-          if (!rarityEl) continue;
-          const achCount = stats[`ach:${a.id}`] || 0;
-          if (achCount > 0) {
-            const pct = Math.round((achCount / stats.visit) * 100);
-            rarityEl.textContent = `${Math.max(1, pct)}% of visitors`;
-          }
-        }
-      })
-      .catch(() => {
-        /* silent */
-      });
+    updateRarityLabels();
   }
 
   // Open triggers

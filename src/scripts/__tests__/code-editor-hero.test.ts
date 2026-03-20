@@ -272,13 +272,13 @@ describe('code-editor-hero', () => {
 
   it('red dot toggles collapsed', () => {
     initCodeEditorHero();
-    const hero = document.querySelector<HTMLElement>('.code-editor-hero')!;
+    const hero = document.querySelector<HTMLElement>('.code-editor-hero');
     const dots = document.querySelectorAll<HTMLElement>('.code-editor-dot');
-    expect(hero.classList.contains('collapsed')).toBe(false);
+    expect(hero?.classList.contains('collapsed')).toBe(false);
     dots[0].click();
-    expect(hero.classList.contains('collapsed')).toBe(true);
+    expect(hero?.classList.contains('collapsed')).toBe(true);
     dots[0].click();
-    expect(hero.classList.contains('collapsed')).toBe(false);
+    expect(hero?.classList.contains('collapsed')).toBe(false);
   });
 
   it('yellow dot toggles minimized', () => {

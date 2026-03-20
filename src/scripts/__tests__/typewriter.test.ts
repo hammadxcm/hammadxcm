@@ -2,6 +2,7 @@
  * @vitest-environment happy-dom
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { ThemeName } from '../../config/types';
 
 const mockState = { prefersReducedMotion: false };
 
@@ -43,30 +44,30 @@ describe('initTypewriter', () => {
     mockState.prefersReducedMotion = true;
     initTypewriter();
     vi.advanceTimersByTime(100);
-    const el = document.getElementById('typewriter')!;
-    expect(el.textContent).toBe('> Hacker Text');
+    const el = document.getElementById('typewriter');
+    expect(el?.textContent).toBe('> Hacker Text');
   });
 
   it('starts typing animation', () => {
     initTypewriter();
     // First rAF + tick should set first character
     vi.advanceTimersByTime(200);
-    const el = document.getElementById('typewriter')!;
-    expect(el.textContent?.length).toBeGreaterThan(0);
+    const el = document.getElementById('typewriter');
+    expect(el?.textContent?.length).toBeGreaterThan(0);
   });
 });
 
 describe('updateTypewriterTexts', () => {
   it('resets state when theme changes', () => {
-    expect(() => updateTypewriterTexts('cyberpunk' as any)).not.toThrow();
+    expect(() => updateTypewriterTexts('cyberpunk' as ThemeName)).not.toThrow();
   });
 
   it('does not reset when same texts', () => {
-    updateTypewriterTexts('hacker' as any);
-    expect(() => updateTypewriterTexts('hacker' as any)).not.toThrow();
+    updateTypewriterTexts('hacker' as ThemeName);
+    expect(() => updateTypewriterTexts('hacker' as ThemeName)).not.toThrow();
   });
 
   it('handles unknown theme gracefully', () => {
-    expect(() => updateTypewriterTexts('unknown' as any)).not.toThrow();
+    expect(() => updateTypewriterTexts('unknown' as ThemeName)).not.toThrow();
   });
 });

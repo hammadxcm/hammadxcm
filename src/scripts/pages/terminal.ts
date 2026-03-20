@@ -4,11 +4,12 @@ let initialized = false;
 
 export function initTerminal(): void {
   if (initialized) return;
-  const input = document.getElementById('terminalInput') as HTMLInputElement | null;
+  const input = document.getElementById('terminalInput') as HTMLInputElement;
   const output = document.getElementById('terminalOutput');
   const prompt = document.getElementById('terminalPrompt');
   if (!input || !output || !prompt) return;
   initialized = true;
+  const _input = input;
   const _output = output;
 
   const fs = buildFileSystem();
@@ -280,57 +281,81 @@ export function initTerminal(): void {
     if (body) body.scrollTop = body.scrollHeight;
   }
 
+  function handleEnter(): void {
+    execute(input.value);
+    input.value = '';
+  }
+
+  function handleArrowUp(e: KeyboardEvent): void {
+    e.preventDefault();
+    if (historyIndex > 0) {
+      historyIndex--;
+      input.value = history[historyIndex];
+    }
+  }
+
+  function handleArrowDown(e: KeyboardEvent): void {
+    e.preventDefault();
+    if (historyIndex < history.length - 1) {
+      historyIndex++;
+      input.value = history[historyIndex];
+    } else {
+      historyIndex = history.length;
+      input.value = '';
+    }
+  }
+
+  function applyTabMatch(valParts: string[], dirPath: string, match: string): void {
+    valParts[valParts.length - 1] = dirPath + match;
+    const dirNode = getNode(dirPath || cwd);
+    if (dirNode?.type === 'dir' && dirNode.children) {
+      const matchNode = dirNode.children[match];
+      if (matchNode?.type === 'dir') valParts[valParts.length - 1] += '/';
+    }
+    input.value = valParts.join(' ');
+  }
+
+  function handleTabCompletion(e: KeyboardEvent): void {
+    e.preventDefault();
+    const val = input.value.trim();
+    const valParts = val.split(/\s+/);
+    const last = valParts[valParts.length - 1] || '';
+    if (!last) return;
+    const dirPath = last.includes('/') ? last.substring(0, last.lastIndexOf('/') + 1) : '';
+    const prefix = last.includes('/') ? last.substring(last.lastIndexOf('/') + 1) : last;
+    const dirNode = getNode(dirPath || cwd);
+    if (dirNode?.type !== 'dir' || !dirNode.children) return;
+    const matches = Object.keys(dirNode.children).filter((n) => n.startsWith(prefix));
+    if (matches.length === 1) {
+      applyTabMatch(valParts, dirPath, matches[0]);
+    } else if (matches.length > 1) {
+      printCmd(val);
+      print(matches.join('  '));
+    }
+  }
+
+  function handleCtrlL(e: KeyboardEvent): void {
+    e.preventDefault();
+    commands.clear([]);
+  }
+
   input.addEventListener('keydown', (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
-      execute(input.value);
-      input.value = '';
+      handleEnter();
     } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      if (historyIndex > 0) {
-        historyIndex--;
-        input.value = history[historyIndex];
-      }
+      handleArrowUp(e);
     } else if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      if (historyIndex < history.length - 1) {
-        historyIndex++;
-        input.value = history[historyIndex];
-      } else {
-        historyIndex = history.length;
-        input.value = '';
-      }
+      handleArrowDown(e);
     } else if (e.key === 'Tab') {
-      e.preventDefault();
-      // Tab completion
-      const val = input.value.trim();
-      const valParts = val.split(/\s+/);
-      const last = valParts[valParts.length - 1] || '';
-      if (last) {
-        const dirPath = last.includes('/') ? last.substring(0, last.lastIndexOf('/') + 1) : '';
-        const prefix = last.includes('/') ? last.substring(last.lastIndexOf('/') + 1) : last;
-        const dirNode = getNode(dirPath || cwd);
-        if (dirNode?.type === 'dir' && dirNode.children) {
-          const matches = Object.keys(dirNode.children).filter((n) => n.startsWith(prefix));
-          if (matches.length === 1) {
-            valParts[valParts.length - 1] = dirPath + matches[0];
-            const matchNode = dirNode.children[matches[0]];
-            if (matchNode.type === 'dir') valParts[valParts.length - 1] += '/';
-            input.value = valParts.join(' ');
-          } else if (matches.length > 1) {
-            printCmd(val);
-            print(matches.join('  '));
-          }
-        }
-      }
+      handleTabCompletion(e);
     } else if (e.key === 'l' && e.ctrlKey) {
-      e.preventDefault();
-      commands.clear([]);
+      handleCtrlL(e);
     }
   });
 
   // Focus input on click anywhere in terminal
   document.getElementById('terminalBody')?.addEventListener('click', () => {
-    input.focus();
+    _input.focus();
   });
 }
 

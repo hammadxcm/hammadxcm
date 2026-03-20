@@ -44,6 +44,37 @@ export function destroyGuestbookStats(): void {
   initialized = false;
 }
 
+function updateVisitorCount(stats: Record<string, number>): void {
+  const visitorsEl = document.getElementById('gsGlobalVisitors');
+  if (visitorsEl && stats.visit) animateValue(visitorsEl, stats.visit);
+}
+
+function updateCtfSolvers(stats: Record<string, number>): void {
+  const ctfEl = document.getElementById('gsCtfSolvers');
+  if (ctfEl && stats.visit && stats.ctf_solved) {
+    const pct = Math.round((stats.ctf_solved / stats.visit) * 100);
+    ctfEl.textContent = `${pct}% solved`;
+  }
+}
+
+function updatePopularTheme(stats: Record<string, number>): void {
+  const themeKeys = Object.keys(stats).filter((k) => k.startsWith('theme:'));
+  if (themeKeys.length === 0) return;
+  const sorted = themeKeys.sort((a, b) => stats[b] - stats[a]);
+  const topTheme = sorted[0].replace('theme:', '');
+  const total = themeKeys.reduce((sum, k) => sum + stats[k], 0);
+  const pct = Math.round((stats[sorted[0]] / total) * 100);
+  const themeEl = document.getElementById('gsPopularTheme');
+  if (themeEl) themeEl.textContent = `${topTheme} (${pct}%)`;
+}
+
+function updateGlobalAchievements(stats: Record<string, number>): void {
+  const achievementEl = document.getElementById('gsGlobalAchievements');
+  if (achievementEl && stats.achievement_unlocked) {
+    animateValue(achievementEl, stats.achievement_unlocked);
+  }
+}
+
 export function initGuestbookStats(): void {
   if (initialized) return;
   const container = document.getElementById('guestbookStats');
@@ -87,33 +118,10 @@ export function initGuestbookStats(): void {
   fetchGlobalStats()
     .then((stats) => {
       if (!stats) return;
-      const visitorsEl = document.getElementById('gsGlobalVisitors');
-      if (visitorsEl && stats.visit) {
-        animateValue(visitorsEl, stats.visit);
-      }
-
-      const ctfEl = document.getElementById('gsCtfSolvers');
-      if (ctfEl && stats.visit && stats.ctf_solved) {
-        const pct = Math.round((stats.ctf_solved / stats.visit) * 100);
-        ctfEl.textContent = `${pct}% solved`;
-      }
-
-      // Popular theme calculation
-      const themeKeys = Object.keys(stats).filter((k) => k.startsWith('theme:'));
-      if (themeKeys.length > 0) {
-        const sorted = themeKeys.sort((a, b) => stats[b] - stats[a]);
-        const topTheme = sorted[0].replace('theme:', '');
-        const total = themeKeys.reduce((sum, k) => sum + stats[k], 0);
-        const pct = Math.round((stats[sorted[0]] / total) * 100);
-        const themeEl = document.getElementById('gsPopularTheme');
-        if (themeEl) themeEl.textContent = `${topTheme} (${pct}%)`;
-      }
-
-      // Global achievements unlocked
-      const achievementEl = document.getElementById('gsGlobalAchievements');
-      if (achievementEl && stats.achievement_unlocked) {
-        animateValue(achievementEl, stats.achievement_unlocked);
-      }
+      updateVisitorCount(stats);
+      updateCtfSolvers(stats);
+      updatePopularTheme(stats);
+      updateGlobalAchievements(stats);
     })
     .catch(() => {
       /* Worker offline — silent */

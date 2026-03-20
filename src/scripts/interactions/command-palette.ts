@@ -122,6 +122,24 @@ export function initCommandPalette(): void {
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 
+  function renderGroup(
+    g: { label: string; group: string; items: PaletteItem[]; action: (item: PaletteItem) => void },
+    query: string,
+  ): string {
+    const filtered = query ? g.items.filter((i) => fuzzyMatch(query, i.label)) : g.items;
+    if (filtered.length === 0) return '';
+
+    let html = `<div class="cmd-group-label">${g.label}</div>`;
+    for (const item of filtered) {
+      const idx = flatItems.length;
+      flatItems.push({ group: g.group, item, action: () => g.action(item) });
+      html += `<div class="cmd-item" data-idx="${idx}">${item.label}`;
+      if (g.group === 'section') html += `<span class="cmd-item-hint">#${item.id}</span>`;
+      html += `</div>`;
+    }
+    return html;
+  }
+
   function render(query: string): void {
     flatItems = [];
     let html = '';
@@ -155,17 +173,7 @@ export function initCommandPalette(): void {
     ];
 
     for (const g of groups) {
-      const filtered = query ? g.items.filter((i) => fuzzyMatch(query, i.label)) : g.items;
-      if (filtered.length === 0) continue;
-
-      html += `<div class="cmd-group-label">${g.label}</div>`;
-      for (const item of filtered) {
-        const idx = flatItems.length;
-        flatItems.push({ group: g.group, item, action: () => g.action(item) });
-        html += `<div class="cmd-item" data-idx="${idx}">${item.label}`;
-        if (g.group === 'section') html += `<span class="cmd-item-hint">#${item.id}</span>`;
-        html += `</div>`;
-      }
+      html += renderGroup(g, query);
     }
 
     if (flatItems.length === 0) {

@@ -77,16 +77,16 @@ describe('initBoot', () => {
     setupDOM();
     initBoot();
     document.dispatchEvent(new Event('click'));
-    const boot = document.getElementById('bootScreen')!;
-    expect(boot.classList.contains('fade-out')).toBe(true);
+    const boot = document.getElementById('bootScreen');
+    expect(boot?.classList.contains('fade-out')).toBe(true);
   });
 
   it('can be skipped via keydown', () => {
     setupDOM();
     initBoot();
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
-    const boot = document.getElementById('bootScreen')!;
-    expect(boot.classList.contains('fade-out')).toBe(true);
+    const boot = document.getElementById('bootScreen');
+    expect(boot?.classList.contains('fade-out')).toBe(true);
   });
 
   it('shows return visit lines when session exists', () => {
@@ -101,7 +101,7 @@ describe('initBoot', () => {
     setupDOM();
     initBoot();
     vi.advanceTimersByTime(10000); // enough time for all animations
-    const boot = document.getElementById('bootScreen')!;
-    expect(boot.classList.contains('fade-out')).toBe(true);
+    const boot = document.getElementById('bootScreen');
+    expect(boot?.classList.contains('fade-out')).toBe(true);
   });
 });
