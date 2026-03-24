@@ -958,16 +958,16 @@ Next.js & Svelte with live demo</sub>
 | [biomejs/biome-vscode](https://github.com/biomejs/biome-vscode) | [feat: add SVG file support](https://github.com/biomejs/biome-vscode/pull/993) | 🟢 Open | Mar 23, 2026 | 412 | +12 -0 |
 | [biomejs/biome](https://github.com/biomejs/biome) | [feat(html): enable HTML parsing for `.svg` files](https://github.com/biomejs/biome/pull/9608) | 🟢 Open | Mar 23, 2026 | 24.2k | +602 -7 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟢 Open | Mar 23, 2026 | 12.8k | +123 -3 |
-| [rails/rails](https://github.com/rails/rails) | [Fix association build to set inverse before assigning attributes](https://github.com/rails/rails/pull/57051) | 🟢 Open | Mar 23, 2026 | 58.4k | +22 -3 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#to_hash with full_messages and #uniq!](https://github.com/rails/rails/pull/57049) | 🟢 Open | Mar 23, 2026 | 58.4k | +17 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for NestedError#inner_error, #raw_type, and #options](https://github.com/rails/rails/pull/57048) | 🟢 Open | Mar 23, 2026 | 58.4k | +27 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Error#initialize_dup, #hash, and #detail](https://github.com/rails/rails/pull/57047) | 🟢 Open | Mar 23, 2026 | 58.4k | +29 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#delete with type and options](https://github.com/rails/rails/pull/57046) | 🟢 Open | Mar 23, 2026 | 58.4k | +30 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for EnvironmentInquirer predicates](https://github.com/rails/rails/pull/57045) | 🟢 Open | Mar 23, 2026 | 58.4k | +30 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#import](https://github.com/rails/rails/pull/57044) | 🟢 Open | Mar 23, 2026 | 58.4k | +41 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Error#strict_match?](https://github.com/rails/rails/pull/57043) | 🟢 Open | Mar 23, 2026 | 58.4k | +44 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.4k | +59 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.4k | +36 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Fix association build to set inverse before assigning attributes](https://github.com/rails/rails/pull/57051) | 🟢 Open | Mar 23, 2026 | 58.3k | +22 -3 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#to_hash with full_messages and #uniq!](https://github.com/rails/rails/pull/57049) | 🟢 Open | Mar 23, 2026 | 58.3k | +17 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for NestedError#inner_error, #raw_type, and #options](https://github.com/rails/rails/pull/57048) | 🟢 Open | Mar 23, 2026 | 58.3k | +27 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Error#initialize_dup, #hash, and #detail](https://github.com/rails/rails/pull/57047) | 🟢 Open | Mar 23, 2026 | 58.3k | +29 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#delete with type and options](https://github.com/rails/rails/pull/57046) | 🟢 Open | Mar 23, 2026 | 58.3k | +30 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for EnvironmentInquirer predicates](https://github.com/rails/rails/pull/57045) | 🟢 Open | Mar 23, 2026 | 58.3k | +30 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#import](https://github.com/rails/rails/pull/57044) | 🟢 Open | Mar 23, 2026 | 58.3k | +41 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Error#strict_match?](https://github.com/rails/rails/pull/57043) | 🟢 Open | Mar 23, 2026 | 58.3k | +44 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.3k | +59 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.3k | +36 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [Add `AllowedParentClasses` option to `Style/EmptyClassDefinition`](https://github.com/rubocop/rubocop/pull/14974) | 🟣 Merged | Mar 23, 2026 | 12.8k | +111 -2 |
 | [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟢 Open | Mar 22, 2026 | 38.7k | +117 -4 |
 | [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟣 Merged | Mar 20, 2026 | 6.3k | +304 -4 |
