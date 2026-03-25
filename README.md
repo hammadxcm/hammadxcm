@@ -952,6 +952,8 @@ Next.js & Svelte with live demo</sub>
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [vercel/next.js](https://github.com/vercel/next.js) | [Sync React to c0d218f0 (Mar 24) — CVE-2026-23864](https://github.com/vercel/next.js/pull/91894) | 🟢 Open | Mar 25, 2026 | 138.5k | +1102 -1087 |
+| [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 38.7k | +129 -17 |
 | [biomejs/website](https://github.com/biomejs/website) | [docs: add SVG to language support page](https://github.com/biomejs/website/pull/4093) | 🟢 Open | Mar 23, 2026 | 92 | +5 -0 |
 | [biomejs/biome-intellij](https://github.com/biomejs/biome-intellij) | [feat: add SVG file support](https://github.com/biomejs/biome-intellij/pull/231) | 🟢 Open | Mar 23, 2026 | 88 | +1 -1 |
 | [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 442 | +2 -0 |
@@ -969,9 +971,7 @@ Next.js & Svelte with live demo</sub>
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.3k | +59 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.3k | +36 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [Add `AllowedParentClasses` option to `Style/EmptyClassDefinition`](https://github.com/rubocop/rubocop/pull/14974) | 🟣 Merged | Mar 23, 2026 | 12.8k | +111 -2 |
-| [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟢 Open | Mar 22, 2026 | 38.7k | +117 -4 |
 | [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟣 Merged | Mar 20, 2026 | 6.3k | +304 -4 |
-| [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) | [New package: hammadxcm.go-phantom version 0.0.2](https://github.com/microsoft/winget-pkgs/pull/348164) | 🟣 Merged | Mar 17, 2026 | 10.4k | +36 -0 |
 
 <!-- CONTRIBUTIONS:END -->
 
