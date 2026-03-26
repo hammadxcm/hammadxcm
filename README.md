@@ -956,7 +956,7 @@ Next.js & Svelte with live demo</sub>
 | [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 38.7k | +129 -17 |
 | [biomejs/website](https://github.com/biomejs/website) | [docs: add SVG to language support page](https://github.com/biomejs/website/pull/4093) | 🟢 Open | Mar 23, 2026 | 92 | +5 -0 |
 | [biomejs/biome-intellij](https://github.com/biomejs/biome-intellij) | [feat: add SVG file support](https://github.com/biomejs/biome-intellij/pull/231) | 🟢 Open | Mar 23, 2026 | 88 | +1 -1 |
-| [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 442 | +2 -0 |
+| [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 443 | +2 -0 |
 | [biomejs/biome-vscode](https://github.com/biomejs/biome-vscode) | [feat: add SVG file support](https://github.com/biomejs/biome-vscode/pull/993) | 🟢 Open | Mar 23, 2026 | 413 | +12 -0 |
 | [biomejs/biome](https://github.com/biomejs/biome) | [feat(html): enable HTML parsing for `.svg` files](https://github.com/biomejs/biome/pull/9608) | 🟢 Open | Mar 23, 2026 | 24.2k | +602 -7 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟢 Open | Mar 23, 2026 | 12.8k | +123 -3 |
@@ -971,7 +971,6 @@ Next.js & Svelte with live demo</sub>
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.3k | +59 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.3k | +36 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [Add `AllowedParentClasses` option to `Style/EmptyClassDefinition`](https://github.com/rubocop/rubocop/pull/14974) | 🟣 Merged | Mar 23, 2026 | 12.8k | +111 -2 |
-| [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟣 Merged | Mar 20, 2026 | 6.3k | +304 -4 |
 
 <!-- CONTRIBUTIONS:END -->
 
