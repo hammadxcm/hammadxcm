@@ -163,7 +163,15 @@ const ru: TranslationMap = {
     label: '// Перехват сигналов',
     title: 'Отзывы',
   },
-  listing: { backToHome: 'Вернуться на главную', viewAll: 'Показать все' },
+  listing: {
+    backToHome: 'Вернуться на главную',
+    viewAll: 'Показать все',
+    previous: 'Назад',
+    next: 'Далее',
+    page: 'Страница',
+    of: 'из',
+    showing: 'Показано {start}\u2013{end} из {total}',
+  },
   guestbook: {
     label: '// Журнал передач',
     title: 'Гостевая книга',

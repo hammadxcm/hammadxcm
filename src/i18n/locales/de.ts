@@ -163,7 +163,15 @@ const de: TranslationMap = {
     label: '// Signalabfang',
     title: 'Referenzen',
   },
-  listing: { backToHome: 'Zuruck zur Startseite', viewAll: 'Alle anzeigen' },
+  listing: {
+    backToHome: 'Zuruck zur Startseite',
+    viewAll: 'Alle anzeigen',
+    previous: 'Zurück',
+    next: 'Weiter',
+    page: 'Seite',
+    of: 'von',
+    showing: '{start}\u2013{end} von {total} angezeigt',
+  },
   guestbook: {
     label: '// Übertragungsprotokoll',
     title: 'Gästebuch',

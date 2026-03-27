@@ -166,6 +166,11 @@ const en: TranslationMap = {
   listing: {
     backToHome: 'Back to Home',
     viewAll: 'View All',
+    previous: 'Previous',
+    next: 'Next',
+    page: 'Page',
+    of: 'of',
+    showing: 'Showing {start}\u2013{end} of {total}',
   },
   guestbook: {
     label: '// Transmission log',

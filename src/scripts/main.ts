@@ -29,6 +29,7 @@ import { destroyKeyboard, initKeyboard } from './interactions/keyboard';
 import { initLangSwitcher } from './interactions/lang-switcher';
 import { initNav } from './interactions/nav';
 import { destroyObserver, initObserver } from './interactions/observer';
+import { destroyPagination, initPagination } from './interactions/pagination';
 import { initProjectCards } from './interactions/project-cards';
 import { destroyScrollHandler, initScrollHandler } from './interactions/scroll';
 import { initSmoothScroll } from './interactions/smooth-scroll';
@@ -77,6 +78,7 @@ function destroyEager(): void {
   destroyKeyboard();
   destroyStatusBar();
   destroyAchievements();
+  destroyPagination();
   destroyGuestbookStats();
   destroyFavicon();
   destroyThemeSwitcher();
@@ -114,6 +116,7 @@ function initPage(): void {
     safeInit(initBlurUp);
     safeInit(initSmoothScroll);
     safeInit(initProjectCards);
+    safeInit(initPagination);
     safeInit(initStatusBar);
     safeInit(initAboutLang);
     safeInit(initLangSwitcher);

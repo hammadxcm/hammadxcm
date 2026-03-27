@@ -163,7 +163,15 @@ const zh: TranslationMap = {
     label: '// 信号截获',
     title: '推荐语',
   },
-  listing: { backToHome: '返回首页', viewAll: '查看全部' },
+  listing: {
+    backToHome: '返回首页',
+    viewAll: '查看全部',
+    previous: '上一页',
+    next: '下一页',
+    page: '第',
+    of: '页，共',
+    showing: '显示第 {start}\u2013{end} 项，共 {total} 项',
+  },
   guestbook: {
     label: '// 传输日志',
     title: '留言簿',

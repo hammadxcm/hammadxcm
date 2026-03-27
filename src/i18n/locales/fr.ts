@@ -166,7 +166,15 @@ const fr: TranslationMap = {
     label: '// Signaux interceptés',
     title: 'Témoignages',
   },
-  listing: { backToHome: "Retour a l'accueil", viewAll: 'Voir tout' },
+  listing: {
+    backToHome: "Retour a l'accueil",
+    viewAll: 'Voir tout',
+    previous: 'Précédent',
+    next: 'Suivant',
+    page: 'Page',
+    of: 'sur',
+    showing: 'Affichage {start}\u2013{end} sur {total}',
+  },
   guestbook: {
     label: '// Journal de transmissions',
     title: "Livre d'Or",

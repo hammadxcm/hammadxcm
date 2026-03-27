@@ -163,7 +163,15 @@ const id: TranslationMap = {
     label: '// Intersepsi sinyal',
     title: 'Testimoni',
   },
-  listing: { backToHome: 'Kembali ke Beranda', viewAll: 'Lihat Semua' },
+  listing: {
+    backToHome: 'Kembali ke Beranda',
+    viewAll: 'Lihat Semua',
+    previous: 'Sebelumnya',
+    next: 'Berikutnya',
+    page: 'Halaman',
+    of: 'dari',
+    showing: 'Menampilkan {start}\u2013{end} dari {total}',
+  },
   guestbook: {
     label: '// Log transmisi',
     title: 'Buku Tamu',

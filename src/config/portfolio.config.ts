@@ -786,7 +786,7 @@ const config: PortfolioConfig = {
     enabled: true,
     excludeOrgs: [],
     minStars: 0,
-    maxItems: 20,
+    maxItems: 100,
   },
 
   /* ─── Socials (urls auto-generated from platform configs above; explicit url overrides) ─── */
