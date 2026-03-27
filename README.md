@@ -886,6 +886,7 @@ Handling TB-scale data</sub>
 
 ### 🌟 Open Source & Community
 
+<!-- OSS_PROJECTS:START -->
 <table>
 <tr>
 <td align="center" width="33%">
@@ -945,7 +946,23 @@ Next.js & Svelte with live demo</sub>
 </div>
 </td>
 </tr>
+<tr>
+<td align="center" width="33%">
+<div>
+<img src="https://img.shields.io/badge/npm-slay--port-CB3837?style=flat-square&logo=npm&logoColor=white" width="100%"/>
+<br/><br/>
+<b>💀 <a href="https://www.npmjs.com/package/slay-port">slay</a></b><br/>
+<sub>Published npm package — 5 stars, 613+ downloads<br/>
+Zero-dep CLI to kill processes by port</sub>
+</div>
+</td>
+<td align="center" width="33%">
+</td>
+<td align="center" width="33%">
+</td>
+</tr>
 </table>
+<!-- OSS_PROJECTS:END -->
 
 #### Merged PRs to Notable Projects
 

@@ -73,7 +73,7 @@ async function fetchGemDownloads(gemName) {
 }
 
 // Package names to fetch downloads for (matches portfolio.config.ts)
-const NPM_PACKAGES = ['ramadan-cli-pro', '@hammadxcm/image-magnifier', 'electric-border-css'];
+const NPM_PACKAGES = ['ramadan-cli-pro', '@hammadxcm/image-magnifier', 'electric-border-css', 'slay-port'];
 const GEM_PACKAGES = ['rubocop-hk'];
 
 async function fetchAllDownloads() {
