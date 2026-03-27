@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - "metrics.*.svg"
       - "CONTRIBUTIONS_README.md"
+      - "OSS_PROJECTS_README.md"
       - "README.md"
 
 env:

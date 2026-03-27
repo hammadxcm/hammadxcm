@@ -1,0 +1,51 @@
+name: Update OSS Projects
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  update-oss-projects:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Fetch OSS project stats
+        run: node scripts/fetch-oss-readme.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Inject into README
+        run: |
+          node -e "
+            const fs = require('fs');
+            const readme = fs.readFileSync('README.md', 'utf8');
+            const snippet = fs.existsSync('OSS_PROJECTS_README.md')
+              ? fs.readFileSync('OSS_PROJECTS_README.md', 'utf8')
+              : '';
+            const start = '<!-- OSS_PROJECTS:START -->';
+            const end = '<!-- OSS_PROJECTS:END -->';
+            const si = readme.indexOf(start);
+            const ei = readme.indexOf(end);
+            if (si === -1 || ei === -1) { console.log('Markers not found'); process.exit(0); }
+            const updated = readme.substring(0, si + start.length) + '\n' + snippet + '\n' + readme.substring(ei);
+            fs.writeFileSync('README.md', updated);
+          "
+          rm -f OSS_PROJECTS_README.md
+
+      - name: Commit README changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet || git commit -m "Update README OSS project stats [skip ci]"
+          git push
