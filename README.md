@@ -895,7 +895,8 @@ Handling TB-scale data</sub>
 <br/><br/>
 <b>🌙 <a href="https://www.npmjs.com/package/ramadan-cli-pro">ramadan-cli-pro</a></b><br/>
 <sub>Published npm package — TUI dashboard<br/>
-with prayer times, i18n & notifications</sub>
+with prayer times, i18n & notifications
+5 stars · 406+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -903,8 +904,9 @@ with prayer times, i18n & notifications</sub>
 <img src="https://img.shields.io/badge/RubyGems-rubocop--hk-E9573F?style=flat-square&logo=rubygems&logoColor=white" width="100%"/>
 <br/><br/>
 <b>💎 <a href="https://rubygems.org/gems/rubocop-hk">rubocop-hk</a></b><br/>
-<sub>Published RubyGem — 2,800+ downloads<br/>
-Modern RuboCop config for Ruby & Rails</sub>
+<sub>Published RubyGem —<br/>
+Modern RuboCop config for Ruby & Rails
+6 stars · 3.2k+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -912,8 +914,9 @@ Modern RuboCop config for Ruby & Rails</sub>
 <img src="https://img.shields.io/badge/npm-image--magnifier-CB3837?style=flat-square&logo=npm&logoColor=white" width="100%"/>
 <br/><br/>
 <b>🔍 <a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier">image-magnifier</a></b><br/>
-<sub>React zoom component — 8 stars, 748+ downloads<br/>
-TypeScript with 7 releases</sub>
+<sub>React zoom component —<br/>
+TypeScript with 7 releases
+9 stars · 772+ downloads</sub>
 </div>
 </td>
 </tr>
@@ -924,16 +927,18 @@ TypeScript with 7 releases</sub>
 <br/><br/>
 <b>⚡ <a href="https://www.npmjs.com/package/electric-border-css">electric-border-css</a></b><br/>
 <sub>Animated CSS border effects — React, Vue,<br/>
-Next.js & Svelte with live demo</sub>
+Next.js & Svelte with live demo
+4 stars · 283+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
 <div>
 <a href="https://github.com/hammadxcm/daemon-os"><img src="https://raw.githubusercontent.com/hammadxcm/hammadxcm/main/public/daemon-os.svg" alt="daemon-os" width="100%"/></a>
-<br/>
+<br/><br/>
 <b>🖥️ <a href="https://github.com/hammadxcm/daemon-os">daemon-os</a></b><br/>
 <sub>macOS MCP server for AI agent computer-use<br/>
-— gives AI eyes & hands on your Mac</sub>
+— gives AI eyes & hands on your Mac
+2 stars</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -942,7 +947,8 @@ Next.js & Svelte with live demo</sub>
 <br/><br/>
 <b>🚀 <a href="https://github.com/hammadxcm/hammadxcm">hammadxcm</a></b><br/>
 <sub>This portfolio — Astro, TypeScript, SCSS<br/>
-10 themes, glass UI, dynamic data</sub>
+10 themes, glass UI, dynamic data
+9 stars</sub>
 </div>
 </td>
 </tr>
@@ -952,8 +958,9 @@ Next.js & Svelte with live demo</sub>
 <img src="https://img.shields.io/badge/npm-slay--port-CB3837?style=flat-square&logo=npm&logoColor=white" width="100%"/>
 <br/><br/>
 <b>💀 <a href="https://www.npmjs.com/package/slay-port">slay</a></b><br/>
-<sub>Published npm package — 5 stars, 613+ downloads<br/>
-Zero-dep CLI to kill processes by port</sub>
+<sub>Published npm package —<br/>
+Zero-dep CLI to kill processes by port
+5 stars · 613+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -962,6 +969,7 @@ Zero-dep CLI to kill processes by port</sub>
 </td>
 </tr>
 </table>
+
 <!-- OSS_PROJECTS:END -->
 
 #### Merged PRs to Notable Projects
