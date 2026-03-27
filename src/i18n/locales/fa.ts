@@ -163,7 +163,15 @@ const fa: TranslationMap = {
     label: '// سیگنال‌های رهگیری شده',
     title: 'توصیه‌نامه‌ها',
   },
-  listing: { backToHome: 'بازگشت به خانه', viewAll: 'مشاهده همه' },
+  listing: {
+    backToHome: 'بازگشت به خانه',
+    viewAll: 'مشاهده همه',
+    previous: 'قبلی',
+    next: 'بعدی',
+    page: 'صفحه',
+    of: 'از',
+    showing: 'نمایش {start}\u2013{end} از {total}',
+  },
   guestbook: {
     label: '// گزارش ارسال',
     title: 'دفتر مهمانان',

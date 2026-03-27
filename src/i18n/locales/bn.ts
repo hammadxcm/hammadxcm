@@ -163,7 +163,15 @@ const bn: TranslationMap = {
     label: '// সংকেত আটকানো',
     title: 'প্রশংসাপত্র',
   },
-  listing: { backToHome: 'হোমে ফিরে যান', viewAll: 'সব দেখুন' },
+  listing: {
+    backToHome: 'হোমে ফিরে যান',
+    viewAll: 'সব দেখুন',
+    previous: 'পূর্ববর্তী',
+    next: 'পরবর্তী',
+    page: 'পৃষ্ঠা',
+    of: 'এর',
+    showing: '{start}\u2013{end} দেখানো হচ্ছে মোট {total}',
+  },
   guestbook: {
     label: '// ট্রান্সমিশন লগ',
     title: 'অতিথি বই',

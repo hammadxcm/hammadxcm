@@ -166,7 +166,15 @@ const es: TranslationMap = {
     label: '// Señales interceptadas',
     title: 'Testimonios',
   },
-  listing: { backToHome: 'Volver al inicio', viewAll: 'Ver todo' },
+  listing: {
+    backToHome: 'Volver al inicio',
+    viewAll: 'Ver todo',
+    previous: 'Anterior',
+    next: 'Siguiente',
+    page: 'Página',
+    of: 'de',
+    showing: 'Mostrando {start}\u2013{end} de {total}',
+  },
   guestbook: {
     label: '// Registro de transmisiones',
     title: 'Libro de Visitas',

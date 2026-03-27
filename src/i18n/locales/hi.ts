@@ -163,7 +163,15 @@ const hi: TranslationMap = {
     label: '// संकेत अवरोधन',
     title: 'प्रशंसापत्र',
   },
-  listing: { backToHome: 'होम पर वापस जाएं', viewAll: 'सभी देखें' },
+  listing: {
+    backToHome: 'होम पर वापस जाएं',
+    viewAll: 'सभी देखें',
+    previous: 'पिछला',
+    next: 'अगला',
+    page: 'पृष्ठ',
+    of: 'का',
+    showing: '{start}\u2013{end} दिखा रहे हैं कुल {total} में से',
+  },
   guestbook: {
     label: '// प्रसारण लॉग',
     title: 'अतिथि पुस्तिका',

@@ -163,7 +163,15 @@ const ar: TranslationMap = {
     label: '// إشارات مُعترَضة',
     title: 'التوصيات',
   },
-  listing: { backToHome: 'العودة للرئيسية', viewAll: 'عرض الكل' },
+  listing: {
+    backToHome: 'العودة للرئيسية',
+    viewAll: 'عرض الكل',
+    previous: 'السابق',
+    next: 'التالي',
+    page: 'صفحة',
+    of: 'من',
+    showing: 'عرض {start}\u2013{end} من {total}',
+  },
   guestbook: {
     label: '// سجل الإرسال',
     title: 'سجل الزوار',

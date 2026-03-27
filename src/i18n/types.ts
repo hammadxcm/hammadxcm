@@ -169,6 +169,11 @@ export interface TranslationMap {
   listing: {
     backToHome: string;
     viewAll: string;
+    previous: string;
+    next: string;
+    page: string;
+    of: string;
+    showing: string;
   };
   guestbook: {
     label: string;

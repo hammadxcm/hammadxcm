@@ -164,7 +164,15 @@ const pt: TranslationMap = {
     label: '// Interceptações de sinal',
     title: 'Depoimentos',
   },
-  listing: { backToHome: 'Voltar ao inicio', viewAll: 'Ver tudo' },
+  listing: {
+    backToHome: 'Voltar ao inicio',
+    viewAll: 'Ver tudo',
+    previous: 'Anterior',
+    next: 'Próximo',
+    page: 'Página',
+    of: 'de',
+    showing: 'Exibindo {start}\u2013{end} de {total}',
+  },
   guestbook: {
     label: '// Registro de transmissão',
     title: 'Livro de Visitas',

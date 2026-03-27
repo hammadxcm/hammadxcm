@@ -163,7 +163,15 @@ const ur: TranslationMap = {
     label: '// روکے گئے سگنل',
     title: 'تعریفات',
   },
-  listing: { backToHome: 'ہوم پر واپس جائیں', viewAll: 'سب دیکھیں' },
+  listing: {
+    backToHome: 'ہوم پر واپس جائیں',
+    viewAll: 'سب دیکھیں',
+    previous: 'پچھلا',
+    next: 'اگلا',
+    page: 'صفحہ',
+    of: 'میں سے',
+    showing: '{start}\u2013{end} دکھایا جا رہا ہے کل {total} میں سے',
+  },
   guestbook: {
     label: '// ٹرانسمیشن لاگ',
     title: 'مہمان نامہ',
