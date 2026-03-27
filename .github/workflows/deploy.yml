@@ -46,7 +46,7 @@ jobs:
           GITHUB_USERNAME: hammadxcm
           EXCLUDE_ORGS: ""
           MIN_STARS: "0"
-          MAX_ITEMS: "20"
+          MAX_ITEMS: "50"
           MAX_REPOS: "30"
       - uses: actions/upload-pages-artifact@v4
         with:
