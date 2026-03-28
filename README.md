@@ -906,7 +906,7 @@ with prayer times, i18n & notifications
 <b>💎 <a href="https://rubygems.org/gems/rubocop-hk">rubocop-hk</a></b><br/>
 <sub>Published RubyGem —<br/>
 Modern RuboCop config for Ruby & Rails
-6 stars · 3.2k+ downloads</sub>
+6 stars · 3.3k+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -928,7 +928,7 @@ TypeScript with 7 releases
 <b>⚡ <a href="https://www.npmjs.com/package/electric-border-css">electric-border-css</a></b><br/>
 <sub>Animated CSS border effects — React, Vue,<br/>
 Next.js & Svelte with live demo
-4 stars · 283+ downloads</sub>
+4 stars · 284+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -960,7 +960,7 @@ Next.js & Svelte with live demo
 <b>💀 <a href="https://www.npmjs.com/package/slay-port">slay</a></b><br/>
 <sub>Published npm package —<br/>
 Zero-dep CLI to kill processes by port
-5 stars · 613+ downloads</sub>
+5 stars · 614+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
