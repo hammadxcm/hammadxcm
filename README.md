@@ -977,6 +977,21 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Syntax::Methods](https://github.com/thoughtbot/factory_bot/pull/1811) | 🟢 Open | Mar 28, 2026 | 8.4k | +37 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Syntax::Default](https://github.com/thoughtbot/factory_bot/pull/1810) | 🟢 Open | Mar 28, 2026 | 8.4k | +79 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::StrategySyntaxMethodRegistrar](https://github.com/thoughtbot/factory_bot/pull/1809) | 🟢 Open | Mar 28, 2026 | 8.4k | +51 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::DefinitionHierarchy](https://github.com/thoughtbot/factory_bot/pull/1808) | 🟢 Open | Mar 28, 2026 | 8.4k | +47 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Configuration](https://github.com/thoughtbot/factory_bot/pull/1807) | 🟢 Open | Mar 28, 2026 | 8.4k | +67 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Linter](https://github.com/thoughtbot/factory_bot/pull/1806) | 🟢 Open | Mar 28, 2026 | 8.4k | +76 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::FactoryRunner](https://github.com/thoughtbot/factory_bot/pull/1805) | 🟢 Open | Mar 28, 2026 | 8.4k | +101 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::AttributeAssigner](https://github.com/thoughtbot/factory_bot/pull/1804) | 🟢 Open | Mar 28, 2026 | 8.4k | +95 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Evaluator](https://github.com/thoughtbot/factory_bot/pull/1803) | 🟢 Open | Mar 28, 2026 | 8.4k | +88 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Evaluation](https://github.com/thoughtbot/factory_bot/pull/1802) | 🟢 Open | Mar 28, 2026 | 8.4k | +64 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Enum](https://github.com/thoughtbot/factory_bot/pull/1801) | 🟢 Open | Mar 28, 2026 | 8.4k | +41 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Trait](https://github.com/thoughtbot/factory_bot/pull/1800) | 🟢 Open | Mar 28, 2026 | 8.4k | +76 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Declaration](https://github.com/thoughtbot/factory_bot/pull/1799) | 🟢 Open | Mar 28, 2026 | 8.4k | +25 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for Decorator, InvocationTracker, and NewConstructor](https://github.com/thoughtbot/factory_bot/pull/1798) | 🟢 Open | Mar 28, 2026 | 8.4k | +121 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::CallbacksObserver](https://github.com/thoughtbot/factory_bot/pull/1797) | 🟢 Open | Mar 28, 2026 | 8.4k | +92 -0 |
 | [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add `factory_bot.before_run_factory` instrumentation event](https://github.com/thoughtbot/factory_bot/pull/1795) | 🟣 Merged | Mar 27, 2026 | 8.4k | +133 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for Error#initialize_dup, #hash, and #detail](https://github.com/rails/rails/pull/57047) | 🟣 Merged | Mar 27, 2026 | 58.3k | +29 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#import](https://github.com/rails/rails/pull/57044) | 🟣 Merged | Mar 27, 2026 | 58.3k | +41 -0 |
@@ -989,7 +1004,7 @@ Zero-dep CLI to kill processes by port
 | [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 38.7k | +129 -17 |
 | [biomejs/website](https://github.com/biomejs/website) | [docs: add SVG to language support page](https://github.com/biomejs/website/pull/4093) | 🟢 Open | Mar 23, 2026 | 92 | +5 -0 |
 | [biomejs/biome-intellij](https://github.com/biomejs/biome-intellij) | [feat: add SVG file support](https://github.com/biomejs/biome-intellij/pull/231) | 🟢 Open | Mar 23, 2026 | 88 | +1 -1 |
-| [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 443 | +2 -0 |
+| [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 441 | +2 -0 |
 | [biomejs/biome-vscode](https://github.com/biomejs/biome-vscode) | [feat: add SVG file support](https://github.com/biomejs/biome-vscode/pull/993) | 🟢 Open | Mar 23, 2026 | 414 | +12 -0 |
 | [biomejs/biome](https://github.com/biomejs/biome) | [feat(html): enable HTML parsing for `.svg` files](https://github.com/biomejs/biome/pull/9608) | 🟢 Open | Mar 23, 2026 | 24.2k | +602 -7 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟢 Open | Mar 23, 2026 | 12.8k | +123 -3 |
@@ -1008,7 +1023,6 @@ Zero-dep CLI to kill processes by port
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14835] Extend Lint/AmbiguousBlockAssociation for do...end block misassociation](https://github.com/rubocop/rubocop/pull/14949) | 🟢 Open | Feb 25, 2026 | 12.8k | +188 -1 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟢 Open | Feb 24, 2026 | 12.8k | +45 -2 |
 | [ahmadawais/shades-of-purple-vscode](https://github.com/ahmadawais/shades-of-purple-vscode) | [🐛 FIX: Ruby files theming unclear with semantic highlighting](https://github.com/ahmadawais/shades-of-purple-vscode/pull/163) | 🟢 Open | Feb 20, 2026 | 772 | +86 -4 |
-| [ahmadawais/shades-of-purple-vscode](https://github.com/ahmadawais/shades-of-purple-vscode) | [🐛 FIX: menu dropdown text not visible in extensions](https://github.com/ahmadawais/shades-of-purple-vscode/pull/162) | 🟢 Open | Feb 20, 2026 | 772 | +29 -1 |
 
 <!-- CONTRIBUTIONS:END -->
 
