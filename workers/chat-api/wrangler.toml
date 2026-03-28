@@ -6,4 +6,4 @@ compatibility_date = "2024-12-01"
 binding = "AI"
 
 [vars]
-ALLOWED_ORIGIN = "https://hk.fyniti.co.uk,https://hammadxcm.github.io"
+ALLOWED_ORIGIN = "https://hk.fyniti.co.uk,https://hammadxcm.github.io,https://fyniti.co.uk,https://www.fyniti.co.uk"
