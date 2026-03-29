@@ -1000,13 +1000,12 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#delete with type and options](https://github.com/rails/rails/pull/57046) | 🟣 Merged | Mar 27, 2026 | 58.3k | +30 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Error#strict_match?](https://github.com/rails/rails/pull/57043) | 🟣 Merged | Mar 27, 2026 | 58.3k | +44 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for EnvironmentInquirer predicates](https://github.com/rails/rails/pull/57045) | 🟣 Merged | Mar 27, 2026 | 58.3k | +30 -0 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [Sync React to c0d218f0 (Mar 24) — CVE-2026-23864](https://github.com/vercel/next.js/pull/91894) | 🟢 Open | Mar 25, 2026 | 138.5k | +1102 -1087 |
 | [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 38.7k | +129 -17 |
 | [biomejs/website](https://github.com/biomejs/website) | [docs: add SVG to language support page](https://github.com/biomejs/website/pull/4093) | 🟢 Open | Mar 23, 2026 | 92 | +5 -0 |
 | [biomejs/biome-intellij](https://github.com/biomejs/biome-intellij) | [feat: add SVG file support](https://github.com/biomejs/biome-intellij/pull/231) | 🟢 Open | Mar 23, 2026 | 88 | +1 -1 |
 | [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 442 | +2 -0 |
 | [biomejs/biome-vscode](https://github.com/biomejs/biome-vscode) | [feat: add SVG file support](https://github.com/biomejs/biome-vscode/pull/993) | 🟢 Open | Mar 23, 2026 | 414 | +12 -0 |
-| [biomejs/biome](https://github.com/biomejs/biome) | [feat(html): enable HTML parsing for `.svg` files](https://github.com/biomejs/biome/pull/9608) | 🟢 Open | Mar 23, 2026 | 24.2k | +602 -7 |
+| [biomejs/biome](https://github.com/biomejs/biome) | [feat(html): enable HTML parsing for `.svg` files](https://github.com/biomejs/biome/pull/9608) | 🟢 Open | Mar 23, 2026 | 24.1k | +602 -7 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟢 Open | Mar 23, 2026 | 12.8k | +123 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix association build to set inverse before assigning attributes](https://github.com/rails/rails/pull/57051) | 🟢 Open | Mar 23, 2026 | 58.3k | +22 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.3k | +59 -0 |
