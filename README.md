@@ -977,22 +977,22 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Syntax::Methods](https://github.com/thoughtbot/factory_bot/pull/1811) | 🟢 Open | Mar 28, 2026 | 8.4k | +37 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Syntax::Default](https://github.com/thoughtbot/factory_bot/pull/1810) | 🟢 Open | Mar 28, 2026 | 8.4k | +79 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::StrategySyntaxMethodRegistrar](https://github.com/thoughtbot/factory_bot/pull/1809) | 🟢 Open | Mar 28, 2026 | 8.4k | +51 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::DefinitionHierarchy](https://github.com/thoughtbot/factory_bot/pull/1808) | 🟢 Open | Mar 28, 2026 | 8.4k | +47 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Configuration](https://github.com/thoughtbot/factory_bot/pull/1807) | 🟢 Open | Mar 28, 2026 | 8.4k | +67 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Linter](https://github.com/thoughtbot/factory_bot/pull/1806) | 🟢 Open | Mar 28, 2026 | 8.4k | +76 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::FactoryRunner](https://github.com/thoughtbot/factory_bot/pull/1805) | 🟢 Open | Mar 28, 2026 | 8.4k | +101 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::AttributeAssigner](https://github.com/thoughtbot/factory_bot/pull/1804) | 🟢 Open | Mar 28, 2026 | 8.4k | +95 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Evaluator](https://github.com/thoughtbot/factory_bot/pull/1803) | 🟢 Open | Mar 28, 2026 | 8.4k | +88 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Evaluation](https://github.com/thoughtbot/factory_bot/pull/1802) | 🟢 Open | Mar 28, 2026 | 8.4k | +64 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Enum](https://github.com/thoughtbot/factory_bot/pull/1801) | 🟢 Open | Mar 28, 2026 | 8.4k | +41 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Trait](https://github.com/thoughtbot/factory_bot/pull/1800) | 🟢 Open | Mar 28, 2026 | 8.4k | +76 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Declaration](https://github.com/thoughtbot/factory_bot/pull/1799) | 🟢 Open | Mar 28, 2026 | 8.4k | +25 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for Decorator, InvocationTracker, and NewConstructor](https://github.com/thoughtbot/factory_bot/pull/1798) | 🟢 Open | Mar 28, 2026 | 8.4k | +121 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::CallbacksObserver](https://github.com/thoughtbot/factory_bot/pull/1797) | 🟢 Open | Mar 28, 2026 | 8.4k | +92 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add `factory_bot.before_run_factory` instrumentation event](https://github.com/thoughtbot/factory_bot/pull/1795) | 🟣 Merged | Mar 27, 2026 | 8.4k | +133 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Syntax::Methods](https://github.com/thoughtbot/factory_bot/pull/1811) | 🟢 Open | Mar 28, 2026 | 8.3k | +37 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Syntax::Default](https://github.com/thoughtbot/factory_bot/pull/1810) | 🟢 Open | Mar 28, 2026 | 8.3k | +79 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::StrategySyntaxMethodRegistrar](https://github.com/thoughtbot/factory_bot/pull/1809) | 🟢 Open | Mar 28, 2026 | 8.3k | +51 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::DefinitionHierarchy](https://github.com/thoughtbot/factory_bot/pull/1808) | 🟢 Open | Mar 28, 2026 | 8.3k | +47 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Configuration](https://github.com/thoughtbot/factory_bot/pull/1807) | 🟢 Open | Mar 28, 2026 | 8.3k | +67 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Linter](https://github.com/thoughtbot/factory_bot/pull/1806) | 🟢 Open | Mar 28, 2026 | 8.3k | +76 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::FactoryRunner](https://github.com/thoughtbot/factory_bot/pull/1805) | 🟢 Open | Mar 28, 2026 | 8.3k | +101 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::AttributeAssigner](https://github.com/thoughtbot/factory_bot/pull/1804) | 🟢 Open | Mar 28, 2026 | 8.3k | +95 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Evaluator](https://github.com/thoughtbot/factory_bot/pull/1803) | 🟢 Open | Mar 28, 2026 | 8.3k | +88 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Evaluation](https://github.com/thoughtbot/factory_bot/pull/1802) | 🟢 Open | Mar 28, 2026 | 8.3k | +64 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Enum](https://github.com/thoughtbot/factory_bot/pull/1801) | 🟢 Open | Mar 28, 2026 | 8.3k | +41 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Trait](https://github.com/thoughtbot/factory_bot/pull/1800) | 🟢 Open | Mar 28, 2026 | 8.3k | +76 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Declaration](https://github.com/thoughtbot/factory_bot/pull/1799) | 🟢 Open | Mar 28, 2026 | 8.3k | +25 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for Decorator, InvocationTracker, and NewConstructor](https://github.com/thoughtbot/factory_bot/pull/1798) | 🟢 Open | Mar 28, 2026 | 8.3k | +121 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::CallbacksObserver](https://github.com/thoughtbot/factory_bot/pull/1797) | 🟢 Open | Mar 28, 2026 | 8.3k | +92 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add `factory_bot.before_run_factory` instrumentation event](https://github.com/thoughtbot/factory_bot/pull/1795) | 🟣 Merged | Mar 27, 2026 | 8.3k | +133 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for Error#initialize_dup, #hash, and #detail](https://github.com/rails/rails/pull/57047) | 🟣 Merged | Mar 27, 2026 | 58.3k | +29 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#import](https://github.com/rails/rails/pull/57044) | 🟣 Merged | Mar 27, 2026 | 58.3k | +41 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for NestedError#inner_error, #raw_type, and #options](https://github.com/rails/rails/pull/57048) | 🟣 Merged | Mar 27, 2026 | 58.3k | +27 -0 |
@@ -1016,7 +1016,7 @@ Zero-dep CLI to kill processes by port
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Fix token exchange failing with FGAP V2 enabled](https://github.com/keycloak/keycloak/pull/47169) | 🟢 Open | Mar 15, 2026 | 33.6k | +0 -17 |
 | [rails/rails](https://github.com/rails/rails) | [Fix insert_all raising "No unique index found for id" without unique_by](https://github.com/rails/rails/pull/56988) | 🟢 Open | Mar 15, 2026 | 58.3k | +87 -16 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Fix @TestSetup method ordering with inheritance](https://github.com/keycloak/keycloak/pull/46686) | 🟣 Merged | Mar 5, 2026 | 33.6k | +142 -5 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Remove CodeClimate badge from README](https://github.com/thoughtbot/factory_bot/pull/1794) | 🟣 Merged | Mar 2, 2026 | 8.4k | +1 -3 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Remove CodeClimate badge from README](https://github.com/thoughtbot/factory_bot/pull/1794) | 🟣 Merged | Mar 2, 2026 | 8.3k | +1 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix Ruby 4.0 delegator warning for inspect on DelegateClass subclasses](https://github.com/rails/rails/pull/56867) | 🟣 Merged | Feb 25, 2026 | 58.3k | +10 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14835] Extend Lint/AmbiguousBlockAssociation for do...end block misassociation](https://github.com/rubocop/rubocop/pull/14949) | 🟢 Open | Feb 25, 2026 | 12.8k | +188 -1 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟢 Open | Feb 24, 2026 | 12.8k | +45 -2 |
