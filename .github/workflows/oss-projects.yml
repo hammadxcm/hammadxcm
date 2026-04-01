@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -42,10 +43,19 @@ jobs:
           "
           rm -f OSS_PROJECTS_README.md
 
-      - name: Commit README changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git diff --cached --quiet || git commit -m "Update README OSS project stats [skip ci]"
-          git push
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "Update README OSS project stats [skip ci]"
+          branch: auto/update-oss-projects
+          title: "Update README OSS project stats"
+          body: "Automated update of OSS project stats in README."
+          delete-branch: true
+
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-number
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr merge ${{ steps.cpr.outputs.pull-request-number }} --squash --auto
