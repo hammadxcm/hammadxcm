@@ -977,6 +977,7 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [rails/rails](https://github.com/rails/rails) | [Document that days_in_month and days_in_year assume proleptic Gregorian calendar](https://github.com/rails/rails/pull/57114) | 🟢 Open | Apr 1, 2026 | 58.3k | +11 -0 |
 | [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Syntax::Methods](https://github.com/thoughtbot/factory_bot/pull/1811) | 🟢 Open | Mar 28, 2026 | 8.3k | +37 -0 |
 | [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Syntax::Default](https://github.com/thoughtbot/factory_bot/pull/1810) | 🟢 Open | Mar 28, 2026 | 8.3k | +79 -0 |
 | [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::StrategySyntaxMethodRegistrar](https://github.com/thoughtbot/factory_bot/pull/1809) | 🟢 Open | Mar 28, 2026 | 8.3k | +51 -0 |
@@ -1019,7 +1020,6 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Fix Ruby 4.0 delegator warning for inspect on DelegateClass subclasses](https://github.com/rails/rails/pull/56867) | 🟣 Merged | Feb 25, 2026 | 58.3k | +10 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14835] Extend Lint/AmbiguousBlockAssociation for do...end block misassociation](https://github.com/rubocop/rubocop/pull/14949) | 🟢 Open | Feb 25, 2026 | 12.8k | +188 -1 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟢 Open | Feb 24, 2026 | 12.8k | +45 -2 |
-| [ahmadawais/shades-of-purple-vscode](https://github.com/ahmadawais/shades-of-purple-vscode) | [🐛 FIX: Ruby files theming unclear with semantic highlighting](https://github.com/ahmadawais/shades-of-purple-vscode/pull/163) | 🟢 Open | Feb 20, 2026 | 773 | +86 -4 |
 
 <!-- CONTRIBUTIONS:END -->
 
