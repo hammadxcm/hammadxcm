@@ -84,14 +84,27 @@ export interface GitHubRepo {
   language: string | null;
   topics: string[];
   updatedAt: string;
+  downloads: number;
+  npmPackage?: string;
+  gemName?: string;
 }
 
 export interface ProjectsData {
   generatedAt: string;
   username: string;
   repos: GitHubRepo[];
-  downloads?: Record<string, number>;
 }
+
+export type ScoredProject =
+  | {
+      kind: 'featured';
+      project: Project;
+      score: number;
+      downloads: number;
+      stars: number;
+      forks: number;
+    }
+  | { kind: 'dynamic'; repo: GitHubRepo; score: number };
 
 export interface Certification {
   href: string;

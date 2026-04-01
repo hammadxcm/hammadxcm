@@ -1,72 +1,45 @@
 {
-  "generatedAt": "2026-03-18T06:21:50.873Z",
+  "generatedAt": "2026-04-01T19:02:15.853Z",
   "username": "hammadxcm",
   "repos": [
     {
-      "name": "discord-hk",
-      "fullName": "hammadxcm/discord-hk",
-      "url": "https://github.com/hammadxcm/discord-hk",
-      "description": null,
-      "stars": 8,
-      "forks": 0,
-      "language": "JavaScript",
+      "name": "rubocop-hk",
+      "fullName": "hammadxcm/rubocop-hk",
+      "url": "https://github.com/hammadxcm/rubocop-hk",
+      "description": "Modern RuboCop configuration for Ruby and Rails applications",
+      "stars": 6,
+      "forks": 1,
+      "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-03-08T11:00:51Z"
+      "updatedAt": "2026-03-28T02:58:15Z",
+      "downloads": 3280,
+      "gemName": "rubocop-hk"
+    },
+    {
+      "name": "slay",
+      "fullName": "hammadxcm/slay",
+      "url": "https://github.com/hammadxcm/slay",
+      "description": "Fast, zero-dependency CLI tool to find and kill processes by port on macOS, Linux, and Windows",
+      "stars": 5,
+      "forks": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "updatedAt": "2026-04-01T12:41:04Z",
+      "downloads": 823,
+      "npmPackage": "slay-port"
     },
     {
       "name": "image-magnifier",
       "fullName": "hammadxcm/image-magnifier",
       "url": "https://github.com/hammadxcm/image-magnifier",
       "description": "A React component for magnifying images with a zoom effect.",
-      "stars": 8,
+      "stars": 9,
       "forks": 2,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-03-08T10:58:35Z"
-    },
-    {
-      "name": "hammadxcm",
-      "fullName": "hammadxcm/hammadxcm",
-      "url": "https://github.com/hammadxcm/hammadxcm",
-      "description": null,
-      "stars": 8,
-      "forks": 5,
-      "language": "TypeScript",
-      "topics": [],
-      "updatedAt": "2026-03-18T05:11:28Z"
-    },
-    {
-      "name": "acme-basket",
-      "fullName": "hammadxcm/acme-basket",
-      "url": "https://github.com/hammadxcm/acme-basket",
-      "description": null,
-      "stars": 7,
-      "forks": 0,
-      "language": "Ruby",
-      "topics": [],
-      "updatedAt": "2026-02-23T18:28:57Z"
-    },
-    {
-      "name": "Freddit",
-      "fullName": "hammadxcm/Freddit",
-      "url": "https://github.com/hammadxcm/Freddit",
-      "description": null,
-      "stars": 7,
-      "forks": 0,
-      "language": "Ruby",
-      "topics": [],
-      "updatedAt": "2026-02-23T18:29:24Z"
-    },
-    {
-      "name": "podcast-test",
-      "fullName": "hammadxcm/podcast-test",
-      "url": "https://github.com/hammadxcm/podcast-test",
-      "description": null,
-      "stars": 7,
-      "forks": 0,
-      "language": null,
-      "topics": [],
-      "updatedAt": "2026-02-23T18:29:33Z"
+      "updatedAt": "2026-03-28T02:58:14Z",
+      "downloads": 770,
+      "npmPackage": "@hammadxcm/image-magnifier"
     },
     {
       "name": "ramadan-cli-pro",
@@ -77,18 +50,9 @@
       "forks": 2,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-02-25T16:41:56Z"
-    },
-    {
-      "name": "rubocop-hk",
-      "fullName": "hammadxcm/rubocop-hk",
-      "url": "https://github.com/hammadxcm/rubocop-hk",
-      "description": "Modern RuboCop configuration for Ruby and Rails applications",
-      "stars": 5,
-      "forks": 1,
-      "language": "Ruby",
-      "topics": [],
-      "updatedAt": "2026-03-08T11:02:21Z"
+      "updatedAt": "2026-03-28T02:58:15Z",
+      "downloads": 409,
+      "npmPackage": "ramadan-cli-pro"
     },
     {
       "name": "electric-border-css",
@@ -99,40 +63,176 @@
       "forks": 0,
       "language": "HTML",
       "topics": [],
-      "updatedAt": "2026-02-23T18:28:42Z"
+      "updatedAt": "2026-03-28T02:58:15Z",
+      "downloads": 286,
+      "npmPackage": "electric-border-css"
     },
     {
-      "name": "slay",
-      "fullName": "hammadxcm/slay",
-      "url": "https://github.com/hammadxcm/slay",
-      "description": "Fast, zero-dependency CLI tool to find and kill processes by port on macOS, Linux, and Windows",
-      "stars": 3,
+      "name": "discord-hk",
+      "fullName": "hammadxcm/discord-hk",
+      "url": "https://github.com/hammadxcm/discord-hk",
+      "description": null,
+      "stars": 9,
+      "forks": 0,
+      "language": "JavaScript",
+      "topics": [],
+      "updatedAt": "2026-03-28T02:58:14Z",
+      "downloads": 0
+    },
+    {
+      "name": "hammadxcm",
+      "fullName": "hammadxcm/hammadxcm",
+      "url": "https://github.com/hammadxcm/hammadxcm",
+      "description": null,
+      "stars": 9,
+      "forks": 5,
+      "language": "TypeScript",
+      "topics": [],
+      "updatedAt": "2026-04-01T18:37:30Z",
+      "downloads": 0
+    },
+    {
+      "name": "acme-basket",
+      "fullName": "hammadxcm/acme-basket",
+      "url": "https://github.com/hammadxcm/acme-basket",
+      "description": null,
+      "stars": 7,
+      "forks": 0,
+      "language": "Ruby",
+      "topics": [],
+      "updatedAt": "2026-03-28T02:58:14Z",
+      "downloads": 0
+    },
+    {
+      "name": "Freddit",
+      "fullName": "hammadxcm/Freddit",
+      "url": "https://github.com/hammadxcm/Freddit",
+      "description": null,
+      "stars": 7,
+      "forks": 0,
+      "language": "Ruby",
+      "topics": [],
+      "updatedAt": "2026-02-23T18:29:24Z",
+      "downloads": 0
+    },
+    {
+      "name": "podcast-test",
+      "fullName": "hammadxcm/podcast-test",
+      "url": "https://github.com/hammadxcm/podcast-test",
+      "description": null,
+      "stars": 7,
+      "forks": 0,
+      "language": null,
+      "topics": [],
+      "updatedAt": "2026-02-23T18:29:33Z",
+      "downloads": 0
+    },
+    {
+      "name": "localias",
+      "fullName": "hammadxcm/localias",
+      "url": "https://github.com/hammadxcm/localias",
+      "description": "🔗 Named .localhost URLs for every dev service — zero config reverse proxy with auto-routing, Docker Compose support & HTTPS",
+      "stars": 4,
       "forks": 0,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-03-16T20:45:41Z"
+      "updatedAt": "2026-03-26T13:09:35Z",
+      "downloads": 0
+    },
+    {
+      "name": "homebrew-localias",
+      "fullName": "hammadxcm/homebrew-localias",
+      "url": "https://github.com/hammadxcm/homebrew-localias",
+      "description": "Homebrew tap for localias",
+      "stars": 3,
+      "forks": 0,
+      "language": "Ruby",
+      "topics": [],
+      "updatedAt": "2026-03-26T13:09:41Z",
+      "downloads": 0
+    },
+    {
+      "name": "homebrew-slay",
+      "fullName": "hammadxcm/homebrew-slay",
+      "url": "https://github.com/hammadxcm/homebrew-slay",
+      "description": "Homebrew tap for slay-port",
+      "stars": 3,
+      "forks": 0,
+      "language": "Ruby",
+      "topics": [],
+      "updatedAt": "2026-03-28T15:16:10Z",
+      "downloads": 0
     },
     {
       "name": "scoop-phantom",
       "fullName": "hammadxcm/scoop-phantom",
       "url": "https://github.com/hammadxcm/scoop-phantom",
       "description": "Scoop bucket for go-phantom",
-      "stars": 2,
+      "stars": 3,
       "forks": 0,
       "language": null,
       "topics": [],
-      "updatedAt": "2026-03-17T12:24:59Z"
+      "updatedAt": "2026-03-25T01:26:01Z",
+      "downloads": 0
     },
     {
       "name": "go-phantom",
       "fullName": "hammadxcm/go-phantom",
       "url": "https://github.com/hammadxcm/go-phantom",
       "description": "Cross-platform activity simulator",
-      "stars": 2,
+      "stars": 3,
       "forks": 0,
       "language": "Python",
       "topics": [],
-      "updatedAt": "2026-03-17T11:19:17Z"
+      "updatedAt": "2026-03-25T01:26:02Z",
+      "downloads": 0
+    },
+    {
+      "name": "homebrew-tap",
+      "fullName": "hammadxcm/homebrew-tap",
+      "url": "https://github.com/hammadxcm/homebrew-tap",
+      "description": "Homebrew formulae for clipr",
+      "stars": 2,
+      "forks": 0,
+      "language": "Ruby",
+      "topics": [],
+      "updatedAt": "2026-03-31T13:05:54Z",
+      "downloads": 0
+    },
+    {
+      "name": "clipr",
+      "fullName": "hammadxcm/clipr",
+      "url": "https://github.com/hammadxcm/clipr",
+      "description": "A fast, git-friendly URL shortener. CLI + GitHub Pages + Cloudflare Workers.",
+      "stars": 2,
+      "forks": 0,
+      "language": "TypeScript",
+      "topics": [],
+      "updatedAt": "2026-04-01T05:34:49Z",
+      "downloads": 0
+    },
+    {
+      "name": "fyniti",
+      "fullName": "hammadxcm/fyniti",
+      "url": "https://github.com/hammadxcm/fyniti",
+      "description": "FYNITI — IT Solutions & Digital Innovation | Astro 6 + Tailwind 4 + React 19 | 15 themes, canvas effects, SVG morph animations",
+      "stars": 2,
+      "forks": 0,
+      "language": "Astro",
+      "topics": [
+        "astro",
+        "dark-theme",
+        "framer-motion",
+        "github-pages",
+        "glassmorphism",
+        "gsap",
+        "react",
+        "svg-animation",
+        "tailwindcss",
+        "typescript"
+      ],
+      "updatedAt": "2026-03-31T13:06:03Z",
+      "downloads": 0
     },
     {
       "name": "homebrew-daemon-os",
@@ -143,7 +243,8 @@
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-02-23T18:28:35Z"
+      "updatedAt": "2026-03-28T02:58:15Z",
+      "downloads": 0
     },
     {
       "name": "daemon-os",
@@ -154,7 +255,8 @@
       "forks": 1,
       "language": "Swift",
       "topics": [],
-      "updatedAt": "2026-02-23T18:28:34Z"
+      "updatedAt": "2026-02-23T18:28:34Z",
+      "downloads": 0
     },
     {
       "name": "facebook-group-integration-guide",
@@ -165,7 +267,8 @@
       "forks": 0,
       "language": null,
       "topics": [],
-      "updatedAt": "2026-02-23T18:28:29Z"
+      "updatedAt": "2026-03-28T02:58:15Z",
+      "downloads": 0
     },
     {
       "name": "petstore-api-client",
@@ -176,35 +279,8 @@
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-02-23T18:28:30Z"
-    },
-    {
-      "name": "github-achievements",
-      "fullName": "hammadxcm/github-achievements",
-      "url": "https://github.com/hammadxcm/github-achievements",
-      "description": null,
-      "stars": 2,
-      "forks": 0,
-      "language": "JavaScript",
-      "topics": [],
-      "updatedAt": "2026-02-23T18:28:40Z"
-    },
-    {
-      "name": "homebrew-slay",
-      "fullName": "hammadxcm/homebrew-slay",
-      "url": "https://github.com/hammadxcm/homebrew-slay",
-      "description": "Homebrew tap for slay-port",
-      "stars": 1,
-      "forks": 0,
-      "language": "Ruby",
-      "topics": [],
-      "updatedAt": "2026-03-16T20:45:33Z"
+      "updatedAt": "2026-03-28T02:58:15Z",
+      "downloads": 0
     }
-  ],
-  "downloads": {
-    "ramadan-cli-pro": 403,
-    "@hammadxcm/image-magnifier": 763,
-    "electric-border-css": 272,
-    "rubocop-hk": 3225
-  }
+  ]
 }

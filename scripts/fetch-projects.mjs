@@ -72,27 +72,14 @@ async function fetchGemDownloads(gemName) {
   }
 }
 
-// Package names to fetch downloads for (matches portfolio.config.ts)
-const NPM_PACKAGES = ['ramadan-cli-pro', '@hammadxcm/image-magnifier', 'electric-border-css', 'slay-port'];
-const GEM_PACKAGES = ['rubocop-hk'];
-
-async function fetchAllDownloads() {
-  const downloads = {};
-
-  console.log('Fetching npm download counts...');
-  for (const pkg of NPM_PACKAGES) {
-    downloads[pkg] = await fetchNpmDownloads(pkg);
-    console.log(`  ${pkg}: ${downloads[pkg].toLocaleString()} downloads`);
-  }
-
-  console.log('Fetching RubyGems download counts...');
-  for (const gem of GEM_PACKAGES) {
-    downloads[gem] = await fetchGemDownloads(gem);
-    console.log(`  ${gem}: ${downloads[gem].toLocaleString()} downloads`);
-  }
-
-  return downloads;
-}
+// Map repo names to their published package names
+const NPM_MAP = {
+  'ramadan-cli-pro': 'ramadan-cli-pro',
+  'image-magnifier': '@hammadxcm/image-magnifier',
+  'electric-border-css': 'electric-border-css',
+  'slay': 'slay-port',
+};
+const GEM_MAP = { 'rubocop-hk': 'rubocop-hk' };
 
 async function main() {
   console.log(`Fetching repos for ${USERNAME}...`);
@@ -116,16 +103,30 @@ async function main() {
     language: r.language,
     topics: r.topics || [],
     updatedAt: r.updated_at,
+    downloads: 0,
+    npmPackage: NPM_MAP[r.name] || undefined,
+    gemName: GEM_MAP[r.name] || undefined,
   }));
 
-  // Fetch package download counts
-  const downloads = await fetchAllDownloads();
+  // Fetch download counts for repos that have published packages
+  console.log('Fetching download counts...');
+  for (const repo of result) {
+    if (repo.npmPackage) {
+      repo.downloads = await fetchNpmDownloads(repo.npmPackage);
+      console.log(`  ${repo.name} (npm: ${repo.npmPackage}): ${repo.downloads.toLocaleString()} downloads`);
+    } else if (repo.gemName) {
+      repo.downloads = await fetchGemDownloads(repo.gemName);
+      console.log(`  ${repo.name} (gem: ${repo.gemName}): ${repo.downloads.toLocaleString()} downloads`);
+    }
+  }
+
+  // Sort by downloads desc, then stars desc
+  result.sort((a, b) => b.downloads - a.downloads || b.stars - a.stars);
 
   const data = {
     generatedAt: new Date().toISOString(),
     username: USERNAME,
     repos: result,
-    downloads,
   };
 
   const jsonPath = resolve(__dirname, '..', 'src', 'data', 'projects.json');

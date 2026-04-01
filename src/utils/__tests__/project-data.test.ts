@@ -2,7 +2,16 @@ import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('@config/index', () => ({
   config: {
-    projects: [{ name: 'Featured-One', tags: [], url: '', description: '', linkText: '' }],
+    projects: [
+      {
+        name: 'Featured-One',
+        tags: [],
+        url: '',
+        description: '',
+        linkText: '',
+        npmPackage: 'featured-pkg',
+      },
+    ],
     github: { username: 'hammadxcm' },
   },
 }));
@@ -13,20 +22,32 @@ vi.mock('../../data/projects.json', () => ({
       {
         name: 'Featured-One',
         url: '',
-        stars: 0,
-        forks: 0,
+        stars: 3,
+        forks: 1,
         language: null,
         topics: [],
         description: '',
+        downloads: 500,
       },
       {
-        name: 'other-repo',
+        name: 'high-downloads',
         url: '',
-        stars: 5,
+        stars: 1,
         forks: 0,
         language: 'TypeScript',
         topics: [],
         description: '',
+        downloads: 3000,
+      },
+      {
+        name: 'high-stars',
+        url: '',
+        stars: 10,
+        forks: 2,
+        language: 'TypeScript',
+        topics: [],
+        description: '',
+        downloads: 0,
       },
       {
         name: 'hammadxcm',
@@ -36,6 +57,7 @@ vi.mock('../../data/projects.json', () => ({
         language: null,
         topics: [],
         description: '',
+        downloads: 0,
       },
       {
         name: 'homebrew-tap',
@@ -45,38 +67,61 @@ vi.mock('../../data/projects.json', () => ({
         language: null,
         topics: [],
         description: '',
+        downloads: 0,
       },
     ],
-    downloads: { 'pkg-a': 100 },
   },
 }));
 
 import { getProjectData } from '../project-data';
 
 describe('getProjectData', () => {
-  it('returns featured projects from config', () => {
-    const { featured } = getProjectData();
+  it('returns a unified projects array', () => {
+    const { projects } = getProjectData();
+    expect(Array.isArray(projects)).toBe(true);
+    expect(projects.length).toBeGreaterThan(0);
+  });
+
+  it('includes featured projects with kind "featured"', () => {
+    const { projects } = getProjectData();
+    const featured = projects.filter((p) => p.kind === 'featured');
     expect(featured).toHaveLength(1);
-    expect(featured[0].name).toBe('Featured-One');
+    if (featured[0].kind === 'featured') {
+      expect(featured[0].project.name).toBe('Featured-One');
+    }
   });
 
-  it('filters featured repos from dynamic list (case-insensitive)', () => {
-    const { dynamicRepos } = getProjectData();
-    expect(dynamicRepos.find((r) => r.name === 'Featured-One')).toBeUndefined();
+  it('excludes username repo and homebrew- repos', () => {
+    const { projects } = getProjectData();
+    const names = projects.map((p) => (p.kind === 'featured' ? p.project.name : p.repo.name));
+    expect(names).not.toContain('hammadxcm');
+    expect(names).not.toContain('homebrew-tap');
   });
 
-  it('excludes username repo', () => {
-    const { dynamicRepos } = getProjectData();
-    expect(dynamicRepos.find((r) => r.name === 'hammadxcm')).toBeUndefined();
+  it('excludes featured repos from dynamic list', () => {
+    const { projects } = getProjectData();
+    const dynamic = projects.filter((p) => p.kind === 'dynamic');
+    const dynamicNames = dynamic.map((p) => (p.kind === 'dynamic' ? p.repo.name : ''));
+    expect(dynamicNames).not.toContain('Featured-One');
   });
 
-  it('excludes homebrew- repos', () => {
-    const { dynamicRepos } = getProjectData();
-    expect(dynamicRepos.find((r) => r.name === 'homebrew-tap')).toBeUndefined();
+  it('sorts by downloads desc, then stars desc', () => {
+    const { projects } = getProjectData();
+    // high-downloads (3000 dl) should come before Featured-One (500 dl) which comes before high-stars (0 dl)
+    const names = projects.map((p) => (p.kind === 'featured' ? p.project.name : p.repo.name));
+    const dlIdx = names.indexOf('high-downloads');
+    const featIdx = names.indexOf('Featured-One');
+    const starsIdx = names.indexOf('high-stars');
+    expect(dlIdx).toBeLessThan(featIdx);
+    expect(featIdx).toBeLessThan(starsIdx);
   });
 
-  it('returns download counts from data', () => {
-    const { downloadCounts } = getProjectData();
-    expect(downloadCounts['pkg-a']).toBe(100);
+  it('attaches download counts from repo data to featured projects', () => {
+    const { projects } = getProjectData();
+    const featured = projects.find((p) => p.kind === 'featured');
+    expect(featured?.kind).toBe('featured');
+    if (featured?.kind === 'featured') {
+      expect(featured.downloads).toBe(500);
+    }
   });
 });

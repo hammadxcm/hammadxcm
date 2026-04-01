@@ -2,8 +2,9 @@
 import ArrowIcon from '../ArrowIcon.astro';
 import StarIcon from '../icons/StarIcon.astro';
 import ForkIcon from '../icons/ForkIcon.astro';
+import DownloadIcon from '../icons/DownloadIcon.astro';
 import { getLangColor } from '@config/lang-colors';
-import { formatStars } from '../../utils/format';
+import { formatStars, formatDownloads } from '../../utils/format';
 import { resolveRepoIcon } from '../../utils/project-icons';
 
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
     forks: number;
     language?: string | null;
     topics: string[];
+    downloads?: number;
   };
   base: string;
   viewRepoLabel: string;
@@ -50,6 +52,12 @@ const dotColor = repo.language ? getLangColor(repo.language) : null;
       <span class="project-forks">
         <ForkIcon />
         {repo.forks}
+      </span>
+    )}
+    {(repo.downloads ?? 0) > 0 && (
+      <span class="project-downloads">
+        <DownloadIcon />
+        {formatDownloads(repo.downloads!)}
       </span>
     )}
   </div>

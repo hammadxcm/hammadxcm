@@ -1,8 +1,8 @@
 ---
 /**
  * Open Source Projects Section
- * Shows featured (config) projects first, then dynamically fetched GitHub repos.
- * Initial 6 visible, "View More" expands to show all.
+ * Shows top 6 projects sorted by downloads, then stars.
+ * "View All" links to the full listing page.
  *
  * @depends config.projects, projects.json, ArrowIcon, SectionHeader
  * @styles Scoped SCSS — project grid, cards, tags, View More + responsive
@@ -22,10 +22,11 @@ interface Props {
 const { translations } = Astro.props;
 const locale = getLocaleFromUrl(Astro.url);
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const { featured, dynamicRepos, downloadCounts } = getProjectData();
+const { projects } = getProjectData();
 
 const INITIAL_SHOW = 6;
-const totalCount = featured.length + dynamicRepos.length;
+const visible = projects.slice(0, INITIAL_SHOW);
+const totalCount = projects.length;
 const hasMore = totalCount > INITIAL_SHOW;
 ---
 
@@ -33,27 +34,21 @@ const hasMore = totalCount > INITIAL_SHOW;
 <section id="projects" class="section">
   <SectionHeader label={translations.projects.label} title={translations.projects.title} transitionId="section-projects" />
   <div class="projects-grid stagger" id="projects-grid">
-    {featured.map((project, idx) => {
-      const pkgKey = project.npmPackage || project.gemName || '';
-      const dlCount = pkgKey ? (downloadCounts[pkgKey] || 0) : 0;
-      return (
+    {visible.map((item) =>
+      item.kind === 'featured' ? (
         <FeaturedProjectCard
-          project={project}
-          dlCount={dlCount}
+          project={item.project}
+          dlCount={item.downloads}
           base={base}
-          hidden={hasMore && idx >= INITIAL_SHOW}
         />
-      );
-    })}
-
-    {dynamicRepos.map((repo, idx) => (
-      <DynamicRepoCard
-        repo={repo}
-        base={base}
-        viewRepoLabel={translations.projects.viewRepo}
-        hidden={hasMore && (featured.length + idx) >= INITIAL_SHOW}
-      />
-    ))}
+      ) : (
+        <DynamicRepoCard
+          repo={item.repo}
+          base={base}
+          viewRepoLabel={translations.projects.viewRepo}
+        />
+      )
+    )}
   </div>
 
   {hasMore && (
