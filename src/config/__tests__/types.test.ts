@@ -127,9 +127,11 @@ describe('ProjectsData shape', () => {
     }
   });
 
-  it('repos are sorted by stars descending', () => {
+  it('repos are sorted by downloads descending, then stars', () => {
     for (let i = 1; i < projects.repos.length; i++) {
-      expect(projects.repos[i - 1].stars).toBeGreaterThanOrEqual(projects.repos[i].stars);
+      const prev = projects.repos[i - 1];
+      const curr = projects.repos[i];
+      expect(prev.downloads).toBeGreaterThanOrEqual(curr.downloads);
     }
   });
 });

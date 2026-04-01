@@ -1,6 +1,7 @@
 ---
 /**
  * Full Projects Listing — top 25 projects sorted by downloads, with pagination.
+ * Pagination is handled by the shared pagination module (src/scripts/interactions/pagination.ts).
  */
 import FeaturedProjectCard from '../cards/FeaturedProjectCard.astro';
 import DynamicRepoCard from '../cards/DynamicRepoCard.astro';
@@ -18,96 +19,44 @@ const { projects } = getProjectData();
 const MAX_PROJECTS = 25;
 const PAGE_SIZE = 9;
 const allProjects = projects.slice(0, MAX_PROJECTS);
-const totalPages = Math.ceil(allProjects.length / PAGE_SIZE);
 ---
 
-<div class="projects-listing" id="projects-listing" data-page-size={PAGE_SIZE}>
-  <div class="projects-listing-grid" id="projects-listing-grid">
-    {allProjects.map((item, idx) => {
-      const page = Math.floor(idx / PAGE_SIZE);
-      const hidden = page > 0;
-      return item.kind === 'featured' ? (
-        <FeaturedProjectCard
-          project={item.project}
-          dlCount={item.downloads}
-          base={base}
-          hidden={hidden}
-        />
-      ) : (
-        <DynamicRepoCard
-          repo={item.repo}
-          base={base}
-          viewRepoLabel={translations.projects.viewRepo}
-          hidden={hidden}
-        />
-      );
-    })}
-  </div>
-
-  {totalPages > 1 && (
-    <nav class="pagination" id="projects-pagination" aria-label="Projects pagination">
-      <button class="pagination-btn pagination-prev" id="pagination-prev" disabled aria-label="Previous page">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M15 18l-6-6 6-6" />
-        </svg>
-      </button>
-      <div class="pagination-pages" id="pagination-pages">
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            class:list={['pagination-page', { active: i === 0 }]}
-            data-page={i}
-            aria-label={`Page ${i + 1}`}
-            aria-current={i === 0 ? 'page' : undefined}
-          >
-            {i + 1}
-          </button>
-        ))}
-      </div>
-      <button class="pagination-btn pagination-next" id="pagination-next" aria-label="Next page">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 18l6-6-6-6" />
-        </svg>
-      </button>
-    </nav>
-  )}
+<div class="projects-listing-grid" id="projects-listing-grid" data-page-size={PAGE_SIZE}>
+  {allProjects.map((item, idx) => {
+    const hidden = idx >= PAGE_SIZE;
+    return item.kind === 'featured' ? (
+      <FeaturedProjectCard
+        project={item.project}
+        dlCount={item.downloads}
+        base={base}
+        hidden={hidden}
+      />
+    ) : (
+      <DynamicRepoCard
+        repo={item.repo}
+        base={base}
+        viewRepoLabel={translations.projects.viewRepo}
+        hidden={hidden}
+      />
+    );
+  })}
 </div>
 
-<script>
-  const listing = document.getElementById('projects-listing');
-  if (listing) {
-    const grid = document.getElementById('projects-listing-grid')!;
-    const cards = Array.from(grid.children) as HTMLElement[];
-    const pageSize = parseInt(listing.dataset.pageSize || '9', 10);
-    const totalPages = Math.ceil(cards.length / pageSize);
-    const prevBtn = document.getElementById('pagination-prev') as HTMLButtonElement;
-    const nextBtn = document.getElementById('pagination-next') as HTMLButtonElement;
-    const pageButtons = Array.from(
-      document.querySelectorAll<HTMLButtonElement>('#pagination-pages .pagination-page')
-    );
-    let currentPage = 0;
-
-    function showPage(page: number) {
-      currentPage = page;
-      cards.forEach((card, idx) => {
-        const cardPage = Math.floor(idx / pageSize);
-        card.classList.toggle('project-hidden', cardPage !== page);
-      });
-      pageButtons.forEach((btn, i) => {
-        btn.classList.toggle('active', i === page);
-        btn.setAttribute('aria-current', i === page ? 'page' : 'false');
-      });
-      prevBtn.disabled = page === 0;
-      nextBtn.disabled = page === totalPages - 1;
-      grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    prevBtn?.addEventListener('click', () => { if (currentPage > 0) showPage(currentPage - 1); });
-    nextBtn?.addEventListener('click', () => { if (currentPage < totalPages - 1) showPage(currentPage + 1); });
-    pageButtons.forEach((btn) => {
-      btn.addEventListener('click', () => showPage(parseInt(btn.dataset.page || '0', 10)));
-    });
-  }
-</script>
+{allProjects.length > PAGE_SIZE && (
+  <nav
+    class="pagination-controls"
+    id="projects-pagination"
+    aria-label="Projects pagination"
+    data-total={allProjects.length}
+    data-page-size={PAGE_SIZE}
+    data-label-prev={translations.listing.previous}
+    data-label-next={translations.listing.next}
+    data-label-page={translations.listing.page}
+    data-label-of={translations.listing.of}
+    data-label-showing={translations.listing.showing}
+  >
+  </nav>
+)}
 
 <style lang="scss" is:global>
   @use '../../styles/mixins' as *;
@@ -120,71 +69,5 @@ const totalPages = Math.ceil(allProjects.length / PAGE_SIZE);
 
   .project-hidden {
     display: none !important;
-  }
-
-  .pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 2.5rem;
-    font-family: var(--font-mono);
-  }
-
-  .pagination-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background: transparent;
-    color: var(--text-dim);
-    cursor: pointer;
-    transition: all var(--duration-normal);
-
-    &:hover:not(:disabled) {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    &:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-  }
-
-  .pagination-pages {
-    display: flex;
-    gap: 0.25rem;
-  }
-
-  .pagination-page {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 36px;
-    height: 36px;
-    padding: 0 0.5rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background: transparent;
-    color: var(--text-dim);
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all var(--duration-normal);
-
-    &:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    &.active {
-      background: var(--accent);
-      color: var(--bg);
-      border-color: var(--accent);
-      font-weight: 700;
-    }
   }
 </style>

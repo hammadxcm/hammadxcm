@@ -1,25 +1,43 @@
 import { trackEvent } from '../achievements';
 import { prefersReducedMotion } from '../state';
 
-const GRID_ID = 'contributions-paginated-grid';
-const NAV_ID = 'contributions-pagination';
-const HIDDEN_CLASS = 'contrib-hidden';
+const PAGINATED_GRIDS = [
+  {
+    gridId: 'contributions-paginated-grid',
+    navId: 'contributions-pagination',
+    hiddenClass: 'contrib-hidden',
+  },
+  { gridId: 'projects-listing-grid', navId: 'projects-pagination', hiddenClass: 'project-hidden' },
+];
 
-let currentPage = 1;
-let cleanupFn: (() => void) | null = null;
+interface PaginationInstance {
+  currentPage: number;
+  cleanup: () => void;
+}
+
+const instances: PaginationInstance[] = [];
 
 export function destroyPagination(): void {
-  cleanupFn?.();
-  cleanupFn = null;
-  currentPage = 1;
+  for (const inst of instances) inst.cleanup();
+  instances.length = 0;
 }
 
 export function initPagination(): void {
-  const gridEl = document.getElementById(GRID_ID);
-  const navEl = document.getElementById(NAV_ID);
-  if (!gridEl || !navEl) return;
+  for (const cfg of PAGINATED_GRIDS) {
+    const inst = initPaginatedGrid(cfg.gridId, cfg.navId, cfg.hiddenClass);
+    if (inst) instances.push(inst);
+  }
+}
 
-  // Local constants so TS narrows inside closures
+function initPaginatedGrid(
+  gridId: string,
+  navId: string,
+  hiddenClass: string,
+): PaginationInstance | null {
+  const gridEl = document.getElementById(gridId);
+  const navEl = document.getElementById(navId);
+  if (!gridEl || !navEl) return null;
+
   const grid = gridEl;
   const nav = navEl;
   const cards = Array.from(grid.children) as HTMLElement[];
@@ -27,7 +45,7 @@ export function initPagination(): void {
   const pageSize = parseInt(nav.dataset.pageSize || '12', 10);
   const totalPages = Math.ceil(totalItems / pageSize);
 
-  if (totalPages <= 1) return;
+  if (totalPages <= 1) return null;
 
   const labels = {
     prev: nav.dataset.labelPrev || 'Previous',
@@ -36,6 +54,8 @@ export function initPagination(): void {
     of: nav.dataset.labelOf || 'of',
     showing: nav.dataset.labelShowing || 'Showing {start}\u2013{end} of {total}',
   };
+
+  let currentPage = 1;
 
   // Restore page from URL hash
   const hashPage = parseInt(new URL(location.href).hash.replace('#page=', ''), 10);
@@ -50,7 +70,7 @@ export function initPagination(): void {
 
     cards.forEach((card, i) => {
       const shouldShow = i >= start && i < end;
-      card.classList.toggle(HIDDEN_CLASS, !shouldShow);
+      card.classList.toggle(hiddenClass, !shouldShow);
       if (shouldShow) card.classList.add('visible');
     });
 
@@ -145,10 +165,20 @@ export function initPagination(): void {
 
   nav.addEventListener('keydown', onKeydown);
 
-  cleanupFn = () => {
-    nav.removeEventListener('keydown', onKeydown);
-    nav.innerHTML = '';
+  const inst: PaginationInstance = {
+    get currentPage() {
+      return currentPage;
+    },
+    set currentPage(v) {
+      currentPage = v;
+    },
+    cleanup: () => {
+      nav.removeEventListener('keydown', onKeydown);
+      nav.innerHTML = '';
+    },
   };
+
+  return inst;
 }
 
 /**
