@@ -18,6 +18,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  pull-requests: write
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -86,11 +87,18 @@ jobs:
           npm version "$NEW_VERSION" --no-git-tag-version
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          BRANCH="auto/bump-v$NEW_VERSION"
+          git checkout -b "$BRANCH"
           git add package.json package-lock.json
           git commit -m "Bump version to $NEW_VERSION [skip ci]"
-          git pull --rebase origin main
-          git push
+          git push -u origin "$BRANCH"
+          PR_URL=$(gh pr create --base main --head "$BRANCH" \
+            --title "Bump version to $NEW_VERSION [skip ci]" \
+            --body "Automated version bump from $CURRENT to $NEW_VERSION.")
+          gh pr merge "$PR_URL" --squash --auto || gh pr merge "$PR_URL" --squash || true
           echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ github.token }}
       - name: Resolve version
         id: version
         run: echo "version=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
