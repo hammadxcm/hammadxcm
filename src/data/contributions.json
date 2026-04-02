@@ -1,8 +1,668 @@
 {
-  "generatedAt": "2026-03-27T11:44:22.226Z",
+  "generatedAt": "2026-04-02T12:16:20.736Z",
   "username": "hammadxcm",
-  "totalCount": 42,
+  "totalCount": 50,
   "contributions": [
+    {
+      "title": "Document that days_in_month and days_in_year assume proleptic Gregorian calendar",
+      "url": "https://github.com/rails/rails/pull/57114",
+      "number": 57114,
+      "state": "open",
+      "mergedAt": "2026-04-01T05:59:50Z",
+      "additions": 9,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [
+        {
+          "name": "activesupport",
+          "color": "FC9300"
+        }
+      ],
+      "repo": {
+        "fullName": "rails/rails",
+        "url": "https://github.com/rails/rails",
+        "stars": 58317,
+        "forks": 22173,
+        "language": "Ruby",
+        "description": "Ruby on Rails",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
+        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Fix token exchange failing with FGAP V2 enabled",
+      "url": "https://github.com/keycloak/keycloak/pull/47169",
+      "number": 47169,
+      "state": "closed",
+      "mergedAt": "2026-03-31T10:20:14Z",
+      "additions": 0,
+      "deletions": 17,
+      "changedFiles": 2,
+      "labels": [],
+      "repo": {
+        "fullName": "keycloak/keycloak",
+        "url": "https://github.com/keycloak/keycloak",
+        "stars": 33688,
+        "forks": 8204,
+        "language": "Java",
+        "description": "Open Source Identity and Access Management For Modern Applications and Services",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
+        "topics": ["keycloak", "oidc", "saml"],
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "title": "feat(html): enable HTML parsing for `.svg` files",
+      "url": "https://github.com/biomejs/biome/pull/9608",
+      "number": 9608,
+      "state": "closed",
+      "mergedAt": "2026-03-29T17:47:06Z",
+      "additions": 602,
+      "deletions": 7,
+      "changedFiles": 16,
+      "labels": [
+        {
+          "name": "A-CLI",
+          "color": "a4c8fc"
+        },
+        {
+          "name": "A-Linter",
+          "color": "a4c8fc"
+        },
+        {
+          "name": "A-Parser",
+          "color": "a4c8fc"
+        },
+        {
+          "name": "A-Formatter",
+          "color": "a4c8fc"
+        },
+        {
+          "name": "L-HTML",
+          "color": "ffe2bf"
+        },
+        {
+          "name": "M-Likely Agent",
+          "color": "d93f0b"
+        }
+      ],
+      "repo": {
+        "fullName": "biomejs/biome",
+        "url": "https://github.com/biomejs/biome",
+        "stars": 24182,
+        "forks": 928,
+        "language": "Rust",
+        "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
+        "topics": [
+          "css",
+          "formatter",
+          "javascript",
+          "json",
+          "jsx",
+          "linter",
+          "static-code-analysis",
+          "typescript",
+          "web"
+        ],
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "title": "Sync React to c0d218f0 (Mar 24) — CVE-2026-23864",
+      "url": "https://github.com/vercel/next.js/pull/91894",
+      "number": 91894,
+      "state": "closed",
+      "mergedAt": "2026-03-28T20:34:37Z",
+      "additions": 1102,
+      "deletions": 1087,
+      "changedFiles": 62,
+      "labels": [
+        {
+          "name": "type: next",
+          "color": "f6aff7"
+        }
+      ],
+      "repo": {
+        "fullName": "vercel/next.js",
+        "url": "https://github.com/vercel/next.js",
+        "stars": 138578,
+        "forks": 30748,
+        "language": "JavaScript",
+        "description": "The React Framework",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
+        "topics": [
+          "blog",
+          "browser",
+          "compiler",
+          "components",
+          "hybrid",
+          "nextjs",
+          "node",
+          "react",
+          "server-rendering",
+          "ssg",
+          "static",
+          "static-site-generator",
+          "universal",
+          "vercel"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::Syntax::Methods",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1811",
+      "number": 1811,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:48:29Z",
+      "additions": 37,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::Syntax::Default",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1810",
+      "number": 1810,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:46:58Z",
+      "additions": 79,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::StrategySyntaxMethodRegistrar",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1809",
+      "number": 1809,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:45:34Z",
+      "additions": 51,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::DefinitionHierarchy",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1808",
+      "number": 1808,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:44:34Z",
+      "additions": 47,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::Configuration",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1807",
+      "number": 1807,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:43:22Z",
+      "additions": 67,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::Linter",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1806",
+      "number": 1806,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:40:25Z",
+      "additions": 76,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::FactoryRunner",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1805",
+      "number": 1805,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:37:14Z",
+      "additions": 101,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::AttributeAssigner",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1804",
+      "number": 1804,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:29:14Z",
+      "additions": 95,
+      "deletions": 0,
+      "changedFiles": 2,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::Evaluator",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1803",
+      "number": 1803,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:20:12Z",
+      "additions": 88,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::Evaluation",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1802",
+      "number": 1802,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:17:31Z",
+      "additions": 64,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::Enum",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1801",
+      "number": 1801,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:15:18Z",
+      "additions": 41,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::Trait",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1800",
+      "number": 1800,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:11:10Z",
+      "additions": 76,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::Declaration",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1799",
+      "number": 1799,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:05:36Z",
+      "additions": 25,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for Decorator, InvocationTracker, and NewConstructor",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1798",
+      "number": 1798,
+      "state": "open",
+      "mergedAt": "2026-03-28T01:03:19Z",
+      "additions": 121,
+      "deletions": 0,
+      "changedFiles": 3,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add unit tests for FactoryBot::CallbacksObserver",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1797",
+      "number": 1797,
+      "state": "open",
+      "mergedAt": "2026-03-28T00:52:17Z",
+      "additions": 92,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add `factory_bot.before_run_factory` instrumentation event",
+      "url": "https://github.com/thoughtbot/factory_bot/pull/1795",
+      "number": 1795,
+      "state": "merged",
+      "mergedAt": "2026-03-27T21:38:22Z",
+      "additions": 133,
+      "deletions": 0,
+      "changedFiles": 5,
+      "labels": [],
+      "repo": {
+        "fullName": "thoughtbot/factory_bot",
+        "url": "https://github.com/thoughtbot/factory_bot",
+        "stars": 8331,
+        "forks": 2570,
+        "language": "Ruby",
+        "description": "A library for setting up Ruby objects as test data.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
+        "topics": [
+          "factories",
+          "factory-bot",
+          "factory-girl",
+          "fixtures",
+          "rails",
+          "ruby",
+          "rubygems",
+          "testing",
+          "thoughtbot"
+        ],
+        "license": "MIT"
+      }
+    },
     {
       "title": "Add test coverage for Error#initialize_dup, #hash, and #detail",
       "url": "https://github.com/rails/rails/pull/57047",
@@ -21,8 +681,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -48,8 +708,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -75,8 +735,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -102,8 +762,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -129,8 +789,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -156,8 +816,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -183,8 +843,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -210,8 +870,8 @@
       "repo": {
         "fullName": "getsentry/sentry",
         "url": "https://github.com/getsentry/sentry",
-        "stars": 43451,
-        "forks": 4641,
+        "stars": 43487,
+        "forks": 4647,
         "language": "Python",
         "description": "Developer-first error tracking and performance monitoring",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/1396951?v=4",
@@ -236,48 +896,6 @@
       }
     },
     {
-      "title": "Sync React to c0d218f0 (Mar 24) — CVE-2026-23864",
-      "url": "https://github.com/vercel/next.js/pull/91894",
-      "number": 91894,
-      "state": "open",
-      "mergedAt": "2026-03-25T10:15:24Z",
-      "additions": 1102,
-      "deletions": 1087,
-      "changedFiles": 62,
-      "labels": [
-        {
-          "name": "type: next",
-          "color": "f6aff7"
-        }
-      ],
-      "repo": {
-        "fullName": "vercel/next.js",
-        "url": "https://github.com/vercel/next.js",
-        "stars": 138509,
-        "forks": 30711,
-        "language": "JavaScript",
-        "description": "The React Framework",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
-        "topics": [
-          "blog",
-          "browser",
-          "compiler",
-          "components",
-          "hybrid",
-          "nextjs",
-          "node",
-          "react",
-          "server-rendering",
-          "ssg",
-          "static",
-          "static-site-generator",
-          "universal",
-          "vercel"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
       "title": "fix(js): bundle Solid ecosystem deps to prevent React is not defined error",
       "url": "https://github.com/novuhq/novu/pull/10429",
       "number": 10429,
@@ -290,10 +908,10 @@
       "repo": {
         "fullName": "novuhq/novu",
         "url": "https://github.com/novuhq/novu",
-        "stars": 38746,
-        "forks": 4245,
+        "stars": 38752,
+        "forks": 4250,
         "language": "TypeScript",
-        "description": "The open-source notification Inbox infrastructure. E-mail, SMS, Push and Slack Integrations.",
+        "description": "The open-source notification infrastructure. In-app Inbox component, E-mail, SMS, Push and Slack Integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/77433905?v=4",
         "topics": [
           "alternative",
@@ -335,7 +953,7 @@
         "fullName": "biomejs/website",
         "url": "https://github.com/biomejs/website",
         "stars": 92,
-        "forks": 210,
+        "forks": 212,
         "language": "MDX",
         "description": "Biome's website",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
@@ -357,7 +975,7 @@
         "fullName": "biomejs/biome-intellij",
         "url": "https://github.com/biomejs/biome-intellij",
         "stars": 88,
-        "forks": 24,
+        "forks": 23,
         "language": "Kotlin",
         "description": "Biome plugin for IntelliJ",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
@@ -379,7 +997,7 @@
         "fullName": "biomejs/biome-zed",
         "url": "https://github.com/biomejs/biome-zed",
         "stars": 443,
-        "forks": 15,
+        "forks": 16,
         "language": "Rust",
         "description": "Biome extension for Zed",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
@@ -400,69 +1018,12 @@
       "repo": {
         "fullName": "biomejs/biome-vscode",
         "url": "https://github.com/biomejs/biome-vscode",
-        "stars": 413,
+        "stars": 414,
         "forks": 70,
         "language": "TypeScript",
         "description": "Biome extension for VS Code",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
         "topics": ["biome", "biomejs", "formatter", "linter", "vscode", "vscode-extension"],
-        "license": "Apache-2.0"
-      }
-    },
-    {
-      "title": "feat(html): enable HTML parsing for `.svg` files",
-      "url": "https://github.com/biomejs/biome/pull/9608",
-      "number": 9608,
-      "state": "open",
-      "mergedAt": "2026-03-23T16:51:22Z",
-      "additions": 602,
-      "deletions": 7,
-      "changedFiles": 16,
-      "labels": [
-        {
-          "name": "A-CLI",
-          "color": "a4c8fc"
-        },
-        {
-          "name": "A-Linter",
-          "color": "a4c8fc"
-        },
-        {
-          "name": "A-Parser",
-          "color": "a4c8fc"
-        },
-        {
-          "name": "A-Formatter",
-          "color": "a4c8fc"
-        },
-        {
-          "name": "L-HTML",
-          "color": "ffe2bf"
-        },
-        {
-          "name": "M-Likely Agent",
-          "color": "d93f0b"
-        }
-      ],
-      "repo": {
-        "fullName": "biomejs/biome",
-        "url": "https://github.com/biomejs/biome",
-        "stars": 24181,
-        "forks": 918,
-        "language": "Rust",
-        "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
-        "topics": [
-          "css",
-          "formatter",
-          "javascript",
-          "json",
-          "jsx",
-          "linter",
-          "static-code-analysis",
-          "typescript",
-          "web"
-        ],
         "license": "Apache-2.0"
       }
     },
@@ -479,8 +1040,8 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12841,
-        "forks": 3104,
+        "stars": 12844,
+        "forks": 3106,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -513,8 +1074,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -540,8 +1101,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -567,8 +1128,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -589,8 +1150,8 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12841,
-        "forks": 3104,
+        "stars": 12844,
+        "forks": 3106,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -618,8 +1179,8 @@
       "repo": {
         "fullName": "vercel-labs/portless",
         "url": "https://github.com/vercel-labs/portless",
-        "stars": 6377,
-        "forks": 201,
+        "stars": 6562,
+        "forks": 207,
         "language": "TypeScript",
         "description": "Replace port numbers with stable, named local URLs. For humans and agents.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/108547162?v=4",
@@ -661,8 +1222,8 @@
       "repo": {
         "fullName": "microsoft/winget-pkgs",
         "url": "https://github.com/microsoft/winget-pkgs",
-        "stars": 10404,
-        "forks": 6483,
+        "stars": 10419,
+        "forks": 6535,
         "language": "PowerShell",
         "description": "The Microsoft community Windows Package Manager manifest repository",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6154722?v=4",
@@ -688,8 +1249,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 138509,
-        "forks": 30711,
+        "stars": 138578,
+        "forks": 30748,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -713,60 +1274,6 @@
       }
     },
     {
-      "title": "Add `factory_bot.before_run_factory` instrumentation event",
-      "url": "https://github.com/thoughtbot/factory_bot/pull/1795",
-      "number": 1795,
-      "state": "open",
-      "mergedAt": "2026-03-15T20:47:44Z",
-      "additions": 133,
-      "deletions": 0,
-      "changedFiles": 5,
-      "labels": [],
-      "repo": {
-        "fullName": "thoughtbot/factory_bot",
-        "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8352,
-        "forks": 2573,
-        "language": "Ruby",
-        "description": "A library for setting up Ruby objects as test data.",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
-        "topics": [
-          "factories",
-          "factory-bot",
-          "factory-girl",
-          "fixtures",
-          "rails",
-          "ruby",
-          "rubygems",
-          "testing",
-          "thoughtbot"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
-      "title": "Fix token exchange failing with FGAP V2 enabled",
-      "url": "https://github.com/keycloak/keycloak/pull/47169",
-      "number": 47169,
-      "state": "open",
-      "mergedAt": "2026-03-15T17:39:42Z",
-      "additions": 0,
-      "deletions": 17,
-      "changedFiles": 2,
-      "labels": [],
-      "repo": {
-        "fullName": "keycloak/keycloak",
-        "url": "https://github.com/keycloak/keycloak",
-        "stars": 33594,
-        "forks": 8177,
-        "language": "Java",
-        "description": "Open Source Identity and Access Management For Modern Applications and Services",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
-        "topics": ["keycloak", "oidc", "saml"],
-        "license": "Apache-2.0"
-      }
-    },
-    {
       "title": "Fix insert_all raising \"No unique index found for id\" without unique_by",
       "url": "https://github.com/rails/rails/pull/56988",
       "number": 56988,
@@ -784,8 +1291,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -806,8 +1313,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33594,
-        "forks": 8177,
+        "stars": 33688,
+        "forks": 8204,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -828,8 +1335,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8352,
-        "forks": 2573,
+        "stars": 8331,
+        "forks": 2570,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -869,8 +1376,8 @@
       "repo": {
         "fullName": "biomejs/biome",
         "url": "https://github.com/biomejs/biome",
-        "stars": 24181,
-        "forks": 918,
+        "stars": 24182,
+        "forks": 928,
         "language": "Rust",
         "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
@@ -910,8 +1417,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -932,8 +1439,8 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12841,
-        "forks": 3104,
+        "stars": 12844,
+        "forks": 3106,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -961,8 +1468,8 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12841,
-        "forks": 3104,
+        "stars": 12844,
+        "forks": 3106,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -990,8 +1497,8 @@
       "repo": {
         "fullName": "jekyll/jekyll",
         "url": "https://github.com/jekyll/jekyll",
-        "stars": 51497,
-        "forks": 10296,
+        "stars": 51470,
+        "forks": 10294,
         "language": "Ruby",
         "description": ":globe_with_meridians: Jekyll is a blog-aware static site generator in Ruby",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/3083652?v=4",
@@ -1017,219 +1524,12 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58346,
-        "forks": 22181,
+        "stars": 58317,
+        "forks": 22173,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
         "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
-        "license": "MIT"
-      }
-    },
-    {
-      "title": "🐛 FIX: Ruby files theming unclear with semantic highlighting",
-      "url": "https://github.com/ahmadawais/shades-of-purple-vscode/pull/163",
-      "number": 163,
-      "state": "open",
-      "mergedAt": "2026-02-20T10:32:01Z",
-      "additions": 86,
-      "deletions": 4,
-      "changedFiles": 4,
-      "labels": [],
-      "repo": {
-        "fullName": "ahmadawais/shades-of-purple-vscode",
-        "url": "https://github.com/ahmadawais/shades-of-purple-vscode",
-        "stars": 771,
-        "forks": 67,
-        "language": null,
-        "description": "🦄 Shades of Purple offers a hand-picked selection of bold and vibrant shades of purple that will transform your code into a visually stunning masterpiece. With its carefully crafted color palette, this theme brings a sense of style, elegance, and whimsy to your favorite code editor, making your coding sessions a delightful journey of creativity.",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/960133?v=4",
-        "topics": [
-          "hacktoberfest",
-          "purple",
-          "shades-of-purple",
-          "visual-studio",
-          "vscode",
-          "vscode-extension",
-          "vscode-theme"
-        ],
-        "license": "NOASSERTION"
-      }
-    },
-    {
-      "title": "🐛 FIX: menu dropdown text not visible in extensions",
-      "url": "https://github.com/ahmadawais/shades-of-purple-vscode/pull/162",
-      "number": 162,
-      "state": "open",
-      "mergedAt": "2026-02-20T09:15:53Z",
-      "additions": 29,
-      "deletions": 1,
-      "changedFiles": 4,
-      "labels": [],
-      "repo": {
-        "fullName": "ahmadawais/shades-of-purple-vscode",
-        "url": "https://github.com/ahmadawais/shades-of-purple-vscode",
-        "stars": 771,
-        "forks": 67,
-        "language": null,
-        "description": "🦄 Shades of Purple offers a hand-picked selection of bold and vibrant shades of purple that will transform your code into a visually stunning masterpiece. With its carefully crafted color palette, this theme brings a sense of style, elegance, and whimsy to your favorite code editor, making your coding sessions a delightful journey of creativity.",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/960133?v=4",
-        "topics": [
-          "hacktoberfest",
-          "purple",
-          "shades-of-purple",
-          "visual-studio",
-          "vscode",
-          "vscode-extension",
-          "vscode-theme"
-        ],
-        "license": "NOASSERTION"
-      }
-    },
-    {
-      "title": "Add profile views field migration",
-      "url": "https://github.com/zainonrails/devtree/pull/37",
-      "number": 37,
-      "state": "open",
-      "mergedAt": "2024-01-14T10:58:12Z",
-      "additions": 11,
-      "deletions": 2,
-      "changedFiles": 3,
-      "labels": [
-        {
-          "name": "in-progress",
-          "color": "0555FD"
-        }
-      ],
-      "repo": {
-        "fullName": "zainonrails/devtree",
-        "url": "https://github.com/zainonrails/devtree",
-        "stars": 1,
-        "forks": 0,
-        "language": "HTML",
-        "description": "linktree for developers",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/45653859?v=4",
-        "topics": [],
-        "license": null
-      }
-    },
-    {
-      "title": "Save utm source param on page visit, when signup, check for utm params and send to posthog",
-      "url": "https://github.com/zainonrails/devtree/pull/36",
-      "number": 36,
-      "state": "open",
-      "mergedAt": "2024-01-14T10:04:09Z",
-      "additions": 38,
-      "deletions": 12,
-      "changedFiles": 4,
-      "labels": [
-        {
-          "name": "QA",
-          "color": "B4CDC7"
-        }
-      ],
-      "repo": {
-        "fullName": "zainonrails/devtree",
-        "url": "https://github.com/zainonrails/devtree",
-        "stars": 1,
-        "forks": 0,
-        "language": "HTML",
-        "description": "linktree for developers",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/45653859?v=4",
-        "topics": [],
-        "license": null
-      }
-    },
-    {
-      "title": "Added Preferences to Users",
-      "url": "https://github.com/zainonrails/devtree/pull/11",
-      "number": 11,
-      "state": "merged",
-      "mergedAt": "2023-12-11T12:00:02Z",
-      "additions": 243,
-      "deletions": 41,
-      "changedFiles": 16,
-      "labels": [],
-      "repo": {
-        "fullName": "zainonrails/devtree",
-        "url": "https://github.com/zainonrails/devtree",
-        "stars": 1,
-        "forks": 0,
-        "language": "HTML",
-        "description": "linktree for developers",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/45653859?v=4",
-        "topics": [],
-        "license": null
-      }
-    },
-    {
-      "title": "Refactoring with Rspecs Integration",
-      "url": "https://github.com/zainonrails/devtree/pull/13",
-      "number": 13,
-      "state": "open",
-      "mergedAt": "2023-12-10T13:15:35Z",
-      "additions": 687,
-      "deletions": 216,
-      "changedFiles": 23,
-      "labels": [
-        {
-          "name": "QA",
-          "color": "B4CDC7"
-        }
-      ],
-      "repo": {
-        "fullName": "zainonrails/devtree",
-        "url": "https://github.com/zainonrails/devtree",
-        "stars": 1,
-        "forks": 0,
-        "language": "HTML",
-        "description": "linktree for developers",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/45653859?v=4",
-        "topics": [],
-        "license": null
-      }
-    },
-    {
-      "title": "Added Preferences to Users",
-      "url": "https://github.com/zainonrails/devtree/pull/10",
-      "number": 10,
-      "state": "closed",
-      "mergedAt": "2023-12-08T20:57:47Z",
-      "additions": 202,
-      "deletions": 16,
-      "changedFiles": 12,
-      "labels": [],
-      "repo": {
-        "fullName": "zainonrails/devtree",
-        "url": "https://github.com/zainonrails/devtree",
-        "stars": 1,
-        "forks": 0,
-        "language": "HTML",
-        "description": "linktree for developers",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/45653859?v=4",
-        "topics": [],
-        "license": null
-      }
-    },
-    {
-      "title": "test",
-      "url": "https://github.com/graphiti-api/spraypaint.js/pull/117",
-      "number": 117,
-      "state": "closed",
-      "mergedAt": "2023-02-24T10:18:34Z",
-      "additions": 331,
-      "deletions": 67,
-      "changedFiles": 28,
-      "labels": [],
-      "repo": {
-        "fullName": "graphiti-api/spraypaint.js",
-        "url": "https://github.com/graphiti-api/spraypaint.js",
-        "stars": 110,
-        "forks": 65,
-        "language": "TypeScript",
-        "description": "Graphiti Client / Javascript ORM / JSONAPI",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/42073377?v=4",
-        "topics": [],
         "license": "MIT"
       }
     }
