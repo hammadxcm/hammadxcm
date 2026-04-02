@@ -29,6 +29,11 @@ jobs:
           MIN_STARS: "0"
           MAX_ITEMS: "50"
 
+      - run: npm ci
+
+      - name: Format generated JSON
+        run: npx biome check --write src/data/contributions.json
+
       - name: Inject into README
         run: |
           node -e "
