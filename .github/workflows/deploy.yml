@@ -88,6 +88,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           BRANCH="auto/bump-v$NEW_VERSION"
+          git push origin --delete "$BRANCH" 2>/dev/null || true
           git checkout -b "$BRANCH"
           git add package.json package-lock.json
           git commit -m "Bump version to $NEW_VERSION [skip ci]"
