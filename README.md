@@ -1004,7 +1004,7 @@ Zero-dep CLI to kill processes by port
 | [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 38.8k | +129 -17 |
 | [biomejs/website](https://github.com/biomejs/website) | [docs: add SVG to language support page](https://github.com/biomejs/website/pull/4093) | 🟢 Open | Mar 23, 2026 | 92 | +5 -0 |
 | [biomejs/biome-intellij](https://github.com/biomejs/biome-intellij) | [feat: add SVG file support](https://github.com/biomejs/biome-intellij/pull/231) | 🟢 Open | Mar 23, 2026 | 88 | +1 -1 |
-| [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 444 | +2 -0 |
+| [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 443 | +2 -0 |
 | [biomejs/biome-vscode](https://github.com/biomejs/biome-vscode) | [feat: add SVG file support](https://github.com/biomejs/biome-vscode/pull/993) | 🟢 Open | Mar 23, 2026 | 414 | +12 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟢 Open | Mar 23, 2026 | 12.8k | +123 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix association build to set inverse before assigning attributes](https://github.com/rails/rails/pull/57051) | 🟢 Open | Mar 23, 2026 | 58.3k | +22 -3 |
