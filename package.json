@@ -36,6 +36,9 @@
       "biome check --write --no-errors-on-unmatched"
     ]
   },
+  "overrides": {
+    "defu": ">=6.1.5"
+  },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
     "@biomejs/biome": "^2.4.4",
