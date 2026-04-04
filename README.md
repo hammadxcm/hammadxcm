@@ -978,21 +978,6 @@ Zero-dep CLI to kill processes by port
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
 | [rails/rails](https://github.com/rails/rails) | [Document that days_in_month and days_in_year assume proleptic Gregorian calendar](https://github.com/rails/rails/pull/57114) | 🟢 Open | Apr 1, 2026 | 58.3k | +9 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Syntax::Methods](https://github.com/thoughtbot/factory_bot/pull/1811) | 🟢 Open | Mar 28, 2026 | 8.3k | +37 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Syntax::Default](https://github.com/thoughtbot/factory_bot/pull/1810) | 🟢 Open | Mar 28, 2026 | 8.3k | +79 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::StrategySyntaxMethodRegistrar](https://github.com/thoughtbot/factory_bot/pull/1809) | 🟢 Open | Mar 28, 2026 | 8.3k | +51 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::DefinitionHierarchy](https://github.com/thoughtbot/factory_bot/pull/1808) | 🟢 Open | Mar 28, 2026 | 8.3k | +47 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Configuration](https://github.com/thoughtbot/factory_bot/pull/1807) | 🟢 Open | Mar 28, 2026 | 8.3k | +67 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Linter](https://github.com/thoughtbot/factory_bot/pull/1806) | 🟢 Open | Mar 28, 2026 | 8.3k | +76 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::FactoryRunner](https://github.com/thoughtbot/factory_bot/pull/1805) | 🟢 Open | Mar 28, 2026 | 8.3k | +101 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::AttributeAssigner](https://github.com/thoughtbot/factory_bot/pull/1804) | 🟢 Open | Mar 28, 2026 | 8.3k | +95 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Evaluator](https://github.com/thoughtbot/factory_bot/pull/1803) | 🟢 Open | Mar 28, 2026 | 8.3k | +88 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Evaluation](https://github.com/thoughtbot/factory_bot/pull/1802) | 🟢 Open | Mar 28, 2026 | 8.3k | +64 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Enum](https://github.com/thoughtbot/factory_bot/pull/1801) | 🟢 Open | Mar 28, 2026 | 8.3k | +41 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Trait](https://github.com/thoughtbot/factory_bot/pull/1800) | 🟢 Open | Mar 28, 2026 | 8.3k | +76 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::Declaration](https://github.com/thoughtbot/factory_bot/pull/1799) | 🟢 Open | Mar 28, 2026 | 8.3k | +25 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for Decorator, InvocationTracker, and NewConstructor](https://github.com/thoughtbot/factory_bot/pull/1798) | 🟢 Open | Mar 28, 2026 | 8.3k | +121 -0 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add unit tests for FactoryBot::CallbacksObserver](https://github.com/thoughtbot/factory_bot/pull/1797) | 🟢 Open | Mar 28, 2026 | 8.3k | +92 -0 |
 | [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add `factory_bot.before_run_factory` instrumentation event](https://github.com/thoughtbot/factory_bot/pull/1795) | 🟣 Merged | Mar 27, 2026 | 8.3k | +133 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for Error#initialize_dup, #hash, and #detail](https://github.com/rails/rails/pull/57047) | 🟣 Merged | Mar 27, 2026 | 58.3k | +29 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#import](https://github.com/rails/rails/pull/57044) | 🟣 Merged | Mar 27, 2026 | 58.3k | +41 -0 |
@@ -1004,8 +989,8 @@ Zero-dep CLI to kill processes by port
 | [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 38.8k | +129 -17 |
 | [biomejs/website](https://github.com/biomejs/website) | [docs: add SVG to language support page](https://github.com/biomejs/website/pull/4093) | 🟢 Open | Mar 23, 2026 | 92 | +5 -0 |
 | [biomejs/biome-intellij](https://github.com/biomejs/biome-intellij) | [feat: add SVG file support](https://github.com/biomejs/biome-intellij/pull/231) | 🟢 Open | Mar 23, 2026 | 88 | +1 -1 |
-| [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 443 | +2 -0 |
-| [biomejs/biome-vscode](https://github.com/biomejs/biome-vscode) | [feat: add SVG file support](https://github.com/biomejs/biome-vscode/pull/993) | 🟢 Open | Mar 23, 2026 | 414 | +12 -0 |
+| [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 444 | +2 -0 |
+| [biomejs/biome-vscode](https://github.com/biomejs/biome-vscode) | [feat: add SVG file support](https://github.com/biomejs/biome-vscode/pull/993) | 🟢 Open | Mar 23, 2026 | 415 | +12 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟢 Open | Mar 23, 2026 | 12.8k | +123 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix association build to set inverse before assigning attributes](https://github.com/rails/rails/pull/57051) | 🟢 Open | Mar 23, 2026 | 58.3k | +22 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.3k | +59 -0 |
