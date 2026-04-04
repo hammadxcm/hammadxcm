@@ -896,7 +896,7 @@ Handling TB-scale data</sub>
 <b>🌙 <a href="https://www.npmjs.com/package/ramadan-cli-pro">ramadan-cli-pro</a></b><br/>
 <sub>Published npm package — TUI dashboard<br/>
 with prayer times, i18n & notifications
-5 stars · 411+ downloads</sub>
+5 stars · 418+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
