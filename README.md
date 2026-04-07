@@ -896,7 +896,7 @@ Handling TB-scale data</sub>
 <b>🌙 <a href="https://www.npmjs.com/package/ramadan-cli-pro">ramadan-cli-pro</a></b><br/>
 <sub>Published npm package — TUI dashboard<br/>
 with prayer times, i18n & notifications
-5 stars · 418+ downloads</sub>
+5 stars · 420+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -916,7 +916,7 @@ Modern RuboCop config for Ruby & Rails
 <b>🔍 <a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier">image-magnifier</a></b><br/>
 <sub>React zoom component —<br/>
 TypeScript with 7 releases
-9 stars · 759+ downloads</sub>
+9 stars · 760+ downloads</sub>
 </div>
 </td>
 </tr>
@@ -960,7 +960,7 @@ Next.js & Svelte with live demo
 <b>💀 <a href="https://www.npmjs.com/package/slay-port">slay</a></b><br/>
 <sub>Published npm package —<br/>
 Zero-dep CLI to kill processes by port
-5 stars · 826+ downloads</sub>
+5 stars · 1k+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
