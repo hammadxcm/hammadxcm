@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-07T06:29:37.194Z",
+  "generatedAt": "2026-04-07T12:17:25.209Z",
   "username": "hammadxcm",
   "totalCount": 50,
   "contributions": [
@@ -501,7 +501,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -523,69 +523,12 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33738,
-        "forks": 8224,
+        "stars": 33743,
+        "forks": 8227,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
         "topics": ["keycloak", "oidc", "saml"],
-        "license": "Apache-2.0"
-      }
-    },
-    {
-      "title": "feat(html): enable HTML parsing for `.svg` files",
-      "url": "https://github.com/biomejs/biome/pull/9608",
-      "number": 9608,
-      "state": "closed",
-      "mergedAt": "2026-03-29T17:47:06Z",
-      "additions": 602,
-      "deletions": 7,
-      "changedFiles": 16,
-      "labels": [
-        {
-          "name": "A-CLI",
-          "color": "a4c8fc"
-        },
-        {
-          "name": "A-Linter",
-          "color": "a4c8fc"
-        },
-        {
-          "name": "A-Parser",
-          "color": "a4c8fc"
-        },
-        {
-          "name": "A-Formatter",
-          "color": "a4c8fc"
-        },
-        {
-          "name": "L-HTML",
-          "color": "ffe2bf"
-        },
-        {
-          "name": "M-Likely Agent",
-          "color": "d93f0b"
-        }
-      ],
-      "repo": {
-        "fullName": "biomejs/biome",
-        "url": "https://github.com/biomejs/biome",
-        "stars": 24241,
-        "forks": 934,
-        "language": "Rust",
-        "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
-        "topics": [
-          "css",
-          "formatter",
-          "javascript",
-          "json",
-          "jsx",
-          "linter",
-          "static-code-analysis",
-          "typescript",
-          "web"
-        ],
         "license": "Apache-2.0"
       }
     },
@@ -607,8 +550,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 138688,
-        "forks": 30814,
+        "stars": 138699,
+        "forks": 30820,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -681,7 +624,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -708,7 +651,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -735,7 +678,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -762,7 +705,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -789,7 +732,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -816,7 +759,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -843,7 +786,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -870,8 +813,8 @@
       "repo": {
         "fullName": "getsentry/sentry",
         "url": "https://github.com/getsentry/sentry",
-        "stars": 43516,
-        "forks": 4649,
+        "stars": 43518,
+        "forks": 4650,
         "language": "Python",
         "description": "Developer-first error tracking and performance monitoring",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/1396951?v=4",
@@ -908,7 +851,7 @@
       "repo": {
         "fullName": "novuhq/novu",
         "url": "https://github.com/novuhq/novu",
-        "stars": 38779,
+        "stars": 38781,
         "forks": 4255,
         "language": "TypeScript",
         "description": "The open-source notification infrastructure. In-app Inbox component, E-mail, SMS, Push and Slack Integrations.",
@@ -1028,6 +971,63 @@
       }
     },
     {
+      "title": "feat(html): enable HTML parsing for `.svg` files",
+      "url": "https://github.com/biomejs/biome/pull/9608",
+      "number": 9608,
+      "state": "open",
+      "mergedAt": "2026-03-23T16:51:22Z",
+      "additions": 602,
+      "deletions": 7,
+      "changedFiles": 16,
+      "labels": [
+        {
+          "name": "A-CLI",
+          "color": "a4c8fc"
+        },
+        {
+          "name": "A-Linter",
+          "color": "a4c8fc"
+        },
+        {
+          "name": "A-Parser",
+          "color": "a4c8fc"
+        },
+        {
+          "name": "A-Formatter",
+          "color": "a4c8fc"
+        },
+        {
+          "name": "L-HTML",
+          "color": "ffe2bf"
+        },
+        {
+          "name": "M-Likely Agent",
+          "color": "d93f0b"
+        }
+      ],
+      "repo": {
+        "fullName": "biomejs/biome",
+        "url": "https://github.com/biomejs/biome",
+        "stars": 24250,
+        "forks": 934,
+        "language": "Rust",
+        "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
+        "topics": [
+          "css",
+          "formatter",
+          "javascript",
+          "json",
+          "jsx",
+          "linter",
+          "static-code-analysis",
+          "typescript",
+          "web"
+        ],
+        "license": "Apache-2.0"
+      }
+    },
+    {
       "title": "[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`",
       "url": "https://github.com/rubocop/rubocop/pull/15050",
       "number": 15050,
@@ -1074,7 +1074,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1101,7 +1101,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1128,7 +1128,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1179,8 +1179,8 @@
       "repo": {
         "fullName": "vercel-labs/portless",
         "url": "https://github.com/vercel-labs/portless",
-        "stars": 6679,
-        "forks": 208,
+        "stars": 6686,
+        "forks": 209,
         "language": "TypeScript",
         "description": "Replace port numbers with stable, named local URLs. For humans and agents.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/108547162?v=4",
@@ -1222,8 +1222,8 @@
       "repo": {
         "fullName": "microsoft/winget-pkgs",
         "url": "https://github.com/microsoft/winget-pkgs",
-        "stars": 10432,
-        "forks": 6580,
+        "stars": 10433,
+        "forks": 6583,
         "language": null,
         "description": "The Microsoft community Windows Package Manager manifest repository",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6154722?v=4",
@@ -1249,8 +1249,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 138688,
-        "forks": 30814,
+        "stars": 138699,
+        "forks": 30820,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -1291,7 +1291,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1313,8 +1313,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33738,
-        "forks": 8224,
+        "stars": 33743,
+        "forks": 8227,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -1376,7 +1376,7 @@
       "repo": {
         "fullName": "biomejs/biome",
         "url": "https://github.com/biomejs/biome",
-        "stars": 24241,
+        "stars": 24250,
         "forks": 934,
         "language": "Rust",
         "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
@@ -1417,7 +1417,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1497,8 +1497,8 @@
       "repo": {
         "fullName": "jekyll/jekyll",
         "url": "https://github.com/jekyll/jekyll",
-        "stars": 51476,
-        "forks": 10296,
+        "stars": 51477,
+        "forks": 10295,
         "language": "Ruby",
         "description": ":globe_with_meridians: Jekyll is a blog-aware static site generator in Ruby",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/3083652?v=4",
@@ -1524,7 +1524,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58310,
+        "stars": 58312,
         "forks": 22167,
         "language": "Ruby",
         "description": "Ruby on Rails",
