@@ -989,7 +989,7 @@ Zero-dep CLI to kill processes by port
 | [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 38.8k | +129 -17 |
 | [biomejs/website](https://github.com/biomejs/website) | [docs: add SVG to language support page](https://github.com/biomejs/website/pull/4093) | 🟢 Open | Mar 23, 2026 | 92 | +5 -0 |
 | [biomejs/biome-intellij](https://github.com/biomejs/biome-intellij) | [feat: add SVG file support](https://github.com/biomejs/biome-intellij/pull/231) | 🟢 Open | Mar 23, 2026 | 88 | +1 -1 |
-| [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 445 | +2 -0 |
+| [biomejs/biome-zed](https://github.com/biomejs/biome-zed) | [feat: add SVG file support](https://github.com/biomejs/biome-zed/pull/190) | 🟢 Open | Mar 23, 2026 | 446 | +2 -0 |
 | [biomejs/biome-vscode](https://github.com/biomejs/biome-vscode) | [feat: add SVG file support](https://github.com/biomejs/biome-vscode/pull/993) | 🟢 Open | Mar 23, 2026 | 415 | +12 -0 |
 | [biomejs/biome](https://github.com/biomejs/biome) | [feat(html): enable HTML parsing for `.svg` files](https://github.com/biomejs/biome/pull/9608) | 🟢 Open | Mar 23, 2026 | 24.3k | +602 -7 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟢 Open | Mar 23, 2026 | 12.8k | +123 -3 |
@@ -999,7 +999,7 @@ Zero-dep CLI to kill processes by port
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [Add `AllowedParentClasses` option to `Style/EmptyClassDefinition`](https://github.com/rubocop/rubocop/pull/14974) | 🟣 Merged | Mar 23, 2026 | 12.8k | +111 -2 |
 | [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟣 Merged | Mar 20, 2026 | 6.7k | +304 -4 |
 | [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) | [New package: hammadxcm.go-phantom version 0.0.2](https://github.com/microsoft/winget-pkgs/pull/348164) | 🟣 Merged | Mar 17, 2026 | 10.4k | +36 -0 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [docs: clarify generateMetadata re-evaluation on navigation](https://github.com/vercel/next.js/pull/91427) | 🟢 Open | Mar 15, 2026 | 138.7k | +7 -1 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [docs: clarify generateMetadata re-evaluation on navigation](https://github.com/vercel/next.js/pull/91427) | 🟢 Open | Mar 15, 2026 | 138.8k | +7 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix insert_all raising "No unique index found for id" without unique_by](https://github.com/rails/rails/pull/56988) | 🟢 Open | Mar 15, 2026 | 58.3k | +87 -16 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Fix @TestSetup method ordering with inheritance](https://github.com/keycloak/keycloak/pull/46686) | 🟣 Merged | Mar 5, 2026 | 33.8k | +142 -5 |
 | [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Remove CodeClimate badge from README](https://github.com/thoughtbot/factory_bot/pull/1794) | 🟣 Merged | Mar 2, 2026 | 8.3k | +1 -3 |
