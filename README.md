@@ -916,7 +916,7 @@ Modern RuboCop config for Ruby & Rails
 <b>🔍 <a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier">image-magnifier</a></b><br/>
 <sub>React zoom component —<br/>
 TypeScript with 7 releases
-9 stars · 762+ downloads</sub>
+9 stars · 763+ downloads</sub>
 </div>
 </td>
 </tr>
@@ -928,7 +928,7 @@ TypeScript with 7 releases
 <b>⚡ <a href="https://www.npmjs.com/package/electric-border-css">electric-border-css</a></b><br/>
 <sub>Animated CSS border effects — React, Vue,<br/>
 Next.js & Svelte with live demo
-4 stars · 291+ downloads</sub>
+4 stars · 292+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
