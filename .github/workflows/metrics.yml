@@ -8,6 +8,10 @@ on:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
+concurrency:
+  group: metrics-update
+  cancel-in-progress: false
+
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
@@ -17,16 +21,15 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Ensure metrics branch exists
+      - name: Reset metrics branch
         env:
           GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
         run: |
-          if ! gh api repos/${{ github.repository }}/git/ref/heads/auto/metrics-update 2>/dev/null; then
-            SHA=$(gh api repos/${{ github.repository }}/git/ref/heads/main -q '.object.sha')
-            gh api repos/${{ github.repository }}/git/refs -X POST \
-              -f ref="refs/heads/auto/metrics-update" \
-              -f sha="$SHA"
-          fi
+          SHA=$(gh api repos/${{ github.repository }}/git/ref/heads/main -q '.object.sha')
+          gh api repos/${{ github.repository }}/git/refs/heads/auto/metrics-update \
+            -X PATCH -f sha="$SHA" -f force=true 2>/dev/null || \
+          gh api repos/${{ github.repository }}/git/refs \
+            -X POST -f ref="refs/heads/auto/metrics-update" -f sha="$SHA"
 
       - uses: lowlighter/metrics@latest
         with:
