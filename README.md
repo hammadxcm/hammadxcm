@@ -928,7 +928,7 @@ TypeScript with 7 releases
 <b>⚡ <a href="https://www.npmjs.com/package/electric-border-css">electric-border-css</a></b><br/>
 <sub>Animated CSS border effects — React, Vue,<br/>
 Next.js & Svelte with live demo
-4 stars · 292+ downloads</sub>
+4 stars · 293+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
