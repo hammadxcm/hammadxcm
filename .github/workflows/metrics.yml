@@ -15,11 +15,24 @@ jobs:
       name: production
     permissions:
       contents: write
+      pull-requests: write
     steps:
+      - name: Ensure metrics branch exists
+        env:
+          GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
+        run: |
+          if ! gh api repos/${{ github.repository }}/git/ref/heads/auto/metrics-update 2>/dev/null; then
+            SHA=$(gh api repos/${{ github.repository }}/git/ref/heads/main -q '.object.sha')
+            gh api repos/${{ github.repository }}/git/refs -X POST \
+              -f ref="refs/heads/auto/metrics-update" \
+              -f sha="$SHA"
+          fi
+
       - uses: lowlighter/metrics@latest
         with:
           filename: metrics.classic.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
           user: hammadxcm
           template: classic
@@ -39,6 +52,7 @@ jobs:
         with:
           filename: metrics.plugin.isocalendar.fullyear.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
           base: ""
           plugin_isocalendar: yes
@@ -49,6 +63,7 @@ jobs:
         with:
           filename: metrics.plugin.languages.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
           base: ""
           commits_authoring: hammadxcm, hammadxcm@users.noreply.github.com
@@ -71,6 +86,7 @@ jobs:
         with:
           filename: metrics.plugin.stars.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
           base: ""
           plugin_stars: yes
@@ -81,6 +97,7 @@ jobs:
         with:
           filename: metrics.plugin.notable.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
           base: ""
           plugin_notable: yes
@@ -93,8 +110,30 @@ jobs:
         with:
           filename: metrics.plugin.leetcode.svg
           token: NOT_NEEDED
+          committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
           base: ""
           plugin_leetcode_user: hammadxcm
           plugin_leetcode: yes
           plugin_leetcode_sections: solved, skills
+
+      - uses: actions/checkout@v6
+
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR=$(gh pr list --head auto/metrics-update --state open --json number -q '.[0].number')
+          if [ -z "$PR" ]; then
+            gh pr create --base main --head auto/metrics-update \
+              --title "Update GitHub metrics" \
+              --body "Automated update of GitHub metrics SVGs."
+          fi
+
+      - name: Enable auto-merge
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR=$(gh pr list --head auto/metrics-update --state open --json number -q '.[0].number')
+          [ -n "$PR" ] && gh pr merge "$PR" --squash --auto
