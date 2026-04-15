@@ -8,13 +8,13 @@
     <img src="https://visitor-badge.laobi.icu/badge?page_id=hammadxcm.hammadxcm" alt="visitors"/>
 </p>
 
-<img width="100%" src="./src/header_.png" alt="Header" />
-
 <div align="center">
+
+![Header](./src/header_.png)
 
 <img src="https://readme-typing-svg.herokuapp.com/?font=Fira+Code&size=32&duration=2800&pause=2000&color=A9FEF7&center=true&vCenter=true&width=940&lines=Hey+there!+I'm+Hammad+Khan;Full-Stack+Software+Engineer;Problem+Solver+and+Tech+Enthusiast;Welcome+to+my+GitHub+Profile!;Ruby+and+JavaScript+and+TypeScript+Expert;Building+Scalable+Web+Applications;Always+Learning+Something+New" alt="Typing SVG" />
 
-<img src="./src/coding-banner.gif" width="600"/>
+<img src="./src/coding-banner.gif" width="100%"/>
 
 <br/>
 
