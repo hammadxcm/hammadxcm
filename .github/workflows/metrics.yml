@@ -27,13 +27,13 @@ jobs:
         run: |
           SHA=$(gh api repos/${{ github.repository }}/git/ref/heads/main -q '.object.sha')
           gh api repos/${{ github.repository }}/git/refs/heads/auto/metrics-update \
-            -X PATCH -f sha="$SHA" -f force=true 2>/dev/null || \
+            -X PATCH -f sha="$SHA" -F force=true 2>/dev/null || \
           gh api repos/${{ github.repository }}/git/refs \
             -X POST -f ref="refs/heads/auto/metrics-update" -f sha="$SHA"
 
       - uses: lowlighter/metrics@latest
         with:
-          filename: metrics.classic.svg
+          filename: generated/metrics.classic.svg
           token: ${{ secrets.METRICS_TOKEN }}
           committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
@@ -53,7 +53,7 @@ jobs:
       - name: Full-year calendar
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.isocalendar.fullyear.svg
+          filename: generated/metrics.plugin.isocalendar.fullyear.svg
           token: ${{ secrets.METRICS_TOKEN }}
           committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
@@ -64,7 +64,7 @@ jobs:
       - name: Most used languages
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.languages.svg
+          filename: generated/metrics.plugin.languages.svg
           token: ${{ secrets.METRICS_TOKEN }}
           committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
@@ -87,7 +87,7 @@ jobs:
       - name: Recently starred
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.stars.svg
+          filename: generated/metrics.plugin.stars.svg
           token: ${{ secrets.METRICS_TOKEN }}
           committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
@@ -98,7 +98,7 @@ jobs:
       - name: Notable contributions
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.notable.svg
+          filename: generated/metrics.plugin.notable.svg
           token: ${{ secrets.METRICS_TOKEN }}
           committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
@@ -111,7 +111,7 @@ jobs:
       - name: LeetCode
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.leetcode.svg
+          filename: generated/metrics.plugin.leetcode.svg
           token: NOT_NEEDED
           committer_branch: auto/metrics-update
           committer_message: "Update ${filename} [skip ci]"
