@@ -1,12 +1,20 @@
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=00bfbf&height=120&section=header"/>
 
+<p align="center">
+    <a href="https://github.com/hammadxcm/hammadxcm"><img src="https://img.shields.io/badge/status-updating-brightgreen.svg"></a>
+    <a href="https://github.com/hammadxcm/hammadxcm/graphs/contributors"><img src="https://img.shields.io/github/contributors/hammadxcm/hammadxcm?color=blue"></a>
+    <a href="https://github.com/hammadxcm/hammadxcm/stargazers"><img src="https://img.shields.io/github/stars/hammadxcm/hammadxcm.svg?logo=github"></a>
+    <a href="https://github.com/hammadxcm/hammadxcm/network/members"><img src="https://img.shields.io/github/forks/hammadxcm/hammadxcm.svg?color=blue&logo=github"></a>
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=hammadxcm.hammadxcm" alt="visitors"/>
+</p>
+
 <div align="center">
 
 ![Header](./src/header_.png)
 
 <img src="https://readme-typing-svg.herokuapp.com/?font=Fira+Code&size=32&duration=2800&pause=2000&color=A9FEF7&center=true&vCenter=true&width=940&lines=Hey+there!+I'm+Hammad+Khan;Full-Stack+Software+Engineer;Problem+Solver+and+Tech+Enthusiast;Welcome+to+my+GitHub+Profile!;Ruby+and+JavaScript+and+TypeScript+Expert;Building+Scalable+Web+Applications;Always+Learning+Something+New" alt="Typing SVG" />
 
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExczVqcTF0ZHRqcnlvMWtsanh5OGJ1dTkxeDBhdzR6YzQ2aDNobjFrZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bGgsc5mWoryfgKBx1u/giphy.gif" width="300"/>
+<img src="./src/coding-banner.gif" width="600"/>
 
 <br/>
 
@@ -1054,21 +1062,21 @@ Zero-dep CLI to kill processes by port
 </table>
 
 ### 📈 Contribution Metrics
-<img src="./metrics.classic.svg" alt="Detailed GitHub Metrics" />
+<img src="./generated/metrics.classic.svg" alt="Detailed GitHub Metrics" />
 
 ### 🎯 Skills & Activity Breakdown
 <table>
   <tr>
-    <td><img src="./metrics.plugin.languages.svg" alt="Most Used Languages" /></td>
-    <td><img src="./metrics.plugin.stars.svg" alt="Recently Starred" /></td>
+    <td><img src="./generated/metrics.plugin.languages.svg" alt="Most Used Languages" /></td>
+    <td><img src="./generated/metrics.plugin.stars.svg" alt="Recently Starred" /></td>
   </tr>
   <tr>
-    <td colspan="2"><img src="./metrics.plugin.isocalendar.fullyear.svg" alt="Contribution Calendar" /></td>
+    <td colspan="2"><img src="./generated/metrics.plugin.isocalendar.fullyear.svg" alt="Contribution Calendar" /></td>
   </tr>
 </table>
 
 ### Notable OSS Contributions
-<img src="./metrics.plugin.notable.svg" alt="Notable Contributions" />
+<img src="./generated/metrics.plugin.notable.svg" alt="Notable Contributions" />
 
 ### 🏆 Achievement Gallery
 <img src="https://github-profile-trophy.vercel.app/?username=hammadxcm&theme=tokyonight&no-frame=true&no-bg=false&margin-w=4&column=7" alt="GitHub Trophies" />
@@ -1127,6 +1135,9 @@ Zero-dep CLI to kill processes by port
 ### 🐍 Contribution Snake
 <img src="https://raw.githubusercontent.com/hammadxcm/hammadxcm/output/snake.svg" alt="Snake Animation" />
 
+### 🧊 3D Contribution Graph
+<img src="./generated/profile-3d-contrib/profile-green-animate.svg" alt="3D Contribution Graph" />
+
 ### 📊 Quick Stats Summary
 <div align="center">
 <table>
@@ -1154,6 +1165,28 @@ Zero-dep CLI to kill processes by port
 </tr>
 </table>
 </div>
+
+</div>
+
+---
+
+## 👁️ Profile Views
+
+<div align="center">
+
+counting of visitors to this page in this section started from April 15, 2025
+
+![Visitor Count](https://count.getloli.com/get/@hammadxcm.github.readme)
+
+</div>
+
+---
+
+## ⭐ Star History
+
+<div align="center">
+
+[![Star History Chart](https://api.star-history.com/svg?repos=hammadxcm/hammadxcm&type=Date)](https://star-history.com/#hammadxcm/hammadxcm&Date)
 
 </div>
 
