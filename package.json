@@ -1,7 +1,7 @@
 {
   "name": "hammadxcm",
   "type": "module",
-  "version": "1.5.13",
+  "version": "1.5.14",
   "private": true,
   "scripts": {
     "dev": "astro dev",
