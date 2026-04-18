@@ -985,7 +985,7 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
-| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization admin tests into new testsuite](https://github.com/keycloak/keycloak/pull/48207) | 🟢 Open | Apr 17, 2026 | 33.9k | +715 -663 |
+| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization admin tests into new testsuite](https://github.com/keycloak/keycloak/pull/48207) | 🟢 Open | Apr 17, 2026 | 33.9k | +711 -663 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Member API tests into new testsuite](https://github.com/keycloak/keycloak/pull/48205) | 🟢 Open | Apr 17, 2026 | 33.9k | +548 -507 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Partial Export test into new testsuite](https://github.com/keycloak/keycloak/pull/48204) | 🟢 Open | Apr 17, 2026 | 33.9k | +57 -25 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Invitation Management tests into new testsuite](https://github.com/keycloak/keycloak/pull/48203) | 🟢 Open | Apr 17, 2026 | 33.9k | +95 -132 |
@@ -1009,7 +1009,7 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.4k | +59 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.4k | +36 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [Add `AllowedParentClasses` option to `Style/EmptyClassDefinition`](https://github.com/rubocop/rubocop/pull/14974) | 🟣 Merged | Mar 23, 2026 | 12.9k | +111 -2 |
-| [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟣 Merged | Mar 20, 2026 | 7.0k | +304 -4 |
+| [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟣 Merged | Mar 20, 2026 | 7.1k | +304 -4 |
 | [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) | [New package: hammadxcm.go-phantom version 0.0.2](https://github.com/microsoft/winget-pkgs/pull/348164) | 🟣 Merged | Mar 17, 2026 | 10.5k | +36 -0 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [docs: clarify generateMetadata re-evaluation on navigation](https://github.com/vercel/next.js/pull/91427) | 🟢 Open | Mar 15, 2026 | 139.0k | +7 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix insert_all raising "No unique index found for id" without unique_by](https://github.com/rails/rails/pull/56988) | 🟢 Open | Mar 15, 2026 | 58.4k | +87 -16 |
