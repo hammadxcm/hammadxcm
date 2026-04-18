@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -29,11 +30,20 @@ jobs:
           rm -rf generated/profile-3d-contrib
           mv profile-3d-contrib generated/
 
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A generated/profile-3d-contrib/
-          git diff --cached --quiet && exit 0
-          git commit -m "Generate 3D contribution graph"
-          git push
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "Generate 3D contribution graph [skip ci]"
+          branch: auto/profile-3d-contrib
+          title: "Update 3D contribution graph"
+          body: "Automated regeneration of the 3D profile contribution SVGs."
+          add-paths: generated/profile-3d-contrib/**
+          delete-branch: true
+
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-number
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr merge ${{ steps.cpr.outputs.pull-request-number }} --squash --auto
