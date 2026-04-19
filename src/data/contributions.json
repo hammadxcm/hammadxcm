@@ -1,14 +1,49 @@
 {
-  "generatedAt": "2026-04-18T12:20:24.312Z",
+  "generatedAt": "2026-04-19T00:51:57.247Z",
   "username": "hammadxcm",
   "totalCount": 50,
   "contributions": [
     {
+      "title": "Migrate Organization Invitation Management tests into new testsuite",
+      "url": "https://github.com/keycloak/keycloak/pull/48227",
+      "number": 48227,
+      "state": "open",
+      "mergedAt": "2026-04-18T20:27:23Z",
+      "additions": 95,
+      "deletions": 132,
+      "changedFiles": 1,
+      "labels": [
+        {
+          "name": "team/cloud-native",
+          "color": "FEF2C0"
+        },
+        {
+          "name": "team/core-clients",
+          "color": "FEF2C0"
+        },
+        {
+          "name": "team/core-iam",
+          "color": "FEF2C0"
+        }
+      ],
+      "repo": {
+        "fullName": "keycloak/keycloak",
+        "url": "https://github.com/keycloak/keycloak",
+        "stars": 33953,
+        "forks": 8258,
+        "language": "Java",
+        "description": "Open Source Identity and Access Management For Modern Applications and Services",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
+        "topics": ["keycloak", "oidc", "saml"],
+        "license": "Apache-2.0"
+      }
+    },
+    {
       "title": "Migrate Organization admin tests into new testsuite",
       "url": "https://github.com/keycloak/keycloak/pull/48207",
       "number": 48207,
-      "state": "open",
-      "mergedAt": "2026-04-17T14:56:20Z",
+      "state": "closed",
+      "mergedAt": "2026-04-18T20:21:06Z",
       "additions": 711,
       "deletions": 663,
       "changedFiles": 2,
@@ -33,8 +68,47 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33945,
-        "forks": 8256,
+        "stars": 33953,
+        "forks": 8258,
+        "language": "Java",
+        "description": "Open Source Identity and Access Management For Modern Applications and Services",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
+        "topics": ["keycloak", "oidc", "saml"],
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "title": "Migrate Organization Invitation Management tests into new testsuite",
+      "url": "https://github.com/keycloak/keycloak/pull/48203",
+      "number": 48203,
+      "state": "closed",
+      "mergedAt": "2026-04-18T19:16:54Z",
+      "additions": 95,
+      "deletions": 132,
+      "changedFiles": 1,
+      "labels": [
+        {
+          "name": "team/cloud-native",
+          "color": "FEF2C0"
+        },
+        {
+          "name": "flaky-test",
+          "color": "B60205"
+        },
+        {
+          "name": "team/core-clients",
+          "color": "FEF2C0"
+        },
+        {
+          "name": "team/core-iam",
+          "color": "FEF2C0"
+        }
+      ],
+      "repo": {
+        "fullName": "keycloak/keycloak",
+        "url": "https://github.com/keycloak/keycloak",
+        "stars": 33953,
+        "forks": 8258,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -46,8 +120,8 @@
       "title": "Migrate Organization Member API tests into new testsuite",
       "url": "https://github.com/keycloak/keycloak/pull/48205",
       "number": 48205,
-      "state": "open",
-      "mergedAt": "2026-04-17T14:48:44Z",
+      "state": "closed",
+      "mergedAt": "2026-04-18T19:16:23Z",
       "additions": 548,
       "deletions": 507,
       "changedFiles": 2,
@@ -68,8 +142,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33945,
-        "forks": 8256,
+        "stars": 33953,
+        "forks": 8258,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -103,47 +177,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33945,
-        "forks": 8256,
-        "language": "Java",
-        "description": "Open Source Identity and Access Management For Modern Applications and Services",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
-        "topics": ["keycloak", "oidc", "saml"],
-        "license": "Apache-2.0"
-      }
-    },
-    {
-      "title": "Migrate Organization Invitation Management tests into new testsuite",
-      "url": "https://github.com/keycloak/keycloak/pull/48203",
-      "number": 48203,
-      "state": "open",
-      "mergedAt": "2026-04-17T14:36:28Z",
-      "additions": 95,
-      "deletions": 132,
-      "changedFiles": 1,
-      "labels": [
-        {
-          "name": "team/cloud-native",
-          "color": "FEF2C0"
-        },
-        {
-          "name": "flaky-test",
-          "color": "B60205"
-        },
-        {
-          "name": "team/core-clients",
-          "color": "FEF2C0"
-        },
-        {
-          "name": "team/core-iam",
-          "color": "FEF2C0"
-        }
-      ],
-      "repo": {
-        "fullName": "keycloak/keycloak",
-        "url": "https://github.com/keycloak/keycloak",
-        "stars": 33945,
-        "forks": 8256,
+        "stars": 33953,
+        "forks": 8258,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -649,7 +684,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -671,8 +706,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33945,
-        "forks": 8256,
+        "stars": 33953,
+        "forks": 8258,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -702,7 +737,7 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 138986,
+        "stars": 138994,
         "forks": 30928,
         "language": "JavaScript",
         "description": "The React Framework",
@@ -776,7 +811,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -803,7 +838,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -830,7 +865,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -857,7 +892,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -884,7 +919,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -911,7 +946,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -938,7 +973,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -965,7 +1000,7 @@
       "repo": {
         "fullName": "getsentry/sentry",
         "url": "https://github.com/getsentry/sentry",
-        "stars": 43616,
+        "stars": 43620,
         "forks": 4662,
         "language": "Python",
         "description": "Developer-first error tracking and performance monitoring",
@@ -1003,8 +1038,8 @@
       "repo": {
         "fullName": "novuhq/novu",
         "url": "https://github.com/novuhq/novu",
-        "stars": 38841,
-        "forks": 4254,
+        "stars": 38844,
+        "forks": 4256,
         "language": "TypeScript",
         "description": "The open-source notification infrastructure. In-app Inbox component, E-mail, SMS, Push and Slack Integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/77433905?v=4",
@@ -1160,7 +1195,7 @@
       "repo": {
         "fullName": "biomejs/biome",
         "url": "https://github.com/biomejs/biome",
-        "stars": 24411,
+        "stars": 24413,
         "forks": 964,
         "language": "Rust",
         "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
@@ -1226,7 +1261,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1253,7 +1288,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1280,7 +1315,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1331,7 +1366,7 @@
       "repo": {
         "fullName": "vercel-labs/portless",
         "url": "https://github.com/vercel-labs/portless",
-        "stars": 7068,
+        "stars": 7093,
         "forks": 225,
         "language": "TypeScript",
         "description": "Replace port numbers with stable, named local URLs. For humans and agents.",
@@ -1375,7 +1410,7 @@
         "fullName": "microsoft/winget-pkgs",
         "url": "https://github.com/microsoft/winget-pkgs",
         "stars": 10493,
-        "forks": 6726,
+        "forks": 6729,
         "language": null,
         "description": "The Microsoft community Windows Package Manager manifest repository",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6154722?v=4",
@@ -1401,7 +1436,7 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 138986,
+        "stars": 138994,
         "forks": 30928,
         "language": "JavaScript",
         "description": "The React Framework",
@@ -1443,7 +1478,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58355,
+        "stars": 58357,
         "forks": 22178,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1465,8 +1500,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33945,
-        "forks": 8256,
+        "stars": 33953,
+        "forks": 8258,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -1528,7 +1563,7 @@
       "repo": {
         "fullName": "biomejs/biome",
         "url": "https://github.com/biomejs/biome",
-        "stars": 24411,
+        "stars": 24413,
         "forks": 964,
         "language": "Rust",
         "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
@@ -1545,37 +1580,6 @@
           "web"
         ],
         "license": "Apache-2.0"
-      }
-    },
-    {
-      "title": "Fix Ruby 4.0 delegator warning for inspect on DelegateClass subclasses",
-      "url": "https://github.com/rails/rails/pull/56867",
-      "number": 56867,
-      "state": "merged",
-      "mergedAt": "2026-02-25T08:09:49Z",
-      "additions": 10,
-      "deletions": 0,
-      "changedFiles": 2,
-      "labels": [
-        {
-          "name": "activemodel",
-          "color": "00E5FF"
-        },
-        {
-          "name": "activerecord",
-          "color": "0b02e1"
-        }
-      ],
-      "repo": {
-        "fullName": "rails/rails",
-        "url": "https://github.com/rails/rails",
-        "stars": 58355,
-        "forks": 22178,
-        "language": "Ruby",
-        "description": "Ruby on Rails",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
-        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
-        "license": "MIT"
       }
     }
   ]
