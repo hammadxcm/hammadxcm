@@ -914,7 +914,7 @@ with prayer times, i18n & notifications
 <b>💎 <a href="https://rubygems.org/gems/rubocop-hk">rubocop-hk</a></b><br/>
 <sub>Published RubyGem —<br/>
 Modern RuboCop config for Ruby & Rails
-6 stars · 3.4k+ downloads</sub>
+6 stars · 3.5k+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
