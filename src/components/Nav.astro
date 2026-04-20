@@ -9,6 +9,7 @@
 import { config } from '@config/index';
 import type { TranslationMap } from '@i18n/types';
 import type { Locale } from '@i18n/types';
+import { localePath } from '@i18n/index';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 
 interface Props {
@@ -18,6 +19,7 @@ interface Props {
 }
 
 const { translations, locale, baseUrl = '' } = Astro.props;
+const contrib3DHref = localePath('3d-contrib', locale);
 
 // Resume data for PDF export
 const resumeData = {
@@ -51,9 +53,30 @@ const resumeData = {
   <div class="nav-inner">
     <a href={baseUrl ? baseUrl : '#hero'} class="nav-logo" id="navLogo"><span id="navLogoText">{config.site.logoText}</span><span id="navLogoSuffix">{config.site.logoSuffix ?? '://hk'}</span></a>
     <ul class="nav-links" id="navLinks">
-      {config.sections.map((section) => (
-        <li><a href={`${baseUrl}#${section.id}`}>{translations.nav.sections[section.id] || section.label}</a></li>
-      ))}
+      {config.sections.map((section) => {
+        const label = translations.nav.sections[section.id] || section.label;
+        if (section.id === 'contributions') {
+          return (
+            <li class="nav-item has-submenu" data-nav-submenu>
+              <a href={`${baseUrl}#${section.id}`} class="nav-submenu-trigger" aria-haspopup="true" aria-expanded="false">
+                <span>{label}</span>
+                <svg class="nav-submenu-caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </a>
+              <ul class="nav-submenu" role="menu">
+                <li role="none">
+                  <a href={`${baseUrl}#${section.id}`} role="menuitem">Merged PRs</a>
+                </li>
+                <li role="none">
+                  <a href={contrib3DHref} role="menuitem">3D Graph</a>
+                </li>
+              </ul>
+            </li>
+          );
+        }
+        return <li><a href={`${baseUrl}#${section.id}`}>{label}</a></li>;
+      })}
     </ul>
     <div class="nav-actions">
       <button type="button" class="resume-btn" id="achievementTrophyBtn" aria-label="Achievements" title="Achievements (Shift+A)">
@@ -142,6 +165,42 @@ const resumeData = {
 </nav>
 
 <script type="application/json" id="resumeData" set:html={JSON.stringify(resumeData)} />
+
+<script>
+  const MOBILE_BREAKPOINT = 768;
+  const isMobile = () => window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`).matches;
+  const items = document.querySelectorAll<HTMLLIElement>('[data-nav-submenu]');
+
+  for (const item of items) {
+    const trigger = item.querySelector<HTMLAnchorElement>('.nav-submenu-trigger');
+    if (!trigger) continue;
+
+    trigger.addEventListener('click', (e) => {
+      if (!isMobile()) return;
+      e.preventDefault();
+      const open = item.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'ArrowDown') return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        item.querySelector<HTMLAnchorElement>('.nav-submenu a')?.focus();
+      }
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as Node;
+    for (const item of items) {
+      if (!item.contains(target)) {
+        item.classList.remove('open');
+        item.querySelector('.nav-submenu-trigger')?.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
+</script>
 
 <style lang="scss">
   @use '../styles/mixins' as *;
@@ -246,6 +305,94 @@ const resumeData = {
       li { padding: 0.5rem 0; }
       a { font-size: 1rem; }
     }
+  }
+
+  .nav-item.has-submenu {
+    position: relative;
+  }
+
+  .nav-submenu-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+  }
+
+  .nav-submenu-caret {
+    transition: transform var(--duration-normal) var(--ease-out-expo);
+    opacity: 0.7;
+  }
+
+  .nav-submenu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    min-width: 180px;
+    list-style: none;
+    background: var(--bg-card-solid);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 0.4rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+    transition: opacity 0.2s var(--ease-out-expo), transform 0.2s var(--ease-out-expo), visibility 0.2s;
+
+    li { margin: 0; padding: 0; }
+
+    a {
+      display: block;
+      padding: 0.55rem 0.8rem;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text);
+      white-space: nowrap;
+
+      &:hover,
+      &:focus-visible {
+        background: var(--glass-bg);
+        color: var(--accent);
+      }
+    }
+  }
+
+  .nav-item.has-submenu:hover,
+  .nav-item.has-submenu:focus-within,
+  .nav-item.has-submenu.open {
+    .nav-submenu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-submenu-caret {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include respond-to(mobile) {
+    .nav-submenu {
+      position: static;
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      min-width: 0;
+      margin-top: 0.4rem;
+      margin-left: 1rem;
+      padding: 0.3rem 0;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+      display: none;
+    }
+
+    .nav-item.has-submenu.open .nav-submenu {
+      display: block;
+    }
+
+    .nav-submenu a { font-size: 0.95rem; }
   }
 
   .hamburger {
