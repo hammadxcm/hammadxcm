@@ -1,0 +1,116 @@
+---
+/**
+ * Profile Views card — combines the Komarev numeric count badge with the
+ * getloli moe-counter (animated anime-digit characters) used in README.md.
+ * Renders as its own titled card, sized to sit between the 3D graph and
+ * the CTA row in the Analytics section.
+ */
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  username: string;
+  translations: TranslationMap;
+  /**
+   * Optional override for the getloli "moe-counter" key. Default matches
+   * README.md: @${username}.github.readme
+   */
+  counterKey?: string;
+  /** Start date for the caption under the counter. Default: April 15, 2025. */
+  since?: string;
+}
+
+const {
+  username,
+  translations,
+  counterKey,
+  since = 'April\u00A015,\u00A02025',
+} = Astro.props;
+
+const moeKey = counterKey ?? `@${username}.github.readme`;
+const title =
+  (translations.analytics as { profileViews?: string }).profileViews ?? 'Profile Views';
+const captionTemplate =
+  (translations.analytics as { profileViewsSince?: string }).profileViewsSince ??
+  'Counting visitors since {since}';
+const caption = captionTemplate.replace('{since}', since);
+const moeAlt = translations.analytics.alt.profileViews ?? 'Animated profile view counter';
+---
+
+<div class="profile-views-card glass reveal">
+  <h3 class="profile-views-card__title">{title}</h3>
+  <div class="profile-views-card__badge">
+    <img
+      src={`https://komarev.com/ghpvc/?username=${username}&label=Profile%20Views&color=0e75b6&style=for-the-badge`}
+      alt={translations.analytics.alt.profileViews}
+      loading="lazy"
+      decoding="async"
+      width="170"
+      height="28"
+    />
+  </div>
+  <div class="profile-views-card__moe">
+    <img
+      src={`https://count.getloli.com/get/${moeKey}`}
+      alt={moeAlt}
+      loading="lazy"
+      decoding="async"
+      width="360"
+      height="80"
+    />
+  </div>
+  <p class="profile-views-card__caption">{caption}</p>
+</div>
+
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
+  .profile-views-card {
+    margin: var(--space-xl) 0 0;
+    padding: var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    @include backdrop-blur;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+
+    @include respond-to(mobile) {
+      padding: var(--space-md);
+      gap: 0.75rem;
+    }
+  }
+
+  .profile-views-card__title {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: 0.04em;
+  }
+
+  .profile-views-card__badge img {
+    display: block;
+    height: 28px;
+    width: auto;
+  }
+
+  .profile-views-card__moe img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    filter: drop-shadow(0 2px 12px rgba(var(--accent-glow), 0.15));
+  }
+
+  .profile-views-card__caption {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+</style>

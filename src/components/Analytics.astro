@@ -9,6 +9,8 @@
 import SectionHeader from './SectionHeader.astro';
 import ViewAllLink from './ViewAllLink.astro';
 import GitHubPanel from './analytics/GitHubPanel.astro';
+import ProfileViews from './analytics/ProfileViews.astro';
+import AnalyticsCtaRow from './analytics/AnalyticsCtaRow.astro';
 import Contribution3DGraph from './Contribution3DGraph.astro';
 import { config } from '@config/index';
 import { getLocaleFromUrl, localePath } from '@i18n/index';
@@ -35,6 +37,10 @@ const { username, utcOffset } = config.github;
     caption="3D contribution graph — regenerated daily"
     href={localePath('3d-contrib', locale)}
   />
+
+  <ProfileViews username={username} translations={translations} />
+
+  <AnalyticsCtaRow username={username} translations={translations} />
 
   <ViewAllLink href={localePath('analytics', locale)} label={translations.listing.viewAll} />
 </section>

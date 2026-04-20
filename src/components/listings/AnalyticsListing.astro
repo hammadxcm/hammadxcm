@@ -6,6 +6,8 @@
 import GitHubPanel from '../analytics/GitHubPanel.astro';
 import LeetCodePanel from '../analytics/LeetCodePanel.astro';
 import StackOverflowPanel from '../analytics/StackOverflowPanel.astro';
+import ProfileViews from '../analytics/ProfileViews.astro';
+import AnalyticsCtaRow from '../analytics/AnalyticsCtaRow.astro';
 import Contribution3DGraph from '../Contribution3DGraph.astro';
 import { config } from '@config/index';
 import { langColors } from '@config/lang-colors';
@@ -276,13 +278,6 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
     </div>
   </div>
 
-  <!-- 3D Contribution Graph -->
-  <Contribution3DGraph
-    id="contrib-3d"
-    themeAware
-    caption="3D contribution graph — regenerated daily"
-  />
-
   <!-- Platform Panels -->
   <div class="analytics-platforms">
     <GitHubPanel username={username} utcOffset={utcOffset} translations={translations} />
@@ -295,6 +290,17 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
       <StackOverflowPanel userId={stackoverflow.userId} translations={translations} />
     )}
   </div>
+
+  <!-- 3D Contribution Graph -->
+  <Contribution3DGraph
+    id="contrib-3d"
+    themeAware
+    caption="3D contribution graph — regenerated daily"
+  />
+
+  <ProfileViews username={username} translations={translations} />
+
+  <AnalyticsCtaRow username={username} translations={translations} />
 
   <div class="dev-quote reveal">
     <img data-stat="quote" src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt={translations.analytics.alt.devQuote} loading="lazy" decoding="async" width="600" height="150">
