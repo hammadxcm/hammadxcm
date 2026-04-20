@@ -17,6 +17,12 @@ interface Props {
   counterKey?: string;
   /** Start date for the caption under the counter. Default: April 15, 2025. */
   since?: string;
+  /**
+   * Count carried over from a previous counter. Shown as a small badge so
+   * the historical view count stays visible after swapping providers
+   * (the live moe-counter continues from here).
+   */
+  previousCount?: number;
 }
 
 const {
@@ -24,6 +30,7 @@ const {
   translations,
   counterKey,
   since = 'April\u00A015,\u00A02025',
+  previousCount,
 } = Astro.props;
 
 const moeKey = counterKey ?? `@${username}.github.readme`;
@@ -38,6 +45,12 @@ const moeAlt = translations.analytics.alt.profileViews ?? 'Animated profile view
 
 <div class="profile-views-card glass reveal">
   <h3 class="profile-views-card__title">{title}</h3>
+  {previousCount !== undefined && (
+    <div class="profile-views-card__legacy" aria-label={`Previous count ${previousCount.toLocaleString()}`}>
+      <span class="profile-views-card__legacy-label">Previous</span>
+      <span class="profile-views-card__legacy-value">{previousCount.toLocaleString()}+</span>
+    </div>
+  )}
   <div class="profile-views-card__moe">
     <img
       src={`https://count.getloli.com/get/${moeKey}`}
@@ -85,6 +98,31 @@ const moeAlt = translations.analytics.alt.profileViews ?? 'Animated profile view
     color: var(--text);
     margin: 0;
     letter-spacing: 0.04em;
+  }
+
+  .profile-views-card__legacy {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full, 999px);
+    background: rgba(var(--accent-glow), 0.08);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+
+  .profile-views-card__legacy-label {
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .profile-views-card__legacy-value {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
   .profile-views-card__moe img {
