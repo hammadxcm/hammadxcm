@@ -12,7 +12,6 @@ import ViewAllLink from './ViewAllLink.astro';
 import ContributionCard from './ContributionCard.astro';
 import ContributionsSummary from './ContributionsSummary.astro';
 import NotableSlider from './NotableSlider.astro';
-import Contribution3DGraph from './Contribution3DGraph.astro';
 import { config } from '@config/index';
 import type { ContributionsData } from '@config/types';
 import type { TranslationMap } from '@i18n/types';
@@ -54,12 +53,6 @@ const hasMore = prs.length > INITIAL_SHOW;
     {hasMore && (
       <ViewAllLink href={localePath('contributions', locale)} label={translations.listing.viewAll} count={prs.length} />
     )}
-
-    <Contribution3DGraph
-      themeAware
-      caption="3D contribution graph — regenerated daily"
-      href={localePath('3d-contrib', locale)}
-    />
   </section>
 )}
 

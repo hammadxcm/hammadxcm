@@ -30,6 +30,9 @@
   --glow-rest: drop-shadow(0 0 6px rgba(0, 191, 191, 0.3)) drop-shadow(0 0 16px rgba(91, 205, 236, 0.1));
   --glow-peak: drop-shadow(0 0 12px rgba(0, 191, 191, 0.55)) drop-shadow(0 0 30px rgba(91, 205, 236, 0.2));
   --glow-duration: 4s;
+  --contrib-3d-hue: 60deg;
+  --contrib-3d-sat: 1;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme: Dracula ── */
@@ -57,6 +60,9 @@
   --glow-rest: drop-shadow(0 0 8px rgba(189, 147, 249, 0.4)) drop-shadow(0 0 20px rgba(189, 147, 249, 0.15));
   --glow-peak: drop-shadow(0 0 16px rgba(189, 147, 249, 0.7)) drop-shadow(0 0 40px rgba(189, 147, 249, 0.3));
   --glow-duration: 4s;
+  --contrib-3d-hue: 145deg;
+  --contrib-3d-sat: 1;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme: Nord ── */
@@ -84,6 +90,9 @@
   --glow-rest: drop-shadow(0 0 6px rgba(136, 192, 208, 0.3));
   --glow-peak: drop-shadow(0 0 14px rgba(136, 192, 208, 0.6)) drop-shadow(0 0 30px rgba(129, 161, 193, 0.2));
   --glow-duration: 5s;
+  --contrib-3d-hue: 76deg;
+  --contrib-3d-sat: 0.7;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme: Catppuccin Mocha ── */
@@ -108,6 +117,9 @@
   --code-success: #a6e3a1;
   --boot-bg: #181825;  --boot-ok: #a6e3a1;  --boot-warn: #f9e2af;
   --boot-cmd: rgba(205, 214, 244, 0.5);  --boot-access-shadow: rgba(166, 227, 161, 0.5);
+  --contrib-3d-hue: 147deg;
+  --contrib-3d-sat: 0.9;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme: Synthwave ── */
@@ -135,6 +147,9 @@
   --glow-rest: drop-shadow(0 0 10px rgba(255, 46, 151, 0.6)) drop-shadow(0 0 30px rgba(255, 46, 151, 0.2));
   --glow-peak: drop-shadow(0 0 14px rgba(0, 240, 255, 0.6)) drop-shadow(0 0 35px rgba(0, 240, 255, 0.25));
   --glow-duration: 3s;
+  --contrib-3d-hue: 208deg;
+  --contrib-3d-sat: 1.1;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme: Matrix ── */
@@ -162,6 +177,9 @@
   --glow-rest: drop-shadow(0 0 6px rgba(0, 255, 65, 0.3)) drop-shadow(0 0 16px rgba(0, 255, 65, 0.1));
   --glow-peak: drop-shadow(0 0 14px rgba(0, 255, 65, 0.55)) drop-shadow(0 0 32px rgba(57, 255, 20, 0.2));
   --glow-duration: 4s;
+  --contrib-3d-hue: 0deg;
+  --contrib-3d-sat: 1.2;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme: Blood Moon ── */
@@ -189,6 +207,9 @@
   --glow-rest: drop-shadow(0 0 8px rgba(255, 0, 64, 0.35)) drop-shadow(0 0 20px rgba(255, 0, 64, 0.1));
   --glow-peak: drop-shadow(0 0 16px rgba(255, 0, 64, 0.6)) drop-shadow(0 0 36px rgba(255, 77, 109, 0.2));
   --glow-duration: 4s;
+  --contrib-3d-hue: 232deg;
+  --contrib-3d-sat: 1.1;
+  --contrib-3d-bright: 0.95;
 }
 
 /* ── Theme: Midnight ── */
@@ -213,6 +234,9 @@
   --code-success: #a78bfa;
   --boot-bg: #0a0a12;  --boot-ok: #a78bfa;  --boot-warn: #c4b5fd;
   --boot-cmd: rgba(232, 230, 240, 0.5);  --boot-access-shadow: rgba(167, 139, 250, 0.5);
+  --contrib-3d-hue: 124deg;
+  --contrib-3d-sat: 1;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme: Arctic Light ── */
@@ -240,6 +264,9 @@
   --glow-rest: drop-shadow(0 0 6px rgba(3, 105, 161, 0.25));
   --glow-peak: drop-shadow(0 0 12px rgba(3, 105, 161, 0.45)) drop-shadow(0 0 24px rgba(14, 116, 144, 0.15));
   --glow-duration: 6s;
+  --contrib-3d-hue: 84deg;
+  --contrib-3d-sat: 0.85;
+  --contrib-3d-bright: 0.9;
 }
 
 /* ── Theme: Gruvbox ── */
@@ -264,6 +291,9 @@
   --code-success: #b8bb26;
   --boot-bg: #1d2021;  --boot-ok: #b8bb26;  --boot-warn: #fabd2f;
   --boot-cmd: rgba(235, 219, 178, 0.5);  --boot-access-shadow: rgba(184, 187, 38, 0.5);
+  --contrib-3d-hue: 283deg;
+  --contrib-3d-sat: 1;
+  --contrib-3d-bright: 0.95;
 }
 
 /* ── Theme: Cyberpunk ── */
@@ -291,6 +321,9 @@
   --glow-rest: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.15));
   --glow-peak: drop-shadow(0 0 16px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.3));
   --glow-duration: 3s;
+  --contrib-3d-hue: 291deg;
+  --contrib-3d-sat: 1.1;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme: Nebula ── */
@@ -318,6 +351,9 @@
   --glow-rest: drop-shadow(0 0 8px rgba(224, 64, 251, 0.4)) drop-shadow(0 0 20px rgba(124, 77, 255, 0.15));
   --glow-peak: drop-shadow(0 0 16px rgba(224, 64, 251, 0.7)) drop-shadow(0 0 40px rgba(124, 77, 255, 0.3));
   --glow-duration: 4s;
+  --contrib-3d-hue: 174deg;
+  --contrib-3d-sat: 1.1;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme: Solarized Dark ── */
@@ -345,6 +381,9 @@
   --glow-rest: drop-shadow(0 0 6px rgba(38, 139, 210, 0.3));
   --glow-peak: drop-shadow(0 0 12px rgba(38, 139, 210, 0.5)) drop-shadow(0 0 24px rgba(42, 161, 152, 0.2));
   --glow-duration: 5s;
+  --contrib-3d-hue: 84deg;
+  --contrib-3d-sat: 1;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme: Rosé Pine ── */
@@ -372,6 +411,9 @@
   --glow-rest: drop-shadow(0 0 6px rgba(234, 154, 151, 0.3)) drop-shadow(0 0 16px rgba(196, 167, 231, 0.1));
   --glow-peak: drop-shadow(0 0 12px rgba(234, 154, 151, 0.55)) drop-shadow(0 0 30px rgba(196, 167, 231, 0.2));
   --glow-duration: 5s;
+  --contrib-3d-hue: 242deg;
+  --contrib-3d-sat: 0.85;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme: Monokai ── */
@@ -399,6 +441,9 @@
   --glow-rest: drop-shadow(0 0 6px rgba(166, 226, 46, 0.3)) drop-shadow(0 0 16px rgba(102, 217, 239, 0.1));
   --glow-peak: drop-shadow(0 0 14px rgba(166, 226, 46, 0.55)) drop-shadow(0 0 30px rgba(102, 217, 239, 0.2));
   --glow-duration: 4s;
+  --contrib-3d-hue: -40deg;
+  --contrib-3d-sat: 1;
+  --contrib-3d-bright: 1;
 }
 
 /* ── Theme Transition ── */

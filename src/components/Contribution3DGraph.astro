@@ -6,13 +6,13 @@
  * committed file at /generated/profile-3d-contrib/. A prebuild step mirrors
  * those SVGs into /public/generated/ so Astro can serve them.
  *
- * When themeAware is true, the initial variant is chosen from the site's
- * default theme (SSR) and a small inline script swaps the src whenever the
- * user changes theme (mutation on data-theme attribute).
+ * When themeAware is true, the component uses the green-animate variant
+ * as a neutral base and applies a per-theme `hue-rotate` + `saturate`
+ * CSS filter so the graph colors track the active theme accent. The
+ * filter values are defined alongside every theme in themes/_themes.scss
+ * (--contrib-3d-hue, --contrib-3d-sat). No JS is needed; the browser
+ * re-paints instantly when data-theme flips.
  */
-import { config } from '@config/index';
-import { contribution3DVariantMap, getContribution3DVariant } from '../scripts/theme-data/contribution-3d';
-
 interface Props {
   id?: string;
   variant?: string;
@@ -31,14 +31,13 @@ const {
   themeAware = false,
 } = Astro.props;
 
-const defaultTheme = config.site.theme || 'hacker';
-const initialVariant = variant ?? (themeAware ? getContribution3DVariant(defaultTheme) : 'profile-green-animate');
-const src = `/generated/profile-3d-contrib/${initialVariant}.svg`;
+const effectiveVariant = variant ?? 'profile-green-animate';
+const src = `/generated/profile-3d-contrib/${effectiveVariant}.svg`;
 const altText = caption ?? '3D contribution graph';
-const variantMapJson = themeAware ? JSON.stringify(contribution3DVariantMap) : undefined;
+const figureClass = themeAware ? 'contrib-3d contrib-3d--themed' : 'contrib-3d';
 ---
 
-<figure class="contrib-3d" id={id} data-theme-aware={themeAware ? 'true' : undefined} data-variant-map={variantMapJson}>
+<figure class:list={[figureClass]} id={id}>
   {href ? (
     <a href={href} class="contrib-3d-link" aria-label={altText}>
       <img
@@ -48,7 +47,6 @@ const variantMapJson = themeAware ? JSON.stringify(contribution3DVariantMap) : u
         decoding="async"
         width="900"
         height="300"
-        data-contrib-3d-img={themeAware ? 'true' : undefined}
       />
     </a>
   ) : (
@@ -59,52 +57,10 @@ const variantMapJson = themeAware ? JSON.stringify(contribution3DVariantMap) : u
       decoding="async"
       width="900"
       height="300"
-      data-contrib-3d-img={themeAware ? 'true' : undefined}
     />
   )}
   {caption && <figcaption>{caption}</figcaption>}
 </figure>
-
-{themeAware && (
-  <script is:inline>
-    {`
-    (function () {
-      if (window.__contrib3dInit) return;
-      window.__contrib3dInit = true;
-
-      var root = document.querySelector('.contrib-3d[data-theme-aware="true"][data-variant-map]');
-      if (!root) return;
-      var raw = root.getAttribute('data-variant-map');
-      if (!raw) return;
-      var map;
-      try { map = JSON.parse(raw); } catch (_) { return; }
-
-      function pick(theme) {
-        return (theme && map[theme]) || map.hacker;
-      }
-      function apply(theme) {
-        var variant = pick(theme);
-        var next = '/generated/profile-3d-contrib/' + variant + '.svg';
-        document.querySelectorAll('img[data-contrib-3d-img="true"]').forEach(function (img) {
-          if (img.src.indexOf(next) === -1) img.src = next;
-        });
-      }
-
-      apply(document.documentElement.getAttribute('data-theme'));
-
-      var obs = new MutationObserver(function (mutations) {
-        for (var i = 0; i < mutations.length; i++) {
-          if (mutations[i].attributeName === 'data-theme') {
-            apply(document.documentElement.getAttribute('data-theme'));
-            return;
-          }
-        }
-      });
-      obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-    })();
-    `}
-  </script>
-)}
 
 <style lang="scss">
   @use '../styles/mixins' as *;
@@ -136,6 +92,14 @@ const variantMapJson = themeAware ? JSON.stringify(contribution3DVariantMap) : u
     max-width: 100%;
     height: auto;
     margin: 0 auto;
+  }
+
+  .contrib-3d--themed img {
+    filter:
+      hue-rotate(var(--contrib-3d-hue, 0deg))
+      saturate(var(--contrib-3d-sat, 1))
+      brightness(var(--contrib-3d-bright, 1));
+    transition: filter var(--duration-normal) var(--ease-out-expo);
   }
 
   figcaption {
