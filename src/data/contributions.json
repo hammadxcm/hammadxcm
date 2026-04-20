@@ -1,8 +1,37 @@
 {
-  "generatedAt": "2026-04-19T12:20:41.354Z",
+  "generatedAt": "2026-04-20T12:36:56.754Z",
   "username": "hammadxcm",
   "totalCount": 50,
   "contributions": [
+    {
+      "title": "[Fix #15117] Add `AllowConsecutiveConditionals` option to `Style/IfUnlessModifier`",
+      "url": "https://github.com/rubocop/rubocop/pull/15119",
+      "number": 15119,
+      "state": "open",
+      "mergedAt": "2026-04-19T17:09:37Z",
+      "additions": 150,
+      "deletions": 1,
+      "changedFiles": 5,
+      "labels": [],
+      "repo": {
+        "fullName": "rubocop/rubocop",
+        "url": "https://github.com/rubocop/rubocop",
+        "stars": 12852,
+        "forks": 3101,
+        "language": "Ruby",
+        "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
+        "topics": [
+          "code-formatter",
+          "hacktoberfest",
+          "linter",
+          "rubocop",
+          "ruby",
+          "static-code-analysis"
+        ],
+        "license": "MIT"
+      }
+    },
     {
       "title": "Migrate Organization Invitation Management tests into new testsuite",
       "url": "https://github.com/keycloak/keycloak/pull/48227",
@@ -29,8 +58,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33955,
-        "forks": 8258,
+        "stars": 33972,
+        "forks": 8256,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -68,8 +97,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33955,
-        "forks": 8258,
+        "stars": 33972,
+        "forks": 8256,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -107,8 +136,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33955,
-        "forks": 8258,
+        "stars": 33972,
+        "forks": 8256,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -142,8 +171,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33955,
-        "forks": 8258,
+        "stars": 33972,
+        "forks": 8256,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -177,8 +206,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33955,
-        "forks": 8258,
+        "stars": 33972,
+        "forks": 8256,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -199,8 +228,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -231,8 +260,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -263,8 +292,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -295,8 +324,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -327,8 +356,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -359,8 +388,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -391,8 +420,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -423,8 +452,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -455,8 +484,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -487,8 +516,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -519,8 +548,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -551,8 +580,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -583,8 +612,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -615,8 +644,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -647,8 +676,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -684,8 +713,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -706,8 +735,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33955,
-        "forks": 8258,
+        "stars": 33972,
+        "forks": 8256,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -737,8 +766,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 139001,
-        "forks": 30935,
+        "stars": 139021,
+        "forks": 30927,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -774,8 +803,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -811,8 +840,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -838,8 +867,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -865,8 +894,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -892,8 +921,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -919,8 +948,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -946,8 +975,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -973,8 +1002,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1000,8 +1029,8 @@
       "repo": {
         "fullName": "getsentry/sentry",
         "url": "https://github.com/getsentry/sentry",
-        "stars": 43619,
-        "forks": 4662,
+        "stars": 43626,
+        "forks": 4653,
         "language": "Python",
         "description": "Developer-first error tracking and performance monitoring",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/1396951?v=4",
@@ -1038,8 +1067,8 @@
       "repo": {
         "fullName": "novuhq/novu",
         "url": "https://github.com/novuhq/novu",
-        "stars": 38844,
-        "forks": 4255,
+        "stars": 38840,
+        "forks": 4259,
         "language": "TypeScript",
         "description": "The open-source notification infrastructure. In-app Inbox component, E-mail, SMS, Push and Slack Integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/77433905?v=4",
@@ -1148,7 +1177,7 @@
       "repo": {
         "fullName": "biomejs/biome-vscode",
         "url": "https://github.com/biomejs/biome-vscode",
-        "stars": 418,
+        "stars": 419,
         "forks": 71,
         "language": "TypeScript",
         "description": "Biome extension for VS Code",
@@ -1195,8 +1224,8 @@
       "repo": {
         "fullName": "biomejs/biome",
         "url": "https://github.com/biomejs/biome",
-        "stars": 24414,
-        "forks": 964,
+        "stars": 24421,
+        "forks": 968,
         "language": "Rust",
         "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
@@ -1227,8 +1256,8 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12851,
-        "forks": 3102,
+        "stars": 12852,
+        "forks": 3101,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -1261,8 +1290,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1288,8 +1317,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1315,8 +1344,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1337,8 +1366,8 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12851,
-        "forks": 3102,
+        "stars": 12852,
+        "forks": 3101,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -1366,8 +1395,8 @@
       "repo": {
         "fullName": "vercel-labs/portless",
         "url": "https://github.com/vercel-labs/portless",
-        "stars": 7128,
-        "forks": 226,
+        "stars": 7169,
+        "forks": 227,
         "language": "TypeScript",
         "description": "Replace port numbers with stable, named local URLs. For humans and agents.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/108547162?v=4",
@@ -1409,8 +1438,8 @@
       "repo": {
         "fullName": "microsoft/winget-pkgs",
         "url": "https://github.com/microsoft/winget-pkgs",
-        "stars": 10494,
-        "forks": 6732,
+        "stars": 10497,
+        "forks": 6747,
         "language": null,
         "description": "The Microsoft community Windows Package Manager manifest repository",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6154722?v=4",
@@ -1436,8 +1465,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 139001,
-        "forks": 30935,
+        "stars": 139021,
+        "forks": 30927,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -1478,8 +1507,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58356,
-        "forks": 22181,
+        "stars": 58359,
+        "forks": 22184,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1500,8 +1529,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33955,
-        "forks": 8258,
+        "stars": 33972,
+        "forks": 8256,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -1522,8 +1551,8 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8222,
-        "forks": 2570,
+        "stars": 8220,
+        "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6183?v=4",
@@ -1539,47 +1568,6 @@
           "thoughtbot"
         ],
         "license": "MIT"
-      }
-    },
-    {
-      "title": "feat(lint): extend useNullishCoalescing to detect ternary nullish checks",
-      "url": "https://github.com/biomejs/biome/pull/9240",
-      "number": 9240,
-      "state": "closed",
-      "mergedAt": "2026-02-25T14:56:31Z",
-      "additions": 1427,
-      "deletions": 82,
-      "changedFiles": 15,
-      "labels": [
-        {
-          "name": "A-Linter",
-          "color": "a4c8fc"
-        },
-        {
-          "name": "L-JavaScript",
-          "color": "ffe2bf"
-        }
-      ],
-      "repo": {
-        "fullName": "biomejs/biome",
-        "url": "https://github.com/biomejs/biome",
-        "stars": 24414,
-        "forks": 964,
-        "language": "Rust",
-        "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
-        "topics": [
-          "css",
-          "formatter",
-          "javascript",
-          "json",
-          "jsx",
-          "linter",
-          "static-code-analysis",
-          "typescript",
-          "web"
-        ],
-        "license": "Apache-2.0"
       }
     }
   ]
