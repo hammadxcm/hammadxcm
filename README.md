@@ -18,7 +18,6 @@
 
 <br/>
 
-[![Profile Views](https://komarev.com/ghpvc/?username=hammadxcm&label=Profile%20Views&color=0e75b6&style=for-the-badge)](https://github.com/hammadxcm)
 [![Twitter Follow](https://img.shields.io/twitter/follow/hammadkhanxcm?logo=twitter&style=for-the-badge&color=1da1f2)](https://twitter.com/hammadkhanxcm)
 [![LinkedIn Connect](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/hammadxcm)
 

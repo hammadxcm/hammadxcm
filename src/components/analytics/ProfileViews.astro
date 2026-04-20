@@ -38,16 +38,6 @@ const moeAlt = translations.analytics.alt.profileViews ?? 'Animated profile view
 
 <div class="profile-views-card glass reveal">
   <h3 class="profile-views-card__title">{title}</h3>
-  <div class="profile-views-card__badge">
-    <img
-      src={`https://komarev.com/ghpvc/?username=${username}&label=Profile%20Views&color=0e75b6&style=for-the-badge`}
-      alt={translations.analytics.alt.profileViews}
-      loading="lazy"
-      decoding="async"
-      width="170"
-      height="28"
-    />
-  </div>
   <div class="profile-views-card__moe">
     <img
       src={`https://count.getloli.com/get/${moeKey}`}
@@ -90,12 +80,6 @@ const moeAlt = translations.analytics.alt.profileViews ?? 'Animated profile view
     color: var(--text);
     margin: 0;
     letter-spacing: 0.04em;
-  }
-
-  .profile-views-card__badge img {
-    display: block;
-    height: 28px;
-    width: auto;
   }
 
   .profile-views-card__moe img {
