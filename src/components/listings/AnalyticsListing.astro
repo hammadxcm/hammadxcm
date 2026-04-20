@@ -6,6 +6,7 @@
 import GitHubPanel from '../analytics/GitHubPanel.astro';
 import LeetCodePanel from '../analytics/LeetCodePanel.astro';
 import StackOverflowPanel from '../analytics/StackOverflowPanel.astro';
+import Contribution3DGraph from '../Contribution3DGraph.astro';
 import { config } from '@config/index';
 import { langColors } from '@config/lang-colors';
 import type { ContributionsData, ProjectsData, ContributionGraphData } from '@config/types';
@@ -274,6 +275,13 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
       </div>
     </div>
   </div>
+
+  <!-- 3D Contribution Graph -->
+  <Contribution3DGraph
+    id="contrib-3d"
+    themeAware
+    caption="3D contribution graph — regenerated daily"
+  />
 
   <!-- Platform Panels -->
   <div class="analytics-platforms">

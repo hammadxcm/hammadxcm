@@ -14,6 +14,7 @@ import { config } from '@config/index';
 import { contribution3DVariantMap, getContribution3DVariant } from '../scripts/theme-data/contribution-3d';
 
 interface Props {
+  id?: string;
   variant?: string;
   caption?: string;
   href?: string;
@@ -22,6 +23,7 @@ interface Props {
 }
 
 const {
+  id,
   variant,
   caption,
   href,
@@ -36,7 +38,7 @@ const altText = caption ?? '3D contribution graph';
 const variantMapJson = themeAware ? JSON.stringify(contribution3DVariantMap) : undefined;
 ---
 
-<figure class="contrib-3d" data-theme-aware={themeAware ? 'true' : undefined} data-variant-map={variantMapJson}>
+<figure class="contrib-3d" id={id} data-theme-aware={themeAware ? 'true' : undefined} data-variant-map={variantMapJson}>
   {href ? (
     <a href={href} class="contrib-3d-link" aria-label={altText}>
       <img
@@ -67,13 +69,15 @@ const variantMapJson = themeAware ? JSON.stringify(contribution3DVariantMap) : u
   <script is:inline>
     {`
     (function () {
-      var root = document.querySelector('.contrib-3d[data-theme-aware="true"]');
+      if (window.__contrib3dInit) return;
+      window.__contrib3dInit = true;
+
+      var root = document.querySelector('.contrib-3d[data-theme-aware="true"][data-variant-map]');
       if (!root) return;
       var raw = root.getAttribute('data-variant-map');
       if (!raw) return;
       var map;
       try { map = JSON.parse(raw); } catch (_) { return; }
-      var imgs = document.querySelectorAll('img[data-contrib-3d-img="true"]');
 
       function pick(theme) {
         return (theme && map[theme]) || map.hacker;
@@ -81,7 +85,7 @@ const variantMapJson = themeAware ? JSON.stringify(contribution3DVariantMap) : u
       function apply(theme) {
         var variant = pick(theme);
         var next = '/generated/profile-3d-contrib/' + variant + '.svg';
-        imgs.forEach(function (img) {
+        document.querySelectorAll('img[data-contrib-3d-img="true"]').forEach(function (img) {
           if (img.src.indexOf(next) === -1) img.src = next;
         });
       }
