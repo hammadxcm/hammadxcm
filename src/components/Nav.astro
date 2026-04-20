@@ -20,7 +20,6 @@ interface Props {
 
 const { translations, locale, baseUrl = '' } = Astro.props;
 const contrib3DHref = `${localePath('analytics', locale)}#contrib-3d`;
-const contrib3DGalleryHref = localePath('3d-contrib', locale);
 
 // Resume data for PDF export
 const resumeData = {
@@ -71,9 +70,6 @@ const resumeData = {
                 </li>
                 <li role="none">
                   <a href={contrib3DHref} role="menuitem">3D Graph</a>
-                </li>
-                <li role="none">
-                  <a href={contrib3DGalleryHref} role="menuitem">3D Gallery</a>
                 </li>
               </ul>
             </li>
