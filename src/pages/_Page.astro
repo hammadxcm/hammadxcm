@@ -7,6 +7,7 @@ import GlobalOverlays from '@components/GlobalOverlays.astro';
 import Nav from '@components/Nav.astro';
 import Hero from '@components/Hero.astro';
 import About from '@components/About.astro';
+import ProfileViews from '@components/analytics/ProfileViews.astro';
 import TechArsenal from '@components/TechArsenal.astro';
 import Journey from '@components/Journey.astro';
 import Projects from '@components/Projects.astro';
@@ -50,6 +51,11 @@ const description = translations.meta.description;
   <Hero translations={translations} />
 
   <About translations={translations} />
+  <div class="section-separator"><div class="sep-line"></div></div>
+
+  <section id="profile-views" class="section profile-views-section">
+    <ProfileViews username={config.github.username} translations={translations} />
+  </section>
   <div class="section-separator"><div class="sep-line"></div></div>
 
   <TechArsenal translations={translations} />
