@@ -4,6 +4,7 @@
   "version": "1.5.14",
   "private": true,
   "scripts": {
+    "predev": "node scripts/fetch-all-data.mjs",
     "dev": "astro dev",
     "prebuild": "node scripts/fetch-all-data.mjs",
     "build": "astro build",

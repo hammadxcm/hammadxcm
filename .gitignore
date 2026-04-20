@@ -6,6 +6,9 @@ dist/
 .astro/
 .cache/
 
+# Prebuild artifacts mirrored from /generated → /public
+public/generated/
+
 # Test coverage
 coverage/
 

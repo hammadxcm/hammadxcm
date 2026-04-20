@@ -1,85 +1,12 @@
 {
-  "generatedAt": "2026-04-07T13:41:18.322Z",
+  "generatedAt": "2026-04-20T12:46:28.185Z",
   "username": "hammadxcm",
-  "totalContributions": 9637,
+  "totalContributions": 9682,
   "years": [
     {
       "year": "Last year",
-      "totalContributions": 9637,
+      "totalContributions": 9682,
       "weeks": [
-        {
-          "contributionDays": [
-            {
-              "date": "2025-04-07",
-              "count": 6,
-              "level": 1
-            },
-            {
-              "date": "2025-04-08",
-              "count": 13,
-              "level": 2
-            },
-            {
-              "date": "2025-04-09",
-              "count": 20,
-              "level": 3
-            },
-            {
-              "date": "2025-04-10",
-              "count": 15,
-              "level": 3
-            },
-            {
-              "date": "2025-04-11",
-              "count": 16,
-              "level": 3
-            },
-            {
-              "date": "2025-04-12",
-              "count": 14,
-              "level": 2
-            }
-          ]
-        },
-        {
-          "contributionDays": [
-            {
-              "date": "2025-04-13",
-              "count": 18,
-              "level": 3
-            },
-            {
-              "date": "2025-04-14",
-              "count": 9,
-              "level": 1
-            },
-            {
-              "date": "2025-04-15",
-              "count": 16,
-              "level": 3
-            },
-            {
-              "date": "2025-04-16",
-              "count": 12,
-              "level": 2
-            },
-            {
-              "date": "2025-04-17",
-              "count": 11,
-              "level": 2
-            },
-            {
-              "date": "2025-04-18",
-              "count": 11,
-              "level": 2
-            },
-            {
-              "date": "2025-04-19",
-              "count": 15,
-              "level": 3
-            }
-          ]
-        },
         {
           "contributionDays": [
             {
@@ -2044,8 +1971,81 @@
             },
             {
               "date": "2026-04-07",
-              "count": 35,
+              "count": 47,
               "level": 4
+            },
+            {
+              "date": "2026-04-08",
+              "count": 18,
+              "level": 3
+            },
+            {
+              "date": "2026-04-09",
+              "count": 23,
+              "level": 3
+            },
+            {
+              "date": "2026-04-10",
+              "count": 15,
+              "level": 3
+            },
+            {
+              "date": "2026-04-11",
+              "count": 12,
+              "level": 2
+            }
+          ]
+        },
+        {
+          "contributionDays": [
+            {
+              "date": "2026-04-12",
+              "count": 28,
+              "level": 4
+            },
+            {
+              "date": "2026-04-13",
+              "count": 19,
+              "level": 3
+            },
+            {
+              "date": "2026-04-14",
+              "count": 17,
+              "level": 3
+            },
+            {
+              "date": "2026-04-15",
+              "count": 13,
+              "level": 2
+            },
+            {
+              "date": "2026-04-16",
+              "count": 15,
+              "level": 3
+            },
+            {
+              "date": "2026-04-17",
+              "count": 13,
+              "level": 2
+            },
+            {
+              "date": "2026-04-18",
+              "count": 16,
+              "level": 3
+            }
+          ]
+        },
+        {
+          "contributionDays": [
+            {
+              "date": "2026-04-19",
+              "count": 14,
+              "level": 2
+            },
+            {
+              "date": "2026-04-20",
+              "count": 6,
+              "level": 1
             }
           ]
         }
@@ -2053,86 +2053,8 @@
     },
     {
       "year": "2024-2025",
-      "totalContributions": 5863,
+      "totalContributions": 5868,
       "weeks": [
-        {
-          "contributionDays": [
-            {
-              "date": "2024-04-07",
-              "count": 14,
-              "level": 2
-            },
-            {
-              "date": "2024-04-08",
-              "count": 15,
-              "level": 2
-            },
-            {
-              "date": "2024-04-09",
-              "count": 17,
-              "level": 3
-            },
-            {
-              "date": "2024-04-10",
-              "count": 14,
-              "level": 2
-            },
-            {
-              "date": "2024-04-11",
-              "count": 18,
-              "level": 3
-            },
-            {
-              "date": "2024-04-12",
-              "count": 12,
-              "level": 1
-            },
-            {
-              "date": "2024-04-13",
-              "count": 15,
-              "level": 2
-            }
-          ]
-        },
-        {
-          "contributionDays": [
-            {
-              "date": "2024-04-14",
-              "count": 9,
-              "level": 1
-            },
-            {
-              "date": "2024-04-15",
-              "count": 15,
-              "level": 2
-            },
-            {
-              "date": "2024-04-16",
-              "count": 17,
-              "level": 3
-            },
-            {
-              "date": "2024-04-17",
-              "count": 8,
-              "level": 1
-            },
-            {
-              "date": "2024-04-18",
-              "count": 13,
-              "level": 2
-            },
-            {
-              "date": "2024-04-19",
-              "count": 12,
-              "level": 1
-            },
-            {
-              "date": "2024-04-20",
-              "count": 17,
-              "level": 3
-            }
-          ]
-        },
         {
           "contributionDays": [
             {
@@ -4094,6 +4016,79 @@
               "date": "2025-04-07",
               "count": 6,
               "level": 1
+            },
+            {
+              "date": "2025-04-08",
+              "count": 13,
+              "level": 2
+            },
+            {
+              "date": "2025-04-09",
+              "count": 20,
+              "level": 4
+            },
+            {
+              "date": "2025-04-10",
+              "count": 15,
+              "level": 2
+            },
+            {
+              "date": "2025-04-11",
+              "count": 16,
+              "level": 3
+            },
+            {
+              "date": "2025-04-12",
+              "count": 14,
+              "level": 2
+            }
+          ]
+        },
+        {
+          "contributionDays": [
+            {
+              "date": "2025-04-13",
+              "count": 18,
+              "level": 3
+            },
+            {
+              "date": "2025-04-14",
+              "count": 9,
+              "level": 1
+            },
+            {
+              "date": "2025-04-15",
+              "count": 16,
+              "level": 3
+            },
+            {
+              "date": "2025-04-16",
+              "count": 12,
+              "level": 1
+            },
+            {
+              "date": "2025-04-17",
+              "count": 11,
+              "level": 1
+            },
+            {
+              "date": "2025-04-18",
+              "count": 11,
+              "level": 1
+            },
+            {
+              "date": "2025-04-19",
+              "count": 15,
+              "level": 2
+            }
+          ]
+        },
+        {
+          "contributionDays": [
+            {
+              "date": "2025-04-20",
+              "count": 14,
+              "level": 2
             }
           ]
         }
@@ -4101,69 +4096,10 @@
     },
     {
       "year": "2023-2024",
-      "totalContributions": 6121,
+      "totalContributions": 6060,
       "weeks": [
         {
           "contributionDays": [
-            {
-              "date": "2023-04-09",
-              "count": 20,
-              "level": 4
-            },
-            {
-              "date": "2023-04-10",
-              "count": 14,
-              "level": 1
-            },
-            {
-              "date": "2023-04-11",
-              "count": 21,
-              "level": 4
-            },
-            {
-              "date": "2023-04-12",
-              "count": 16,
-              "level": 2
-            },
-            {
-              "date": "2023-04-13",
-              "count": 20,
-              "level": 4
-            },
-            {
-              "date": "2023-04-14",
-              "count": 21,
-              "level": 4
-            },
-            {
-              "date": "2023-04-15",
-              "count": 21,
-              "level": 4
-            }
-          ]
-        },
-        {
-          "contributionDays": [
-            {
-              "date": "2023-04-16",
-              "count": 16,
-              "level": 2
-            },
-            {
-              "date": "2023-04-17",
-              "count": 18,
-              "level": 3
-            },
-            {
-              "date": "2023-04-18",
-              "count": 23,
-              "level": 4
-            },
-            {
-              "date": "2023-04-19",
-              "count": 17,
-              "level": 3
-            },
             {
               "date": "2023-04-20",
               "count": 19,
@@ -6137,6 +6073,75 @@
               "date": "2024-04-07",
               "count": 14,
               "level": 1
+            },
+            {
+              "date": "2024-04-08",
+              "count": 15,
+              "level": 2
+            },
+            {
+              "date": "2024-04-09",
+              "count": 17,
+              "level": 3
+            },
+            {
+              "date": "2024-04-10",
+              "count": 14,
+              "level": 1
+            },
+            {
+              "date": "2024-04-11",
+              "count": 18,
+              "level": 3
+            },
+            {
+              "date": "2024-04-12",
+              "count": 12,
+              "level": 1
+            },
+            {
+              "date": "2024-04-13",
+              "count": 15,
+              "level": 2
+            }
+          ]
+        },
+        {
+          "contributionDays": [
+            {
+              "date": "2024-04-14",
+              "count": 9,
+              "level": 1
+            },
+            {
+              "date": "2024-04-15",
+              "count": 15,
+              "level": 2
+            },
+            {
+              "date": "2024-04-16",
+              "count": 17,
+              "level": 3
+            },
+            {
+              "date": "2024-04-17",
+              "count": 8,
+              "level": 1
+            },
+            {
+              "date": "2024-04-18",
+              "count": 13,
+              "level": 1
+            },
+            {
+              "date": "2024-04-19",
+              "count": 12,
+              "level": 1
+            },
+            {
+              "date": "2024-04-20",
+              "count": 17,
+              "level": 3
             }
           ]
         }
@@ -6144,83 +6149,10 @@
     },
     {
       "year": "2022-2023",
-      "totalContributions": 3296,
+      "totalContributions": 3483,
       "weeks": [
         {
           "contributionDays": [
-            {
-              "date": "2022-04-07",
-              "count": 7,
-              "level": 2
-            },
-            {
-              "date": "2022-04-08",
-              "count": 5,
-              "level": 1
-            },
-            {
-              "date": "2022-04-09",
-              "count": 2,
-              "level": 1
-            }
-          ]
-        },
-        {
-          "contributionDays": [
-            {
-              "date": "2022-04-10",
-              "count": 2,
-              "level": 1
-            },
-            {
-              "date": "2022-04-11",
-              "count": 3,
-              "level": 1
-            },
-            {
-              "date": "2022-04-12",
-              "count": 2,
-              "level": 1
-            },
-            {
-              "date": "2022-04-13",
-              "count": 7,
-              "level": 2
-            },
-            {
-              "date": "2022-04-14",
-              "count": 4,
-              "level": 1
-            },
-            {
-              "date": "2022-04-15",
-              "count": 3,
-              "level": 1
-            },
-            {
-              "date": "2022-04-16",
-              "count": 3,
-              "level": 1
-            }
-          ]
-        },
-        {
-          "contributionDays": [
-            {
-              "date": "2022-04-17",
-              "count": 6,
-              "level": 2
-            },
-            {
-              "date": "2022-04-18",
-              "count": 6,
-              "level": 2
-            },
-            {
-              "date": "2022-04-19",
-              "count": 4,
-              "level": 1
-            },
             {
               "date": "2022-04-20",
               "count": 4,
@@ -6838,7 +6770,7 @@
             {
               "date": "2022-08-08",
               "count": 13,
-              "level": 4
+              "level": 3
             },
             {
               "date": "2022-08-09",
@@ -7618,7 +7550,7 @@
             {
               "date": "2022-12-26",
               "count": 13,
-              "level": 4
+              "level": 3
             },
             {
               "date": "2022-12-27",
@@ -7643,7 +7575,7 @@
             {
               "date": "2022-12-31",
               "count": 13,
-              "level": 4
+              "level": 3
             }
           ]
         },
@@ -8067,7 +7999,7 @@
             {
               "date": "2023-03-17",
               "count": 13,
-              "level": 4
+              "level": 3
             },
             {
               "date": "2023-03-18",
@@ -8185,6 +8117,79 @@
               "date": "2023-04-07",
               "count": 21,
               "level": 4
+            },
+            {
+              "date": "2023-04-08",
+              "count": 15,
+              "level": 4
+            }
+          ]
+        },
+        {
+          "contributionDays": [
+            {
+              "date": "2023-04-09",
+              "count": 20,
+              "level": 4
+            },
+            {
+              "date": "2023-04-10",
+              "count": 14,
+              "level": 4
+            },
+            {
+              "date": "2023-04-11",
+              "count": 21,
+              "level": 4
+            },
+            {
+              "date": "2023-04-12",
+              "count": 16,
+              "level": 4
+            },
+            {
+              "date": "2023-04-13",
+              "count": 20,
+              "level": 4
+            },
+            {
+              "date": "2023-04-14",
+              "count": 21,
+              "level": 4
+            },
+            {
+              "date": "2023-04-15",
+              "count": 21,
+              "level": 4
+            }
+          ]
+        },
+        {
+          "contributionDays": [
+            {
+              "date": "2023-04-16",
+              "count": 16,
+              "level": 4
+            },
+            {
+              "date": "2023-04-17",
+              "count": 18,
+              "level": 4
+            },
+            {
+              "date": "2023-04-18",
+              "count": 23,
+              "level": 4
+            },
+            {
+              "date": "2023-04-19",
+              "count": 17,
+              "level": 4
+            },
+            {
+              "date": "2023-04-20",
+              "count": 19,
+              "level": 4
             }
           ]
         }
@@ -8192,83 +8197,10 @@
     },
     {
       "year": "2021-2022",
-      "totalContributions": 4982,
+      "totalContributions": 4781,
       "weeks": [
         {
           "contributionDays": [
-            {
-              "date": "2021-04-07",
-              "count": 21,
-              "level": 4
-            },
-            {
-              "date": "2021-04-08",
-              "count": 19,
-              "level": 4
-            },
-            {
-              "date": "2021-04-09",
-              "count": 25,
-              "level": 4
-            },
-            {
-              "date": "2021-04-10",
-              "count": 17,
-              "level": 4
-            }
-          ]
-        },
-        {
-          "contributionDays": [
-            {
-              "date": "2021-04-11",
-              "count": 17,
-              "level": 4
-            },
-            {
-              "date": "2021-04-12",
-              "count": 14,
-              "level": 4
-            },
-            {
-              "date": "2021-04-13",
-              "count": 26,
-              "level": 4
-            },
-            {
-              "date": "2021-04-14",
-              "count": 21,
-              "level": 4
-            },
-            {
-              "date": "2021-04-15",
-              "count": 20,
-              "level": 4
-            },
-            {
-              "date": "2021-04-16",
-              "count": 20,
-              "level": 4
-            },
-            {
-              "date": "2021-04-17",
-              "count": 13,
-              "level": 4
-            }
-          ]
-        },
-        {
-          "contributionDays": [
-            {
-              "date": "2021-04-18",
-              "count": 16,
-              "level": 4
-            },
-            {
-              "date": "2021-04-19",
-              "count": 23,
-              "level": 4
-            },
             {
               "date": "2021-04-20",
               "count": 17,
@@ -8418,7 +8350,7 @@
             {
               "date": "2021-05-16",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-05-17",
@@ -8496,7 +8428,7 @@
             {
               "date": "2021-05-30",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-05-31",
@@ -8540,17 +8472,17 @@
             {
               "date": "2021-06-07",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-06-08",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-06-09",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-06-10",
@@ -8628,7 +8560,7 @@
             {
               "date": "2021-06-23",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-06-24",
@@ -8657,7 +8589,7 @@
             {
               "date": "2021-06-28",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-06-29",
@@ -8721,7 +8653,7 @@
             {
               "date": "2021-07-10",
               "count": 12,
-              "level": 3
+              "level": 4
             }
           ]
         },
@@ -8745,7 +8677,7 @@
             {
               "date": "2021-07-14",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-07-15",
@@ -8794,7 +8726,7 @@
             {
               "date": "2021-07-23",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-07-24",
@@ -8808,7 +8740,7 @@
             {
               "date": "2021-07-25",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-07-26",
@@ -8823,7 +8755,7 @@
             {
               "date": "2021-07-28",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-07-29",
@@ -8886,7 +8818,7 @@
             {
               "date": "2021-08-08",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-08-09",
@@ -8896,7 +8828,7 @@
             {
               "date": "2021-08-10",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2021-08-11",
@@ -9852,7 +9784,7 @@
             {
               "date": "2022-01-29",
               "count": 12,
-              "level": 3
+              "level": 4
             }
           ]
         },
@@ -9964,7 +9896,7 @@
             {
               "date": "2022-02-18",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2022-02-19",
@@ -10042,7 +9974,7 @@
             {
               "date": "2022-03-04",
               "count": 12,
-              "level": 3
+              "level": 4
             },
             {
               "date": "2022-03-05",
@@ -10233,6 +10165,79 @@
               "date": "2022-04-07",
               "count": 7,
               "level": 3
+            },
+            {
+              "date": "2022-04-08",
+              "count": 5,
+              "level": 2
+            },
+            {
+              "date": "2022-04-09",
+              "count": 2,
+              "level": 1
+            }
+          ]
+        },
+        {
+          "contributionDays": [
+            {
+              "date": "2022-04-10",
+              "count": 2,
+              "level": 1
+            },
+            {
+              "date": "2022-04-11",
+              "count": 3,
+              "level": 1
+            },
+            {
+              "date": "2022-04-12",
+              "count": 2,
+              "level": 1
+            },
+            {
+              "date": "2022-04-13",
+              "count": 7,
+              "level": 3
+            },
+            {
+              "date": "2022-04-14",
+              "count": 4,
+              "level": 1
+            },
+            {
+              "date": "2022-04-15",
+              "count": 3,
+              "level": 1
+            },
+            {
+              "date": "2022-04-16",
+              "count": 3,
+              "level": 1
+            }
+          ]
+        },
+        {
+          "contributionDays": [
+            {
+              "date": "2022-04-17",
+              "count": 6,
+              "level": 2
+            },
+            {
+              "date": "2022-04-18",
+              "count": 6,
+              "level": 2
+            },
+            {
+              "date": "2022-04-19",
+              "count": 4,
+              "level": 1
+            },
+            {
+              "date": "2022-04-20",
+              "count": 4,
+              "level": 1
             }
           ]
         }
@@ -10240,79 +10245,6 @@
     }
   ],
   "weeks": [
-    {
-      "contributionDays": [
-        {
-          "date": "2025-04-07",
-          "count": 6,
-          "level": 1
-        },
-        {
-          "date": "2025-04-08",
-          "count": 13,
-          "level": 2
-        },
-        {
-          "date": "2025-04-09",
-          "count": 20,
-          "level": 3
-        },
-        {
-          "date": "2025-04-10",
-          "count": 15,
-          "level": 3
-        },
-        {
-          "date": "2025-04-11",
-          "count": 16,
-          "level": 3
-        },
-        {
-          "date": "2025-04-12",
-          "count": 14,
-          "level": 2
-        }
-      ]
-    },
-    {
-      "contributionDays": [
-        {
-          "date": "2025-04-13",
-          "count": 18,
-          "level": 3
-        },
-        {
-          "date": "2025-04-14",
-          "count": 9,
-          "level": 1
-        },
-        {
-          "date": "2025-04-15",
-          "count": 16,
-          "level": 3
-        },
-        {
-          "date": "2025-04-16",
-          "count": 12,
-          "level": 2
-        },
-        {
-          "date": "2025-04-17",
-          "count": 11,
-          "level": 2
-        },
-        {
-          "date": "2025-04-18",
-          "count": 11,
-          "level": 2
-        },
-        {
-          "date": "2025-04-19",
-          "count": 15,
-          "level": 3
-        }
-      ]
-    },
     {
       "contributionDays": [
         {
@@ -12277,8 +12209,81 @@
         },
         {
           "date": "2026-04-07",
-          "count": 35,
+          "count": 47,
           "level": 4
+        },
+        {
+          "date": "2026-04-08",
+          "count": 18,
+          "level": 3
+        },
+        {
+          "date": "2026-04-09",
+          "count": 23,
+          "level": 3
+        },
+        {
+          "date": "2026-04-10",
+          "count": 15,
+          "level": 3
+        },
+        {
+          "date": "2026-04-11",
+          "count": 12,
+          "level": 2
+        }
+      ]
+    },
+    {
+      "contributionDays": [
+        {
+          "date": "2026-04-12",
+          "count": 28,
+          "level": 4
+        },
+        {
+          "date": "2026-04-13",
+          "count": 19,
+          "level": 3
+        },
+        {
+          "date": "2026-04-14",
+          "count": 17,
+          "level": 3
+        },
+        {
+          "date": "2026-04-15",
+          "count": 13,
+          "level": 2
+        },
+        {
+          "date": "2026-04-16",
+          "count": 15,
+          "level": 3
+        },
+        {
+          "date": "2026-04-17",
+          "count": 13,
+          "level": 2
+        },
+        {
+          "date": "2026-04-18",
+          "count": 16,
+          "level": 3
+        }
+      ]
+    },
+    {
+      "contributionDays": [
+        {
+          "date": "2026-04-19",
+          "count": 14,
+          "level": 2
+        },
+        {
+          "date": "2026-04-20",
+          "count": 6,
+          "level": 1
         }
       ]
     }

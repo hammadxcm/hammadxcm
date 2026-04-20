@@ -8,7 +8,7 @@
  */
 
 import { execSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { cpSync, existsSync, rmSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -52,6 +52,25 @@ for (const script of scripts) {
 if (failed > 0) {
   console.error(`\n${failed} data file(s) missing — build cannot proceed.`);
   process.exit(1);
+}
+
+const repoRoot = resolve(__dirname, '..');
+const mirrors = [
+  {
+    name: 'profile-3d-contrib',
+    src: resolve(repoRoot, 'generated', 'profile-3d-contrib'),
+    dest: resolve(repoRoot, 'public', 'generated', 'profile-3d-contrib'),
+  },
+];
+
+for (const m of mirrors) {
+  if (!existsSync(m.src)) {
+    console.warn(`Skipping ${m.name}: ${m.src} does not exist.`);
+    continue;
+  }
+  rmSync(m.dest, { recursive: true, force: true });
+  cpSync(m.src, m.dest, { recursive: true });
+  console.log(`Mirrored ${m.name} → public/generated/${m.name}/`);
 }
 
 console.log('\nAll data files ready.');
