@@ -6,13 +6,8 @@
  * to all 15 themes (14 dark + 1 light "arctic") automatically.
  */
 
-import { BarChart, PieChart } from 'echarts/charts';
-import { GridComponent, LegendComponent, TooltipComponent } from 'echarts/components';
-import * as echarts from 'echarts/core';
-import { SVGRenderer } from 'echarts/renderers';
+import * as echarts from 'echarts';
 import { prefersReducedMotion } from './state';
-
-echarts.use([PieChart, BarChart, TooltipComponent, LegendComponent, GridComponent, SVGRenderer]);
 
 // ── Shared constants ──
 const MONO_FONT = 'Fira Code, ui-monospace, monospace';
