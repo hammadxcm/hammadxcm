@@ -189,6 +189,51 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
     ))}
   </div>
 
+  <!-- Language Breakdown + Impact Metrics — placed directly under the hero PR/repo stats -->
+  <div class="analytics-ring-insights">
+    <div class="analytics-ring-panel glass">
+      <h3 class="dash-panel-title">{translations.contributionAnalytics?.languageBreakdown || 'Languages'}</h3>
+      <div class="ring-layout">
+        <div
+          class="dash-chart-container dash-chart-container--ring"
+          data-chart-langs={JSON.stringify(langLegend)}
+          role="img"
+          aria-label={`Language distribution: ${langLegend.map((l) => `${l.name} ${l.pct}%`).join(', ')}`}
+        ></div>
+        <div class="lang-legend">
+          {langLegend.map((item) => (
+            <div class="lang-legend-row">
+              <span class="lang-dot" style={`--dot-color: ${item.color}`} />
+              <span class="lang-name">{item.name}</span>
+              <span class="lang-count">{item.count} ({item.pct}%)</span>
+              <div class="dash-pct-bar">
+                <div class="dash-pct-fill" style={`width:${item.pct}%; --bar-color:${item.color}`} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="analytics-insights-panel glass">
+      <h3 class="dash-panel-title">{translations.contributionAnalytics?.impactMetrics || 'Quick Insights'}</h3>
+      <div class="dash-insights">
+        <div class="dash-insight">
+          <div class="dash-insight-label">{translations.contributionAnalytics?.mostActiveMonth || 'Most Active Month'}</div>
+          <div class="dash-insight-value">{mostActiveMonth}</div>
+        </div>
+        <div class="dash-insight">
+          <div class="dash-insight-label">{translations.contributionAnalytics?.topLanguage || 'Top Language'}</div>
+          <div class="dash-insight-value">{topLanguage}</div>
+        </div>
+        <div class="dash-insight">
+          <div class="dash-insight-label">{translations.contributionAnalytics?.avgPRsPerMonth || 'Avg PRs/Month'}</div>
+          <div class="dash-insight-value">{avgPRsPerMonth}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 3D Contribution Graph — placed above the calendar per design preference -->
   <Contribution3DGraph
     id="contrib-3d"
@@ -298,51 +343,6 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
       </div>
     </div>
   ))}
-
-  <!-- Language Ring + Quick Insights -->
-  <div class="analytics-ring-insights">
-    <div class="analytics-ring-panel glass">
-      <h3 class="dash-panel-title">{translations.contributionAnalytics?.languageBreakdown || 'Languages'}</h3>
-      <div class="ring-layout">
-        <div
-          class="dash-chart-container dash-chart-container--ring"
-          data-chart-langs={JSON.stringify(langLegend)}
-          role="img"
-          aria-label={`Language distribution: ${langLegend.map((l) => `${l.name} ${l.pct}%`).join(', ')}`}
-        ></div>
-        <div class="lang-legend">
-          {langLegend.map((item) => (
-            <div class="lang-legend-row">
-              <span class="lang-dot" style={`--dot-color: ${item.color}`} />
-              <span class="lang-name">{item.name}</span>
-              <span class="lang-count">{item.count} ({item.pct}%)</span>
-              <div class="dash-pct-bar">
-                <div class="dash-pct-fill" style={`width:${item.pct}%; --bar-color:${item.color}`} />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    <div class="analytics-insights-panel glass">
-      <h3 class="dash-panel-title">{translations.contributionAnalytics?.impactMetrics || 'Quick Insights'}</h3>
-      <div class="dash-insights">
-        <div class="dash-insight">
-          <div class="dash-insight-label">{translations.contributionAnalytics?.mostActiveMonth || 'Most Active Month'}</div>
-          <div class="dash-insight-value">{mostActiveMonth}</div>
-        </div>
-        <div class="dash-insight">
-          <div class="dash-insight-label">{translations.contributionAnalytics?.topLanguage || 'Top Language'}</div>
-          <div class="dash-insight-value">{topLanguage}</div>
-        </div>
-        <div class="dash-insight">
-          <div class="dash-insight-label">{translations.contributionAnalytics?.avgPRsPerMonth || 'Avg PRs/Month'}</div>
-          <div class="dash-insight-value">{avgPRsPerMonth}</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Platform Panels -->
   <div class="analytics-platforms">
