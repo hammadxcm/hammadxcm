@@ -64,6 +64,10 @@
   font-family: var(--font-mono);
 }
 
+// Spotify brand green — used for the logo and equalizer bars so the
+// widget reads as a Spotify share card regardless of the active site theme.
+$spotify-green: #1ED760;
+
 .spotify-status {
   display: flex;
   align-items: center;
@@ -71,36 +75,45 @@
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent);
+  color: var(--text-dim);
+}
+
+.spotify-logo {
+  flex-shrink: 0;
 }
 
 .spotify-status-label {
-  opacity: 0.9;
+  color: $spotify-green;
+  font-weight: 600;
+  letter-spacing: 0.1em;
 }
 
-// ── Equalizer: three animated bars that pulse to fake audio activity ──
+// ── Equalizer: four animated bars replicating Spotify's now-playing icon.
+// Brand green on every theme so the widget stays recognizable as Spotify.
 .spotify-eq {
   display: inline-flex;
   align-items: flex-end;
   gap: 2px;
-  height: 10px;
+  height: 12px;
+  width: 14px;
 
   i {
     display: block;
     width: 2px;
-    background: var(--accent);
+    background: $spotify-green;
     border-radius: 1px;
-    animation: spotify-eq-bounce 1s ease-in-out infinite;
+    animation: spotify-eq-bounce 0.9s ease-in-out infinite;
     transform-origin: bottom;
   }
 
-  i:nth-child(1) { animation-delay: 0s;   height: 60%; }
-  i:nth-child(2) { animation-delay: 0.2s; height: 100%; }
-  i:nth-child(3) { animation-delay: 0.4s; height: 75%; }
+  i:nth-child(1) { animation-delay: -0.1s; height: 60%; }
+  i:nth-child(2) { animation-delay: -0.5s; height: 100%; }
+  i:nth-child(3) { animation-delay: -0.3s; height: 80%; }
+  i:nth-child(4) { animation-delay: -0.7s; height: 70%; }
 }
 
 @keyframes spotify-eq-bounce {
-  0%, 100% { transform: scaleY(0.4); }
+  0%, 100% { transform: scaleY(0.3); }
   50%      { transform: scaleY(1); }
 }
 
