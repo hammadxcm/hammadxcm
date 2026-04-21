@@ -234,12 +234,29 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
     </div>
   </div>
 
-  <!-- 3D Contribution Graph — placed above the calendar per design preference -->
+  <!-- 3D Contribution Graph -->
   <Contribution3DGraph
     id="contrib-3d"
     themeAware
     caption="3D contribution graph — regenerated daily"
   />
+
+  <!-- Platform Panels -->
+  <div class="analytics-platforms">
+    <GitHubPanel username={username} utcOffset={utcOffset} translations={translations} />
+
+    {leetcode && (
+      <LeetCodePanel username={leetcode.username} translations={translations} />
+    )}
+
+    {stackoverflow && (
+      <StackOverflowPanel userId={stackoverflow.userId} translations={translations} />
+    )}
+  </div>
+
+  <ProfileViews username={username} translations={translations} />
+
+  <AnalyticsCtaRow username={username} translations={translations} />
 
   <!-- Contribution Calendar — current year, with range filters -->
   <div class="analytics-heatmap-panel glass" id="contributionGraph">
@@ -343,23 +360,6 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
       </div>
     </div>
   ))}
-
-  <!-- Platform Panels -->
-  <div class="analytics-platforms">
-    <GitHubPanel username={username} utcOffset={utcOffset} translations={translations} />
-
-    {leetcode && (
-      <LeetCodePanel username={leetcode.username} translations={translations} />
-    )}
-
-    {stackoverflow && (
-      <StackOverflowPanel userId={stackoverflow.userId} translations={translations} />
-    )}
-  </div>
-
-  <ProfileViews username={username} translations={translations} />
-
-  <AnalyticsCtaRow username={username} translations={translations} />
 
   <div class="dev-quote reveal">
     <img data-stat="quote" src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt={translations.analytics.alt.devQuote} loading="lazy" decoding="async" width="600" height="150">
