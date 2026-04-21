@@ -105,19 +105,48 @@ if (hasGraphData) {
 }
 
 // Compute month labels from week data
-const monthLabels: { label: string; colIndex: number }[] = [];
 const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-let lastMonth = -1;
-for (let i = 0; i < heatmapWeeksData.length; i++) {
-  const firstDay = heatmapWeeksData[i].days[0];
-  if (firstDay) {
-    const month = new Date(firstDay.date).getMonth();
-    if (month !== lastMonth) {
-      monthLabels.push({ label: monthNames[month], colIndex: i });
-      lastMonth = month;
+
+function buildMonthLabels(weeks: HeatmapWeek[]): { label: string; colIndex: number }[] {
+  const labels: { label: string; colIndex: number }[] = [];
+  let prev = -1;
+  for (let i = 0; i < weeks.length; i++) {
+    const firstDay = weeks[i].days[0];
+    if (firstDay) {
+      const m = new Date(firstDay.date).getMonth();
+      if (m !== prev) {
+        labels.push({ label: monthNames[m], colIndex: i });
+        prev = m;
+      }
     }
   }
+  return labels;
 }
+
+const monthLabels = buildMonthLabels(heatmapWeeksData);
+
+// Historical year calendars (oldest-most-recent, excluding the current/last-year
+// which is already rendered by the top heatmap panel).
+type YearHeatmap = {
+  year: string;
+  totalContributions: number;
+  weeks: HeatmapWeek[];
+  monthLabels: { label: string; colIndex: number }[];
+};
+const historicalYears: YearHeatmap[] = hasMultiYear
+  ? graphData.years.slice(1).map((y) => {
+      const weeks: HeatmapWeek[] = y.weeks.map((w) => ({
+        weekStart: w.contributionDays[0]?.date || '',
+        days: w.contributionDays.map((d) => ({ date: d.date, count: d.count, level: d.level })),
+      }));
+      return {
+        year: y.year,
+        totalContributions: y.totalContributions,
+        weeks,
+        monthLabels: buildMonthLabels(weeks),
+      };
+    })
+  : [];
 
 // ── Language Ring ──
 const langCounts = new Map<string, number>();
@@ -160,21 +189,20 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
     ))}
   </div>
 
-  <!-- Contribution Heatmap -->
+  <!-- 3D Contribution Graph — placed above the calendar per design preference -->
+  <Contribution3DGraph
+    id="contrib-3d"
+    themeAware
+    caption="3D contribution graph — regenerated daily"
+  />
+
+  <!-- Contribution Calendar — current year, with range filters -->
   <div class="analytics-heatmap-panel glass" id="contributionGraph">
     <div class="heatmap-header">
-      <h3 class="dash-panel-title">{translations.contributionAnalytics?.contributionGraph || 'Contribution Graph'}</h3>
+      <h3 class="dash-panel-title">
+        {graphData?.years?.[0]?.year ?? translations.contributionAnalytics?.contributionGraph ?? 'Contribution Calendar'}
+      </h3>
       <div class="heatmap-controls">
-        {hasMultiYear && (
-          <div class="heatmap-year-tabs">
-            {graphData.years.map((y, i) => (
-              <button
-                class={`heatmap-year-btn ${i === 0 ? 'active' : ''}`}
-                data-year-index={i}
-              >{y.year}</button>
-            ))}
-          </div>
-        )}
         <div class="heatmap-filters">
           <button class="heatmap-filter-btn active" data-range="1Y">1Y</button>
           <button class="heatmap-filter-btn" data-range="6M">6M</button>
@@ -227,11 +255,49 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
       <span class="heatmap-legend-label">{translations.contributions?.more || 'More'}</span>
     </div>
   </div>
-  {hasMultiYear && (
-    <script is:inline define:vars={{ yearsData: graphData.years }}>
-      window.__contributionYears = yearsData;
-    </script>
-  )}
+
+  <!-- Historical year calendars — one panel per prior year, stacked -->
+  {historicalYears.map((yh) => (
+    <div class="analytics-heatmap-panel analytics-heatmap-panel--historical glass">
+      <div class="heatmap-header">
+        <h3 class="dash-panel-title">{yh.year}</h3>
+      </div>
+      <div class="heatmap-total">
+        {yh.totalContributions.toLocaleString()} contributions
+      </div>
+      <div class="heatmap-months">
+        {yh.monthLabels.map((m) => (
+          <span class="heatmap-month-label" style={`--col: ${m.colIndex}`}>{m.label}</span>
+        ))}
+      </div>
+      <div class="heatmap-graph-wrapper">
+        <div class="heatmap-days">
+          <span></span>
+          <span>Mon</span>
+          <span></span>
+          <span>Wed</span>
+          <span></span>
+          <span>Fri</span>
+          <span></span>
+        </div>
+        <div class="dash-heatmap">
+          {yh.weeks.map((week) => (
+            <div class="heatmap-week" data-week-start={week.weekStart}>
+              {week.days.map((day) => (
+                <div
+                  class="dash-heatmap-cell"
+                  data-level={day.level}
+                  data-count={day.count}
+                  data-date={day.date}
+                  title={`${day.date}: ${day.count} contribution${day.count !== 1 ? 's' : ''}`}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ))}
 
   <!-- Language Ring + Quick Insights -->
   <div class="analytics-ring-insights">
@@ -291,13 +357,6 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
     )}
   </div>
 
-  <!-- 3D Contribution Graph -->
-  <Contribution3DGraph
-    id="contrib-3d"
-    themeAware
-    caption="3D contribution graph — regenerated daily"
-  />
-
   <ProfileViews username={username} translations={translations} />
 
   <AnalyticsCtaRow username={username} translations={translations} />
@@ -340,31 +399,17 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
     flex-wrap: wrap;
   }
 
-  .heatmap-year-tabs {
-    display: flex;
-    gap: 0.25rem;
-  }
+  .analytics-heatmap-panel--historical {
+    opacity: 0.92;
 
-  .heatmap-year-btn {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 6px;
-    border: 1px solid rgba(var(--accent-glow), 0.12);
-    background: transparent;
-    color: var(--text-dim);
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    &:hover {
-      border-color: rgba(var(--accent-glow), 0.3);
-      color: var(--text);
+    .dash-panel-title {
+      color: var(--text-dim);
+      font-size: 0.95rem;
     }
 
-    &.active {
-      background: rgba(var(--accent-glow), 0.1);
-      border-color: rgba(var(--accent-glow), 0.3);
-      color: var(--accent);
+    .heatmap-total {
+      font-size: 0.7rem;
+      margin-bottom: 0.75rem;
     }
   }
 
@@ -573,45 +618,16 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
   import { initDashboardCharts } from '../../scripts/dashboard-charts';
   document.addEventListener('astro:page-load', initDashboardCharts);
 
-  interface YearData {
-    year: string;
-    totalContributions: number;
-    weeks: { contributionDays: { date: string; count: number; level: number }[] }[];
-  }
-
   document.addEventListener('astro:page-load', () => {
+    // Range filters (1Y/6M/3M/1M) operate on the current-year heatmap only.
     const grid = document.getElementById('heatmapGrid');
     const monthsEl = document.getElementById('heatmapMonths');
-    const totalEl = document.querySelector<HTMLElement>('.heatmap-total');
-    const filtersEl = document.querySelector<HTMLElement>('.heatmap-filters');
-    const filterBtns = document.querySelectorAll<HTMLButtonElement>('.heatmap-filter-btn');
-    const yearBtns = document.querySelectorAll<HTMLButtonElement>('.heatmap-year-btn');
+    const totalEl = document.querySelector<HTMLElement>('#contributionGraph .heatmap-total');
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>('#contributionGraph .heatmap-filter-btn');
     if (!grid) return;
 
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const yearsData: YearData[] = (window as any).__contributionYears || [];
 
-    /** Render week columns into the heatmap grid */
-    function renderWeeks(weeks: YearData['weeks']) {
-      grid!.innerHTML = '';
-      for (const week of weeks) {
-        const weekEl = document.createElement('div');
-        weekEl.className = 'heatmap-week';
-        weekEl.dataset.weekStart = week.contributionDays[0]?.date || '';
-        for (const day of week.contributionDays) {
-          const cell = document.createElement('div');
-          cell.className = 'dash-heatmap-cell';
-          cell.dataset.level = String(day.level);
-          cell.dataset.count = String(day.count);
-          cell.dataset.date = day.date;
-          cell.title = `${day.date}: ${day.count} contribution${day.count !== 1 ? 's' : ''}`;
-          weekEl.appendChild(cell);
-        }
-        grid!.appendChild(weekEl);
-      }
-    }
-
-    /** Render month labels from visible weeks */
     function renderMonths() {
       if (!monthsEl) return;
       monthsEl.innerHTML = '';
@@ -627,7 +643,7 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
             span.className = 'heatmap-month-label';
             span.style.setProperty('--col', String(colIndex));
             span.textContent = monthNames[month];
-            monthsEl!.appendChild(span);
+            monthsEl.appendChild(span);
             lastMonth = month;
           }
         }
@@ -635,7 +651,6 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
       });
     }
 
-    /** Apply range filter to currently rendered weeks */
     function applyRangeFilter(range: string) {
       const weeks = grid!.querySelectorAll<HTMLElement>('.heatmap-week');
       if (range === '1Y') {
@@ -653,7 +668,6 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
       renderMonths();
     }
 
-    /** Update the total contributions counter */
     function updateCount() {
       if (!totalEl) return;
       let count = 0;
@@ -663,39 +677,6 @@ const avgPRsPerMonth = Math.round(totalPRs / activeMonths);
       totalEl.textContent = (totalEl.textContent || '').replace(/[\d,]+/, count.toLocaleString());
     }
 
-    /** Switch to a specific year's data */
-    function switchYear(index: number) {
-      const year = yearsData[index];
-      if (!year) return;
-      const isCurrentYear = index === 0;
-
-      renderWeeks(year.weeks);
-
-      // Show range filters only for "Last year" (current), hide for historical
-      if (filtersEl) {
-        filtersEl.style.display = isCurrentYear ? '' : 'none';
-      }
-
-      // Reset range filter
-      filterBtns.forEach((b) => b.classList.toggle('active', b.dataset.range === '1Y'));
-
-      // Update total text
-      if (totalEl) {
-        totalEl.textContent = (totalEl.textContent || '').replace(/[\d,]+/, year.totalContributions.toLocaleString());
-      }
-      renderMonths();
-    }
-
-    // Year tab click handlers
-    yearBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        yearBtns.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        switchYear(parseInt(btn.dataset.yearIndex || '0', 10));
-      });
-    });
-
-    // Range filter click handlers (only apply for current year)
     filterBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
         filterBtns.forEach((b) => b.classList.remove('active'));
