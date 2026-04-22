@@ -1,8 +1,101 @@
 {
-  "generatedAt": "2026-04-22T00:48:09.937Z",
+  "generatedAt": "2026-04-22T12:32:08.327Z",
   "username": "hammadxcm",
   "totalCount": 50,
   "contributions": [
+    {
+      "title": "docs: add SVG to language support page",
+      "url": "https://github.com/biomejs/website/pull/4093",
+      "number": 4093,
+      "state": "closed",
+      "mergedAt": "2026-04-22T06:49:00Z",
+      "additions": 5,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [
+        {
+          "name": "A-Documentation",
+          "color": "ededed"
+        }
+      ],
+      "repo": {
+        "fullName": "biomejs/website",
+        "url": "https://github.com/biomejs/website",
+        "stars": 92,
+        "forks": 216,
+        "language": "MDX",
+        "description": "Biome's website",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
+        "topics": [],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "feat: add SVG file support",
+      "url": "https://github.com/biomejs/biome-intellij/pull/231",
+      "number": 231,
+      "state": "closed",
+      "mergedAt": "2026-04-22T06:48:48Z",
+      "additions": 1,
+      "deletions": 1,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "biomejs/biome-intellij",
+        "url": "https://github.com/biomejs/biome-intellij",
+        "stars": 90,
+        "forks": 24,
+        "language": "Kotlin",
+        "description": "Biome plugin for IntelliJ",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
+        "topics": ["biomejs", "intellij", "intellij-plugin", "phpstorm", "webstorm"],
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "title": "feat: add SVG file support",
+      "url": "https://github.com/biomejs/biome-zed/pull/190",
+      "number": 190,
+      "state": "closed",
+      "mergedAt": "2026-04-22T06:48:41Z",
+      "additions": 2,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [],
+      "repo": {
+        "fullName": "biomejs/biome-zed",
+        "url": "https://github.com/biomejs/biome-zed",
+        "stars": 452,
+        "forks": 17,
+        "language": "Rust",
+        "description": "Biome extension for Zed",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
+        "topics": ["extension", "formatter", "linter", "lsp-server", "zed"],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "feat: add SVG file support",
+      "url": "https://github.com/biomejs/biome-vscode/pull/993",
+      "number": 993,
+      "state": "closed",
+      "mergedAt": "2026-04-22T06:48:31Z",
+      "additions": 12,
+      "deletions": 0,
+      "changedFiles": 3,
+      "labels": [],
+      "repo": {
+        "fullName": "biomejs/biome-vscode",
+        "url": "https://github.com/biomejs/biome-vscode",
+        "stars": 418,
+        "forks": 70,
+        "language": "TypeScript",
+        "description": "Biome extension for VS Code",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
+        "topics": ["biome", "biomejs", "formatter", "linter", "vscode", "vscode-extension"],
+        "license": "Apache-2.0"
+      }
+    },
     {
       "title": "feat(html): enable HTML parsing for `.svg` files",
       "url": "https://github.com/biomejs/biome/pull/9608",
@@ -41,7 +134,7 @@
       "repo": {
         "fullName": "biomejs/biome",
         "url": "https://github.com/biomejs/biome",
-        "stars": 24431,
+        "stars": 24438,
         "forks": 968,
         "language": "Rust",
         "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
@@ -90,7 +183,7 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33994,
+        "stars": 34005,
         "forks": 8264,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
@@ -112,8 +205,8 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12851,
-        "forks": 3100,
+        "stars": 12852,
+        "forks": 3099,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -158,7 +251,7 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33994,
+        "stars": 34005,
         "forks": 8264,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
@@ -197,7 +290,7 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33994,
+        "stars": 34005,
         "forks": 8264,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
@@ -232,7 +325,7 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33994,
+        "stars": 34005,
         "forks": 8264,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
@@ -267,7 +360,7 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33994,
+        "stars": 34005,
         "forks": 8264,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
@@ -289,7 +382,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -321,7 +414,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -353,7 +446,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -385,7 +478,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -417,7 +510,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -449,7 +542,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -481,7 +574,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -513,7 +606,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -545,7 +638,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -577,7 +670,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -609,7 +702,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -641,7 +734,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -673,7 +766,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -705,7 +798,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -737,7 +830,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -774,8 +867,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -796,7 +889,7 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33994,
+        "stars": 34005,
         "forks": 8264,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
@@ -827,8 +920,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 139067,
-        "forks": 30932,
+        "stars": 139081,
+        "forks": 30943,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -864,7 +957,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
@@ -901,8 +994,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -928,8 +1021,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -955,8 +1048,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -982,8 +1075,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1009,8 +1102,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1036,8 +1129,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1063,8 +1156,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1090,8 +1183,8 @@
       "repo": {
         "fullName": "getsentry/sentry",
         "url": "https://github.com/getsentry/sentry",
-        "stars": 43648,
-        "forks": 4656,
+        "stars": 43656,
+        "forks": 4662,
         "language": "Python",
         "description": "Developer-first error tracking and performance monitoring",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/1396951?v=4",
@@ -1128,7 +1221,7 @@
       "repo": {
         "fullName": "novuhq/novu",
         "url": "https://github.com/novuhq/novu",
-        "stars": 38843,
+        "stars": 38845,
         "forks": 4264,
         "language": "TypeScript",
         "description": "The open-source notification infrastructure. In-app Inbox component, E-mail, SMS, Push and Slack Integrations.",
@@ -1155,99 +1248,6 @@
       }
     },
     {
-      "title": "docs: add SVG to language support page",
-      "url": "https://github.com/biomejs/website/pull/4093",
-      "number": 4093,
-      "state": "open",
-      "mergedAt": "2026-03-23T19:44:19Z",
-      "additions": 5,
-      "deletions": 0,
-      "changedFiles": 1,
-      "labels": [
-        {
-          "name": "A-Documentation",
-          "color": "ededed"
-        }
-      ],
-      "repo": {
-        "fullName": "biomejs/website",
-        "url": "https://github.com/biomejs/website",
-        "stars": 92,
-        "forks": 216,
-        "language": "MDX",
-        "description": "Biome's website",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
-        "topics": [],
-        "license": "MIT"
-      }
-    },
-    {
-      "title": "feat: add SVG file support",
-      "url": "https://github.com/biomejs/biome-intellij/pull/231",
-      "number": 231,
-      "state": "open",
-      "mergedAt": "2026-03-23T19:30:05Z",
-      "additions": 1,
-      "deletions": 1,
-      "changedFiles": 1,
-      "labels": [],
-      "repo": {
-        "fullName": "biomejs/biome-intellij",
-        "url": "https://github.com/biomejs/biome-intellij",
-        "stars": 90,
-        "forks": 24,
-        "language": "Kotlin",
-        "description": "Biome plugin for IntelliJ",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
-        "topics": ["biomejs", "intellij", "intellij-plugin", "phpstorm", "webstorm"],
-        "license": "Apache-2.0"
-      }
-    },
-    {
-      "title": "feat: add SVG file support",
-      "url": "https://github.com/biomejs/biome-zed/pull/190",
-      "number": 190,
-      "state": "open",
-      "mergedAt": "2026-03-23T19:28:25Z",
-      "additions": 2,
-      "deletions": 0,
-      "changedFiles": 1,
-      "labels": [],
-      "repo": {
-        "fullName": "biomejs/biome-zed",
-        "url": "https://github.com/biomejs/biome-zed",
-        "stars": 451,
-        "forks": 17,
-        "language": "Rust",
-        "description": "Biome extension for Zed",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
-        "topics": ["extension", "formatter", "linter", "lsp-server", "zed"],
-        "license": "MIT"
-      }
-    },
-    {
-      "title": "feat: add SVG file support",
-      "url": "https://github.com/biomejs/biome-vscode/pull/993",
-      "number": 993,
-      "state": "open",
-      "mergedAt": "2026-03-23T19:26:37Z",
-      "additions": 12,
-      "deletions": 0,
-      "changedFiles": 3,
-      "labels": [],
-      "repo": {
-        "fullName": "biomejs/biome-vscode",
-        "url": "https://github.com/biomejs/biome-vscode",
-        "stars": 418,
-        "forks": 70,
-        "language": "TypeScript",
-        "description": "Biome extension for VS Code",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
-        "topics": ["biome", "biomejs", "formatter", "linter", "vscode", "vscode-extension"],
-        "license": "Apache-2.0"
-      }
-    },
-    {
       "title": "[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`",
       "url": "https://github.com/rubocop/rubocop/pull/15050",
       "number": 15050,
@@ -1260,8 +1260,8 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12851,
-        "forks": 3100,
+        "stars": 12852,
+        "forks": 3099,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -1294,8 +1294,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1321,8 +1321,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1348,8 +1348,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1370,8 +1370,8 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12851,
-        "forks": 3100,
+        "stars": 12852,
+        "forks": 3099,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -1399,7 +1399,7 @@
       "repo": {
         "fullName": "vercel-labs/portless",
         "url": "https://github.com/vercel-labs/portless",
-        "stars": 7271,
+        "stars": 7284,
         "forks": 231,
         "language": "TypeScript",
         "description": "Replace port numbers with stable, named local URLs. For humans and agents.",
@@ -1442,8 +1442,8 @@
       "repo": {
         "fullName": "microsoft/winget-pkgs",
         "url": "https://github.com/microsoft/winget-pkgs",
-        "stars": 10502,
-        "forks": 6769,
+        "stars": 10504,
+        "forks": 6774,
         "language": null,
         "description": "The Microsoft community Windows Package Manager manifest repository",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6154722?v=4",
@@ -1469,8 +1469,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 139067,
-        "forks": 30932,
+        "stars": 139081,
+        "forks": 30943,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -1511,8 +1511,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58362,
-        "forks": 22182,
+        "stars": 58364,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1533,7 +1533,7 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 33994,
+        "stars": 34005,
         "forks": 8264,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
@@ -1555,7 +1555,7 @@
       "repo": {
         "fullName": "thoughtbot/factory_bot",
         "url": "https://github.com/thoughtbot/factory_bot",
-        "stars": 8221,
+        "stars": 8220,
         "forks": 2569,
         "language": "Ruby",
         "description": "A library for setting up Ruby objects as test data.",
