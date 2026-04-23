@@ -1,8 +1,62 @@
 {
-  "generatedAt": "2026-04-23T00:52:29.282Z",
+  "generatedAt": "2026-04-23T12:32:04.667Z",
   "username": "hammadxcm",
   "totalCount": 50,
   "contributions": [
+    {
+      "title": "Fix config.credentials.key_path set in environment files being ignored",
+      "url": "https://github.com/rails/rails/pull/57230",
+      "number": 57230,
+      "state": "open",
+      "mergedAt": "2026-04-23T09:35:38Z",
+      "additions": 27,
+      "deletions": 0,
+      "changedFiles": 3,
+      "labels": [
+        {
+          "name": "railties",
+          "color": "8BE06E"
+        }
+      ],
+      "repo": {
+        "fullName": "rails/rails",
+        "url": "https://github.com/rails/rails",
+        "stars": 58366,
+        "forks": 22186,
+        "language": "Ruby",
+        "description": "Ruby on Rails",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
+        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Fix attachment uploads lost when reload is called inside a transaction",
+      "url": "https://github.com/rails/rails/pull/57229",
+      "number": 57229,
+      "state": "open",
+      "mergedAt": "2026-04-23T09:26:54Z",
+      "additions": 57,
+      "deletions": 1,
+      "changedFiles": 4,
+      "labels": [
+        {
+          "name": "activestorage",
+          "color": "bfd4f2"
+        }
+      ],
+      "repo": {
+        "fullName": "rails/rails",
+        "url": "https://github.com/rails/rails",
+        "stars": 58366,
+        "forks": 22186,
+        "language": "Ruby",
+        "description": "Ruby on Rails",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
+        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
+        "license": "MIT"
+      }
+    },
     {
       "title": "Fix method_missing performance regression for virtual SELECT alias attributes",
       "url": "https://github.com/rails/rails/pull/57226",
@@ -21,8 +75,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -44,7 +98,7 @@
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
         "stars": 12853,
-        "forks": 3098,
+        "forks": 3099,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -190,8 +244,8 @@
       "repo": {
         "fullName": "biomejs/biome",
         "url": "https://github.com/biomejs/biome",
-        "stars": 24441,
-        "forks": 968,
+        "stars": 24442,
+        "forks": 970,
         "language": "Rust",
         "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/140182603?v=4",
@@ -239,8 +293,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34020,
-        "forks": 8269,
+        "stars": 34029,
+        "forks": 8268,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -262,7 +316,7 @@
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
         "stars": 12853,
-        "forks": 3098,
+        "forks": 3099,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -307,8 +361,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34020,
-        "forks": 8269,
+        "stars": 34029,
+        "forks": 8268,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -346,8 +400,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34020,
-        "forks": 8269,
+        "stars": 34029,
+        "forks": 8268,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -381,8 +435,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34020,
-        "forks": 8269,
+        "stars": 34029,
+        "forks": 8268,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -416,8 +470,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34020,
-        "forks": 8269,
+        "stars": 34029,
+        "forks": 8268,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -923,8 +977,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -945,8 +999,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34020,
-        "forks": 8269,
+        "stars": 34029,
+        "forks": 8268,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -976,8 +1030,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 139091,
-        "forks": 30951,
+        "stars": 139102,
+        "forks": 30948,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -1050,8 +1104,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1077,8 +1131,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1104,8 +1158,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1131,8 +1185,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1158,8 +1212,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1185,8 +1239,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1212,8 +1266,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1239,8 +1293,8 @@
       "repo": {
         "fullName": "getsentry/sentry",
         "url": "https://github.com/getsentry/sentry",
-        "stars": 43664,
-        "forks": 4662,
+        "stars": 43667,
+        "forks": 4661,
         "language": "Python",
         "description": "Developer-first error tracking and performance monitoring",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/1396951?v=4",
@@ -1277,7 +1331,7 @@
       "repo": {
         "fullName": "novuhq/novu",
         "url": "https://github.com/novuhq/novu",
-        "stars": 38848,
+        "stars": 38854,
         "forks": 4265,
         "language": "TypeScript",
         "description": "The open-source notification infrastructure. In-app Inbox component, E-mail, SMS, Push and Slack Integrations.",
@@ -1317,7 +1371,7 @@
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
         "stars": 12853,
-        "forks": 3098,
+        "forks": 3099,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -1350,8 +1404,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1377,8 +1431,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1404,8 +1458,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
+        "stars": 58366,
+        "forks": 22186,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1427,7 +1481,7 @@
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
         "stars": 12853,
-        "forks": 3098,
+        "forks": 3099,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/10871348?v=4",
@@ -1455,8 +1509,8 @@
       "repo": {
         "fullName": "vercel-labs/portless",
         "url": "https://github.com/vercel-labs/portless",
-        "stars": 7293,
-        "forks": 233,
+        "stars": 7351,
+        "forks": 235,
         "language": "TypeScript",
         "description": "Replace port numbers with stable, named local URLs. For humans and agents.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/108547162?v=4",
@@ -1498,81 +1552,12 @@
       "repo": {
         "fullName": "microsoft/winget-pkgs",
         "url": "https://github.com/microsoft/winget-pkgs",
-        "stars": 10505,
-        "forks": 6780,
+        "stars": 10510,
+        "forks": 6782,
         "language": null,
         "description": "The Microsoft community Windows Package Manager manifest repository",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6154722?v=4",
         "topics": ["hacktoberfest"],
-        "license": "MIT"
-      }
-    },
-    {
-      "title": "docs: clarify generateMetadata re-evaluation on navigation",
-      "url": "https://github.com/vercel/next.js/pull/91427",
-      "number": 91427,
-      "state": "open",
-      "mergedAt": "2026-03-15T21:04:48Z",
-      "additions": 7,
-      "deletions": 1,
-      "changedFiles": 2,
-      "labels": [
-        {
-          "name": "Documentation",
-          "color": "C2E0C6"
-        }
-      ],
-      "repo": {
-        "fullName": "vercel/next.js",
-        "url": "https://github.com/vercel/next.js",
-        "stars": 139091,
-        "forks": 30951,
-        "language": "JavaScript",
-        "description": "The React Framework",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
-        "topics": [
-          "blog",
-          "browser",
-          "compiler",
-          "components",
-          "hybrid",
-          "nextjs",
-          "node",
-          "react",
-          "server-rendering",
-          "ssg",
-          "static",
-          "static-site-generator",
-          "universal",
-          "vercel"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
-      "title": "Fix insert_all raising \"No unique index found for id\" without unique_by",
-      "url": "https://github.com/rails/rails/pull/56988",
-      "number": 56988,
-      "state": "open",
-      "mergedAt": "2026-03-15T12:17:01Z",
-      "additions": 87,
-      "deletions": 16,
-      "changedFiles": 3,
-      "labels": [
-        {
-          "name": "activerecord",
-          "color": "0b02e1"
-        }
-      ],
-      "repo": {
-        "fullName": "rails/rails",
-        "url": "https://github.com/rails/rails",
-        "stars": 58365,
-        "forks": 22185,
-        "language": "Ruby",
-        "description": "Ruby on Rails",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
-        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
         "license": "MIT"
       }
     }
