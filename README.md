@@ -984,12 +984,13 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 139.2k | +38 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix config.credentials.key_path set in environment files being ignored](https://github.com/rails/rails/pull/57230) | 🟢 Open | Apr 23, 2026 | 58.4k | +27 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Fix attachment uploads lost when reload is called inside a transaction](https://github.com/rails/rails/pull/57229) | 🟢 Open | Apr 23, 2026 | 58.4k | +57 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟢 Open | Apr 22, 2026 | 58.4k | +26 -3 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15122] Fix false positive in `Layout/MultilineMethodCallIndentation`](https://github.com/rubocop/rubocop/pull/15123) | 🟢 Open | Apr 22, 2026 | 12.9k | +47 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15117] Add `AllowConsecutiveConditionals` option to `Style/IfUnlessModifier`](https://github.com/rubocop/rubocop/pull/15119) | 🟢 Open | Apr 19, 2026 | 12.9k | +150 -1 |
-| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Partial Export test into new testsuite](https://github.com/keycloak/keycloak/pull/48204) | 🟢 Open | Apr 17, 2026 | 34.0k | +57 -25 |
+| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Partial Export test into new testsuite](https://github.com/keycloak/keycloak/pull/48204) | 🟢 Open | Apr 17, 2026 | 34.1k | +57 -25 |
 | [rails/rails](https://github.com/rails/rails) | [Document that days_in_month and days_in_year assume proleptic Gregorian calendar](https://github.com/rails/rails/pull/57114) | 🟢 Open | Apr 1, 2026 | 58.4k | +9 -0 |
 | [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add `factory_bot.before_run_factory` instrumentation event](https://github.com/thoughtbot/factory_bot/pull/1795) | 🟣 Merged | Mar 27, 2026 | 8.2k | +133 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for Error#initialize_dup, #hash, and #detail](https://github.com/rails/rails/pull/57047) | 🟣 Merged | Mar 27, 2026 | 58.4k | +29 -0 |
@@ -1006,7 +1007,6 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.4k | +36 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [Add `AllowedParentClasses` option to `Style/EmptyClassDefinition`](https://github.com/rubocop/rubocop/pull/14974) | 🟣 Merged | Mar 23, 2026 | 12.9k | +111 -2 |
 | [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟣 Merged | Mar 20, 2026 | 7.4k | +304 -4 |
-| [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) | [New package: hammadxcm.go-phantom version 0.0.2](https://github.com/microsoft/winget-pkgs/pull/348164) | 🟣 Merged | Mar 17, 2026 | 10.5k | +36 -0 |
 
 <!-- CONTRIBUTIONS:END -->
 
