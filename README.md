@@ -984,6 +984,7 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟣 Merged | Apr 28, 2026 | 12.9k | +45 -2 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 139.2k | +38 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix config.credentials.key_path set in environment files being ignored](https://github.com/rails/rails/pull/57230) | 🟢 Open | Apr 23, 2026 | 58.4k | +27 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Fix attachment uploads lost when reload is called inside a transaction](https://github.com/rails/rails/pull/57229) | 🟢 Open | Apr 23, 2026 | 58.4k | +57 -1 |
@@ -1010,7 +1011,6 @@ Zero-dep CLI to kill processes by port
 | [vercel/next.js](https://github.com/vercel/next.js) | [docs: clarify generateMetadata re-evaluation on navigation](https://github.com/vercel/next.js/pull/91427) | 🟢 Open | Mar 15, 2026 | 139.2k | +7 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix insert_all raising "No unique index found for id" without unique_by](https://github.com/rails/rails/pull/56988) | 🟢 Open | Mar 15, 2026 | 58.4k | +87 -16 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Fix @TestSetup method ordering with inheritance](https://github.com/keycloak/keycloak/pull/46686) | 🟣 Merged | Mar 5, 2026 | 34.1k | +142 -5 |
-| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Remove CodeClimate badge from README](https://github.com/thoughtbot/factory_bot/pull/1794) | 🟣 Merged | Mar 2, 2026 | 8.2k | +1 -3 |
 
 <!-- CONTRIBUTIONS:END -->
 
