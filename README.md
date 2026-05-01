@@ -984,6 +984,7 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15135] Fix `Style/RedundantParentheses` autocorrect swallowing chained methods into trailing comments](https://github.com/rubocop/rubocop/pull/15140) | 🟢 Open | May 1, 2026 | 12.9k | +77 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟣 Merged | Apr 28, 2026 | 12.9k | +45 -2 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 139.2k | +38 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix config.credentials.key_path set in environment files being ignored](https://github.com/rails/rails/pull/57230) | 🟢 Open | Apr 23, 2026 | 58.4k | +27 -0 |
@@ -1006,7 +1007,6 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Fix association build to set inverse before assigning attributes](https://github.com/rails/rails/pull/57051) | 🟢 Open | Mar 23, 2026 | 58.4k | +22 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.4k | +59 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.4k | +36 -0 |
-| [rubocop/rubocop](https://github.com/rubocop/rubocop) | [Add `AllowedParentClasses` option to `Style/EmptyClassDefinition`](https://github.com/rubocop/rubocop/pull/14974) | 🟣 Merged | Mar 23, 2026 | 12.9k | +111 -2 |
 
 <!-- CONTRIBUTIONS:END -->
 
