@@ -1002,7 +1002,7 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#delete with type and options](https://github.com/rails/rails/pull/57046) | 🟣 Merged | Mar 27, 2026 | 58.4k | +30 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Error#strict_match?](https://github.com/rails/rails/pull/57043) | 🟣 Merged | Mar 27, 2026 | 58.4k | +44 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for EnvironmentInquirer predicates](https://github.com/rails/rails/pull/57045) | 🟣 Merged | Mar 27, 2026 | 58.4k | +30 -0 |
-| [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 38.9k | +129 -17 |
+| [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 39.0k | +129 -17 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟢 Open | Mar 23, 2026 | 12.9k | +123 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix association build to set inverse before assigning attributes](https://github.com/rails/rails/pull/57051) | 🟢 Open | Mar 23, 2026 | 58.4k | +22 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.4k | +59 -0 |
