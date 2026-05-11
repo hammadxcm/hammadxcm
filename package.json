@@ -25,7 +25,7 @@
   "dependencies": {
     "@astrojs/react": "^5.0.0",
     "@astrojs/sitemap": "^3.7.0",
-    "astro": "^5.5.0",
+    "astro": "^6.1.6",
     "echarts": "^6.0.0",
     "framer-motion": "^12.38.0",
     "jspdf": "^4.2.0",
@@ -40,6 +40,7 @@
   "overrides": {
     "defu": ">=6.1.5",
     "fast-uri": ">=3.1.2",
+    "postcss": ">=8.5.10",
     "vite": "~6.4.2"
   },
   "devDependencies": {
