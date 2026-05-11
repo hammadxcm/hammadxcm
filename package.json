@@ -39,6 +39,7 @@
   },
   "overrides": {
     "defu": ">=6.1.5",
+    "fast-uri": ">=3.1.2",
     "vite": "~6.4.2"
   },
   "devDependencies": {
