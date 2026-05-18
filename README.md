@@ -913,7 +913,7 @@ with prayer times, i18n & notifications
 <b>💎 <a href="https://rubygems.org/gems/rubocop-hk">rubocop-hk</a></b><br/>
 <sub>Published RubyGem —<br/>
 Modern RuboCop config for Ruby & Rails
-6 stars · 3.6k+ downloads</sub>
+6 stars · 3.7k+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -923,7 +923,7 @@ Modern RuboCop config for Ruby & Rails
 <b>🔍 <a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier">image-magnifier</a></b><br/>
 <sub>React zoom component —<br/>
 TypeScript with 7 releases
-8 stars · 797+ downloads</sub>
+8 stars · 799+ downloads</sub>
 </div>
 </td>
 </tr>
