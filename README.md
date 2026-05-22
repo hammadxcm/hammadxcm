@@ -986,27 +986,27 @@ Zero-dep CLI to kill processes by port
 |:-----------|:---|:-------|:-----|------:|-------:|
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15135] Fix `Style/RedundantParentheses` autocorrect swallowing chained methods into trailing comments](https://github.com/rubocop/rubocop/pull/15140) | 🟣 Merged | May 19, 2026 | 12.9k | +77 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟣 Merged | Apr 28, 2026 | 12.9k | +45 -2 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 139.5k | +38 -3 |
-| [rails/rails](https://github.com/rails/rails) | [Fix config.credentials.key_path set in environment files being ignored](https://github.com/rails/rails/pull/57230) | 🟢 Open | Apr 23, 2026 | 58.4k | +27 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Fix attachment uploads lost when reload is called inside a transaction](https://github.com/rails/rails/pull/57229) | 🟢 Open | Apr 23, 2026 | 58.4k | +57 -1 |
-| [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟢 Open | Apr 22, 2026 | 58.4k | +26 -3 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 139.6k | +38 -3 |
+| [rails/rails](https://github.com/rails/rails) | [Fix config.credentials.key_path set in environment files being ignored](https://github.com/rails/rails/pull/57230) | 🟢 Open | Apr 23, 2026 | 58.5k | +27 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Fix attachment uploads lost when reload is called inside a transaction](https://github.com/rails/rails/pull/57229) | 🟢 Open | Apr 23, 2026 | 58.5k | +57 -1 |
+| [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟢 Open | Apr 22, 2026 | 58.5k | +26 -3 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15122] Fix false positive in `Layout/MultilineMethodCallIndentation`](https://github.com/rubocop/rubocop/pull/15123) | 🟢 Open | Apr 22, 2026 | 12.9k | +47 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15117] Add `AllowConsecutiveConditionals` option to `Style/IfUnlessModifier`](https://github.com/rubocop/rubocop/pull/15119) | 🟢 Open | Apr 19, 2026 | 12.9k | +150 -1 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Partial Export test into new testsuite](https://github.com/keycloak/keycloak/pull/48204) | 🟢 Open | Apr 17, 2026 | 34.5k | +57 -25 |
-| [rails/rails](https://github.com/rails/rails) | [Document that days_in_month and days_in_year assume proleptic Gregorian calendar](https://github.com/rails/rails/pull/57114) | 🟢 Open | Apr 1, 2026 | 58.4k | +9 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Document that days_in_month and days_in_year assume proleptic Gregorian calendar](https://github.com/rails/rails/pull/57114) | 🟢 Open | Apr 1, 2026 | 58.5k | +9 -0 |
 | [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add `factory_bot.before_run_factory` instrumentation event](https://github.com/thoughtbot/factory_bot/pull/1795) | 🟣 Merged | Mar 27, 2026 | 8.2k | +133 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Error#initialize_dup, #hash, and #detail](https://github.com/rails/rails/pull/57047) | 🟣 Merged | Mar 27, 2026 | 58.4k | +29 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#import](https://github.com/rails/rails/pull/57044) | 🟣 Merged | Mar 27, 2026 | 58.4k | +41 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for NestedError#inner_error, #raw_type, and #options](https://github.com/rails/rails/pull/57048) | 🟣 Merged | Mar 27, 2026 | 58.4k | +27 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#to_hash with full_messages and #uniq!](https://github.com/rails/rails/pull/57049) | 🟣 Merged | Mar 27, 2026 | 58.4k | +17 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#delete with type and options](https://github.com/rails/rails/pull/57046) | 🟣 Merged | Mar 27, 2026 | 58.4k | +30 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Error#strict_match?](https://github.com/rails/rails/pull/57043) | 🟣 Merged | Mar 27, 2026 | 58.4k | +44 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for EnvironmentInquirer predicates](https://github.com/rails/rails/pull/57045) | 🟣 Merged | Mar 27, 2026 | 58.4k | +30 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Error#initialize_dup, #hash, and #detail](https://github.com/rails/rails/pull/57047) | 🟣 Merged | Mar 27, 2026 | 58.5k | +29 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#import](https://github.com/rails/rails/pull/57044) | 🟣 Merged | Mar 27, 2026 | 58.5k | +41 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for NestedError#inner_error, #raw_type, and #options](https://github.com/rails/rails/pull/57048) | 🟣 Merged | Mar 27, 2026 | 58.5k | +27 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#to_hash with full_messages and #uniq!](https://github.com/rails/rails/pull/57049) | 🟣 Merged | Mar 27, 2026 | 58.5k | +17 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#delete with type and options](https://github.com/rails/rails/pull/57046) | 🟣 Merged | Mar 27, 2026 | 58.5k | +30 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Error#strict_match?](https://github.com/rails/rails/pull/57043) | 🟣 Merged | Mar 27, 2026 | 58.5k | +44 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for EnvironmentInquirer predicates](https://github.com/rails/rails/pull/57045) | 🟣 Merged | Mar 27, 2026 | 58.5k | +30 -0 |
 | [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 39.0k | +129 -17 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟢 Open | Mar 23, 2026 | 12.9k | +123 -3 |
-| [rails/rails](https://github.com/rails/rails) | [Fix association build to set inverse before assigning attributes](https://github.com/rails/rails/pull/57051) | 🟢 Open | Mar 23, 2026 | 58.4k | +22 -3 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.4k | +59 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.4k | +36 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Fix association build to set inverse before assigning attributes](https://github.com/rails/rails/pull/57051) | 🟢 Open | Mar 23, 2026 | 58.5k | +22 -3 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.5k | +59 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.5k | +36 -0 |
 
 <!-- CONTRIBUTIONS:END -->
 
