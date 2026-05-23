@@ -984,6 +984,15 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Log SubjectConfirmationData validation failure in SAMLEndpoint](https://github.com/keycloak/keycloak/pull/49262) | 🟢 Open | May 23, 2026 | 34.5k | +1 -0 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix: await ensureInstrumentationRegistered in RouteModule.prepare](https://github.com/vercel/next.js/pull/94069) | 🟢 Open | May 23, 2026 | 139.6k | +1 -1 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix(image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟢 Open | May 23, 2026 | 139.6k | +24 -1 |
+| [rails/rails](https://github.com/rails/rails) | [Include valid values in ActiveRecord::Enum invalid-value error](https://github.com/rails/rails/pull/57446) | 🟣 Merged | May 22, 2026 | 58.5k | +13 -2 |
+| [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Expand file_fixture_path against Rails.root](https://github.com/rspec/rspec-rails/pull/2902) | 🟢 Open | May 22, 2026 | 5.3k | +57 -2 |
+| [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Clear ActiveJob queues between examples in job specs](https://github.com/rspec/rspec-rails/pull/2901) | 🟢 Open | May 22, 2026 | 5.3k | +48 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Fix incorrect SQL examples in ActiveRecord::QueryMethods docs](https://github.com/rails/rails/pull/57445) | 🟣 Merged | May 22, 2026 | 58.5k | +4 -4 |
+| [rails/rails](https://github.com/rails/rails) | [Improve insert_all error message to show key mismatch](https://github.com/rails/rails/pull/57447) | 🟣 Merged | May 22, 2026 | 58.5k | +37 -1 |
+| [rails/rails](https://github.com/rails/rails) | [Fix grammar in ActiveRecord errors and integration doc comments](https://github.com/rails/rails/pull/57448) | 🟣 Merged | May 22, 2026 | 58.5k | +2 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15135] Fix `Style/RedundantParentheses` autocorrect swallowing chained methods into trailing comments](https://github.com/rubocop/rubocop/pull/15140) | 🟣 Merged | May 19, 2026 | 12.9k | +77 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟣 Merged | Apr 28, 2026 | 12.9k | +45 -2 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 139.6k | +38 -3 |
@@ -999,14 +1008,6 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#import](https://github.com/rails/rails/pull/57044) | 🟣 Merged | Mar 27, 2026 | 58.5k | +41 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for NestedError#inner_error, #raw_type, and #options](https://github.com/rails/rails/pull/57048) | 🟣 Merged | Mar 27, 2026 | 58.5k | +27 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#to_hash with full_messages and #uniq!](https://github.com/rails/rails/pull/57049) | 🟣 Merged | Mar 27, 2026 | 58.5k | +17 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#delete with type and options](https://github.com/rails/rails/pull/57046) | 🟣 Merged | Mar 27, 2026 | 58.5k | +30 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Error#strict_match?](https://github.com/rails/rails/pull/57043) | 🟣 Merged | Mar 27, 2026 | 58.5k | +44 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for EnvironmentInquirer predicates](https://github.com/rails/rails/pull/57045) | 🟣 Merged | Mar 27, 2026 | 58.5k | +30 -0 |
-| [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 39.0k | +129 -17 |
-| [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟢 Open | Mar 23, 2026 | 12.9k | +123 -3 |
-| [rails/rails](https://github.com/rails/rails) | [Fix association build to set inverse before assigning attributes](https://github.com/rails/rails/pull/57051) | 🟢 Open | Mar 23, 2026 | 58.5k | +22 -3 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.5k | +59 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.5k | +36 -0 |
 
 <!-- CONTRIBUTIONS:END -->
 
