@@ -984,17 +984,17 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
-| [rspec/rspec](https://github.com/rspec/rspec) | [test: cover ConsoleCodes.wrap when color is disabled](https://github.com/rspec/rspec/pull/331) | 🟢 Open | May 23, 2026 | 96 | +10 -0 |
+| [rspec/rspec](https://github.com/rspec/rspec) | [test: cover ConsoleCodes.wrap when color is disabled](https://github.com/rspec/rspec/pull/331) | 🟢 Open | May 23, 2026 | 102 | +10 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix sub-second precision in JobRetry#time_for](https://github.com/sidekiq/sidekiq/pull/7003) | 🟢 Open | May 23, 2026 | 13.5k | +14 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Forward block through RedisClientAdapter#method_missing](https://github.com/sidekiq/sidekiq/pull/7002) | 🟢 Open | May 23, 2026 | 13.5k | +18 -2 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove parse_yaml_old from web helpers](https://github.com/sidekiq/sidekiq/pull/7001) | 🟢 Open | May 23, 2026 | 13.5k | +2 -9 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Paginator](https://github.com/sidekiq/sidekiq/pull/7000) | 🟢 Open | May 23, 2026 | 13.5k | +114 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::JobUtil](https://github.com/sidekiq/sidekiq/pull/6999) | 🟢 Open | May 23, 2026 | 13.5k | +194 -0 |
-| [rspec/rspec](https://github.com/rspec/rspec) | [docs: fix grammar typo in pending documentation](https://github.com/rspec/rspec/pull/330) | 🟢 Open | May 23, 2026 | 96 | +1 -1 |
-| [rspec/rspec](https://github.com/rspec/rspec) | [docs: document define_derived_metadata via cucumber feature](https://github.com/rspec/rspec/pull/329) | 🟢 Open | May 23, 2026 | 96 | +97 -0 |
+| [rspec/rspec](https://github.com/rspec/rspec) | [docs: fix grammar typo in pending documentation](https://github.com/rspec/rspec/pull/330) | 🟢 Open | May 23, 2026 | 102 | +1 -1 |
+| [rspec/rspec](https://github.com/rspec/rspec) | [docs: document define_derived_metadata via cucumber feature](https://github.com/rspec/rspec/pull/329) | 🟢 Open | May 23, 2026 | 102 | +97 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add RingBuffer tests and expand SdNotify coverage](https://github.com/sidekiq/sidekiq/pull/6997) | 🟣 Merged | May 23, 2026 | 13.5k | +199 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove dead code left over from the 8.0 error-handler refactor](https://github.com/sidekiq/sidekiq/pull/6998) | 🟣 Merged | May 23, 2026 | 13.5k | +19 -12 |
-| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Log SubjectConfirmationData validation failure in SAMLEndpoint](https://github.com/keycloak/keycloak/pull/49262) | 🟢 Open | May 23, 2026 | 34.5k | +1 -0 |
+| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Log SubjectConfirmationData validation failure in SAMLEndpoint](https://github.com/keycloak/keycloak/pull/49262) | 🟢 Open | May 23, 2026 | 34.6k | +1 -0 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix: await ensureInstrumentationRegistered in RouteModule.prepare](https://github.com/vercel/next.js/pull/94069) | 🟢 Open | May 23, 2026 | 139.6k | +1 -1 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix(image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟢 Open | May 23, 2026 | 139.6k | +24 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Include valid values in ActiveRecord::Enum invalid-value error](https://github.com/rails/rails/pull/57446) | 🟣 Merged | May 22, 2026 | 58.5k | +13 -2 |
@@ -1011,7 +1011,7 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟢 Open | Apr 22, 2026 | 58.5k | +26 -3 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15122] Fix false positive in `Layout/MultilineMethodCallIndentation`](https://github.com/rubocop/rubocop/pull/15123) | 🟢 Open | Apr 22, 2026 | 12.9k | +47 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15117] Add `AllowConsecutiveConditionals` option to `Style/IfUnlessModifier`](https://github.com/rubocop/rubocop/pull/15119) | 🟢 Open | Apr 19, 2026 | 12.9k | +150 -1 |
-| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Partial Export test into new testsuite](https://github.com/keycloak/keycloak/pull/48204) | 🟢 Open | Apr 17, 2026 | 34.5k | +57 -25 |
+| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Partial Export test into new testsuite](https://github.com/keycloak/keycloak/pull/48204) | 🟢 Open | Apr 17, 2026 | 34.6k | +57 -25 |
 
 <!-- CONTRIBUTIONS:END -->
 
