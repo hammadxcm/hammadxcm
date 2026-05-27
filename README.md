@@ -984,12 +984,12 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::JobUtil](https://github.com/sidekiq/sidekiq/pull/6999) | 🟣 Merged | May 26, 2026 | 13.5k | +194 -0 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Paginator](https://github.com/sidekiq/sidekiq/pull/7000) | 🟣 Merged | May 26, 2026 | 13.5k | +114 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove parse_yaml_old from web helpers](https://github.com/sidekiq/sidekiq/pull/7001) | 🟣 Merged | May 25, 2026 | 13.5k | +5 -12 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Forward block through RedisClientAdapter#method_missing](https://github.com/sidekiq/sidekiq/pull/7002) | 🟣 Merged | May 25, 2026 | 13.5k | +18 -2 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix sub-second precision in JobRetry#time_for](https://github.com/sidekiq/sidekiq/pull/7003) | 🟣 Merged | May 25, 2026 | 13.5k | +14 -1 |
 | [rspec/rspec](https://github.com/rspec/rspec) | [test: cover ConsoleCodes.wrap when color is disabled](https://github.com/rspec/rspec/pull/331) | 🟢 Open | May 23, 2026 | 104 | +10 -0 |
-| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Paginator](https://github.com/sidekiq/sidekiq/pull/7000) | 🟢 Open | May 23, 2026 | 13.5k | +114 -0 |
-| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::JobUtil](https://github.com/sidekiq/sidekiq/pull/6999) | 🟢 Open | May 23, 2026 | 13.5k | +194 -0 |
 | [rspec/rspec](https://github.com/rspec/rspec) | [docs: fix grammar typo in pending documentation](https://github.com/rspec/rspec/pull/330) | 🟢 Open | May 23, 2026 | 104 | +1 -1 |
 | [rspec/rspec](https://github.com/rspec/rspec) | [docs: document define_derived_metadata via cucumber feature](https://github.com/rspec/rspec/pull/329) | 🟢 Open | May 23, 2026 | 104 | +97 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add RingBuffer tests and expand SdNotify coverage](https://github.com/sidekiq/sidekiq/pull/6997) | 🟣 Merged | May 23, 2026 | 13.5k | +199 -1 |
@@ -1005,7 +1005,7 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Fix grammar in ActiveRecord errors and integration doc comments](https://github.com/rails/rails/pull/57448) | 🟣 Merged | May 22, 2026 | 58.5k | +2 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15135] Fix `Style/RedundantParentheses` autocorrect swallowing chained methods into trailing comments](https://github.com/rubocop/rubocop/pull/15140) | 🟣 Merged | May 19, 2026 | 12.9k | +77 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟣 Merged | Apr 28, 2026 | 12.9k | +45 -2 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 139.6k | +38 -3 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 139.6k | +77 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix config.credentials.key_path set in environment files being ignored](https://github.com/rails/rails/pull/57230) | 🟢 Open | Apr 23, 2026 | 58.5k | +27 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Fix attachment uploads lost when reload is called inside a transaction](https://github.com/rails/rails/pull/57229) | 🟢 Open | Apr 23, 2026 | 58.5k | +57 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟢 Open | Apr 22, 2026 | 58.5k | +26 -3 |
