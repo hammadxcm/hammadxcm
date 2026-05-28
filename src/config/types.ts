@@ -165,6 +165,7 @@ export interface ContributionPR {
   number: number;
   state: 'merged' | 'open' | 'closed';
   mergedAt: string;
+  createdAt?: string;
   additions: number;
   deletions: number;
   changedFiles: number;

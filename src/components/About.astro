@@ -11,6 +11,7 @@ import SectionHeader from './SectionHeader.astro';
 import { config } from '@config/index';
 import { buildAboutLines, buildAboutMultiLang } from '@config/about-builder';
 import { sanitizeHtml } from '@utils/sanitize';
+import { safeJsonForScript } from '@utils/json-island';
 import type { TranslationMap } from '@i18n/types';
 
 interface Props {
@@ -67,7 +68,7 @@ const multiLangData = buildAboutMultiLang(config.about);
 ))}
     </div>
   </div>
-  <script type="application/json" id="aboutMultiLangData" set:html={JSON.stringify(multiLangData)} />
+  <script type="application/json" id="aboutMultiLangData" set:html={safeJsonForScript(multiLangData)} />
 </section>
 
 <style lang="scss">

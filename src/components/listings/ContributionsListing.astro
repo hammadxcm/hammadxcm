@@ -1,14 +1,20 @@
 ---
 /**
- * Full Contributions Listing — all PRs with summary stats + client-side pagination.
+ * Full Contributions Listing — summary stats + analytics + an interactive browser
+ * (search / filter / sort, Cards or Table view, pagination + Show all, detail modal).
  * Wrapped in dashboard-ambient for ambient orb effects.
  */
 import ContributionCard from '../ContributionCard.astro';
+import ContributionRow from '../ContributionRow.astro';
 import ContributionsSummary from '../ContributionsSummary.astro';
 import ContributionsAnalytics from './ContributionsAnalytics.astro';
+import ContributionsToolbar from './ContributionsToolbar.astro';
+import ContributionDetailModal from '../ContributionDetailModal.astro';
 import type { ContributionsData } from '@config/types';
 import type { TranslationMap } from '@i18n/types';
 import { sortContributions } from '../../utils/contribution-sort';
+import { DEFAULT_STATES, distinctLanguages, distinctOrgs } from '../../utils/contribution-filter';
+import { safeJsonForScript } from '../../utils/json-island';
 import contributionsRaw from '../../data/contributions.json';
 
 interface Props {
@@ -18,7 +24,27 @@ interface Props {
 const { translations } = Astro.props;
 const contributions = contributionsRaw as ContributionsData;
 const prs = sortContributions(contributions.contributions);
-const PAGE_SIZE = 12;
+const languages = distinctLanguages(prs);
+const orgs = distinctOrgs(prs);
+const PAGE_SIZE = 24;
+
+// SSR initial visibility must match the controller's first render: default state
+// filter (Merged + Open) + the first page. Closed PRs start hidden — no flash.
+const defaultStateSet = new Set(DEFAULT_STATES);
+const initiallyVisible = new Set<number>();
+let shownCount = 0;
+prs.forEach((pr, idx) => {
+  if (defaultStateSet.has(pr.state) && shownCount < PAGE_SIZE) {
+    initiallyVisible.add(idx);
+    shownCount++;
+  }
+});
+
+// Data island for the client controller (modal + filter/sort).
+const dataJson = safeJsonForScript(prs);
+
+const cb = translations.contributionsBrowser;
+const l = translations.listing;
 ---
 
 <div class="dashboard-ambient">
@@ -26,31 +52,83 @@ const PAGE_SIZE = 12;
 
   <ContributionsAnalytics prs={prs} translations={translations} />
 
-  <div
-    class="contributions-listing-grid"
-    id="contributions-paginated-grid"
+  <section
+    class="contributions-browser"
+    id="contributions-browser"
     data-page-size={PAGE_SIZE}
+    data-total={prs.length}
+    data-label-prev={l.previous}
+    data-label-next={l.next}
+    data-label-page={l.page}
+    data-label-of={l.of}
+    data-label-showing={l.showing}
+    data-label-show-all={cb.showAll}
+    data-label-show-less={cb.showLess}
+    data-label-result-count={cb.resultCount}
+    data-label-no-results={cb.noResults}
   >
-    {prs.map((pr, idx) => (
-      <ContributionCard pr={pr} hidden={idx >= PAGE_SIZE} translations={translations} />
-    ))}
-  </div>
+    <ContributionsToolbar translations={translations} languages={languages} orgs={orgs} />
 
-  {prs.length > PAGE_SIZE && (
-    <nav
-      class="pagination-controls"
-      id="contributions-pagination"
-      aria-label="Pagination"
-      data-total={prs.length}
-      data-page-size={PAGE_SIZE}
-      data-label-prev={translations.listing.previous}
-      data-label-next={translations.listing.next}
-      data-label-page={translations.listing.page}
-      data-label-of={translations.listing.of}
-      data-label-showing={translations.listing.showing}
-    >
-    </nav>
-  )}
+    <div class="contrib-result-count" id="contrib-result-count" aria-live="polite"></div>
+
+    {/* Cards view */}
+    <div class="contributions-cards-view" id="contributions-cards-view">
+      <div class="contributions-listing-grid" id="contributions-cards-grid">
+        {prs.map((pr, idx) => (
+          <ContributionCard
+            pr={pr}
+            id={idx}
+            interactive="modal"
+            hidden={!initiallyVisible.has(idx)}
+            translations={translations}
+          />
+        ))}
+      </div>
+    </div>
+
+    {/* Table view */}
+    <div class="contributions-table-view contrib-hidden" id="contributions-table-view">
+      <div class="contrib-table-scroll">
+        <table class="contrib-table">
+          <thead>
+            <tr>
+              <th scope="col">{cb.colState}</th>
+              <th scope="col">{cb.colRepo}</th>
+              <th scope="col">{cb.colPr}</th>
+              <th scope="col">{cb.colLang}</th>
+              <th scope="col" class="contrib-th-sort" data-sort-key="stars">
+                <button type="button" class="contrib-th-btn">{cb.colStars}</button>
+              </th>
+              <th scope="col" class="contrib-th-sort" data-sort-key="impact">
+                <button type="button" class="contrib-th-btn">{cb.colImpact}</button>
+              </th>
+              <th scope="col" class="contrib-th-sort" data-sort-key="recent">
+                <button type="button" class="contrib-th-btn">{cb.colWhen}</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="contributions-table-body">
+            {prs.map((pr, idx) => (
+              <ContributionRow pr={pr} id={idx} hidden={!initiallyVisible.has(idx)} translations={translations} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {/* Empty state */}
+    <div class="contrib-empty contrib-hidden" id="contrib-empty">{cb.noResults}</div>
+
+    {/* Pagination (controller-rendered) + Show all */}
+    <nav class="pagination-controls" id="contributions-pagination" aria-label="Pagination"></nav>
+    <div class="contrib-showall-wrap">
+      <button type="button" class="contrib-show-all" id="contrib-show-all" hidden></button>
+    </div>
+
+    <script type="application/json" id="contributions-data" set:html={dataJson}></script>
+  </section>
+
+  <ContributionDetailModal translations={translations} />
 </div>
 
 <style lang="scss" is:global>
@@ -68,6 +146,10 @@ const PAGE_SIZE = 12;
     gap: 0.75rem;
     margin-top: 2.5rem;
     padding: 1rem 0;
+
+    &:empty {
+      display: none;
+    }
   }
 
   .pagination-btn {

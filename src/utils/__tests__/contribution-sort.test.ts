@@ -45,6 +45,13 @@ describe('sortContributions', () => {
     expect(sorted[1].state).toBe('draft');
   });
 
+  it('handles unknown state as the first operand too', () => {
+    // known-first then unknown exercises the a-side `?? 9` fallback.
+    const sorted = sortContributions([makePR('merged', '2025-01-01'), makePR('zzz', '2025-01-02')]);
+    expect(sorted[0].state).toBe('merged');
+    expect(sorted[1].state).toBe('zzz');
+  });
+
   it('handles single item', () => {
     const prs = [makePR('merged', '2025-01-01')];
     expect(sortContributions(prs)).toHaveLength(1);

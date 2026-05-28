@@ -1,7 +1,26 @@
-import { getViteConfig } from 'astro/config';
+import { fileURLToPath } from 'node:url';
+import { coverageConfigDefaults, defineConfig } from 'vitest/config';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default (getViteConfig as any)({
+// Plain vitest config (no astro getViteConfig). astro's getViteConfig force-inlines all
+// node_modules, and vitest's SSR module runner mis-evaluates CJS deps (cookie, react, ...)
+// as ESM ("exports/module is not defined") under vite 7 + vitest 4. Unit tests only need
+// the tsconfig path aliases and JSX, so we recreate those here and let node deps load
+// natively. `.astro` files aren't imported by unit tests.
+const r = (p: string): string => fileURLToPath(new URL(p, import.meta.url));
+
+export default defineConfig({
+  resolve: {
+    // Keep these in sync with `compilerOptions.paths` in tsconfig.json.
+    alias: {
+      '@config': r('./src/config'),
+      '@components': r('./src/components'),
+      '@react': r('./src/components/react'),
+      '@scripts': r('./src/scripts'),
+      '@i18n': r('./src/i18n'),
+      '@utils': r('./src/utils'),
+    },
+  },
+  esbuild: { jsx: 'automatic', jsxImportSource: 'react' },
   test: {
     globals: true,
     coverage: {
@@ -38,6 +57,7 @@ export default (getViteConfig as any)({
         'src/scripts/effects/matrix-rain.ts',
         'src/scripts/effects/screen-effects.ts',
         'src/scripts/dashboard-charts.ts',
+        'src/scripts/interactions/contributions-browser.ts',
         'src/scripts/interactions/copy.ts',
         'src/scripts/interactions/keyboard.ts',
         'src/scripts/interactions/nav.ts',
@@ -74,11 +94,28 @@ export default (getViteConfig as any)({
         'src/components/react/ProjectCard.tsx',
         'src/components/react/FloatingTechIcon.tsx',
       ],
+      exclude: [
+        ...coverageConfigDefaults.exclude,
+        // Untestable in a headless DOM: no canvas 2D / WebGL context, no Web Audio API.
+        'src/scripts/effects/matrix-rain.ts',
+        'src/scripts/effects/particle-text.ts',
+        'src/scripts/effects/wireframe.ts',
+        'src/scripts/effects/contribution-3d.ts',
+        'src/scripts/effects/sound.ts',
+        'src/scripts/games/breakout.ts',
+      ],
       thresholds: {
-        statements: 60,
-        branches: 50,
-        functions: 58,
-        lines: 60,
+        // Ratcheted up to the level achieved after the contributions-browser test work
+        // (was 60/50/58/60). Driving the remaining legacy files to 100% is tracked
+        // separately; raise these further as that coverage lands.
+        statements: 63,
+        branches: 58,
+        functions: 62,
+        lines: 64,
+        // New, fully-covered logic — enforce it stays at 100%.
+        'src/utils/contribution-filter.ts': { statements: 100, branches: 100, functions: 100, lines: 100 },
+        'src/utils/page-range.ts': { statements: 100, branches: 100, functions: 100, lines: 100 },
+        'src/utils/contribution-sort.ts': { statements: 100, branches: 100, functions: 100, lines: 100 },
         'src/scripts/achievements.ts': {
           statements: 99,
           branches: 98,

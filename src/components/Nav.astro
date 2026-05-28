@@ -7,6 +7,7 @@
  * @styles Scoped SCSS — nav, hamburger, theme-switcher + responsive
  */
 import { config } from '@config/index';
+import { safeJsonForScript } from '@utils/json-island';
 import type { TranslationMap } from '@i18n/types';
 import type { Locale } from '@i18n/types';
 import LanguageSwitcher from './LanguageSwitcher.astro';
@@ -141,7 +142,7 @@ const resumeData = {
   </div>
 </nav>
 
-<script type="application/json" id="resumeData" set:html={JSON.stringify(resumeData)} />
+<script type="application/json" id="resumeData" set:html={safeJsonForScript(resumeData)} />
 
 <style lang="scss">
   @use '../styles/mixins' as *;
