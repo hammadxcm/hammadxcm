@@ -984,6 +984,9 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [quran/quran.com-frontend-next](https://github.com/quran/quran.com-frontend-next) | [fix(developers): remove dead Quran.com API project card](https://github.com/quran/quran.com-frontend-next/pull/3300) | 🟢 Open | May 28, 2026 | 1.9k | +0 -6 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Web UI HTML-escaping helpers](https://github.com/sidekiq/sidekiq/pull/7007) | 🟣 Merged | May 28, 2026 | 13.5k | +47 -0 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟢 Open | May 28, 2026 | 861 | +57 -1 |
 | [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟢 Open | May 27, 2026 | 861 | +52 -12 |
 | [rspec/rspec](https://github.com/rspec/rspec) | [docs: fix grammar typo in pending documentation](https://github.com/rspec/rspec/pull/330) | 🟣 Merged | May 27, 2026 | 104 | +1 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::JobUtil](https://github.com/sidekiq/sidekiq/pull/6999) | 🟣 Merged | May 26, 2026 | 13.5k | +194 -0 |
