@@ -22,6 +22,10 @@ import { initTypewriter } from './effects/typewriter';
 import { initAboutLang } from './interactions/about-lang';
 import { initBlurUp } from './interactions/blur-up';
 import { destroyCommandPalette, initCommandPalette } from './interactions/command-palette';
+import {
+  destroyContributionsBrowser,
+  initContributionsBrowser,
+} from './interactions/contributions-browser';
 import { initCopy } from './interactions/copy';
 import { initFloatingIcons } from './interactions/floating-icons';
 import { destroyGuestbookStats, initGuestbookStats } from './interactions/guestbook-stats';
@@ -79,6 +83,7 @@ function destroyEager(): void {
   destroyStatusBar();
   destroyAchievements();
   destroyPagination();
+  destroyContributionsBrowser();
   destroyGuestbookStats();
   destroyFavicon();
   destroyThemeSwitcher();
@@ -117,6 +122,7 @@ function initPage(): void {
     safeInit(initSmoothScroll);
     safeInit(initProjectCards);
     safeInit(initPagination);
+    safeInit(initContributionsBrowser);
     safeInit(initStatusBar);
     safeInit(initAboutLang);
     safeInit(initLangSwitcher);

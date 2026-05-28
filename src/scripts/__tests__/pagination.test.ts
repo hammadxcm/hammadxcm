@@ -10,17 +10,17 @@ import { destroyPagination, initPagination } from '../interactions/pagination';
 
 function buildGrid(count: number, pageSize: number): void {
   const grid = document.createElement('div');
-  grid.id = 'contributions-paginated-grid';
+  grid.id = 'projects-listing-grid';
   grid.dataset.pageSize = String(pageSize);
   for (let i = 0; i < count; i++) {
     const card = document.createElement('div');
-    if (i >= pageSize) card.classList.add('contrib-hidden');
+    if (i >= pageSize) card.classList.add('project-hidden');
     grid.appendChild(card);
   }
   document.body.appendChild(grid);
 
   const nav = document.createElement('nav');
-  nav.id = 'contributions-pagination';
+  nav.id = 'projects-pagination';
   nav.dataset.total = String(count);
   nav.dataset.pageSize = String(pageSize);
   nav.dataset.labelPrev = 'Previous';
@@ -45,25 +45,25 @@ describe('initPagination', () => {
   it('does nothing for single page of items', () => {
     buildGrid(6, 12);
     initPagination();
-    const nav = document.getElementById('contributions-pagination');
+    const nav = document.getElementById('projects-pagination');
     expect(nav?.innerHTML).toBe('');
   });
 
   it('renders page controls for 24 items / 12 per page', () => {
     buildGrid(24, 12);
     initPagination();
-    const nav = document.getElementById('contributions-pagination');
+    const nav = document.getElementById('projects-pagination');
     expect(nav?.querySelectorAll('.pagination-page').length).toBe(2);
   });
 
   it('shows first 12 cards and hides rest', () => {
     buildGrid(24, 12);
     initPagination();
-    const cards = document.querySelectorAll('#contributions-paginated-grid > *');
-    expect(cards[0].classList.contains('contrib-hidden')).toBe(false);
-    expect(cards[11].classList.contains('contrib-hidden')).toBe(false);
-    expect(cards[12].classList.contains('contrib-hidden')).toBe(true);
-    expect(cards[23].classList.contains('contrib-hidden')).toBe(true);
+    const cards = document.querySelectorAll('#projects-listing-grid > *');
+    expect(cards[0].classList.contains('project-hidden')).toBe(false);
+    expect(cards[11].classList.contains('project-hidden')).toBe(false);
+    expect(cards[12].classList.contains('project-hidden')).toBe(true);
+    expect(cards[23].classList.contains('project-hidden')).toBe(true);
   });
 
   it('navigating to page 2 shows cards 13-24', () => {
@@ -71,10 +71,10 @@ describe('initPagination', () => {
     initPagination();
     const page2Btn = document.querySelector('.pagination-page[data-page="2"]') as HTMLElement;
     page2Btn?.click();
-    const cards = document.querySelectorAll('#contributions-paginated-grid > *');
-    expect(cards[0].classList.contains('contrib-hidden')).toBe(true);
-    expect(cards[12].classList.contains('contrib-hidden')).toBe(false);
-    expect(cards[23].classList.contains('contrib-hidden')).toBe(false);
+    const cards = document.querySelectorAll('#projects-listing-grid > *');
+    expect(cards[0].classList.contains('project-hidden')).toBe(true);
+    expect(cards[12].classList.contains('project-hidden')).toBe(false);
+    expect(cards[23].classList.contains('project-hidden')).toBe(false);
   });
 
   it('disables previous button on page 1', () => {

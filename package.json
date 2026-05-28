@@ -1,7 +1,7 @@
 {
   "name": "hammadxcm",
   "type": "module",
-  "version": "1.5.39",
+  "version": "1.6.0",
   "private": true,
   "scripts": {
     "predev": "node scripts/fetch-all-data.mjs",
@@ -40,7 +40,8 @@
   "overrides": {
     "defu": ">=6.1.5",
     "fast-uri": ">=3.1.2",
-    "postcss": ">=8.5.10"
+    "postcss": ">=8.5.10",
+    "devalue": ">=5.8.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",

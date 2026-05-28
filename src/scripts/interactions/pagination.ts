@@ -1,12 +1,9 @@
+import { buildPageRange } from '../../utils/page-range';
 import { trackEvent } from '../achievements';
 import { prefersReducedMotion } from '../state';
 
+// Contributions has its own richer controller (contributions-browser.ts).
 const PAGINATED_GRIDS = [
-  {
-    gridId: 'contributions-paginated-grid',
-    navId: 'contributions-pagination',
-    hiddenClass: 'contrib-hidden',
-  },
   { gridId: 'projects-listing-grid', navId: 'projects-pagination', hiddenClass: 'project-hidden' },
 ];
 
@@ -179,27 +176,4 @@ function initPaginatedGrid(
   };
 
   return inst;
-}
-
-/**
- * Build a page range like [1, '...', 4, 5, 6, '...', 9].
- * Shows first, last, and up to 2 neighbours around current.
- */
-function buildPageRange(current: number, total: number): (number | string)[] {
-  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
-
-  const pages: (number | string)[] = [];
-  const addPage = (p: number): void => {
-    if (!pages.includes(p)) pages.push(p);
-  };
-
-  addPage(1);
-  if (current > 3) pages.push('...');
-  for (let i = Math.max(2, current - 1); i <= Math.min(total - 1, current + 1); i++) {
-    addPage(i);
-  }
-  if (current < total - 2) pages.push('...');
-  addPage(total);
-
-  return pages;
 }
