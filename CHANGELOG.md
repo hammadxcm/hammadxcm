@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-05-28
+
+### Added
+
+#### Contributions Listing Browser
+- **Search / filter / sort toolbar** on `/contributions`: free-text search across repo name, PR title, topics, and labels; Merged/Open/Closed state chips; language and organization filters; and sort by recency, stars, impact, or PR size
+- **Table view**: a dense, sortable view (sticky header, sortable Stars/Impact/When columns) toggleable against the existing card grid — the choice persists via `localStorage`
+- **Detail modal**: clicking any card or table row opens a modal with the full description, all topics and labels, repo stats, diff stats, time-to-merge, and direct **Pull Request** + **Repository** links
+- **Pagination + Show all**: 24 items per page with a "Show all" toggle
+- **Richer data**: GitHub fetch cap raised from 50 to 100 contributions, and `createdAt` is now captured to power time-to-merge
+
+### Changed
+
+- **Default filter**: the contributions listing now defaults to **Merged + Open** (Closed hidden until the Closed chip is selected)
+- **Pagination**: contributions uses a dedicated browser controller; the shared paginator (`buildPageRange`, extracted to `src/utils/page-range.ts`) continues to drive the Projects listing
+
+### Fixed
+
+- **Test runner**: repaired the broken Vitest setup (CommonJS `cookie` crash under Vite 7 / Vitest 4 via Astro's `getViteConfig`) by switching `vitest.config.ts` to a plain config with the tsconfig path aliases — the full suite runs again. Added unit tests for the contributions filter/sort, pagination range, JSON-island escaper, and a full controller suite; new code is locked at 100% coverage with ratcheted global thresholds
+
+### Security
+
+- **Dependency**: overrode `devalue` to `5.8.1`, resolving a high-severity advisory (production `npm audit` now reports 0 vulnerabilities)
+- **XSS hardening**: inline JSON `<script>` islands (About, Nav, Command Palette, Contributions) now escape `<` via a shared, tested `safeJsonForScript()` helper so embedded data cannot break out of the tag
+
 ## [1.5.0] - 2026-03-20
 
 ### Added
