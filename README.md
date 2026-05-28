@@ -984,13 +984,14 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟢 Open | May 27, 2026 | 861 | +52 -12 |
+| [rspec/rspec](https://github.com/rspec/rspec) | [docs: fix grammar typo in pending documentation](https://github.com/rspec/rspec/pull/330) | 🟣 Merged | May 27, 2026 | 104 | +1 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::JobUtil](https://github.com/sidekiq/sidekiq/pull/6999) | 🟣 Merged | May 26, 2026 | 13.5k | +194 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Paginator](https://github.com/sidekiq/sidekiq/pull/7000) | 🟣 Merged | May 26, 2026 | 13.5k | +114 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove parse_yaml_old from web helpers](https://github.com/sidekiq/sidekiq/pull/7001) | 🟣 Merged | May 25, 2026 | 13.5k | +5 -12 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Forward block through RedisClientAdapter#method_missing](https://github.com/sidekiq/sidekiq/pull/7002) | 🟣 Merged | May 25, 2026 | 13.5k | +18 -2 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix sub-second precision in JobRetry#time_for](https://github.com/sidekiq/sidekiq/pull/7003) | 🟣 Merged | May 25, 2026 | 13.5k | +14 -1 |
 | [rspec/rspec](https://github.com/rspec/rspec) | [test: cover ConsoleCodes.wrap when color is disabled](https://github.com/rspec/rspec/pull/331) | 🟢 Open | May 23, 2026 | 104 | +10 -0 |
-| [rspec/rspec](https://github.com/rspec/rspec) | [docs: fix grammar typo in pending documentation](https://github.com/rspec/rspec/pull/330) | 🟢 Open | May 23, 2026 | 104 | +1 -1 |
 | [rspec/rspec](https://github.com/rspec/rspec) | [docs: document define_derived_metadata via cucumber feature](https://github.com/rspec/rspec/pull/329) | 🟢 Open | May 23, 2026 | 104 | +97 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add RingBuffer tests and expand SdNotify coverage](https://github.com/sidekiq/sidekiq/pull/6997) | 🟣 Merged | May 23, 2026 | 13.5k | +199 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove dead code left over from the 8.0 error-handler refactor](https://github.com/sidekiq/sidekiq/pull/6998) | 🟣 Merged | May 23, 2026 | 13.5k | +19 -12 |
@@ -999,7 +1000,7 @@ Zero-dep CLI to kill processes by port
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix(image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟢 Open | May 23, 2026 | 139.6k | +24 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Include valid values in ActiveRecord::Enum invalid-value error](https://github.com/rails/rails/pull/57446) | 🟣 Merged | May 22, 2026 | 58.5k | +13 -2 |
 | [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Expand file_fixture_path against Rails.root](https://github.com/rspec/rspec-rails/pull/2902) | 🟢 Open | May 22, 2026 | 5.3k | +57 -2 |
-| [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Clear ActiveJob queues between examples in job specs](https://github.com/rspec/rspec-rails/pull/2901) | 🟢 Open | May 22, 2026 | 5.3k | +44 -0 |
+| [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Clear ActiveJob queues between examples in job specs](https://github.com/rspec/rspec-rails/pull/2901) | 🟢 Open | May 22, 2026 | 5.3k | +42 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Fix incorrect SQL examples in ActiveRecord::QueryMethods docs](https://github.com/rails/rails/pull/57445) | 🟣 Merged | May 22, 2026 | 58.5k | +4 -4 |
 | [rails/rails](https://github.com/rails/rails) | [Improve insert_all error message to show key mismatch](https://github.com/rails/rails/pull/57447) | 🟣 Merged | May 22, 2026 | 58.5k | +37 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix grammar in ActiveRecord errors and integration doc comments](https://github.com/rails/rails/pull/57448) | 🟣 Merged | May 22, 2026 | 58.5k | +2 -2 |
