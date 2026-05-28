@@ -110,6 +110,36 @@ export interface TranslationMap {
     topLanguage: string;
     avgPRsPerMonth: string;
   };
+  contributionsBrowser: {
+    searchPlaceholder: string;
+    filters: string;
+    allLanguages: string;
+    allOrgs: string;
+    sortBy: string;
+    sortRecent: string;
+    sortStars: string;
+    sortImpact: string;
+    sortSize: string;
+    viewCards: string;
+    viewTable: string;
+    showAll: string;
+    showLess: string;
+    noResults: string;
+    clearFilters: string;
+    resultCount: string;
+    colState: string;
+    colRepo: string;
+    colPr: string;
+    colLang: string;
+    colStars: string;
+    colImpact: string;
+    colWhen: string;
+    repository: string;
+    pullRequest: string;
+    timeToMerge: string;
+    created: string;
+    close: string;
+  };
   certs: {
     label: string;
     title: string;

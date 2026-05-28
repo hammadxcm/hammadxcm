@@ -8,6 +8,7 @@
  * @styles Scoped SCSS — modal, input, results list, keyboard navigation + responsive
  */
 import { config } from '@config/index';
+import { safeJsonForScript } from '@utils/json-island';
 import { LOCALES } from '@i18n/types';
 import type { TranslationMap } from '@i18n/types';
 
@@ -61,7 +62,7 @@ const paletteData = {
   </div>
 </div>
 
-<script type="application/json" id="cmdPaletteData" set:html={JSON.stringify(paletteData)} />
+<script type="application/json" id="cmdPaletteData" set:html={safeJsonForScript(paletteData)} />
 
 <script>
   import { initCommandPalette } from '../scripts/interactions/command-palette';

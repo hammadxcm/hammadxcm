@@ -36,3 +36,4 @@ npm-debug.log*
 # Claude Code / CommandCode
 .claude/
 .commandcode/
+.gstack/

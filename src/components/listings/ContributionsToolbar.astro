@@ -1,0 +1,91 @@
+---
+/**
+ * Contributions browser toolbar — search, state chips, language/org/sort selects,
+ * clear button, and the Cards | Table view toggle. Wired by contributions-browser.ts.
+ */
+import type { TranslationMap } from '@i18n/types';
+import { DEFAULT_STATES } from '../../utils/contribution-filter';
+
+interface Props {
+  translations: TranslationMap;
+  languages: string[];
+  orgs: string[];
+}
+
+const { translations, languages, orgs } = Astro.props;
+const c = translations.contributions;
+const cb = translations.contributionsBrowser;
+
+const states = [
+  { key: 'merged', label: c.merged },
+  { key: 'open', label: c.open },
+  { key: 'closed', label: c.closed },
+];
+const sorts = [
+  { key: 'recent', label: cb.sortRecent },
+  { key: 'stars', label: cb.sortStars },
+  { key: 'impact', label: cb.sortImpact },
+  { key: 'size', label: cb.sortSize },
+];
+---
+
+<div class="contrib-toolbar" id="contrib-toolbar">
+  <div class="contrib-search-wrap">
+    <svg class="contrib-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+    </svg>
+    <input
+      type="search"
+      id="contrib-search"
+      class="contrib-search-input"
+      placeholder={cb.searchPlaceholder}
+      autocomplete="off"
+      aria-label={cb.searchPlaceholder}
+    />
+  </div>
+
+  <div class="contrib-state-chips" role="group" aria-label={cb.filters}>
+    {states.map((s) => (
+      <button
+        type="button"
+        class:list={['contrib-chip', { active: DEFAULT_STATES.includes(s.key) }]}
+        data-state={s.key}
+        aria-pressed={DEFAULT_STATES.includes(s.key) ? 'true' : 'false'}
+      >
+        <span class:list={['contrib-chip-dot', `contrib-chip-dot--${s.key}`]}></span>
+        {s.label}
+      </button>
+    ))}
+  </div>
+
+  <select id="contrib-lang" class="contrib-select" aria-label={cb.allLanguages}>
+    <option value="">{cb.allLanguages}</option>
+    {languages.map((lang) => <option value={lang}>{lang}</option>)}
+  </select>
+
+  <select id="contrib-org" class="contrib-select" aria-label={cb.allOrgs}>
+    <option value="">{cb.allOrgs}</option>
+    {orgs.map((org) => <option value={org}>{org}</option>)}
+  </select>
+
+  <select id="contrib-sort" class="contrib-select" aria-label={cb.sortBy}>
+    {sorts.map((s) => <option value={s.key}>{s.label}</option>)}
+  </select>
+
+  <button type="button" class="contrib-clear" id="contrib-clear" hidden>{cb.clearFilters}</button>
+
+  <div class="contrib-view-toggle" role="group" aria-label={`${cb.viewCards} / ${cb.viewTable}`}>
+    <button type="button" class="contrib-view-btn active" data-view="cards" aria-pressed="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" />
+      </svg>
+      {cb.viewCards}
+    </button>
+    <button type="button" class="contrib-view-btn" data-view="table" aria-pressed="false">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M3 5h18M3 12h18M3 19h18" />
+      </svg>
+      {cb.viewTable}
+    </button>
+  </div>
+</div>

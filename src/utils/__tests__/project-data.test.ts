@@ -11,6 +11,13 @@ vi.mock('@config/index', () => ({
         linkText: '',
         npmPackage: 'featured-pkg',
       },
+      {
+        name: 'No-Repo-Feature',
+        tags: [],
+        url: '',
+        description: '',
+        linkText: '',
+      },
     ],
     github: { username: 'hammadxcm' },
   },
@@ -69,6 +76,16 @@ vi.mock('../../data/projects.json', () => ({
         description: '',
         downloads: 0,
       },
+      {
+        // No `downloads` field — exercises the `repo.downloads ?? 0` fallback.
+        name: 'no-downloads',
+        url: '',
+        stars: 2,
+        forks: 0,
+        language: 'TypeScript',
+        topics: [],
+        description: '',
+      },
     ],
   },
 }));
@@ -85,7 +102,7 @@ describe('getProjectData', () => {
   it('includes featured projects with kind "featured"', () => {
     const { projects } = getProjectData();
     const featured = projects.filter((p) => p.kind === 'featured');
-    expect(featured).toHaveLength(1);
+    expect(featured).toHaveLength(2);
     if (featured[0].kind === 'featured') {
       expect(featured[0].project.name).toBe('Featured-One');
     }
@@ -123,5 +140,24 @@ describe('getProjectData', () => {
     if (featured?.kind === 'featured') {
       expect(featured.downloads).toBe(500);
     }
+  });
+
+  it('defaults stars/forks/downloads to 0 for a featured project with no matching repo', () => {
+    const { projects } = getProjectData();
+    const noRepo = projects.find(
+      (p) => p.kind === 'featured' && p.project.name === 'No-Repo-Feature',
+    );
+    expect(noRepo?.kind).toBe('featured');
+    if (noRepo?.kind === 'featured') {
+      expect(noRepo.downloads).toBe(0);
+      expect(noRepo.stars).toBe(0);
+      expect(noRepo.forks).toBe(0);
+    }
+  });
+
+  it('includes dynamic repos that have no downloads field', () => {
+    const { projects } = getProjectData();
+    const names = projects.map((p) => (p.kind === 'dynamic' ? p.repo.name : ''));
+    expect(names).toContain('no-downloads');
   });
 });

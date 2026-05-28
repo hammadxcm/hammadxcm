@@ -1,0 +1,68 @@
+---
+/**
+ * Compact contribution table row (table view of the contributions browser).
+ * Clickable — the contributions-browser controller opens the detail modal.
+ */
+import StarIcon from './icons/StarIcon.astro';
+import { getLangColor } from '@config/lang-colors';
+import { formatStars } from '../utils/format';
+import { relativeTime } from '../utils/time';
+import type { ContributionPR } from '@config/types';
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  pr: ContributionPR;
+  id: number;
+  hidden?: boolean;
+  translations: TranslationMap;
+}
+
+const { pr, id, hidden = false, translations } = Astro.props;
+const repo = pr.repo;
+const dotColor = getLangColor(repo.language);
+const stateLabel =
+  pr.state === 'open'
+    ? translations.contributions.open
+    : pr.state === 'closed'
+      ? translations.contributions.closed
+      : translations.contributions.merged;
+---
+
+<tr
+  class:list={['contrib-row', { 'contrib-hidden': hidden }]}
+  data-pr-id={String(id)}
+  tabindex="0"
+  role="button"
+  aria-haspopup="dialog"
+>
+  <td class="cr-state">
+    <span class:list={['cr-state-dot', `cr-state-dot--${pr.state}`]}></span>
+    <span class="cr-state-label">{stateLabel}</span>
+  </td>
+  <td class="cr-repo">
+    <img class="cr-avatar" src={repo.ownerAvatar} alt="" width="20" height="20" loading="lazy" />
+    <span class="cr-repo-name">{repo.fullName}</span>
+  </td>
+  <td class="cr-pr">
+    <span class="cr-pr-num">#{pr.number}</span>
+    <span class="cr-pr-title">{pr.title}</span>
+  </td>
+  <td class="cr-lang">
+    {repo.language && (
+      <>
+        <span class="cr-lang-dot" style={`background:${dotColor}`}></span>
+        {repo.language}
+      </>
+    )}
+  </td>
+  <td class="cr-stars">
+    <StarIcon />
+    {formatStars(repo.stars)}
+  </td>
+  <td class="cr-impact">
+    <span class="cr-add">+{(pr.additions || 0).toLocaleString()}</span>
+    <span class="cr-del">-{(pr.deletions || 0).toLocaleString()}</span>
+    <span class="cr-files">{pr.changedFiles || 0} {translations.contributions.files}</span>
+  </td>
+  <td class="cr-when">{relativeTime(pr.mergedAt, translations)}</td>
+</tr>

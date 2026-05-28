@@ -1,0 +1,36 @@
+---
+/**
+ * Contribution detail modal — a single native <dialog> populated client-side
+ * by the contributions-browser controller from the JSON data island.
+ * i18n strings are passed via data-* so the controller can render translated text.
+ */
+import type { TranslationMap } from '@i18n/types';
+
+interface Props {
+  translations: TranslationMap;
+}
+
+const { translations } = Astro.props;
+const c = translations.contributions;
+const cb = translations.contributionsBrowser;
+---
+
+<dialog
+  id="contrib-modal"
+  class="contrib-modal glass"
+  data-label-merged={c.merged}
+  data-label-open={c.open}
+  data-label-closed={c.closed}
+  data-label-files={c.files}
+  data-label-view-pr={c.viewPullRequest}
+  data-label-repository={cb.repository}
+  data-label-time-to-merge={cb.timeToMerge}
+  data-label-created={cb.created}
+>
+  <button type="button" class="contrib-modal-close" id="contrib-modal-close" aria-label={cb.close}>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg>
+  </button>
+  <div class="contrib-modal-body" id="contrib-modal-body"></div>
+</dialog>

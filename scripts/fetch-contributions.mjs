@@ -13,7 +13,7 @@
  *   GITHUB_TOKEN     (optional — raises rate limit)
  *   EXCLUDE_ORGS     (optional — comma-separated orgs to skip)
  *   MIN_STARS        (optional — default 0)
- *   MAX_ITEMS        (optional — default 20)
+ *   MAX_ITEMS        (optional — default 100)
  */
 
 import { writeFileSync, existsSync } from 'node:fs';
@@ -30,7 +30,7 @@ const EXCLUDE_ORGS = (process.env.EXCLUDE_ORGS || '')
   .map((s) => s.trim().toLowerCase())
   .filter(Boolean);
 const MIN_STARS = parseInt(process.env.MIN_STARS || '0', 10);
-const MAX_ITEMS = parseInt(process.env.MAX_ITEMS || '20', 10);
+const MAX_ITEMS = parseInt(process.env.MAX_ITEMS || '100', 10);
 
 if (!USERNAME) {
   console.error('GITHUB_USERNAME is required');
@@ -188,6 +188,7 @@ async function main() {
         : pr._state === 'closed'
         ? (pr.closed_at || pr.created_at || '')
         : (pr.created_at || ''),
+      createdAt: pr.created_at || '',
       additions: 0,
       deletions: 0,
       changedFiles: 0,
