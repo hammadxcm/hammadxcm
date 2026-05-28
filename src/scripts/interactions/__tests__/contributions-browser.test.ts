@@ -32,7 +32,7 @@ interface PR {
   };
 }
 
-function pr(i: number, over: Partial<PR> & { repo?: Partial<PR['repo']> } = {}): PR {
+function pr(i: number, over: Omit<Partial<PR>, 'repo'> & { repo?: Partial<PR['repo']> } = {}): PR {
   const { repo, ...rest } = over;
   return {
     title: `PR ${i}`,
