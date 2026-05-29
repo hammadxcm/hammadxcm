@@ -984,10 +984,15 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Use the requested pid in the Linux memory grabber](https://github.com/sidekiq/sidekiq/pull/7011) | 🟣 Merged | May 28, 2026 | 13.5k | +10 -1 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for JobUtil verify_json modes and bare-Class validation](https://github.com/sidekiq/sidekiq/pull/7010) | 🟣 Merged | May 28, 2026 | 13.5k | +25 -0 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for ApiUtils#calculate_latency](https://github.com/sidekiq/sidekiq/pull/7009) | 🟣 Merged | May 28, 2026 | 13.5k | +40 -0 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for to_display argument fallbacks](https://github.com/sidekiq/sidekiq/pull/7008) | 🟣 Merged | May 28, 2026 | 13.5k | +23 -0 |
+| [quran/quran.com-frontend-next](https://github.com/quran/quran.com-frontend-next) | [fix(quran-reader): reset scroll when navigating from end-of-surah card](https://github.com/quran/quran.com-frontend-next/pull/3301) | 🟢 Open | May 28, 2026 | 1.9k | +16 -1 |
 | [quran/quran.com-frontend-next](https://github.com/quran/quran.com-frontend-next) | [fix(developers): remove dead Quran.com API project card](https://github.com/quran/quran.com-frontend-next/pull/3300) | 🟢 Open | May 28, 2026 | 1.9k | +0 -6 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Web UI HTML-escaping helpers](https://github.com/sidekiq/sidekiq/pull/7007) | 🟣 Merged | May 28, 2026 | 13.5k | +47 -0 |
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟢 Open | May 28, 2026 | 861 | +57 -1 |
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟢 Open | May 27, 2026 | 861 | +52 -12 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟢 Open | May 28, 2026 | 862 | +57 -1 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟢 Open | May 27, 2026 | 862 | +52 -12 |
 | [rspec/rspec](https://github.com/rspec/rspec) | [docs: fix grammar typo in pending documentation](https://github.com/rspec/rspec/pull/330) | 🟣 Merged | May 27, 2026 | 104 | +1 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::JobUtil](https://github.com/sidekiq/sidekiq/pull/6999) | 🟣 Merged | May 26, 2026 | 13.5k | +194 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Paginator](https://github.com/sidekiq/sidekiq/pull/7000) | 🟣 Merged | May 26, 2026 | 13.5k | +114 -0 |
@@ -1016,6 +1021,31 @@ Zero-dep CLI to kill processes by port
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15122] Fix false positive in `Layout/MultilineMethodCallIndentation`](https://github.com/rubocop/rubocop/pull/15123) | 🟢 Open | Apr 22, 2026 | 12.9k | +47 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15117] Add `AllowConsecutiveConditionals` option to `Style/IfUnlessModifier`](https://github.com/rubocop/rubocop/pull/15119) | 🟢 Open | Apr 19, 2026 | 12.9k | +150 -1 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Partial Export test into new testsuite](https://github.com/keycloak/keycloak/pull/48204) | 🟢 Open | Apr 17, 2026 | 34.6k | +57 -25 |
+| [rails/rails](https://github.com/rails/rails) | [Document that days_in_month and days_in_year assume proleptic Gregorian calendar](https://github.com/rails/rails/pull/57114) | 🟢 Open | Apr 1, 2026 | 58.5k | +9 -0 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Add `factory_bot.before_run_factory` instrumentation event](https://github.com/thoughtbot/factory_bot/pull/1795) | 🟣 Merged | Mar 27, 2026 | 8.2k | +133 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Error#initialize_dup, #hash, and #detail](https://github.com/rails/rails/pull/57047) | 🟣 Merged | Mar 27, 2026 | 58.5k | +29 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#import](https://github.com/rails/rails/pull/57044) | 🟣 Merged | Mar 27, 2026 | 58.5k | +41 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for NestedError#inner_error, #raw_type, and #options](https://github.com/rails/rails/pull/57048) | 🟣 Merged | Mar 27, 2026 | 58.5k | +27 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#to_hash with full_messages and #uniq!](https://github.com/rails/rails/pull/57049) | 🟣 Merged | Mar 27, 2026 | 58.5k | +17 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Errors#delete with type and options](https://github.com/rails/rails/pull/57046) | 🟣 Merged | Mar 27, 2026 | 58.5k | +30 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Error#strict_match?](https://github.com/rails/rails/pull/57043) | 🟣 Merged | Mar 27, 2026 | 58.5k | +44 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for EnvironmentInquirer predicates](https://github.com/rails/rails/pull/57045) | 🟣 Merged | Mar 27, 2026 | 58.5k | +30 -0 |
+| [novuhq/novu](https://github.com/novuhq/novu) | [fix(js): bundle Solid ecosystem deps to prevent React is not defined error](https://github.com/novuhq/novu/pull/10429) | 🟣 Merged | Mar 25, 2026 | 39.0k | +129 -17 |
+| [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟢 Open | Mar 23, 2026 | 12.9k | +123 -3 |
+| [rails/rails](https://github.com/rails/rails) | [Fix association build to set inverse before assigning attributes](https://github.com/rails/rails/pull/57051) | 🟢 Open | Mar 23, 2026 | 58.5k | +22 -3 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.5k | +59 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.5k | +36 -0 |
+| [rubocop/rubocop](https://github.com/rubocop/rubocop) | [Add `AllowedParentClasses` option to `Style/EmptyClassDefinition`](https://github.com/rubocop/rubocop/pull/14974) | 🟣 Merged | Mar 23, 2026 | 12.9k | +111 -2 |
+| [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟣 Merged | Mar 20, 2026 | 9.5k | +304 -4 |
+| [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) | [New package: hammadxcm.go-phantom version 0.0.2](https://github.com/microsoft/winget-pkgs/pull/348164) | 🟣 Merged | Mar 17, 2026 | 10.6k | +36 -0 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [docs: clarify generateMetadata re-evaluation on navigation](https://github.com/vercel/next.js/pull/91427) | 🟢 Open | Mar 15, 2026 | 139.6k | +7 -1 |
+| [rails/rails](https://github.com/rails/rails) | [Fix insert_all raising "No unique index found for id" without unique_by](https://github.com/rails/rails/pull/56988) | 🟢 Open | Mar 15, 2026 | 58.5k | +78 -15 |
+| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Fix @TestSetup method ordering with inheritance](https://github.com/keycloak/keycloak/pull/46686) | 🟣 Merged | Mar 5, 2026 | 34.6k | +142 -5 |
+| [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Remove CodeClimate badge from README](https://github.com/thoughtbot/factory_bot/pull/1794) | 🟣 Merged | Mar 2, 2026 | 8.2k | +1 -3 |
+| [rails/rails](https://github.com/rails/rails) | [Fix Ruby 4.0 delegator warning for inspect on DelegateClass subclasses](https://github.com/rails/rails/pull/56867) | 🟣 Merged | Feb 25, 2026 | 58.5k | +10 -0 |
+| [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14835] Extend Lint/AmbiguousBlockAssociation for do...end block misassociation](https://github.com/rubocop/rubocop/pull/14949) | 🟢 Open | Feb 25, 2026 | 12.9k | +188 -1 |
+| [ahmadawais/shades-of-purple-vscode](https://github.com/ahmadawais/shades-of-purple-vscode) | [🐛 FIX: Ruby files theming unclear with semantic highlighting](https://github.com/ahmadawais/shades-of-purple-vscode/pull/163) | 🟢 Open | Feb 20, 2026 | 777 | +86 -4 |
+| [ahmadawais/shades-of-purple-vscode](https://github.com/ahmadawais/shades-of-purple-vscode) | [🐛 FIX: menu dropdown text not visible in extensions](https://github.com/ahmadawais/shades-of-purple-vscode/pull/162) | 🟢 Open | Feb 20, 2026 | 777 | +29 -1 |
 
 <!-- CONTRIBUTIONS:END -->
 
