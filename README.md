@@ -984,6 +984,8 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Deploy](https://github.com/sidekiq/sidekiq/pull/7013) | 🟢 Open | May 29, 2026 | 13.5k | +52 -0 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for launcher memory_usage and grabber pid handling](https://github.com/sidekiq/sidekiq/pull/7012) | 🟢 Open | May 29, 2026 | 13.5k | +13 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Use the requested pid in the Linux memory grabber](https://github.com/sidekiq/sidekiq/pull/7011) | 🟣 Merged | May 28, 2026 | 13.5k | +10 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for JobUtil verify_json modes and bare-Class validation](https://github.com/sidekiq/sidekiq/pull/7010) | 🟣 Merged | May 28, 2026 | 13.5k | +25 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for ApiUtils#calculate_latency](https://github.com/sidekiq/sidekiq/pull/7009) | 🟣 Merged | May 28, 2026 | 13.5k | +40 -0 |
@@ -1036,7 +1038,7 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveModel::Errors#where](https://github.com/rails/rails/pull/57031) | 🟣 Merged | Mar 23, 2026 | 58.5k | +59 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for IsolatedExecutionState#key?, #delete, and #context](https://github.com/rails/rails/pull/57032) | 🟣 Merged | Mar 23, 2026 | 58.5k | +36 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [Add `AllowedParentClasses` option to `Style/EmptyClassDefinition`](https://github.com/rubocop/rubocop/pull/14974) | 🟣 Merged | Mar 23, 2026 | 12.9k | +111 -2 |
-| [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟣 Merged | Mar 20, 2026 | 9.5k | +304 -4 |
+| [vercel-labs/portless](https://github.com/vercel-labs/portless) | [Fix --port injection for commands via package runners](https://github.com/vercel-labs/portless/pull/150) | 🟣 Merged | Mar 20, 2026 | 9.6k | +304 -4 |
 | [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) | [New package: hammadxcm.go-phantom version 0.0.2](https://github.com/microsoft/winget-pkgs/pull/348164) | 🟣 Merged | Mar 17, 2026 | 10.6k | +36 -0 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [docs: clarify generateMetadata re-evaluation on navigation](https://github.com/vercel/next.js/pull/91427) | 🟢 Open | Mar 15, 2026 | 139.6k | +7 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix insert_all raising "No unique index found for id" without unique_by](https://github.com/rails/rails/pull/56988) | 🟢 Open | Mar 15, 2026 | 58.5k | +78 -15 |
