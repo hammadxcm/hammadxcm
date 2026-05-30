@@ -984,6 +984,8 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Add unit tests for mushaf layout JSON export (follow-up to #620)](https://github.com/TarteelAI/quranic-universal-library/pull/622) | 🟢 Open | May 30, 2026 | 862 | +281 -0 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟣 Merged | May 30, 2026 | 862 | +57 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix IterableJobQuery cursor fallback (Struct member, not ivar)](https://github.com/sidekiq/sidekiq/pull/7018) | 🟣 Merged | May 29, 2026 | 13.5k | +52 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Keep SortedEntry's in-memory score in sync after reschedule](https://github.com/sidekiq/sidekiq/pull/7017) | 🟣 Merged | May 29, 2026 | 13.5k | +12 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Test to_sentence with an empty array](https://github.com/rails/rails/pull/57511) | 🟢 Open | May 29, 2026 | 58.5k | +6 -0 |
@@ -999,16 +1001,15 @@ Zero-dep CLI to kill processes by port
 | [quran/quran.com-frontend-next](https://github.com/quran/quran.com-frontend-next) | [fix(quran-reader): reset scroll when navigating from end-of-surah card](https://github.com/quran/quran.com-frontend-next/pull/3301) | 🟢 Open | May 28, 2026 | 1.9k | +16 -1 |
 | [quran/quran.com-frontend-next](https://github.com/quran/quran.com-frontend-next) | [fix(developers): remove dead Quran.com API project card](https://github.com/quran/quran.com-frontend-next/pull/3300) | 🟢 Open | May 28, 2026 | 1.9k | +0 -6 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Web UI HTML-escaping helpers](https://github.com/sidekiq/sidekiq/pull/7007) | 🟣 Merged | May 28, 2026 | 13.5k | +47 -0 |
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟢 Open | May 28, 2026 | 862 | +57 -1 |
 | [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟢 Open | May 27, 2026 | 862 | +52 -12 |
-| [rspec/rspec](https://github.com/rspec/rspec) | [docs: fix grammar typo in pending documentation](https://github.com/rspec/rspec/pull/330) | 🟣 Merged | May 27, 2026 | 104 | +1 -1 |
+| [rspec/rspec](https://github.com/rspec/rspec) | [docs: fix grammar typo in pending documentation](https://github.com/rspec/rspec/pull/330) | 🟣 Merged | May 27, 2026 | 105 | +1 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::JobUtil](https://github.com/sidekiq/sidekiq/pull/6999) | 🟣 Merged | May 26, 2026 | 13.5k | +194 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Paginator](https://github.com/sidekiq/sidekiq/pull/7000) | 🟣 Merged | May 26, 2026 | 13.5k | +114 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove parse_yaml_old from web helpers](https://github.com/sidekiq/sidekiq/pull/7001) | 🟣 Merged | May 25, 2026 | 13.5k | +5 -12 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Forward block through RedisClientAdapter#method_missing](https://github.com/sidekiq/sidekiq/pull/7002) | 🟣 Merged | May 25, 2026 | 13.5k | +18 -2 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix sub-second precision in JobRetry#time_for](https://github.com/sidekiq/sidekiq/pull/7003) | 🟣 Merged | May 25, 2026 | 13.5k | +14 -1 |
-| [rspec/rspec](https://github.com/rspec/rspec) | [test: cover ConsoleCodes.wrap when color is disabled](https://github.com/rspec/rspec/pull/331) | 🟢 Open | May 23, 2026 | 104 | +10 -0 |
-| [rspec/rspec](https://github.com/rspec/rspec) | [docs: document define_derived_metadata via cucumber feature](https://github.com/rspec/rspec/pull/329) | 🟢 Open | May 23, 2026 | 104 | +97 -0 |
+| [rspec/rspec](https://github.com/rspec/rspec) | [test: cover ConsoleCodes.wrap when color is disabled](https://github.com/rspec/rspec/pull/331) | 🟢 Open | May 23, 2026 | 105 | +10 -0 |
+| [rspec/rspec](https://github.com/rspec/rspec) | [docs: document define_derived_metadata via cucumber feature](https://github.com/rspec/rspec/pull/329) | 🟢 Open | May 23, 2026 | 105 | +97 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add RingBuffer tests and expand SdNotify coverage](https://github.com/sidekiq/sidekiq/pull/6997) | 🟣 Merged | May 23, 2026 | 13.5k | +199 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove dead code left over from the 8.0 error-handler refactor](https://github.com/sidekiq/sidekiq/pull/6998) | 🟣 Merged | May 23, 2026 | 13.5k | +19 -12 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Log SubjectConfirmationData validation failure in SAMLEndpoint](https://github.com/keycloak/keycloak/pull/49262) | 🟢 Open | May 23, 2026 | 34.6k | +1 -0 |
@@ -1053,7 +1054,6 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Fix Ruby 4.0 delegator warning for inspect on DelegateClass subclasses](https://github.com/rails/rails/pull/56867) | 🟣 Merged | Feb 25, 2026 | 58.5k | +10 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14835] Extend Lint/AmbiguousBlockAssociation for do...end block misassociation](https://github.com/rubocop/rubocop/pull/14949) | 🟢 Open | Feb 25, 2026 | 12.9k | +188 -1 |
 | [ahmadawais/shades-of-purple-vscode](https://github.com/ahmadawais/shades-of-purple-vscode) | [🐛 FIX: Ruby files theming unclear with semantic highlighting](https://github.com/ahmadawais/shades-of-purple-vscode/pull/163) | 🟢 Open | Feb 20, 2026 | 777 | +86 -4 |
-| [ahmadawais/shades-of-purple-vscode](https://github.com/ahmadawais/shades-of-purple-vscode) | [🐛 FIX: menu dropdown text not visible in extensions](https://github.com/ahmadawais/shades-of-purple-vscode/pull/162) | 🟢 Open | Feb 20, 2026 | 777 | +29 -1 |
 
 <!-- CONTRIBUTIONS:END -->
 
