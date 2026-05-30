@@ -984,8 +984,14 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
-| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Deploy](https://github.com/sidekiq/sidekiq/pull/7013) | 🟢 Open | May 29, 2026 | 13.5k | +52 -0 |
-| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for launcher memory_usage and grabber pid handling](https://github.com/sidekiq/sidekiq/pull/7012) | 🟢 Open | May 29, 2026 | 13.5k | +13 -0 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix IterableJobQuery cursor fallback (Struct member, not ivar)](https://github.com/sidekiq/sidekiq/pull/7018) | 🟣 Merged | May 29, 2026 | 13.5k | +52 -1 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Keep SortedEntry's in-memory score in sync after reschedule](https://github.com/sidekiq/sidekiq/pull/7017) | 🟣 Merged | May 29, 2026 | 13.5k | +12 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test to_sentence with an empty array](https://github.com/rails/rails/pull/57511) | 🟢 Open | May 29, 2026 | 58.5k | +6 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test Float casting of Infinity and NaN strings](https://github.com/rails/rails/pull/57510) | 🟢 Open | May 29, 2026 | 58.5k | +7 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test ImmutableString custom boolean options and serialize](https://github.com/rails/rails/pull/57509) | 🟢 Open | May 29, 2026 | 58.5k | +20 -0 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix 500 on the Busy page when count is negative](https://github.com/sidekiq/sidekiq/pull/7014) | 🟣 Merged | May 29, 2026 | 13.5k | +13 -0 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Deploy](https://github.com/sidekiq/sidekiq/pull/7013) | 🟣 Merged | May 29, 2026 | 13.5k | +52 -0 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for launcher memory_usage and grabber pid handling](https://github.com/sidekiq/sidekiq/pull/7012) | 🟣 Merged | May 29, 2026 | 13.5k | +13 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Use the requested pid in the Linux memory grabber](https://github.com/sidekiq/sidekiq/pull/7011) | 🟣 Merged | May 28, 2026 | 13.5k | +10 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for JobUtil verify_json modes and bare-Class validation](https://github.com/sidekiq/sidekiq/pull/7010) | 🟣 Merged | May 28, 2026 | 13.5k | +25 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for ApiUtils#calculate_latency](https://github.com/sidekiq/sidekiq/pull/7009) | 🟣 Merged | May 28, 2026 | 13.5k | +40 -0 |
