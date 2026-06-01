@@ -984,14 +984,15 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟣 Merged | May 30, 2026 | 865 | +52 -12 |
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Add unit tests for mushaf layout JSON export (follow-up to #620)](https://github.com/TarteelAI/quranic-universal-library/pull/622) | 🟢 Open | May 30, 2026 | 865 | +281 -0 |
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟣 Merged | May 30, 2026 | 865 | +57 -1 |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(Zulip Node): Normalize multiOptions recipients when expression returns a string](https://github.com/n8n-io/n8n/pull/31492) | 🟢 Open | Jun 1, 2026 | 190.6k | +70 -2 |
+| [rails/rails](https://github.com/rails/rails) | [Test to_sentence with an empty array](https://github.com/rails/rails/pull/57511) | 🟣 Merged | Jun 1, 2026 | 58.5k | +6 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test ImmutableString custom boolean options and serialize](https://github.com/rails/rails/pull/57509) | 🟣 Merged | Jun 1, 2026 | 58.5k | +20 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test Float casting of Infinity and NaN strings](https://github.com/rails/rails/pull/57510) | 🟣 Merged | Jun 1, 2026 | 58.5k | +7 -0 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟣 Merged | May 30, 2026 | 868 | +52 -12 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Add unit tests for mushaf layout JSON export (follow-up to #620)](https://github.com/TarteelAI/quranic-universal-library/pull/622) | 🟢 Open | May 30, 2026 | 868 | +281 -0 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟣 Merged | May 30, 2026 | 868 | +57 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix IterableJobQuery cursor fallback (Struct member, not ivar)](https://github.com/sidekiq/sidekiq/pull/7018) | 🟣 Merged | May 29, 2026 | 13.5k | +52 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Keep SortedEntry's in-memory score in sync after reschedule](https://github.com/sidekiq/sidekiq/pull/7017) | 🟣 Merged | May 29, 2026 | 13.5k | +12 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test to_sentence with an empty array](https://github.com/rails/rails/pull/57511) | 🟢 Open | May 29, 2026 | 58.5k | +6 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test Float casting of Infinity and NaN strings](https://github.com/rails/rails/pull/57510) | 🟢 Open | May 29, 2026 | 58.5k | +7 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test ImmutableString custom boolean options and serialize](https://github.com/rails/rails/pull/57509) | 🟢 Open | May 29, 2026 | 58.5k | +20 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix 500 on the Busy page when count is negative](https://github.com/sidekiq/sidekiq/pull/7014) | 🟣 Merged | May 29, 2026 | 13.5k | +13 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Deploy](https://github.com/sidekiq/sidekiq/pull/7013) | 🟣 Merged | May 29, 2026 | 13.5k | +52 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for launcher memory_usage and grabber pid handling](https://github.com/sidekiq/sidekiq/pull/7012) | 🟣 Merged | May 29, 2026 | 13.5k | +13 -0 |
@@ -1053,7 +1054,6 @@ Zero-dep CLI to kill processes by port
 | [thoughtbot/factory_bot](https://github.com/thoughtbot/factory_bot) | [Remove CodeClimate badge from README](https://github.com/thoughtbot/factory_bot/pull/1794) | 🟣 Merged | Mar 2, 2026 | 8.2k | +1 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix Ruby 4.0 delegator warning for inspect on DelegateClass subclasses](https://github.com/rails/rails/pull/56867) | 🟣 Merged | Feb 25, 2026 | 58.5k | +10 -0 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14835] Extend Lint/AmbiguousBlockAssociation for do...end block misassociation](https://github.com/rubocop/rubocop/pull/14949) | 🟢 Open | Feb 25, 2026 | 12.9k | +188 -1 |
-| [ahmadawais/shades-of-purple-vscode](https://github.com/ahmadawais/shades-of-purple-vscode) | [🐛 FIX: Ruby files theming unclear with semantic highlighting](https://github.com/ahmadawais/shades-of-purple-vscode/pull/163) | 🟢 Open | Feb 20, 2026 | 777 | +86 -4 |
 
 <!-- CONTRIBUTIONS:END -->
 
