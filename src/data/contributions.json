@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-02T01:11:05.624Z",
+  "generatedAt": "2026-06-02T13:30:44.214Z",
   "username": "hammadxcm",
   "totalCount": 100,
   "contributions": [
@@ -7,8 +7,8 @@
       "title": "fix(Zulip Node): Normalize multiOptions recipients when expression returns a string",
       "url": "https://github.com/n8n-io/n8n/pull/31492",
       "number": 31492,
-      "state": "open",
-      "mergedAt": "2026-06-01T12:41:46Z",
+      "state": "merged",
+      "mergedAt": "2026-06-02T09:20:42Z",
       "createdAt": "2026-06-01T12:41:46Z",
       "additions": 70,
       "deletions": 2,
@@ -46,8 +46,8 @@
       "repo": {
         "fullName": "n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
-        "stars": 190650,
-        "forks": 58203,
+        "stars": 190731,
+        "forks": 58218,
         "language": "TypeScript",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/45487711?v=4",
@@ -95,7 +95,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -123,7 +123,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -151,7 +151,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -450,7 +450,7 @@
       "repo": {
         "fullName": "quran/quran.com-frontend-next",
         "url": "https://github.com/quran/quran.com-frontend-next",
-        "stars": 1863,
+        "stars": 1862,
         "forks": 603,
         "language": "TypeScript",
         "description": "Frontend build on next.js",
@@ -473,7 +473,7 @@
       "repo": {
         "fullName": "quran/quran.com-frontend-next",
         "url": "https://github.com/quran/quran.com-frontend-next",
-        "stars": 1863,
+        "stars": 1862,
         "forks": 603,
         "language": "TypeScript",
         "description": "Frontend build on next.js",
@@ -754,8 +754,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34689,
-        "forks": 8418,
+        "stars": 34704,
+        "forks": 8424,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -777,8 +777,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 139634,
-        "forks": 31185,
+        "stars": 139647,
+        "forks": 31188,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -815,8 +815,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 139634,
-        "forks": 31185,
+        "stars": 139647,
+        "forks": 31188,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -858,7 +858,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -881,7 +881,7 @@
       "repo": {
         "fullName": "rspec/rspec-rails",
         "url": "https://github.com/rspec/rspec-rails",
-        "stars": 5269,
+        "stars": 5270,
         "forks": 1047,
         "language": "Ruby",
         "description": "RSpec for Rails 7+",
@@ -904,7 +904,7 @@
       "repo": {
         "fullName": "rspec/rspec-rails",
         "url": "https://github.com/rspec/rspec-rails",
-        "stars": 5269,
+        "stars": 5270,
         "forks": 1047,
         "language": "Ruby",
         "description": "RSpec for Rails 7+",
@@ -932,7 +932,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -960,7 +960,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -988,7 +988,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1011,7 +1011,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12876,
+        "stars": 12879,
         "forks": 3108,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -1041,7 +1041,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12876,
+        "stars": 12879,
         "forks": 3108,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -1071,8 +1071,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 139634,
-        "forks": 31185,
+        "stars": 139647,
+        "forks": 31188,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -1114,7 +1114,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1142,7 +1142,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1170,7 +1170,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -1193,7 +1193,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12876,
+        "stars": 12879,
         "forks": 3108,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -1274,7 +1274,7 @@
       "repo": {
         "fullName": "biomejs/biome-zed",
         "url": "https://github.com/biomejs/biome-zed",
-        "stars": 471,
+        "stars": 472,
         "forks": 19,
         "language": "Rust",
         "description": "Biome extension for Zed",
@@ -1345,7 +1345,7 @@
       "repo": {
         "fullName": "biomejs/biome",
         "url": "https://github.com/biomejs/biome",
-        "stars": 24793,
+        "stars": 24801,
         "forks": 1011,
         "language": "Rust",
         "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
@@ -1395,8 +1395,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34689,
-        "forks": 8418,
+        "stars": 34704,
+        "forks": 8424,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -1418,7 +1418,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12876,
+        "stars": 12879,
         "forks": 3108,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -1465,8 +1465,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34689,
-        "forks": 8418,
+        "stars": 34704,
+        "forks": 8424,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -1505,8 +1505,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34689,
-        "forks": 8418,
+        "stars": 34704,
+        "forks": 8424,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -1541,8 +1541,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34689,
-        "forks": 8418,
+        "stars": 34704,
+        "forks": 8424,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -1569,8 +1569,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34689,
-        "forks": 8418,
+        "stars": 34704,
+        "forks": 8424,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -2092,7 +2092,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2115,8 +2115,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34689,
-        "forks": 8418,
+        "stars": 34704,
+        "forks": 8424,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -2147,8 +2147,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 139634,
-        "forks": 31185,
+        "stars": 139647,
+        "forks": 31188,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -2223,7 +2223,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2251,7 +2251,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2279,7 +2279,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2307,7 +2307,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2335,7 +2335,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2363,7 +2363,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2391,7 +2391,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2419,7 +2419,7 @@
       "repo": {
         "fullName": "getsentry/sentry",
         "url": "https://github.com/getsentry/sentry",
-        "stars": 44015,
+        "stars": 44021,
         "forks": 4717,
         "language": "Python",
         "description": "Developer-first error tracking and performance monitoring",
@@ -2458,8 +2458,8 @@
       "repo": {
         "fullName": "novuhq/novu",
         "url": "https://github.com/novuhq/novu",
-        "stars": 39058,
-        "forks": 4301,
+        "stars": 39057,
+        "forks": 4303,
         "language": "TypeScript",
         "description": "The open-source communication infrastructure for agents and products",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/77433905?v=4",
@@ -2497,7 +2497,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12876,
+        "stars": 12879,
         "forks": 3108,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -2532,7 +2532,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2560,7 +2560,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2588,7 +2588,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2611,7 +2611,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12876,
+        "stars": 12879,
         "forks": 3108,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -2641,7 +2641,7 @@
       "repo": {
         "fullName": "vercel-labs/portless",
         "url": "https://github.com/vercel-labs/portless",
-        "stars": 9601,
+        "stars": 9611,
         "forks": 303,
         "language": "TypeScript",
         "description": "Replace port numbers with stable, named local URLs. For humans and agents.",
@@ -2685,8 +2685,8 @@
       "repo": {
         "fullName": "microsoft/winget-pkgs",
         "url": "https://github.com/microsoft/winget-pkgs",
-        "stars": 10637,
-        "forks": 7229,
+        "stars": 10640,
+        "forks": 7235,
         "language": null,
         "description": "The Microsoft community Windows Package Manager manifest repository",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/6154722?v=4",
@@ -2713,8 +2713,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 139634,
-        "forks": 31185,
+        "stars": 139647,
+        "forks": 31188,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -2756,7 +2756,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2779,8 +2779,8 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 34689,
-        "forks": 8418,
+        "stars": 34704,
+        "forks": 8424,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4921466?v=4",
@@ -2844,7 +2844,7 @@
       "repo": {
         "fullName": "biomejs/biome",
         "url": "https://github.com/biomejs/biome",
-        "stars": 24793,
+        "stars": 24801,
         "forks": 1011,
         "language": "Rust",
         "description": "A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.",
@@ -2886,7 +2886,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
@@ -2909,7 +2909,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12876,
+        "stars": 12879,
         "forks": 3108,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -2939,7 +2939,7 @@
       "repo": {
         "fullName": "jekyll/jekyll",
         "url": "https://github.com/jekyll/jekyll",
-        "stars": 51464,
+        "stars": 51469,
         "forks": 10285,
         "language": "Ruby",
         "description": ":globe_with_meridians: Jekyll is a blog-aware static site generator in Ruby",
@@ -2967,7 +2967,7 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58475,
+        "stars": 58479,
         "forks": 22291,
         "language": "Ruby",
         "description": "Ruby on Rails",
