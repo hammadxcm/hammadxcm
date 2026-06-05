@@ -985,36 +985,36 @@ Zero-dep CLI to kill processes by port
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::ProcessSet aggregates and leader](https://github.com/sidekiq/sidekiq/pull/7030) | 🟣 Merged | Jun 4, 2026 | 13.5k | +42 -0 |
-| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(editor): Show an error when imported JSON is not a valid workflow](https://github.com/n8n-io/n8n/pull/31782) | 🟢 Open | Jun 4, 2026 | 191.1k | +34 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Enumerable key-helper edge cases](https://github.com/rails/rails/pull/57572) | 🟣 Merged | Jun 4, 2026 | 58.5k | +20 -0 |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(editor): Show an error when imported JSON is not a valid workflow](https://github.com/n8n-io/n8n/pull/31782) | 🟢 Open | Jun 4, 2026 | 191.2k | +34 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for Enumerable key-helper edge cases](https://github.com/rails/rails/pull/57572) | 🟣 Merged | Jun 4, 2026 | 58.6k | +20 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for JobRecord error_backtrace decompression and error?](https://github.com/sidekiq/sidekiq/pull/7029) | 🟣 Merged | Jun 4, 2026 | 13.5k | +40 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::JobRecord parsing and display contracts](https://github.com/sidekiq/sidekiq/pull/7028) | 🟣 Merged | Jun 4, 2026 | 13.5k | +28 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Add test coverage for String filter boundary inputs](https://github.com/rails/rails/pull/57562) | 🟣 Merged | Jun 4, 2026 | 58.5k | +25 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test Type::Boolean#serialize and #serialize_cast_value](https://github.com/rails/rails/pull/57549) | 🟣 Merged | Jun 4, 2026 | 58.5k | +17 -0 |
-| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(TheHiveProject Node): Normalize analyzers when expression returns a string](https://github.com/n8n-io/n8n/pull/31580) | 🟣 Merged | Jun 3, 2026 | 191.1k | +64 -8 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for String filter boundary inputs](https://github.com/rails/rails/pull/57562) | 🟣 Merged | Jun 4, 2026 | 58.6k | +25 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test Type::Boolean#serialize and #serialize_cast_value](https://github.com/rails/rails/pull/57549) | 🟣 Merged | Jun 4, 2026 | 58.6k | +17 -0 |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(TheHiveProject Node): Normalize analyzers when expression returns a string](https://github.com/n8n-io/n8n/pull/31580) | 🟣 Merged | Jun 3, 2026 | 191.2k | +64 -8 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::Web::Action flash helpers](https://github.com/sidekiq/sidekiq/pull/7026) | 🟣 Merged | Jun 3, 2026 | 13.5k | +41 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add JobLogger failure-path tests](https://github.com/sidekiq/sidekiq/pull/7027) | 🟣 Merged | Jun 3, 2026 | 13.5k | +32 -0 |
 | [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Clear ActiveJob queues between examples in job specs](https://github.com/rspec/rspec-rails/pull/2901) | 🟣 Merged | Jun 3, 2026 | 5.3k | +45 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test Mime::Type#=== and nil matching](https://github.com/rails/rails/pull/57547) | 🟣 Merged | Jun 3, 2026 | 58.5k | +10 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test ParameterFilter#filter with empty filters returns a dup](https://github.com/rails/rails/pull/57556) | 🟣 Merged | Jun 3, 2026 | 58.5k | +9 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test Object#with returns the block's result](https://github.com/rails/rails/pull/57554) | 🟣 Merged | Jun 3, 2026 | 58.5k | +5 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Fix Enumerable#in_order_of dropping nil elements when filter: false](https://github.com/rails/rails/pull/57553) | 🟣 Merged | Jun 3, 2026 | 58.5k | +6 -1 |
-| [rails/rails](https://github.com/rails/rails) | [Test Range#sole with an endless range](https://github.com/rails/rails/pull/57548) | 🟣 Merged | Jun 3, 2026 | 58.5k | +4 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test Mime::Type#=== and nil matching](https://github.com/rails/rails/pull/57547) | 🟣 Merged | Jun 3, 2026 | 58.6k | +10 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test ParameterFilter#filter with empty filters returns a dup](https://github.com/rails/rails/pull/57556) | 🟣 Merged | Jun 3, 2026 | 58.6k | +9 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test Object#with returns the block's result](https://github.com/rails/rails/pull/57554) | 🟣 Merged | Jun 3, 2026 | 58.6k | +5 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Fix Enumerable#in_order_of dropping nil elements when filter: false](https://github.com/rails/rails/pull/57553) | 🟣 Merged | Jun 3, 2026 | 58.6k | +6 -1 |
+| [rails/rails](https://github.com/rails/rails) | [Test Range#sole with an endless range](https://github.com/rails/rails/pull/57548) | 🟣 Merged | Jun 3, 2026 | 58.6k | +4 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove unused pool: kwarg from Sidekiq::Stats::History](https://github.com/sidekiq/sidekiq/pull/7024) | 🟣 Merged | Jun 2, 2026 | 13.5k | +1 -1 |
-| [rails/rails](https://github.com/rails/rails) | [Test ContentDisposition.format class method](https://github.com/rails/rails/pull/57546) | 🟣 Merged | Jun 2, 2026 | 58.5k | +10 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test ValidationError exposes model and message](https://github.com/rails/rails/pull/57544) | 🟣 Merged | Jun 2, 2026 | 58.5k | +12 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test ArrayInquirer#any? without candidates](https://github.com/rails/rails/pull/57543) | 🟣 Merged | Jun 2, 2026 | 58.5k | +5 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test BigInteger serializing string values](https://github.com/rails/rails/pull/57545) | 🟣 Merged | Jun 2, 2026 | 58.5k | +7 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test truncate when omission is longer than truncate_to](https://github.com/rails/rails/pull/57541) | 🟣 Merged | Jun 2, 2026 | 58.5k | +5 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test Array offset accessors when out of bounds](https://github.com/rails/rails/pull/57540) | 🟣 Merged | Jun 2, 2026 | 58.5k | +10 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test Mime::Type#html? predicate](https://github.com/rails/rails/pull/57542) | 🟣 Merged | Jun 2, 2026 | 58.5k | +7 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test ContentDisposition.format class method](https://github.com/rails/rails/pull/57546) | 🟣 Merged | Jun 2, 2026 | 58.6k | +10 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test ValidationError exposes model and message](https://github.com/rails/rails/pull/57544) | 🟣 Merged | Jun 2, 2026 | 58.6k | +12 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test ArrayInquirer#any? without candidates](https://github.com/rails/rails/pull/57543) | 🟣 Merged | Jun 2, 2026 | 58.6k | +5 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test BigInteger serializing string values](https://github.com/rails/rails/pull/57545) | 🟣 Merged | Jun 2, 2026 | 58.6k | +7 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test truncate when omission is longer than truncate_to](https://github.com/rails/rails/pull/57541) | 🟣 Merged | Jun 2, 2026 | 58.6k | +5 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test Array offset accessors when out of bounds](https://github.com/rails/rails/pull/57540) | 🟣 Merged | Jun 2, 2026 | 58.6k | +10 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test Mime::Type#html? predicate](https://github.com/rails/rails/pull/57542) | 🟣 Merged | Jun 2, 2026 | 58.6k | +7 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Web::Route](https://github.com/sidekiq/sidekiq/pull/7023) | 🟣 Merged | Jun 2, 2026 | 13.5k | +58 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix IterableJobQuery#bulk_fetch return-type comment](https://github.com/sidekiq/sidekiq/pull/7021) | 🟣 Merged | Jun 2, 2026 | 13.5k | +1 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::Monitor::Status helpers and invalid section](https://github.com/sidekiq/sidekiq/pull/7020) | 🟣 Merged | Jun 2, 2026 | 13.5k | +78 -0 |
-| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(Zulip Node): Normalize multiOptions recipients when expression returns a string](https://github.com/n8n-io/n8n/pull/31492) | 🟣 Merged | Jun 2, 2026 | 191.1k | +70 -2 |
-| [rails/rails](https://github.com/rails/rails) | [Test to_sentence with an empty array](https://github.com/rails/rails/pull/57511) | 🟣 Merged | Jun 1, 2026 | 58.5k | +6 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test ImmutableString custom boolean options and serialize](https://github.com/rails/rails/pull/57509) | 🟣 Merged | Jun 1, 2026 | 58.5k | +20 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Test Float casting of Infinity and NaN strings](https://github.com/rails/rails/pull/57510) | 🟣 Merged | Jun 1, 2026 | 58.5k | +7 -0 |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(Zulip Node): Normalize multiOptions recipients when expression returns a string](https://github.com/n8n-io/n8n/pull/31492) | 🟣 Merged | Jun 2, 2026 | 191.2k | +70 -2 |
+| [rails/rails](https://github.com/rails/rails) | [Test to_sentence with an empty array](https://github.com/rails/rails/pull/57511) | 🟣 Merged | Jun 1, 2026 | 58.6k | +6 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test ImmutableString custom boolean options and serialize](https://github.com/rails/rails/pull/57509) | 🟣 Merged | Jun 1, 2026 | 58.6k | +20 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Test Float casting of Infinity and NaN strings](https://github.com/rails/rails/pull/57510) | 🟣 Merged | Jun 1, 2026 | 58.6k | +7 -0 |
 | [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟣 Merged | May 30, 2026 | 872 | +52 -12 |
 | [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Add unit tests for mushaf layout JSON export (follow-up to #620)](https://github.com/TarteelAI/quranic-universal-library/pull/622) | 🟢 Open | May 30, 2026 | 872 | +281 -0 |
 | [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟣 Merged | May 30, 2026 | 872 | +57 -1 |
@@ -1040,23 +1040,23 @@ Zero-dep CLI to kill processes by port
 | [rspec/rspec](https://github.com/rspec/rspec) | [docs: document define_derived_metadata via cucumber feature](https://github.com/rspec/rspec/pull/329) | 🟢 Open | May 23, 2026 | 106 | +97 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add RingBuffer tests and expand SdNotify coverage](https://github.com/sidekiq/sidekiq/pull/6997) | 🟣 Merged | May 23, 2026 | 13.5k | +199 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove dead code left over from the 8.0 error-handler refactor](https://github.com/sidekiq/sidekiq/pull/6998) | 🟣 Merged | May 23, 2026 | 13.5k | +19 -12 |
-| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Log SubjectConfirmationData validation failure in SAMLEndpoint](https://github.com/keycloak/keycloak/pull/49262) | 🟢 Open | May 23, 2026 | 34.7k | +1 -0 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix: await ensureInstrumentationRegistered in RouteModule.prepare](https://github.com/vercel/next.js/pull/94069) | 🟢 Open | May 23, 2026 | 139.7k | +1 -1 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix(image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟢 Open | May 23, 2026 | 139.7k | +24 -1 |
-| [rails/rails](https://github.com/rails/rails) | [Include valid values in ActiveRecord::Enum invalid-value error](https://github.com/rails/rails/pull/57446) | 🟣 Merged | May 22, 2026 | 58.5k | +13 -2 |
+| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Log SubjectConfirmationData validation failure in SAMLEndpoint](https://github.com/keycloak/keycloak/pull/49262) | 🟢 Open | May 23, 2026 | 34.8k | +1 -0 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix: await ensureInstrumentationRegistered in RouteModule.prepare](https://github.com/vercel/next.js/pull/94069) | 🟢 Open | May 23, 2026 | 139.8k | +1 -1 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix(image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟢 Open | May 23, 2026 | 139.8k | +24 -1 |
+| [rails/rails](https://github.com/rails/rails) | [Include valid values in ActiveRecord::Enum invalid-value error](https://github.com/rails/rails/pull/57446) | 🟣 Merged | May 22, 2026 | 58.6k | +13 -2 |
 | [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Expand file_fixture_path against Rails.root](https://github.com/rspec/rspec-rails/pull/2902) | 🟢 Open | May 22, 2026 | 5.3k | +57 -2 |
-| [rails/rails](https://github.com/rails/rails) | [Fix incorrect SQL examples in ActiveRecord::QueryMethods docs](https://github.com/rails/rails/pull/57445) | 🟣 Merged | May 22, 2026 | 58.5k | +4 -4 |
-| [rails/rails](https://github.com/rails/rails) | [Improve insert_all error message to show key mismatch](https://github.com/rails/rails/pull/57447) | 🟣 Merged | May 22, 2026 | 58.5k | +37 -1 |
-| [rails/rails](https://github.com/rails/rails) | [Fix grammar in ActiveRecord errors and integration doc comments](https://github.com/rails/rails/pull/57448) | 🟣 Merged | May 22, 2026 | 58.5k | +2 -2 |
+| [rails/rails](https://github.com/rails/rails) | [Fix incorrect SQL examples in ActiveRecord::QueryMethods docs](https://github.com/rails/rails/pull/57445) | 🟣 Merged | May 22, 2026 | 58.6k | +4 -4 |
+| [rails/rails](https://github.com/rails/rails) | [Improve insert_all error message to show key mismatch](https://github.com/rails/rails/pull/57447) | 🟣 Merged | May 22, 2026 | 58.6k | +37 -1 |
+| [rails/rails](https://github.com/rails/rails) | [Fix grammar in ActiveRecord errors and integration doc comments](https://github.com/rails/rails/pull/57448) | 🟣 Merged | May 22, 2026 | 58.6k | +2 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15135] Fix `Style/RedundantParentheses` autocorrect swallowing chained methods into trailing comments](https://github.com/rubocop/rubocop/pull/15140) | 🟣 Merged | May 19, 2026 | 12.9k | +77 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟣 Merged | Apr 28, 2026 | 12.9k | +45 -2 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 139.7k | +77 -3 |
-| [rails/rails](https://github.com/rails/rails) | [Fix config.credentials.key_path set in environment files being ignored](https://github.com/rails/rails/pull/57230) | 🟢 Open | Apr 23, 2026 | 58.5k | +27 -0 |
-| [rails/rails](https://github.com/rails/rails) | [Fix attachment uploads lost when reload is called inside a transaction](https://github.com/rails/rails/pull/57229) | 🟢 Open | Apr 23, 2026 | 58.5k | +57 -1 |
-| [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟢 Open | Apr 22, 2026 | 58.5k | +26 -3 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 139.8k | +77 -3 |
+| [rails/rails](https://github.com/rails/rails) | [Fix config.credentials.key_path set in environment files being ignored](https://github.com/rails/rails/pull/57230) | 🟢 Open | Apr 23, 2026 | 58.6k | +27 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Fix attachment uploads lost when reload is called inside a transaction](https://github.com/rails/rails/pull/57229) | 🟢 Open | Apr 23, 2026 | 58.6k | +57 -1 |
+| [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟢 Open | Apr 22, 2026 | 58.6k | +26 -3 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15122] Fix false positive in `Layout/MultilineMethodCallIndentation`](https://github.com/rubocop/rubocop/pull/15123) | 🟢 Open | Apr 22, 2026 | 12.9k | +47 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15117] Add `AllowConsecutiveConditionals` option to `Style/IfUnlessModifier`](https://github.com/rubocop/rubocop/pull/15119) | 🟢 Open | Apr 19, 2026 | 12.9k | +150 -1 |
-| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Partial Export test into new testsuite](https://github.com/keycloak/keycloak/pull/48204) | 🟢 Open | Apr 17, 2026 | 34.7k | +57 -25 |
+| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Partial Export test into new testsuite](https://github.com/keycloak/keycloak/pull/48204) | 🟢 Open | Apr 17, 2026 | 34.8k | +57 -25 |
 
 <!-- CONTRIBUTIONS:END -->
 
