@@ -984,14 +984,14 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
-| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(editor): Show an error when imported JSON is not a valid workflow](https://github.com/n8n-io/n8n/pull/31782) | 🟣 Merged | Jun 9, 2026 | 191.7k | +34 -0 |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(editor): Show an error when imported JSON is not a valid workflow](https://github.com/n8n-io/n8n/pull/31782) | 🟣 Merged | Jun 9, 2026 | 191.8k | +34 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::ProcessSet aggregates and leader](https://github.com/sidekiq/sidekiq/pull/7030) | 🟣 Merged | Jun 4, 2026 | 13.5k | +42 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for Enumerable key-helper edge cases](https://github.com/rails/rails/pull/57572) | 🟣 Merged | Jun 4, 2026 | 58.6k | +20 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for JobRecord error_backtrace decompression and error?](https://github.com/sidekiq/sidekiq/pull/7029) | 🟣 Merged | Jun 4, 2026 | 13.5k | +40 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::JobRecord parsing and display contracts](https://github.com/sidekiq/sidekiq/pull/7028) | 🟣 Merged | Jun 4, 2026 | 13.5k | +28 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for String filter boundary inputs](https://github.com/rails/rails/pull/57562) | 🟣 Merged | Jun 4, 2026 | 58.6k | +25 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Test Type::Boolean#serialize and #serialize_cast_value](https://github.com/rails/rails/pull/57549) | 🟣 Merged | Jun 4, 2026 | 58.6k | +17 -0 |
-| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(TheHiveProject Node): Normalize analyzers when expression returns a string](https://github.com/n8n-io/n8n/pull/31580) | 🟣 Merged | Jun 3, 2026 | 191.7k | +64 -8 |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(TheHiveProject Node): Normalize analyzers when expression returns a string](https://github.com/n8n-io/n8n/pull/31580) | 🟣 Merged | Jun 3, 2026 | 191.8k | +64 -8 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::Web::Action flash helpers](https://github.com/sidekiq/sidekiq/pull/7026) | 🟣 Merged | Jun 3, 2026 | 13.5k | +41 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add JobLogger failure-path tests](https://github.com/sidekiq/sidekiq/pull/7027) | 🟣 Merged | Jun 3, 2026 | 13.5k | +32 -0 |
 | [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Clear ActiveJob queues between examples in job specs](https://github.com/rspec/rspec-rails/pull/2901) | 🟣 Merged | Jun 3, 2026 | 5.3k | +45 -0 |
@@ -1011,7 +1011,7 @@ Zero-dep CLI to kill processes by port
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Web::Route](https://github.com/sidekiq/sidekiq/pull/7023) | 🟣 Merged | Jun 2, 2026 | 13.5k | +58 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix IterableJobQuery#bulk_fetch return-type comment](https://github.com/sidekiq/sidekiq/pull/7021) | 🟣 Merged | Jun 2, 2026 | 13.5k | +1 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::Monitor::Status helpers and invalid section](https://github.com/sidekiq/sidekiq/pull/7020) | 🟣 Merged | Jun 2, 2026 | 13.5k | +78 -0 |
-| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(Zulip Node): Normalize multiOptions recipients when expression returns a string](https://github.com/n8n-io/n8n/pull/31492) | 🟣 Merged | Jun 2, 2026 | 191.7k | +70 -2 |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(Zulip Node): Normalize multiOptions recipients when expression returns a string](https://github.com/n8n-io/n8n/pull/31492) | 🟣 Merged | Jun 2, 2026 | 191.8k | +70 -2 |
 | [rails/rails](https://github.com/rails/rails) | [Test to_sentence with an empty array](https://github.com/rails/rails/pull/57511) | 🟣 Merged | Jun 1, 2026 | 58.6k | +6 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Test ImmutableString custom boolean options and serialize](https://github.com/rails/rails/pull/57509) | 🟣 Merged | Jun 1, 2026 | 58.6k | +20 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Test Float casting of Infinity and NaN strings](https://github.com/rails/rails/pull/57510) | 🟣 Merged | Jun 1, 2026 | 58.6k | +7 -0 |
