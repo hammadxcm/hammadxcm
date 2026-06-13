@@ -984,18 +984,20 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq top-level public API and Config#logger=](https://github.com/sidekiq/sidekiq/pull/7037) | 🟣 Merged | Jun 12, 2026 | 13.5k | +55 -0 |
+| [bitwarden/clients](https://github.com/bitwarden/clients) | [[PM-38965] Respect no_proxy environment variable in CLI](https://github.com/bitwarden/clients/pull/21230) | 🟢 Open | Jun 12, 2026 | 13.0k | +195 -3 |
+| [bitwarden/clients](https://github.com/bitwarden/clients) | [[PM-38964] Remove obsolete LockScreen config from AppX manifest](https://github.com/bitwarden/clients/pull/21229) | 🟢 Open | Jun 12, 2026 | 13.0k | +0 -2 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for HashWithIndifferentAccess key access and except](https://github.com/rails/rails/pull/57689) | 🟢 Open | Jun 12, 2026 | 58.7k | +33 -0 |
-| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq top-level public API and Config#logger=](https://github.com/sidekiq/sidekiq/pull/7037) | 🟢 Open | Jun 12, 2026 | 13.5k | +55 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Setter#perform_in scheduling and .delay deprecations](https://github.com/sidekiq/sidekiq/pull/7036) | 🟣 Merged | Jun 11, 2026 | 13.5k | +37 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::Client argument-validation contracts](https://github.com/sidekiq/sidekiq/pull/7035) | 🟣 Merged | Jun 11, 2026 | 13.5k | +48 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveSupport::Duration edge cases](https://github.com/rails/rails/pull/57658) | 🟣 Merged | Jun 11, 2026 | 58.7k | +34 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq's default logger initialization and formatters](https://github.com/sidekiq/sidekiq/pull/7034) | 🟣 Merged | Jun 10, 2026 | 13.5k | +49 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::Process signal pushing and status helpers](https://github.com/sidekiq/sidekiq/pull/7031) | 🟣 Merged | Jun 10, 2026 | 13.5k | +40 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for the remaining Type::Date cast branches](https://github.com/rails/rails/pull/57643) | 🟣 Merged | Jun 10, 2026 | 58.7k | +25 -0 |
-| [aaif-goose/goose](https://github.com/aaif-goose/goose) | [feat(azure): support Entra ID bearer token auth via AZURE_OPENAI_AD_TOKEN](https://github.com/aaif-goose/goose/pull/9716) | 🟢 Open | Jun 10, 2026 | 49.0k | +93 -12 |
-| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [feat(cli): LAST30DAYS_DEFAULT_SEARCH env var as default source set for --search](https://github.com/mvanhorn/last30days-skill/pull/536) | 🟢 Open | Jun 10, 2026 | 40.1k | +91 -4 |
-| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [fix(youtube): spend transcript budget on in-window videos first; gate stale-yt-dlp nudge on actual fetch failures](https://github.com/mvanhorn/last30days-skill/pull/535) | 🟢 Open | Jun 10, 2026 | 40.1k | +253 -2 |
-| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [ci: attest build provenance for the released .skill asset](https://github.com/mvanhorn/last30days-skill/pull/534) | 🟢 Open | Jun 10, 2026 | 40.1k | +7 -0 |
+| [aaif-goose/goose](https://github.com/aaif-goose/goose) | [feat(azure): support Entra ID bearer token auth via AZURE_OPENAI_AD_TOKEN](https://github.com/aaif-goose/goose/pull/9716) | 🟢 Open | Jun 10, 2026 | 49.1k | +93 -12 |
+| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [feat(cli): LAST30DAYS_DEFAULT_SEARCH env var as default source set for --search](https://github.com/mvanhorn/last30days-skill/pull/536) | 🟢 Open | Jun 10, 2026 | 40.4k | +91 -4 |
+| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [fix(youtube): spend transcript budget on in-window videos first; gate stale-yt-dlp nudge on actual fetch failures](https://github.com/mvanhorn/last30days-skill/pull/535) | 🟢 Open | Jun 10, 2026 | 40.4k | +253 -2 |
+| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [ci: attest build provenance for the released .skill asset](https://github.com/mvanhorn/last30days-skill/pull/534) | 🟢 Open | Jun 10, 2026 | 40.4k | +7 -0 |
 | [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(Facebook Graph API Node): Route failed items to the error output](https://github.com/n8n-io/n8n/pull/32027) | 🟢 Open | Jun 10, 2026 | 192.2k | +99 -5 |
 | [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(editor): Show an error when imported JSON is not a valid workflow](https://github.com/n8n-io/n8n/pull/31782) | 🟣 Merged | Jun 9, 2026 | 192.2k | +34 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::ProcessSet aggregates and leader](https://github.com/sidekiq/sidekiq/pull/7030) | 🟣 Merged | Jun 4, 2026 | 13.5k | +42 -0 |
@@ -1028,9 +1030,9 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Test to_sentence with an empty array](https://github.com/rails/rails/pull/57511) | 🟣 Merged | Jun 1, 2026 | 58.7k | +6 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Test ImmutableString custom boolean options and serialize](https://github.com/rails/rails/pull/57509) | 🟣 Merged | Jun 1, 2026 | 58.7k | +20 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Test Float casting of Infinity and NaN strings](https://github.com/rails/rails/pull/57510) | 🟣 Merged | Jun 1, 2026 | 58.7k | +7 -0 |
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟣 Merged | May 30, 2026 | 878 | +52 -12 |
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Add unit tests for mushaf layout JSON export (follow-up to #620)](https://github.com/TarteelAI/quranic-universal-library/pull/622) | 🟢 Open | May 30, 2026 | 878 | +281 -0 |
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟣 Merged | May 30, 2026 | 878 | +57 -1 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟣 Merged | May 30, 2026 | 877 | +52 -12 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Add unit tests for mushaf layout JSON export (follow-up to #620)](https://github.com/TarteelAI/quranic-universal-library/pull/622) | 🟢 Open | May 30, 2026 | 877 | +281 -0 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟣 Merged | May 30, 2026 | 877 | +57 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix IterableJobQuery cursor fallback (Struct member, not ivar)](https://github.com/sidekiq/sidekiq/pull/7018) | 🟣 Merged | May 29, 2026 | 13.5k | +52 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Keep SortedEntry's in-memory score in sync after reschedule](https://github.com/sidekiq/sidekiq/pull/7017) | 🟣 Merged | May 29, 2026 | 13.5k | +12 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix 500 on the Busy page when count is negative](https://github.com/sidekiq/sidekiq/pull/7014) | 🟣 Merged | May 29, 2026 | 13.5k | +13 -0 |
@@ -1054,8 +1056,8 @@ Zero-dep CLI to kill processes by port
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add RingBuffer tests and expand SdNotify coverage](https://github.com/sidekiq/sidekiq/pull/6997) | 🟣 Merged | May 23, 2026 | 13.5k | +199 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove dead code left over from the 8.0 error-handler refactor](https://github.com/sidekiq/sidekiq/pull/6998) | 🟣 Merged | May 23, 2026 | 13.5k | +19 -12 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Log SubjectConfirmationData validation failure in SAMLEndpoint](https://github.com/keycloak/keycloak/pull/49262) | 🟢 Open | May 23, 2026 | 34.9k | +1 -0 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix: await ensureInstrumentationRegistered in RouteModule.prepare](https://github.com/vercel/next.js/pull/94069) | 🟢 Open | May 23, 2026 | 139.9k | +1 -1 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix(image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟢 Open | May 23, 2026 | 139.9k | +24 -1 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix: await ensureInstrumentationRegistered in RouteModule.prepare](https://github.com/vercel/next.js/pull/94069) | 🟢 Open | May 23, 2026 | 140.0k | +1 -1 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix(image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟢 Open | May 23, 2026 | 140.0k | +24 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Include valid values in ActiveRecord::Enum invalid-value error](https://github.com/rails/rails/pull/57446) | 🟣 Merged | May 22, 2026 | 58.7k | +13 -2 |
 | [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Expand file_fixture_path against Rails.root](https://github.com/rspec/rspec-rails/pull/2902) | 🟢 Open | May 22, 2026 | 5.3k | +57 -2 |
 | [rails/rails](https://github.com/rails/rails) | [Fix incorrect SQL examples in ActiveRecord::QueryMethods docs](https://github.com/rails/rails/pull/57445) | 🟣 Merged | May 22, 2026 | 58.7k | +4 -4 |
@@ -1063,13 +1065,12 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Fix grammar in ActiveRecord errors and integration doc comments](https://github.com/rails/rails/pull/57448) | 🟣 Merged | May 22, 2026 | 58.7k | +2 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15135] Fix `Style/RedundantParentheses` autocorrect swallowing chained methods into trailing comments](https://github.com/rubocop/rubocop/pull/15140) | 🟣 Merged | May 19, 2026 | 12.9k | +77 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟣 Merged | Apr 28, 2026 | 12.9k | +45 -2 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 139.9k | +77 -3 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 140.0k | +77 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix config.credentials.key_path set in environment files being ignored](https://github.com/rails/rails/pull/57230) | 🟢 Open | Apr 23, 2026 | 58.7k | +27 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Fix attachment uploads lost when reload is called inside a transaction](https://github.com/rails/rails/pull/57229) | 🟢 Open | Apr 23, 2026 | 58.7k | +57 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟢 Open | Apr 22, 2026 | 58.7k | +26 -3 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15122] Fix false positive in `Layout/MultilineMethodCallIndentation`](https://github.com/rubocop/rubocop/pull/15123) | 🟢 Open | Apr 22, 2026 | 12.9k | +47 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15117] Add `AllowConsecutiveConditionals` option to `Style/IfUnlessModifier`](https://github.com/rubocop/rubocop/pull/15119) | 🟢 Open | Apr 19, 2026 | 12.9k | +150 -1 |
-| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Migrate Organization Partial Export test into new testsuite](https://github.com/keycloak/keycloak/pull/48204) | 🟢 Open | Apr 17, 2026 | 34.9k | +57 -25 |
 
 <!-- CONTRIBUTIONS:END -->
 
