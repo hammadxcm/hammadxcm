@@ -913,7 +913,7 @@ with prayer times, i18n & notifications
 <b>💎 <a href="https://rubygems.org/gems/rubocop-hk">rubocop-hk</a></b><br/>
 <sub>Published RubyGem —<br/>
 Modern RuboCop config for Ruby & Rails
-6 stars · 4.2k+ downloads</sub>
+6 stars · 4.3k+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -935,7 +935,7 @@ TypeScript with 7 releases
 <b>⚡ <a href="https://www.npmjs.com/package/electric-border-css">electric-border-css</a></b><br/>
 <sub>Animated CSS border effects — React, Vue,<br/>
 Next.js & Svelte with live demo
-4 stars · 335+ downloads</sub>
+4 stars · 339+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
