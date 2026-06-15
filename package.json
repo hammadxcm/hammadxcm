@@ -46,7 +46,8 @@
   },
   "pnpm": {
     "overrides": {
-      "esbuild": "^0.28.1"
+      "esbuild": "^0.28.1",
+      "devalue": "^5.8.1"
     }
   },
   "devDependencies": {
