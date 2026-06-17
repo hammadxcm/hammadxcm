@@ -88,6 +88,7 @@ export function SectionHeader({ label, title }: Props) {
       >
         {chars.map((char, i) => (
           <motion.span
+            // biome-ignore lint/suspicious/noArrayIndexKey: fixed, non-reordering title characters; the index disambiguates repeated chars
             key={`${i}-${char}`}
             variants={charVariants}
             style={{ display: 'inline-block', whiteSpace: 'pre' }}

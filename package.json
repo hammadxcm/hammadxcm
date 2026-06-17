@@ -46,7 +46,9 @@
     "dompurify": "^3.4.9",
     "vite": "^7.3.5",
     "js-yaml": "^4.2.0",
-    "@babel/core": "^7.29.6"
+    "@babel/core": "^7.29.6",
+    "ws": "^8.21.0",
+    "yaml": "^2.8.3"
   },
   "pnpm": {
     "overrides": {
@@ -55,7 +57,9 @@
       "dompurify": "^3.4.9",
       "vite": "^7.3.5",
       "js-yaml": "^4.2.0",
-      "@babel/core": "^7.29.6"
+      "@babel/core": "^7.29.6",
+      "ws": "^8.21.0",
+      "yaml": "^2.8.3"
     }
   },
   "devDependencies": {
