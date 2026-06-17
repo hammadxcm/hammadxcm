@@ -984,6 +984,13 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(TheHive Node): Normalize analyzers when expression returns a string](https://github.com/n8n-io/n8n/pull/32472) | 🟢 Open | Jun 17, 2026 | 192.9k | +62 -8 |
+| [aaif-goose/goose](https://github.com/aaif-goose/goose) | [fix(anthropic): use adaptive thinking for Claude 4.6+ served outside the canonical registry](https://github.com/aaif-goose/goose/pull/9840) | 🟢 Open | Jun 17, 2026 | 49.7k | +126 -1 |
+| [aaif-goose/goose](https://github.com/aaif-goose/goose) | [fix(recipe): validate recipe structs without a lossy YAML round-trip](https://github.com/aaif-goose/goose/pull/9839) | 🟢 Open | Jun 17, 2026 | 49.7k | +176 -16 |
+| [aaif-goose/goose](https://github.com/aaif-goose/goose) | [fix(autovisualiser): accept JSON-encoded string for the data parameter](https://github.com/aaif-goose/goose/pull/9838) | 🟢 Open | Jun 17, 2026 | 49.7k | +125 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for SafeBuffer mutation escaping and as_json](https://github.com/rails/rails/pull/57762) | 🟢 Open | Jun 17, 2026 | 58.7k | +33 -0 |
+| [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for BaseTab#chart_y_axis and #striped_rows](https://github.com/sidekiq/sidekiq/pull/7042) | 🟢 Open | Jun 17, 2026 | 13.5k | +69 -0 |
+| [aaif-goose/goose](https://github.com/aaif-goose/goose) | [feat(azure): support Entra ID bearer token auth via AZURE_OPENAI_AD_TOKEN](https://github.com/aaif-goose/goose/pull/9716) | 🟣 Merged | Jun 17, 2026 | 49.7k | +94 -13 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for HashWithIndifferentAccess key access and except](https://github.com/rails/rails/pull/57689) | 🟣 Merged | Jun 13, 2026 | 58.7k | +33 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq top-level public API and Config#logger=](https://github.com/sidekiq/sidekiq/pull/7037) | 🟣 Merged | Jun 12, 2026 | 13.5k | +55 -0 |
 | [bitwarden/clients](https://github.com/bitwarden/clients) | [[PM-38965] Respect no_proxy environment variable in CLI](https://github.com/bitwarden/clients/pull/21230) | 🟢 Open | Jun 12, 2026 | 13.1k | +195 -3 |
@@ -994,19 +1001,18 @@ Zero-dep CLI to kill processes by port
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq's default logger initialization and formatters](https://github.com/sidekiq/sidekiq/pull/7034) | 🟣 Merged | Jun 10, 2026 | 13.5k | +49 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::Process signal pushing and status helpers](https://github.com/sidekiq/sidekiq/pull/7031) | 🟣 Merged | Jun 10, 2026 | 13.5k | +40 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for the remaining Type::Date cast branches](https://github.com/rails/rails/pull/57643) | 🟣 Merged | Jun 10, 2026 | 58.7k | +25 -0 |
-| [aaif-goose/goose](https://github.com/aaif-goose/goose) | [feat(azure): support Entra ID bearer token auth via AZURE_OPENAI_AD_TOKEN](https://github.com/aaif-goose/goose/pull/9716) | 🟢 Open | Jun 10, 2026 | 49.6k | +94 -13 |
-| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [feat(cli): LAST30DAYS_DEFAULT_SEARCH env var as default source set for --search](https://github.com/mvanhorn/last30days-skill/pull/536) | 🟢 Open | Jun 10, 2026 | 43.5k | +91 -4 |
-| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [fix(youtube): spend transcript budget on in-window videos first; gate stale-yt-dlp nudge on actual fetch failures](https://github.com/mvanhorn/last30days-skill/pull/535) | 🟢 Open | Jun 10, 2026 | 43.5k | +253 -2 |
-| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [ci: attest build provenance for the released .skill asset](https://github.com/mvanhorn/last30days-skill/pull/534) | 🟢 Open | Jun 10, 2026 | 43.5k | +7 -0 |
-| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(Facebook Graph API Node): Route failed items to the error output](https://github.com/n8n-io/n8n/pull/32027) | 🟢 Open | Jun 10, 2026 | 192.8k | +99 -5 |
-| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(editor): Show an error when imported JSON is not a valid workflow](https://github.com/n8n-io/n8n/pull/31782) | 🟣 Merged | Jun 9, 2026 | 192.8k | +34 -0 |
+| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [feat(cli): LAST30DAYS_DEFAULT_SEARCH env var as default source set for --search](https://github.com/mvanhorn/last30days-skill/pull/536) | 🟢 Open | Jun 10, 2026 | 43.8k | +91 -4 |
+| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [fix(youtube): spend transcript budget on in-window videos first; gate stale-yt-dlp nudge on actual fetch failures](https://github.com/mvanhorn/last30days-skill/pull/535) | 🟢 Open | Jun 10, 2026 | 43.8k | +253 -2 |
+| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [ci: attest build provenance for the released .skill asset](https://github.com/mvanhorn/last30days-skill/pull/534) | 🟢 Open | Jun 10, 2026 | 43.8k | +7 -0 |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(Facebook Graph API Node): Route failed items to the error output](https://github.com/n8n-io/n8n/pull/32027) | 🟢 Open | Jun 10, 2026 | 192.9k | +99 -5 |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(editor): Show an error when imported JSON is not a valid workflow](https://github.com/n8n-io/n8n/pull/31782) | 🟣 Merged | Jun 9, 2026 | 192.9k | +34 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::ProcessSet aggregates and leader](https://github.com/sidekiq/sidekiq/pull/7030) | 🟣 Merged | Jun 4, 2026 | 13.5k | +42 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for Enumerable key-helper edge cases](https://github.com/rails/rails/pull/57572) | 🟣 Merged | Jun 4, 2026 | 58.7k | +20 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for JobRecord error_backtrace decompression and error?](https://github.com/sidekiq/sidekiq/pull/7029) | 🟣 Merged | Jun 4, 2026 | 13.5k | +40 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::JobRecord parsing and display contracts](https://github.com/sidekiq/sidekiq/pull/7028) | 🟣 Merged | Jun 4, 2026 | 13.5k | +28 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for String filter boundary inputs](https://github.com/rails/rails/pull/57562) | 🟣 Merged | Jun 4, 2026 | 58.7k | +25 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Test Type::Boolean#serialize and #serialize_cast_value](https://github.com/rails/rails/pull/57549) | 🟣 Merged | Jun 4, 2026 | 58.7k | +17 -0 |
-| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(TheHiveProject Node): Normalize analyzers when expression returns a string](https://github.com/n8n-io/n8n/pull/31580) | 🟣 Merged | Jun 3, 2026 | 192.8k | +64 -8 |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(TheHiveProject Node): Normalize analyzers when expression returns a string](https://github.com/n8n-io/n8n/pull/31580) | 🟣 Merged | Jun 3, 2026 | 192.9k | +64 -8 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::Web::Action flash helpers](https://github.com/sidekiq/sidekiq/pull/7026) | 🟣 Merged | Jun 3, 2026 | 13.5k | +41 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add JobLogger failure-path tests](https://github.com/sidekiq/sidekiq/pull/7027) | 🟣 Merged | Jun 3, 2026 | 13.5k | +32 -0 |
 | [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Clear ActiveJob queues between examples in job specs](https://github.com/rspec/rspec-rails/pull/2901) | 🟣 Merged | Jun 3, 2026 | 5.3k | +45 -0 |
@@ -1026,7 +1032,7 @@ Zero-dep CLI to kill processes by port
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add unit tests for Sidekiq::Web::Route](https://github.com/sidekiq/sidekiq/pull/7023) | 🟣 Merged | Jun 2, 2026 | 13.5k | +58 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix IterableJobQuery#bulk_fetch return-type comment](https://github.com/sidekiq/sidekiq/pull/7021) | 🟣 Merged | Jun 2, 2026 | 13.5k | +1 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::Monitor::Status helpers and invalid section](https://github.com/sidekiq/sidekiq/pull/7020) | 🟣 Merged | Jun 2, 2026 | 13.5k | +78 -0 |
-| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(Zulip Node): Normalize multiOptions recipients when expression returns a string](https://github.com/n8n-io/n8n/pull/31492) | 🟣 Merged | Jun 2, 2026 | 192.8k | +70 -2 |
+| [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(Zulip Node): Normalize multiOptions recipients when expression returns a string](https://github.com/n8n-io/n8n/pull/31492) | 🟣 Merged | Jun 2, 2026 | 192.9k | +70 -2 |
 | [rails/rails](https://github.com/rails/rails) | [Test to_sentence with an empty array](https://github.com/rails/rails/pull/57511) | 🟣 Merged | Jun 1, 2026 | 58.7k | +6 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Test ImmutableString custom boolean options and serialize](https://github.com/rails/rails/pull/57509) | 🟣 Merged | Jun 1, 2026 | 58.7k | +20 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Test Float casting of Infinity and NaN strings](https://github.com/rails/rails/pull/57510) | 🟣 Merged | Jun 1, 2026 | 58.7k | +7 -0 |
@@ -1055,7 +1061,7 @@ Zero-dep CLI to kill processes by port
 | [rspec/rspec](https://github.com/rspec/rspec) | [docs: document define_derived_metadata via cucumber feature](https://github.com/rspec/rspec/pull/329) | 🟢 Open | May 23, 2026 | 106 | +97 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add RingBuffer tests and expand SdNotify coverage](https://github.com/sidekiq/sidekiq/pull/6997) | 🟣 Merged | May 23, 2026 | 13.5k | +199 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove dead code left over from the 8.0 error-handler refactor](https://github.com/sidekiq/sidekiq/pull/6998) | 🟣 Merged | May 23, 2026 | 13.5k | +19 -12 |
-| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Log SubjectConfirmationData validation failure in SAMLEndpoint](https://github.com/keycloak/keycloak/pull/49262) | 🟢 Open | May 23, 2026 | 34.9k | +1 -0 |
+| [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Log SubjectConfirmationData validation failure in SAMLEndpoint](https://github.com/keycloak/keycloak/pull/49262) | 🟢 Open | May 23, 2026 | 35.0k | +1 -0 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix: await ensureInstrumentationRegistered in RouteModule.prepare](https://github.com/vercel/next.js/pull/94069) | 🟢 Open | May 23, 2026 | 140.1k | +1 -1 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix(image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟢 Open | May 23, 2026 | 140.1k | +24 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Include valid values in ActiveRecord::Enum invalid-value error](https://github.com/rails/rails/pull/57446) | 🟣 Merged | May 22, 2026 | 58.7k | +13 -2 |
@@ -1070,7 +1076,6 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Fix attachment uploads lost when reload is called inside a transaction](https://github.com/rails/rails/pull/57229) | 🟢 Open | Apr 23, 2026 | 58.7k | +57 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟢 Open | Apr 22, 2026 | 58.7k | +26 -3 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15122] Fix false positive in `Layout/MultilineMethodCallIndentation`](https://github.com/rubocop/rubocop/pull/15123) | 🟢 Open | Apr 22, 2026 | 12.9k | +47 -2 |
-| [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15117] Add `AllowConsecutiveConditionals` option to `Style/IfUnlessModifier`](https://github.com/rubocop/rubocop/pull/15119) | 🟢 Open | Apr 19, 2026 | 12.9k | +150 -1 |
 
 <!-- CONTRIBUTIONS:END -->
 
