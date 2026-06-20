@@ -48,7 +48,8 @@
     "js-yaml": "^4.2.0",
     "@babel/core": "^7.29.6",
     "ws": "^8.21.0",
-    "yaml": "^2.8.3"
+    "yaml": "^2.8.3",
+    "undici": "^7.28.0"
   },
   "pnpm": {
     "overrides": {
@@ -59,7 +60,8 @@
       "js-yaml": "^4.2.0",
       "@babel/core": "^7.29.6",
       "ws": "^8.21.0",
-      "yaml": "^2.8.3"
+      "yaml": "^2.8.3",
+      "undici": "^7.28.0"
     }
   },
   "devDependencies": {
