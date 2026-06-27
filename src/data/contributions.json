@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26T12:54:19.059Z",
+  "generatedAt": "2026-06-27T01:03:52.568Z",
   "username": "hammadxcm",
   "totalCount": 100,
   "contributions": [
@@ -46,8 +46,8 @@
       "repo": {
         "fullName": "n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
-        "stars": 194139,
-        "forks": 58855,
+        "stars": 194192,
+        "forks": 58856,
         "language": "TypeScript",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/45487711?v=4",
@@ -95,8 +95,8 @@
       "repo": {
         "fullName": "aaif-goose/goose",
         "url": "https://github.com/aaif-goose/goose",
-        "stars": 50228,
-        "forks": 5358,
+        "stars": 50255,
+        "forks": 5361,
         "language": "Rust",
         "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/271095942?v=4",
@@ -123,8 +123,8 @@
       "repo": {
         "fullName": "aaif-goose/goose",
         "url": "https://github.com/aaif-goose/goose",
-        "stars": 50228,
-        "forks": 5358,
+        "stars": 50255,
+        "forks": 5361,
         "language": "Rust",
         "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/271095942?v=4",
@@ -146,8 +146,8 @@
       "repo": {
         "fullName": "mvanhorn/last30days-skill",
         "url": "https://github.com/mvanhorn/last30days-skill",
-        "stars": 46835,
-        "forks": 3880,
+        "stars": 46952,
+        "forks": 3892,
         "language": "Python",
         "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/455140?v=4",
@@ -190,8 +190,8 @@
       "repo": {
         "fullName": "mvanhorn/last30days-skill",
         "url": "https://github.com/mvanhorn/last30days-skill",
-        "stars": 46835,
-        "forks": 3880,
+        "stars": 46952,
+        "forks": 3892,
         "language": "Python",
         "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/455140?v=4",
@@ -234,8 +234,8 @@
       "repo": {
         "fullName": "mvanhorn/last30days-skill",
         "url": "https://github.com/mvanhorn/last30days-skill",
-        "stars": 46835,
-        "forks": 3880,
+        "stars": 46952,
+        "forks": 3892,
         "language": "Python",
         "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/455140?v=4",
@@ -278,8 +278,8 @@
       "repo": {
         "fullName": "aaif-goose/goose",
         "url": "https://github.com/aaif-goose/goose",
-        "stars": 50228,
-        "forks": 5358,
+        "stars": 50255,
+        "forks": 5361,
         "language": "Rust",
         "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/271095942?v=4",
@@ -301,7 +301,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -353,8 +353,8 @@
       "repo": {
         "fullName": "n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
-        "stars": 194139,
-        "forks": 58855,
+        "stars": 194192,
+        "forks": 58856,
         "language": "TypeScript",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/45487711?v=4",
@@ -402,8 +402,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -425,8 +425,8 @@
       "repo": {
         "fullName": "aaif-goose/goose",
         "url": "https://github.com/aaif-goose/goose",
-        "stars": 50228,
-        "forks": 5358,
+        "stars": 50255,
+        "forks": 5361,
         "language": "Rust",
         "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/271095942?v=4",
@@ -453,8 +453,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -476,7 +476,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -508,8 +508,8 @@
       "repo": {
         "fullName": "bitwarden/clients",
         "url": "https://github.com/bitwarden/clients",
-        "stars": 13135,
-        "forks": 1887,
+        "stars": 13136,
+        "forks": 1890,
         "language": "TypeScript",
         "description": "Bitwarden client apps (web, browser extension, desktop, and cli).",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/15990069?v=4",
@@ -554,8 +554,8 @@
       "repo": {
         "fullName": "bitwarden/clients",
         "url": "https://github.com/bitwarden/clients",
-        "stars": 13135,
-        "forks": 1887,
+        "stars": 13136,
+        "forks": 1890,
         "language": "TypeScript",
         "description": "Bitwarden client apps (web, browser extension, desktop, and cli).",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/15990069?v=4",
@@ -591,7 +591,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -614,7 +614,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -642,8 +642,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -665,7 +665,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -688,7 +688,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -716,8 +716,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -768,8 +768,8 @@
       "repo": {
         "fullName": "n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
-        "stars": 194139,
-        "forks": 58855,
+        "stars": 194192,
+        "forks": 58856,
         "language": "TypeScript",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/45487711?v=4",
@@ -812,7 +812,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -840,8 +840,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -863,7 +863,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -886,7 +886,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -994,8 +994,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1022,8 +1022,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1078,8 +1078,8 @@
       "repo": {
         "fullName": "n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
-        "stars": 194139,
-        "forks": 58855,
+        "stars": 194192,
+        "forks": 58856,
         "language": "TypeScript",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/45487711?v=4",
@@ -1122,7 +1122,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -1145,7 +1145,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -1168,7 +1168,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -1219,8 +1219,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1247,8 +1247,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1275,8 +1275,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1303,8 +1303,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1331,8 +1331,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1359,8 +1359,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1382,7 +1382,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -1410,8 +1410,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1438,8 +1438,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1466,8 +1466,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1494,8 +1494,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1522,8 +1522,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1550,8 +1550,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1578,8 +1578,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1601,7 +1601,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -1624,7 +1624,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -1647,7 +1647,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -1670,7 +1670,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -1722,8 +1722,8 @@
       "repo": {
         "fullName": "n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
-        "stars": 194139,
-        "forks": 58855,
+        "stars": 194192,
+        "forks": 58856,
         "language": "TypeScript",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/45487711?v=4",
@@ -1771,8 +1771,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1799,8 +1799,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1827,8 +1827,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1919,7 +1919,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -1942,7 +1942,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -1965,7 +1965,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -1988,7 +1988,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2011,7 +2011,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2034,7 +2034,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2057,7 +2057,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2080,7 +2080,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2103,7 +2103,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2126,7 +2126,7 @@
       "repo": {
         "fullName": "quran/quran.com-frontend-next",
         "url": "https://github.com/quran/quran.com-frontend-next",
-        "stars": 1879,
+        "stars": 1880,
         "forks": 611,
         "language": "TypeScript",
         "description": "Frontend build on next.js",
@@ -2149,7 +2149,7 @@
       "repo": {
         "fullName": "quran/quran.com-frontend-next",
         "url": "https://github.com/quran/quran.com-frontend-next",
-        "stars": 1879,
+        "stars": 1880,
         "forks": 611,
         "language": "TypeScript",
         "description": "Frontend build on next.js",
@@ -2172,7 +2172,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2218,7 +2218,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2241,7 +2241,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2264,7 +2264,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2287,7 +2287,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2310,7 +2310,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2379,7 +2379,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2402,7 +2402,7 @@
       "repo": {
         "fullName": "sidekiq/sidekiq",
         "url": "https://github.com/sidekiq/sidekiq",
-        "stars": 13540,
+        "stars": 13541,
         "forks": 2480,
         "language": "Ruby",
         "description": "Simple, efficient background processing for Ruby",
@@ -2430,7 +2430,7 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 35087,
+        "stars": 35094,
         "forks": 8543,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
@@ -2453,8 +2453,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 140220,
-        "forks": 31261,
+        "stars": 140235,
+        "forks": 31267,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -2491,8 +2491,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 140220,
-        "forks": 31261,
+        "stars": 140235,
+        "forks": 31267,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -2534,8 +2534,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -2585,8 +2585,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -2613,8 +2613,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -2641,8 +2641,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -2664,7 +2664,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12880,
+        "stars": 12881,
         "forks": 3113,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -2694,7 +2694,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12880,
+        "stars": 12881,
         "forks": 3113,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -2724,8 +2724,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 140220,
-        "forks": 31261,
+        "stars": 140235,
+        "forks": 31267,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -2767,8 +2767,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -2795,8 +2795,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -2823,8 +2823,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58730,
-        "forks": 22164,
+        "stars": 58720,
+        "forks": 22166,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -2846,7 +2846,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12880,
+        "stars": 12881,
         "forks": 3113,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -2927,7 +2927,7 @@
       "repo": {
         "fullName": "biomejs/biome-zed",
         "url": "https://github.com/biomejs/biome-zed",
-        "stars": 481,
+        "stars": 482,
         "forks": 19,
         "language": "Rust",
         "description": "Biome extension for Zed",
