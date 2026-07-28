@@ -1,8 +1,8 @@
 import type { Direction, Locale, TranslationMap } from './types';
 import { DEFAULT_LOCALE, LOCALES, RTL_LOCALES } from './types';
 
-export { LOCALES, RTL_LOCALES, DEFAULT_LOCALE };
-export type { Locale, Direction, TranslationMap };
+export type { Direction, Locale, TranslationMap };
+export { DEFAULT_LOCALE, LOCALES, RTL_LOCALES };
 
 const translationCache = new Map<Locale, TranslationMap>();
 

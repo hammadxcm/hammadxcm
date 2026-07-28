@@ -94,7 +94,7 @@ export function initTerminal(): void {
     ls: (args) => {
       const target = args[0] || cwd;
       const node = getNode(target);
-      if (!node || node.type !== 'dir') {
+      if (node?.type !== 'dir') {
         print(`ls: cannot access '${escapeHtml(target)}': No such directory`, 'term-error');
         return;
       }
@@ -119,7 +119,7 @@ export function initTerminal(): void {
       }
       const target = resolve(args[0]);
       const node = getNode(args[0]);
-      if (!node || node.type !== 'dir') {
+      if (node?.type !== 'dir') {
         print(`cd: no such directory: ${escapeHtml(args[0])}`, 'term-error');
         return;
       }
@@ -173,7 +173,7 @@ export function initTerminal(): void {
     tree: (args) => {
       const target = args[0] || cwd;
       const node = getNode(target);
-      if (!node || node.type !== 'dir') {
+      if (node?.type !== 'dir') {
         print(`tree: '${escapeHtml(target)}': No such directory`, 'term-error');
         return;
       }

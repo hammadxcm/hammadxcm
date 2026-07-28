@@ -9,5 +9,5 @@ export interface ResolvedPortfolioConfig extends Omit<PortfolioConfig, 'socials'
 
 const config: ResolvedPortfolioConfig = { ...raw, socials: resolveSocials(raw) };
 
-export { config };
 export type { PortfolioConfig } from './types';
+export { config };
