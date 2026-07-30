@@ -9,6 +9,11 @@ export default defineConfig({
   devToolbar: { enabled: false },
   prefetch: { prefetchAll: false, defaultStrategy: 'viewport' },
   build: { inlineStylesheets: 'auto' },
+  // ponytail: lightningcss merges `animation-timeline: view()` into the `animation`
+  // shorthand (`animation: linear both reveal-up view()`), which Chrome rejects as
+  // invalid — killing every .reveal/.count-up scroll animation. esbuild doesn't
+  // merge shorthands. Revisit if lightningcss stops emitting the merged form.
+  vite: { build: { cssMinify: 'esbuild' } },
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es', 'fr', 'ar', 'ur', 'fa', 'zh', 'hi', 'de', 'bn', 'pt', 'ru', 'id'],
