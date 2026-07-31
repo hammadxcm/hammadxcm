@@ -984,14 +984,17 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for `NameError#missing_name` branches](https://github.com/rails/rails/pull/58325) | 🟢 Open | Jul 31, 2026 | 58.7k | +25 -0 |
+| [rails/rails](https://github.com/rails/rails) | [Fix `String#parameterize` raising `TypeError` when separator is nil](https://github.com/rails/rails/pull/58324) | 🟢 Open | Jul 31, 2026 | 58.7k | +32 -1 |
+| [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14835] Extend Lint/AmbiguousBlockAssociation for do...end block misassociation](https://github.com/rubocop/rubocop/pull/14949) | 🟣 Merged | Jul 31, 2026 | 12.9k | +206 -1 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15042] Add `DisallowedCops` option to `Style/DisableCopsWithinSourceCodeDirective`](https://github.com/rubocop/rubocop/pull/15050) | 🟣 Merged | Jul 29, 2026 | 12.9k | +149 -3 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15122] Fix false positive in `Layout/MultilineMethodCallIndentation`](https://github.com/rubocop/rubocop/pull/15123) | 🟣 Merged | Jul 17, 2026 | 12.9k | +47 -2 |
 | [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(TheHive Node): Normalize analyzers when expression returns a string](https://github.com/n8n-io/n8n/pull/32472) | 🟣 Merged | Jun 30, 2026 | 198.8k | +62 -8 |
 | [n8n-io/n8n](https://github.com/n8n-io/n8n) | [fix(Facebook Graph API Node): Route failed items to the error output](https://github.com/n8n-io/n8n/pull/32027) | 🟣 Merged | Jun 25, 2026 | 198.8k | +86 -143 |
 | [aaif-goose/goose](https://github.com/aaif-goose/goose) | [fix(autovisualiser): accept JSON-encoded string for the data parameter](https://github.com/aaif-goose/goose/pull/9838) | 🟣 Merged | Jun 22, 2026 | 52.0k | +125 -0 |
-| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [feat(cli): LAST30DAYS_DEFAULT_SEARCH env var as default source set for --search](https://github.com/mvanhorn/last30days-skill/pull/536) | 🟣 Merged | Jun 17, 2026 | 55.6k | +91 -4 |
-| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [fix(youtube): spend transcript budget on in-window videos first; gate stale-yt-dlp nudge on actual fetch failures](https://github.com/mvanhorn/last30days-skill/pull/535) | 🟣 Merged | Jun 17, 2026 | 55.6k | +191 -1 |
-| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [ci: attest build provenance for the released .skill asset](https://github.com/mvanhorn/last30days-skill/pull/534) | 🟣 Merged | Jun 17, 2026 | 55.6k | +7 -0 |
+| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [feat(cli): LAST30DAYS_DEFAULT_SEARCH env var as default source set for --search](https://github.com/mvanhorn/last30days-skill/pull/536) | 🟣 Merged | Jun 17, 2026 | 55.9k | +91 -4 |
+| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [fix(youtube): spend transcript budget on in-window videos first; gate stale-yt-dlp nudge on actual fetch failures](https://github.com/mvanhorn/last30days-skill/pull/535) | 🟣 Merged | Jun 17, 2026 | 55.9k | +191 -1 |
+| [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | [ci: attest build provenance for the released .skill asset](https://github.com/mvanhorn/last30days-skill/pull/534) | 🟣 Merged | Jun 17, 2026 | 55.9k | +7 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for SafeBuffer mutation escaping and as_json](https://github.com/rails/rails/pull/57762) | 🟢 Open | Jun 17, 2026 | 58.7k | +33 -0 |
 | [aaif-goose/goose](https://github.com/aaif-goose/goose) | [feat(azure): support Entra ID bearer token auth via AZURE_OPENAI_AD_TOKEN](https://github.com/aaif-goose/goose/pull/9716) | 🟣 Merged | Jun 17, 2026 | 52.0k | +94 -13 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for HashWithIndifferentAccess key access and except](https://github.com/rails/rails/pull/57689) | 🟣 Merged | Jun 13, 2026 | 58.7k | +33 -0 |
@@ -1073,7 +1076,6 @@ Zero-dep CLI to kill processes by port
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 141.2k | +77 -3 |
 | [rails/rails](https://github.com/rails/rails) | [Fix config.credentials.key_path set in environment files being ignored](https://github.com/rails/rails/pull/57230) | 🟢 Open | Apr 23, 2026 | 58.7k | +27 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Fix attachment uploads lost when reload is called inside a transaction](https://github.com/rails/rails/pull/57229) | 🟢 Open | Apr 23, 2026 | 58.7k | +57 -1 |
-| [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟢 Open | Apr 22, 2026 | 58.7k | +26 -3 |
 
 <!-- CONTRIBUTIONS:END -->
 
