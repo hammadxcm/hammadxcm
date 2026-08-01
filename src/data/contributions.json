@@ -1,14 +1,70 @@
 {
-  "generatedAt": "2026-07-31T14:18:53.010Z",
+  "generatedAt": "2026-08-01T13:36:57.971Z",
   "username": "hammadxcm",
   "totalCount": 100,
   "contributions": [
     {
+      "title": "Fix `search_field` raising `NameError` when passed `autosave: true`",
+      "url": "https://github.com/rails/rails/pull/58336",
+      "number": 58336,
+      "state": "open",
+      "mergedAt": "2026-08-01T11:48:35Z",
+      "createdAt": "2026-08-01T11:48:35Z",
+      "additions": 35,
+      "deletions": 1,
+      "changedFiles": 3,
+      "labels": [
+        {
+          "name": "actionview",
+          "color": "d7e102"
+        }
+      ],
+      "repo": {
+        "fullName": "rails/rails",
+        "url": "https://github.com/rails/rails",
+        "stars": 58658,
+        "forks": 22281,
+        "language": "Ruby",
+        "description": "Ruby on Rails",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
+        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
+        "license": "MIT"
+      }
+    },
+    {
+      "title": "Add test coverage for `ActiveModel::Type::Binary`",
+      "url": "https://github.com/rails/rails/pull/58335",
+      "number": 58335,
+      "state": "open",
+      "mergedAt": "2026-08-01T11:38:48Z",
+      "createdAt": "2026-08-01T11:38:48Z",
+      "additions": 38,
+      "deletions": 0,
+      "changedFiles": 1,
+      "labels": [
+        {
+          "name": "activemodel",
+          "color": "00E5FF"
+        }
+      ],
+      "repo": {
+        "fullName": "rails/rails",
+        "url": "https://github.com/rails/rails",
+        "stars": 58658,
+        "forks": 22281,
+        "language": "Ruby",
+        "description": "Ruby on Rails",
+        "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
+        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
+        "license": "MIT"
+      }
+    },
+    {
       "title": "Add test coverage for `NameError#missing_name` branches",
       "url": "https://github.com/rails/rails/pull/58325",
       "number": 58325,
-      "state": "open",
-      "mergedAt": "2026-07-31T10:02:59Z",
+      "state": "merged",
+      "mergedAt": "2026-08-01T08:20:25Z",
       "createdAt": "2026-07-31T10:02:59Z",
       "additions": 25,
       "deletions": 0,
@@ -22,8 +78,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -35,12 +91,12 @@
       "title": "Fix `String#parameterize` raising `TypeError` when separator is nil",
       "url": "https://github.com/rails/rails/pull/58324",
       "number": 58324,
-      "state": "open",
-      "mergedAt": "2026-07-31T09:56:30Z",
+      "state": "merged",
+      "mergedAt": "2026-08-01T08:14:45Z",
       "createdAt": "2026-07-31T09:56:30Z",
-      "additions": 32,
+      "additions": 20,
       "deletions": 1,
-      "changedFiles": 3,
+      "changedFiles": 2,
       "labels": [
         {
           "name": "activesupport",
@@ -50,8 +106,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -73,7 +129,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12892,
+        "stars": 12893,
         "forks": 3118,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -103,7 +159,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12892,
+        "stars": 12893,
         "forks": 3118,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -133,7 +189,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12892,
+        "stars": 12893,
         "forks": 3118,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -196,8 +252,8 @@
       "repo": {
         "fullName": "n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
-        "stars": 198840,
-        "forks": 59806,
+        "stars": 198933,
+        "forks": 59830,
         "language": "TypeScript",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/45487711?v=4",
@@ -273,8 +329,8 @@
       "repo": {
         "fullName": "n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
-        "stars": 198840,
-        "forks": 59806,
+        "stars": 198933,
+        "forks": 59830,
         "language": "TypeScript",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/45487711?v=4",
@@ -317,8 +373,8 @@
       "repo": {
         "fullName": "aaif-goose/goose",
         "url": "https://github.com/aaif-goose/goose",
-        "stars": 52012,
-        "forks": 5816,
+        "stars": 52050,
+        "forks": 5822,
         "language": "Rust",
         "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/271095942?v=4",
@@ -340,8 +396,8 @@
       "repo": {
         "fullName": "aaif-goose/goose",
         "url": "https://github.com/aaif-goose/goose",
-        "stars": 52012,
-        "forks": 5816,
+        "stars": 52050,
+        "forks": 5822,
         "language": "Rust",
         "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/271095942?v=4",
@@ -363,8 +419,8 @@
       "repo": {
         "fullName": "mvanhorn/last30days-skill",
         "url": "https://github.com/mvanhorn/last30days-skill",
-        "stars": 55935,
-        "forks": 4810,
+        "stars": 56510,
+        "forks": 4931,
         "language": "Python",
         "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/455140?v=4",
@@ -407,8 +463,8 @@
       "repo": {
         "fullName": "mvanhorn/last30days-skill",
         "url": "https://github.com/mvanhorn/last30days-skill",
-        "stars": 55935,
-        "forks": 4810,
+        "stars": 56510,
+        "forks": 4931,
         "language": "Python",
         "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/455140?v=4",
@@ -451,8 +507,8 @@
       "repo": {
         "fullName": "mvanhorn/last30days-skill",
         "url": "https://github.com/mvanhorn/last30days-skill",
-        "stars": 55935,
-        "forks": 4810,
+        "stars": 56510,
+        "forks": 4931,
         "language": "Python",
         "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/455140?v=4",
@@ -495,8 +551,8 @@
       "repo": {
         "fullName": "aaif-goose/goose",
         "url": "https://github.com/aaif-goose/goose",
-        "stars": 52012,
-        "forks": 5816,
+        "stars": 52050,
+        "forks": 5822,
         "language": "Rust",
         "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/271095942?v=4",
@@ -546,8 +602,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -569,8 +625,8 @@
       "repo": {
         "fullName": "aaif-goose/goose",
         "url": "https://github.com/aaif-goose/goose",
-        "stars": 52012,
-        "forks": 5816,
+        "stars": 52050,
+        "forks": 5822,
         "language": "Rust",
         "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/271095942?v=4",
@@ -597,8 +653,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -652,8 +708,8 @@
       "repo": {
         "fullName": "bitwarden/clients",
         "url": "https://github.com/bitwarden/clients",
-        "stars": 13479,
-        "forks": 1941,
+        "stars": 13485,
+        "forks": 1944,
         "language": "TypeScript",
         "description": "Bitwarden client apps (web, browser extension, desktop, and cli).",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/15990069?v=4",
@@ -698,8 +754,8 @@
       "repo": {
         "fullName": "bitwarden/clients",
         "url": "https://github.com/bitwarden/clients",
-        "stars": 13479,
-        "forks": 1941,
+        "stars": 13485,
+        "forks": 1944,
         "language": "TypeScript",
         "description": "Bitwarden client apps (web, browser extension, desktop, and cli).",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/15990069?v=4",
@@ -786,8 +842,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -860,8 +916,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -912,8 +968,8 @@
       "repo": {
         "fullName": "n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
-        "stars": 198840,
-        "forks": 59806,
+        "stars": 198933,
+        "forks": 59830,
         "language": "TypeScript",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/45487711?v=4",
@@ -984,8 +1040,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1138,8 +1194,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1166,8 +1222,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1222,8 +1278,8 @@
       "repo": {
         "fullName": "n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
-        "stars": 198840,
-        "forks": 59806,
+        "stars": 198933,
+        "forks": 59830,
         "language": "TypeScript",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/45487711?v=4",
@@ -1363,8 +1419,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1391,8 +1447,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1419,8 +1475,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1447,8 +1503,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1475,8 +1531,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1503,8 +1559,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1554,8 +1610,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1582,8 +1638,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1610,8 +1666,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1638,8 +1694,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1666,8 +1722,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1694,8 +1750,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1722,8 +1778,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1866,8 +1922,8 @@
       "repo": {
         "fullName": "n8n-io/n8n",
         "url": "https://github.com/n8n-io/n8n",
-        "stars": 198840,
-        "forks": 59806,
+        "stars": 198933,
+        "forks": 59830,
         "language": "TypeScript",
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/45487711?v=4",
@@ -1915,8 +1971,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1943,8 +1999,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1971,8 +2027,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -1994,8 +2050,8 @@
       "repo": {
         "fullName": "TarteelAI/quranic-universal-library",
         "url": "https://github.com/TarteelAI/quranic-universal-library",
-        "stars": 954,
-        "forks": 116,
+        "stars": 955,
+        "forks": 117,
         "language": "Ruby",
         "description": "A comprehensive collection of Quran resources",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/43034731?v=4",
@@ -2017,8 +2073,8 @@
       "repo": {
         "fullName": "TarteelAI/quranic-universal-library",
         "url": "https://github.com/TarteelAI/quranic-universal-library",
-        "stars": 954,
-        "forks": 116,
+        "stars": 955,
+        "forks": 117,
         "language": "Ruby",
         "description": "A comprehensive collection of Quran resources",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/43034731?v=4",
@@ -2040,8 +2096,8 @@
       "repo": {
         "fullName": "TarteelAI/quranic-universal-library",
         "url": "https://github.com/TarteelAI/quranic-universal-library",
-        "stars": 954,
-        "forks": 116,
+        "stars": 955,
+        "forks": 117,
         "language": "Ruby",
         "description": "A comprehensive collection of Quran resources",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/43034731?v=4",
@@ -2270,8 +2326,8 @@
       "repo": {
         "fullName": "quran/quran.com-frontend-next",
         "url": "https://github.com/quran/quran.com-frontend-next",
-        "stars": 1889,
-        "forks": 616,
+        "stars": 1890,
+        "forks": 617,
         "language": "TypeScript",
         "description": "Frontend build on next.js",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/21640?v=4",
@@ -2293,8 +2349,8 @@
       "repo": {
         "fullName": "quran/quran.com-frontend-next",
         "url": "https://github.com/quran/quran.com-frontend-next",
-        "stars": 1889,
-        "forks": 616,
+        "stars": 1890,
+        "forks": 617,
         "language": "TypeScript",
         "description": "Frontend build on next.js",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/21640?v=4",
@@ -2578,7 +2634,7 @@
       "repo": {
         "fullName": "keycloak/keycloak",
         "url": "https://github.com/keycloak/keycloak",
-        "stars": 35927,
+        "stars": 35938,
         "forks": 8714,
         "language": "Java",
         "description": "Open Source Identity and Access Management For Modern Applications and Services",
@@ -2601,8 +2657,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 141198,
-        "forks": 31584,
+        "stars": 141215,
+        "forks": 31587,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -2639,8 +2695,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 141198,
-        "forks": 31584,
+        "stars": 141215,
+        "forks": 31587,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -2682,8 +2738,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -2733,8 +2789,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -2761,8 +2817,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -2789,8 +2845,8 @@
       "repo": {
         "fullName": "rails/rails",
         "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
+        "stars": 58658,
+        "forks": 22281,
         "language": "Ruby",
         "description": "Ruby on Rails",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
@@ -2812,7 +2868,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12892,
+        "stars": 12893,
         "forks": 3118,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -2842,7 +2898,7 @@
       "repo": {
         "fullName": "rubocop/rubocop",
         "url": "https://github.com/rubocop/rubocop",
-        "stars": 12892,
+        "stars": 12893,
         "forks": 3118,
         "language": "Ruby",
         "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide.",
@@ -2872,8 +2928,8 @@
       "repo": {
         "fullName": "vercel/next.js",
         "url": "https://github.com/vercel/next.js",
-        "stars": 141198,
-        "forks": 31584,
+        "stars": 141215,
+        "forks": 31587,
         "language": "JavaScript",
         "description": "The React Framework",
         "ownerAvatar": "https://avatars.githubusercontent.com/u/14985020?v=4",
@@ -2893,62 +2949,6 @@
           "universal",
           "vercel"
         ],
-        "license": "MIT"
-      }
-    },
-    {
-      "title": "Fix config.credentials.key_path set in environment files being ignored",
-      "url": "https://github.com/rails/rails/pull/57230",
-      "number": 57230,
-      "state": "open",
-      "mergedAt": "2026-04-23T09:35:38Z",
-      "createdAt": "2026-04-23T09:35:38Z",
-      "additions": 27,
-      "deletions": 0,
-      "changedFiles": 3,
-      "labels": [
-        {
-          "name": "railties",
-          "color": "8BE06E"
-        }
-      ],
-      "repo": {
-        "fullName": "rails/rails",
-        "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
-        "language": "Ruby",
-        "description": "Ruby on Rails",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
-        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
-        "license": "MIT"
-      }
-    },
-    {
-      "title": "Fix attachment uploads lost when reload is called inside a transaction",
-      "url": "https://github.com/rails/rails/pull/57229",
-      "number": 57229,
-      "state": "open",
-      "mergedAt": "2026-04-23T09:26:54Z",
-      "createdAt": "2026-04-23T09:26:54Z",
-      "additions": 57,
-      "deletions": 1,
-      "changedFiles": 4,
-      "labels": [
-        {
-          "name": "activestorage",
-          "color": "bfd4f2"
-        }
-      ],
-      "repo": {
-        "fullName": "rails/rails",
-        "url": "https://github.com/rails/rails",
-        "stars": 58656,
-        "forks": 22275,
-        "language": "Ruby",
-        "description": "Ruby on Rails",
-        "ownerAvatar": "https://avatars.githubusercontent.com/u/4223?v=4",
-        "topics": ["activejob", "activerecord", "framework", "html", "mvc", "rails", "ruby"],
         "license": "MIT"
       }
     }
