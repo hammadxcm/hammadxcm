@@ -984,6 +984,7 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for `CombinedConfiguration` option defaults, keys, and reload](https://github.com/rails/rails/pull/58378) | 🟢 Open | Aug 5, 2026 | 58.7k | +38 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Fix `search_field` raising `NameError` when passed `autosave: true`](https://github.com/rails/rails/pull/58336) | 🟣 Merged | Aug 1, 2026 | 58.7k | +25 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for `ActiveModel::Type::Binary`](https://github.com/rails/rails/pull/58335) | 🟢 Open | Aug 1, 2026 | 58.7k | +38 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for `NameError#missing_name` branches](https://github.com/rails/rails/pull/58325) | 🟣 Merged | Aug 1, 2026 | 58.7k | +25 -0 |
@@ -1075,7 +1076,6 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Fix grammar in ActiveRecord errors and integration doc comments](https://github.com/rails/rails/pull/57448) | 🟣 Merged | May 22, 2026 | 58.7k | +2 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15135] Fix `Style/RedundantParentheses` autocorrect swallowing chained methods into trailing comments](https://github.com/rubocop/rubocop/pull/15140) | 🟣 Merged | May 19, 2026 | 12.9k | +77 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟣 Merged | Apr 28, 2026 | 12.9k | +45 -2 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix(i18n): use correct defaultLocale when domains array is present on default host](https://github.com/vercel/next.js/pull/93151) | 🟢 Open | Apr 23, 2026 | 141.4k | +77 -3 |
 
 <!-- CONTRIBUTIONS:END -->
 
