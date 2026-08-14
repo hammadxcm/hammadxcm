@@ -984,6 +984,8 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix(next/image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟣 Merged | Aug 13, 2026 | 141.8k | +24 -1 |
+| [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟣 Merged | Aug 13, 2026 | 58.7k | +13 -4 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for `ActiveModel::Type::Binary`](https://github.com/rails/rails/pull/58335) | 🟣 Merged | Aug 10, 2026 | 58.7k | +38 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for `CombinedConfiguration` option defaults, keys, and reload](https://github.com/rails/rails/pull/58378) | 🟢 Open | Aug 5, 2026 | 58.7k | +38 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Fix `search_field` raising `NameError` when passed `autosave: true`](https://github.com/rails/rails/pull/58336) | 🟣 Merged | Aug 1, 2026 | 58.7k | +25 -1 |
@@ -1041,9 +1043,9 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Test to_sentence with an empty array](https://github.com/rails/rails/pull/57511) | 🟣 Merged | Jun 1, 2026 | 58.7k | +6 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Test ImmutableString custom boolean options and serialize](https://github.com/rails/rails/pull/57509) | 🟣 Merged | Jun 1, 2026 | 58.7k | +20 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Test Float casting of Infinity and NaN strings](https://github.com/rails/rails/pull/57510) | 🟣 Merged | Jun 1, 2026 | 58.7k | +7 -0 |
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟣 Merged | May 30, 2026 | 967 | +52 -12 |
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Add unit tests for mushaf layout JSON export (follow-up to #620)](https://github.com/TarteelAI/quranic-universal-library/pull/622) | 🟢 Open | May 30, 2026 | 967 | +281 -0 |
-| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟣 Merged | May 30, 2026 | 967 | +57 -1 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Fix WebGL context error on Turbo-cached landing page (#448)](https://github.com/TarteelAI/quranic-universal-library/pull/619) | 🟣 Merged | May 30, 2026 | 968 | +52 -12 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Add unit tests for mushaf layout JSON export (follow-up to #620)](https://github.com/TarteelAI/quranic-universal-library/pull/622) | 🟢 Open | May 30, 2026 | 968 | +281 -0 |
+| [TarteelAI/quranic-universal-library](https://github.com/TarteelAI/quranic-universal-library) | [Export mushaf layout data as JSON per page (#257)](https://github.com/TarteelAI/quranic-universal-library/pull/620) | 🟣 Merged | May 30, 2026 | 968 | +57 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix IterableJobQuery cursor fallback (Struct member, not ivar)](https://github.com/sidekiq/sidekiq/pull/7018) | 🟣 Merged | May 29, 2026 | 13.6k | +52 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Keep SortedEntry's in-memory score in sync after reschedule](https://github.com/sidekiq/sidekiq/pull/7017) | 🟣 Merged | May 29, 2026 | 13.6k | +12 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Fix 500 on the Busy page when count is negative](https://github.com/sidekiq/sidekiq/pull/7014) | 🟣 Merged | May 29, 2026 | 13.6k | +13 -0 |
@@ -1068,14 +1070,12 @@ Zero-dep CLI to kill processes by port
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove dead code left over from the 8.0 error-handler refactor](https://github.com/sidekiq/sidekiq/pull/6998) | 🟣 Merged | May 23, 2026 | 13.6k | +19 -12 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Log SubjectConfirmationData validation failure in SAMLEndpoint](https://github.com/keycloak/keycloak/pull/49262) | 🟢 Open | May 23, 2026 | 36.2k | +1 -0 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix: await ensureInstrumentationRegistered in RouteModule.prepare](https://github.com/vercel/next.js/pull/94069) | 🟢 Open | May 23, 2026 | 141.8k | +1 -1 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix(next/image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟢 Open | May 23, 2026 | 141.8k | +24 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Include valid values in ActiveRecord::Enum invalid-value error](https://github.com/rails/rails/pull/57446) | 🟣 Merged | May 22, 2026 | 58.7k | +13 -2 |
 | [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Expand file_fixture_path against Rails.root](https://github.com/rspec/rspec-rails/pull/2902) | 🟢 Open | May 22, 2026 | 5.3k | +57 -2 |
 | [rails/rails](https://github.com/rails/rails) | [Fix incorrect SQL examples in ActiveRecord::QueryMethods docs](https://github.com/rails/rails/pull/57445) | 🟣 Merged | May 22, 2026 | 58.7k | +4 -4 |
 | [rails/rails](https://github.com/rails/rails) | [Improve insert_all error message to show key mismatch](https://github.com/rails/rails/pull/57447) | 🟣 Merged | May 22, 2026 | 58.7k | +37 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix grammar in ActiveRecord errors and integration doc comments](https://github.com/rails/rails/pull/57448) | 🟣 Merged | May 22, 2026 | 58.7k | +2 -2 |
 | [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #15135] Fix `Style/RedundantParentheses` autocorrect swallowing chained methods into trailing comments](https://github.com/rubocop/rubocop/pull/15140) | 🟣 Merged | May 19, 2026 | 12.9k | +77 -2 |
-| [rubocop/rubocop](https://github.com/rubocop/rubocop) | [[Fix #14821] Fix `Style/IfInsideElse` autocorrect moving comments into wrong branch](https://github.com/rubocop/rubocop/pull/14948) | 🟣 Merged | Apr 28, 2026 | 12.9k | +45 -2 |
 
 <!-- CONTRIBUTIONS:END -->
 
