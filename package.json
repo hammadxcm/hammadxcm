@@ -54,7 +54,8 @@
     "svgo": "^4.0.2",
     "immutable": "^5.1.8",
     "fast-uri@3": "^3.1.5",
-    "fast-uri@4": "^4.1.2"
+    "fast-uri@4": "^4.1.2",
+    "nanoid": "^3.3.18"
   },
   "pnpm": {
     "overrides": {
@@ -73,7 +74,8 @@
       "svgo": "^4.0.2",
       "immutable": "^5.1.8",
       "fast-uri@3": "^3.1.5",
-      "fast-uri@4": "^4.1.2"
+      "fast-uri@4": "^4.1.2",
+      "nanoid": "^3.3.18"
     }
   },
   "devDependencies": {
