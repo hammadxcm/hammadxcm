@@ -986,7 +986,7 @@ Zero-dep CLI to kill processes by port
 |:-----------|:---|:-------|:-----|------:|-------:|
 | [bitwarden/clients](https://github.com/bitwarden/clients) | [[PM-38964] Remove obsolete LockScreen config from AppX manifest](https://github.com/bitwarden/clients/pull/21229) | 🟣 Merged | Aug 24, 2026 | 13.8k | +3 -20 |
 | [AdnanGulzar/post-sync](https://github.com/AdnanGulzar/post-sync) | [♻️ [PLT-000] Introduce publisher strategy registry, encrypt and refresh OAuth tokens, recover wedged posts](https://github.com/AdnanGulzar/post-sync/pull/4) | 🟢 Open | Aug 22, 2026 | 0 | +4969 -794 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix(next/image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟣 Merged | Aug 13, 2026 | 142.3k | +24 -1 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix(next/image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟣 Merged | Aug 13, 2026 | 142.4k | +24 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟣 Merged | Aug 13, 2026 | 58.8k | +13 -4 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for `ActiveModel::Type::Binary`](https://github.com/rails/rails/pull/58335) | 🟣 Merged | Aug 10, 2026 | 58.8k | +38 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for `CombinedConfiguration` option defaults, keys, and reload](https://github.com/rails/rails/pull/58378) | 🟢 Open | Aug 5, 2026 | 58.8k | +38 -0 |
@@ -1070,7 +1070,7 @@ Zero-dep CLI to kill processes by port
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add RingBuffer tests and expand SdNotify coverage](https://github.com/sidekiq/sidekiq/pull/6997) | 🟣 Merged | May 23, 2026 | 13.6k | +199 -1 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Remove dead code left over from the 8.0 error-handler refactor](https://github.com/sidekiq/sidekiq/pull/6998) | 🟣 Merged | May 23, 2026 | 13.6k | +19 -12 |
 | [keycloak/keycloak](https://github.com/keycloak/keycloak) | [Log SubjectConfirmationData validation failure in SAMLEndpoint](https://github.com/keycloak/keycloak/pull/49262) | 🟢 Open | May 23, 2026 | 36.8k | +1 -0 |
-| [vercel/next.js](https://github.com/vercel/next.js) | [fix: await ensureInstrumentationRegistered in RouteModule.prepare](https://github.com/vercel/next.js/pull/94069) | 🟢 Open | May 23, 2026 | 142.3k | +1 -1 |
+| [vercel/next.js](https://github.com/vercel/next.js) | [fix: await ensureInstrumentationRegistered in RouteModule.prepare](https://github.com/vercel/next.js/pull/94069) | 🟢 Open | May 23, 2026 | 142.4k | +1 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Include valid values in ActiveRecord::Enum invalid-value error](https://github.com/rails/rails/pull/57446) | 🟣 Merged | May 22, 2026 | 58.8k | +13 -2 |
 | [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Expand file_fixture_path against Rails.root](https://github.com/rspec/rspec-rails/pull/2902) | 🟢 Open | May 22, 2026 | 5.3k | +57 -2 |
 | [rails/rails](https://github.com/rails/rails) | [Fix incorrect SQL examples in ActiveRecord::QueryMethods docs](https://github.com/rails/rails/pull/57445) | 🟣 Merged | May 22, 2026 | 58.8k | +4 -4 |
