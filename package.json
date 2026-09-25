@@ -17,6 +17,7 @@
     "format": "biome check --write src/",
     "test:coverage": "vitest run --coverage",
     "fetch:graph": "node scripts/fetch-contribution-graph.mjs",
+    "gen:universe": "node scripts/generate-universe.mjs",
     "setup": "node scripts/fetch-all-data.mjs",
     "setup:init": "node scripts/setup.mjs",
     "setup:edit": "node scripts/setup-tui.mjs",

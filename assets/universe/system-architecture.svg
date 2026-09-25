@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1664" height="936" viewBox="0 0 1664 936" role="img" aria-labelledby="title desc">
+<title id="title">System Architecture — hammadxcm</title>
+<desc id="desc">Animated five-layer architecture diagram of the systems Hammad Khan designs, with real delivery metrics.</desc>
+<style>
+text{font-family:ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace;fill:#e6edf3}
+.k{fill:#00bfbf;font-size:14px;letter-spacing:3px}
+.t{fill:#a9fef7;font-size:44px;font-weight:700;letter-spacing:5px}
+.s{fill:#7d8590;font-size:16px;letter-spacing:1px}
+.h{fill:#a9fef7;font-size:28px;font-weight:700;letter-spacing:3px}
+.b{font-size:15px}
+.d{fill:#7d8590;font-size:14px}
+.chip{fill:#00bfbf;font-size:13px;font-weight:700;letter-spacing:1px}
+.v{fill:#a9fef7;font-size:40px;font-weight:700}
+.card{fill:#0f1b20;stroke:#1f3a40;stroke-width:1.5}
+.fade{animation:fade .9s ease-out backwards}
+.pulse{animation:pulse 2s ease-in-out infinite}
+.blink{animation:blink 1s steps(1) infinite}
+.flow{stroke-dasharray:6 10;animation:flow 1.2s linear infinite}
+.grow{transform-box:fill-box;transform-origin:left;animation:grow 2.6s ease-in-out infinite alternate}
+.spin{transform-box:fill-box;transform-origin:center;animation:spin 24s linear infinite}
+.rspin{transform-box:fill-box;transform-origin:center;animation:spin 16s linear infinite reverse}
+.draw{stroke-dasharray:900;animation:draw 3s ease-out infinite alternate}
+.scan{animation:scan 7s linear infinite}
+@keyframes fade{from{opacity:0}}
+@keyframes pulse{50%{opacity:.25}}
+@keyframes blink{50%{opacity:0}}
+@keyframes flow{to{stroke-dashoffset:-32}}
+@keyframes grow{from{transform:scaleX(.3)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes draw{from{stroke-dashoffset:900}}
+@keyframes scan{from{transform:translateX(0)}to{transform:translateX(1536px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<defs>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#00bfbf" stroke-opacity=".06"/></pattern>
+<radialGradient id="glow" cx="85%" cy="0%" r="70%"><stop offset="0" stop-color="#00bfbf" stop-opacity=".16"/><stop offset="1" stop-color="#00bfbf" stop-opacity="0"/></radialGradient>
+<linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="#a9fef7" stop-opacity="0"/><stop offset="1" stop-color="#a9fef7"/></linearGradient>
+</defs>
+<rect width="1664" height="936" rx="18" fill="#0d1117"/>
+<rect width="1664" height="936" rx="18" fill="url(#grid)"/>
+<rect width="1664" height="936" rx="18" fill="url(#glow)"/>
+<rect x="1" y="1" width="1662" height="934" rx="18" fill="none" stroke="#1f3a40"/>
+<text x="64" y="72" class="k">hammadxcm@universe:~$ ./architecture --trace</text><rect x="573.6" y="58" width="9" height="17" fill="#00bfbf" class="blink"/>
+<text x="64" y="128" class="t">SYSTEM ARCHITECTURE</text>
+<text x="64" y="162" class="s">Client → API → Services → Data → Platform, with the numbers from production</text>
+<g transform="translate(1323.4 50)"><rect width="276.6" height="40" rx="20" fill="#0f1b20" stroke="#00bfbf" stroke-opacity=".5"/><circle cx="24" cy="20" r="6" fill="#a9fef7" class="pulse"/><text x="42" y="25" class="k">REQUEST FLOW SYNCED</text></g>
+<line x1="64" y1="192" x2="1600" y2="192" stroke="#1f3a40"/>
+<rect x="-56" y="191" width="120" height="3" fill="url(#beam)" class="scan"/>
+<g class="fade" style="animation-delay:0s"><rect x="64" y="224" width="268.8" height="420" rx="12" class="card"/>
+<path d="M64 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M332.8 616v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="88" y="264" class="k">01 / EXPERIENCE</text><text x="88" y="310" class="h">CLIENT</text><text x="88" y="336" class="d">UI • CLIENT RUNTIME</text>
+<g transform="translate(88 364)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">REACT</text></g><g transform="translate(166 364)"><rect width="59.2" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">NEXT</text></g><g transform="translate(235.2 364)"><rect width="50.400000000000006" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">VUE</text></g>
+<circle cx="92" cy="455" r="3.5" fill="#00bfbf"/><text x="108" y="460" class="d">React / Next.js / Vue</text><circle cx="92" cy="491" r="3.5" fill="#00bfbf"/><text x="108" y="496" class="d">Progressive Web Apps</text><circle cx="92" cy="527" r="3.5" fill="#00bfbf"/><text x="108" y="532" class="d">Progressive loading</text>
+<text x="88" y="586" class="d">THROUGHPUT</text>
+<rect x="88" y="600" width="220.8" height="6" rx="3" fill="#1f3a40"/>
+<rect x="88" y="600" width="220.8" height="6" rx="3" fill="#00bfbf" class="grow" style="animation-delay:0s"/></g>
+<line x1="336.8" y1="324" x2="370.8" y2="324" stroke="#00bfbf" stroke-width="2" class="flow"/><path d="M368.8 318l8 6-8 6" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<line x1="198.4" y1="644" x2="198.4" y2="676" stroke="#00bfbf" stroke-opacity=".5" class="flow"/>
+<g class="fade" style="animation-delay:0.15s"><rect x="380.8" y="224" width="268.8" height="420" rx="12" class="card"/>
+<path d="M380.8 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M649.6 616v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="404.8" y="264" class="k">02 / GATEWAY</text><text x="404.8" y="310" class="h">API</text><text x="404.8" y="336" class="d">EDGE • AUTH • CONTRACTS</text>
+<g transform="translate(404.8 364)"><rect width="59.2" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">REST</text></g><g transform="translate(474 364)"><rect width="50.400000000000006" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">GQL</text></g><g transform="translate(534.4000000000001 364)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">HOOKS</text></g>
+<circle cx="408.8" cy="455" r="3.5" fill="#00bfbf"/><text x="424.8" y="460" class="d">REST / GraphQL APIs</text><circle cx="408.8" cy="491" r="3.5" fill="#00bfbf"/><text x="424.8" y="496" class="d">Auth / RBAC / Audit</text><circle cx="408.8" cy="527" r="3.5" fill="#00bfbf"/><text x="424.8" y="532" class="d">Payments &amp; CRM APIs</text>
+<text x="404.8" y="586" class="d">THROUGHPUT</text>
+<rect x="404.8" y="600" width="220.8" height="6" rx="3" fill="#1f3a40"/>
+<rect x="404.8" y="600" width="220.8" height="6" rx="3" fill="#00bfbf" class="grow" style="animation-delay:0.3s"/></g>
+<line x1="653.6" y1="324" x2="687.6" y2="324" stroke="#00bfbf" stroke-width="2" class="flow"/><path d="M685.6 318l8 6-8 6" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<line x1="515.2" y1="644" x2="515.2" y2="676" stroke="#00bfbf" stroke-opacity=".5" class="flow"/>
+<g class="fade" style="animation-delay:0.3s"><rect x="697.6" y="224" width="268.8" height="420" rx="12" class="card"/>
+<path d="M697.6 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M966.4000000000001 616v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="721.6" y="264" class="k">03 / COMPUTE</text><text x="721.6" y="310" class="h">SERVICES</text><text x="721.6" y="336" class="d">WORKERS • EVENTS • QUEUES</text>
+<g transform="translate(721.6 364)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">RAILS</text></g><g transform="translate(799.6 364)"><rect width="59.2" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">NEST</text></g><g transform="translate(868.8 364)"><rect width="41.6" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">MQ</text></g>
+<circle cx="725.6" cy="455" r="3.5" fill="#00bfbf"/><text x="741.6" y="460" class="d">Microservices / DDD</text><circle cx="725.6" cy="491" r="3.5" fill="#00bfbf"/><text x="741.6" y="496" class="d">Event-driven workers</text><circle cx="725.6" cy="527" r="3.5" fill="#00bfbf"/><text x="741.6" y="532" class="d">Sidekiq / BullMQ jobs</text>
+<text x="721.6" y="586" class="d">THROUGHPUT</text>
+<rect x="721.6" y="600" width="220.8" height="6" rx="3" fill="#1f3a40"/>
+<rect x="721.6" y="600" width="220.8" height="6" rx="3" fill="#00bfbf" class="grow" style="animation-delay:0.6s"/></g>
+<line x1="970.4000000000001" y1="324" x2="1004.4000000000001" y2="324" stroke="#00bfbf" stroke-width="2" class="flow"/><path d="M1002.4000000000001 318l8 6-8 6" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<line x1="832" y1="644" x2="832" y2="676" stroke="#00bfbf" stroke-opacity=".5" class="flow"/>
+<g class="fade" style="animation-delay:0.44999999999999996s"><rect x="1014.4000000000001" y="224" width="268.8" height="420" rx="12" class="card"/>
+<path d="M1014.4000000000001 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M1283.2 616v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="1038.4" y="264" class="k">04 / PERSISTENCE</text><text x="1038.4" y="310" class="h">DATA</text><text x="1038.4" y="336" class="d">STORAGE • CACHE • MODEL</text>
+<g transform="translate(1038.4 364)"><rect width="41.6" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">PG</text></g><g transform="translate(1090 364)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">MONGO</text></g><g transform="translate(1168 364)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">REDIS</text></g>
+<circle cx="1042.4" cy="455" r="3.5" fill="#00bfbf"/><text x="1058.4" y="460" class="d">Dual-DB org scoping</text><circle cx="1042.4" cy="491" r="3.5" fill="#00bfbf"/><text x="1058.4" y="496" class="d">Redis caching</text><circle cx="1042.4" cy="527" r="3.5" fill="#00bfbf"/><text x="1058.4" y="532" class="d">CSV import pipelines</text>
+<text x="1038.4" y="586" class="d">THROUGHPUT</text>
+<rect x="1038.4" y="600" width="220.8" height="6" rx="3" fill="#1f3a40"/>
+<rect x="1038.4" y="600" width="220.8" height="6" rx="3" fill="#00bfbf" class="grow" style="animation-delay:0.8999999999999999s"/></g>
+<line x1="1287.2" y1="324" x2="1321.2" y2="324" stroke="#00bfbf" stroke-width="2" class="flow"/><path d="M1319.2 318l8 6-8 6" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<line x1="1148.8000000000002" y1="644" x2="1148.8000000000002" y2="676" stroke="#00bfbf" stroke-opacity=".5" class="flow"/>
+<g class="fade" style="animation-delay:0.6s"><rect x="1331.2" y="224" width="268.8" height="420" rx="12" class="card"/>
+<path d="M1331.2 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M1600 616v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="1355.2" y="264" class="k">05 / PLATFORM</text><text x="1355.2" y="310" class="h">INFRA</text><text x="1355.2" y="336" class="d">CLOUD • CONTAINERS • CI</text>
+<g transform="translate(1355.2 364)"><rect width="50.400000000000006" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">AWS</text></g><g transform="translate(1415.6000000000001 364)"><rect width="41.6" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">AZ</text></g><g transform="translate(1467.2 364)"><rect width="50.400000000000006" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">K8S</text></g>
+<circle cx="1359.2" cy="455" r="3.5" fill="#00bfbf"/><text x="1375.2" y="460" class="d">AWS / Azure</text><circle cx="1359.2" cy="491" r="3.5" fill="#00bfbf"/><text x="1375.2" y="496" class="d">Docker / Kubernetes</text><circle cx="1359.2" cy="527" r="3.5" fill="#00bfbf"/><text x="1375.2" y="532" class="d">CI / CD automation</text>
+<text x="1355.2" y="586" class="d">THROUGHPUT</text>
+<rect x="1355.2" y="600" width="220.8" height="6" rx="3" fill="#1f3a40"/>
+<rect x="1355.2" y="600" width="220.8" height="6" rx="3" fill="#00bfbf" class="grow" style="animation-delay:1.2s"/></g>
+
+<line x1="1465.6000000000001" y1="644" x2="1465.6000000000001" y2="676" stroke="#00bfbf" stroke-opacity=".5" class="flow"/>
+<line x1="64" y1="676" x2="1600" y2="676" stroke="#1f3a40" stroke-width="3"/><circle cx="64" cy="676" r="5" fill="#a9fef7" class="scan" style="animation-delay:0s;animation-duration:4.2s"/><circle cx="64" cy="676" r="5" fill="#a9fef7" class="scan" style="animation-delay:1.4s;animation-duration:4.2s"/><circle cx="64" cy="676" r="5" fill="#a9fef7" class="scan" style="animation-delay:2.8s;animation-duration:4.2s"/>
+<g class="fade" style="animation-delay:0.8s"><rect x="64" y="700" width="372" height="128" rx="12" class="card"/>
+<path d="M64 728V712a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M436 800v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="88" y="756" class="v">99.9%</text><text x="224" y="756" class="k">UPTIME</text>
+<text x="88" y="796" class="d">Zero-downtime Stripe migration</text></g>
+<g class="fade" style="animation-delay:0.9500000000000001s"><rect x="452" y="700" width="372" height="128" rx="12" class="card"/>
+<path d="M452 728V712a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M824 800v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="476" y="756" class="v">95%</text><text x="564" y="756" class="k">JOB SUCCESS</text>
+<text x="476" y="796" class="d">Real-time data pipelines</text></g>
+<g class="fade" style="animation-delay:1.1s"><rect x="840" y="700" width="372" height="128" rx="12" class="card"/>
+<path d="M840 728V712a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M1212 800v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="864" y="756" class="v">-70%</text><text x="976" y="756" class="k">PAGE LOAD</text>
+<text x="864" y="796" class="d">Progressive loading system</text></g>
+<g class="fade" style="animation-delay:1.25s"><rect x="1228" y="700" width="372" height="128" rx="12" class="card"/>
+<path d="M1228 728V712a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M1600 800v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="1252" y="756" class="v">115+</text><text x="1364" y="756" class="k">MERGE REQUESTS</text>
+<text x="1252" y="796" class="d">Shipped in 5 months @ NexaQuanta</text></g>
+<line x1="64" y1="870" x2="1600" y2="870" stroke="#1f3a40"/>
+<text x="64" y="904" class="k">MICROSERVICES // EVENT-DRIVEN // DDD // FAULT TOLERANT // ZERO DOWNTIME</text>
+<text x="1600" y="904" class="k" text-anchor="end">github.com/hammadxcm</text>
+</svg>

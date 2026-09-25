@@ -52,6 +52,14 @@ jobs:
           "
           rm -f CONTRIBUTIONS_README.md
 
+      - name: Refresh README universe panels
+        run: |
+          node scripts/fetch-contribution-graph.mjs
+          node scripts/fetch-projects.mjs
+          node scripts/generate-universe.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: hammadxcm
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v7
