@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1664" height="936" viewBox="0 0 1664 936" role="img" aria-labelledby="title desc">
+<title id="title">AI Engineering — hammadxcm</title>
+<desc id="desc">Animated panel of Hammad Khan’s AI work: an MCP server for computer-use agents, an edge LLM chat assistant, n8n agent automation and AI-assisted engineering.</desc>
+<style>
+text{font-family:ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace;fill:#e6edf3}
+.k{fill:#00bfbf;font-size:14px;letter-spacing:3px}
+.t{fill:#a9fef7;font-size:44px;font-weight:700;letter-spacing:5px}
+.s{fill:#7d8590;font-size:16px;letter-spacing:1px}
+.h{fill:#a9fef7;font-size:28px;font-weight:700;letter-spacing:3px}
+.b{font-size:15px}
+.d{fill:#7d8590;font-size:14px}
+.chip{fill:#00bfbf;font-size:13px;font-weight:700;letter-spacing:1px}
+.v{fill:#a9fef7;font-size:40px;font-weight:700}
+.card{fill:#0f1b20;stroke:#1f3a40;stroke-width:1.5}
+.fade{animation:fade .9s ease-out backwards}
+.pulse{animation:pulse 2s ease-in-out infinite}
+.blink{animation:blink 1s steps(1) infinite}
+.flow{stroke-dasharray:6 10;animation:flow 1.2s linear infinite}
+.grow{transform-box:fill-box;transform-origin:left;animation:grow 2.6s ease-in-out infinite alternate}
+.spin{transform-box:fill-box;transform-origin:center;animation:spin 24s linear infinite}
+.rspin{transform-box:fill-box;transform-origin:center;animation:spin 16s linear infinite reverse}
+.draw{stroke-dasharray:900;animation:draw 3s ease-out infinite alternate}
+.scan{animation:scan 7s linear infinite}
+@keyframes fade{from{opacity:0}}
+@keyframes pulse{50%{opacity:.25}}
+@keyframes blink{50%{opacity:0}}
+@keyframes flow{to{stroke-dashoffset:-32}}
+@keyframes grow{from{transform:scaleX(.3)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes draw{from{stroke-dashoffset:900}}
+@keyframes scan{from{transform:translateX(0)}to{transform:translateX(1536px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<defs>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#00bfbf" stroke-opacity=".06"/></pattern>
+<radialGradient id="glow" cx="85%" cy="0%" r="70%"><stop offset="0" stop-color="#00bfbf" stop-opacity=".16"/><stop offset="1" stop-color="#00bfbf" stop-opacity="0"/></radialGradient>
+<linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="#a9fef7" stop-opacity="0"/><stop offset="1" stop-color="#a9fef7"/></linearGradient>
+</defs>
+<rect width="1664" height="936" rx="18" fill="#0d1117"/>
+<rect width="1664" height="936" rx="18" fill="url(#grid)"/>
+<rect width="1664" height="936" rx="18" fill="url(#glow)"/>
+<rect x="1" y="1" width="1662" height="934" rx="18" fill="none" stroke="#1f3a40"/>
+<text x="64" y="72" class="k">hammadxcm@universe:~$ ./ai --status</text><rect x="471" y="58" width="9" height="17" fill="#00bfbf" class="blink"/>
+<text x="64" y="128" class="t">AI ENGINEERING</text>
+<text x="64" y="162" class="s">Agents, LLM apps and automation — shipped, not just prompted</text>
+<g transform="translate(1369 50)"><rect width="231" height="40" rx="20" fill="#0f1b20" stroke="#00bfbf" stroke-opacity=".5"/><circle cx="24" cy="20" r="6" fill="#a9fef7" class="pulse"/><text x="42" y="25" class="k">INFERENCE READY</text></g>
+<line x1="64" y1="192" x2="1600" y2="192" stroke="#1f3a40"/>
+<rect x="-56" y="191" width="120" height="3" fill="url(#beam)" class="scan"/>
+<line x1="564" y1="369" x2="682" y2="530" stroke="#00bfbf" stroke-opacity=".6" class="flow"/>
+<g class="fade" style="animation-delay:0s"><rect x="64" y="224" width="500" height="290" rx="12" class="card"/>
+<path d="M64 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M564 486v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="92" y="264" class="k">01 / COMPUTER-USE AGENTS</text><text x="92" y="308" class="h">MCP SERVERS</text><text x="92" y="334" class="d">daemon-os · Swift · macOS · pushed 2026-02-20</text>
+<circle cx="96" cy="369" r="3.5" fill="#00bfbf"/><text x="112" y="374" class="b">MCP server giving AI agents eyes &amp; hands</text><circle cx="96" cy="401" r="3.5" fill="#00bfbf"/><text x="112" y="406" class="b">Screen, input and app control on macOS</text><circle cx="96" cy="433" r="3.5" fill="#00bfbf"/><text x="112" y="438" class="b">Native Swift for low-latency tool calls</text>
+<g transform="translate(92 464)"><rect width="50.400000000000006" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">MCP</text></g><g transform="translate(152.4 464)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">SWIFT</text></g><g transform="translate(230.4 464)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">MACOS</text></g><g transform="translate(308.4 464)"><rect width="50.400000000000006" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">★ 2</text></g></g>
+<line x1="1100" y1="369" x2="982" y2="530" stroke="#00bfbf" stroke-opacity=".6" class="flow"/>
+<g class="fade" style="animation-delay:0.15s"><rect x="1100" y="224" width="500" height="290" rx="12" class="card"/>
+<path d="M1100 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M1600 486v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="1128" y="264" class="k">02 / LLM APPLICATIONS</text><text x="1128" y="308" class="h">EDGE AI CHAT</text><text x="1128" y="334" class="d">portfolio-chat · Cloudflare Workers AI</text>
+<circle cx="1132" cy="369" r="3.5" fill="#00bfbf"/><text x="1148" y="374" class="b">Llama 3.3 70B assistant served at the edge</text><circle cx="1132" cy="401" r="3.5" fill="#00bfbf"/><text x="1148" y="406" class="b">Grounded system prompt from my profile</text><circle cx="1132" cy="433" r="3.5" fill="#00bfbf"/><text x="1148" y="438" class="b">Input sanitization &amp; origin allow-listing</text>
+<g transform="translate(1128 464)"><rect width="112" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">WORKERS AI</text></g><g transform="translate(1250 464)"><rect width="103.2" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">LLAMA 3.3</text></g><g transform="translate(1363.2 464)"><rect width="41.6" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">TS</text></g></g>
+<line x1="564" y1="679" x2="682" y2="530" stroke="#00bfbf" stroke-opacity=".6" class="flow"/>
+<g class="fade" style="animation-delay:0.3s"><rect x="64" y="534" width="500" height="290" rx="12" class="card"/>
+<path d="M64 562V546a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M564 796v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="92" y="574" class="k">03 / AUTOMATION</text><text x="92" y="618" class="h">AI AGENTS</text><text x="92" y="644" class="d">n8n · workflows · integrations</text>
+<circle cx="96" cy="679" r="3.5" fill="#00bfbf"/><text x="112" y="684" class="b">n8n AI agents and workflow automation</text><circle cx="96" cy="711" r="3.5" fill="#00bfbf"/><text x="112" y="716" class="b">Certified: Build AI Agents &amp; Workflows</text><circle cx="96" cy="743" r="3.5" fill="#00bfbf"/><text x="112" y="748" class="b">Multi-API platforms &amp; CRM integrations</text>
+<g transform="translate(92 774)"><rect width="50.400000000000006" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">N8N</text></g><g transform="translate(152.4 774)"><rect width="76.80000000000001" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">AGENTS</text></g><g transform="translate(239.20000000000002 774)"><rect width="94.4" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">WEBHOOKS</text></g></g>
+<line x1="1100" y1="679" x2="982" y2="530" stroke="#00bfbf" stroke-opacity=".6" class="flow"/>
+<g class="fade" style="animation-delay:0.44999999999999996s"><rect x="1100" y="534" width="500" height="290" rx="12" class="card"/>
+<path d="M1100 562V546a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M1600 796v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="1128" y="574" class="k">04 / AI-ASSISTED ENGINEERING</text><text x="1128" y="618" class="h">AI TOOLCHAIN</text><text x="1128" y="644" class="d">Claude · Copilot · ChatGPT · Midjourney</text>
+<circle cx="1132" cy="679" r="3.5" fill="#00bfbf"/><text x="1148" y="684" class="b">Claude &amp; Copilot in the daily dev loop</text><circle cx="1132" cy="711" r="3.5" fill="#00bfbf"/><text x="1148" y="716" class="b">Automated reviews, tests and refactors</text><circle cx="1132" cy="743" r="3.5" fill="#00bfbf"/><text x="1148" y="748" class="b">Prompt engineering for dev workflows</text>
+<g transform="translate(1128 774)"><rect width="76.80000000000001" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">CLAUDE</text></g><g transform="translate(1214.8 774)"><rect width="85.60000000000001" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">COPILOT</text></g><g transform="translate(1310.4 774)"><rect width="85.60000000000001" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">CHATGPT</text></g></g>
+<g>
+<circle cx="832" cy="530" r="150" fill="#0d1117" stroke="#1f3a40"/>
+<circle cx="832" cy="530" r="128" fill="none" stroke="#00bfbf" stroke-opacity=".5" stroke-dasharray="4 10" class="spin"/>
+<circle cx="832" cy="530" r="96" fill="none" stroke="#a9fef7" stroke-opacity=".35" stroke-dasharray="40 16" class="rspin"/>
+<circle cx="832" cy="530" r="62" fill="#00bfbf" fill-opacity=".12" stroke="#00bfbf" class="pulse"/>
+<g class="spin"><circle cx="922.5" cy="439.5" r="6" fill="#a9fef7"/><circle cx="922.5" cy="620.5" r="6" fill="#a9fef7"/><circle cx="741.5" cy="620.5" r="6" fill="#a9fef7"/><circle cx="741.5" cy="439.5" r="6" fill="#a9fef7"/></g>
+<text x="832" y="526" class="k" text-anchor="middle">AI_CORE</text>
+<text x="832" y="550" class="d" text-anchor="middle">ACTIVE</text>
+</g>
+<line x1="64" y1="870" x2="1600" y2="870" stroke="#1f3a40"/>
+<text x="64" y="904" class="k">MCP // LLAMA 3.3 // WORKERS AI // N8N AGENTS // CLAUDE // COPILOT</text>
+<text x="1600" y="904" class="k" text-anchor="end">github.com/hammadxcm</text>
+</svg>

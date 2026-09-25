@@ -25,6 +25,28 @@
 
 ---
 
+<p align="center">
+  <img src="assets/universe/tech-universe.svg" width="100%" alt="Technology Universe: frontend, backend, data and cloud stack"/>
+</p>
+
+<p align="center">
+  <img src="assets/universe/system-architecture.svg" width="100%" alt="System Architecture: client, API, services, data and platform layers"/>
+</p>
+
+<p align="center">
+  <img src="assets/universe/ai-engineering.svg" width="100%" alt="AI Engineering: MCP servers, edge LLM chat, n8n agents, AI toolchain"/>
+</p>
+
+<p align="center">
+  <img src="assets/universe/engineering-philosophy.svg" width="100%" alt="Engineering Philosophy: clarity, scale, security, performance, automation"/>
+</p>
+
+<p align="center">
+  <img src="assets/universe/telemetry.svg" width="100%" alt="Live contribution telemetry for hammadxcm"/>
+</p>
+
+---
+
 ## 🎯 About Me
 
 ```javascript
@@ -1122,6 +1144,7 @@ Zero-dep CLI to kill processes by port
     </td>
   </tr>
 </table>
+
 
 ### 📈 Contribution Metrics
 <img src="./generated/metrics.classic.svg" alt="Detailed GitHub Metrics" />

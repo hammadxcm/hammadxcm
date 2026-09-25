@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1664" height="936" viewBox="0 0 1664 936" role="img" aria-labelledby="title desc">
+<title id="title">Technology Universe — hammadxcm</title>
+<desc id="desc">Animated overview of the frontend, backend, data and cloud technologies Hammad Khan works with.</desc>
+<style>
+text{font-family:ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,monospace;fill:#e6edf3}
+.k{fill:#00bfbf;font-size:14px;letter-spacing:3px}
+.t{fill:#a9fef7;font-size:44px;font-weight:700;letter-spacing:5px}
+.s{fill:#7d8590;font-size:16px;letter-spacing:1px}
+.h{fill:#a9fef7;font-size:28px;font-weight:700;letter-spacing:3px}
+.b{font-size:15px}
+.d{fill:#7d8590;font-size:14px}
+.chip{fill:#00bfbf;font-size:13px;font-weight:700;letter-spacing:1px}
+.v{fill:#a9fef7;font-size:40px;font-weight:700}
+.card{fill:#0f1b20;stroke:#1f3a40;stroke-width:1.5}
+.fade{animation:fade .9s ease-out backwards}
+.pulse{animation:pulse 2s ease-in-out infinite}
+.blink{animation:blink 1s steps(1) infinite}
+.flow{stroke-dasharray:6 10;animation:flow 1.2s linear infinite}
+.grow{transform-box:fill-box;transform-origin:left;animation:grow 2.6s ease-in-out infinite alternate}
+.spin{transform-box:fill-box;transform-origin:center;animation:spin 24s linear infinite}
+.rspin{transform-box:fill-box;transform-origin:center;animation:spin 16s linear infinite reverse}
+.draw{stroke-dasharray:900;animation:draw 3s ease-out infinite alternate}
+.scan{animation:scan 7s linear infinite}
+@keyframes fade{from{opacity:0}}
+@keyframes pulse{50%{opacity:.25}}
+@keyframes blink{50%{opacity:0}}
+@keyframes flow{to{stroke-dashoffset:-32}}
+@keyframes grow{from{transform:scaleX(.3)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes draw{from{stroke-dashoffset:900}}
+@keyframes scan{from{transform:translateX(0)}to{transform:translateX(1536px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<defs>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#00bfbf" stroke-opacity=".06"/></pattern>
+<radialGradient id="glow" cx="85%" cy="0%" r="70%"><stop offset="0" stop-color="#00bfbf" stop-opacity=".16"/><stop offset="1" stop-color="#00bfbf" stop-opacity="0"/></radialGradient>
+<linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="#a9fef7" stop-opacity="0"/><stop offset="1" stop-color="#a9fef7"/></linearGradient>
+</defs>
+<rect width="1664" height="936" rx="18" fill="#0d1117"/>
+<rect width="1664" height="936" rx="18" fill="url(#grid)"/>
+<rect width="1664" height="936" rx="18" fill="url(#glow)"/>
+<rect x="1" y="1" width="1662" height="934" rx="18" fill="none" stroke="#1f3a40"/>
+<text x="64" y="72" class="k">hammadxcm@universe:~$ ./stack --map</text><rect x="471" y="58" width="9" height="17" fill="#00bfbf" class="blink"/>
+<text x="64" y="128" class="t">TECHNOLOGY UNIVERSE</text>
+<text x="64" y="162" class="s">Full-stack systems across interface, logic, data and infrastructure</text>
+<g transform="translate(1334.8 50)"><rect width="265.20000000000005" height="40" rx="20" fill="#0f1b20" stroke="#00bfbf" stroke-opacity=".5"/><circle cx="24" cy="20" r="6" fill="#a9fef7" class="pulse"/><text x="42" y="25" class="k">ALL SYSTEMS ONLINE</text></g>
+<line x1="64" y1="192" x2="1600" y2="192" stroke="#1f3a40"/>
+<rect x="-56" y="191" width="120" height="3" fill="url(#beam)" class="scan"/>
+<g class="fade" style="animation-delay:0s"><rect x="64" y="224" width="372" height="612" rx="12" class="card"/>
+<path d="M64 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M436 808v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="92" y="268" class="k">01 / INTERFACE</text><text x="92" y="314" class="h">FRONTEND</text><text x="92" y="342" class="d">Experience • Components • PWA</text>
+<g transform="translate(92 372)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">REACT</text></g><g transform="translate(170 372)"><rect width="59.2" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">NEXT</text></g><g transform="translate(239.2 372)"><rect width="50.400000000000006" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">VUE</text></g><g transform="translate(299.6 372)"><rect width="41.6" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">TS</text></g><g transform="translate(351.2 372)"><rect width="41.6" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">TW</text></g>
+<text x="92" y="430" class="k">CORE TOOLCHAIN</text>
+<circle cx="96" cy="459" r="3.5" fill="#00bfbf"/><text x="112" y="464" class="b">React</text><circle cx="96" cy="493" r="3.5" fill="#00bfbf"/><text x="112" y="498" class="b">Next.js</text><circle cx="96" cy="527" r="3.5" fill="#00bfbf"/><text x="112" y="532" class="b">Vue.js</text><circle cx="96" cy="561" r="3.5" fill="#00bfbf"/><text x="112" y="566" class="b">TypeScript</text><circle cx="96" cy="595" r="3.5" fill="#00bfbf"/><text x="112" y="600" class="b">Tailwind CSS</text><circle cx="96" cy="629" r="3.5" fill="#00bfbf"/><text x="112" y="634" class="b">Progressive Web Apps</text>
+<text x="92" y="766" class="d">UI LAYER ONLINE</text>
+<rect x="92" y="780" width="316" height="6" rx="3" fill="#1f3a40"/>
+<rect x="92" y="780" width="316" height="6" rx="3" fill="#00bfbf" class="grow" style="animation-delay:0s"/></g>
+<g class="fade" style="animation-delay:0.15s"><rect x="452" y="224" width="372" height="612" rx="12" class="card"/>
+<path d="M452 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M824 808v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="480" y="268" class="k">02 / LOGIC</text><text x="480" y="314" class="h">BACKEND</text><text x="480" y="342" class="d">APIs • Services • Distributed</text>
+<g transform="translate(480 372)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">RAILS</text></g><g transform="translate(558 372)"><rect width="59.2" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">NEST</text></g><g transform="translate(627.2 372)"><rect width="59.2" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">NODE</text></g><g transform="translate(696.4 372)"><rect width="50.400000000000006" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">GQL</text></g>
+<text x="480" y="430" class="k">CORE TOOLCHAIN</text>
+<circle cx="484" cy="459" r="3.5" fill="#00bfbf"/><text x="500" y="464" class="b">Ruby on Rails</text><circle cx="484" cy="493" r="3.5" fill="#00bfbf"/><text x="500" y="498" class="b">NestJS</text><circle cx="484" cy="527" r="3.5" fill="#00bfbf"/><text x="500" y="532" class="b">Node.js</text><circle cx="484" cy="561" r="3.5" fill="#00bfbf"/><text x="500" y="566" class="b">GraphQL</text><circle cx="484" cy="595" r="3.5" fill="#00bfbf"/><text x="500" y="600" class="b">Python</text><circle cx="484" cy="629" r="3.5" fill="#00bfbf"/><text x="500" y="634" class="b">Sidekiq / BullMQ</text>
+<text x="480" y="766" class="d">SERVICES SYNCED</text>
+<rect x="480" y="780" width="316" height="6" rx="3" fill="#1f3a40"/>
+<rect x="480" y="780" width="316" height="6" rx="3" fill="#00bfbf" class="grow" style="animation-delay:0.4s"/></g>
+<g class="fade" style="animation-delay:0.3s"><rect x="840" y="224" width="372" height="612" rx="12" class="card"/>
+<path d="M840 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M1212 808v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="868" y="268" class="k">03 / KNOWLEDGE</text><text x="868" y="314" class="h">DATA</text><text x="868" y="342" class="d">Persistence • Caching • Modeling</text>
+<g transform="translate(868 372)"><rect width="41.6" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">PG</text></g><g transform="translate(919.6 372)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">MONGO</text></g><g transform="translate(997.6 372)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">MYSQL</text></g><g transform="translate(1075.6 372)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">REDIS</text></g>
+<text x="868" y="430" class="k">CORE TOOLCHAIN</text>
+<circle cx="872" cy="459" r="3.5" fill="#00bfbf"/><text x="888" y="464" class="b">PostgreSQL</text><circle cx="872" cy="493" r="3.5" fill="#00bfbf"/><text x="888" y="498" class="b">MongoDB</text><circle cx="872" cy="527" r="3.5" fill="#00bfbf"/><text x="888" y="532" class="b">MySQL</text><circle cx="872" cy="561" r="3.5" fill="#00bfbf"/><text x="888" y="566" class="b">Redis</text><circle cx="872" cy="595" r="3.5" fill="#00bfbf"/><text x="888" y="600" class="b">Prisma ORM</text><circle cx="872" cy="629" r="3.5" fill="#00bfbf"/><text x="888" y="634" class="b">Data Modeling</text>
+<text x="868" y="766" class="d">DATA STREAMS HEALTHY</text>
+<rect x="868" y="780" width="316" height="6" rx="3" fill="#1f3a40"/>
+<rect x="868" y="780" width="316" height="6" rx="3" fill="#00bfbf" class="grow" style="animation-delay:0.8s"/></g>
+<g class="fade" style="animation-delay:0.44999999999999996s"><rect x="1228" y="224" width="372" height="612" rx="12" class="card"/>
+<path d="M1228 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
+<path d="M1600 808v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
+<text x="1256" y="268" class="k">04 / INFRASTRUCTURE</text><text x="1256" y="314" class="h">CLOUD</text><text x="1256" y="342" class="d">Scale • Containers • Automation</text>
+<g transform="translate(1256 372)"><rect width="50.400000000000006" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">AWS</text></g><g transform="translate(1316.4 372)"><rect width="68" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">AZURE</text></g><g transform="translate(1394.4 372)"><rect width="76.80000000000001" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">DOCKER</text></g><g transform="translate(1481.2 372)"><rect width="50.400000000000006" height="28" rx="6" fill="#00bfbf" fill-opacity=".08" stroke="#00bfbf" stroke-opacity=".45"/><text x="12" y="19" class="chip">K8S</text></g>
+<text x="1256" y="430" class="k">CORE TOOLCHAIN</text>
+<circle cx="1260" cy="459" r="3.5" fill="#00bfbf"/><text x="1276" y="464" class="b">AWS</text><circle cx="1260" cy="493" r="3.5" fill="#00bfbf"/><text x="1276" y="498" class="b">Azure</text><circle cx="1260" cy="527" r="3.5" fill="#00bfbf"/><text x="1276" y="532" class="b">Docker</text><circle cx="1260" cy="561" r="3.5" fill="#00bfbf"/><text x="1276" y="566" class="b">Kubernetes</text><circle cx="1260" cy="595" r="3.5" fill="#00bfbf"/><text x="1276" y="600" class="b">Cloudflare Workers</text><circle cx="1260" cy="629" r="3.5" fill="#00bfbf"/><text x="1276" y="634" class="b">CI / CD</text>
+<text x="1256" y="766" class="d">CLUSTERS OPERATIONAL</text>
+<rect x="1256" y="780" width="316" height="6" rx="3" fill="#1f3a40"/>
+<rect x="1256" y="780" width="316" height="6" rx="3" fill="#00bfbf" class="grow" style="animation-delay:1.2000000000000002s"/></g>
+<line x1="64" y1="870" x2="1600" y2="870" stroke="#1f3a40"/>
+<text x="64" y="904" class="k">LANGUAGE MIX // RUBY 39% // TYPESCRIPT 39% // SWIFT 4% // JAVASCRIPT 4% // HTML 4%</text>
+<text x="1600" y="904" class="k" text-anchor="end">github.com/hammadxcm</text>
+</svg>

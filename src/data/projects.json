@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-01T19:02:15.853Z",
+  "generatedAt": "2026-09-25T19:13:00.844Z",
   "username": "hammadxcm",
   "repos": [
     {
@@ -11,8 +11,8 @@
       "forks": 1,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-03-28T02:58:15Z",
-      "downloads": 3280,
+      "updatedAt": "2026-05-23T19:29:35Z",
+      "downloads": 4911,
       "gemName": "rubocop-hk"
     },
     {
@@ -21,11 +21,11 @@
       "url": "https://github.com/hammadxcm/slay",
       "description": "Fast, zero-dependency CLI tool to find and kill processes by port on macOS, Linux, and Windows",
       "stars": 5,
-      "forks": 1,
+      "forks": 2,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-04-01T12:41:04Z",
-      "downloads": 823,
+      "updatedAt": "2026-09-17T14:43:54Z",
+      "downloads": 1440,
       "npmPackage": "slay-port"
     },
     {
@@ -33,12 +33,12 @@
       "fullName": "hammadxcm/image-magnifier",
       "url": "https://github.com/hammadxcm/image-magnifier",
       "description": "A React component for magnifying images with a zoom effect.",
-      "stars": 9,
+      "stars": 8,
       "forks": 2,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-03-28T02:58:14Z",
-      "downloads": 770,
+      "updatedAt": "2026-04-13T16:27:31Z",
+      "downloads": 903,
       "npmPackage": "@hammadxcm/image-magnifier"
     },
     {
@@ -51,7 +51,7 @@
       "language": "TypeScript",
       "topics": [],
       "updatedAt": "2026-03-28T02:58:15Z",
-      "downloads": 409,
+      "downloads": 594,
       "npmPackage": "ramadan-cli-pro"
     },
     {
@@ -64,7 +64,7 @@
       "language": "HTML",
       "topics": [],
       "updatedAt": "2026-03-28T02:58:15Z",
-      "downloads": 286,
+      "downloads": 388,
       "npmPackage": "electric-border-css"
     },
     {
@@ -72,11 +72,11 @@
       "fullName": "hammadxcm/discord-hk",
       "url": "https://github.com/hammadxcm/discord-hk",
       "description": null,
-      "stars": 9,
+      "stars": 8,
       "forks": 0,
       "language": "JavaScript",
       "topics": [],
-      "updatedAt": "2026-03-28T02:58:14Z",
+      "updatedAt": "2026-04-13T16:27:30Z",
       "downloads": 0
     },
     {
@@ -84,11 +84,11 @@
       "fullName": "hammadxcm/hammadxcm",
       "url": "https://github.com/hammadxcm/hammadxcm",
       "description": null,
-      "stars": 9,
+      "stars": 8,
       "forks": 5,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-04-01T18:37:30Z",
+      "updatedAt": "2026-09-25T16:55:01Z",
       "downloads": 0
     },
     {
@@ -96,11 +96,11 @@
       "fullName": "hammadxcm/acme-basket",
       "url": "https://github.com/hammadxcm/acme-basket",
       "description": null,
-      "stars": 7,
+      "stars": 6,
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-03-28T02:58:14Z",
+      "updatedAt": "2026-04-13T16:27:30Z",
       "downloads": 0
     },
     {
@@ -108,11 +108,11 @@
       "fullName": "hammadxcm/Freddit",
       "url": "https://github.com/hammadxcm/Freddit",
       "description": null,
-      "stars": 7,
+      "stars": 6,
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-02-23T18:29:24Z",
+      "updatedAt": "2026-04-13T16:27:18Z",
       "downloads": 0
     },
     {
@@ -120,11 +120,11 @@
       "fullName": "hammadxcm/podcast-test",
       "url": "https://github.com/hammadxcm/podcast-test",
       "description": null,
-      "stars": 7,
+      "stars": 6,
       "forks": 0,
       "language": null,
       "topics": [],
-      "updatedAt": "2026-02-23T18:29:33Z",
+      "updatedAt": "2026-04-13T16:27:15Z",
       "downloads": 0
     },
     {
@@ -137,6 +137,53 @@
       "language": "TypeScript",
       "topics": [],
       "updatedAt": "2026-03-26T13:09:35Z",
+      "downloads": 0
+    },
+    {
+      "name": "go-phantom",
+      "fullName": "hammadxcm/go-phantom",
+      "url": "https://github.com/hammadxcm/go-phantom",
+      "description": "Cross-platform activity simulator",
+      "stars": 4,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "updatedAt": "2026-09-17T14:43:40Z",
+      "downloads": 0
+    },
+    {
+      "name": "hacker-news-client",
+      "fullName": "hammadxcm/hacker-news-client",
+      "url": "https://github.com/hammadxcm/hacker-news-client",
+      "description": "Cross-language client suite for the Hacker News Firebase API (JS, TS, Python, Ruby, Go, Rust). One design contract, six idiomatic libraries.",
+      "stars": 3,
+      "forks": 0,
+      "language": "TypeScript",
+      "topics": [],
+      "updatedAt": "2026-09-17T14:22:37Z",
+      "downloads": 0
+    },
+    {
+      "name": "fyniti",
+      "fullName": "hammadxcm/fyniti",
+      "url": "https://github.com/hammadxcm/fyniti",
+      "description": "FYNITI — IT Solutions & Digital Innovation | Astro 6 + Tailwind 4 + React 19 | 15 themes, canvas effects, SVG morph animations",
+      "stars": 3,
+      "forks": 1,
+      "language": "Astro",
+      "topics": [
+        "astro",
+        "dark-theme",
+        "framer-motion",
+        "github-pages",
+        "glassmorphism",
+        "gsap",
+        "react",
+        "svg-animation",
+        "tailwindcss",
+        "typescript"
+      ],
+      "updatedAt": "2026-09-17T14:43:48Z",
       "downloads": 0
     },
     {
@@ -160,7 +207,7 @@
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-03-28T15:16:10Z",
+      "updatedAt": "2026-04-06T21:54:06Z",
       "downloads": 0
     },
     {
@@ -176,15 +223,75 @@
       "downloads": 0
     },
     {
-      "name": "go-phantom",
-      "fullName": "hammadxcm/go-phantom",
-      "url": "https://github.com/hammadxcm/go-phantom",
-      "description": "Cross-platform activity simulator",
-      "stars": 3,
+      "name": "playstation-controller-tester",
+      "fullName": "hammadxcm/playstation-controller-tester",
+      "url": "https://github.com/hammadxcm/playstation-controller-tester",
+      "description": "Test PS5 DualSense, PS4 DualShock 4, Xbox and any gamepad in the browser: drift, circularity, rumble, adaptive triggers, lightbar, touchpad, gyro",
+      "stars": 2,
       "forks": 0,
-      "language": "Python",
+      "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-03-25T01:26:02Z",
+      "updatedAt": "2026-09-25T18:23:01Z",
+      "downloads": 0
+    },
+    {
+      "name": "scoop-tokx",
+      "fullName": "hammadxcm/scoop-tokx",
+      "url": "https://github.com/hammadxcm/scoop-tokx",
+      "description": "Scoop bucket for tokx — JWT CLI tool",
+      "stars": 2,
+      "forks": 1,
+      "language": null,
+      "topics": [],
+      "updatedAt": "2026-04-15T19:24:04Z",
+      "downloads": 0
+    },
+    {
+      "name": "homebrew-tokx",
+      "fullName": "hammadxcm/homebrew-tokx",
+      "url": "https://github.com/hammadxcm/homebrew-tokx",
+      "description": "Homebrew tap for tokx — JWT CLI tool",
+      "stars": 2,
+      "forks": 1,
+      "language": "Ruby",
+      "topics": [],
+      "updatedAt": "2026-04-15T19:24:02Z",
+      "downloads": 0
+    },
+    {
+      "name": "tokx",
+      "fullName": "hammadxcm/tokx",
+      "url": "https://github.com/hammadxcm/tokx",
+      "description": "JWT debugger, CLI, and library catalogue — a full jwt.io clone",
+      "stars": 2,
+      "forks": 1,
+      "language": "TypeScript",
+      "topics": [],
+      "updatedAt": "2026-06-23T10:33:55Z",
+      "downloads": 0
+    },
+    {
+      "name": "scoop-slay",
+      "fullName": "hammadxcm/scoop-slay",
+      "url": "https://github.com/hammadxcm/scoop-slay",
+      "description": "Scoop bucket for slay",
+      "stars": 2,
+      "forks": 0,
+      "language": null,
+      "topics": [],
+      "updatedAt": "2026-04-14T14:35:40Z",
+      "downloads": 0
+    },
+    {
+      "name": "apt-repo",
+      "fullName": "hammadxcm/apt-repo",
+      "url": "https://github.com/hammadxcm/apt-repo",
+      "description": "APT repository for slay-port",
+      "stars": 2,
+      "forks": 0,
+      "language": null,
+      "topics": [],
+      "updatedAt": "2026-04-14T14:35:38Z",
       "downloads": 0
     },
     {
@@ -196,7 +303,7 @@
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-03-31T13:05:54Z",
+      "updatedAt": "2026-04-19T23:26:10Z",
       "downloads": 0
     },
     {
@@ -205,33 +312,10 @@
       "url": "https://github.com/hammadxcm/clipr",
       "description": "A fast, git-friendly URL shortener. CLI + GitHub Pages + Cloudflare Workers.",
       "stars": 2,
-      "forks": 0,
+      "forks": 1,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-04-01T05:34:49Z",
-      "downloads": 0
-    },
-    {
-      "name": "fyniti",
-      "fullName": "hammadxcm/fyniti",
-      "url": "https://github.com/hammadxcm/fyniti",
-      "description": "FYNITI — IT Solutions & Digital Innovation | Astro 6 + Tailwind 4 + React 19 | 15 themes, canvas effects, SVG morph animations",
-      "stars": 2,
-      "forks": 0,
-      "language": "Astro",
-      "topics": [
-        "astro",
-        "dark-theme",
-        "framer-motion",
-        "github-pages",
-        "glassmorphism",
-        "gsap",
-        "react",
-        "svg-animation",
-        "tailwindcss",
-        "typescript"
-      ],
-      "updatedAt": "2026-03-31T13:06:03Z",
+      "updatedAt": "2026-09-17T14:43:35Z",
       "downloads": 0
     },
     {
@@ -279,7 +363,7 @@
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-03-28T02:58:15Z",
+      "updatedAt": "2026-07-31T14:31:13Z",
       "downloads": 0
     }
   ]
