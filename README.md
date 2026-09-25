@@ -984,6 +984,8 @@ Zero-dep CLI to kill processes by port
 <!-- CONTRIBUTIONS:START -->
 | Repository | PR | Status | Date | Stars | Impact |
 |:-----------|:---|:-------|:-----|------:|-------:|
+| [rails/rails](https://github.com/rails/rails) | [Add test coverage for PermissionsPolicy error and empty branches](https://github.com/rails/rails/pull/58880) | 🟢 Open | Sep 25, 2026 | 58.8k | +31 -4 |
+| [optiscaler/OptiScaler](https://github.com/optiscaler/OptiScaler) | [Remove redundant null checks before delete](https://github.com/optiscaler/OptiScaler/pull/1178) | 🟢 Open | Sep 25, 2026 | 11.3k | +2 -4 |
 | [bitwarden/clients](https://github.com/bitwarden/clients) | [[PM-38964] Remove obsolete LockScreen config from AppX manifest](https://github.com/bitwarden/clients/pull/21229) | 🟣 Merged | Aug 24, 2026 | 13.8k | +3 -20 |
 | [AdnanGulzar/post-sync](https://github.com/AdnanGulzar/post-sync) | [♻️ [PLT-000] Introduce publisher strategy registry, encrypt and refresh OAuth tokens, recover wedged posts](https://github.com/AdnanGulzar/post-sync/pull/4) | 🟢 Open | Aug 22, 2026 | 0 | +4969 -794 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix(next/image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟣 Merged | Aug 13, 2026 | 142.4k | +24 -1 |
@@ -1074,8 +1076,6 @@ Zero-dep CLI to kill processes by port
 | [rails/rails](https://github.com/rails/rails) | [Include valid values in ActiveRecord::Enum invalid-value error](https://github.com/rails/rails/pull/57446) | 🟣 Merged | May 22, 2026 | 58.8k | +13 -2 |
 | [rspec/rspec-rails](https://github.com/rspec/rspec-rails) | [Expand file_fixture_path against Rails.root](https://github.com/rspec/rspec-rails/pull/2902) | 🟢 Open | May 22, 2026 | 5.3k | +57 -2 |
 | [rails/rails](https://github.com/rails/rails) | [Fix incorrect SQL examples in ActiveRecord::QueryMethods docs](https://github.com/rails/rails/pull/57445) | 🟣 Merged | May 22, 2026 | 58.8k | +4 -4 |
-| [rails/rails](https://github.com/rails/rails) | [Improve insert_all error message to show key mismatch](https://github.com/rails/rails/pull/57447) | 🟣 Merged | May 22, 2026 | 58.8k | +37 -1 |
-| [rails/rails](https://github.com/rails/rails) | [Fix grammar in ActiveRecord errors and integration doc comments](https://github.com/rails/rails/pull/57448) | 🟣 Merged | May 22, 2026 | 58.8k | +2 -2 |
 
 <!-- CONTRIBUTIONS:END -->
 
