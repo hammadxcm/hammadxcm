@@ -48,15 +48,15 @@ text{font-family:ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,mon
 <g class="fade" style="animation-delay:0s"><rect x="64" y="224" width="372" height="180" rx="12" class="card"/>
 <path d="M64 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
 <path d="M436 376v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
-<text x="88" y="262" class="k">OBSERVABILITY</text><text x="412" y="262" class="chip" text-anchor="end">1 THIS WK</text>
+<text x="88" y="262" class="k">OBSERVABILITY</text><text x="412" y="262" class="chip" text-anchor="end">10 THIS WK</text>
 <text x="88" y="290" class="d">Weekly contributions · last 12 weeks</text>
-<polyline points="88.0,323.2 117.5,325.5 146.9,312.5 176.4,316.7 205.8,330.2 235.3,327.9 264.7,331.6 294.2,328.8 323.6,331.2 353.1,320.9 382.5,312.0 412.0,376.0" fill="none" stroke="#00bfbf" stroke-width="2.5" stroke-linejoin="round" class="draw"/></g>
+<polyline points="88.0,324.0 117.5,326.5 146.9,312.5 176.4,317.0 205.8,331.5 235.3,329.0 264.7,333.0 294.2,330.0 323.6,332.5 353.1,321.5 382.5,312.0 412.0,376.0" fill="none" stroke="#00bfbf" stroke-width="2.5" stroke-linejoin="round" class="draw"/></g>
 <g class="fade" style="animation-delay:0.12s"><rect x="452" y="224" width="372" height="180" rx="12" class="card"/>
 <path d="M452 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
 <path d="M824 376v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
-<text x="476" y="262" class="k">RELIABILITY</text><text x="800" y="262" class="chip" text-anchor="end">89% PASS</text>
+<text x="476" y="262" class="k">RELIABILITY</text><text x="800" y="262" class="chip" text-anchor="end">92% PASS</text>
 <text x="476" y="290" class="d">CI runs · last 100 completed</text>
-<polyline points="476.0,354.7 512.0,312.0 548.0,312.0 584.0,312.0 620.0,312.0 656.0,312.0 692.0,312.0 728.0,322.7 764.0,376.0 800.0,312.0" fill="none" stroke="#00bfbf" stroke-width="2.5" stroke-linejoin="round" class="draw"/></g>
+<polyline points="476.0,324.8 512.0,312.0 548.0,312.0 584.0,312.0 620.0,312.0 656.0,312.0 692.0,312.0 728.0,376.0 764.0,337.6 800.0,312.0" fill="none" stroke="#00bfbf" stroke-width="2.5" stroke-linejoin="round" class="draw"/></g>
 <g class="fade" style="animation-delay:0.24s"><rect x="840" y="224" width="372" height="180" rx="12" class="card"/>
 <path d="M840 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
 <path d="M1212 376v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
