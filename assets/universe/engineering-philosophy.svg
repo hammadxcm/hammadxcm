@@ -48,15 +48,15 @@ text{font-family:ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,mon
 <g class="fade" style="animation-delay:0s"><rect x="64" y="224" width="372" height="180" rx="12" class="card"/>
 <path d="M64 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
 <path d="M436 376v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
-<text x="88" y="262" class="k">OBSERVABILITY</text><text x="412" y="262" class="chip" text-anchor="end">70 THIS WK</text>
+<text x="88" y="262" class="k">OBSERVABILITY</text><text x="412" y="262" class="chip" text-anchor="end">86 THIS WK</text>
 <text x="88" y="290" class="d">Weekly contributions · last 12 weeks</text>
-<polyline points="88.0,339.3 117.5,312.9 146.9,321.4 176.4,348.7 205.8,344.0 235.3,351.5 264.7,345.9 294.2,350.6 323.6,329.9 353.1,312.0 382.5,338.4 412.0,376.0" fill="none" stroke="#00bfbf" stroke-width="2.5" stroke-linejoin="round" class="draw"/></g>
+<polyline points="88.0,347.7 117.5,313.2 146.9,324.3 176.4,360.0 205.8,353.8 235.3,363.7 264.7,356.3 294.2,362.5 323.6,335.4 353.1,312.0 382.5,346.5 412.0,376.0" fill="none" stroke="#00bfbf" stroke-width="2.5" stroke-linejoin="round" class="draw"/></g>
 <g class="fade" style="animation-delay:0.12s"><rect x="452" y="224" width="372" height="180" rx="12" class="card"/>
 <path d="M452 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
 <path d="M824 376v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
 <text x="476" y="262" class="k">RELIABILITY</text><text x="800" y="262" class="chip" text-anchor="end">90% PASS</text>
 <text x="476" y="290" class="d">CI runs · last 100 completed</text>
-<polyline points="476.0,312.0 512.0,312.0 548.0,312.0 584.0,324.8 620.0,376.0 656.0,337.6 692.0,312.0 728.0,337.6 764.0,312.0 800.0,312.0" fill="none" stroke="#00bfbf" stroke-width="2.5" stroke-linejoin="round" class="draw"/></g>
+<polyline points="476.0,312.0 512.0,312.0 548.0,321.1 584.0,376.0 620.0,312.0 656.0,312.0 692.0,330.3 728.0,312.0 764.0,312.0 800.0,312.0" fill="none" stroke="#00bfbf" stroke-width="2.5" stroke-linejoin="round" class="draw"/></g>
 <g class="fade" style="animation-delay:0.24s"><rect x="840" y="224" width="372" height="180" rx="12" class="card"/>
 <path d="M840 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
 <path d="M1212 376v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
