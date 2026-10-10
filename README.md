@@ -1008,8 +1008,8 @@ Zero-dep CLI to kill processes by port
 |:-----------|:---|:-------|:-----|------:|-------:|
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [TUI: Grow the controls panel to fit wrapped controls](https://github.com/sidekiq/sidekiq/pull/7083) | 🟣 Merged | Sep 29, 2026 | 13.6k | +44 -31 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for PermissionsPolicy error and empty branches](https://github.com/rails/rails/pull/58880) | 🟢 Open | Sep 25, 2026 | 58.8k | +31 -4 |
-| [optiscaler/OptiScaler](https://github.com/optiscaler/OptiScaler) | [Remove redundant null checks before delete](https://github.com/optiscaler/OptiScaler/pull/1178) | 🟢 Open | Sep 25, 2026 | 11.6k | +2 -4 |
-| [bitwarden/clients](https://github.com/bitwarden/clients) | [[PM-38964] Remove obsolete LockScreen config from AppX manifest](https://github.com/bitwarden/clients/pull/21229) | 🟣 Merged | Aug 24, 2026 | 13.9k | +3 -20 |
+| [optiscaler/OptiScaler](https://github.com/optiscaler/OptiScaler) | [Remove redundant null checks before delete](https://github.com/optiscaler/OptiScaler/pull/1178) | 🟢 Open | Sep 25, 2026 | 11.7k | +2 -4 |
+| [bitwarden/clients](https://github.com/bitwarden/clients) | [[PM-38964] Remove obsolete LockScreen config from AppX manifest](https://github.com/bitwarden/clients/pull/21229) | 🟣 Merged | Aug 24, 2026 | 14.0k | +3 -20 |
 | [AdnanGulzar/post-sync](https://github.com/AdnanGulzar/post-sync) | [♻️ [PLT-000] Introduce publisher strategy registry, encrypt and refresh OAuth tokens, recover wedged posts](https://github.com/AdnanGulzar/post-sync/pull/4) | 🟢 Open | Aug 22, 2026 | 0 | +4969 -794 |
 | [vercel/next.js](https://github.com/vercel/next.js) | [fix(next/image): skip 0-byte entries when initializing disk LRU cache](https://github.com/vercel/next.js/pull/94068) | 🟣 Merged | Aug 13, 2026 | 143.1k | +24 -1 |
 | [rails/rails](https://github.com/rails/rails) | [Fix method_missing performance regression for virtual SELECT alias attributes](https://github.com/rails/rails/pull/57226) | 🟣 Merged | Aug 13, 2026 | 58.8k | +13 -4 |
@@ -1031,7 +1031,7 @@ Zero-dep CLI to kill processes by port
 | [aaif-goose/goose](https://github.com/aaif-goose/goose) | [feat(azure): support Entra ID bearer token auth via AZURE_OPENAI_AD_TOKEN](https://github.com/aaif-goose/goose/pull/9716) | 🟣 Merged | Jun 17, 2026 | 55.1k | +94 -13 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for HashWithIndifferentAccess key access and except](https://github.com/rails/rails/pull/57689) | 🟣 Merged | Jun 13, 2026 | 58.8k | +33 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq top-level public API and Config#logger=](https://github.com/sidekiq/sidekiq/pull/7037) | 🟣 Merged | Jun 12, 2026 | 13.6k | +55 -0 |
-| [bitwarden/clients](https://github.com/bitwarden/clients) | [[PM-38965] Respect no_proxy environment variable in CLI](https://github.com/bitwarden/clients/pull/21230) | 🟢 Open | Jun 12, 2026 | 13.9k | +195 -3 |
+| [bitwarden/clients](https://github.com/bitwarden/clients) | [[PM-38965] Respect no_proxy environment variable in CLI](https://github.com/bitwarden/clients/pull/21230) | 🟢 Open | Jun 12, 2026 | 14.0k | +195 -3 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Setter#perform_in scheduling and .delay deprecations](https://github.com/sidekiq/sidekiq/pull/7036) | 🟣 Merged | Jun 11, 2026 | 13.6k | +37 -0 |
 | [sidekiq/sidekiq](https://github.com/sidekiq/sidekiq) | [Add tests for Sidekiq::Client argument-validation contracts](https://github.com/sidekiq/sidekiq/pull/7035) | 🟣 Merged | Jun 11, 2026 | 13.6k | +48 -0 |
 | [rails/rails](https://github.com/rails/rails) | [Add test coverage for ActiveSupport::Duration edge cases](https://github.com/rails/rails/pull/57658) | 🟣 Merged | Jun 11, 2026 | 58.8k | +34 -0 |
