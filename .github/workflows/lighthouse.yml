@@ -1,29 +1,27 @@
 name: Lighthouse CI
 
+# The former `workflow_run` trigger (zizmor: dangerous-triggers) referenced a
+# workflow named "Deploy" that does not exist, so it never fired. Manual only.
 on:
-  # Run after deploy completes
-  workflow_run:
-    workflows: ["Deploy"]
-    types: [completed]
-  # Manual trigger
   workflow_dispatch:
 
-permissions:
-  contents: write
+permissions: {}
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   lighthouse:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v6
+      # Credentials are intentionally persisted: the last step pushes scores with git.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 # zizmor: ignore[artipacked]
 
       - name: Run Lighthouse
         id: lighthouse
-        uses: treosh/lighthouse-ci-action@v12
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # 12.6.2
         with:
           urls: |
             https://hk.fyniti.co.uk
