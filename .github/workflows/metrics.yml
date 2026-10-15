@@ -5,6 +5,8 @@ on:
     - cron: "30 4 * * *"
   workflow_dispatch:
 
+permissions: {}
+
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -25,13 +27,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
         run: |
-          SHA=$(gh api repos/${{ github.repository }}/git/ref/heads/main -q '.object.sha')
-          gh api repos/${{ github.repository }}/git/refs/heads/auto/metrics-update \
+          SHA=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" -q '.object.sha')
+          gh api "repos/$GITHUB_REPOSITORY/git/refs/heads/auto/metrics-update" \
             -X PATCH -f sha="$SHA" -F force=true 2>/dev/null || \
-          gh api repos/${{ github.repository }}/git/refs \
+          gh api "repos/$GITHUB_REPOSITORY/git/refs" \
             -X POST -f ref="refs/heads/auto/metrics-update" -f sha="$SHA"
 
-      - uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           filename: generated/metrics.classic.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -51,7 +53,7 @@ jobs:
           plugin_lines_sections: base, repositories
 
       - name: Full-year calendar
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           filename: generated/metrics.plugin.isocalendar.fullyear.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -62,7 +64,7 @@ jobs:
           plugin_isocalendar_duration: full-year
 
       - name: Most used languages
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           filename: generated/metrics.plugin.languages.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -85,7 +87,7 @@ jobs:
           plugin_languages_recent_days: 14
 
       - name: Recently starred
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           filename: generated/metrics.plugin.stars.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -96,7 +98,7 @@ jobs:
           plugin_stars_limit: 3
 
       - name: Notable contributions
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           filename: generated/metrics.plugin.notable.svg
           token: ${{ secrets.METRICS_TOKEN }}
@@ -109,7 +111,7 @@ jobs:
           plugin_notable_repositories: yes
 
       - name: LeetCode
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           filename: generated/metrics.plugin.leetcode.svg
           token: NOT_NEEDED
@@ -120,7 +122,9 @@ jobs:
           plugin_leetcode: yes
           plugin_leetcode_sections: solved, skills
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Create Pull Request
         env:

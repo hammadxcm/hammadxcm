@@ -14,11 +14,7 @@ on:
 
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-  pull-requests: write
+permissions: {}
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -31,15 +27,21 @@ jobs:
   build-and-deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
-          cache: npm
+          # No dependency cache: this job publishes to Pages (cache-poisoning hardening).
       - run: npm ci
       - run: npm run build
         env:
@@ -49,36 +51,41 @@ jobs:
           MIN_STARS: "0"
           MAX_ITEMS: "100"
           MAX_REPOS: "30"
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: dist
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
 
   release:
     needs: build-and-deploy
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v6
+      # Credentials are intentionally persisted: the bump step pushes a branch with git.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 # zizmor: ignore[artipacked]
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Get current version
         id: current
-        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
       - name: Check if tag exists
         id: tag_check
         run: |
-          if git ls-remote --tags origin "v${{ steps.current.outputs.version }}" | grep -q .; then
-            echo "exists=true" >> $GITHUB_OUTPUT
+          if git ls-remote --tags origin "v$CURRENT" | grep -q .; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
           else
-            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "exists=false" >> "$GITHUB_OUTPUT"
           fi
+        env:
+          CURRENT: ${{ steps.current.outputs.version }}
       - name: Bump patch version
         if: steps.tag_check.outputs.exists == 'true'
         id: bump
         run: |
-          CURRENT="${{ steps.current.outputs.version }}"
           MAJOR=$(echo "$CURRENT" | cut -d. -f1)
           MINOR=$(echo "$CURRENT" | cut -d. -f2)
           PATCH=$(echo "$CURRENT" | cut -d. -f3)
@@ -97,14 +104,15 @@ jobs:
             --title "Bump version to $NEW_VERSION [skip ci]" \
             --body "Automated version bump from $CURRENT to $NEW_VERSION.")
           gh pr merge "$PR_URL" --squash --auto || gh pr merge "$PR_URL" --squash || true
-          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ github.token }}
+          CURRENT: ${{ steps.current.outputs.version }}
       - name: Resolve version
         id: version
-        run: echo "version=v$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+        run: echo "version=v$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
       - name: Create tag and release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
           tag_name: ${{ steps.version.outputs.version }}
           name: ${{ steps.version.outputs.version }}
