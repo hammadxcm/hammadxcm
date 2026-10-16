@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T03:53:35.888Z",
+  "generatedAt": "2026-10-16T16:22:15.942Z",
   "username": "hammadxcm",
   "repos": [
     {
@@ -7,12 +7,12 @@
       "fullName": "hammadxcm/rubocop-hk",
       "url": "https://github.com/hammadxcm/rubocop-hk",
       "description": "Modern RuboCop configuration for Ruby and Rails applications",
-      "stars": 6,
-      "forks": 1,
+      "stars": 7,
+      "forks": 2,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-10-15T17:25:25Z",
-      "downloads": 5100,
+      "updatedAt": "2026-10-16T10:46:11Z",
+      "downloads": 5120,
       "gemName": "rubocop-hk"
     },
     {
@@ -20,11 +20,11 @@
       "fullName": "hammadxcm/slay",
       "url": "https://github.com/hammadxcm/slay",
       "description": "Fast, zero-dependency CLI tool to find and kill processes by port on macOS, Linux, and Windows",
-      "stars": 5,
+      "stars": 6,
       "forks": 2,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-10-15T17:14:20Z",
+      "updatedAt": "2026-10-16T10:46:13Z",
       "downloads": 1466,
       "npmPackage": "slay-port"
     },
@@ -33,11 +33,11 @@
       "fullName": "hammadxcm/image-magnifier",
       "url": "https://github.com/hammadxcm/image-magnifier",
       "description": "A React component for magnifying images with a zoom effect.",
-      "stars": 8,
-      "forks": 2,
+      "stars": 9,
+      "forks": 3,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-10-15T17:15:52Z",
+      "updatedAt": "2026-10-16T10:46:09Z",
       "downloads": 964,
       "npmPackage": "@hammadxcm/image-magnifier"
     },
@@ -46,11 +46,11 @@
       "fullName": "hammadxcm/ramadan-cli-pro",
       "url": "https://github.com/hammadxcm/ramadan-cli-pro",
       "description": null,
-      "stars": 5,
-      "forks": 2,
+      "stars": 6,
+      "forks": 3,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-10-15T17:15:15Z",
+      "updatedAt": "2026-10-16T10:46:12Z",
       "downloads": 614,
       "npmPackage": "ramadan-cli-pro"
     },
@@ -59,11 +59,11 @@
       "fullName": "hammadxcm/electric-border-css",
       "url": "https://github.com/hammadxcm/electric-border-css",
       "description": "Stunning animated electric border effects using pure CSS & SVG - Multi-framework support (React, Next.js, Vue, Svelte)",
-      "stars": 4,
-      "forks": 0,
+      "stars": 5,
+      "forks": 1,
       "language": "HTML",
       "topics": [],
-      "updatedAt": "2026-10-15T17:16:00Z",
+      "updatedAt": "2026-10-16T10:46:12Z",
       "downloads": 415,
       "npmPackage": "electric-border-css"
     },
@@ -72,11 +72,11 @@
       "fullName": "hammadxcm/discord-hk",
       "url": "https://github.com/hammadxcm/discord-hk",
       "description": null,
-      "stars": 8,
+      "stars": 9,
       "forks": 0,
       "language": "JavaScript",
       "topics": [],
-      "updatedAt": "2026-04-13T16:27:30Z",
+      "updatedAt": "2026-10-16T10:46:11Z",
       "downloads": 0
     },
     {
@@ -84,11 +84,11 @@
       "fullName": "hammadxcm/hammadxcm",
       "url": "https://github.com/hammadxcm/hammadxcm",
       "description": null,
-      "stars": 8,
+      "stars": 9,
       "forks": 5,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-10-16T01:57:32Z",
+      "updatedAt": "2026-10-16T15:40:52Z",
       "downloads": 0
     },
     {
@@ -96,11 +96,11 @@
       "fullName": "hammadxcm/acme-basket",
       "url": "https://github.com/hammadxcm/acme-basket",
       "description": null,
-      "stars": 6,
-      "forks": 0,
+      "stars": 7,
+      "forks": 1,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-10-15T17:15:41Z",
+      "updatedAt": "2026-10-16T10:46:11Z",
       "downloads": 0
     },
     {
@@ -108,11 +108,11 @@
       "fullName": "hammadxcm/Freddit",
       "url": "https://github.com/hammadxcm/Freddit",
       "description": null,
-      "stars": 6,
+      "stars": 7,
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-10-15T17:16:06Z",
+      "updatedAt": "2026-10-16T10:46:10Z",
       "downloads": 0
     },
     {
@@ -120,11 +120,11 @@
       "fullName": "hammadxcm/podcast-test",
       "url": "https://github.com/hammadxcm/podcast-test",
       "description": null,
-      "stars": 6,
+      "stars": 7,
       "forks": 0,
       "language": null,
       "topics": [],
-      "updatedAt": "2026-04-13T16:27:15Z",
+      "updatedAt": "2026-10-16T10:46:09Z",
       "downloads": 0
     },
     {
@@ -132,11 +132,11 @@
       "fullName": "hammadxcm/localias",
       "url": "https://github.com/hammadxcm/localias",
       "description": "🔗 Named .localhost URLs for every dev service — zero config reverse proxy with auto-routing, Docker Compose support & HTTPS",
-      "stars": 4,
+      "stars": 5,
       "forks": 0,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-10-15T17:14:58Z",
+      "updatedAt": "2026-10-16T10:46:14Z",
       "downloads": 0
     },
     {
@@ -144,11 +144,11 @@
       "fullName": "hammadxcm/go-phantom",
       "url": "https://github.com/hammadxcm/go-phantom",
       "description": "Cross-platform activity simulator",
-      "stars": 4,
+      "stars": 5,
       "forks": 0,
       "language": "Python",
       "topics": [],
-      "updatedAt": "2026-10-15T17:14:40Z",
+      "updatedAt": "2026-10-16T10:46:13Z",
       "downloads": 0
     },
     {
@@ -156,11 +156,11 @@
       "fullName": "hammadxcm/playstation-controller-tester",
       "url": "https://github.com/hammadxcm/playstation-controller-tester",
       "description": "Test PS5 DualSense, PS4 DualShock 4, Xbox and any gamepad in the browser: drift, circularity, rumble, adaptive triggers, lightbar, touchpad, gyro",
-      "stars": 3,
+      "stars": 4,
       "forks": 0,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-10-15T17:15:47Z",
+      "updatedAt": "2026-10-16T10:46:17Z",
       "downloads": 0
     },
     {
@@ -168,11 +168,11 @@
       "fullName": "hammadxcm/hacker-news-client",
       "url": "https://github.com/hammadxcm/hacker-news-client",
       "description": "Cross-language client suite for the Hacker News Firebase API (JS, TS, Python, Ruby, Go, Rust). One design contract, six idiomatic libraries.",
-      "stars": 3,
+      "stars": 4,
       "forks": 0,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-10-15T17:14:46Z",
+      "updatedAt": "2026-10-16T10:46:16Z",
       "downloads": 0
     },
     {
@@ -180,7 +180,7 @@
       "fullName": "hammadxcm/fyniti",
       "url": "https://github.com/hammadxcm/fyniti",
       "description": "FYNITI — IT Solutions & Digital Innovation | Astro 6 + Tailwind 4 + React 19 | 15 themes, canvas effects, SVG morph animations",
-      "stars": 3,
+      "stars": 4,
       "forks": 1,
       "language": "Astro",
       "topics": [
@@ -195,7 +195,7 @@
         "tailwindcss",
         "typescript"
       ],
-      "updatedAt": "2026-10-15T17:14:32Z",
+      "updatedAt": "2026-10-16T13:16:03Z",
       "downloads": 0
     },
     {
@@ -203,11 +203,11 @@
       "fullName": "hammadxcm/homebrew-localias",
       "url": "https://github.com/hammadxcm/homebrew-localias",
       "description": "Homebrew tap for localias",
-      "stars": 3,
+      "stars": 4,
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-03-26T13:09:41Z",
+      "updatedAt": "2026-10-16T10:46:14Z",
       "downloads": 0
     },
     {
@@ -215,11 +215,11 @@
       "fullName": "hammadxcm/homebrew-slay",
       "url": "https://github.com/hammadxcm/homebrew-slay",
       "description": "Homebrew tap for slay-port",
-      "stars": 3,
+      "stars": 4,
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-04-06T21:54:06Z",
+      "updatedAt": "2026-10-16T10:46:13Z",
       "downloads": 0
     },
     {
@@ -227,11 +227,11 @@
       "fullName": "hammadxcm/scoop-phantom",
       "url": "https://github.com/hammadxcm/scoop-phantom",
       "description": "Scoop bucket for go-phantom",
-      "stars": 3,
+      "stars": 4,
       "forks": 0,
       "language": null,
       "topics": [],
-      "updatedAt": "2026-03-25T01:26:01Z",
+      "updatedAt": "2026-10-16T10:46:13Z",
       "downloads": 0
     },
     {
@@ -239,11 +239,11 @@
       "fullName": "hammadxcm/scoop-tokx",
       "url": "https://github.com/hammadxcm/scoop-tokx",
       "description": "Scoop bucket for tokx — JWT CLI tool",
-      "stars": 2,
+      "stars": 3,
       "forks": 1,
       "language": null,
       "topics": [],
-      "updatedAt": "2026-04-15T19:24:04Z",
+      "updatedAt": "2026-10-16T10:46:15Z",
       "downloads": 0
     },
     {
@@ -251,11 +251,11 @@
       "fullName": "hammadxcm/homebrew-tokx",
       "url": "https://github.com/hammadxcm/homebrew-tokx",
       "description": "Homebrew tap for tokx — JWT CLI tool",
-      "stars": 2,
+      "stars": 3,
       "forks": 1,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-04-15T19:24:02Z",
+      "updatedAt": "2026-10-16T10:46:15Z",
       "downloads": 0
     },
     {
@@ -263,11 +263,11 @@
       "fullName": "hammadxcm/tokx",
       "url": "https://github.com/hammadxcm/tokx",
       "description": "JWT debugger, CLI, and library catalogue — a full jwt.io clone",
-      "stars": 2,
+      "stars": 3,
       "forks": 1,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-10-15T17:15:03Z",
+      "updatedAt": "2026-10-16T10:46:15Z",
       "downloads": 0
     },
     {
@@ -275,11 +275,11 @@
       "fullName": "hammadxcm/scoop-slay",
       "url": "https://github.com/hammadxcm/scoop-slay",
       "description": "Scoop bucket for slay",
-      "stars": 2,
+      "stars": 3,
       "forks": 0,
       "language": null,
       "topics": [],
-      "updatedAt": "2026-04-14T14:35:40Z",
+      "updatedAt": "2026-10-16T10:46:15Z",
       "downloads": 0
     },
     {
@@ -287,11 +287,11 @@
       "fullName": "hammadxcm/apt-repo",
       "url": "https://github.com/hammadxcm/apt-repo",
       "description": "APT repository for slay-port",
-      "stars": 2,
+      "stars": 3,
       "forks": 0,
       "language": null,
       "topics": [],
-      "updatedAt": "2026-04-14T14:35:38Z",
+      "updatedAt": "2026-10-16T10:46:15Z",
       "downloads": 0
     },
     {
@@ -299,11 +299,11 @@
       "fullName": "hammadxcm/homebrew-tap",
       "url": "https://github.com/hammadxcm/homebrew-tap",
       "description": "Homebrew formulae for clipr",
-      "stars": 2,
+      "stars": 3,
       "forks": 0,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-04-19T23:26:10Z",
+      "updatedAt": "2026-10-16T10:46:14Z",
       "downloads": 0
     },
     {
@@ -311,11 +311,11 @@
       "fullName": "hammadxcm/clipr",
       "url": "https://github.com/hammadxcm/clipr",
       "description": "A fast, git-friendly URL shortener. CLI + GitHub Pages + Cloudflare Workers.",
-      "stars": 2,
+      "stars": 3,
       "forks": 1,
       "language": "TypeScript",
       "topics": [],
-      "updatedAt": "2026-10-15T18:23:44Z",
+      "updatedAt": "2026-10-16T10:46:14Z",
       "downloads": 0
     },
     {
@@ -323,11 +323,11 @@
       "fullName": "hammadxcm/homebrew-daemon-os",
       "url": "https://github.com/hammadxcm/homebrew-daemon-os",
       "description": "Homebrew formula for Daemon OS",
-      "stars": 2,
-      "forks": 0,
+      "stars": 3,
+      "forks": 1,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-03-28T02:58:15Z",
+      "updatedAt": "2026-10-16T10:46:12Z",
       "downloads": 0
     },
     {
@@ -335,11 +335,11 @@
       "fullName": "hammadxcm/daemon-os",
       "url": "https://github.com/hammadxcm/daemon-os",
       "description": "macOS MCP server for AI agent computer-use — gives AI eyes and hands on your Mac",
-      "stars": 2,
-      "forks": 1,
+      "stars": 3,
+      "forks": 2,
       "language": "Swift",
       "topics": [],
-      "updatedAt": "2026-10-15T17:15:30Z",
+      "updatedAt": "2026-10-16T10:46:12Z",
       "downloads": 0
     },
     {
@@ -347,11 +347,11 @@
       "fullName": "hammadxcm/facebook-group-integration-guide",
       "url": "https://github.com/hammadxcm/facebook-group-integration-guide",
       "description": "A comprehensive guide for integrating private Facebook group content into your website - Multiple approaches with cost breakdowns and automation solutions",
-      "stars": 2,
-      "forks": 0,
+      "stars": 3,
+      "forks": 1,
       "language": null,
       "topics": [],
-      "updatedAt": "2026-03-28T02:58:15Z",
+      "updatedAt": "2026-10-16T10:46:12Z",
       "downloads": 0
     },
     {
@@ -359,11 +359,11 @@
       "fullName": "hammadxcm/petstore-api-client",
       "url": "https://github.com/hammadxcm/petstore-api-client",
       "description": "Production-ready Ruby client for Swagger Petstore API with OAuth2 support",
-      "stars": 2,
-      "forks": 0,
+      "stars": 3,
+      "forks": 1,
       "language": "Ruby",
       "topics": [],
-      "updatedAt": "2026-10-15T17:15:34Z",
+      "updatedAt": "2026-10-16T10:46:12Z",
       "downloads": 0
     }
   ]
