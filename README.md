@@ -925,7 +925,7 @@ Handling TB-scale data</sub>
 <b>🌙 <a href="https://www.npmjs.com/package/ramadan-cli-pro">ramadan-cli-pro</a></b><br/>
 <sub>Published npm package — TUI dashboard<br/>
 with prayer times, i18n & notifications
-5 stars · 614+ downloads</sub>
+6 stars · 614+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -935,7 +935,7 @@ with prayer times, i18n & notifications
 <b>💎 <a href="https://rubygems.org/gems/rubocop-hk">rubocop-hk</a></b><br/>
 <sub>Published RubyGem —<br/>
 Modern RuboCop config for Ruby & Rails
-6 stars · 5.1k+ downloads</sub>
+7 stars · 5.1k+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -945,7 +945,7 @@ Modern RuboCop config for Ruby & Rails
 <b>🔍 <a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier">image-magnifier</a></b><br/>
 <sub>React zoom component —<br/>
 TypeScript with 7 releases
-8 stars · 964+ downloads</sub>
+9 stars · 964+ downloads</sub>
 </div>
 </td>
 </tr>
@@ -957,7 +957,7 @@ TypeScript with 7 releases
 <b>⚡ <a href="https://www.npmjs.com/package/electric-border-css">electric-border-css</a></b><br/>
 <sub>Animated CSS border effects — React, Vue,<br/>
 Next.js & Svelte with live demo
-4 stars · 415+ downloads</sub>
+5 stars · 415+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -967,7 +967,7 @@ Next.js & Svelte with live demo
 <b>🖥️ <a href="https://github.com/hammadxcm/daemon-os">daemon-os</a></b><br/>
 <sub>macOS MCP server for AI agent computer-use<br/>
 — gives AI eyes & hands on your Mac
-2 stars</sub>
+3 stars</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -977,7 +977,7 @@ Next.js & Svelte with live demo
 <b>🚀 <a href="https://github.com/hammadxcm/hammadxcm">hammadxcm</a></b><br/>
 <sub>This portfolio — Astro, TypeScript, SCSS<br/>
 10 themes, glass UI, dynamic data
-8 stars</sub>
+9 stars</sub>
 </div>
 </td>
 </tr>
@@ -989,7 +989,7 @@ Next.js & Svelte with live demo
 <b>💀 <a href="https://www.npmjs.com/package/slay-port">slay</a></b><br/>
 <sub>Published npm package —<br/>
 Zero-dep CLI to kill processes by port
-5 stars · 1.5k+ downloads</sub>
+6 stars · 1.5k+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
