@@ -989,7 +989,7 @@ Next.js & Svelte with live demo
 <b>💀 <a href="https://www.npmjs.com/package/slay-port">slay</a></b><br/>
 <sub>Published npm package —<br/>
 Zero-dep CLI to kill processes by port
-6 stars · 1.5k+ downloads</sub>
+7 stars · 1.5k+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
