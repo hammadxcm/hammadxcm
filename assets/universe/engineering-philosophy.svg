@@ -48,9 +48,9 @@ text{font-family:ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,mon
 <g class="fade" style="animation-delay:0s"><rect x="64" y="224" width="372" height="180" rx="12" class="card"/>
 <path d="M64 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
 <path d="M436 376v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
-<text x="88" y="262" class="k">OBSERVABILITY</text><text x="412" y="262" class="chip" text-anchor="end">40 THIS WK</text>
+<text x="88" y="262" class="k">OBSERVABILITY</text><text x="412" y="262" class="chip" text-anchor="end">48 THIS WK</text>
 <text x="88" y="290" class="d">Weekly contributions · last 12 weeks</text>
-<polyline points="88.0,318.5 117.5,337.5 146.9,334.2 176.4,339.4 205.8,335.5 235.3,338.8 264.7,324.4 294.2,312.0 323.6,330.3 353.1,323.8 382.5,323.8 412.0,376.0" fill="none" stroke="#00bfbf" stroke-width="2.5" stroke-linejoin="round" class="draw"/></g>
+<polyline points="88.0,319.1 117.5,339.7 146.9,336.2 176.4,341.9 205.8,337.6 235.3,341.2 264.7,325.5 294.2,312.0 323.6,331.9 353.1,324.8 382.5,324.8 412.0,376.0" fill="none" stroke="#00bfbf" stroke-width="2.5" stroke-linejoin="round" class="draw"/></g>
 <g class="fade" style="animation-delay:0.12s"><rect x="452" y="224" width="372" height="180" rx="12" class="card"/>
 <path d="M452 252V236a12 12 0 0 1 12-12h16" fill="none" stroke="#00bfbf" stroke-width="2"/>
 <path d="M824 376v16a12 12 0 0 1-12 12h-16" fill="none" stroke="#00bfbf" stroke-width="2" stroke-opacity=".5"/>
