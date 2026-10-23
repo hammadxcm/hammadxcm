@@ -977,7 +977,7 @@ Next.js & Svelte with live demo
 <b>🚀 <a href="https://github.com/hammadxcm/hammadxcm">hammadxcm</a></b><br/>
 <sub>This portfolio — Astro, TypeScript, SCSS<br/>
 10 themes, glass UI, dynamic data
-9 stars</sub>
+10 stars</sub>
 </div>
 </td>
 </tr>
