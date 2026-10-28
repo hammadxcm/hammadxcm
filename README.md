@@ -925,7 +925,7 @@ Handling TB-scale data</sub>
 <b>🌙 <a href="https://www.npmjs.com/package/ramadan-cli-pro">ramadan-cli-pro</a></b><br/>
 <sub>Published npm package — TUI dashboard<br/>
 with prayer times, i18n & notifications
-6 stars · 496+ downloads</sub>
+6 stars · 617+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -945,7 +945,7 @@ Modern RuboCop config for Ruby & Rails
 <b>🔍 <a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier">image-magnifier</a></b><br/>
 <sub>React zoom component —<br/>
 TypeScript with 7 releases
-9 stars · 907+ downloads</sub>
+9 stars · 963+ downloads</sub>
 </div>
 </td>
 </tr>
@@ -957,7 +957,7 @@ TypeScript with 7 releases
 <b>⚡ <a href="https://www.npmjs.com/package/electric-border-css">electric-border-css</a></b><br/>
 <sub>Animated CSS border effects — React, Vue,<br/>
 Next.js & Svelte with live demo
-5 stars · 347+ downloads</sub>
+5 stars · 272+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -989,7 +989,7 @@ Next.js & Svelte with live demo
 <b>💀 <a href="https://www.npmjs.com/package/slay-port">slay</a></b><br/>
 <sub>Published npm package —<br/>
 Zero-dep CLI to kill processes by port
-7 stars · 1.3k+ downloads</sub>
+7 stars · 1.5k+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
