@@ -925,7 +925,7 @@ Handling TB-scale data</sub>
 <b>🌙 <a href="https://www.npmjs.com/package/ramadan-cli-pro">ramadan-cli-pro</a></b><br/>
 <sub>Published npm package — TUI dashboard<br/>
 with prayer times, i18n & notifications
-6 stars · 617+ downloads</sub>
+6 stars · 618+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -945,7 +945,7 @@ Modern RuboCop config for Ruby & Rails
 <b>🔍 <a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier">image-magnifier</a></b><br/>
 <sub>React zoom component —<br/>
 TypeScript with 7 releases
-9 stars · 963+ downloads</sub>
+9 stars · 969+ downloads</sub>
 </div>
 </td>
 </tr>
