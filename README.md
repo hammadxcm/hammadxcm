@@ -945,7 +945,7 @@ Modern RuboCop config for Ruby & Rails
 <b>🔍 <a href="https://www.npmjs.com/package/@hammadxcm/image-magnifier">image-magnifier</a></b><br/>
 <sub>React zoom component —<br/>
 TypeScript with 7 releases
-9 stars · 969+ downloads</sub>
+9 stars · 970+ downloads</sub>
 </div>
 </td>
 </tr>
