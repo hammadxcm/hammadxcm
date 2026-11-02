@@ -935,7 +935,7 @@ with prayer times, i18n & notifications
 <b>💎 <a href="https://rubygems.org/gems/rubocop-hk">rubocop-hk</a></b><br/>
 <sub>Published RubyGem —<br/>
 Modern RuboCop config for Ruby & Rails
-7 stars · 5.2k+ downloads</sub>
+7 stars · 5.3k+ downloads</sub>
 </div>
 </td>
 <td align="center" width="33%">
@@ -977,7 +977,7 @@ Next.js & Svelte with live demo
 <b>🚀 <a href="https://github.com/hammadxcm/hammadxcm">hammadxcm</a></b><br/>
 <sub>This portfolio — Astro, TypeScript, SCSS<br/>
 10 themes, glass UI, dynamic data
-10 stars</sub>
+9 stars</sub>
 </div>
 </td>
 </tr>
