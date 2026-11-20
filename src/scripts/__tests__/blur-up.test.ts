@@ -24,8 +24,10 @@ describe('initBlurUp', () => {
   });
 
   it('applies blur filter to analytics images', () => {
-    initBlurUp();
     const img = document.querySelector('.analytics-grid img') as HTMLImageElement;
+    // happy-dom >= 21 reports unloaded images as complete; force the loading state.
+    Object.defineProperty(img, 'complete', { value: false });
+    initBlurUp();
     expect(img.style.filter).toBe('blur(8px)');
   });
 });
