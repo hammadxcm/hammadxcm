@@ -86,6 +86,6 @@ text{font-family:ui-monospace,SFMono-Regular,'JetBrains Mono',Menlo,Consolas,mon
 <rect x="1256" y="780" width="316" height="6" rx="3" fill="#1f3a40"/>
 <rect x="1256" y="780" width="316" height="6" rx="3" fill="#00bfbf" class="grow" style="animation-delay:1.2000000000000002s"/></g>
 <line x1="64" y1="870" x2="1600" y2="870" stroke="#1f3a40"/>
-<text x="64" y="904" class="k">LANGUAGE MIX // RUBY 39% // TYPESCRIPT 39% // SWIFT 4% // JAVASCRIPT 4% // HTML 4%</text>
+<text x="64" y="904" class="k">LANGUAGE MIX // RUBY 38% // TYPESCRIPT 38% // PYTHON 8% // SWIFT 4% // JAVASCRIPT 4%</text>
 <text x="1600" y="904" class="k" text-anchor="end">github.com/hammadxcm</text>
 </svg>
